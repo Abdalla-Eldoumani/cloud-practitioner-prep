@@ -1,0 +1,70 @@
+---
+title: "What Cloud Computing Is"
+description: "The definition AWS tests, the client-server model behind every request, and why pay-as-you-go changes the economics of running software."
+domain: 1
+module: 1
+order: 0
+day: 1
+estimatedMinutes: 12
+services:
+  - Amazon EC2
+  - Amazon S3
+updated: 2026-06-12
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Cloud computing is the on-demand delivery of IT resources over the internet with
+pay-as-you-go pricing. That one sentence carries three ideas, and the exam leans
+on all three.
+
+On-demand means you start and stop resources when you need them, not months in
+advance. Over the internet means you reach those resources from anywhere through
+a console, a command line, or an API. Pay-as-you-go means you are billed for what
+you consume rather than for hardware you bought and hoped to grow into.
+
+<Callout type="key" title="Memorize the definition">
+On-demand, over the internet, pay-as-you-go. If a question describes resources
+you can turn on in minutes and pay for only while they run, it is describing
+cloud computing.
+</Callout>
+
+## The client-server model
+
+Almost everything in AWS follows the client-server model. A client, which is a
+person or an application, sends a request. A server receives it, checks that the
+caller is allowed to do what they asked, and sends back a response.
+
+In a traditional data center that server is a physical machine you own. In AWS
+the server is usually virtual. You provision it when you need it and remove it
+when you are done, and the bill follows that lifecycle. Two services show up
+constantly as examples: Amazon EC2, which gives you virtual servers you launch
+and terminate, and Amazon S3, which stores and retrieves objects such as files
+and backups.
+
+## Why "pay for what you use" matters
+
+When you run your own data center you pay for peak capacity all year, even though
+you only need that peak for a few hours or a few weeks. You also pay whether the
+machines are busy or idle. The cloud breaks that link. Provision resources for
+the work in front of you, and when the work stops, stop the resources and the
+charges stop with them, subject to the specifics of each service.
+
+This is the shift from capital expense to operating expense. Buying servers is a
+large upfront capital cost. Paying for cloud usage is a variable operating cost
+that tracks demand. That single change is the foundation for most of the cloud
+benefits you will study next.
+
+<Callout type="note" title="A useful mental picture">
+Think of ordering coffee. Your order is the request, the barista is the server,
+paying and showing ID is authentication and authorization, and the coffee is the
+response. You pay per cup, not for the whole cafe.
+</Callout>
+
+## What to take away
+
+You should be able to state the definition from memory, recognize the
+client-server pattern in a scenario, and explain why usage-based billing lets a
+business stop paying for idle capacity. Those three points are the spine of the
+Cloud Concepts domain.
