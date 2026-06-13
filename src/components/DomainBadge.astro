@@ -1,0 +1,28 @@
+---
+import type { Domain } from "@/lib/types";
+import { domainName } from "@/lib/constants";
+
+interface Props {
+  domain: Domain;
+  showName?: boolean;
+}
+
+const { domain, showName = true } = Astro.props;
+
+// Each domain gets a stable tint so it is recognizable across the site.
+const tint: Record<Domain, string> = {
+  1: "border-brand text-brand bg-info-soft",
+  2: "border-accent text-accent",
+  3: "border-correct text-correct bg-correct-soft",
+  4: "border-flag text-flag",
+};
+
+const name = domainName(domain);
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${tint[domain]}`}
+>
+  <span class="font-semibold">D{domain}</span>
+  {showName && <span>{name}</span>}
+</span>
