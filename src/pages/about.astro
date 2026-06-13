@@ -1,0 +1,133 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { EXAM } from "@/lib/constants";
+
+const examGuide =
+  "https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf";
+const certPage =
+  "https://aws.amazon.com/certification/certified-cloud-practitioner/";
+const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
+---
+
+<BaseLayout title="About">
+  <div class="mx-auto max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      About this project
+    </h1>
+    <p class="mt-4 text-lg text-ink-soft">
+      A free, open-source way to learn AWS fundamentals and prepare for the
+      Certified Cloud Practitioner exam, built so a focused week of study is
+      enough to walk in ready.
+    </p>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-bold text-ink">Not affiliated with AWS</h2>
+      <p class="mt-2 text-ink-soft">
+        This is an independent study aid. It is not affiliated with, authorized
+        by, sponsored by, or endorsed by Amazon Web Services in any way, and it
+        is not an AWS partner or official training provider. AWS, Amazon Web
+        Services, and Certified Cloud Practitioner are trademarks of
+        Amazon.com, Inc. or its affiliates, used here only to describe the exam
+        this material prepares for. The lessons and questions are independent
+        study material, not official AWS content.
+      </p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-bold text-ink">How the questions are made</h2>
+      <p class="mt-2 text-ink-soft">
+        Every practice question is original, written to test the concepts in the
+        published exam guide. None of it is copied from the real exam, and none
+        of it comes from leaked or shared exam content. Each answer explanation
+        links to current AWS documentation so you can verify it and read deeper.
+      </p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-bold text-ink">How scoring works here</h2>
+      <p class="mt-2 text-ink-soft">
+        Results show a raw percentage and a per-domain breakdown, plus an honest
+        readiness band: building, on track, or exam ready. The bands sit above
+        the rough passing line on purpose, so a green result means real
+        readiness rather than a bare pass.
+      </p>
+      <p class="mt-2 text-ink-soft">
+        These are study signals, not the official score. The real exam reports a
+        scaled score from 100 to 1000 with a passing mark of {
+          EXAM.passingScaledScore
+        }, calculated by AWS using a method that is not a simple percentage. This
+        site never claims to reproduce that scaled score.
+      </p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-bold text-ink">The exam at a glance</h2>
+      <ul class="mt-3 flex flex-col gap-2 text-ink-soft">
+        <li>
+          Exam code {EXAM.code}, the current version of the Cloud Practitioner
+          exam.
+        </li>
+        <li>
+          {EXAM.questionCount} questions in total. {EXAM.scoredCount} are scored;
+          the other 15 are unscored and are not identified during the exam.
+        </li>
+        <li>
+          90 minutes, with multiple-choice and multiple-response question types.
+        </li>
+        <li>
+          Scaled score from 100 to 1000, passing at {EXAM.passingScaledScore}.
+          Scoring is compensatory, so a strong overall score can offset a weaker
+          domain.
+        </li>
+        <li>
+          The certification is valid for {EXAM.validityYears} years.
+        </li>
+      </ul>
+      <p class="mt-3 text-sm text-ink-soft">
+        Sources:{" "}
+        <a
+          href={examGuide}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-brand underline underline-offset-2"
+        >
+          official exam guide
+        </a>{" "}
+        and the{" "}
+        <a
+          href={certPage}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-brand underline underline-offset-2"
+        >
+          certification page
+        </a>. Always confirm current details with AWS before you book, since
+        exam policies can change.
+      </p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-xl font-bold text-ink">Open source and self-hostable</h2>
+      <p class="mt-2 text-ink-soft">
+        This whole site is open source under the MIT license, and you can run
+        your own copy. It builds to static files with no backend, no database,
+        and no accounts, so you can clone the repository and deploy it for free
+        to Vercel or any static host, or run it locally. Your study progress
+        stays in your own browser and never leaves your device.
+      </p>
+      <p class="mt-2 text-ink-soft">
+        Contributions are welcome: new lessons, more practice questions, and
+        corrections. If you find a claim that no longer matches the AWS
+        documentation, please open an issue.
+      </p>
+      <a
+        href={repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-3 inline-block rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand"
+      >
+        View the source on GitHub
+      </a>
+    </section>
+  </div>
+</BaseLayout>
