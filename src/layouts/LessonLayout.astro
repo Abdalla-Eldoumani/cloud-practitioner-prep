@@ -1,0 +1,119 @@
+---
+import type { Domain } from "@/lib/types";
+import BaseLayout from "./BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import LessonComplete from "@/components/LessonComplete.tsx";
+
+interface NavLink {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  domain: Domain;
+  module: number;
+  estimatedMinutes: number;
+  updated: Date;
+  services: string[];
+  slug: string;
+  prev: NavLink | null;
+  next: NavLink | null;
+}
+
+const {
+  title,
+  description,
+  domain,
+  module,
+  estimatedMinutes,
+  updated,
+  services,
+  slug,
+  prev,
+  next,
+} = Astro.props;
+
+const updatedLabel = updated.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="mx-auto max-w-2xl">
+    <a
+      href="/learn"
+      class="text-sm font-medium text-brand underline underline-offset-2"
+    >
+      Back to all lessons
+    </a>
+
+    <header class="mt-4">
+      <DomainBadge domain={domain} />
+      <h1 class="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+        {title}
+      </h1>
+      <p class="mt-3 text-lg text-ink-soft">{description}</p>
+      <p class="mt-3 text-sm text-ink-soft">
+        Module {module} · about {estimatedMinutes} min
+      </p>
+      {
+        services.length > 0 && (
+          <ul class="mt-3 flex flex-wrap gap-1.5">
+            {services.map((s) => (
+              <li class="rounded-full border border-hairline px-2.5 py-0.5 text-xs text-ink-soft">
+                {s}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <hr class="my-6 border-hairline" />
+
+    <div class="prose prose-lesson dark:prose-invert max-w-none">
+      <slot />
+    </div>
+
+    <div
+      class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-hairline pt-6"
+    >
+      <LessonComplete client:load slug={slug} />
+      <span class="text-sm text-ink-soft">Last verified {updatedLabel}</span>
+    </div>
+
+    <nav
+      aria-label="Lesson navigation"
+      class="mt-8 grid gap-3 sm:grid-cols-2"
+    >
+      {
+        prev ? (
+          <a
+            href={`/learn/${prev.slug}`}
+            class="rounded-lg border border-hairline bg-raised p-4 transition-colors hover:border-brand"
+          >
+            <span class="text-sm text-ink-soft">Previous</span>
+            <span class="mt-1 block font-medium text-ink">{prev.title}</span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        next && (
+          <a
+            href={`/learn/${next.slug}`}
+            class="rounded-lg border border-hairline bg-raised p-4 text-right transition-colors hover:border-brand sm:col-start-2"
+          >
+            <span class="text-sm text-ink-soft">Next</span>
+            <span class="mt-1 block font-medium text-ink">{next.title}</span>
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>
