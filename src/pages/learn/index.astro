@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { DOMAINS } from "@/lib/constants";
+import type { Domain } from "@/lib/types";
+
+const entries = (await getCollection("lessons")).filter((l) => !l.data.draft);
+
+// Group lessons under their domain and order them within each group.
+const byDomain = DOMAINS.map((d) => ({
+  meta: d,
+  lessons: entries
+    .filter((l) => l.data.domain === (d.id as Domain))
+    .sort((a, b) => a.data.order - b.data.order),
+}));
+
+const total = entries.length;
+---
+
+<BaseLayout title="Lessons">
+  <header class="max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Lessons
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      Every topic on the exam, organized by domain. Work top to bottom, or
+      follow the seven-day plan on the home page.
+    </p>
+    <p class="mt-2 text-sm text-ink-soft">{total} lessons</p>
+  </header>
+
+  <div class="mt-10 flex flex-col gap-10">
+    {
+      byDomain.map((group) => (
+        <section>
+          <div class="flex items-center gap-3">
+            <DomainBadge domain={group.meta.id} showName={false} />
+            <h2 class="text-xl font-bold text-ink">{group.meta.name}</h2>
+            <span class="text-sm text-ink-soft">{group.meta.weight}%</span>
+          </div>
+          {group.lessons.length === 0 ? (
+            <p class="mt-3 text-ink-soft">
+              Lessons for this domain are being written.
+            </p>
+          ) : (
+            <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+              {group.lessons.map((l) => (
+                <li>
+                  <a
+                    href={`/learn/${l.id}`}
+                    class="block h-full rounded-lg border border-hairline bg-raised p-4 transition-colors hover:border-brand"
+                  >
+                    <span class="block font-semibold text-ink">
+                      {l.data.title}
+                    </span>
+                    <span class="mt-1 block text-sm text-ink-soft">
+                      {l.data.description}
+                    </span>
+                    <span class="mt-2 block text-xs text-ink-soft">
+                      about {l.data.estimatedMinutes} min
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
