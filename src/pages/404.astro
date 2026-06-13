@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page not found">
+  <section class="mx-auto max-w-xl py-12 text-center">
+    <p class="text-5xl font-bold text-brand">404</p>
+    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink">
+      That page does not exist
+    </h1>
+    <p class="mt-2 text-ink-soft">
+      The link may be out of date. Try the lessons or jump into some practice.
+    </p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a
+        href="/"
+        class="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+      >
+        Go home
+      </a>
+      <a
+        href="/learn"
+        class="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand"
+      >
+        Browse lessons
+      </a>
+    </div>
+  </section>
+</BaseLayout>
