@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import StudyDayCard from "@/components/StudyDayCard.astro";
+import { STUDY_PLAN } from "@/data/study-plan";
+import { DOMAINS, EXAM } from "@/lib/constants";
+import { ALL_QUESTIONS } from "@/data/questions";
+
+const lessonEntries = (await getCollection("lessons")).filter(
+  (l) => !l.data.draft,
+);
+const lessons = lessonEntries.map((l) => ({
+  slug: l.id,
+  title: l.data.title,
+}));
+
+const lessonCount = lessons.length;
+const questionCount = ALL_QUESTIONS.length;
+---
+
+<BaseLayout title="Cloud Practitioner Prep">
+  <section class="mx-auto max-w-3xl text-center">
+    <p class="font-medium text-brand">Free and open source</p>
+    <h1
+      class="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl"
+    >
+      Learn AWS and pass the Cloud Practitioner exam in a week
+    </h1>
+    <p class="mx-auto mt-5 max-w-2xl text-lg text-ink-soft">
+      A focused path through the {EXAM.code} exam: clear lessons on every domain,
+      original practice questions, and full timed mock exams. Read, practice,
+      and walk in confident.
+    </p>
+    <div class="mt-7 flex flex-wrap justify-center gap-3">
+      <a
+        href="/learn"
+        class="rounded-md bg-brand px-5 py-2.5 font-medium text-white transition-colors hover:bg-brand-strong"
+      >
+        Start learning
+      </a>
+      <a
+        href="/practice/exam"
+        class="rounded-md border border-hairline px-5 py-2.5 font-medium text-ink transition-colors hover:border-brand"
+      >
+        Take a mock exam
+      </a>
+    </div>
+    <p class="mt-6 text-sm text-ink-soft">
+      {lessonCount} lessons · {questionCount} practice questions · a 7-day plan
+    </p>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="text-2xl font-bold tracking-tight text-ink">
+      What the exam covers
+    </h2>
+    <p class="mt-2 max-w-2xl text-ink-soft">
+      The {EXAM.code} exam scores four domains. These weightings drive the study
+      plan: Security and Technology together are most of the exam.
+    </p>
+    <ul class="mt-6 flex flex-col gap-4">
+      {
+        DOMAINS.map((d) => (
+          <li>
+            <div class="mb-1 flex items-baseline justify-between gap-3">
+              <span class="font-medium text-ink">
+                <span class="text-ink-soft">D{d.id}</span> {d.name}
+              </span>
+              <span class="text-sm font-semibold text-ink">{d.weight}%</span>
+            </div>
+            <div class="h-2.5 overflow-hidden rounded-full bg-raised">
+              <div
+                class="h-full rounded-full bg-brand"
+                style={`width: ${d.weight}%`}
+              />
+            </div>
+            <p class="mt-1.5 text-sm text-ink-soft">{d.blurb}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="text-2xl font-bold tracking-tight text-ink">
+      The seven-day plan
+    </h2>
+    <p class="mt-2 max-w-2xl text-ink-soft">
+      One week, front-loaded toward the heaviest domains, with timed mocks at the
+      end to build exam stamina.
+    </p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {STUDY_PLAN.map((day) => <StudyDayCard day={day} lessons={lessons} />)}
+    </div>
+  </section>
+
+  <section
+    class="mt-16 rounded-lg border border-hairline bg-raised p-6 text-center sm:p-10"
+  >
+    <h2 class="text-2xl font-bold tracking-tight text-ink">
+      Ready when you are
+    </h2>
+    <p class="mx-auto mt-2 max-w-xl text-ink-soft">
+      Start with the lessons or jump straight into a mock exam to see where you
+      stand. Your progress is saved on this device as you go.
+    </p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a
+        href="/learn"
+        class="rounded-md bg-brand px-5 py-2.5 font-medium text-white transition-colors hover:bg-brand-strong"
+      >
+        Browse lessons
+      </a>
+      <a
+        href="/practice"
+        class="rounded-md border border-hairline px-5 py-2.5 font-medium text-ink transition-colors hover:border-brand"
+      >
+        Practice questions
+      </a>
+    </div>
+  </section>
+</BaseLayout>
