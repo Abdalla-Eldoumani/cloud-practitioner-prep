@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from "astro:content";
+import LessonLayout from "@/layouts/LessonLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = (await getCollection("lessons")).filter(
+    (l) => !l.data.draft,
+  );
+
+  // Canonical reading order: by domain, then by the order field. Prev/next walk
+  // this sequence so a reader can move straight through the whole library.
+  const ordered = entries.sort((a, b) => {
+    if (a.data.domain !== b.data.domain) return a.data.domain - b.data.domain;
+    return a.data.order - b.data.order;
+  });
+
+  return ordered.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      prev:
+        i > 0
+          ? { slug: ordered[i - 1].id, title: ordered[i - 1].data.title }
+          : null,
+      next:
+        i < ordered.length - 1
+          ? { slug: ordered[i + 1].id, title: ordered[i + 1].data.title }
+          : null,
+    },
+  }));
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<LessonLayout
+  title={d.title}
+  description={d.description}
+  domain={d.domain}
+  module={d.module}
+  estimatedMinutes={d.estimatedMinutes}
+  updated={d.updated}
+  services={d.services}
+  slug={entry.id}
+  prev={prev}
+  next={next}
+>
+  <Content />
+</LessonLayout>
