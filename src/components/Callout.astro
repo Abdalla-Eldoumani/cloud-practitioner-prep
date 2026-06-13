@@ -1,0 +1,33 @@
+---
+// A highlighted box for lessons. Used inside MDX via <Callout type="key">.
+interface Props {
+  type?: "key" | "note" | "tip" | "warning";
+  title?: string;
+}
+
+const { type = "note", title } = Astro.props;
+
+const styles: Record<string, string> = {
+  key: "border-brand bg-info-soft",
+  note: "border-hairline bg-surface",
+  tip: "border-correct bg-correct-soft",
+  warning: "border-flag bg-surface",
+};
+
+const labels: Record<string, string> = {
+  key: "Key point",
+  note: "Note",
+  tip: "Tip",
+  warning: "Watch out",
+};
+
+const boxClass = styles[type] ?? styles.note;
+const heading = title ?? labels[type] ?? labels.note;
+---
+
+<aside class={`not-prose my-6 rounded-md border-l-4 p-4 ${boxClass}`}>
+  <p class="mb-1 text-sm font-semibold text-ink">{heading}</p>
+  <div class="text-ink-soft [&_p]:m-0 [&_p+p]:mt-2">
+    <slot />
+  </div>
+</aside>
