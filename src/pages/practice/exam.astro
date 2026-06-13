@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import QuizEngine from "@/components/quiz/QuizEngine.tsx";
+import { ALL_QUESTIONS } from "@/data/questions";
+---
+
+<BaseLayout title="Mock exam">
+  <header class="mx-auto max-w-2xl">
+    <a
+      href="/practice"
+      class="text-sm font-medium text-brand underline underline-offset-2"
+    >
+      Back to practice
+    </a>
+    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      Mock exam
+    </h1>
+  </header>
+
+  <div class="mx-auto mt-8 max-w-2xl">
+    <QuizEngine client:load pool={ALL_QUESTIONS} mode="exam" />
+  </div>
+</BaseLayout>
