@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import QuizEngine from "@/components/quiz/QuizEngine.tsx";
+import { DOMAINS, domainName } from "@/lib/constants";
+import { ALL_QUESTIONS } from "@/data/questions";
+import type { Domain } from "@/lib/types";
+
+export function getStaticPaths() {
+  return DOMAINS.map((d) => ({ params: { domain: String(d.id) } }));
+}
+
+const { domain } = Astro.params;
+const domainId = Number(domain) as Domain;
+const name = domainName(domainId);
+const available = ALL_QUESTIONS.filter((q) => q.domain === domainId).length;
+const count = Math.min(10, available);
+---
+
+<BaseLayout title={`Practice: ${name}`}>
+  <header class="mx-auto max-w-2xl">
+    <a
+      href="/practice"
+      class="text-sm font-medium text-brand underline underline-offset-2"
+    >
+      Back to practice
+    </a>
+    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      Practice: {name}
+    </h1>
+    <p class="mt-2 text-ink-soft">
+      {count} questions with instant feedback. Flag any you want to revisit.
+    </p>
+  </header>
+
+  <div class="mx-auto mt-8 max-w-2xl">
+    <QuizEngine
+      client:load
+      pool={ALL_QUESTIONS}
+      mode="practice"
+      domain={domainId}
+      count={count}
+    />
+  </div>
+</BaseLayout>
