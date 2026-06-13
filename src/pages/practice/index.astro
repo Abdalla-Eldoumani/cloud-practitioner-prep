@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { DOMAINS, EXAM } from "@/lib/constants";
+import { ALL_QUESTIONS } from "@/data/questions";
+import type { Domain } from "@/lib/types";
+
+const counts = new Map<Domain, number>();
+for (const d of DOMAINS) counts.set(d.id, 0);
+for (const q of ALL_QUESTIONS) counts.set(q.domain, (counts.get(q.domain) ?? 0) + 1);
+
+const mins = Math.round(EXAM.timeLimitSeconds / 60);
+---
+
+<BaseLayout title="Practice">
+  <header class="max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Practice
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      Drill one domain at a time with instant feedback, clear the questions you
+      flagged or missed, or sit a full timed mock exam.
+    </p>
+  </header>
+
+  <div class="mt-10 grid gap-4 sm:grid-cols-2">
+    <a
+      href="/practice/exam"
+      class="rounded-lg border border-hairline bg-raised p-6 transition-colors hover:border-brand"
+    >
+      <h2 class="text-lg font-bold text-ink">Full mock exam</h2>
+      <p class="mt-2 text-ink-soft">
+        {EXAM.questionCount} questions, {mins} minutes, weighted like the real
+        exam. Builds timing and stamina.
+      </p>
+      <span class="mt-3 inline-block font-medium text-brand">Start a mock →</span>
+    </a>
+
+    <a
+      href="/practice/review"
+      class="rounded-lg border border-hairline bg-raised p-6 transition-colors hover:border-brand"
+    >
+      <h2 class="text-lg font-bold text-ink">Review queue</h2>
+      <p class="mt-2 text-ink-soft">
+        Work back through every question you flagged or got wrong, with the
+        explanation each time.
+      </p>
+      <span class="mt-3 inline-block font-medium text-brand">Review →</span>
+    </a>
+  </div>
+
+  <section class="mt-10">
+    <h2 class="text-xl font-bold tracking-tight text-ink">By domain</h2>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+      {
+        DOMAINS.map((d) => (
+          <li>
+            <a
+              href={`/practice/${d.id}`}
+              class="flex h-full items-center justify-between gap-3 rounded-lg border border-hairline bg-raised p-4 transition-colors hover:border-brand"
+            >
+              <span>
+                <DomainBadge domain={d.id} />
+                <span class="mt-2 block text-sm text-ink-soft">
+                  {counts.get(d.id)} questions
+                </span>
+              </span>
+              <span class="font-medium text-brand">Practice →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
