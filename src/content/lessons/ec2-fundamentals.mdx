@@ -1,0 +1,90 @@
+---
+title: "Amazon EC2 Fundamentals"
+description: "Virtual servers you launch in minutes, the instance families and sizes, and the five pricing models that decide how much they cost."
+domain: 3
+module: 2
+order: 0
+day: 4
+estimatedMinutes: 15
+services:
+  - Amazon EC2
+  - AWS Lambda
+  - Amazon EBS
+updated: 2026-06-12
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Amazon EC2 gives you virtual servers, called instances, that you can launch,
+stop, and terminate in minutes. You pay primarily while an instance runs. EC2 is
+the service people picture first when they think of the cloud, and it anchors the
+compute part of the exam.
+
+## How EC2 works under the hood
+
+Many virtual machines share one physical host. A piece of software called a
+hypervisor keeps them isolated so one tenant cannot see or disturb another. AWS
+operates the host and the hypervisor. You choose the operating system, install
+your software, and decide how the instance connects to the network.
+
+Everything is driven by an API. You can click through the console to learn, run
+commands through the CLI to automate, or call the service from code with an SDK.
+The console is fine for one-off tasks; automation is how real fleets are managed.
+
+<Callout type="note" title="Stopping versus storage cost">
+Stopping an instance stops its compute charges. An attached EBS volume can still
+cost money for storage until you delete it. The exam likes this distinction.
+</Callout>
+
+## Instance families and sizing
+
+AWS groups instances into families tuned for different work:
+
+- General purpose: a balance of compute, memory, and networking.
+- Compute optimized: for CPU-heavy work such as batch processing.
+- Memory optimized: for large in-memory datasets.
+- Accelerated computing: GPUs and similar hardware for graphics, machine
+  learning, and high-performance computing.
+- Storage optimized: for workloads that need high local disk throughput.
+
+Right-sizing means picking the family and size that fit the workload, then
+adjusting later as needs change. You are not locked into your first choice.
+
+## The five pricing models
+
+This list is worth memorizing, because billing questions often turn on choosing
+the right purchase option:
+
+- On-Demand: pay per running second or hour with no commitment. Good for short
+  or unpredictable workloads.
+- Savings Plans: commit to a steady amount of spend per hour for one or three
+  years for a large discount. The commitment also applies to Fargate and Lambda.
+- Reserved Instances: commit to specific instance usage for one or three years
+  for steady, predictable workloads.
+- Spot Instances: use spare AWS capacity at a steep discount, with the catch
+  that AWS can reclaim it with a short warning. Good for interruptible work.
+- Dedicated Hosts: a physical server reserved for you, used for licensing or
+  compliance rules that require single-tenant hardware.
+
+<Callout type="key" title="Match the model to the scenario">
+Unpredictable and short, choose On-Demand. Steady for a year or more, choose a
+Savings Plan or Reserved Instances. Interruptible and cost-sensitive, choose
+Spot. A licensing or compliance rule that demands single tenancy, choose
+Dedicated Hosts.
+</Callout>
+
+## Where EC2 sits among compute options
+
+EC2 gives you the most control and, with it, the most responsibility: you manage
+the operating system, patching, and scaling strategy. At the other end, AWS
+Lambda runs your code with no servers for you to manage and scales automatically.
+Choosing between them is a recurring exam theme: reach for EC2 when you need
+control over the environment, and for serverless when you want to hand that
+operational work to AWS.
+
+## What to take away
+
+Know that EC2 is virtual servers billed mainly while running, that the families
+map to workload shapes, and that the five pricing models each fit a different
+demand pattern. Those are the points the exam returns to again and again.
