@@ -1,0 +1,71 @@
+---
+import type { StudyDay } from "@/data/study-plan";
+import DomainBadge from "./DomainBadge.astro";
+
+interface Props {
+  day: StudyDay;
+  // All lessons that currently exist, so the card links real pages and lists
+  // the rest as still being written.
+  lessons: { slug: string; title: string }[];
+}
+
+const { day, lessons } = Astro.props;
+
+const bySlug = new Map(lessons.map((l) => [l.slug, l.title]));
+const available = day.lessonSlugs
+  .filter((s) => bySlug.has(s))
+  .map((s) => ({ slug: s, title: bySlug.get(s) as string }));
+const pendingCount = day.lessonSlugs.length - available.length;
+---
+
+<article class="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
+  <div class="flex flex-wrap items-center gap-3">
+    <span
+      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white"
+    >
+      {day.day}
+    </span>
+    <h3 class="text-lg font-semibold text-ink">{day.title}</h3>
+    <span class="ml-auto text-sm text-ink-soft">~{day.targetMinutes} min</span>
+  </div>
+
+  <div class="mt-3 flex flex-wrap gap-1.5">
+    {day.focus.map((d) => <DomainBadge domain={d} />)}
+  </div>
+
+  <p class="mt-3 text-ink-soft">{day.summary}</p>
+
+  {
+    available.length > 0 && (
+      <ul class="mt-4 flex flex-col gap-1.5">
+        {available.map((l) => (
+          <li>
+            <a
+              href={`/learn/${l.slug}`}
+              class="text-brand underline underline-offset-2 hover:text-brand-strong"
+            >
+              {l.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    pendingCount > 0 && (
+      <p class="mt-3 text-sm text-ink-soft">
+        {pendingCount} more {pendingCount === 1 ? "lesson" : "lessons"} for this
+        day {pendingCount === 1 ? "is" : "are"} being written.
+      </p>
+    )
+  }
+
+  {
+    day.milestone && (
+      <p class="mt-4 rounded-md border border-accent bg-surface px-3 py-2 text-sm font-medium text-ink">
+        Milestone: {day.milestone}
+      </p>
+    )
+  }
+</article>
