@@ -1,5 +1,5 @@
 import type { AttemptResult, Readiness } from "@/lib/types";
-import { domainName } from "@/lib/constants";
+import { domainName, EXAM } from "@/lib/constants";
 import { readinessLabel } from "@/lib/scoring";
 
 interface ResultsPanelProps {
@@ -128,9 +128,18 @@ export default function ResultsPanel({
       </div>
 
       <p className="mt-6 border-t border-hairline pt-4 text-sm text-ink-soft">
+        {result.mode === "exam" && (
+          <>
+            This mock scores all {EXAM.questionCount} questions. The real exam
+            scores only {EXAM.scoredCount} of its {EXAM.questionCount}; the other{" "}
+            {EXAM.questionCount - EXAM.scoredCount} are unscored and not
+            identified.{" "}
+          </>
+        )}
         This percentage and readiness band are study signals from this question
         set. They are not the official AWS scaled score, which runs from 100 to
-        1000 with a passing mark of 700 and is calculated by AWS.
+        1000 with a passing mark of {EXAM.passingScaledScore} and is calculated
+        by AWS.
       </p>
     </div>
   );
