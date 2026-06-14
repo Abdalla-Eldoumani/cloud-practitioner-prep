@@ -15,6 +15,14 @@ import { domain2NetworkProtection } from "./domain-2-network-protection";
 import { domain2ThreatDetection } from "./domain-2-threat-detection";
 import { domain2GovernanceCompliance } from "./domain-2-governance-compliance";
 import { domain3 } from "./domain-3-technology-services";
+import { domain3Ec2 } from "./domain-3-ec2";
+import { domain3ScalingElb } from "./domain-3-scaling-elb";
+import { domain3ServerlessContainers } from "./domain-3-serverless-containers";
+import { domain3Networking } from "./domain-3-networking";
+import { domain3Storage } from "./domain-3-storage";
+import { domain3FileDatabases } from "./domain-3-file-databases";
+import { domain3IntegrationMonitoring } from "./domain-3-integration-monitoring";
+import { domain3AimlAnalytics } from "./domain-3-aiml-analytics";
 import { domain4 } from "./domain-4-billing-pricing-support";
 import { domain4Pricing } from "./domain-4-pricing";
 import { domain4CostTools } from "./domain-4-cost-tools";
@@ -38,6 +46,14 @@ export const ALL_QUESTIONS: Question[] = [
   ...domain2ThreatDetection,
   ...domain2GovernanceCompliance,
   ...domain3,
+  ...domain3Ec2,
+  ...domain3ScalingElb,
+  ...domain3ServerlessContainers,
+  ...domain3Networking,
+  ...domain3Storage,
+  ...domain3FileDatabases,
+  ...domain3IntegrationMonitoring,
+  ...domain3AimlAnalytics,
   ...domain4,
   ...domain4Pricing,
   ...domain4CostTools,
