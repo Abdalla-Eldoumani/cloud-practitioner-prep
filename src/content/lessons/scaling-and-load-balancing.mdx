@@ -1,0 +1,107 @@
+---
+title: "Scaling and Load Balancing"
+description: "How EC2 Auto Scaling adds and removes capacity on demand and how the three Elastic Load Balancing types spread traffic across healthy targets."
+domain: 3
+module: 6
+order: 1
+day: 4
+estimatedMinutes: 14
+services:
+  - Amazon EC2 Auto Scaling
+  - Elastic Load Balancing
+  - Amazon EC2
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+A fixed fleet of servers wastes money when traffic is low and falls over when
+traffic is high. Two services solve that pairing. Amazon EC2 Auto Scaling adjusts
+how many instances you run, and Elastic Load Balancing spreads incoming requests
+across them. They show up together on the exam because they deliver elasticity
+and availability as a unit.
+
+## Amazon EC2 Auto Scaling
+
+You group EC2 instances into an Auto Scaling group and treat that group as one
+logical unit. You set a minimum size the group never drops below, a maximum size
+it never exceeds, and a desired capacity it tries to hold. Auto Scaling launches
+or terminates instances to keep the group at the size you asked for.
+
+Adding instances to handle more load is scaling out. Removing them when load
+falls is scaling in. This is the elasticity the cloud is known for: you pay for
+capacity that tracks demand instead of provisioning for a peak you hit only a few
+hours a week.
+
+Auto Scaling also watches instance health. When an instance fails a health check,
+the group replaces it automatically to hold your desired capacity, which is why
+the service supports availability as much as it supports scaling.
+
+<Callout type="key" title="Minimum, desired, maximum">
+The three numbers define the group. Minimum is the floor, maximum is the ceiling,
+and desired is the target Auto Scaling holds between them. A scenario that asks
+for capacity that grows and shrinks with demand, within set bounds, is describing
+an Auto Scaling group.
+</Callout>
+
+## Ways to scale
+
+Auto Scaling offers several methods, and you can combine them:
+
+- Manual scaling: you change the desired capacity yourself.
+- Scheduled scaling: capacity changes at times you set, useful for predictable
+  patterns like a nightly batch window.
+- Dynamic scaling: capacity responds to a metric in real time. This includes
+  target tracking, which keeps a metric such as average CPU at a target value,
+  along with step and simple scaling.
+- Predictive scaling: forecasts load from past patterns and adds capacity ahead
+  of the demand.
+
+There is no extra charge for Auto Scaling itself. You pay only for the underlying
+resources, such as the EC2 instances it launches.
+
+## Elastic Load Balancing
+
+A load balancer is the single point of contact for clients. It distributes
+incoming traffic across multiple targets, such as EC2 instances, in one or more
+Availability Zones, monitors the health of those targets, and routes only to the
+healthy ones. Spreading traffic this way raises the availability and fault
+tolerance of an application.
+
+Elastic Load Balancing pairs naturally with Auto Scaling. When the group launches
+or terminates an instance, that instance is automatically registered with or
+removed from the load balancer, so traffic always flows to current, healthy
+capacity.
+
+## The load balancer types
+
+Elastic Load Balancing offers three current-generation types, each suited to a
+different kind of traffic:
+
+- Application Load Balancer operates at the application layer, layer 7 of the OSI
+  model. It handles HTTP and HTTPS and can route requests by their content, for
+  example to different target groups based on the URL path or the host header.
+  Reach for it when routing decisions depend on the details of a web request.
+- Network Load Balancer operates at the fourth layer of the OSI model. It handles
+  TCP, UDP, and TLS traffic and can sustain millions of requests per second at
+  very low latency. Reach for it for extreme performance or non-HTTP protocols.
+- Gateway Load Balancer operates at the third layer, the network layer. It helps
+  you deploy, scale, and manage third-party virtual appliances such as firewalls
+  and intrusion detection and prevention systems, sending traffic through them
+  before it reaches your application.
+
+<Callout type="tip" title="Pick the layer to the traffic">
+Routing on web content such as URL paths points to the Application Load Balancer.
+Raw TCP or UDP at high throughput points to the Network Load Balancer. Inserting
+third-party security appliances inline points to the Gateway Load Balancer.
+</Callout>
+
+## What to take away
+
+Auto Scaling keeps the number of instances matched to demand within a minimum and
+maximum, scaling out and in and replacing unhealthy instances. Elastic Load
+Balancing spreads traffic across healthy targets, and the type you choose follows
+the traffic: layer 7 HTTP for the Application Load Balancer, layer 4 TCP and UDP
+for the Network Load Balancer, and inline virtual appliances for the Gateway Load
+Balancer.
