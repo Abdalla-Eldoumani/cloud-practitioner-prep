@@ -1,0 +1,95 @@
+---
+title: "Global Infrastructure and Resilience"
+description: "How AWS organizes the world into Regions and Availability Zones, what edge locations add, and the four factors that decide which Region to pick."
+domain: 1
+module: 2
+order: 2
+day: 1
+estimatedMinutes: 14
+services:
+  - Amazon CloudFront
+  - Amazon EC2
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS does not run one giant data center. It spreads capacity across the globe in
+a structure you should be able to draw from memory: Regions contain Availability
+Zones, and a separate network of edge locations sits closer to users. This
+layout is what lets you build applications that stay up when part of the
+infrastructure fails.
+
+## Regions
+
+A Region is a physical location in the world where AWS clusters data centers.
+Each Region is a separate geographic area, such as one in Northern Virginia and
+another in Ireland. Every AWS Region is made up of multiple Availability Zones,
+and AWS states that each Region has a minimum of three that are isolated and
+physically separate from one another.
+
+You choose which Region your resources run in. Data and services you place in a
+Region stay in that Region unless you move them, which matters for the
+compliance discussion below.
+
+## Availability Zones
+
+An Availability Zone, or AZ, is one or more discrete data centers with redundant
+power, networking, and connectivity inside a Region. The AZs in a Region are
+physically separated by a meaningful distance, far enough apart that a single
+event such as a flood or a power outage is unlikely to hit more than one, yet
+connected by high-bandwidth, low-latency links so they can work together.
+
+That separation is the point. Running across multiple AZs lets you operate
+applications and databases that are more highly available and fault tolerant
+than you could from a single data center. If one AZ has a problem, the copies of
+your workload in the other AZs keep serving.
+
+<Callout type="key" title="Region versus Availability Zone">
+A Region is a geographic area. An Availability Zone is one or more isolated data
+centers inside that Region. High availability comes from spreading a workload
+across several AZs in the same Region, so one AZ failing does not take you down.
+</Callout>
+
+## Edge locations and Amazon CloudFront
+
+Edge locations are a separate, much larger set of sites, distinct from Regions
+and AZs. Amazon CloudFront, the AWS content delivery network, uses them. When a
+user requests content, CloudFront routes the request to the edge location that
+gives the lowest latency and serves a cached copy from there. If the content is
+not cached at that edge location yet, CloudFront fetches it from the origin, such
+as an Amazon S3 bucket or a web server, and caches it for the next request.
+
+The benefit is distance. Holding copies of files at edge locations around the
+world means a user's request travels a shorter path, which lowers latency and
+speeds up delivery.
+
+## Choosing a Region
+
+Four factors usually decide which Region to deploy in:
+
+- Latency and proximity. Pick a Region near your users so requests travel less
+  distance and responses arrive faster.
+- Compliance and data residency. Some laws require data to stay within a
+  country or area. Because resources stay in the Region you choose, you select a
+  Region that meets those rules.
+- Service availability. Not every AWS service or feature is available in every
+  Region, and newer services roll out to more Regions over time. Confirm the
+  services you need exist in the Region you want.
+- Pricing. Prices vary by Region, so the same resource can cost more in one
+  Region than another. Cost can be the deciding factor when the others are equal.
+
+<Callout type="note" title="No single right answer">
+Region choice is a trade-off. A Region close to users might lack a service you
+need or cost more, while a compliant Region might add latency. Weigh the four
+factors against what the workload actually requires.
+</Callout>
+
+## What to take away
+
+Know the hierarchy: Regions are geographic areas, each with at least three
+isolated Availability Zones, and edge locations form a separate global layer for
+caching through CloudFront. Resilience comes from spreading a workload across
+AZs. Region selection comes down to latency, compliance and data residency,
+service availability, and price.
