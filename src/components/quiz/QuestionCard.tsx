@@ -96,12 +96,12 @@ export default function QuestionCard({
                   />
                   <span className="text-ink">{opt.text}</span>
                   {revealed && isCorrect && (
-                    <span className="ml-auto shrink-0 text-sm font-semibold text-correct">
+                    <span className="ml-auto shrink-0 text-sm font-semibold text-ink">
                       Correct
                     </span>
                   )}
                   {revealed && isSelected && !isCorrect && (
-                    <span className="ml-auto shrink-0 text-sm font-semibold text-danger">
+                    <span className="ml-auto shrink-0 text-sm font-semibold text-ink">
                       Your choice
                     </span>
                   )}
