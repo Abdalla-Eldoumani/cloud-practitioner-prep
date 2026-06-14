@@ -145,7 +145,7 @@ export default function ProgressDashboard({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <a
           href="/practice"
-          className="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+          className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
         >
           Practice now
         </a>
