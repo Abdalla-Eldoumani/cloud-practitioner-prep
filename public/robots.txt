@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update this origin to match the deployed site (the same value as SITE_URL / astro.config.mjs).
+Sitemap: https://cloud-practitioner-prep.example/sitemap-index.xml
