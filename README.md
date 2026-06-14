@@ -1,8 +1,8 @@
 # Cloud Practitioner Prep
 
-A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read the
-lessons, drill by domain, take full timed mock exams, and track your readiness, all in the browser
-with nothing to sign up for.
+A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 22
+lessons, drill 886 original practice questions by domain, take full timed mock exams, and track your
+readiness, all in the browser with nothing to sign up for.
 
 The goal is simple: give someone with no prior cloud background a clear one-week path to
 understanding AWS fundamentals and walking into the exam prepared.
@@ -17,12 +17,14 @@ answer so you can read further.
 
 ## What it does
 
-- **Lessons** grouped by the four exam domains, written as focused reading with the must-know points
-  and common traps called out. Each lesson shows when its facts were last verified against AWS docs.
-- **Practice by domain** with immediate feedback, an explanation, and a documentation link on every
-  question.
+- **22 lessons** grouped by the four exam domains, written as focused reading with the must-know
+  points and common traps called out. Each lesson shows when its facts were last verified against AWS
+  docs.
+- **886 practice questions**, drilled by domain with immediate feedback, an explanation, and a
+  documentation link on every question.
 - **Full mock exam**: 65 questions weighted to match the real domain split, a 90-minute timer that
   survives a page reload, a question grid for jumping around, and flagging for review.
+- **Review queue**: every question you missed or flagged, ready to work through again.
 - **Honest scoring**: your result is a raw percent, a per-domain breakdown, and a readiness band. It
   is not the AWS scaled score, and the site says so plainly.
 - **Progress tracking** kept in your browser: completed lessons, attempt history, your best mock, and
@@ -80,9 +82,24 @@ npm run check     # type-check and validate content
 
 ## Deploy
 
-The site builds to static files, so it hosts anywhere that serves static content. On
-[Vercel](https://vercel.com), import the repository and accept the defaults; the build command is
-`npm run build` and the output is `dist/`. No environment variables are required.
+The site builds to static files in `dist/`, so it hosts anywhere that serves static content, with no
+backend, database, or environment variables.
+
+Before you build for production, set the real origin in `astro.config.mjs`. The `site` value ships as
+a placeholder (`https://cloud-practitioner-prep.example`); the sitemap and the canonical and
+Open Graph URLs are all generated from it, so they are wrong until you change it to your deployed
+origin, for example `https://your-domain.example`.
+
+Then build and check the output locally:
+
+```bash
+npm run build     # writes dist/, including sitemap-index.xml
+npm run preview   # serve dist/ to verify before you ship
+```
+
+Upload `dist/` to your host, or point a static host at the repository with build command
+`npm run build` and output directory `dist/`. On [Vercel](https://vercel.com), importing the
+repository and accepting the defaults does this.
 
 ## Contributing
 
