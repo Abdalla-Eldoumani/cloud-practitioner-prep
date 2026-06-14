@@ -1,0 +1,99 @@
+---
+title: "The AWS Shared Responsibility Model"
+description: "Who secures what in the cloud, why AWS owns security of the cloud and you own security in it, and how the line shifts from EC2 to managed services."
+domain: 2
+module: 3
+order: 0
+day: 2
+estimatedMinutes: 14
+services:
+  - Amazon EC2
+  - Amazon S3
+  - AWS Lambda
+  - Amazon RDS
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Security in AWS is a partnership. AWS secures the parts you cannot touch, and you
+secure the parts you control. This split is the Shared Responsibility Model, and
+it shows up in the exam constantly because almost every security question turns on
+one judgment: was this AWS's job or the customer's job?
+
+The two halves have names worth memorizing. AWS is responsible for security OF the
+cloud. You, the customer, are responsible for security IN the cloud.
+
+<Callout type="key" title="OF versus IN">
+Security OF the cloud is AWS protecting the infrastructure that runs every
+service. Security IN the cloud is you protecting what you put on top of it: your
+data, your configuration, and who can reach it.
+</Callout>
+
+## What AWS is responsible for
+
+AWS protects the infrastructure that runs all of the services offered in the AWS
+Cloud. That means the hardware, the software that runs the services, the
+networking, and the physical facilities. Concretely, AWS handles:
+
+- The data centers and their physical security, power, and cooling.
+- The host servers and the hypervisor that keeps tenants isolated.
+- The global infrastructure: Regions, Availability Zones, and edge locations.
+- The software that operates AWS managed services.
+
+You never patch an AWS data center or replace a failed drive in a host. You cannot,
+and you are not billed to. That work is AWS's side of the line.
+
+## What the customer is responsible for
+
+Your responsibilities depend on which services you use, but they cluster around
+the same idea: anything you bring to the cloud or configure on top of it is yours
+to secure. That includes:
+
+- Your data, including how you classify it and whether you encrypt it.
+- Identity and access management: who can sign in and what they can do.
+- The guest operating system on servers you run, including its updates and
+  security patches.
+- Network and firewall configuration, such as the rules in a security group.
+- Application-level security for the software you install.
+
+<Callout type="note" title="A simple test">
+Ask who can change the setting. If only AWS can, it is AWS's responsibility. If
+you can change it in the console, the CLI, or an API, it is yours. A misconfigured
+permission or an unpatched server you manage is on the customer.
+</Callout>
+
+## The line moves with the service
+
+The model is not a fixed 50/50 split. Where the line falls depends on how much of
+the stack AWS operates for you. The more infrastructure-like the service, the more
+falls to you. The more managed the service, the more AWS absorbs.
+
+With Amazon EC2, treated as infrastructure as a service, you perform the security
+configuration and management tasks. AWS runs the host and the hypervisor, but you
+choose the operating system, and patching that OS, configuring the firewall, and
+managing the software on it are your responsibility.
+
+With an abstracted or managed service, AWS operates more of the stack, including
+the operating system, so that work leaves your plate. With Amazon S3 you do not
+patch anything; you reach an endpoint to store and retrieve objects, and your job
+narrows to managing access and deciding on encryption. AWS Lambda runs your code
+with no server or OS for you to maintain, so you focus on the function and its
+permissions. For a managed database such as Amazon RDS, AWS handles the underlying
+operating system and the database engine patching, while you still own your data,
+the accounts that connect to it, and the network rules that expose it.
+
+<Callout type="tip" title="Read the service type in the question">
+If a scenario names EC2 and asks about OS patches or firewall rules, that is the
+customer. If it names S3, Lambda, or managed RDS and asks about patching the host
+or the underlying engine, that has shifted to AWS. The service type is the clue.
+</Callout>
+
+## What to take away
+
+State the split from memory: AWS secures the cloud, you secure what you put in it.
+Know that customer duties always include data, access management, and
+configuration, and that operating system patching is yours on EC2 but AWS's on
+managed and serverless services. The exam rewards spotting which side of the moving
+line a given task lands on.
