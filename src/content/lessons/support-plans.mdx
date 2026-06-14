@@ -1,0 +1,114 @@
+---
+title: "AWS Support Plans and Trusted Advisor"
+description: "The AWS Support tiers and what separates them, plus how Trusted Advisor inspects your account, with a note on the plan changes AWS has announced."
+domain: 4
+module: 12
+order: 2
+day: 6
+estimatedMinutes: 14
+services:
+  - AWS Support
+  - AWS Trusted Advisor
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS Support is sold in tiers, and the exam tests which tier a scenario needs.
+The differences come down to who can open technical cases, how fast AWS responds,
+how much of Trusted Advisor you can see, and whether you get a named contact at
+AWS. This lesson covers the tiers, then Trusted Advisor.
+
+<Callout type="note" title="Plans are changing, so verify before exam day">
+AWS has announced that it is consolidating its support plans. The current
+documentation lists end-of-support dates for Developer, Business, and Enterprise
+On-Ramp, with Developer and Business moving to a plan called Business Support
+plus, and Enterprise On-Ramp customers moving to Enterprise Support, all by
+January 1, 2027. The CLF-C02 exam guide and most current questions still describe
+the five established tiers below, so learn them, but check the live AWS Support
+plans page near your exam date in case the tested model has shifted.
+</Callout>
+
+## Basic Support
+
+Basic Support is included for every AWS account at no cost. It covers account and
+billing questions, service quota increase requests, access to documentation and
+the support forums, and service health checks. It does not include technical
+support cases for how-to or troubleshooting. From Trusted Advisor, Basic gets the
+core set of checks, not the full set.
+
+## Developer Support
+
+Developer Support adds technical support over email through Support Center, during
+business hours. Cases can be opened by one contact, and the response targets are
+general guidance within 24 hours and a system-impaired case within 12 hours. It
+suits early development and testing, where one person needs to ask AWS technical
+questions but no production workload is at stake.
+
+## Business Support
+
+Business Support is the first tier built for production workloads. It allows
+unlimited cases opened by any user with the right permissions, adds 24x7 access
+to Cloud Support Engineers by phone, chat, and email, and gives the full set of
+Trusted Advisor checks rather than the core subset. Its response targets add a
+production-system-down commitment of less than one hour and a production-impaired
+commitment of less than four hours, on top of the lower-severity targets.
+
+<Callout type="key" title="Basic and Developer versus Business and up">
+The line that matters most: Business Support is the first tier with 24x7
+technical support, unlimited cases for any authorized user, and the full set of
+Trusted Advisor checks. Basic and Developer do not have a production-down
+response commitment. A scenario about a production workload needing fast help
+points to Business or higher.
+</Callout>
+
+## Enterprise On-Ramp
+
+Enterprise On-Ramp sits between Business and Enterprise. It adds a faster
+response target of less than 30 minutes for business-critical cases, access to a
+pool of Technical Account Managers rather than a single designated one, and
+consultative reviews. It suits organizations that need quicker critical response
+and some strategic guidance but do not yet need a full Enterprise relationship.
+
+## Enterprise Support
+
+Enterprise Support is the top tier. It adds a designated Technical Account Manager
+who knows your environment, the fastest response target of less than 15 minutes
+for business-critical or mission-critical cases, and the broadest set of
+proactive guidance and event support. Reach for Enterprise when you run critical
+workloads at scale and want a named AWS contact and the fastest help.
+
+<Callout type="tip" title="Who gets a Technical Account Manager">
+A designated Technical Account Manager comes with Enterprise Support. Enterprise
+On-Ramp gives access to a TAM pool rather than a single designated one. Basic,
+Developer, and Business do not include a TAM. If a question hinges on a named,
+dedicated AWS contact, the answer is Enterprise.
+</Callout>
+
+## AWS Trusted Advisor
+
+AWS Trusted Advisor inspects your account against AWS best practices and
+recommends changes. Its checks are grouped into categories: cost optimization,
+performance, security, fault tolerance, service limits, and operational
+excellence. Cost optimization flags idle or underused resources, security flags
+risky configurations such as open ports or missing MFA on the root user, and
+service limits warns when you are approaching a quota.
+
+How much you see depends on your support plan. Basic and Developer get a core set
+of checks, while Business, Enterprise On-Ramp, and Enterprise unlock the full set
+across every category. So Trusted Advisor coverage is itself one of the reasons
+to move up a tier.
+
+## What to take away
+
+The five established tiers are Basic, Developer, Business, Enterprise On-Ramp, and
+Enterprise. Basic is free and covers account and billing only. Developer adds
+business-hours technical support for one contact. Business is the first tier with
+24x7 support, unlimited cases, a production-down response target, and the full
+Trusted Advisor checks. Enterprise On-Ramp adds faster critical response and a TAM
+pool. Enterprise adds a designated Technical Account Manager and the fastest
+response. Trusted Advisor checks span cost, performance, security, fault
+tolerance, service limits, and operational excellence, with full coverage on
+Business and above. Remember that AWS has announced changes to this lineup, so
+verify near exam day.
