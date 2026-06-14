@@ -294,7 +294,7 @@ export default function QuizEngine({
         </p>
         <a
           href="/practice"
-          className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+          className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
         >
           Go to practice
         </a>
@@ -322,7 +322,7 @@ export default function QuizEngine({
           <button
             type="button"
             onClick={startExam}
-            className="rounded-md bg-brand px-5 py-2.5 font-medium text-white transition-colors hover:bg-brand-strong"
+            className="rounded-md bg-brand px-5 py-2.5 font-medium text-raised transition-colors hover:bg-brand-strong"
           >
             Start exam
           </button>
@@ -422,7 +422,7 @@ export default function QuizEngine({
               type="button"
               disabled={selected.length === 0}
               onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
-              className="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
             >
               Check answer
             </button>
@@ -441,7 +441,7 @@ export default function QuizEngine({
                 <button
                   type="button"
                   onClick={() => setCurrent((c) => c + 1)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
                 >
                   Next question
                 </button>
@@ -449,7 +449,7 @@ export default function QuizEngine({
                 <button
                   type="button"
                   onClick={() => finish(questions, answers, startedAt as number)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
                 >
                   See results
                 </button>
@@ -476,7 +476,7 @@ export default function QuizEngine({
                 onClick={() =>
                   setCurrent((c) => Math.min(questions.length - 1, c + 1))
                 }
-                className="rounded-md bg-brand px-4 py-2 font-medium text-white transition-colors hover:bg-brand-strong"
+                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
               >
                 Next
               </button>
@@ -484,7 +484,7 @@ export default function QuizEngine({
               <button
                 type="button"
                 onClick={() => finish(questions, answers, startedAt as number)}
-                className="rounded-md bg-correct px-4 py-2 font-medium text-white transition-colors hover:opacity-90"
+                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
               >
                 Submit exam
               </button>
@@ -514,7 +514,7 @@ export default function QuizEngine({
                       aria-label={`Question ${i + 1}, ${state}`}
                       className={`relative h-9 w-9 rounded-md border text-sm font-medium transition-colors ${
                         isCurrent
-                          ? "border-brand bg-brand text-white"
+                          ? "border-brand bg-brand text-raised"
                           : isFlagged
                             ? "border-flag text-flag"
                             : isAnswered
