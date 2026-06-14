@@ -1,0 +1,122 @@
+---
+title: "AWS Cost Management Tools"
+description: "What each AWS billing and cost tool is for, from Cost Explorer and Budgets to the Pricing Calculator, consolidated billing, and cost allocation tags."
+domain: 4
+module: 11
+order: 1
+day: 6
+estimatedMinutes: 14
+services:
+  - AWS Cost Explorer
+  - AWS Budgets
+  - AWS Cost and Usage Report
+  - AWS Pricing Calculator
+  - AWS Organizations
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS gives you separate tools for separate questions about money: what will this
+cost before I build it, what is it costing now, am I about to overspend, and how
+do I attribute costs to teams. The exam tests whether you can match the tool to
+the question. This lesson walks through each one and the job it does.
+
+## Estimate before you build: AWS Pricing Calculator
+
+The AWS Pricing Calculator is a free web-based planning tool for creating cost
+estimates before you provision anything. You model a solution by choosing
+services and configurations, and it returns an estimate with upfront, monthly,
+and annual figures. You can group estimates to match an architecture, save a link
+to share or revisit, and export to CSV or PDF. You need no prior AWS experience
+to use it, which makes it the right tool for planning and budgeting a design you
+have not built yet.
+
+<Callout type="key" title="Calculator is for the future, Cost Explorer is for the past">
+Use the Pricing Calculator to estimate what a planned workload will cost before
+you build it. Use Cost Explorer to analyze what your existing workloads have
+already cost. A question about planned or hypothetical spend points to the
+Calculator.
+</Callout>
+
+## Analyze actual spend: AWS Cost Explorer
+
+AWS Cost Explorer lets you view and analyze your actual costs and usage over
+time. It shows up to the last 13 months of data, forecasts likely spend for the
+months ahead, and surfaces trends you can drill into with filters and groupings.
+You can also get recommendations, such as which Reserved Instances to purchase.
+Reach for Cost Explorer when you need to understand where money has gone and
+where it is heading.
+
+## Set alerts and limits: AWS Budgets
+
+AWS Budgets lets you set custom budgets and get alerted when cost or usage crosses
+a threshold, including when it is forecasted to exceed the threshold before the
+spend actually happens. It supports cost budgets, usage budgets, and budgets that
+track Reserved Instance or Savings Plans utilization and coverage. Notifications
+can go to email or an Amazon SNS topic, and a budget can even trigger an action.
+Budgets is the proactive tool: it warns you before the bill is a surprise.
+
+<Callout type="note" title="Cost Explorer explains, Budgets warns">
+Cost Explorer is for analysis after the fact. Budgets is for staying ahead of
+spend with thresholds and alerts. A scenario about being notified before going
+over a limit points to AWS Budgets.
+</Callout>
+
+## The detailed source of truth: AWS Cost and Usage Report
+
+The AWS Cost and Usage Report (AWS CUR) contains the most comprehensive set of
+cost and usage data AWS publishes. It writes line-item detail to an Amazon S3
+bucket you own, broken down by hour, day, or month, by product or resource, and
+by tags you define. The files are CSV and can grow large, so teams query them
+with tools such as Amazon Athena or load them into Amazon Redshift. Use the CUR
+when you need the finest-grained billing data for deep analysis or chargeback.
+
+## The Billing console
+
+The AWS Billing and Cost Management console is the home for billing information.
+It shows a spend summary, a breakdown of service costs across the accounts in
+your organization, and the credits and discounts applied to your bill. It is also
+where you activate cost allocation tags and manage payment details. Think of it
+as the dashboard that ties the other tools together.
+
+## Consolidated billing with AWS Organizations
+
+AWS Organizations lets you manage multiple AWS accounts together, and its
+consolidated billing feature rolls them up under one management account that pays
+the charges for all member accounts. Three benefits matter for the exam:
+
+- One bill. You get a single bill covering all the accounts, with easy tracking
+  of charges across them.
+- Combined usage for volume discounts. Usage is aggregated across all accounts,
+  so the organization reaches volume pricing tiers, Reserved Instance discounts,
+  and Savings Plans discounts faster than standalone accounts would. This can
+  lower the total charge.
+- No additional fee. Consolidated billing itself costs nothing extra.
+
+<Callout type="tip" title="Why consolidate billing">
+The tested benefit is the combined-usage volume discount. Many small accounts
+that each stay in a low pricing tier pay more than the same usage aggregated
+under one organization, because the combined total reaches cheaper tiers.
+</Callout>
+
+## Attribute costs: cost allocation tags
+
+A tag is a key-value label you attach to a resource. Cost allocation tags let you
+organize and track costs at a detailed level, for example by cost center,
+application, or owner. AWS provides two kinds: AWS-generated tags, which AWS
+creates and applies for you, and user-defined tags, which you create. Both must
+be activated in the Billing console before they appear in Cost Explorer or on a
+cost allocation report. Once active, your costs show up grouped by tag, which is
+how organizations split a shared bill across teams.
+
+## What to take away
+
+Match the tool to the question. The Pricing Calculator estimates a design before
+you build it. Cost Explorer analyzes and forecasts actual spend. Budgets alerts
+you before you cross a threshold. The Cost and Usage Report is the most detailed
+billing data, delivered to S3. The Billing console is the dashboard.
+Consolidated billing under AWS Organizations gives one bill and combined-usage
+volume discounts at no extra fee, and cost allocation tags let you attribute
+spend to teams.
