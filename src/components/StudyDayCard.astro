@@ -64,7 +64,14 @@ const pendingCount = day.lessonSlugs.length - available.length;
   {
     day.milestone && (
       <p class="mt-4 rounded-md border border-accent bg-surface px-3 py-2 text-sm font-medium text-ink">
-        Milestone: {day.milestone}
+        Milestone: {day.milestone}{" "}
+        <a
+          href="/practice/exam"
+          class="text-brand underline underline-offset-2 hover:text-brand-strong"
+        >
+          Start the mock exam
+        </a>
+        .
       </p>
     )
   }
