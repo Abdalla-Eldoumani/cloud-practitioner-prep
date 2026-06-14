@@ -23,3 +23,10 @@ pnpm-debug.log*
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# local planning and agent notes, not part of the published site
+.planning/
+.agent/
+.claude/
+CLAUDE.md
+**/CLAUDE.md
