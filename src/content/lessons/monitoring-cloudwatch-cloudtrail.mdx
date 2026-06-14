@@ -1,0 +1,85 @@
+---
+title: "Monitoring with CloudWatch and CloudTrail"
+description: "The exam's classic split: CloudWatch watches how resources perform, CloudTrail records who did what. Plus the Health Dashboard and X-Ray."
+domain: 3
+module: 10
+order: 8
+day: 5
+estimatedMinutes: 12
+services:
+  - Amazon CloudWatch
+  - AWS CloudTrail
+  - AWS Health Dashboard
+  - AWS X-Ray
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Once an application runs on AWS you need to know two different things: how it is
+performing, and what actions people and services took on the account. CloudWatch
+answers the first, CloudTrail the second. The exam tests this pairing constantly,
+usually by describing a need and asking which service meets it. Get the
+monitoring-versus-auditing line straight and the rest follows.
+
+## Amazon CloudWatch: monitoring and observability
+
+Amazon CloudWatch is the monitoring and observability service. It collects
+metrics, the numbers that describe how resources behave, such as CPU use or
+request counts, along with logs from your applications. On top of that data you
+build dashboards to see the state of a system, and you set alarms that trigger
+when a metric crosses a threshold, for example to alert you when CPU runs high.
+CloudWatch is about performance and operational health: is the system working,
+and how well.
+
+## AWS CloudTrail: activity and auditing
+
+AWS CloudTrail records activity in your AWS account. It logs the API calls and
+actions taken, capturing who did what and when, and keeps that as an event
+history. This supports governance, compliance, and auditing: if you need to know
+which user launched an instance or changed a setting, CloudTrail is the record.
+It is not watching performance; it is keeping the audit trail of actions.
+
+<Callout type="key" title="CloudWatch versus CloudTrail, the line to memorize">
+CloudWatch monitors how resources perform: metrics, logs, alarms, dashboards.
+CloudTrail audits what happened: a history of API calls and account activity, who
+did what and when. Performance and health versus actions and audit. If the
+scenario says monitor or alarm, think CloudWatch. If it says audit, compliance,
+or who did it, think CloudTrail.
+</Callout>
+
+## AWS Health Dashboard
+
+The AWS Health Dashboard shows the health of AWS services and how events may
+affect you. It has two views, and the exam likes the distinction. The Service
+health view shows reported events for AWS services across Regions and is public,
+so you do not need to sign in or even have an account to see it. The Your account
+health view, which requires signing in, is personalized: it surfaces events that
+affect your own account and resources. Public service status versus events
+specific to you.
+
+## AWS X-Ray
+
+AWS X-Ray helps you analyze and debug distributed applications, the kind built
+from many microservices. It collects data about requests as they move through the
+application and builds a trace map showing the path from the client through your
+front-end service to the backend services and databases it calls. That map makes
+it easier to find bottlenecks and latency, which is hard to do when a single
+request touches many services.
+
+<Callout type="note" title="Pick the right tool for the question">
+Performance metrics, alarms, and logs, use CloudWatch. A record of who did what
+for audit and compliance, use CloudTrail. The status of AWS services and events
+affecting you, check the AWS Health Dashboard. Tracing a request across
+microservices, use X-Ray.
+</Callout>
+
+## What to take away
+
+The one thing to lock in is CloudWatch versus CloudTrail: CloudWatch watches how
+resources perform, CloudTrail records what was done on the account. Add the AWS
+Health Dashboard for the status of AWS services and events affecting you, with
+its public and account-specific views, and X-Ray for tracing a request across a
+distributed application. The exam returns to that monitoring-versus-auditing split
+again and again.
