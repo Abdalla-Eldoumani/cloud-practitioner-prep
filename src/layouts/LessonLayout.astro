@@ -82,7 +82,7 @@ const updatedLabel = updated.toLocaleDateString("en-US", {
     <div
       class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-hairline pt-6"
     >
-      <LessonComplete client:load slug={slug} />
+      <LessonComplete client:visible slug={slug} />
       <span class="text-sm text-ink-soft">Last verified {updatedLabel}</span>
     </div>
 
