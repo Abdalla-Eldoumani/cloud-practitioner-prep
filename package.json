@@ -4,6 +4,27 @@
   "private": false,
   "license": "MIT",
   "type": "module",
+  "description": "Free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02): lessons, original practice questions, and timed mock exams, all client-side.",
+  "keywords": [
+    "aws",
+    "cloud-practitioner",
+    "clf-c02",
+    "certification",
+    "exam-prep",
+    "practice-questions",
+    "mock-exam",
+    "astro",
+    "study-guide"
+  ],
+  "homepage": "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/issues"
+  },
+  "author": "Abdalla Eldoumani",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -38,6 +59,7 @@
     "typescript": "6.0.3"
   },
   "overrides": {
-    "vite": "7.3.5"
+    "vite": "7.3.5",
+    "esbuild": ">=0.28.1"
   }
 }
