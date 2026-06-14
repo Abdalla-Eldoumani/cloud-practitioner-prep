@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { AttemptResult, Domain, Question, QuizMode } from "@/lib/types";
 import { EXAM } from "@/lib/constants";
 import { scoreAttempt } from "@/lib/scoring";
