@@ -52,10 +52,14 @@ export function recordAttempt(
   });
 }
 
+// Clearing from review removes a question from both lists, because the review
+// set is the union of missed and flagged. Dropping only one would leave a
+// question the reader marked as understood still sitting in the queue.
 export function clearMissed(questionId: string): void {
   const cur = $progress.get();
   commit({
     ...cur,
     incorrectQuestions: cur.incorrectQuestions.filter((id) => id !== questionId),
+    flaggedQuestions: cur.flaggedQuestions.filter((id) => id !== questionId),
   });
 }
