@@ -1,0 +1,114 @@
+---
+title: "AI, Machine Learning, and Analytics"
+description: "The AWS services that build models, add ready-made AI, generate with foundation models, and turn raw data into insight, at the level the exam expects."
+domain: 3
+module: 9
+order: 7
+day: 5
+estimatedMinutes: 14
+services:
+  - Amazon SageMaker
+  - Amazon Bedrock
+  - Amazon Q
+  - Amazon Rekognition
+  - Amazon Comprehend
+  - Amazon Polly
+  - Amazon Transcribe
+  - Amazon Translate
+  - Amazon Lex
+  - Amazon Athena
+  - AWS Glue
+  - Amazon QuickSight
+  - Amazon Kinesis
+  - Amazon EMR
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+This area moves fast, but the exam stays at the level of what each service is for.
+The trick is to sort the services into groups: the platform for building your own
+models, the ready-made AI services you call without ML expertise, the generative
+AI services, and the analytics tools that turn raw data into insight. Learn the
+group a service belongs to and its one-line purpose.
+
+## Building models with SageMaker
+
+Amazon SageMaker is the service for building, training, and deploying machine
+learning models on managed infrastructure. It is for teams doing the machine
+learning work themselves rather than calling a finished model. AWS has expanded
+SageMaker into a broader platform for data, analytics, and AI, and the model
+building tools now carry the name SageMaker AI, but for the exam the core idea
+holds: SageMaker is where you build, train, and deploy your own models.
+
+## Ready-made AI services
+
+These apply machine learning to a specific task through an API, so you get the
+result without training a model. Each fetched fact below comes from the service's
+own AWS page:
+
+- Amazon Rekognition analyzes images and video, detecting objects, scenes, and
+  faces and flagging unsafe content.
+- Amazon Comprehend is natural language processing that pulls insight from text,
+  such as sentiment, entities, and key phrases.
+- Amazon Polly is text to speech, turning written text into lifelike spoken
+  audio.
+- Amazon Transcribe is the reverse, automatic speech recognition that converts
+  spoken audio into text.
+- Amazon Translate is neural machine translation between languages.
+- Amazon Lex builds conversational interfaces, the voice and chat bots, using the
+  same technology as Alexa.
+
+<Callout type="tip" title="A way to remember the AI services">
+Group them by sense: Rekognition sees, Polly speaks, Transcribe listens,
+Translate converts languages, Comprehend reads meaning from text, and Lex holds a
+conversation. Match the verb in the scenario to the service.
+</Callout>
+
+## Generative AI services
+
+Generative AI builds on foundation models, large models that produce text, code,
+and more. AWS exposes this two ways. Amazon Bedrock is a managed service for
+building generative AI applications and agents using foundation models from
+several providers through one interface, with tools to customize them with your
+data. Amazon Q is a generative AI assistant: Amazon Q Business makes that
+assistant available across an organization's own content and systems, and Amazon
+Q Developer helps with building and operating software.
+
+<Callout type="key" title="The current generative AI names">
+Amazon Bedrock is the platform for building generative AI applications on
+foundation models. Amazon Q is the AWS generative AI assistant, split into Amazon
+Q Business and Amazon Q Developer. These are the current names verified against
+AWS at this lesson's date.
+</Callout>
+
+## Analytics services
+
+Analytics turns stored data into answers. The exam expects the purpose of each:
+
+- Amazon Athena runs standard SQL queries directly against data in Amazon S3. It
+  is serverless, so there is nothing to manage, and you pay for the queries you
+  run or the compute they use.
+- AWS Glue is a serverless data integration service for extract, transform, and
+  load work, discovering and preparing data and moving it into data lakes and
+  warehouses.
+- Amazon QuickSight is a managed business intelligence service for building
+  dashboards and visualizations from your data.
+- Amazon Kinesis collects, processes, and analyzes real-time streaming data, such
+  as logs, clickstreams, and video.
+- Amazon EMR is a managed big data platform for running open-source frameworks
+  like Apache Spark and Apache Hive at scale.
+
+<Callout type="note" title="Match the analytics job to the service">
+Query S3 with SQL, use Athena. Prepare and move data with ETL, use Glue. Build
+dashboards, use QuickSight. Process data as it streams in, use Kinesis. Run
+big-data frameworks like Spark, use EMR.
+</Callout>
+
+## What to take away
+
+Sort each service into its group. SageMaker is for building your own models. The
+ready-made AI services apply ML to one task through an API. Bedrock and Amazon Q
+are the generative AI offerings. Athena, Glue, QuickSight, Kinesis, and EMR are
+the analytics tools. The exam asks for the purpose, not the implementation.
