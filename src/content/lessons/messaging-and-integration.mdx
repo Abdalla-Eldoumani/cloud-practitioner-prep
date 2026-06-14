@@ -1,0 +1,92 @@
+---
+title: "Messaging and Application Integration"
+description: "How AWS connects the parts of an application without wiring them together: SQS queues, SNS pub/sub, EventBridge, Step Functions, and API Gateway."
+domain: 3
+module: 9
+order: 6
+day: 5
+estimatedMinutes: 12
+services:
+  - Amazon SQS
+  - Amazon SNS
+  - Amazon EventBridge
+  - AWS Step Functions
+  - Amazon API Gateway
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Large applications work better when their parts do not depend on each other being
+up at the same instant. Integration services let one component hand off work and
+move on, so a slow or failed piece does not drag the rest down. This is called
+decoupling, and the exam expects you to recognize which service provides it. The
+sharpest distinction to learn is SQS versus SNS.
+
+## Amazon SQS
+
+Amazon SQS is a fully managed message queue. A producer sends a message into a
+queue, where it waits, and a consumer pulls it out when ready to process it. The
+two sides never talk directly and do not need to be online together. That buffer
+is what decouples them: if the consumer is busy or briefly down, messages sit
+safely in the queue until it catches up. Picture a banking app that confirms a
+bill payment to the user immediately, then processes the payment from a queue in
+the background.
+
+## Amazon SNS
+
+Amazon SNS is a fully managed publish/subscribe service. A publisher sends one
+message to a topic, and SNS pushes a copy to every subscriber of that topic at
+once. This one-to-many push is called fan-out. Subscribers can be other AWS
+services and endpoints, and SNS can also send application-to-person messages such
+as SMS, push notifications, and email. Use SNS when one event must notify many
+recipients at the same time.
+
+<Callout type="key" title="SQS versus SNS, the distinction the exam wants">
+SQS is a queue: one message is pulled by one consumer when it is ready, which
+buffers and decouples. SNS is pub/sub: one message is pushed to many subscribers
+at once, which fans out. Queue and pull versus topic and push.
+</Callout>
+
+## Amazon EventBridge
+
+Amazon EventBridge is a serverless event bus. Events from AWS services, your own
+applications, and supported software-as-a-service providers flow into the bus,
+and rules route each event to the targets that should react to it. You connect
+producers to consumers without writing the glue code or running servers. Where
+SNS broadcasts to subscribers of a topic, EventBridge matches events against
+rules and is built around routing across many event sources.
+
+## AWS Step Functions
+
+AWS Step Functions is a serverless service for orchestrating workflows. You
+define the steps as a state machine, and Step Functions runs them in order,
+handles branching and retries, and manages the state between steps. It is the
+coordinator when a process strings together several services and you need the
+sequence, the error handling, and the progress tracked for you rather than coded
+by hand.
+
+## Amazon API Gateway
+
+Amazon API Gateway is a fully managed service for creating, publishing, securing,
+and monitoring APIs at scale. It supports REST, HTTP, and WebSocket APIs and acts
+as the front door that requests pass through to reach backend services. Along the
+way it handles authorization, throttling, and traffic management, so the backend
+does not have to. A common pattern puts API Gateway in front of AWS Lambda to
+expose serverless logic as an API.
+
+<Callout type="note" title="Pick the integration service by the job">
+Buffer and decouple two components, use SQS. Notify many subscribers of one
+event, use SNS. Route events from many sources by rules, use EventBridge.
+Orchestrate a multi-step workflow, use Step Functions. Put a managed front door
+on an API, use API Gateway.
+</Callout>
+
+## What to take away
+
+Integration services let components hand off work without tight coupling. Hold
+the SQS versus SNS line firmly: a queue pulled by one consumer versus a topic
+pushed to many. Then place EventBridge as rule-based event routing, Step
+Functions as workflow orchestration, and API Gateway as the managed front door
+for APIs. Those roles are what the exam asks you to match.
