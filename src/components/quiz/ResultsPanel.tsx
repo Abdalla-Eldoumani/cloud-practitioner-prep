@@ -5,8 +5,6 @@ import { readinessLabel } from "@/lib/scoring";
 interface ResultsPanelProps {
   result: AttemptResult;
   onRetake: () => void;
-  // Optional: walk back through every question with answers revealed.
-  onReview?: () => void;
 }
 
 function readinessClasses(r: Readiness): string {
@@ -44,7 +42,6 @@ function formatDuration(seconds: number): string {
 export default function ResultsPanel({
   result,
   onRetake,
-  onReview,
 }: ResultsPanelProps) {
   return (
     <div className="rounded-lg border border-hairline bg-raised p-6 sm:p-8">
@@ -110,15 +107,6 @@ export default function ResultsPanel({
         >
           Retake
         </button>
-        {onReview && (
-          <button
-            type="button"
-            onClick={onReview}
-            className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand"
-          >
-            Review answers
-          </button>
-        )}
         <a
           href="/progress"
           className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand"
