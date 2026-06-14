@@ -1,0 +1,783 @@
+import type { Question } from "../../lib/types";
+
+// Domain 4: Billing, Pricing, and Support. Support plans, AWS resources and
+// help, the AWS Cloud Adoption Framework, and migration strategies and tooling.
+// Original practice questions. Every fact verified against current AWS docs.
+//
+// Support-plan note: AWS has announced a consolidation. Developer Support,
+// Business Support, and Enterprise On-Ramp reach end of support on
+// January 1, 2027. Developer and Business customers move to Business Support+,
+// and Enterprise On-Ramp customers move to Enterprise Support. The CLF-C02 exam
+// still frames the classic five tiers (Basic, Developer, Business, Enterprise
+// On-Ramp, Enterprise), so the questions teach those tiers and the verified
+// severity response times, with a question acknowledging the change.
+export const domain4SupportMigration: Question[] = [
+  {
+    id: "d4-supportmig-01",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "easy",
+    stem: "Which AWS Support plan is included for every AWS account at no additional charge?",
+    options: [
+      { id: "a", text: "Developer Support" },
+      { id: "b", text: "Business Support" },
+      { id: "c", text: "Basic Support" },
+      { id: "d", text: "Enterprise Support" },
+    ],
+    correct: ["c"],
+    explanation:
+      "Basic Support comes with every AWS account at no cost. It covers account and billing questions, service quota increase requests, AWS Trusted Advisor core checks, and round-the-clock access to documentation and the AWS re:Post community. The other plans are paid and add technical support cases and further features.",
+    reference: {
+      label: "AWS Support Plans",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+    },
+  },
+  {
+    id: "d4-supportmig-02",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "easy",
+    stem: "A startup on the Basic Support plan hits an error in its application running on AWS and wants to open a technical support case with an AWS engineer. What must it do first?",
+    options: [
+      { id: "a", text: "Nothing; Basic Support already includes technical support cases." },
+      { id: "b", text: "Upgrade to a paid support plan such as Developer, Business, or Enterprise." },
+      { id: "c", text: "Buy a separate Trusted Advisor subscription." },
+      { id: "d", text: "Open the case through AWS Marketplace." },
+    ],
+    correct: ["b"],
+    explanation:
+      "With Basic Support you cannot create a technical support case. Account, billing, and service quota increase cases are available to all customers, but technical cases require a paid plan such as Developer, Business, or Enterprise. Trusted Advisor is not a separate purchase, and Marketplace does not open support cases.",
+    reference: {
+      label: "AWS Support case management",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
+    },
+  },
+  {
+    id: "d4-supportmig-03",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "medium",
+    stem: "A company runs production workloads on AWS and needs 24/7 access to Cloud Support Engineers by phone, chat, and email, plus the full set of AWS Trusted Advisor checks, at the lowest cost. Which plan meets these needs?",
+    options: [
+      { id: "a", text: "Basic Support" },
+      { id: "b", text: "Developer Support" },
+      { id: "c", text: "Business Support" },
+      { id: "d", text: "Enterprise Support" },
+    ],
+    correct: ["c"],
+    explanation:
+      "Business Support is the lowest classic tier that provides 24/7 phone, chat, and email access to Cloud Support Engineers along with the full set of Trusted Advisor checks, which is why AWS recommends it as a minimum for production workloads. Basic and Developer lack 24/7 engineer access and the full checks. Enterprise adds a designated Technical Account Manager and faster critical response, but at higher cost than required here.",
+    reference: {
+      label: "Features of AWS Support Plans",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+    },
+  },
+  {
+    id: "d4-supportmig-04",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "medium",
+    stem: "A solo developer is experimenting with AWS in a non-production environment and wants the cheapest paid plan that still lets them open technical support cases for guidance during business hours. Which plan fits best?",
+    options: [
+      { id: "a", text: "Basic Support" },
+      { id: "b", text: "Developer Support" },
+      { id: "c", text: "Business Support" },
+      { id: "d", text: "Enterprise Support" },
+    ],
+    correct: ["b"],
+    explanation:
+      "Developer Support is the entry paid plan aimed at testing and early development. It allows technical support cases with guidance during business hours, which is enough for a non-production experiment. Basic cannot open technical cases, while Business and Enterprise are built for production workloads and cost more than this use needs.",
+    reference: {
+      label: "AWS Support Plans",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+    },
+  },
+  {
+    id: "d4-supportmig-05",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "medium",
+    stem: "Which AWS Support feature is available only with the Enterprise Support plan?",
+    options: [
+      { id: "a", text: "A designated Technical Account Manager (TAM)" },
+      { id: "b", text: "The full set of AWS Trusted Advisor checks" },
+      { id: "c", text: "24/7 access to Cloud Support Engineers by phone and chat" },
+      { id: "d", text: "Service quota increase requests" },
+    ],
+    correct: ["a"],
+    explanation:
+      "A designated Technical Account Manager is part of Enterprise Support. The full set of Trusted Advisor checks and 24/7 engineer access by phone and chat are already available at the Business tier, and service quota increase requests are open to every customer including Basic Support.",
+    reference: {
+      label: "Features of AWS Support Plans",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+    },
+  },
+  {
+    id: "d4-supportmig-06",
+    domain: 4,
+    type: "single",
+    topic: "Support case severity",
+    difficulty: "medium",
+    stem: "On a plan that supports it, a customer opens a case at the highest severity, business-critical system down, with Enterprise Support. What is the first-response time AWS targets for this severity on Enterprise Support?",
+    options: [
+      { id: "a", text: "Less than 15 minutes" },
+      { id: "b", text: "1 hour" },
+      { id: "c", text: "4 hours" },
+      { id: "d", text: "24 hours" },
+    ],
+    correct: ["a"],
+    explanation:
+      "For a business-critical system down case, Enterprise Support targets a first response in under 15 minutes, the fastest commitment AWS offers in this tier. The 1 hour figure is for a production system down case, 4 hours is for a production system impaired case, and 24 hours is for a general guidance case.",
+    reference: {
+      label: "Choosing a support case severity level",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
+    },
+  },
+  {
+    id: "d4-supportmig-07",
+    domain: 4,
+    type: "single",
+    topic: "Support case severity",
+    difficulty: "hard",
+    stem: "A customer reports that important functions of a production application are unavailable and the business is significantly impacted. They open a case at the production system down severity. What first-response time does AWS target for this severity?",
+    options: [
+      { id: "a", text: "24 hours" },
+      { id: "b", text: "4 hours" },
+      { id: "c", text: "1 hour" },
+      { id: "d", text: "12 hours" },
+    ],
+    correct: ["c"],
+    explanation:
+      "Production system down is the urgent severity, and AWS targets a first response within 1 hour. General guidance targets 24 hours, system impaired targets 12 hours, and production system impaired targets 4 hours. The fastest tier, business-critical system down, is reserved for cases where the business is at risk.",
+    reference: {
+      label: "Understanding AWS Support response times",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
+    },
+  },
+  {
+    id: "d4-supportmig-08",
+    domain: 4,
+    type: "multi",
+    topic: "Support case severity",
+    difficulty: "hard",
+    stem: "Match the intent: which TWO statements about AWS Support first-response time targets are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "A general guidance case targets a first response within 24 hours." },
+      { id: "b", text: "A production system impaired case targets a first response within 4 hours." },
+      { id: "c", text: "A system impaired case targets a first response within 1 hour." },
+      { id: "d", text: "A production system down case targets a first response within 12 hours." },
+      { id: "e", text: "Every severity level is available on the Basic Support plan." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "General guidance targets 24 hours and production system impaired targets 4 hours. System impaired targets 12 hours, not 1 hour, and production system down targets 1 hour, not 12 hours. Basic Support cannot open technical cases at all, so the severity levels are not all available to it.",
+    reference: {
+      label: "Choosing a support case severity level",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
+    },
+  },
+  {
+    id: "d4-supportmig-09",
+    domain: 4,
+    type: "single",
+    topic: "AWS Support plans",
+    difficulty: "hard",
+    stem: "AWS has announced changes to its support plan lineup. Which statement reflects the announced consolidation?",
+    options: [
+      { id: "a", text: "Developer Support and Business Support reach end of support, and those customers move to Business Support+." },
+      { id: "b", text: "Basic Support is being discontinued and replaced by a paid entry plan." },
+      { id: "c", text: "Enterprise Support is being discontinued with no successor." },
+      { id: "d", text: "All support plans are being merged into a single Trusted Advisor subscription." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS announced that Developer Support, Business Support, and Enterprise On-Ramp reach end of support on January 1, 2027. Developer and Business customers can move to Business Support+, and Enterprise On-Ramp customers are upgraded to Enterprise Support. Basic Support continues, Enterprise Support continues, and the plans are not merged into a Trusted Advisor subscription.",
+    reference: {
+      label: "Developer, Business, and Enterprise On-Ramp end of support",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
+    },
+  },
+  {
+    id: "d4-supportmig-10",
+    domain: 4,
+    type: "single",
+    topic: "AWS Trusted Advisor",
+    difficulty: "easy",
+    stem: "Which AWS service inspects an AWS environment and makes recommendations across categories such as cost optimization, performance, security, fault tolerance, service limits, and operational excellence?",
+    options: [
+      { id: "a", text: "AWS Trusted Advisor" },
+      { id: "b", text: "AWS Config" },
+      { id: "c", text: "Amazon CloudWatch" },
+      { id: "d", text: "AWS CloudTrail" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Trusted Advisor inspects your account and provides recommendations across those six categories so you can follow AWS best practices. AWS Config records and evaluates resource configurations, CloudWatch collects metrics and logs for monitoring, and CloudTrail records API activity for auditing.",
+    reference: {
+      label: "AWS Trusted Advisor check reference",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
+    },
+  },
+  {
+    id: "d4-supportmig-11",
+    domain: 4,
+    type: "multi",
+    topic: "AWS Trusted Advisor",
+    difficulty: "medium",
+    stem: "Which TWO of the following are AWS Trusted Advisor check categories? (Choose two.)",
+    options: [
+      { id: "a", text: "Service limits" },
+      { id: "b", text: "Fault tolerance" },
+      { id: "c", text: "Carbon footprint" },
+      { id: "d", text: "Data residency" },
+      { id: "e", text: "Marketplace billing" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Trusted Advisor checks fall into six categories: cost optimization, performance, security, fault tolerance, service limits, and operational excellence. Service limits and fault tolerance are two of them. Carbon footprint, data residency, and Marketplace billing are not Trusted Advisor categories.",
+    reference: {
+      label: "AWS Trusted Advisor check reference",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
+    },
+  },
+  {
+    id: "d4-supportmig-12",
+    domain: 4,
+    type: "single",
+    topic: "AWS Trusted Advisor",
+    difficulty: "medium",
+    stem: "A company on Basic Support wants the complete set of AWS Trusted Advisor checks across all six categories rather than the limited set its plan provides. What is required?",
+    options: [
+      { id: "a", text: "Upgrade to a Business or Enterprise support plan." },
+      { id: "b", text: "Enable AWS Config in every Region." },
+      { id: "c", text: "Subscribe to Trusted Advisor through AWS Marketplace." },
+      { id: "d", text: "Open an Enterprise On-Ramp case to unlock the checks." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Basic and Developer Support include all checks in the Service limits category plus a small set of specific Security and Fault tolerance checks. The full set of Trusted Advisor checks across all six categories requires a Business or Enterprise support plan. Trusted Advisor is not purchased through Marketplace, and Config addresses configuration recording rather than these checks.",
+    reference: {
+      label: "AWS Trusted Advisor check reference",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
+    },
+  },
+  {
+    id: "d4-supportmig-13",
+    domain: 4,
+    type: "single",
+    topic: "AWS Trusted Advisor",
+    difficulty: "medium",
+    stem: "A team wants Trusted Advisor to warn them when usage of a resource is approaching an AWS service quota so they can request an increase before hitting the ceiling. Which Trusted Advisor category covers this?",
+    options: [
+      { id: "a", text: "Cost optimization" },
+      { id: "b", text: "Service limits" },
+      { id: "c", text: "Performance" },
+      { id: "d", text: "Security" },
+    ],
+    correct: ["b"],
+    explanation:
+      "The Service limits category checks how close your usage is to AWS service quotas so you can act before reaching them. Cost optimization flags underused or idle resources, performance flags configurations that may slow workloads, and security flags exposure such as open ports or public snapshots.",
+    reference: {
+      label: "AWS Trusted Advisor check reference",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
+    },
+  },
+  {
+    id: "d4-supportmig-14",
+    domain: 4,
+    type: "single",
+    topic: "AWS re:Post",
+    difficulty: "easy",
+    stem: "An AWS user wants to ask a technical question and get crowd-sourced, expert-reviewed answers from a community of AWS customers, Partners, and employees, at no cost. Which AWS resource is designed for this?",
+    options: [
+      { id: "a", text: "AWS re:Post" },
+      { id: "b", text: "AWS Marketplace" },
+      { id: "c", text: "AWS Trusted Advisor" },
+      { id: "d", text: "AWS Cost Explorer" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS re:Post is a community-driven question-and-answer service that replaced the original AWS Forums. It offers crowd-sourced, expert-reviewed answers and is integrated with AWS Support. Marketplace is a software catalog, Trusted Advisor gives account recommendations, and Cost Explorer analyzes spend.",
+    reference: {
+      label: "AWS re:Post",
+      url: "https://aws.amazon.com/repost/",
+    },
+  },
+  {
+    id: "d4-supportmig-15",
+    domain: 4,
+    type: "single",
+    topic: "AWS Marketplace",
+    difficulty: "easy",
+    stem: "A company wants to find, buy, and deploy third-party software, including SaaS products, and have the charges appear on its AWS bill. Which AWS offering provides this curated digital catalog?",
+    options: [
+      { id: "a", text: "AWS Marketplace" },
+      { id: "b", text: "AWS re:Post" },
+      { id: "c", text: "AWS Config" },
+      { id: "d", text: "AWS Artifact" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Marketplace is a curated digital catalog where customers find, buy, deploy, and manage third-party software and services, with charges consolidated on the AWS bill. re:Post is a community Q&A service, Config records resource configurations, and Artifact provides on-demand access to AWS compliance reports.",
+    reference: {
+      label: "AWS Marketplace",
+      url: "https://aws.amazon.com/marketplace/",
+    },
+  },
+  {
+    id: "d4-supportmig-16",
+    domain: 4,
+    type: "single",
+    topic: "AWS Partner Network",
+    difficulty: "medium",
+    stem: "A business wants to engage an outside firm that has proven AWS expertise to help design and build its cloud solution. Which AWS program is the global community of such partners?",
+    options: [
+      { id: "a", text: "AWS Partner Network (APN)" },
+      { id: "b", text: "AWS Trusted Advisor" },
+      { id: "c", text: "AWS Activate" },
+      { id: "d", text: "AWS re:Post" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The AWS Partner Network is the global community of organizations that use AWS to build solutions and services for customers, including software (technology) partners and consulting and services partners. Trusted Advisor and re:Post are not partner programs, and Activate is a program for startups rather than a partner community.",
+    reference: {
+      label: "AWS Partner Network",
+      url: "https://aws.amazon.com/partners/",
+    },
+  },
+  {
+    id: "d4-supportmig-17",
+    domain: 4,
+    type: "single",
+    topic: "AWS resources and help",
+    difficulty: "easy",
+    stem: "An architect wants free, AWS-authored technical guides, reference architecture diagrams, and decision guides to deepen their understanding of designing on AWS. Which resource collection provides these?",
+    options: [
+      { id: "a", text: "AWS Whitepapers and Guides" },
+      { id: "b", text: "AWS Marketplace listings" },
+      { id: "c", text: "AWS Cost and Usage Report" },
+      { id: "d", text: "AWS Personal Health Dashboard" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Whitepapers and Guides are technical content authored by AWS and the AWS community, including whitepapers, technical guides, reference material, and reference architecture diagrams, available at no cost. Marketplace lists third-party software, the Cost and Usage Report details spend, and the Health Dashboard reports on service events affecting your resources.",
+    reference: {
+      label: "AWS Whitepapers & Guides",
+      url: "https://aws.amazon.com/whitepapers/",
+    },
+  },
+  {
+    id: "d4-supportmig-18",
+    domain: 4,
+    type: "single",
+    topic: "AWS Well-Architected Tool",
+    difficulty: "medium",
+    stem: "A team wants to review a workload against AWS architectural best practices in the AWS Management Console at no cost and get a plan to improve it. Which service should they use?",
+    options: [
+      { id: "a", text: "AWS Well-Architected Tool" },
+      { id: "b", text: "AWS Trusted Advisor" },
+      { id: "c", text: "AWS Compute Optimizer" },
+      { id: "d", text: "AWS Service Catalog" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The AWS Well-Architected Tool is a free console service that helps you review a workload against the Well-Architected Framework and produces an improvement plan. Trusted Advisor gives account-wide best-practice checks rather than a guided workload review, Compute Optimizer recommends resource sizing, and Service Catalog manages approved products for deployment.",
+    reference: {
+      label: "AWS Well-Architected Tool",
+      url: "https://aws.amazon.com/well-architected-tool/",
+    },
+  },
+  {
+    id: "d4-supportmig-19",
+    domain: 4,
+    type: "multi",
+    topic: "AWS resources and help",
+    difficulty: "medium",
+    stem: "Which TWO AWS resources are intended to help customers learn and get answers, rather than to purchase software or detect threats? (Choose two.)",
+    options: [
+      { id: "a", text: "AWS re:Post" },
+      { id: "b", text: "AWS Whitepapers and Guides" },
+      { id: "c", text: "AWS Marketplace" },
+      { id: "d", text: "Amazon GuardDuty" },
+      { id: "e", text: "AWS Shield" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS re:Post (community Q&A) and AWS Whitepapers and Guides (technical content) are learning and help resources. AWS Marketplace is for buying third-party software, while GuardDuty (threat detection) and Shield (DDoS protection) are security services, not knowledge resources.",
+    reference: {
+      label: "AWS re:Post",
+      url: "https://aws.amazon.com/repost/",
+    },
+  },
+  {
+    id: "d4-supportmig-20",
+    domain: 4,
+    type: "single",
+    topic: "AWS Cloud Adoption Framework",
+    difficulty: "easy",
+    stem: "The AWS Cloud Adoption Framework (AWS CAF) organizes guidance into six perspectives. Which of the following is one of those perspectives?",
+    options: [
+      { id: "a", text: "Governance" },
+      { id: "b", text: "Networking" },
+      { id: "c", text: "Billing" },
+      { id: "d", text: "Migration" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The six AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. Governance is one of them. Networking, Billing, and Migration are not CAF perspectives, though they are addressed within the perspectives where relevant.",
+    reference: {
+      label: "AWS Cloud Adoption Framework",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+    },
+  },
+  {
+    id: "d4-supportmig-21",
+    domain: 4,
+    type: "multi",
+    topic: "AWS Cloud Adoption Framework",
+    difficulty: "medium",
+    stem: "Which TWO of the following are perspectives of the AWS Cloud Adoption Framework? (Choose two.)",
+    options: [
+      { id: "a", text: "People" },
+      { id: "b", text: "Platform" },
+      { id: "c", text: "Pricing" },
+      { id: "d", text: "Procurement" },
+      { id: "e", text: "Partners" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "The AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. People and Platform are two of them. Pricing, Procurement, and Partners are not CAF perspectives.",
+    reference: {
+      label: "AWS Cloud Adoption Framework",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+    },
+  },
+  {
+    id: "d4-supportmig-22",
+    domain: 4,
+    type: "single",
+    topic: "AWS Cloud Adoption Framework",
+    difficulty: "hard",
+    stem: "A company adopting the cloud needs to retrain staff, evolve roles, and manage the cultural change that comes with new ways of working. Which AWS Cloud Adoption Framework perspective most directly addresses these concerns?",
+    options: [
+      { id: "a", text: "Platform perspective" },
+      { id: "b", text: "People perspective" },
+      { id: "c", text: "Security perspective" },
+      { id: "d", text: "Operations perspective" },
+    ],
+    correct: ["b"],
+    explanation:
+      "The People perspective addresses culture, organizational structure, roles, and the skills and training needed for cloud adoption. The Platform perspective covers building and modernizing the technology platform, Security covers protecting data and workloads, and Operations covers running and managing services to meet business needs.",
+    reference: {
+      label: "AWS Cloud Adoption Framework",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+    },
+  },
+  {
+    id: "d4-supportmig-23",
+    domain: 4,
+    type: "single",
+    topic: "Migration strategies (7 Rs)",
+    difficulty: "easy",
+    stem: "A team plans to move an application to AWS by lifting and shifting it to Amazon EC2 with little to no change to its code. Which of the 7 Rs migration strategies is this?",
+    options: [
+      { id: "a", text: "Refactor" },
+      { id: "b", text: "Repurchase" },
+      { id: "c", text: "Rehost" },
+      { id: "d", text: "Retire" },
+    ],
+    correct: ["c"],
+    explanation:
+      "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. Refactoring re-architects the application using cloud-native features, repurchasing replaces it with a different product such as a SaaS offering, and retiring decommissions an application that is no longer needed.",
+    reference: {
+      label: "Migration strategies (the 7 Rs)",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+    },
+  },
+  {
+    id: "d4-supportmig-24",
+    domain: 4,
+    type: "single",
+    topic: "Migration strategies (7 Rs)",
+    difficulty: "medium",
+    stem: "During a migration assessment, a team finds an internal application that no one uses anymore and that provides no business value. Which of the 7 Rs strategies applies?",
+    options: [
+      { id: "a", text: "Retain" },
+      { id: "b", text: "Retire" },
+      { id: "c", text: "Replatform" },
+      { id: "d", text: "Relocate" },
+    ],
+    correct: ["b"],
+    explanation:
+      "Retire means decommissioning an application that is no longer needed, which removes cost and effort from the migration. Retain keeps an application in its current environment for now, replatform makes a few cloud optimizations without re-architecting, and relocate moves infrastructure such as VMware workloads to AWS without changing the applications.",
+    reference: {
+      label: "Migration strategies (the 7 Rs)",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+    },
+  },
+  {
+    id: "d4-supportmig-25",
+    domain: 4,
+    type: "single",
+    topic: "Migration strategies (7 Rs)",
+    difficulty: "medium",
+    stem: "A company decides to drop its self-managed email server and adopt a software-as-a-service email product instead, rather than moving the existing server. Which of the 7 Rs strategies is this?",
+    options: [
+      { id: "a", text: "Rehost" },
+      { id: "b", text: "Replatform" },
+      { id: "c", text: "Repurchase" },
+      { id: "d", text: "Refactor" },
+    ],
+    correct: ["c"],
+    explanation:
+      "Repurchasing, sometimes called drop and shop, replaces an existing application with a different product, commonly a SaaS offering. Rehosting would move the existing server as is, replatforming would make small cloud optimizations to it, and refactoring would re-architect it using cloud-native services.",
+    reference: {
+      label: "Migration strategies (the 7 Rs)",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+    },
+  },
+  {
+    id: "d4-supportmig-26",
+    domain: 4,
+    type: "multi",
+    topic: "Migration strategies (7 Rs)",
+    difficulty: "hard",
+    stem: "Which TWO of the following are among the 7 Rs migration strategies? (Choose two.)",
+    options: [
+      { id: "a", text: "Replatform" },
+      { id: "b", text: "Relocate" },
+      { id: "c", text: "Resell" },
+      { id: "d", text: "Replicate" },
+      { id: "e", text: "Restore" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "The 7 Rs are retire, retain, rehost, relocate, repurchase, replatform, and refactor (re-architect). Replatform and relocate are two of them. Resell, replicate, and restore are not migration strategies in this framework.",
+    reference: {
+      label: "Migration strategies (the 7 Rs)",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+    },
+  },
+  {
+    id: "d4-supportmig-27",
+    domain: 4,
+    type: "single",
+    topic: "Migration tooling",
+    difficulty: "medium",
+    stem: "A company wants a single place to discover its existing servers, plan a migration, and track the status of each application as it moves to AWS, across whichever migration tools it uses. Which service provides this?",
+    options: [
+      { id: "a", text: "AWS Migration Hub" },
+      { id: "b", text: "AWS Config" },
+      { id: "c", text: "AWS Systems Manager" },
+      { id: "d", text: "Amazon CloudWatch" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Migration Hub provides a single place to discover existing servers, plan migrations, and track the status of each application migration, with visibility across multiple AWS and partner migration tools. Config records resource configurations, Systems Manager operates and manages resources, and CloudWatch monitors metrics and logs.",
+    reference: {
+      label: "What Is AWS Migration Hub?",
+      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
+    },
+  },
+  {
+    id: "d4-supportmig-28",
+    domain: 4,
+    type: "single",
+    topic: "Migration tooling",
+    difficulty: "medium",
+    stem: "A company wants to rehost (lift and shift) hundreds of physical and virtual servers to run as native Amazon EC2 instances, using continuous replication and an automated cutover. Which service is the primary one AWS recommends for this?",
+    options: [
+      { id: "a", text: "AWS Database Migration Service (AWS DMS)" },
+      { id: "b", text: "AWS Application Migration Service" },
+      { id: "c", text: "AWS DataSync" },
+      { id: "d", text: "AWS Snowball" },
+    ],
+    correct: ["b"],
+    explanation:
+      "AWS Application Migration Service is the primary service AWS recommends for lift-and-shift (rehost) migrations. It replicates source servers and converts them to run natively as Amazon EC2 instances with an automated cutover. DMS migrates databases, DataSync moves file and object data over the network, and Snowball is a physical device for offline data transfer.",
+    reference: {
+      label: "What Is AWS Migration Hub? (Application Migration Service)",
+      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
+    },
+    services: ["Application Migration Service", "EC2"],
+  },
+  {
+    id: "d4-supportmig-29",
+    domain: 4,
+    type: "single",
+    topic: "Migration tooling",
+    difficulty: "medium",
+    stem: "A team needs to migrate an on-premises database to AWS while keeping the source database fully operational during the migration to minimize downtime. Which service is purpose-built for this?",
+    options: [
+      { id: "a", text: "AWS Database Migration Service (AWS DMS)" },
+      { id: "b", text: "AWS Application Migration Service" },
+      { id: "c", text: "Amazon S3 Transfer Acceleration" },
+      { id: "d", text: "AWS Migration Hub" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and Migration Hub tracks migrations rather than performing the database move.",
+    reference: {
+      label: "AWS Database Migration Service",
+      url: "https://aws.amazon.com/dms/",
+    },
+    services: ["DMS"],
+  },
+  {
+    id: "d4-supportmig-30",
+    domain: 4,
+    type: "single",
+    topic: "Migration tooling",
+    difficulty: "medium",
+    stem: "A research site has petabytes of data to move to AWS, but its internet connection is too slow to transfer the data in a reasonable time. Which AWS option is designed to move large data sets using physical devices shipped to and from AWS?",
+    options: [
+      { id: "a", text: "AWS DataSync" },
+      { id: "b", text: "The AWS Snow Family" },
+      { id: "c", text: "AWS Direct Connect" },
+      { id: "d", text: "Amazon S3 Multipart Upload" },
+    ],
+    correct: ["b"],
+    explanation:
+      "The AWS Snow Family provides physical devices you order, load with data, and ship back so AWS imports the data, which suits large transfers where the network is too slow or costly. DataSync moves data over the network, Direct Connect is a dedicated network connection rather than a shipped device, and S3 Multipart Upload still relies on the existing internet connection.",
+    reference: {
+      label: "AWS Snow Family",
+      url: "https://aws.amazon.com/snow/",
+    },
+  },
+  {
+    id: "d4-supportmig-31",
+    domain: 4,
+    type: "single",
+    topic: "Migration tooling",
+    difficulty: "hard",
+    stem: "A company wants to move large amounts of data from an on-premises NFS file share to Amazon S3 over its network connection on an automated, scheduled basis, with encryption in transit and integrity checks. Which service fits best?",
+    options: [
+      { id: "a", text: "AWS DataSync" },
+      { id: "b", text: "The AWS Snow Family" },
+      { id: "c", text: "AWS Database Migration Service (AWS DMS)" },
+      { id: "d", text: "AWS Application Migration Service" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS DataSync is an online data transfer service that moves data between on-premises storage and AWS storage services over the network, with scheduling, encryption in transit, and data integrity validation. The Snow Family is for offline physical transfer, DMS migrates databases, and Application Migration Service rehosts whole servers rather than moving file data.",
+    reference: {
+      label: "AWS DataSync",
+      url: "https://aws.amazon.com/datasync/",
+    },
+    services: ["DataSync", "S3"],
+  },
+  {
+    id: "d4-supportmig-32",
+    domain: 4,
+    type: "multi",
+    topic: "Migration tooling",
+    difficulty: "hard",
+    stem: "A migration team is selecting tools. Which TWO statements correctly match an AWS service to its primary migration purpose? (Choose two.)",
+    options: [
+      { id: "a", text: "AWS Application Migration Service is the primary service for rehosting (lift and shift) servers to Amazon EC2." },
+      { id: "b", text: "AWS Database Migration Service migrates databases while keeping the source operational." },
+      { id: "c", text: "AWS Migration Hub physically ships disks to transfer petabytes of data." },
+      { id: "d", text: "AWS DataSync replaces an application with a SaaS product." },
+      { id: "e", text: "The AWS Snow Family records and evaluates resource configurations." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Application Migration Service is the primary rehosting service, and Database Migration Service migrates databases while the source stays operational. Migration Hub tracks migrations rather than shipping disks (that is the Snow Family), DataSync moves data over the network rather than buying a SaaS product (that is the repurchase strategy), and the Snow Family transfers data rather than evaluating configurations (that is AWS Config).",
+    reference: {
+      label: "What Is AWS Migration Hub?",
+      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
+    },
+  },
+  {
+    id: "d4-supportmig-33",
+    domain: 4,
+    type: "multi",
+    topic: "AWS Support plans",
+    difficulty: "medium",
+    stem: "Which TWO capabilities are available to all AWS customers, including those on the Basic Support plan? (Choose two.)",
+    options: [
+      { id: "a", text: "Opening account and billing support cases" },
+      { id: "b", text: "Requesting a service quota (limit) increase" },
+      { id: "c", text: "Opening technical support cases with an engineer" },
+      { id: "d", text: "A designated Technical Account Manager" },
+      { id: "e", text: "The full set of Trusted Advisor checks" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Account and billing cases and service quota increase requests are available to every AWS customer, including Basic Support. Technical support cases require a paid plan, a designated Technical Account Manager is an Enterprise Support feature, and the full set of Trusted Advisor checks requires Business or Enterprise Support.",
+    reference: {
+      label: "AWS Support case management",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
+    },
+  },
+  {
+    id: "d4-supportmig-34",
+    domain: 4,
+    type: "single",
+    topic: "AWS Cloud Adoption Framework",
+    difficulty: "hard",
+    stem: "An organization is defining how it will identify, measure, and manage IT risk during cloud adoption, and how it will maintain compliance and decision-making oversight. Which AWS Cloud Adoption Framework perspective focuses on this?",
+    options: [
+      { id: "a", text: "Operations perspective" },
+      { id: "b", text: "Governance perspective" },
+      { id: "c", text: "Business perspective" },
+      { id: "d", text: "Platform perspective" },
+    ],
+    correct: ["b"],
+    explanation:
+      "The Governance perspective focuses on orchestrating cloud initiatives while maximizing benefits and managing risk, which covers risk management, compliance, and decision oversight. The Business perspective aligns cloud investment with business outcomes, the Platform perspective builds the technology environment, and the Operations perspective runs and supports cloud services.",
+    reference: {
+      label: "AWS Cloud Adoption Framework",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+    },
+  },
+  {
+    id: "d4-supportmig-35",
+    domain: 4,
+    type: "multi",
+    topic: "AWS Cloud Adoption Framework",
+    difficulty: "hard",
+    stem: "An organization is sorting its cloud-adoption concerns into AWS Cloud Adoption Framework perspectives. Which TWO concerns map to the Operations perspective? (Choose two.)",
+    options: [
+      { id: "a", text: "Running, monitoring, and supporting cloud workloads to meet agreed service levels" },
+      { id: "b", text: "Managing events and incidents and recovering from disruptions" },
+      { id: "c", text: "Building the business case and measuring return on cloud investment" },
+      { id: "d", text: "Retraining staff and evolving team roles for the cloud" },
+      { id: "e", text: "Protecting data confidentiality and controlling access" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "The Operations perspective covers running and supporting cloud services to the levels the business needs, including event, incident, and problem management. Building the business case sits in the Business perspective, retraining staff sits in the People perspective, and protecting data and access sits in the Security perspective.",
+    reference: {
+      label: "AWS Cloud Adoption Framework",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+    },
+  },
+  {
+    id: "d4-supportmig-36",
+    domain: 4,
+    type: "multi",
+    topic: "Migration strategies (7 Rs)",
+    difficulty: "medium",
+    stem: "A team is classifying applications by migration strategy. Which TWO descriptions correctly match a strategy in the 7 Rs? (Choose two.)",
+    options: [
+      { id: "a", text: "Rehost moves an application to AWS with little or no code change (lift and shift)." },
+      { id: "b", text: "Replatform makes a few cloud optimizations without changing the core architecture." },
+      { id: "c", text: "Retire keeps an application in its current environment for now." },
+      { id: "d", text: "Refactor replaces an application with a third-party SaaS product." },
+      { id: "e", text: "Relocate decommissions an application that is no longer needed." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Rehost is lift and shift with little or no code change, and replatform makes a few cloud optimizations (lift, tinker, and shift) without re-architecting. Retire decommissions an unneeded application (not keep it), refactor re-architects with cloud-native services (repurchase is the SaaS swap), and relocate moves infrastructure such as VMware workloads to AWS (not decommission).",
+    reference: {
+      label: "Migration strategies (the 7 Rs)",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+    },
+  },
+];
