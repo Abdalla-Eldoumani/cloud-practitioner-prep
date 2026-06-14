@@ -1,0 +1,124 @@
+---
+title: "Storage on AWS"
+description: "The three storage shapes object, block, and file, the S3 storage classes that trade cost for access, and where EBS, EFS, FSx, and Storage Gateway fit."
+domain: 3
+module: 8
+order: 4
+day: 4
+estimatedMinutes: 16
+services:
+  - Amazon S3
+  - Amazon EBS
+  - Amazon EFS
+  - Amazon FSx
+  - AWS Storage Gateway
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS storage splits into three shapes, and most of the exam's storage questions
+turn on telling them apart. Object storage keeps whole files addressed by a key.
+Block storage acts like a disk attached to one server. File storage is a shared
+file system many clients mount at once. Get the shapes straight and the services
+fall into place.
+
+## The three storage shapes
+
+- Object storage holds each item as a self-contained object with its data, a key
+  that names it, and metadata. You work with whole objects through an API. Amazon
+  S3 is the object service.
+- Block storage presents raw volumes that an instance formats and uses like a hard
+  drive. Amazon EBS is the block service.
+- File storage presents a shared file system that clients mount over a standard
+  protocol. Amazon EFS and Amazon FSx are the file services.
+
+<Callout type="key" title="Three shapes, three services">
+Whole files reached by name, think object and Amazon S3. A disk for one EC2
+instance, think block and Amazon EBS. A file system many instances share, think
+file and Amazon EFS or Amazon FSx. Most storage questions are really asking which
+shape fits.
+</Callout>
+
+## Amazon S3 and its storage classes
+
+Amazon Simple Storage Service is an object storage service. You store data as
+objects inside containers called buckets, where each object carries its data, a
+key, and metadata. S3 is designed for 99.999999999 percent (eleven nines) of
+durability, which is why it anchors backups, data lakes, and static assets.
+
+Every object has a storage class, and the class trades cost against how you expect
+to access the data. The current classes include:
+
+- S3 Standard: the default, for frequently accessed data, with millisecond
+  access across at least three Availability Zones.
+- S3 Intelligent-Tiering: moves objects between access tiers automatically as
+  access patterns change, for data whose pattern is unknown or shifting.
+- S3 Standard-IA: for long-lived, infrequently accessed data that still needs
+  millisecond access, stored across multiple Availability Zones, with a retrieval
+  fee.
+- S3 One Zone-IA: like Standard-IA but stored in a single Availability Zone, so it
+  costs less and is not resilient to the loss of that zone.
+- S3 Glacier Instant Retrieval: for rarely accessed archive data that still needs
+  retrieval in milliseconds.
+- S3 Glacier Flexible Retrieval: for archives where retrieval in minutes to hours
+  is acceptable; objects must be restored before access.
+- S3 Glacier Deep Archive: the lowest-cost class, for data accessed less than once
+  a year, with retrieval measured in hours.
+
+<Callout type="tip" title="Match the class to the access pattern">
+Frequent access is S3 Standard. Unknown or changing access is Intelligent-Tiering.
+Infrequent but needs instant access is Standard-IA, or One Zone-IA when you can
+tolerate single-zone risk for a lower price. Archived and rarely touched is a
+Glacier class, with Deep Archive the cheapest and slowest.
+</Callout>
+
+## Amazon EBS
+
+Amazon Elastic Block Store provides block storage volumes for use with EC2
+instances. You attach a volume to an instance and use it like a local hard drive,
+to store files or install applications. A volume lives in one Availability Zone
+and is automatically replicated within that zone to guard against component
+failure. EBS is the disk behind an EC2 instance, distinct from S3's object model.
+
+## Amazon EFS
+
+Amazon Elastic File System provides serverless, fully elastic file storage. It
+grows and shrinks automatically as you add and remove files, so you never
+provision capacity. It speaks the NFS protocol, and many compute instances can
+mount and access the same file system at the same time. Reach for EFS when several
+Linux instances need to share files.
+
+## Amazon FSx
+
+Amazon FSx lets you launch and run fully managed file systems built on widely used
+third-party file systems, so teams keep the features and tools they already know.
+It offers four options: FSx for Windows File Server, FSx for Lustre, FSx for
+NetApp ONTAP, and FSx for OpenZFS. FSx for Windows File Server, for example,
+provides a native Windows file system over the SMB protocol, which suits Windows
+workloads that EFS does not serve.
+
+## AWS Storage Gateway
+
+AWS Storage Gateway is a hybrid cloud storage service that lets your on-premises
+applications use AWS cloud storage. Through a gateway appliance running in your
+environment, applications reach AWS storage over standard protocols such as NFS,
+SMB, and iSCSI, with a local cache for low-latency access to recently used data.
+It fits backup, archiving, and connecting an existing data center to the cloud.
+
+<Callout type="note" title="When the data center stays on premises">
+Storage Gateway is the answer when on-premises applications need to keep working
+locally while their data lives in AWS. A scenario about extending an existing data
+center to cloud storage, rather than moving everything in, points to Storage
+Gateway.
+</Callout>
+
+## What to take away
+
+Object, block, and file are the three shapes. S3 is object storage with eleven
+nines of durability and storage classes that trade cost for access, from S3
+Standard down to S3 Glacier Deep Archive. EBS is block storage for one EC2
+instance. EFS is a shared NFS file system, FSx runs managed third-party file
+systems such as Windows File Server, and Storage Gateway bridges on-premises
+applications to AWS storage.
