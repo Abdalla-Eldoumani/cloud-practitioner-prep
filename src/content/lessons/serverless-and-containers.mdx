@@ -1,0 +1,111 @@
+---
+title: "Serverless and Containers"
+description: "AWS Lambda and the serverless model, plus how Amazon ECS, Amazon EKS, and AWS Fargate run containers with or without servers to manage."
+domain: 3
+module: 6
+order: 2
+day: 4
+estimatedMinutes: 16
+services:
+  - AWS Lambda
+  - Amazon ECS
+  - Amazon EKS
+  - AWS Fargate
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+EC2 hands you a whole virtual server to manage. Two other models hand back more of
+that work. Serverless lets you run code with no servers to provision, and
+containers package an application so it runs the same everywhere. The exam expects
+you to know AWS Lambda, the serverless idea, and the three container services.
+
+## AWS Lambda
+
+AWS Lambda is a compute service that runs your code without the need to manage
+servers. You are responsible only for the code. Lambda runs it on high
+availability infrastructure and handles the servers, operating system, capacity,
+and scaling for you.
+
+Lambda is event-driven. A function runs in response to a trigger, such as a file
+arriving in Amazon S3, a request hitting an API, or a scheduled time. You are not
+paying for an idle server waiting for work. When no event arrives, nothing runs
+and nothing is billed for compute.
+
+Pricing follows that model. You pay per use: for the number of requests your
+functions handle and for the compute time they consume while running, rather than
+for a server reserved by the hour.
+
+<Callout type="key" title="The serverless trade">
+Serverless does not mean there are no servers. It means AWS manages them and you
+never see them. You give up control of the environment and, in exchange, hand off
+provisioning, patching, and scaling, and pay only while your code runs.
+</Callout>
+
+## What serverless means
+
+Serverless describes a way of building where you focus on application logic and
+let AWS run the infrastructure underneath. Two properties define it: there are no
+servers for you to provision or manage, and the service scales automatically with
+demand, up when work arrives and down when it stops. Lambda is the headline
+serverless compute service, and the same idea reaches into other AWS services that
+remove server management from your plate.
+
+## Containers on AWS
+
+A container bundles application code with its dependencies so it runs
+consistently from a developer laptop to production. Running containers at scale
+means orchestrating them: placing them on hosts, restarting failed ones, and
+scaling them with load. AWS offers two orchestrators and one compute engine that
+runs containers without servers.
+
+### Amazon ECS
+
+Amazon Elastic Container Service is a fully managed container orchestration
+service that helps you deploy, manage, and scale containerized applications. It
+comes with AWS configuration and operational practices built in and integrates
+with tools such as Docker. ECS is the more direct path when you want AWS-native
+orchestration without running a separate control plane yourself.
+
+### Amazon EKS
+
+Amazon Elastic Kubernetes Service is a managed service for running Kubernetes.
+Kubernetes is the widely used open-source container orchestration system. With
+EKS, AWS manages the Kubernetes control plane for you, the components that
+schedule workloads and keep the cluster running. Reach for EKS when you want
+Kubernetes specifically, perhaps because your team already uses it or you want its
+ecosystem of tooling.
+
+### AWS Fargate
+
+AWS Fargate is a serverless, pay-as-you-go compute engine for containers that
+lets you run containers without managing servers or clusters of EC2 instances. It
+works with both Amazon ECS and Amazon EKS. With Fargate you do not provision or
+manage the underlying instances; AWS handles the compute, and you pay for the
+resources your containers use.
+
+<Callout type="tip" title="Two orchestrators, one launch choice">
+ECS and EKS answer how containers are orchestrated: AWS-native or Kubernetes.
+Fargate answers where they run: serverless, with no EC2 instances to manage. The
+alternative is running them on EC2 instances you manage yourself. Match the
+service to whether the question is about orchestration or about managing the
+servers.
+</Callout>
+
+## Choosing among the models
+
+EC2 gives you the most control and the most operational work. Containers on ECS or
+EKS give you portability and orchestration, and Fargate removes the servers
+beneath them. Lambda goes furthest, running event-driven code with no servers and
+billing only for what runs. The exam often frames a scenario by how much
+operational control the team wants to keep versus hand to AWS.
+
+## What to take away
+
+Lambda runs code with no servers to manage, triggered by events, billed per
+request and duration. Serverless means no server management plus automatic
+scaling. ECS and EKS orchestrate containers, ECS as an AWS-native service and EKS
+as managed Kubernetes, and Fargate runs containers for either one without
+provisioning EC2 instances.
