@@ -116,3 +116,38 @@
 .prose-lesson :where(code, pre) {
   font-family: var(--font-mono);
 }
+
+/*
+  Print: a lesson should print as clean reading, not the app. Drop the site
+  chrome (header, footer, theme toggle, skip link) and the lesson's own
+  navigation and progress controls, then flatten color so it is ink on paper.
+*/
+@media print {
+  header,
+  footer,
+  nav[aria-label="Lesson navigation"],
+  a[href="#main"],
+  #theme-toggle {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .prose-lesson {
+    max-width: none;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
