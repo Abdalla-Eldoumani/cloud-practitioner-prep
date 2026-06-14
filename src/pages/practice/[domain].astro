@@ -12,7 +12,10 @@ export function getStaticPaths() {
 const { domain } = Astro.params;
 const domainId = Number(domain) as Domain;
 const name = domainName(domainId);
-const available = ALL_QUESTIONS.filter((q) => q.domain === domainId).length;
+// A domain practice page only needs its own domain's questions. Filtering here
+// keeps the island's serialized prop small instead of shipping the full pool.
+const domainQuestions = ALL_QUESTIONS.filter((q) => q.domain === domainId);
+const available = domainQuestions.length;
 const count = Math.min(10, available);
 ---
 
@@ -35,7 +38,7 @@ const count = Math.min(10, available);
   <div class="mx-auto mt-8 max-w-2xl">
     <QuizEngine
       client:load
-      pool={ALL_QUESTIONS}
+      pool={domainQuestions}
       mode="practice"
       domain={domainId}
       count={count}
