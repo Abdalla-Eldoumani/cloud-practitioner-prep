@@ -83,12 +83,17 @@ npm run check     # type-check and validate content
 ## Deploy
 
 The site builds to static files in `dist/`, so it hosts anywhere that serves static content, with no
-backend, database, or environment variables.
+backend or database. Setting one environment variable is optional but recommended (see below).
 
-Before you build for production, set the real origin in `astro.config.mjs`. The `site` value ships as
-a placeholder (`https://cloud-practitioner-prep.example`); the sitemap and the canonical and
-Open Graph URLs are all generated from it, so they are wrong until you change it to your deployed
-origin, for example `https://your-domain.example`.
+Before you build for production, point the site at your real origin. Set the `SITE_URL` environment
+variable to it, or edit the `site` value in `astro.config.mjs` directly. It ships as a placeholder
+(`https://cloud-practitioner-prep.example`); the sitemap and the canonical and Open Graph URLs are
+all generated from it, so they are wrong until you set it to your deployed origin, for example
+`https://your-domain.example`. Also update the `Sitemap:` origin in `public/robots.txt` to match.
+
+```bash
+SITE_URL=https://your-domain.example npm run build
+```
 
 Then build and check the output locally:
 
