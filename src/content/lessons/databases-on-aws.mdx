@@ -1,0 +1,107 @@
+---
+title: "Databases on AWS"
+description: "The managed database services the exam expects you to tell apart: RDS, Aurora, DynamoDB, ElastiCache, and Redshift, and when each one fits."
+domain: 3
+module: 8
+order: 5
+day: 5
+estimatedMinutes: 16
+services:
+  - Amazon RDS
+  - Amazon Aurora
+  - Amazon DynamoDB
+  - Amazon ElastiCache
+  - Amazon Redshift
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS offers a database for each shape of data and each access pattern, and the
+exam asks you to match a scenario to the right one. You do not need to administer
+any of them for the exam. You need to know what each is for and the two splits
+that organize them: managed versus self-managed, and relational versus NoSQL.
+
+## Managed versus self-managed
+
+You can always run a database yourself on an EC2 instance. Then you own the
+operating system, the install, the patching, the backups, and the failover. A
+managed database hands that operational work to AWS. You still design the schema
+and write the queries; AWS provisions, configures, backs up, and patches the
+engine underneath. Less control, far less day-to-day toil. The services below are
+all managed, which is the point the exam keeps returning to.
+
+## Relational versus NoSQL
+
+A relational database stores data in tables with rows and columns and a fixed
+schema, and you query it with SQL. It suits data with clear relationships, such
+as orders tied to customers. NoSQL drops the rigid table model for flexible
+records that scale out easily and serve simple lookups very fast. Neither is
+better in the abstract; they fit different jobs.
+
+## Amazon RDS
+
+Amazon RDS is a managed relational database service. It runs several engines you
+may already know: PostgreSQL, MySQL, MariaDB, Oracle, SQL Server, Db2, and
+Aurora. AWS automates the undifferentiated work, provisioning, configuring,
+backing up, and patching, so you spend your time on the application rather than
+the server. Reach for RDS when a scenario needs a standard relational database
+without the chore of running one.
+
+## Amazon Aurora
+
+Amazon Aurora is AWS's own relational database, available through RDS and
+compatible with both MySQL and PostgreSQL. Compatibility means existing tools and
+application code that target those engines generally work against Aurora. AWS
+builds it for high throughput and high availability with fault-tolerant,
+distributed storage. On the exam, Aurora is the answer when a question wants a
+MySQL- or PostgreSQL-compatible database with more performance and resilience
+than the standard engines.
+
+<Callout type="key" title="RDS engines and where Aurora sits">
+RDS runs PostgreSQL, MySQL, MariaDB, Oracle, SQL Server, Db2, and Aurora. Aurora
+is the AWS-built, MySQL- and PostgreSQL-compatible option inside that family,
+tuned for performance and availability.
+</Callout>
+
+## Amazon DynamoDB
+
+Amazon DynamoDB is a fully managed, serverless NoSQL key-value database. It
+delivers single-digit millisecond performance and scales to very large request
+volumes with no servers for you to manage. Serverless here means you do not pick
+or run instances; capacity follows demand. Choose DynamoDB when a scenario
+describes massive scale, simple key-based access, and a flexible record shape
+rather than complex relational queries.
+
+## Amazon ElastiCache
+
+Amazon ElastiCache is a managed in-memory caching service compatible with Valkey,
+Memcached, and Redis OSS. It keeps frequently used data in memory so reads return
+in microseconds, which takes load off a slower backing database and speeds up
+applications. It also serves as a fast store for things like session data. When a
+question asks how to cut database load or shave latency on hot reads, ElastiCache
+is the cache layer that does it.
+
+## Amazon Redshift
+
+Amazon Redshift is a cloud data warehouse for analytics. It runs SQL analytical
+queries across very large datasets, the kind of reporting and business
+intelligence work that scans huge volumes of historical data. That is a different
+job from RDS: RDS handles the live transactional traffic of an application, while
+Redshift answers analytical questions over data gathered for analysis. The exam
+leans on that contrast.
+
+<Callout type="note" title="Match the data job to the service">
+Standard relational, choose RDS. MySQL or PostgreSQL compatible with more
+performance, choose Aurora. Serverless NoSQL key-value at scale, choose DynamoDB.
+An in-memory cache to speed reads, choose ElastiCache. Analytics over a large
+warehouse, choose Redshift.
+</Callout>
+
+## What to take away
+
+Know that all five are managed, so AWS handles the operational work. Place each
+on the two splits: RDS and Aurora are relational, DynamoDB is NoSQL, ElastiCache
+is an in-memory cache, and Redshift is an analytics warehouse rather than a
+transactional store. Matching the scenario to the service is what the exam tests.
