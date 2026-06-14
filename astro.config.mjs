@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 // Set this to the deployed origin before launch. Sitemap and canonical URLs read from it.
-const SITE = "https://cloud-practitioner-prep.example";
+const SITE = process.env.SITE_URL ?? "https://cloud-practitioner-prep.example";
 
 // https://astro.build/config
 export default defineConfig({
