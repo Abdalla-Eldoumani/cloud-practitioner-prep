@@ -1,0 +1,86 @@
+---
+title: "The AWS Well-Architected Framework"
+description: "What the Well-Architected Framework is and a plain explanation of its six pillars, from operational excellence to sustainability."
+domain: 1
+module: 2
+order: 3
+day: 1
+estimatedMinutes: 14
+services:
+  - AWS Well-Architected Tool
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+The AWS Well-Architected Framework is a set of guidance for designing and
+running systems in the cloud. It organizes design principles and best practices
+into pillars, each covering one area of concern, so you can evaluate an
+architecture and find where it falls short. The exam expects you to name the
+pillars and recognize which one a scenario is about.
+
+<Callout type="key" title="The six pillars">
+Operational Excellence, Security, Reliability, Performance Efficiency, Cost
+Optimization, and Sustainability. There are six. Sustainability is the one
+people forget, so memorize the full set.
+</Callout>
+
+## Operational Excellence
+
+Operational Excellence is about running and monitoring systems to deliver
+business value and improving the supporting processes and procedures over time.
+It covers how you organize your team, make changes safely, and learn from how the
+workload behaves in production so operations get better with each cycle.
+
+## Security
+
+The Security pillar is the ability to protect data, systems, and assets and to
+use cloud technologies to improve your security. It includes controlling who can
+do what, protecting data in transit and at rest, and detecting and responding to
+events. This is the design counterpart to the security topics in domain 2.
+
+## Reliability
+
+The Reliability pillar is the ability of a workload to perform its intended
+function correctly and consistently when expected, and to recover from failures.
+A reliable design plans for things to break and keeps working anyway, for
+example by spreading across Availability Zones and recovering automatically.
+
+<Callout type="note" title="Reliability versus Performance Efficiency">
+Reliability asks whether the workload keeps doing its job when something fails.
+Performance Efficiency asks whether it uses resources well to meet its
+performance needs. A scenario about staying up points to Reliability; one about
+using the right resources efficiently points to Performance Efficiency.
+</Callout>
+
+## Performance Efficiency
+
+The Performance Efficiency pillar is the ability to use cloud resources
+efficiently to meet performance requirements and to keep that efficiency as
+demand changes and technologies evolve. It is about choosing the right resource
+types and sizes for the workload and revisiting those choices as better options
+become available.
+
+## Cost Optimization
+
+The Cost Optimization pillar is the ability to run systems that deliver business
+value at the lowest price point. It covers paying only for what you need,
+choosing the right pricing models, and stopping spend on resources that are idle
+or oversized.
+
+## Sustainability
+
+The Sustainability pillar focuses on reducing the environmental impact of running
+cloud workloads, especially energy consumption and efficiency. It encourages
+choices that get more useful work from the resources you provision, such as
+right-sizing and using managed services that run efficiently at scale.
+
+## What to take away
+
+Be able to list all six pillars and tell them apart from a short scenario.
+Operational Excellence is about running and improving operations, Security about
+protecting data and systems, Reliability about working and recovering through
+failures, Performance Efficiency about using resources well, Cost Optimization
+about the lowest price point, and Sustainability about reducing environmental
+impact.
