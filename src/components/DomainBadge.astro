@@ -9,12 +9,15 @@ interface Props {
 
 const { domain, showName = true } = Astro.props;
 
-// Each domain gets a stable tint so it is recognizable across the site.
+// Each domain gets a stable tint so it is recognizable across the site. The
+// label text stays ink for legibility (accent and the soft-chip status colors
+// fail AA as small text in light mode); the colored border carries the tint and
+// the D-number and name carry the meaning, so color is never the only signal.
 const tint: Record<Domain, string> = {
-  1: "border-brand text-brand bg-info-soft",
-  2: "border-accent text-accent",
-  3: "border-correct text-correct bg-correct-soft",
-  4: "border-flag text-flag",
+  1: "border-brand bg-info-soft text-ink",
+  2: "border-accent text-ink",
+  3: "border-correct bg-correct-soft text-ink",
+  4: "border-flag text-ink",
 };
 
 const name = domainName(domain);
