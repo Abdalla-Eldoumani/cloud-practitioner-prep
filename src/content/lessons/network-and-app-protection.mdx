@@ -1,0 +1,96 @@
+---
+title: "Protecting the Network and Web Applications"
+description: "Security groups versus network ACLs, and how AWS WAF, Shield, and Network Firewall defend traffic at different layers."
+domain: 2
+module: 4
+order: 3
+day: 3
+estimatedMinutes: 14
+services:
+  - Amazon VPC
+  - AWS WAF
+  - AWS Shield
+  - AWS Network Firewall
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Inside a virtual private cloud you control which traffic reaches your resources,
+and AWS gives you layered tools to do it. The first pair, security groups and
+network ACLs, are the built-in firewalls of a VPC. The exam loves the difference
+between them, so start there, then layer on the services that defend web
+applications and absorb attacks.
+
+## Security groups versus network ACLs
+
+A security group controls the traffic allowed to reach and leave the resources it
+is attached to, such as an EC2 instance. It is stateful: if you allow a request
+out, the response is automatically allowed back in, regardless of the inbound
+rules, and the reverse holds for allowed inbound traffic. Security groups hold
+allow rules only; there is no explicit deny. Think of a security group as a
+firewall wrapped around the instance.
+
+A network ACL works at the subnet level, controlling traffic entering and leaving
+a whole subnet. It is stateless: it does not remember a request, so a response is
+only allowed if a separate rule permits it. Network ACLs support both allow and
+deny rules, and the rules are numbered and evaluated in order from the lowest
+number up; the first match wins and no further rules are checked. Every subnet is
+associated with a network ACL, and a subnet can have only one at a time.
+
+<Callout type="key" title="Stateful versus stateless">
+Security group: stateful, instance level, allow rules only, return traffic
+automatic. Network ACL: stateless, subnet level, allow and deny rules evaluated
+in number order, return traffic needs its own rule. If a question hinges on
+return traffic or on a deny rule, it is testing this distinction.
+</Callout>
+
+## AWS WAF filters web requests
+
+AWS WAF is a web application firewall. It inspects the HTTP and HTTPS requests
+sent to your web-facing resources and lets you allow, block, or count them based
+on conditions you define. Because it reads the request itself, it operates at the
+application layer, often called layer 7, and it can act on traits like the source
+IP address, the country of origin, header values, and strings in the request. It
+includes protections against common web attacks such as SQL injection and
+cross-site scripting.
+
+WAF attaches to the services that front your applications, including Amazon
+CloudFront, Application Load Balancer, and Amazon API Gateway. Reach for WAF when
+the threat is malicious or unwanted web requests rather than raw network floods.
+
+## AWS Shield defends against DDoS
+
+A distributed denial of service attack tries to overwhelm a target with traffic.
+AWS Shield is the service that defends against it, and it comes in two tiers.
+Shield Standard is included automatically at no extra cost and guards against
+common network and transport layer attacks for all AWS customers. Shield Advanced
+is a paid subscription that adds expanded protection, including at the application
+layer, for resources such as EC2 instances, Elastic Load Balancing, CloudFront,
+and Route 53, plus richer attack visibility and access to a dedicated response
+team.
+
+<Callout type="note" title="Standard is free, Advanced is paid">
+Every AWS account already has Shield Standard at no charge. You pay only when you
+subscribe to Shield Advanced for its expanded coverage and support. A question
+naming automatic, no-cost DDoS protection is describing Shield Standard.
+</Callout>
+
+## AWS Network Firewall protects the VPC perimeter
+
+AWS Network Firewall is a managed, stateful network firewall with intrusion
+detection and prevention for your VPC. It filters traffic at the edge of the VPC,
+such as traffic to and from an internet gateway or a VPN connection, and it can
+inspect packets deeply and match them against rules. Where a security group
+guards a single instance and WAF inspects web requests, Network Firewall sits at
+the VPC boundary and filters the network traffic crossing it.
+
+## What to take away
+
+The core comparison is security groups, stateful and instance level with allow
+rules only, against network ACLs, stateless and subnet level with allow and deny
+rules in number order. On top of that, WAF filters web requests at layer 7 for
+services like CloudFront and load balancers, Shield defends against DDoS with a
+free Standard tier and a paid Advanced tier, and Network Firewall filters traffic
+at the VPC perimeter. Knowing which tool acts at which layer is the goal here.
