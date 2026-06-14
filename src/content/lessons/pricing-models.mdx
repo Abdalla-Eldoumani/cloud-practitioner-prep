@@ -1,0 +1,113 @@
+---
+title: "AWS Pricing Models and the Free Tier"
+description: "The pricing principles AWS tests, the four EC2 purchase options, how the AWS Free Tier works today, and why data transfer out is the charge to watch."
+domain: 4
+module: 11
+order: 0
+day: 6
+estimatedMinutes: 14
+services:
+  - Amazon EC2
+  - AWS Savings Plans
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS pricing rewards two behaviors: paying only for what you use, and committing
+to usage you can predict. The exam tests whether you can pick the right purchase
+option for a workload and recognize the few cases where a bill grows in ways
+beginners do not expect. This lesson covers the pricing principles, the EC2
+purchase options, the Free Tier as it works now, and the basics of data transfer
+pricing.
+
+## The pricing principles
+
+Three ideas sit under almost every AWS price.
+
+- Pay as you go. You pay for the resources you consume while you consume them,
+  with no large upfront purchase and no charge for capacity you are not using.
+- Save when you commit. When you can predict steady usage, you commit to it for a
+  one-year or three-year term and pay less per unit than On-Demand. Savings Plans
+  are the main way to do this.
+- Pay less by using more. For services such as Amazon S3 and data transfer out,
+  pricing is tiered, so the price per unit drops as your usage climbs into higher
+  tiers.
+
+<Callout type="key" title="Two levers, lower cost">
+Usage-based billing lowers cost by letting you stop paying for idle resources.
+Commitment lowers cost by trading flexibility for a discount. A scenario about
+steady, predictable load points to a commitment option; a scenario about
+unpredictable or temporary load points to On-Demand.
+</Callout>
+
+## EC2 purchase options
+
+Amazon EC2 has four purchase options you should be able to tell apart.
+
+- On-Demand. You pay by the second for the instances you launch, with no
+  commitment. Use it for short-term, spiky, or unpredictable workloads, and for
+  anything you are still testing.
+- Savings Plans. You commit to a consistent amount of usage measured in dollars
+  per hour for a one-year or three-year term, in exchange for a lower rate than
+  On-Demand. Use it when you can commit to a spend level but want flexibility
+  across instance choices.
+- Reserved Instances. You commit to a consistent instance configuration, such as
+  instance type and Region, for a one-year or three-year term, in exchange for a
+  lower rate. Use it for steady-state workloads with a known configuration.
+- Spot Instances. You request spare EC2 capacity at a steep discount, and AWS can
+  reclaim it when it needs the capacity back. Use it for fault-tolerant or
+  flexible work that can be interrupted, such as batch jobs and testing.
+
+<Callout type="tip" title="Pick the option from the workload">
+Interruptible and flexible on timing is Spot. Steady and predictable, and you
+want the lowest committed rate, is a Savings Plan or a Reserved Instance.
+Anything short-lived, new, or unpredictable is On-Demand.
+</Callout>
+
+## The AWS Free Tier
+
+AWS recently restructured how new accounts start, so verify this rather than
+trusting older summaries. A new account begins on a free plan that includes up to
+200 US dollars in AWS credits: 100 US dollars when you sign up, and up to 100
+more as you use a set of foundational services. The free plan lasts up to six
+months, or until you use up the credits, whichever comes first. When you are
+ready for production, you move to the paid plan, where pay-as-you-go pricing
+applies.
+
+Two other free categories matter. Always free offers cover more than 30 services
+that stay free up to a monthly usage limit for as long as you are a customer, on
+both the free and paid plans. Short-term trials let you try selected paid
+services free for a limited period or up to a one-time limit. Customers who were
+already on the older Free Tier keep its benefits unchanged.
+
+<Callout type="note" title="The Free Tier changed">
+The current new-account experience centers on credits and a six-month free plan,
+plus always free offers and short-term trials. The older twelve-month framing is
+out of date for new sign-ups, so answer Free Tier questions from the current
+structure.
+</Callout>
+
+## Data transfer pricing
+
+The pattern to remember: data coming in is usually free, and data going out is
+usually charged. Moving data into AWS from the internet generally costs nothing.
+Sending data out to the internet is billed, though AWS gives every customer a
+free allowance of 100 GB of data transfer out to the internet each month,
+aggregated across services and Regions, with some exceptions. Beyond that
+allowance, outbound transfer is priced in tiers, so heavy senders pay less per
+gigabyte at higher volumes.
+
+This is the cost beginners overlook, because the resource itself, such as the
+storage holding the data, looks cheap while the egress to move it out adds up.
+
+## What to take away
+
+AWS pricing comes down to pay as you go, save when you commit, and pay less by
+using more. The four EC2 purchase options are On-Demand for flexibility, Savings
+Plans and Reserved Instances for committed discounts, and Spot for interruptible
+work at the lowest price. The Free Tier now gives new accounts credits and a
+six-month free plan alongside always free offers and short-term trials. And
+remember that data transfer in is generally free while data transfer out is
+charged after the monthly free allowance.
