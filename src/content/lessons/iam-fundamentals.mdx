@@ -1,0 +1,122 @@
+---
+title: "AWS IAM Fundamentals"
+description: "The root user you lock down, users, groups, roles, and policies, plus least privilege, MFA, and centralized access with IAM Identity Center."
+domain: 2
+module: 3
+order: 1
+day: 2
+estimatedMinutes: 16
+services:
+  - AWS Identity and Access Management
+  - AWS IAM Identity Center
+  - AWS STS
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+AWS Identity and Access Management, or IAM, is the service that controls who can
+sign in to your AWS account and what they are allowed to do once they are in. It
+is the front door to everything else, so the exam expects you to know its parts
+and the habits that keep an account safe. IAM is a feature of your AWS account
+offered at no additional charge.
+
+Two words frame the whole service. Authentication is proving who you are when you
+sign in. Authorization is whether you have permission to do the thing you asked.
+IAM handles both.
+
+## The root user, and why you protect it
+
+When you create an AWS account you start with one sign-in identity called the root
+user. It has complete access to every service and resource in the account, and
+that power is exactly why you should not use it for daily work. A mistake or a
+leaked root credential is unlimited.
+
+The standard practice is to lock the root user down: secure its credentials, turn
+on multi-factor authentication for it, and then stop using it. Create separate
+identities for everyday tasks and reserve the root user for the few account-level
+actions that genuinely require it.
+
+<Callout type="warning" title="Treat the root user as a break-glass account">
+Protect root credentials like your most sensitive personal information, enable MFA
+on it, and do not use it for routine tasks. Day-to-day work belongs to other
+identities with only the access they need.
+</Callout>
+
+## Users, groups, and roles
+
+IAM gives you three building blocks for identity.
+
+An IAM user is an identity for a specific person or application that needs
+long-term access to your account, with its own sign-in credentials.
+
+An IAM user group is a collection of users. Instead of attaching permissions to
+each person, you attach a policy to a group and every user in it inherits those
+permissions. Add a new hire to the Developers group and they get the right access
+at once; move someone between teams by changing their group membership. A user can
+belong to multiple groups, and groups cannot be nested.
+
+An IAM role is an identity with permissions that is not tied to one person.
+Instead, a role is meant to be assumed by whoever needs it, and it has no long-term
+password or access keys. When you assume a role you receive temporary security
+credentials that expire. Roles are how an AWS service such as EC2 or Lambda gets
+permission to act on your behalf, how you grant access across accounts, and how
+outside identities reach AWS through federation.
+
+<Callout type="key" title="Users versus roles">
+A user is a permanent identity with long-term credentials. A role is assumable by
+anyone trusted to use it and hands out temporary credentials instead. Prefer roles
+and temporary credentials for both people and workloads wherever you can.
+</Callout>
+
+## Policies and least privilege
+
+Permissions are defined by policies, which are JSON documents that state what
+actions are allowed or denied on which resources, and under what conditions. You
+attach policies to a user, a group, or a role to grant access.
+
+The rule for writing them is least privilege: grant only the permissions required
+to perform a task, and nothing more. You might start broad while you learn what a
+workload needs, then tighten down to the minimum. Least privilege limits the
+damage from a mistake or a stolen credential, because the identity could never do
+much in the first place.
+
+## MFA and the case for temporary credentials
+
+Multi-factor authentication adds a second proof at sign-in beyond the password: a
+code or a security key from a device the user holds. Both the password and the
+device response are required to get in, so a stolen password alone is not enough.
+Require MFA wherever you keep an IAM user or use the root user.
+
+AWS guidance goes a step further: rely on temporary credentials from roles rather
+than long-lived access keys. On AWS compute such as EC2 or Lambda, AWS delivers a
+role's temporary credentials to the resource, so there are no permanent keys to
+embed or leak. Those short-lived credentials are issued by the AWS Security Token
+Service, AWS STS.
+
+## Federation and IAM Identity Center
+
+Many organizations already manage their people in an existing identity provider
+and do not want a separate IAM user for everyone. Federation creates a trust
+between that external provider and AWS, so users sign in with their existing
+identity and are given a role with temporary credentials.
+
+For managing this centrally, AWS recommends AWS IAM Identity Center. It connects
+your workforce to multiple AWS accounts and to applications from one place, and you
+can bring your own identity provider or manage users directly inside it. On July
+26, 2022, AWS Single Sign-On was renamed to AWS IAM Identity Center, so older
+material and some API names still say AWS SSO.
+
+<Callout type="note" title="Current naming matters on the exam">
+The service is AWS IAM Identity Center. AWS SSO is the former name for the same
+service. If a question offers both, IAM Identity Center is the current term.
+</Callout>
+
+## What to take away
+
+Lock down and rarely use the root user, give people their own identities, and group
+those identities to manage permissions cleanly. Use roles and temporary credentials
+instead of long-term keys, write policies to least privilege, require MFA, and reach
+for IAM Identity Center to centralize workforce access. Those are the IAM habits the
+Security and Compliance domain keeps testing.
