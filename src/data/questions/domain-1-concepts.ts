@@ -1,0 +1,717 @@
+import type { Question } from "../../lib/types";
+
+// Domain 1: Cloud Concepts, the core-concepts cluster. Original practice
+// questions written to test the exam-guide concepts: the definition of cloud
+// computing, the three deployment models, the client-server model, and the
+// tradeoffs between the cloud and traditional on-premises infrastructure.
+// These are not real exam items. Every fact is verified against current AWS
+// documentation; each question cites the page that backs its answer.
+export const domain1Concepts: Question[] = [
+  {
+    id: "d1-concepts-01",
+    domain: 1,
+    type: "single",
+    topic: "Definition of cloud computing",
+    difficulty: "easy",
+    stem: "A new engineer asks for a one-sentence definition of cloud computing as AWS describes it. Which statement fits best?",
+    options: [
+      { id: "a", text: "The on-demand delivery of IT resources over the internet with pay-as-you-go pricing." },
+      { id: "b", text: "A way to buy physical servers in bulk and house them in your own building." },
+      { id: "c", text: "Software that runs only on a laptop with no network connection." },
+      { id: "d", text: "A fixed annual contract for a set number of servers regardless of use." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe owning hardware, offline software, or a fixed contract, none of which is the on-demand, consumption-based model AWS describes.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+  },
+  {
+    id: "d1-concepts-02",
+    domain: 1,
+    type: "single",
+    topic: "Definition of cloud computing",
+    difficulty: "easy",
+    stem: "A team wants to spin up servers without buying hardware in advance and pay only for what it consumes. Which characteristic of cloud computing makes this possible?",
+    options: [
+      { id: "a", text: "On-demand access to resources that you pay for as you use them." },
+      { id: "b", text: "A requirement to purchase a three-year hardware lease before launching anything." },
+      { id: "c", text: "A flat monthly fee that is the same no matter how much you use." },
+      { id: "d", text: "Free unlimited use of every resource with no billing at all." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Cloud computing provides on-demand access to resources you provision and pay for as you consume them, with no large upfront hardware purchase. A multi-year lease, a fixed flat fee, and unlimited free use all contradict the pay-as-you-go, on-demand model.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-03",
+    domain: 1,
+    type: "single",
+    topic: "Definition of cloud computing",
+    difficulty: "medium",
+    stem: "Which phrase in the AWS definition of cloud computing describes HOW customers reach the IT resources?",
+    options: [
+      { id: "a", text: "Over the internet" },
+      { id: "b", text: "Only through a direct fiber line you install yourself" },
+      { id: "c", text: "By shipping a hard drive to the provider" },
+      { id: "d", text: "Through a dedicated satellite each customer must own" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, mailing physical media, or owning a satellite are not how AWS describes access to cloud resources.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-04",
+    domain: 1,
+    type: "multi",
+    topic: "Definition of cloud computing",
+    difficulty: "medium",
+    stem: "Under AWS pay-as-you-go pricing, a company runs a large batch job for three hours and then shuts the resources down. Which TWO statements about how it is billed are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "It pays only for the compute it consumed while the resources were running." },
+      { id: "b", text: "It stops paying for the compute once the resources are turned off." },
+      { id: "c", text: "It is billed for a full month of usage no matter how long the job ran." },
+      { id: "d", text: "It must commit to a year of capacity in advance to run the job." },
+      { id: "e", text: "It pays nothing, because all AWS compute is free of charge." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "With pay-as-you-go pricing you pay only for the resources you consume, and you stop paying for compute when it is not running, so both of those are correct. AWS does not force a full month or a committed year of billing for a short job, and compute is a paid resource rather than free.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+  },
+  {
+    id: "d1-concepts-05",
+    domain: 1,
+    type: "multi",
+    topic: "Definition of cloud computing",
+    difficulty: "medium",
+    stem: "Which TWO ideas are part of the AWS definition of cloud computing? (Choose two.)",
+    options: [
+      { id: "a", text: "On-demand delivery of IT resources" },
+      { id: "b", text: "Pay-as-you-go pricing" },
+      { id: "c", text: "A mandatory upfront purchase of physical servers" },
+      { id: "d", text: "Access restricted to a single office building" },
+      { id: "e", text: "A permanent flat fee unrelated to usage" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing, so on-demand delivery and pay-as-you-go pricing are both part of it. A mandatory hardware purchase, single-building access, and a usage-independent flat fee all contradict that definition.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+  },
+  {
+    id: "d1-concepts-06",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "easy",
+    stem: "A startup builds its entire application on AWS, with every component running on cloud services and nothing in a company data center. Which deployment model does this describe?",
+    options: [
+      { id: "a", text: "Cloud (fully deployed in the cloud)" },
+      { id: "b", text: "Hybrid" },
+      { id: "c", text: "On-premises (private cloud)" },
+      { id: "d", text: "Colocation only" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes a cloud-based application as one that is fully deployed in the cloud, with all parts of the application running in the cloud. Hybrid connects cloud and non-cloud resources, on-premises runs in your own data center, and colocation is not one of the AWS deployment models.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-07",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "medium",
+    stem: "A bank keeps a legacy mainframe application in its own data center for regulatory reasons but connects it to new analytics services running on AWS. Which deployment model describes this arrangement?",
+    options: [
+      { id: "a", text: "Hybrid" },
+      { id: "b", text: "Cloud (fully deployed in the cloud)" },
+      { id: "c", text: "On-premises (private cloud)" },
+      { id: "d", text: "Public-only" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes a hybrid deployment as connecting infrastructure and applications between cloud-based resources and existing resources that are not in the cloud, most commonly between the cloud and on-premises infrastructure. A fully-cloud or fully-on-premises model would not span both, and public-only is not an AWS deployment model.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-08",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "medium",
+    stem: "An organization runs all of its workloads in its own data center, using virtualization and resource management tools to raise utilization, with no public cloud involved. AWS sometimes calls this model by which name?",
+    options: [
+      { id: "a", text: "On-premises, sometimes called the private cloud" },
+      { id: "b", text: "Hybrid cloud" },
+      { id: "c", text: "Fully cloud-based deployment" },
+      { id: "d", text: "Serverless deployment" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS calls the deployment of resources on-premises using virtualization and resource management tools the private cloud, and notes it is in most cases the same as legacy IT infrastructure. Hybrid spans cloud and non-cloud, a cloud-based deployment runs in the cloud, and serverless is an operating model rather than a deployment location.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-09",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "hard",
+    stem: "A company is migrating to AWS over two years. During the transition it must keep some applications running in its existing data center while moving others to the cloud, with the two environments connected. Which deployment model best supports this migration period?",
+    options: [
+      { id: "a", text: "Hybrid, which extends the existing infrastructure into the cloud while keeping it connected to internal systems." },
+      { id: "b", text: "On-premises only, keeping everything in the data center until the very end." },
+      { id: "c", text: "Cloud only, requiring every workload to move on day one." },
+      { id: "d", text: "Spot, which schedules workloads on spare capacity." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises or moving everything at once does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-10",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "medium",
+    stem: "According to AWS, which statement about the on-premises (private cloud) deployment model is accurate?",
+    options: [
+      { id: "a", text: "It does not provide many of the benefits of cloud computing but is sometimes chosen for its ability to provide dedicated resources." },
+      { id: "b", text: "It delivers every benefit of cloud computing automatically with no tradeoffs." },
+      { id: "c", text: "It runs entirely on AWS-managed hardware with no equipment in your data center." },
+      { id: "d", text: "It is the only model AWS supports for new applications." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that on-premises deployment does not provide many of the benefits of cloud computing but is sometimes sought for its ability to provide dedicated resources. It does not automatically deliver all cloud benefits, it runs on your own infrastructure rather than AWS-managed hardware, and it is not the only model AWS supports.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-11",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud deployment models",
+    difficulty: "medium",
+    stem: "AWS describes several cloud computing deployment models. Which TWO of the following are AWS deployment models? (Choose two.)",
+    options: [
+      { id: "a", text: "Cloud" },
+      { id: "b", text: "Hybrid" },
+      { id: "c", text: "Pay-as-you-go" },
+      { id: "d", text: "Reserved" },
+      { id: "e", text: "Elastic" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS names cloud, hybrid, and on-premises (private cloud) as deployment models, so cloud and hybrid are both correct. Pay-as-you-go is a pricing approach, reserved is a purchase option, and elastic describes scaling, none of which is a deployment model.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-12",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud deployment models",
+    difficulty: "hard",
+    stem: "A retailer is deciding how to deploy. Which TWO scenarios are the strongest fit for a hybrid deployment? (Choose two.)",
+    options: [
+      { id: "a", text: "A workload that must keep sensitive data on existing on-premises servers while running new processing in the cloud." },
+      { id: "b", text: "An organization mid-migration that needs its data center and the cloud connected while it gradually moves workloads." },
+      { id: "c", text: "A brand-new application with no existing infrastructure that the team wants to build entirely on cloud services." },
+      { id: "d", text: "A workload that must run completely offline with no connection to any external network." },
+      { id: "e", text: "A static marketing site with no servers of any kind." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Hybrid connects cloud resources with existing non-cloud resources, so keeping sensitive data on-premises while processing in the cloud, and bridging a data center and the cloud during a migration, both fit. A greenfield app with no existing infrastructure suits a fully cloud deployment, a fully offline workload connects to nothing, and a serverless static site needs no hybrid link.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-13",
+    domain: 1,
+    type: "single",
+    topic: "Cloud deployment models",
+    difficulty: "easy",
+    stem: "A team with no existing servers wants the fastest path to launch a new product and plans to use only managed cloud services. Which deployment model fits this greenfield project best?",
+    options: [
+      { id: "a", text: "Cloud (fully deployed in the cloud)" },
+      { id: "b", text: "On-premises (private cloud)" },
+      { id: "c", text: "Hybrid" },
+      { id: "d", text: "A mix of on-premises tape backup and mainframe" },
+    ],
+    correct: ["a"],
+    explanation:
+      "A cloud-based deployment runs all parts of the application in the cloud and suits a new project with no existing infrastructure that wants to use managed services. On-premises and the mainframe option require owning hardware, and hybrid is for connecting the cloud to existing non-cloud resources, which this team does not have.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-14",
+    domain: 1,
+    type: "single",
+    topic: "Client-server model",
+    difficulty: "easy",
+    stem: "In the client-server model, a user's web browser sends a request and a remote machine returns a response. What role does the remote machine play?",
+    options: [
+      { id: "a", text: "The server, which receives requests and returns responses." },
+      { id: "b", text: "The client, which originates the request." },
+      { id: "c", text: "A router that only forwards packets and stores nothing." },
+      { id: "d", text: "A peer with no defined role in the exchange." },
+    ],
+    correct: ["a"],
+    explanation:
+      "In the client-server model the client makes a request and the server receives that request and returns a response, so the remote machine that answers is the server. The browser is the client, and a server is more than a forwarding router, so the other roles do not match.",
+    reference: {
+      label: "What is Amazon EC2?",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+    },
+  },
+  {
+    id: "d1-concepts-15",
+    domain: 1,
+    type: "single",
+    topic: "Client-server model",
+    difficulty: "medium",
+    stem: "On AWS, what is an Amazon EC2 instance, in the terms AWS uses?",
+    options: [
+      { id: "a", text: "A virtual server in the AWS Cloud." },
+      { id: "b", text: "A physical hard drive shipped to your office." },
+      { id: "c", text: "A billing report for past usage." },
+      { id: "d", text: "A firewall rule that filters traffic." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS defines an EC2 instance as a virtual server in the AWS Cloud, which acts as the server side of the client-server model. A hard drive, a billing report, and a firewall rule are different things; storage, cost reporting, and security groups are separate concepts.",
+    reference: {
+      label: "What is Amazon EC2?",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+    },
+    services: ["EC2"],
+  },
+  {
+    id: "d1-concepts-16",
+    domain: 1,
+    type: "single",
+    topic: "Client-server model",
+    difficulty: "medium",
+    stem: "A mobile app sends an HTTPS request to an application running on an EC2 instance, which processes it and returns data. Which side of the client-server model is the mobile app?",
+    options: [
+      { id: "a", text: "The client, which initiates the request to the server." },
+      { id: "b", text: "The server, which holds the application and responds." },
+      { id: "c", text: "Neither, because mobile apps are outside the client-server model." },
+      { id: "d", text: "Both client and server at the same time for every request." },
+    ],
+    correct: ["a"],
+    explanation:
+      "The mobile app initiates the request, which makes it the client, while the EC2 instance running the application is the server that processes the request and responds. A device that originates a request is not acting as the server, and a single request has a clear client and server rather than both roles at once.",
+    reference: {
+      label: "What is Amazon EC2?",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+    },
+    services: ["EC2"],
+  },
+  {
+    id: "d1-concepts-17",
+    domain: 1,
+    type: "multi",
+    topic: "Client-server model",
+    difficulty: "hard",
+    stem: "A developer interacts with AWS by submitting requests over HTTP or HTTPS, for example through the AWS SDKs or the Query API, and AWS returns a response. Which TWO statements correctly describe this interaction? (Choose two.)",
+    options: [
+      { id: "a", text: "It is the client-server model, where a client sends a request and a server returns a response." },
+      { id: "b", text: "The developer's tool acts as the client, and AWS acts as the server that responds." },
+      { id: "c", text: "It is a peer-to-peer model with no central server." },
+      { id: "d", text: "Requests are mailed on physical media rather than sent over a network." },
+      { id: "e", text: "It is a broadcast model where every machine receives every message." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS interfaces such as the SDKs and the Query API submit requests over HTTP or HTTPS and receive responses, which is the client-server model with the caller as client and AWS as server, so both of those are correct. It is not peer-to-peer, it does not use mailed media, and a directed request-response is not a broadcast.",
+    reference: {
+      label: "What is Amazon EC2?",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+    },
+  },
+  {
+    id: "d1-concepts-18",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "easy",
+    stem: "Which advantage of cloud computing describes paying only when you consume resources instead of investing heavily in data centers and servers before you know how you will use them?",
+    options: [
+      { id: "a", text: "Trade fixed expense for variable expense" },
+      { id: "b", text: "Go global in minutes" },
+      { id: "c", text: "Stop guessing capacity" },
+      { id: "d", text: "Increase speed and agility" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS frames trading fixed expense for variable expense as paying only when you consume resources rather than investing in data centers and servers up front. Going global, stopping capacity guessing, and increasing agility are separate advantages that describe reach, capacity planning, and provisioning speed.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-19",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "A company used to over-buy servers to handle a yearly traffic peak, leaving them idle the rest of the year. Which cloud advantage directly addresses that waste?",
+    options: [
+      { id: "a", text: "Stop guessing capacity, because you can scale up and down as required with a few minutes' notice." },
+      { id: "b", text: "Go global in minutes, because you can deploy to many Regions." },
+      { id: "c", text: "Benefit from massive economies of scale, because providers aggregate usage." },
+      { id: "d", text: "Trade fixed expense for variable expense, because you pay as you consume." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes stop guessing capacity as eliminating the problem of sitting on idle resources or hitting limited capacity, since you can access as much or as little as needed and scale with a few minutes' notice. The other advantages are real but address global reach, aggregated pricing, and expense type rather than the over-provisioning-for-a-peak problem.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-20",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "Which cloud advantage reflects the idea that aggregating usage from hundreds of thousands of customers lets a provider reach a lower variable cost than any single customer could on its own?",
+    options: [
+      { id: "a", text: "Benefit from massive economies of scale" },
+      { id: "b", text: "Stop spending money running and maintaining data centers" },
+      { id: "c", text: "Increase speed and agility" },
+      { id: "d", text: "Go global in minutes" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes massive economies of scale as achieving a lower variable cost than you could on your own because usage from hundreds of thousands of customers is aggregated, which translates into lower pay-as-you-go prices. Ending data center upkeep, increasing agility, and going global are different advantages.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-21",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "An IT team spends most of its time racking, stacking, and powering servers instead of building features. Which cloud advantage promises to free them from that work?",
+    options: [
+      { id: "a", text: "Stop spending money running and maintaining data centers" },
+      { id: "b", text: "Stop guessing capacity" },
+      { id: "c", text: "Trade fixed expense for variable expense" },
+      { id: "d", text: "Go global in minutes" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes this advantage as letting you focus on projects that differentiate your business rather than the heavy lifting of racking, stacking, and powering servers. Capacity guessing, expense type, and global reach are separate advantages that do not center on data center maintenance labor.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-22",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "A retailer wants to serve customers in Europe and Asia with lower latency and plans to launch in several Regions quickly. Which cloud advantage names this benefit?",
+    options: [
+      { id: "a", text: "Go global in minutes" },
+      { id: "b", text: "Benefit from massive economies of scale" },
+      { id: "c", text: "Stop guessing capacity" },
+      { id: "d", text: "Trade fixed expense for variable expense" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes go global in minutes as deploying your application in multiple Regions around the world with a few clicks, providing lower latency and a better customer experience at minimal cost. Economies of scale, capacity planning, and expense type are different advantages.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-23",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "Which cloud advantage captures the idea that new IT resources are only a click away, reducing the time to provide them to developers from weeks to minutes?",
+    options: [
+      { id: "a", text: "Increase speed and agility" },
+      { id: "b", text: "Stop spending money running and maintaining data centers" },
+      { id: "c", text: "Benefit from massive economies of scale" },
+      { id: "d", text: "Trade fixed expense for variable expense" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes increase speed and agility as new IT resources being only a click away, cutting provisioning time from weeks to minutes and lowering the cost and time to experiment. The other choices describe data center upkeep, aggregated pricing, and expense type rather than provisioning speed.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-24",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "hard",
+    stem: "AWS lists six advantages of cloud computing. Which TWO of the following are among them, as AWS names them? (Choose two.)",
+    options: [
+      { id: "a", text: "Stop guessing capacity" },
+      { id: "b", text: "Benefit from massive economies of scale" },
+      { id: "c", text: "Guarantee zero cost for all services" },
+      { id: "d", text: "Eliminate the need for any software updates ever" },
+      { id: "e", text: "Remove the ability to scale down" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Stop guessing capacity and benefit from massive economies of scale are two of the six advantages AWS names. A zero-cost guarantee, the end of all software updates, and removing the ability to scale down are not among them and contradict how AWS describes the cloud.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-25",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "easy",
+    stem: "A finance lead asks how moving to the cloud changes the shape of IT spending compared with running an on-premises data center. Which statement matches AWS guidance?",
+    options: [
+      { id: "a", text: "It replaces upfront capital infrastructure expenses with low variable costs that scale with the business." },
+      { id: "b", text: "It converts variable usage into one large fixed purchase made years in advance." },
+      { id: "c", text: "It removes all IT spending because the cloud is free." },
+      { id: "d", text: "It locks spending to a flat fee that ignores how much you use." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that a key benefit of cloud computing is replacing upfront capital infrastructure expenses with low variable costs that scale with your business. The cloud does not turn usage into a large fixed purchase, it is not free, and pay-as-you-go billing varies with usage rather than being a flat fee.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-concepts-26",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "medium",
+    stem: "In a traditional on-premises model, a business must plan for and procure servers weeks or months in advance. Which TWO things does AWS say the cloud lets businesses do instead? (Choose two.)",
+    options: [
+      { id: "a", text: "Instantly spin up hundreds or thousands of servers in minutes." },
+      { id: "b", text: "Deliver results faster without procuring infrastructure far in advance." },
+      { id: "c", text: "Keep waiting the same weeks or months, since procurement time is unchanged." },
+      { id: "d", text: "Buy a fixed block of servers once and never change the amount." },
+      { id: "e", text: "Avoid using servers entirely for every workload." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS states that with the cloud, businesses no longer need to procure servers weeks or months in advance and can instead instantly spin up hundreds or thousands of servers in minutes and deliver results faster, so both of those are correct. Procurement time is not unchanged, capacity is not a one-time fixed block, and workloads still use servers, just provisioned on demand.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-concepts-27",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "hard",
+    stem: "A team runs development servers that sit idle every night and weekend. AWS notes a cost advantage of cloud resources that on-premises servers do not share. Which statement reflects it?",
+    options: [
+      { id: "a", text: "You do not pay for cloud-based resources when they are not running, so turning off unused instances reduces cost." },
+      { id: "b", text: "You pay the same whether cloud instances run or are stopped." },
+      { id: "c", text: "Cloud instances cannot be stopped once launched." },
+      { id: "d", text: "Stopping an instance increases its hourly rate." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that a key advantage of cloud-based resources is that you do not pay for them when they are not running, so turning off unused instances can reduce cost substantially. You are not billed the same when stopped, instances can be stopped, and stopping does not raise the rate.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+    services: ["EC2"],
+  },
+  {
+    id: "d1-concepts-28",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "hard",
+    stem: "A company compares running its own data center with moving to AWS. Which TWO statements correctly describe a tradeoff in favor of the cloud, as AWS frames it? (Choose two.)",
+    options: [
+      { id: "a", text: "The cloud lets you trade fixed expenses such as data centers and servers for variable expenses." },
+      { id: "b", text: "The cloud lets you scale capacity up and down rather than buying for a peak that sits idle." },
+      { id: "c", text: "The cloud requires a larger upfront hardware purchase than an on-premises data center." },
+      { id: "d", text: "The cloud removes the option to pay only for what you use." },
+      { id: "e", text: "The cloud forces every workload to run in a single Region." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront purchase, the loss of pay-as-you-go, and a single-Region restriction all contradict how AWS describes cloud benefits.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-29",
+    domain: 1,
+    type: "single",
+    topic: "Definition of cloud computing",
+    difficulty: "hard",
+    stem: "An auditor asks who owns and maintains the network-connected hardware behind AWS application services. According to AWS, who is responsible for that hardware?",
+    options: [
+      { id: "a", text: "AWS owns and maintains it, while the customer provisions and uses what it needs through a web application." },
+      { id: "b", text: "The customer must own and maintain the hardware in its own facility." },
+      { id: "c", text: "No one maintains it, because cloud services run without physical hardware." },
+      { id: "d", text: "A third-party reseller owns it on the customer's behalf for a fee." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that a cloud services platform such as AWS owns and maintains the network-connected hardware required for application services, while the customer provisions and uses what it needs through a web application. The customer does not own that hardware, cloud services do run on physical hardware, and AWS itself maintains it rather than a reseller.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-30",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud deployment models",
+    difficulty: "hard",
+    stem: "A hospital is choosing between deployment models. Which TWO statements about the on-premises (private cloud) model, in AWS terms, are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "It deploys resources on-premises using virtualization and resource management tools." },
+      { id: "b", text: "It can provide dedicated resources but does not deliver many of the benefits of cloud computing." },
+      { id: "c", text: "It runs every part of the application on AWS-managed services in the cloud." },
+      { id: "d", text: "It is the same as a hybrid deployment connecting the cloud with non-cloud resources." },
+      { id: "e", text: "It is a per-second compute billing model rather than a deployment location." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS describes the on-premises (private cloud) model as deploying resources on-premises with virtualization and resource management tools, providing dedicated resources but not many of the benefits of cloud computing, so both of those are correct. A cloud deployment runs in the cloud, hybrid spans both environments, and per-second billing is a pricing model rather than a deployment model.",
+    reference: {
+      label: "Types of cloud computing: deployment models",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-concepts-31",
+    domain: 1,
+    type: "multi",
+    topic: "Definition of cloud computing",
+    difficulty: "medium",
+    stem: "A manager claims that cloud computing means buying and installing servers faster in your own building. Which TWO facts about cloud computing, as AWS describes it, show why that claim is inaccurate? (Choose two.)",
+    options: [
+      { id: "a", text: "Cloud computing delivers IT resources over the internet from a provider's platform." },
+      { id: "b", text: "The provider owns and maintains the underlying hardware, while you provision what you need." },
+      { id: "c", text: "Cloud computing requires every customer to install servers in a shared building." },
+      { id: "d", text: "Cloud computing only works for storage, never for compute." },
+      { id: "e", text: "Cloud computing means the provider mails you servers to install yourself." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS describes cloud computing as on-demand delivery of IT resources over the internet, where the provider owns and maintains the hardware and you provision what you need, so both of those are correct and buying and installing your own servers is the opposite of the model. It is not limited to storage and does not involve installing or receiving physical servers.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+  },
+  {
+    id: "d1-concepts-32",
+    domain: 1,
+    type: "single",
+    topic: "Client-server model",
+    difficulty: "medium",
+    stem: "A team launches EC2 instances to host an application that many users will connect to. In the client-server model, EC2 instances most directly provide which part?",
+    options: [
+      { id: "a", text: "The servers, since each instance is a virtual server that handles requests." },
+      { id: "b", text: "The clients, since instances originate the user requests." },
+      { id: "c", text: "The network cables connecting users to the building." },
+      { id: "d", text: "The billing system that totals monthly charges." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS defines an EC2 instance as a virtual server, so instances hosting an application provide the server side that handles incoming requests. The users' devices are the clients, networking is a separate concern, and billing is unrelated to the request-response roles.",
+    reference: {
+      label: "What is Amazon EC2?",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+    },
+    services: ["EC2"],
+  },
+  {
+    id: "d1-concepts-33",
+    domain: 1,
+    type: "single",
+    topic: "Cloud vs on-premises tradeoffs",
+    difficulty: "easy",
+    stem: "Compared with a traditional data center where you must invest in hardware before you know your needs, what does pay-as-you-go cloud pricing let a company do?",
+    options: [
+      { id: "a", text: "Pay only when it consumes computing resources, and only for how much it consumes." },
+      { id: "b", text: "Pay a large fixed sum up front and the same amount every month after." },
+      { id: "c", text: "Avoid all costs because cloud resources are provided for free." },
+      { id: "d", text: "Commit to a fixed amount of hardware for a minimum of five years." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes trading fixed expense for variable expense as paying only when you consume computing resources and only for how much you consume, instead of investing in hardware up front. The cloud is not a fixed monthly sum, not free, and not a mandatory multi-year hardware commitment.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+];
