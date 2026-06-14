@@ -1,0 +1,117 @@
+---
+title: "Networking with Amazon VPC"
+description: "How a VPC isolates your network, how subnets and gateways control traffic, and how Route 53, Direct Connect, and Site-to-Site VPN connect it all."
+domain: 3
+module: 7
+order: 3
+day: 4
+estimatedMinutes: 16
+services:
+  - Amazon VPC
+  - Amazon Route 53
+  - AWS Direct Connect
+  - AWS Site-to-Site VPN
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Every resource you launch needs a network around it. On AWS that network is a
+Virtual Private Cloud, and the way you carve it into subnets and attach gateways
+decides what can reach what. This lesson covers the core VPC pieces, the DNS
+service that points names at them, and the two ways to link a VPC privately to
+your own data center.
+
+## Amazon VPC
+
+With Amazon Virtual Private Cloud you launch AWS resources in a logically isolated
+virtual network that you define. It resembles a traditional network you would run
+in your own data center, but on the scalable infrastructure of AWS. Isolation is
+the point: your VPC is yours, separate from other customers, and you control its
+address range and routing.
+
+## Subnets
+
+A subnet is a range of IP addresses within your VPC, and each subnet sits in a
+single Availability Zone. You place resources into subnets. The common pattern
+splits them by reachability:
+
+- A public subnet can reach the internet, so it holds resources that need to be
+  reached directly, such as a public-facing web server.
+- A private subnet has no direct route to the internet, so it holds resources you
+  want shielded, such as a database.
+
+What actually makes a subnet public or private is its routing, covered next.
+
+## Route tables and gateways
+
+A route table holds rules that decide where traffic from a subnet is directed.
+You associate a subnet with a route table, and the routes in it determine the
+paths traffic can take.
+
+An internet gateway is a horizontally scaled, redundant, and highly available VPC
+component that allows communication between your VPC and the internet. A subnet
+becomes public precisely when its route table has a route to an internet gateway;
+without that route, the subnet is private.
+
+<Callout type="key" title="What makes a subnet public">
+A subnet is public only because its route table sends internet-bound traffic to
+an internet gateway, and its instances have public addresses. Remove that route
+and the same subnet is private. Public versus private is about routing, not a
+checkbox on the subnet.
+</Callout>
+
+A NAT gateway lets instances in a private subnet reach services outside the VPC,
+such as the internet, while preventing the outside from starting a connection back
+to them. This is how a private database can download updates without being exposed
+to inbound traffic from the internet.
+
+<Callout type="note" title="Internet gateway versus NAT gateway">
+An internet gateway allows two-way communication for resources with public
+addresses. A NAT gateway allows outbound-only access for private resources. A
+question about letting private instances fetch updates while staying unreachable
+from outside is describing a NAT gateway.
+</Callout>
+
+## Amazon Route 53
+
+Amazon Route 53 is a highly available and scalable Domain Name System web service.
+DNS is what translates a name people type, such as example.com, into the numeric
+IP address that computers use to connect. Route 53 performs three main functions:
+registering domain names, routing internet traffic to the resources for your
+domain, and checking the health of those resources so it can route traffic away
+from unhealthy ones.
+
+## Connecting a VPC to your own data center
+
+Many organizations run a hybrid setup, with some systems on AWS and some on
+premises. Two services link the two networks privately.
+
+AWS Direct Connect links your internal network to a Direct Connect location over a
+standard Ethernet fiber-optic cable. It establishes a dedicated, private
+connection to AWS that bypasses your internet service provider. Because it does
+not ride the public internet, it can offer more consistent network performance
+than an internet-based connection.
+
+AWS Site-to-Site VPN creates a secure connection between your on-premises network
+and your VPC over the internet, using IPsec encrypted tunnels. Each connection
+includes two tunnels for high availability. On the AWS side a virtual private
+gateway or transit gateway terminates the connection, and on your side a customer
+gateway does.
+
+<Callout type="tip" title="Dedicated line versus encrypted tunnel">
+Direct Connect is a physical, dedicated connection that skips the public internet
+for consistency and is provisioned over weeks. Site-to-Site VPN is an encrypted
+tunnel over the existing internet that you can stand up quickly. A scenario asking
+for a private, consistent, high-bandwidth link points to Direct Connect; one
+asking for a quick, encrypted connection over the internet points to VPN.
+</Callout>
+
+## What to take away
+
+A VPC is your isolated network on AWS. Subnets divide it by Availability Zone, and
+a subnet is public only when its route table routes to an internet gateway. A NAT
+gateway gives private instances outbound-only access. Route 53 is DNS, turning
+names into addresses. Direct Connect is a dedicated private line to AWS, and
+Site-to-Site VPN is an encrypted tunnel over the internet.
