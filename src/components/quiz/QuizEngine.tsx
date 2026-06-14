@@ -182,6 +182,15 @@ export default function QuizEngine({
   }, [phase, mode, questions, answers, flagged, startedAt]);
 
   const startExam = useCallback(() => {
+    // A saved attempt would be silently overwritten by a fresh start, so
+    // confirm before discarding it. window.confirm is fine for a static site.
+    if (readSavedExam() !== null) {
+      const ok = window.confirm(
+        "Starting a new exam will discard your in-progress attempt. Continue?",
+      );
+      if (!ok) return;
+    }
+    clearSavedExam();
     const set = buildMockExam(pool, examTotal);
     setQuestions(set);
     setAnswers({});
@@ -488,13 +497,22 @@ export default function QuizEngine({
                 const isAnswered = (answers[qq.id] ?? []).length > 0;
                 const isCurrent = i === current;
                 const isFlagged = !!flagged[qq.id];
+                // State must not ride on color alone (design-system rule), so
+                // each button carries a spoken state and a shape marker: a flag
+                // glyph for flagged, a filled dot for answered.
+                const state = isFlagged
+                  ? "flagged"
+                  : isAnswered
+                    ? "answered"
+                    : "not answered";
                 return (
                   <li key={qq.id}>
                     <button
                       type="button"
                       onClick={() => setCurrent(i)}
                       aria-current={isCurrent ? "true" : undefined}
-                      className={`h-9 w-9 rounded-md border text-sm font-medium transition-colors ${
+                      aria-label={`Question ${i + 1}, ${state}`}
+                      className={`relative h-9 w-9 rounded-md border text-sm font-medium transition-colors ${
                         isCurrent
                           ? "border-brand bg-brand text-white"
                           : isFlagged
@@ -505,11 +523,30 @@ export default function QuizEngine({
                       }`}
                     >
                       {i + 1}
+                      {isFlagged && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute -right-0.5 -top-0.5 text-[10px] leading-none"
+                        >
+                          &#9873;
+                        </span>
+                      )}
+                      {!isFlagged && isAnswered && !isCurrent && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-brand"
+                        />
+                      )}
                     </button>
                   </li>
                 );
               })}
             </ul>
+            <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
+              <span>&#9873; flagged</span>
+              <span>&bull; answered</span>
+              <span>no mark: not answered</span>
+            </p>
           </nav>
 
           <button
