@@ -39,7 +39,7 @@ export function domainTargets(total: number): Record<Domain, number> {
 // Build a full mock that mirrors the real exam: questionCount items distributed
 // across domains by weight, drawn at random, then shuffled into one sequence.
 // When a domain pool is short, all of its questions are used.
-export function buildMockExam(pool: readonly Question[], total = EXAM.questionCount): Question[] {
+export function buildMockExam(pool: readonly Question[], total: number = EXAM.questionCount): Question[] {
   const targets = domainTargets(total);
   const buckets = byDomain(pool);
   const picked: Question[] = [];
