@@ -1,0 +1,103 @@
+---
+title: "Protecting Data with KMS, ACM, and Secrets Manager"
+description: "Encryption at rest and in transit, how AWS KMS manages the keys, and where ACM and Secrets Manager fit for certificates and credentials."
+domain: 2
+module: 4
+order: 2
+day: 3
+estimatedMinutes: 14
+services:
+  - AWS KMS
+  - AWS Certificate Manager
+  - AWS Secrets Manager
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Protecting data comes in two states, and the exam expects you to tell them
+apart. Data at rest is data sitting in storage, such as a file in Amazon S3 or a
+disk volume. Data in transit is data moving across a network, such as a request
+travelling from a browser to your application. Encryption protects both: it
+scrambles the data so that only a holder of the right key can read it. The
+services below give you the keys, the certificates, and the credential storage to
+do that across AWS.
+
+## AWS KMS manages your encryption keys
+
+AWS Key Management Service (AWS KMS) is a managed service for creating and
+controlling the keys that encrypt your data. The keys you create, called KMS
+keys, are protected inside hardware security modules and never leave the service
+in plaintext. Most AWS storage services integrate with KMS, so you can turn on
+encryption for S3, EBS, RDS, and others, and KMS handles the key for you.
+
+KMS keys come in a few types, and the difference is about who controls them. An
+AWS managed key is created and rotated by an AWS service on your behalf; you do
+not manage it and there is no monthly charge for the key to exist. A customer
+managed key is one you create and fully control: you set its access policy,
+enable or disable it, and choose its rotation, and it carries a monthly cost.
+Reach for a customer managed key when you need that control or an audit trail;
+otherwise the managed option is simpler.
+
+<Callout type="key" title="Managed versus customer managed">
+If a scenario stresses full control over the key, its policy, or its rotation,
+the answer is a customer managed key. If it stresses convenience and no key
+administration, an AWS managed key fits.
+</Callout>
+
+### Envelope encryption, briefly
+
+KMS uses a pattern called envelope encryption, and you only need the shape of it.
+Rather than sending all your data to KMS, you ask KMS for a data key. KMS returns
+that data key twice: once in plaintext for immediate use, and once encrypted
+under your KMS key. You encrypt the actual data locally with the plaintext data
+key, then discard it and store the encrypted data key next to the ciphertext. To
+read the data later, you send the encrypted data key back to KMS, which decrypts
+it so you can decrypt the data. The high-value KMS key stays in KMS and never has
+to touch the bulk of your data.
+
+## AWS Certificate Manager handles TLS certificates
+
+Encryption in transit on the web means TLS, the protocol behind HTTPS, and TLS
+needs a certificate. AWS Certificate Manager (ACM) creates, stores, and renews
+the public and private SSL/TLS certificates that secure your sites and
+applications. Its main appeal is that it removes the manual renewal work:
+certificates ACM issues are renewed automatically, so you avoid an expired
+certificate taking a site offline.
+
+ACM certificates attach to AWS services that terminate TLS for you, such as
+Elastic Load Balancing and Amazon CloudFront, rather than to a standalone server.
+Public certificates that you provision through ACM carry no additional charge;
+you pay only for the AWS resources running your workload.
+
+## AWS Secrets Manager stores and rotates secrets
+
+Applications need credentials such as database passwords, API keys, and tokens,
+and hardcoding them in source code is a common security mistake. AWS Secrets
+Manager stores those secrets and hands them to your application at runtime
+through a call to the service, so the credential is not baked into the code or
+the deployment.
+
+Its standout feature is rotation. Secrets Manager can rotate a secret on a
+schedule you configure, replacing a long-lived credential with a fresh one
+without you editing and redeploying the application. That shrinks the window in
+which a leaked credential is useful. Note the division of labor with KMS: KMS is
+for encryption keys, while Secrets Manager is for application credentials, and
+Secrets Manager uses KMS underneath to encrypt the secrets it holds.
+
+<Callout type="note" title="KMS or Secrets Manager?">
+A question about managing cryptographic keys points to KMS. A question about
+storing database or application credentials and rotating them points to Secrets
+Manager. They work together, but they answer different needs.
+</Callout>
+
+## What to take away
+
+Know the two states of data, at rest and in transit, and that encryption
+protects both. KMS manages encryption keys, with customer managed keys for
+control and AWS managed keys for convenience, and it uses envelope encryption so
+the key stays in the service. ACM issues and auto-renews TLS certificates for
+services like load balancers and CloudFront. Secrets Manager stores credentials
+out of your code and rotates them on a schedule. Matching each service to its job
+is what the exam asks of you here.
