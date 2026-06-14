@@ -18,7 +18,10 @@ export default defineConfig({
   vite: {
     // Tailwind v4 is wired through its official Vite plugin. The deprecated
     // @astrojs/tailwind integration is intentionally not used.
-    plugins: [tailwindcss()],
+    // The cast bridges two Vite type trees: @tailwindcss/vite resolves Vite's
+    // Plugin from its own copy, while Astro 6 type-checks against its bundled
+    // rolldown-vite. The plugin is structurally compatible at runtime.
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
   markdown: {
     shikiConfig: {
