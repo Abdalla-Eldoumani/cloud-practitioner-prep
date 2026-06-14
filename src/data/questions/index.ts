@@ -59,7 +59,3 @@ export const ALL_QUESTIONS: Question[] = [
   ...domain4CostTools,
   ...domain4SupportMigration,
 ];
-
-export function questionById(id: string): Question | undefined {
-  return ALL_QUESTIONS.find((q) => q.id === id);
-}
