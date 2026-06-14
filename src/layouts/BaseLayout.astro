@@ -6,16 +6,27 @@ import "@/styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  /** Optional absolute or root-relative image for social cards. */
+  image?: string;
 }
 
 const {
   title,
   description = "Learn AWS and prepare for the Certified Cloud Practitioner exam with free lessons, practice questions, and full timed mock exams.",
+  image,
 } = Astro.props;
 
 const siteName = "Cloud Practitioner Prep";
 const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const year = new Date().getFullYear();
+
+// Canonical and og:url resolve against the configured site. Astro.site is set
+// in astro.config.mjs; the build warns if it is missing.
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : Astro.url.pathname;
+const ogImage =
+  image && Astro.site ? new URL(image, Astro.site).href : image;
 
 const nav = [
   { href: "/", label: "Home" },
@@ -40,10 +51,14 @@ function isActive(href: string): boolean {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
     <meta name="generator" content={Astro.generator} />
     {/* Apply the saved theme before paint so there is no flash of the wrong one. */}
     <script is:inline>
