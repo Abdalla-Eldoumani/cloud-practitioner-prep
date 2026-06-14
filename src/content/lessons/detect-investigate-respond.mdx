@@ -1,0 +1,116 @@
+---
+title: "Detecting, Investigating, and Auditing Activity"
+description: "CloudTrail, Config, GuardDuty, Inspector, Security Hub, Macie, and Detective, and how to tell these commonly confused services apart."
+domain: 2
+module: 4
+order: 4
+day: 3
+estimatedMinutes: 14
+services:
+  - AWS CloudTrail
+  - AWS Config
+  - Amazon GuardDuty
+  - Amazon Inspector
+  - AWS Security Hub
+  - Amazon Macie
+  - Amazon Detective
+updated: 2026-06-13
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Protecting an account is not only about blocking traffic; it is about seeing what
+happened, spotting threats, and investigating them. AWS groups several services
+around this work, and the exam tends to test whether you can match a service to
+its job. The three that get confused most often are CloudTrail, Config, and
+GuardDuty, so pin those down first.
+
+## CloudTrail records what was done
+
+AWS CloudTrail records the actions taken in your account as events. When a user,
+a role, or an AWS service makes a call through the console, the CLI, or an SDK,
+CloudTrail captures who did it, what they did, and when. It exists for auditing,
+governance, and compliance: the question CloudTrail answers is "who made this
+API call?" Its event history gives you a searchable record of recent management
+activity automatically.
+
+## Config records how resources are set up
+
+AWS Config tracks the configuration of your resources and how it changes over
+time. It records the settings of things like EC2 instances, security groups, and
+S3 buckets, and keeps a history so you can see how a resource was configured at
+any past point. With Config rules, it evaluates resources against the settings
+you want and flags any that are noncompliant. The question Config answers is
+"how is this resource configured, and does it meet my rules?"
+
+<Callout type="key" title="CloudTrail versus Config versus GuardDuty">
+CloudTrail logs actions: who did what. Config tracks resource configuration and
+compliance: how things are set up. GuardDuty detects threats: signs of malicious
+activity. A scenario about an audit trail of API calls is CloudTrail; about
+resource settings or compliance drift is Config; about detecting an attack is
+GuardDuty.
+</Callout>
+
+## GuardDuty detects threats
+
+Amazon GuardDuty is a threat detection service that continuously monitors your
+account for malicious or unauthorized activity. It analyzes data sources such as
+CloudTrail management events, VPC flow logs, and DNS logs, and applies threat
+intelligence and machine learning to spot suspicious behavior, like compromised
+credentials or unusual API patterns. When it finds something, it produces a
+security finding for you to act on. You do not feed it rules; you turn it on and
+it watches.
+
+## Inspector checks for vulnerabilities
+
+Amazon Inspector is a vulnerability management service. It automatically scans
+workloads for software vulnerabilities and unintended network exposure, covering
+EC2 instances, container images in Amazon ECR, and Lambda functions. Where
+GuardDuty asks "is something attacking me right now?", Inspector asks "do my
+resources have known weaknesses that could be exploited?" It produces a finding
+for each issue, with details and remediation guidance.
+
+## Macie finds sensitive data in S3
+
+Amazon Macie is a data security service that discovers sensitive data using
+machine learning and pattern matching. It focuses on Amazon S3: it builds an
+inventory of your buckets, evaluates them for security and access control, and
+detects sensitive data such as personally identifiable information. If it finds a
+bucket that is too open or an object holding sensitive data, it raises a finding.
+When a question mentions discovering PII or protecting sensitive data in S3,
+think Macie.
+
+## Security Hub aggregates the findings
+
+Each service above produces its own findings, and AWS Security Hub pulls them
+together. It gives you a single, comprehensive view of your security state,
+collecting and prioritizing findings from services like GuardDuty, Inspector, and
+Macie, along with supported partner products. It also runs automated checks
+against security standards and best practices. Security Hub is the single pane of
+glass that answers "what is my overall security posture?"
+
+## Detective investigates the root cause
+
+Once you have a finding, Amazon Detective helps you investigate it. It
+automatically collects log data from your resources, including CloudTrail and VPC
+flow logs, and ingests GuardDuty findings, then uses machine learning and graph
+analysis to build interactive visualizations of how resources behaved over time.
+That lets you trace a finding back to its root cause and understand the scope of
+an incident.
+
+<Callout type="note" title="Detect, aggregate, investigate">
+GuardDuty, Inspector, and Macie detect issues. Security Hub aggregates and
+prioritizes them in one place. Detective is where you dig into a finding to find
+the root cause. Keeping those three roles separate untangles most questions in
+this group.
+</Callout>
+
+## What to take away
+
+Anchor on the three that are confused most: CloudTrail logs API actions, Config
+tracks resource configuration and compliance, and GuardDuty detects threats.
+Around them, Inspector scans for vulnerabilities, Macie finds sensitive data in
+S3, Security Hub aggregates findings into one view and checks them against
+standards, and Detective investigates a finding to its root cause. Match the
+service to the job and this domain becomes straightforward.
