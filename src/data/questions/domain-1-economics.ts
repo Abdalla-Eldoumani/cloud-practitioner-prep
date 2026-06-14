@@ -1,0 +1,713 @@
+import type { Question } from "../../lib/types";
+
+// Domain 1: Cloud Concepts, cloud economics cluster. Original practice
+// questions covering the six advantages of cloud computing as AWS states them,
+// capital versus operational expenditure, total cost of ownership, economies of
+// scale, consumption-based pricing, and reducing undifferentiated heavy
+// lifting. These are not real exam items. Every fact is verified against
+// current AWS documentation; each question cites the page that backs its
+// answer.
+export const domain1Economics: Question[] = [
+  {
+    id: "d1-econ-01",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "easy",
+    stem: "A retailer used to buy and install servers months before a product launch because it could not predict demand. After moving to AWS, it pays only when it consumes computing resources and only for what it uses. Which of the six advantages of cloud computing does this describe?",
+    options: [
+      { id: "a", text: "Trade fixed expense for variable expense" },
+      { id: "b", text: "Go global in minutes" },
+      { id: "c", text: "Benefit from massive economies of scale" },
+      { id: "d", text: "Increase speed and agility" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS frames trading fixed expense for variable expense as paying only when you consume computing resources instead of investing heavily in data centers and servers before you know how you will use them. Going global, economies of scale, and speed and agility are separate advantages that do not describe the shift from buying hardware upfront to paying for consumption.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-02",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "A startup founder notes that because hundreds of thousands of AWS customers aggregate their usage, the founder gets a lower variable cost than running comparable infrastructure alone. Which advantage of cloud computing explains this lower price?",
+    options: [
+      { id: "a", text: "Benefit from massive economies of scale" },
+      { id: "b", text: "Stop guessing capacity" },
+      { id: "c", text: "Trade fixed expense for variable expense" },
+      { id: "d", text: "Go global in minutes" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes massive economies of scale as achieving a lower variable cost than you can get on your own, because usage from hundreds of thousands of customers is aggregated and providers pass the savings on as lower pay-as-you-go prices. Stopping guessing on capacity, trading fixed for variable expense, and global reach are different advantages that do not turn on aggregated demand lowering the unit price.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-03",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "Before moving to the cloud, a company kept buying servers ahead of demand and ended up with rooms of idle hardware, then later ran short during a busy season. On AWS it accesses as much or as little capacity as it needs and scales with a few minutes' notice. Which advantage of cloud computing does this illustrate?",
+    options: [
+      { id: "a", text: "Stop guessing capacity" },
+      { id: "b", text: "Benefit from massive economies of scale" },
+      { id: "c", text: "Stop spending money running and maintaining data centers" },
+      { id: "d", text: "Trade fixed expense for variable expense" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Stop guessing capacity is AWS wording for eliminating guesses about infrastructure needs: instead of sitting on idle resources or hitting limits, you access as much or as little capacity as you need and scale up and down with a few minutes' notice. Economies of scale, ending data center spend, and the fixed-to-variable expense shift are distinct advantages and do not describe scaling to match demand.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-04",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "easy",
+    stem: "A development team that once waited weeks for IT to procure and provision servers can now spin up new resources in minutes, so it experiments and ships faster. Which advantage of cloud computing is this?",
+    options: [
+      { id: "a", text: "Increase speed and agility" },
+      { id: "b", text: "Stop guessing capacity" },
+      { id: "c", text: "Go global in minutes" },
+      { id: "d", text: "Benefit from massive economies of scale" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes increasing speed and agility as new IT resources being only a click away, reducing the time to make them available from weeks to minutes, which lowers the cost and time to experiment and develop. Stopping guessing capacity is about matching demand, going global is about geographic reach, and economies of scale is about unit price, so none of those fit reducing provisioning time.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-05",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "A growing business decides it no longer wants its staff spending time racking, stacking, and powering servers, and would rather have them work on projects that differentiate the business. Which advantage of cloud computing matches this decision?",
+    options: [
+      { id: "a", text: "Stop spending money running and maintaining data centers" },
+      { id: "b", text: "Trade fixed expense for variable expense" },
+      { id: "c", text: "Increase speed and agility" },
+      { id: "d", text: "Go global in minutes" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that stopping spending money running and maintaining data centers lets you focus on projects that differentiate your business and on your customers, rather than the heavy lifting of racking, stacking, and powering servers. Trading fixed for variable expense is about the billing model, speed and agility is about provisioning time, and going global is about reach, so they do not capture shifting focus away from data center operations.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-06",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "easy",
+    stem: "A company wants to serve users in Europe and Asia with lower latency, but building data centers on each continent is slow and expensive. On AWS it deploys the application in multiple Regions around the world with a few clicks. Which advantage of cloud computing is this?",
+    options: [
+      { id: "a", text: "Go global in minutes" },
+      { id: "b", text: "Stop guessing capacity" },
+      { id: "c", text: "Benefit from massive economies of scale" },
+      { id: "d", text: "Increase speed and agility" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes going global in minutes as easily deploying your application in multiple Regions around the world with a few clicks, which provides lower latency and a better experience for customers at minimal cost. Stopping guessing capacity, economies of scale, and speed and agility are different advantages and do not specifically describe reaching customers in new geographies quickly.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-07",
+    domain: 1,
+    type: "single",
+    topic: "Capital vs operational expenditure",
+    difficulty: "medium",
+    stem: "A finance director explains that one key benefit of moving to AWS is replacing large upfront purchases of servers with costs that rise and fall with usage. In accounting terms, what shift is the director describing?",
+    options: [
+      { id: "a", text: "Replacing capital expenditure with variable operational expenditure" },
+      { id: "b", text: "Replacing operational expenditure with capital expenditure" },
+      { id: "c", text: "Eliminating all expenditure because cloud is free" },
+      { id: "d", text: "Converting variable costs into a single fixed upfront purchase" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that a key benefit of cloud computing is the opportunity to replace upfront capital infrastructure expenses with low variable costs that scale with your business, which is the shift from capital expenditure to operational expenditure. The reverse direction is wrong, cloud is not free, and pay-as-you-go costs vary with usage rather than becoming one fixed upfront purchase.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-econ-08",
+    domain: 1,
+    type: "multi",
+    topic: "Capital vs operational expenditure",
+    difficulty: "medium",
+    stem: "Which TWO of the following are capital expenditures that a company can avoid by running its workloads on AWS instead of in its own data center? (Choose two.)",
+    options: [
+      { id: "a", text: "Buying physical servers upfront before any workload runs" },
+      { id: "b", text: "Purchasing networking hardware to build out a data center" },
+      { id: "c", text: "Paying the monthly bill for the compute hours a workload actually used" },
+      { id: "d", text: "Paying per gigabyte for the data stored in a given month" },
+      { id: "e", text: "Paying an hourly rate for a running database instance" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Buying servers and purchasing networking hardware before a workload runs are upfront capital expenses, which AWS lets you avoid by paying low variable costs that scale with your business. Paying for compute hours, per-gigabyte storage, and an hourly database rate are usage-based operational expenses, not capital purchases.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-econ-09",
+    domain: 1,
+    type: "single",
+    topic: "Consumption-based pricing",
+    difficulty: "easy",
+    stem: "AWS defines cloud computing in one sentence that captures both how resources are delivered and how they are billed. Which statement matches that definition?",
+    options: [
+      { id: "a", text: "The on-demand delivery of IT resources over the internet with pay-as-you-go pricing" },
+      { id: "b", text: "The bulk purchase of servers installed in your own building, billed annually" },
+      { id: "c", text: "A fixed monthly subscription that includes unlimited use of every service" },
+      { id: "d", text: "A leasing model that requires a three-year contract for any resource" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe buying on-premises hardware, a flat unlimited subscription, or a mandatory long-term lease, none of which match the AWS definition.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+  },
+  {
+    id: "d1-econ-10",
+    domain: 1,
+    type: "single",
+    topic: "Consumption-based pricing",
+    difficulty: "medium",
+    stem: "A development and test environment is only needed about eight hours a day on weekdays. Following the AWS cost optimization design principle of adopting a consumption model, what should the team do to save money?",
+    options: [
+      { id: "a", text: "Stop the resources when they are not in use and pay only for what they consume" },
+      { id: "b", text: "Leave the environment running continuously so it is always available" },
+      { id: "c", text: "Buy three-year reservations to cover the idle nights and weekends" },
+      { id: "d", text: "Move the environment to dedicated physical hardware to lower the rate" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The adopt-a-consumption-model principle says to pay only for the computing resources you consume and increase or decrease usage with business need, and AWS cites stopping dev and test resources outside of working hours for a potential 75 percent saving. Running continuously, reserving idle time, or moving to dedicated hardware all increase cost rather than reduce it for this pattern.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-11",
+    domain: 1,
+    type: "single",
+    topic: "Undifferentiated heavy lifting",
+    difficulty: "medium",
+    stem: "A team chooses AWS managed services so it no longer has to rack and power servers or patch the underlying operating system, freeing it to focus on its customers and product. Which AWS cost optimization design principle does this follow?",
+    options: [
+      { id: "a", text: "Stop spending money on undifferentiated heavy lifting" },
+      { id: "b", text: "Analyze and attribute expenditure" },
+      { id: "c", text: "Measure overall efficiency" },
+      { id: "d", text: "Implement cloud financial management" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes stopping spending on undifferentiated heavy lifting as letting AWS handle data center operations like racking, stacking, and powering servers, and using managed services to remove the burden of managing operating systems and applications, so you focus on customers and business projects. Analyzing expenditure, measuring efficiency, and cloud financial management are other principles that do not describe offloading infrastructure operations.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-12",
+    domain: 1,
+    type: "single",
+    topic: "Economies of scale",
+    difficulty: "easy",
+    stem: "Why can AWS generally offer lower per-unit prices than an individual company could achieve by building and running the same infrastructure itself?",
+    options: [
+      { id: "a", text: "Aggregated usage from hundreds of thousands of customers gives AWS economies of scale that lower pay-as-you-go prices" },
+      { id: "b", text: "AWS charges a higher per-unit rate the more capacity you use" },
+      { id: "c", text: "AWS provides every service at no cost to all customers" },
+      { id: "d", text: "Each customer must commit to a fixed multi-year contract to get any price" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; services are not all free; and no multi-year contract is required to use AWS.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-13",
+    domain: 1,
+    type: "single",
+    topic: "Total cost of ownership",
+    difficulty: "hard",
+    stem: "When comparing the total cost of ownership of running a workload on premises versus on AWS, which on-premises cost is most likely to be reduced or removed by moving to the cloud?",
+    options: [
+      { id: "a", text: "The cost of purchasing, powering, cooling, and physically maintaining your own servers" },
+      { id: "b", text: "The cost of the application code your developers write" },
+      { id: "c", text: "The cost of training users on the business process the application supports" },
+      { id: "d", text: "The cost of the data your business generates" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Moving to AWS removes much of the cost of buying, powering, cooling, and maintaining your own servers, because AWS does the heavy lifting of data center operations, which lowers total cost of ownership. Application code, user training on a business process, and the business data itself are not data center costs that the cloud eliminates.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-14",
+    domain: 1,
+    type: "multi",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "Which TWO of the following are among the six advantages of cloud computing as AWS states them? (Choose two.)",
+    options: [
+      { id: "a", text: "Trade fixed expense for variable expense" },
+      { id: "b", text: "Go global in minutes" },
+      { id: "c", text: "Guarantee that costs never change month to month" },
+      { id: "d", text: "Eliminate the need to write any application code" },
+      { id: "e", text: "Own the physical servers in every Region" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, removing all coding, and owning the physical servers are not advantages AWS claims; in the cloud you do not own the underlying hardware.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-15",
+    domain: 1,
+    type: "multi",
+    topic: "Six advantages of cloud",
+    difficulty: "hard",
+    stem: "A company is mapping business outcomes to the six advantages of cloud computing. Which THREE pairings correctly match an outcome to the advantage AWS associates with it? (Choose three.)",
+    options: [
+      { id: "a", text: "Scaling capacity up and down with a few minutes' notice maps to stop guessing capacity" },
+      { id: "b", text: "Cutting the time to provision resources from weeks to minutes maps to increase speed and agility" },
+      { id: "c", text: "Deploying in multiple Regions with a few clicks maps to go global in minutes" },
+      { id: "d", text: "Paying a higher unit price as usage grows maps to benefit from massive economies of scale" },
+      { id: "e", text: "Signing a mandatory three-year contract maps to trade fixed expense for variable expense" },
+    ],
+    correct: ["a", "b", "c"],
+    explanation:
+      "AWS ties scaling with a few minutes' notice to stop guessing capacity, provisioning in minutes instead of weeks to increase speed and agility, and multi-Region deployment with a few clicks to go global in minutes. Economies of scale lowers the unit price rather than raising it, and trading fixed expense for variable expense means paying for consumption with no required long-term contract, so those two pairings are wrong.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-16",
+    domain: 1,
+    type: "single",
+    topic: "Consumption-based pricing",
+    difficulty: "medium",
+    stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. According to AWS guidance on flexibility, why is this claim incorrect?",
+    options: [
+      { id: "a", text: "You do not pay for compute instances when they are not running, so turning them off reduces cost" },
+      { id: "b", text: "Stopped instances are billed at a higher rate than running ones" },
+      { id: "c", text: "Compute is billed as a flat monthly fee regardless of whether instances run" },
+      { id: "d", text: "You are charged the full on-demand rate for every instance you ever launched" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that a key advantage of cloud resources is that you do not pay for them when they are not running, and turning off unused instances can reduce costs by 70 percent or more compared to running them 24/7. Stopped instances are not billed at a higher rate, compute is not a flat monthly fee, and you are not charged forever for instances that are no longer running.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-17",
+    domain: 1,
+    type: "single",
+    topic: "Capital vs operational expenditure",
+    difficulty: "medium",
+    stem: "In a traditional on-premises model, a company must predict capacity and buy hardware well in advance. AWS removes that need. Which phrase best describes the financial change this brings?",
+    options: [
+      { id: "a", text: "Upfront capital infrastructure expenses are replaced by low variable costs that scale with the business" },
+      { id: "b", text: "Variable costs are replaced by a single large capital purchase made once" },
+      { id: "c", text: "All infrastructure costs are removed and never appear on a bill" },
+      { id: "d", text: "Costs become fixed and unrelated to how much the business uses" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes the benefit as replacing upfront capital infrastructure expenses with low variable costs that scale with your business, so you spin up resources without procuring hardware in advance. The cloud does not turn variable costs into one capital purchase, does not make infrastructure free, and bills vary with usage rather than becoming fixed.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-econ-18",
+    domain: 1,
+    type: "single",
+    topic: "Cost drivers",
+    difficulty: "easy",
+    stem: "AWS names three fundamental drivers of cost that apply broadly across services. A new cloud practitioner is asked to identify one of them. Which option is one of the three?",
+    options: [
+      { id: "a", text: "Storage" },
+      { id: "b", text: "The number of IAM users you create" },
+      { id: "c", text: "The number of AWS Regions that exist" },
+      { id: "d", text: "The number of support cases you open" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS lists compute, storage, and outbound data transfer as the three fundamental drivers of cost, so storage is correct. The count of IAM users you create does not drive cost, the number of Regions AWS operates is not a cost driver, and opening support cases is governed by your support plan rather than the three fundamental drivers.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-19",
+    domain: 1,
+    type: "single",
+    topic: "Consumption-based pricing",
+    difficulty: "easy",
+    stem: "A team is comparing pricing models. Which characteristic is central to the consumption model that AWS recommends for cost optimization?",
+    options: [
+      { id: "a", text: "Pay only for the computing resources you consume, and increase or decrease usage with business need" },
+      { id: "b", text: "Pay a fixed annual fee that does not change with usage" },
+      { id: "c", text: "Pay for peak capacity at all times to avoid ever scaling" },
+      { id: "d", text: "Pay an upfront lump sum that covers all future usage" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The AWS adopt-a-consumption-model design principle is to pay only for the computing resources you consume and to scale usage up or down with business requirements. A fixed annual fee, paying for peak capacity continuously, and an upfront lump sum all contradict paying only for what you consume.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-20",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud economics principles",
+    difficulty: "hard",
+    stem: "Which TWO statements correctly describe AWS cost optimization design principles in the Well-Architected Framework? (Choose two.)",
+    options: [
+      { id: "a", text: "Adopt a consumption model: pay only for the computing resources you consume and adjust usage with business need" },
+      { id: "b", text: "Analyze and attribute expenditure so IT costs can be transparently assigned to workloads and owners" },
+      { id: "c", text: "Always buy three-year reservations for every workload regardless of how predictable it is" },
+      { id: "d", text: "Provision for peak load at all times to remove the need to scale" },
+      { id: "e", text: "Take on the undifferentiated heavy lifting of running your own data centers to cut cost" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Adopting a consumption model and analyzing and attributing expenditure are two of the AWS cost optimization design principles. Buying long reservations for everything ignores workload patterns, provisioning for peak at all times wastes resources, and the principle is to stop spending on undifferentiated heavy lifting by letting AWS run the data centers, not to take that work on yourself.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-21",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "hard",
+    stem: "An architect argues that buying capacity ahead of a launch leaves a company either paying for idle resources or running short when demand spikes, and that the cloud removes this dilemma. Which advantage of cloud computing is the architect invoking?",
+    options: [
+      { id: "a", text: "Stop guessing capacity" },
+      { id: "b", text: "Trade fixed expense for variable expense" },
+      { id: "c", text: "Increase speed and agility" },
+      { id: "d", text: "Stop spending money running and maintaining data centers" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes stop guessing capacity as eliminating the dilemma where a capacity decision made before deployment leaves you with idle resources or limited capacity, because in the cloud you access as much or as little as you need and scale on demand. The fixed-to-variable expense shift, speed and agility, and ending data center spend are separate advantages that do not directly address the over- or under-provisioning trade-off.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-22",
+    domain: 1,
+    type: "multi",
+    topic: "Undifferentiated heavy lifting",
+    difficulty: "medium",
+    stem: "Which TWO of the following are examples of the undifferentiated heavy lifting that AWS handles so customers can focus on their own business? (Choose two.)",
+    options: [
+      { id: "a", text: "Racking, stacking, and powering physical servers in a data center" },
+      { id: "b", text: "Operating the underlying infrastructure that managed services run on" },
+      { id: "c", text: "Designing the company's product features" },
+      { id: "d", text: "Deciding the company's pricing strategy" },
+      { id: "e", text: "Writing the business logic of the company's application" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS describes the undifferentiated heavy lifting it removes as data center operations like racking, stacking, and powering servers, and operating the underlying infrastructure so managed services lift the burden of running operating systems and applications. Designing product features, setting pricing strategy, and writing business logic are the differentiating work that AWS frees customers to focus on, not heavy lifting AWS performs.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-23",
+    domain: 1,
+    type: "single",
+    topic: "Economies of scale",
+    difficulty: "medium",
+    stem: "A practitioner reads that AWS achieves \"higher economies of scale.\" What is the direct result of these economies of scale for AWS customers?",
+    options: [
+      { id: "a", text: "Lower pay-as-you-go prices than a customer could achieve on its own" },
+      { id: "b", text: "A requirement to pay upfront for all future usage" },
+      { id: "c", text: "Higher prices that rise as more customers join" },
+      { id: "d", text: "A flat fee that is the same for every customer regardless of usage" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that aggregating usage from hundreds of thousands of customers produces higher economies of scale, which translates into lower pay-as-you-go prices than a customer could get on its own. Economies of scale do not require paying upfront for all usage, do not raise prices as customers join, and do not impose a single flat fee on everyone.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-24",
+    domain: 1,
+    type: "single",
+    topic: "Cost drivers",
+    difficulty: "medium",
+    stem: "A practitioner notices that uploading data into AWS shows no transfer charge on the bill, while sending data out to the internet does. Which statement reflects the general AWS rule?",
+    options: [
+      { id: "a", text: "In most cases there is no charge for inbound data transfer, while outbound data transfer is charged" },
+      { id: "b", text: "Inbound data transfer is charged, while outbound is free" },
+      { id: "c", text: "Both inbound and outbound transfer are always free" },
+      { id: "d", text: "Both inbound and outbound transfer are billed at the same fixed rate" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that in most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the outbound data transfer rate. The other options invert the rule, make all transfer free, or flatten inbound and outbound to one rate, none of which match AWS billing.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-25",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics principles",
+    difficulty: "hard",
+    stem: "A finance team wants to assign cloud costs to the specific products and teams that incurred them, so each owner can see and optimize their own spend. Which AWS cost optimization design principle supports this?",
+    options: [
+      { id: "a", text: "Analyze and attribute expenditure" },
+      { id: "b", text: "Adopt a consumption model" },
+      { id: "c", text: "Stop spending money on undifferentiated heavy lifting" },
+      { id: "d", text: "Measure overall efficiency" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes analyze and attribute expenditure as the cloud making it easier to identify the cost and usage of workloads and transparently attribute IT costs to revenue streams and individual workload owners, helping measure ROI and optimize. Adopting a consumption model is about paying for what you use, stopping undifferentiated heavy lifting is about offloading infrastructure work, and measuring overall efficiency is about business output versus cost, so they do not specifically describe attributing cost to owners.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-26",
+    domain: 1,
+    type: "multi",
+    topic: "Consumption-based pricing",
+    difficulty: "medium",
+    stem: "Which TWO statements correctly describe the pay-as-you-go pricing model that AWS uses? (Choose two.)",
+    options: [
+      { id: "a", text: "You pay only for the individual resources you use, for as long as you use them" },
+      { id: "b", text: "No large upfront purchase of hardware is required to start" },
+      { id: "c", text: "You pay one fixed price for unlimited use of all AWS services" },
+      { id: "d", text: "You must buy and install hardware before any workload runs" },
+      { id: "e", text: "Every service requires a mandatory multi-year commitment" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, buying hardware upfront, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
+    reference: {
+      label: "What is cloud computing?",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+  },
+  {
+    id: "d1-econ-27",
+    domain: 1,
+    type: "multi",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "A company describes two outcomes of its cloud migration: it stopped buying servers years ahead of need and pays for consumption instead, and its teams now provision resources in minutes rather than waiting weeks. Which TWO advantages of cloud computing do these outcomes map to? (Choose two.)",
+    options: [
+      { id: "a", text: "Trade fixed expense for variable expense" },
+      { id: "b", text: "Increase speed and agility" },
+      { id: "c", text: "Benefit from massive economies of scale" },
+      { id: "d", text: "Go global in minutes" },
+      { id: "e", text: "Stop guessing capacity" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Paying for consumption instead of buying servers ahead of need is trade fixed expense for variable expense, and provisioning in minutes instead of weeks is increase speed and agility. Economies of scale is about lower unit prices, going global is about Region reach, and stop guessing capacity is about matching demand, none of which the two stated outcomes describe.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-28",
+    domain: 1,
+    type: "single",
+    topic: "Total cost of ownership",
+    difficulty: "medium",
+    stem: "A company is building a total cost of ownership comparison between an on-premises data center and AWS. Which on-premises cost categories does moving to AWS most directly reduce?",
+    options: [
+      { id: "a", text: "Buying servers and the power, cooling, and physical maintenance to keep them running" },
+      { id: "b", text: "The salaries of the company's sales staff" },
+      { id: "c", text: "The marketing budget for the company's products" },
+      { id: "d", text: "The cost of office furniture for non-technical departments" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS performs the heavy lifting of data center operations, so moving to the cloud most directly reduces the costs of buying servers and the power, cooling, and physical maintenance to keep them running, which lowers total cost of ownership. Sales salaries, marketing budgets, and office furniture are unrelated to data center infrastructure and are not reduced by the move.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-29",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics principles",
+    difficulty: "hard",
+    stem: "A leadership team wants to know whether the business value its workloads produce justifies what the workloads cost to run, so it can judge the gains from added output and functionality against spend. Which AWS cost optimization design principle is this?",
+    options: [
+      { id: "a", text: "Measure overall efficiency" },
+      { id: "b", text: "Adopt a consumption model" },
+      { id: "c", text: "Stop spending money on undifferentiated heavy lifting" },
+      { id: "d", text: "Implement cloud financial management" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes measure overall efficiency as measuring the business output of a workload and the costs of delivering it, then using that data to understand the gains from increasing output and functionality and reducing cost. Adopting a consumption model, stopping undifferentiated heavy lifting, and cloud financial management are separate principles that do not specifically describe weighing business output against cost.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-30",
+    domain: 1,
+    type: "single",
+    topic: "Six advantages of cloud",
+    difficulty: "medium",
+    stem: "Which statement is NOT one of the six advantages of cloud computing as AWS states them?",
+    options: [
+      { id: "a", text: "Guarantee that every workload passes a compliance audit automatically" },
+      { id: "b", text: "Trade fixed expense for variable expense" },
+      { id: "c", text: "Stop guessing capacity" },
+      { id: "d", text: "Go global in minutes" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The six advantages AWS lists are trading fixed expense for variable expense, massive economies of scale, stop guessing capacity, increase speed and agility, stop spending money running and maintaining data centers, and go global in minutes. A guarantee that every workload automatically passes a compliance audit is not among them; the cloud supports compliance but does not promise automatic audit passes.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+  {
+    id: "d1-econ-31",
+    domain: 1,
+    type: "single",
+    topic: "Capital vs operational expenditure",
+    difficulty: "easy",
+    stem: "A manager describes paying the monthly AWS bill for the compute and storage a workload used that month, instead of buying servers upfront. What type of expenditure is the monthly usage-based bill?",
+    options: [
+      { id: "a", text: "Operational expenditure" },
+      { id: "b", text: "Capital expenditure" },
+      { id: "c", text: "A one-time upfront hardware purchase" },
+      { id: "d", text: "A non-recoverable construction cost" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Paying a recurring, usage-based bill for the compute and storage consumed is operational expenditure, the variable cost model AWS substitutes for buying hardware upfront. Capital expenditure, a one-time hardware purchase, and a construction cost all describe large upfront investments rather than a usage-based monthly charge.",
+    reference: {
+      label: "Overview of Amazon Web Services: introduction",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+    },
+  },
+  {
+    id: "d1-econ-32",
+    domain: 1,
+    type: "multi",
+    topic: "Cost drivers",
+    difficulty: "medium",
+    stem: "AWS names three fundamental drivers of cost that apply broadly across services. Which THREE are they? (Choose three.)",
+    options: [
+      { id: "a", text: "Compute" },
+      { id: "b", text: "Storage" },
+      { id: "c", text: "Outbound data transfer" },
+      { id: "d", text: "The number of users in your identity provider" },
+      { id: "e", text: "Inbound data transfer from the internet" },
+    ],
+    correct: ["a", "b", "c"],
+    explanation:
+      "AWS lists compute, storage, and outbound data transfer as the three fundamental drivers of cost. The number of users in an identity provider is not a fundamental driver, and inbound data transfer is in most cases not charged, so it is not one of the three.",
+    reference: {
+      label: "How AWS Pricing Works: key principles",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+    },
+  },
+  {
+    id: "d1-econ-33",
+    domain: 1,
+    type: "single",
+    topic: "Consumption-based pricing",
+    difficulty: "hard",
+    stem: "An on-premises team always provisions for the highest traffic it might ever see, leaving most capacity idle most of the time. How does the cloud consumption model change the economics of this situation?",
+    options: [
+      { id: "a", text: "Capacity can scale up and down with demand, so the company pays for what it uses instead of for idle peak capacity" },
+      { id: "b", text: "The company must still pay for peak capacity continuously, just billed by AWS" },
+      { id: "c", text: "The cloud forces the company to under-provision and accept outages" },
+      { id: "d", text: "The company pays a fixed fee that ignores how much capacity it actually uses" },
+    ],
+    correct: ["a"],
+    explanation:
+      "With the cloud consumption model you access as much or as little capacity as you need and scale up and down with demand, so you pay for what you use instead of for idle peak capacity provisioned in advance. The cloud does not require paying for peak continuously, does not force under-provisioning, and does not bill a fixed fee independent of usage.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+  },
+];
