@@ -25,6 +25,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -47,6 +48,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -69,6 +71,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon Machine Images in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -91,6 +94,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon Machine Images in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -113,6 +117,7 @@ export const domain3Ec2: Question[] = [
       label: "Run commands when you launch an EC2 instance with user data input",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -135,6 +140,7 @@ export const domain3Ec2: Question[] = [
       label: "Run commands when you launch an EC2 instance with user data input",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -157,6 +163,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -179,6 +186,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -201,6 +209,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -223,6 +232,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -245,6 +255,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -267,6 +278,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 compute optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/co.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -289,6 +301,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 memory optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/mo.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -311,6 +324,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 storage optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -333,6 +347,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 accelerated computing instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/ac.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -356,6 +371,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -378,6 +394,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -400,6 +417,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -422,6 +440,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -445,6 +464,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -467,6 +487,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -489,6 +510,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -511,6 +533,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -533,6 +556,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -555,6 +579,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -577,6 +602,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -599,6 +625,7 @@ export const domain3Ec2: Question[] = [
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -622,6 +649,7 @@ export const domain3Ec2: Question[] = [
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -644,6 +672,7 @@ export const domain3Ec2: Question[] = [
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -666,6 +695,7 @@ export const domain3Ec2: Question[] = [
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -688,6 +718,7 @@ export const domain3Ec2: Question[] = [
       label: "What are Savings Plans?",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -710,6 +741,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -733,6 +765,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -755,6 +788,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -778,6 +812,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -800,6 +835,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -823,6 +859,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -846,6 +883,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EBS"],
   },
   {
@@ -869,6 +907,7 @@ export const domain3Ec2: Question[] = [
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -892,6 +931,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -915,6 +955,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -938,6 +979,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
 ];
