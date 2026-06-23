@@ -26,6 +26,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -48,6 +49,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? How Amazon S3 works",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -70,6 +72,7 @@ export const domain3Storage: Question[] = [
       label: "AWS Storage services overview (Cloud Storage on AWS)",
       url: "https://aws.amazon.com/products/storage/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d3-storage-04",
@@ -92,6 +95,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? How Amazon S3 works",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3", "EBS"],
   },
   {
@@ -114,6 +118,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "EC2"],
   },
   {
@@ -136,6 +141,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store? Features of Amazon EBS",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -158,6 +164,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "S3"],
   },
   {
@@ -180,6 +187,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -202,6 +210,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -225,6 +234,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -247,6 +257,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types: Hard disk drive (HDD) volumes",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS"],
   },
   {
@@ -270,6 +281,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "S3"],
   },
   {
@@ -292,6 +304,7 @@ export const domain3Storage: Question[] = [
       label: "Instance store temporary block storage for EC2 instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -314,6 +327,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -337,6 +351,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EBS"],
   },
   {
@@ -382,6 +398,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Buckets",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -404,6 +421,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -427,6 +445,7 @@ export const domain3Storage: Question[] = [
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -449,6 +468,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Regions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -472,6 +492,7 @@ export const domain3Storage: Question[] = [
       label: "Uploading objects (unlimited number of objects in a bucket)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Access management and security",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? S3 Block Public Access",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -538,6 +561,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Bucket policy",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -561,6 +585,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Storage management (S3 Object Lock) and S3 Versioning",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -583,6 +608,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -606,6 +632,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -628,6 +655,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -650,6 +678,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -672,6 +701,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -694,6 +724,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -716,6 +747,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -739,6 +771,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -761,6 +794,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -784,6 +818,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: Transition and Expiration actions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -806,6 +841,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: Expiration actions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -828,6 +864,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: complete lifecycle",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
 ];
