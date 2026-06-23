@@ -23,6 +23,7 @@ export const domain1: Question[] = [
       label: "AWS EC2 Auto Scaling",
       url: "https://aws.amazon.com/ec2/autoscaling/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -45,6 +46,7 @@ export const domain1: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-benefits-multi-01",
@@ -67,5 +69,6 @@ export const domain1: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
