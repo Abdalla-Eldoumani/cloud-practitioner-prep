@@ -451,7 +451,7 @@ export const domain4SupportMigration: Question[] = [
       "The six AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. Governance is one of them. Networking, Billing, and Migration are not CAF perspectives, though they are addressed within the perspectives where relevant.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
     },
     lastVerified: "2026-06-23",
   },
@@ -474,7 +474,7 @@ export const domain4SupportMigration: Question[] = [
       "The AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. People and Platform are two of them. Pricing, Procurement, and Partners are not CAF perspectives.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
     },
     lastVerified: "2026-06-23",
   },
@@ -496,7 +496,7 @@ export const domain4SupportMigration: Question[] = [
       "The People perspective addresses culture, organizational structure, roles, and the skills and training needed for cloud adoption. The Platform perspective covers building and modernizing the technology platform, Security covers protecting data and workloads, and Operations covers running and managing services to meet business needs.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
     },
     lastVerified: "2026-06-23",
   },
@@ -766,7 +766,7 @@ export const domain4SupportMigration: Question[] = [
       "The Governance perspective focuses on orchestrating cloud initiatives while maximizing benefits and managing risk, which covers risk management, compliance, and decision oversight. The Business perspective aligns cloud investment with business outcomes, the Platform perspective builds the technology environment, and the Operations perspective runs and supports cloud services.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
     },
     lastVerified: "2026-06-23",
   },
@@ -789,7 +789,7 @@ export const domain4SupportMigration: Question[] = [
       "The Operations perspective covers running and supporting cloud services to the levels the business needs, including event, incident, and problem management. Building the business case sits in the Business perspective, retraining staff sits in the People perspective, and protecting data and access sits in the Security perspective.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
     },
     lastVerified: "2026-06-23",
   },
