@@ -68,7 +68,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Network ACLs support both allow and deny rules, so they can explicitly deny a specific IP at the subnet level. Security groups support allow rules only and cannot express a deny, IAM policies govern API permissions rather than network packets, and a route table directs traffic but does not filter by allow or deny.",
+      "Network ACLs support both allow and deny rules, so they can explicitly deny a specific IP at the subnet level. Security groups support allow rules only and cannot express a deny, an IAM policy attached to the instance governs API permissions rather than network packets, and a route table directs traffic but does not filter by allow or deny.",
     reference: {
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
@@ -92,7 +92,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "A network ACL evaluates rules in ascending order starting with the lowest numbered rule, and once a rule matches, it is applied and evaluation stops. Evaluating all rules together describes a security group instead, and network ACLs do not start from the highest number or follow creation order.",
+      "A network ACL evaluates rules in ascending order starting with the lowest numbered rule, and once a rule matches, it is applied and evaluation stops. Evaluating all rules together describes a security group instead, network ACLs do not start from the highest numbered rule, and they do not follow the order rules were created while ignoring the rule numbers.",
     reference: {
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
@@ -162,7 +162,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "A network ACL applies to all resources in the subnets it is associated with, which is why AWS frames it as a subnet-level, coarse-grained control. It is not attached to individual instances the way a security group is associated with a resource, it does not depend on a security group, and it covers its associated subnets rather than the whole VPC automatically.",
+      "A network ACL applies to all resources in the subnets it is associated with, which is why AWS frames it as a subnet-level, coarse-grained control. It is not attached to individual instances the way a security group is associated with a resource, it does not depend on a security group, and it covers its associated subnets rather than the entire VPC across all subnets at once.",
     reference: {
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
@@ -185,7 +185,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Security groups support allow rules only; there is no deny rule in a security group, so to block a specific IP range you use a network ACL, which supports deny rules at the subnet level. The other options incorrectly imply a security group can deny under some condition.",
+      "Security groups support allow rules only; there is no deny rule in a security group, so to block a specific IP range you use a network ACL, which supports deny rules at the subnet level. A security group cannot deny traffic on outbound rules, cannot deny it through a lowest-numbered rule, and cannot deny it by attaching to a subnet; the other options each imply a deny that does not exist.",
     reference: {
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
@@ -255,7 +255,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "A network ACL has inbound and outbound rules that each allow or deny, and every subnet must be associated with one, falling back to the default network ACL when none is set. Network ACLs are stateless, not stateful; one network ACL can be associated with multiple subnets; and they operate at the subnet level.",
+      "A network ACL has inbound and outbound rules that each allow or deny, and every subnet must be associated with one, falling back to the default network ACL when none is set. Network ACLs are stateless, not stateful; one is not limited to a single subnet that can never be reused, since the same network ACL can be associated with multiple subnets; and they operate at the subnet level.",
     reference: {
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
@@ -488,7 +488,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It is not a blanket service discount, it does not change purchase options, and it does not grant unlimited free data transfer.",
+      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It is not a blanket service discount, it performs no automatic conversion of On-Demand Instances to Reserved Instances, and it does not grant unlimited free data transfer.",
     reference: {
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
@@ -838,7 +838,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Network Firewall uses stateless rule groups and stateful rule groups to inspect and filter VPC traffic, with stateful inspection powered by the open source Suricata IPS. It is not limited to stateless rules, and it does not filter traffic using IAM policies or S3 bucket policies.",
+      "AWS Network Firewall uses stateless rule groups and stateful rule groups to inspect and filter VPC traffic, with stateful inspection powered by the open source Suricata IPS. It is not limited to stateless rules, and it does not filter traffic with only IAM identity-based rules or with Amazon S3 bucket policies.",
     reference: {
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
@@ -861,7 +861,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS WAF filters malicious web requests, AWS Shield defends against DDoS attacks, and AWS Firewall Manager applies protections such as WAF and Shield Advanced consistently across many accounts. VPC traffic controls and routing do not provide DDoS or central org management, and the detection and data-protection services in the other options do not match these three specific goals.",
+      "AWS WAF filters malicious web requests, AWS Shield defends against DDoS attacks, and AWS Firewall Manager applies protections such as WAF and Shield Advanced consistently across many accounts. Security groups, network ACLs, and route tables are VPC traffic controls that do not provide DDoS defense or central org management; Amazon GuardDuty, Amazon Inspector, and AWS Config are detection and configuration services; and pairing AWS WAF with AWS Config and Amazon Macie mixes in configuration history and sensitive-data discovery, so none of those trios match these three goals.",
     reference: {
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
