@@ -28,6 +28,12 @@ export interface Question {
   correct: string[];
   explanation: string; // why the answer is right, and why distractors are wrong
   reference: DocReference;
+  // ISO date (YYYY-MM-DD) the facts were last checked against AWS docs, so a
+  // reader can judge the content's age and a lint can flag unverified questions.
+  lastVerified?: string;
+  // Sourced reason each wrong option is wrong, keyed by the incorrect option id.
+  // Keyed by id, never position, so it survives the render-time option shuffle.
+  distractorRationales?: Record<string, string>;
   services?: string[];
 }
 
