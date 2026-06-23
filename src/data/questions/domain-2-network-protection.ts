@@ -27,6 +27,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC", "EC2"],
   },
   {
@@ -49,6 +50,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC", "EC2"],
   },
   {
@@ -71,6 +73,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -94,6 +97,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -116,6 +120,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -139,6 +144,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -161,6 +167,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -183,6 +190,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -205,6 +213,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -227,6 +236,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -250,6 +260,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -272,6 +283,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Infrastructure security in Amazon VPC",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -294,6 +306,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -316,6 +329,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -339,6 +353,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF", "CloudFront"],
   },
   {
@@ -362,6 +377,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -384,6 +400,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -406,6 +423,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -429,6 +447,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -451,6 +470,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield Advanced overview",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -473,6 +493,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -496,6 +517,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -518,6 +540,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield"],
   },
   {
@@ -540,6 +563,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Shield", "WAF"],
   },
   {
@@ -562,6 +586,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF", "Shield"],
   },
   {
@@ -584,6 +609,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Firewall", "VPC"],
   },
   {
@@ -607,6 +633,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -630,6 +657,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Firewall", "VPC"],
   },
   {
@@ -652,6 +680,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Firewall", "WAF"],
   },
   {
@@ -674,6 +703,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Firewall Manager", "Organizations"],
   },
   {
@@ -697,6 +727,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Firewall Manager", "WAF", "Shield"],
   },
   {
@@ -719,6 +750,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF"],
   },
   {
@@ -741,6 +773,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC", "EC2"],
   },
   {
@@ -763,6 +796,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC"],
   },
   {
@@ -786,6 +820,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["VPC", "EC2"],
   },
   {
@@ -808,6 +843,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Firewall", "VPC"],
   },
   {
@@ -830,6 +866,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
+    lastVerified: "2026-06-23",
     services: ["WAF", "Shield", "Firewall Manager"],
   },
 ];
