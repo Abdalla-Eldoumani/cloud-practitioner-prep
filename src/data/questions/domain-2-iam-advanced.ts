@@ -26,6 +26,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -48,6 +49,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2", "S3"],
   },
   {
@@ -70,6 +72,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2"],
   },
   {
@@ -92,6 +95,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2"],
   },
   {
@@ -114,6 +118,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -136,6 +141,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -158,6 +164,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -203,6 +211,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -225,6 +234,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -247,6 +257,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -269,6 +280,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -291,6 +303,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage AWS accounts with permission sets",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -313,6 +326,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -335,6 +349,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -357,6 +372,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -379,6 +395,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "Cognito"],
   },
   {
@@ -401,6 +418,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -424,6 +442,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -446,6 +465,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -468,6 +488,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -490,6 +511,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -512,6 +534,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -534,6 +557,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -556,6 +580,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -578,6 +603,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -601,6 +627,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -623,6 +650,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -646,6 +674,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -668,6 +697,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -690,6 +720,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -712,6 +743,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -734,6 +766,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -757,6 +790,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -779,6 +813,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "IAM Identity Center"],
   },
   {
@@ -801,6 +836,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -824,6 +860,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -847,6 +884,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -870,6 +908,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -893,6 +932,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -916,6 +956,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -939,6 +980,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
 ];
