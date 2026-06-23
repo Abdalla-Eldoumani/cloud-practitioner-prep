@@ -183,7 +183,7 @@ export const storage: ServiceEntry[] = [
       "Reach for it when on-premises systems need to use AWS storage while keeping a local cache for low-latency access.",
     reference: {
       label: "What is AWS Storage Gateway?",
-      url: "https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html",
+      url: "https://aws.amazon.com/storagegateway/",
     },
     lastVerified: "2026-06-24",
     aliases: [
