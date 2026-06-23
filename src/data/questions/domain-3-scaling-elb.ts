@@ -26,6 +26,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -48,6 +49,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -70,6 +72,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -92,6 +95,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -114,6 +118,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -136,6 +141,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -159,6 +165,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Balancing capacity across Availability Zones)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -181,6 +188,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Pricing)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Scalability)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -226,6 +235,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -248,6 +258,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "CloudWatch"],
   },
   {
@@ -271,6 +282,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -293,6 +305,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -315,6 +328,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -337,6 +351,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "Elastic Load Balancing"],
   },
   {
@@ -382,6 +398,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
   {
@@ -405,6 +422,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -428,6 +446,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -450,6 +469,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -472,6 +492,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Path conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Host conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -538,6 +561,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -561,6 +585,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -583,6 +608,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -605,6 +631,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -627,6 +654,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -650,6 +678,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Elastic Load Balancing features",
       url: "https://aws.amazon.com/elasticloadbalancing/features/",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "Network Load Balancer", "Gateway Load Balancer"],
   },
   {
@@ -672,6 +701,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -695,6 +725,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "Lambda"],
   },
   {
@@ -717,6 +748,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Custom health checks)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -740,6 +772,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -762,6 +795,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -785,6 +819,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -807,6 +842,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "EC2 Auto Scaling"],
   },
 ];
