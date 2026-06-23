@@ -420,7 +420,7 @@ export const domain3AimlAnalytics: Question[] = [
       "Amazon QuickSight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer.",
     reference: {
       label: "Amazon QuickSight",
-      url: "https://aws.amazon.com/quicksight/",
+      url: "https://aws.amazon.com/quicksuite/quicksight/",
     },
     lastVerified: "2026-06-23",
     services: ["QuickSight"],
