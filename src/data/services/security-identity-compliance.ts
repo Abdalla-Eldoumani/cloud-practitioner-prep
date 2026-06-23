@@ -269,4 +269,290 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       "organization sharing",
     ],
   },
+  {
+    id: "amazon-guardduty",
+    name: "Amazon GuardDuty",
+    shortName: "GuardDuty",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A threat detection service that continuously monitors your AWS accounts and workloads for malicious or unauthorized activity.",
+    whenToUse:
+      "Reach for it when you want ongoing detection of threats such as compromised credentials or unusual API calls, analyzed from your account activity and network logs without deploying agents.",
+    reference: {
+      label: "What is Amazon GuardDuty?",
+      url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "GuardDuty",
+      "threat detection",
+      "intrusion detection",
+      "anomaly detection",
+    ],
+    relatedTerms: [
+      "threat detection",
+      "malicious activity",
+      "continuous monitoring",
+      "findings",
+    ],
+    relatedServices: ["amazon-inspector", "amazon-macie", "amazon-detective"],
+  },
+  {
+    id: "amazon-inspector",
+    name: "Amazon Inspector",
+    shortName: "Inspector",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "An automated vulnerability management service that continually scans your workloads for software vulnerabilities and unintended network exposure.",
+    whenToUse:
+      "Reach for it when you need to find known vulnerabilities in your EC2 instances, container images, and Lambda functions and have them prioritized so you can patch the riskiest first.",
+    reference: {
+      label: "What is Amazon Inspector?",
+      url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Inspector",
+      "vulnerability scanning",
+      "vulnerability assessment",
+      "vulnerability management",
+    ],
+    relatedTerms: [
+      "vulnerability scanning",
+      "CVE",
+      "patching",
+      "network exposure",
+    ],
+    relatedServices: ["amazon-guardduty", "amazon-macie", "amazon-detective"],
+  },
+  {
+    id: "amazon-macie",
+    name: "Amazon Macie",
+    shortName: "Macie",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A data security service that uses machine learning and pattern matching to discover and protect sensitive data stored in Amazon S3.",
+    whenToUse:
+      "Reach for it when you need to know whether sensitive data such as personally identifiable information is sitting in your S3 buckets, and to be alerted when it is exposed.",
+    reference: {
+      label: "What is Amazon Macie?",
+      url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Macie",
+      "data discovery",
+      "sensitive data discovery",
+      "PII discovery",
+    ],
+    relatedTerms: [
+      "sensitive data",
+      "data discovery",
+      "PII",
+      "S3 data protection",
+    ],
+    relatedServices: ["amazon-guardduty", "amazon-inspector", "amazon-detective"],
+  },
+  {
+    id: "amazon-detective",
+    name: "Amazon Detective",
+    shortName: "Detective",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A service that analyzes and visualizes security data to help you investigate the root cause of potential security issues and suspicious activity.",
+    whenToUse:
+      "Reach for it after a finding is raised, when you need to dig into what happened by exploring linked events and activity over time to confirm and scope an issue.",
+    reference: {
+      label: "What is Amazon Detective?",
+      url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Detective",
+      "investigation",
+      "root cause analysis",
+      "security investigation",
+    ],
+    relatedTerms: [
+      "investigation",
+      "root cause",
+      "security analysis",
+      "incident analysis",
+    ],
+    relatedServices: ["amazon-guardduty", "amazon-inspector", "amazon-macie"],
+  },
+  {
+    id: "aws-shield",
+    name: "AWS Shield",
+    shortName: "Shield",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A managed service that protects applications running on AWS against Distributed Denial of Service (DDoS) attacks.",
+    whenToUse:
+      "Reach for it to defend an internet-facing application from DDoS attacks, with always-on standard protection for everyone and an advanced tier for higher-risk workloads.",
+    reference: {
+      label: "What is AWS Shield?",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Shield",
+      "DDoS protection",
+      "DDoS mitigation",
+      "Shield Advanced",
+    ],
+    relatedTerms: [
+      "DDoS protection",
+      "denial of service",
+      "attack mitigation",
+      "availability",
+    ],
+    relatedServices: ["aws-waf"],
+  },
+  {
+    id: "aws-waf",
+    name: "AWS WAF",
+    shortName: "WAF",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A web application firewall that filters and monitors HTTP and HTTPS requests to your web applications, blocking common exploits with rules you define.",
+    whenToUse:
+      "Reach for it to protect a web application or API from request-based threats such as SQL injection and cross-site scripting, by allowing, blocking, or rate-limiting traffic at the edge.",
+    reference: {
+      label: "What is AWS WAF?",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "WAF",
+      "web application firewall",
+      "request filtering",
+      "web ACL",
+    ],
+    relatedTerms: [
+      "web application firewall",
+      "SQL injection",
+      "cross-site scripting",
+      "request filtering",
+    ],
+    relatedServices: ["aws-shield"],
+  },
+  {
+    id: "aws-firewall-manager",
+    name: "AWS Firewall Manager",
+    shortName: "Firewall Manager",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A security management service that centrally configures and manages firewall rules across your accounts and applications in AWS Organizations.",
+    whenToUse:
+      "Reach for it when you run many accounts and want to apply and enforce a consistent set of WAF rules, Shield protections, and security group policies from one place.",
+    reference: {
+      label: "What is AWS Firewall Manager?",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Firewall Manager",
+      "central firewall management",
+      "firewall policy",
+      "FMS",
+    ],
+    relatedTerms: [
+      "central firewall management",
+      "policy enforcement",
+      "multi-account",
+      "organization-wide rules",
+    ],
+  },
+  {
+    id: "aws-security-hub",
+    name: "AWS Security Hub",
+    shortName: "Security Hub",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A service that gives you a comprehensive view of your security posture by aggregating, organizing, and prioritizing security findings from across AWS services and partner tools.",
+    whenToUse:
+      "Reach for it when you want one place to see and prioritize security alerts and automated best-practice checks gathered from services like GuardDuty, Inspector, and Macie.",
+    reference: {
+      label: "What is AWS Security Hub?",
+      url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Security Hub",
+      "security posture",
+      "findings aggregation",
+      "security dashboard",
+    ],
+    relatedTerms: [
+      "security posture",
+      "findings",
+      "compliance checks",
+      "aggregation",
+    ],
+  },
+  {
+    id: "aws-artifact",
+    name: "AWS Artifact",
+    shortName: "Artifact",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A service that provides on-demand access to AWS security and compliance reports and to select online agreements.",
+    whenToUse:
+      "Reach for it when an auditor or customer asks for evidence of AWS compliance, such as a SOC or PCI report, or when you need to review and accept an agreement like a BAA.",
+    reference: {
+      label: "What is AWS Artifact?",
+      url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Artifact",
+      "compliance reports",
+      "audit reports",
+      "SOC reports",
+    ],
+    relatedTerms: [
+      "compliance reports",
+      "audit artifacts",
+      "agreements",
+      "attestations",
+    ],
+  },
+  {
+    id: "aws-audit-manager",
+    name: "AWS Audit Manager",
+    shortName: "Audit Manager",
+    domain: 2,
+    category: "Security, Identity, and Compliance",
+    purpose:
+      "A service that helps you continually audit your AWS usage by automating the collection of evidence to assess your controls against frameworks and regulations.",
+    whenToUse:
+      "Reach for it when you need to prepare for an audit and want evidence gathered automatically and mapped to a framework, instead of collecting it by hand for each control.",
+    reference: {
+      label: "What is AWS Audit Manager?",
+      url: "https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html",
+    },
+    lastVerified: "2026-06-24",
+    aliases: [
+      "Audit Manager",
+      "audit evidence",
+      "evidence collection",
+      "compliance frameworks",
+    ],
+    relatedTerms: [
+      "audit evidence",
+      "evidence collection",
+      "compliance framework",
+      "controls",
+    ],
+  },
 ];
