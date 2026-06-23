@@ -739,7 +739,7 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Identity-based policies attach to a user, group, or role and say what that identity can do, while resource-based policies attach to a resource and say who can access it. Option c reverses the two, identity-based policies on a user omit Principal while resource-based policies require it, and both types can contain explicit Deny.",
+      "Identity-based policies attach to a user, group, or role and say what that identity can do, while resource-based policies attach to a resource and say who can access it. Claiming that resource-based policies attach to IAM groups and identity-based policies attach to S3 buckets reverses the two; identity-based policies on a user omit Principal while resource-based policies require it; and both types can contain explicit Deny.",
     reference: {
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
