@@ -27,7 +27,7 @@ export const domain4SupportMigration: Question[] = [
     ],
     correct: ["c"],
     explanation:
-      "Basic Support comes with every AWS account at no cost. It covers account and billing questions, service quota increase requests, AWS Trusted Advisor core checks, and round-the-clock access to documentation and the AWS re:Post community. The other plans are paid and add technical support cases and further features.",
+      "Basic Support comes with every AWS account at no cost. It covers account and billing questions, service quota increase requests, AWS Trusted Advisor core checks, and round-the-clock access to documentation and the AWS re:Post community. Developer Support, Business Support, and Enterprise Support are all paid plans that add technical support cases and further features, so none of them is the one included free.",
     reference: {
       label: "AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
@@ -515,7 +515,7 @@ export const domain4SupportMigration: Question[] = [
     ],
     correct: ["c"],
     explanation:
-      "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. Refactoring re-architects the application using cloud-native features, repurchasing replaces it with a different product such as a SaaS offering, and retiring decommissions an application that is no longer needed.",
+      "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. A refactor re-architects the application using cloud-native features, a repurchase replaces it with a different product such as a SaaS offering, and a retire decommissions an application that is no longer needed.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
@@ -649,7 +649,7 @@ export const domain4SupportMigration: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and Migration Hub tracks migrations rather than performing the database move.",
+      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and AWS Migration Hub tracks migration status rather than performing the database move.",
     reference: {
       label: "AWS Database Migration Service",
       url: "https://aws.amazon.com/dms/",
