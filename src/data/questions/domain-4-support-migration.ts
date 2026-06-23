@@ -318,7 +318,7 @@ export const domain4SupportMigration: Question[] = [
       "AWS re:Post is a community-driven question-and-answer service that replaced the original AWS Forums. It offers crowd-sourced, expert-reviewed answers and is integrated with AWS Support. Marketplace is a software catalog, Trusted Advisor gives account recommendations, and Cost Explorer analyzes spend.",
     reference: {
       label: "AWS re:Post",
-      url: "https://aws.amazon.com/repost/",
+      url: "https://repost.aws/",
     },
     lastVerified: "2026-06-23",
   },
@@ -429,7 +429,7 @@ export const domain4SupportMigration: Question[] = [
       "AWS re:Post (community Q&A) and AWS Whitepapers and Guides (technical content) are learning and help resources. AWS Marketplace is for buying third-party software, while GuardDuty (threat detection) and Shield (DDoS protection) are security services, not knowledge resources.",
     reference: {
       label: "AWS re:Post",
-      url: "https://aws.amazon.com/repost/",
+      url: "https://repost.aws/",
     },
     lastVerified: "2026-06-23",
   },
@@ -451,7 +451,7 @@ export const domain4SupportMigration: Question[] = [
       "The six AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. Governance is one of them. Networking, Billing, and Migration are not CAF perspectives, though they are addressed within the perspectives where relevant.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -474,7 +474,7 @@ export const domain4SupportMigration: Question[] = [
       "The AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. People and Platform are two of them. Pricing, Procurement, and Partners are not CAF perspectives.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -496,7 +496,7 @@ export const domain4SupportMigration: Question[] = [
       "The People perspective addresses culture, organizational structure, roles, and the skills and training needed for cloud adoption. The Platform perspective covers building and modernizing the technology platform, Security covers protecting data and workloads, and Operations covers running and managing services to meet business needs.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -518,7 +518,7 @@ export const domain4SupportMigration: Question[] = [
       "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. A refactor re-architects the application using cloud-native features, a repurchase replaces it with a different product such as a SaaS offering, and a retire decommissions an application that is no longer needed.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -540,7 +540,7 @@ export const domain4SupportMigration: Question[] = [
       "Retire means decommissioning an application that is no longer needed, which removes cost and effort from the migration. Retain keeps an application in its current environment for now, replatform makes a few cloud optimizations without re-architecting, and relocate moves infrastructure such as VMware workloads to AWS without changing the applications.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -562,7 +562,7 @@ export const domain4SupportMigration: Question[] = [
       "Repurchasing, sometimes called drop and shop, replaces an existing application with a different product, commonly a SaaS offering. Rehosting would move the existing server as is, replatforming would make small cloud optimizations to it, and refactoring would re-architect it using cloud-native services.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -585,7 +585,7 @@ export const domain4SupportMigration: Question[] = [
       "The 7 Rs are retire, retain, rehost, relocate, repurchase, replatform, and refactor (re-architect). Replatform and relocate are two of them. Resell, replicate, and restore are not migration strategies in this framework.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -675,7 +675,7 @@ export const domain4SupportMigration: Question[] = [
       "The AWS Snow Family provides physical devices you order, load with data, and ship back so AWS imports the data, which suits large transfers where the network is too slow or costly. DataSync moves data over the network, Direct Connect is a dedicated network connection rather than a shipped device, and S3 Multipart Upload still relies on the existing internet connection.",
     reference: {
       label: "AWS Snow Family",
-      url: "https://aws.amazon.com/snow/",
+      url: "https://aws.amazon.com/snowball/",
     },
     lastVerified: "2026-06-23",
   },
@@ -766,7 +766,7 @@ export const domain4SupportMigration: Question[] = [
       "The Governance perspective focuses on orchestrating cloud initiatives while maximizing benefits and managing risk, which covers risk management, compliance, and decision oversight. The Business perspective aligns cloud investment with business outcomes, the Platform perspective builds the technology environment, and the Operations perspective runs and supports cloud services.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -789,7 +789,7 @@ export const domain4SupportMigration: Question[] = [
       "The Operations perspective covers running and supporting cloud services to the levels the business needs, including event, incident, and problem management. Building the business case sits in the Business perspective, retraining staff sits in the People perspective, and protecting data and access sits in the Security perspective.",
     reference: {
       label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/cloud-adoption-framework.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -812,7 +812,7 @@ export const domain4SupportMigration: Question[] = [
       "Rehost is lift and shift with little or no code change, and replatform makes a few cloud optimizations (lift, tinker, and shift) without re-architecting. Retire decommissions an unneeded application (not keep it), refactor re-architects with cloud-native services (repurchase is the SaaS swap), and relocate moves infrastructure such as VMware workloads to AWS (not decommission).",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
     },
     lastVerified: "2026-06-23",
   },
