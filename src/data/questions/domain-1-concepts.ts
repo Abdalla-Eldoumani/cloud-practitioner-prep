@@ -27,6 +27,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-02",
@@ -48,6 +49,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-03",
@@ -69,6 +71,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-04",
@@ -91,6 +94,7 @@ export const domain1Concepts: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-05",
@@ -113,6 +117,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-06",
@@ -134,6 +139,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-07",
@@ -155,6 +161,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-08",
@@ -176,6 +183,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-09",
@@ -197,6 +205,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-10",
@@ -218,6 +227,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-11",
@@ -240,6 +250,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-12",
@@ -262,6 +273,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-13",
@@ -283,6 +295,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-14",
@@ -304,6 +317,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-15",
@@ -325,6 +339,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -347,6 +362,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -370,6 +386,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-18",
@@ -391,6 +408,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-19",
@@ -412,6 +430,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-20",
@@ -433,6 +452,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-21",
@@ -454,6 +474,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-22",
@@ -475,6 +496,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-23",
@@ -496,6 +518,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-24",
@@ -518,6 +541,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-25",
@@ -539,6 +563,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-26",
@@ -561,6 +586,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-27",
@@ -582,6 +608,7 @@ export const domain1Concepts: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -605,6 +632,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-29",
@@ -626,6 +654,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-30",
@@ -648,6 +677,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-31",
@@ -670,6 +700,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-32",
@@ -691,6 +722,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -713,5 +745,6 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
