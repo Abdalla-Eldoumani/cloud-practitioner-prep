@@ -26,6 +26,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-02",
@@ -47,6 +48,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-03",
@@ -68,6 +70,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-04",
@@ -89,6 +92,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-05",
@@ -110,6 +114,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: resiliency and the components of reliability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-06",
@@ -131,6 +136,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS Well-Architected Framework: Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-07",
@@ -152,6 +158,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-08",
@@ -173,6 +180,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-09",
@@ -194,6 +202,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-10",
@@ -216,6 +225,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-11",
@@ -238,6 +248,7 @@ export const domain1Resilience: Question[] = [
       label: "What is Elastic Load Balancing?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -260,6 +271,7 @@ export const domain1Resilience: Question[] = [
       label: "What is Elastic Load Balancing?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -282,6 +294,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -305,6 +318,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -327,6 +341,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -350,6 +365,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
   {
@@ -372,6 +388,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -394,6 +411,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -416,6 +434,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-19",
@@ -437,6 +456,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-20",
@@ -458,6 +478,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-21",
@@ -479,6 +500,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: define recovery objectives",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-22",
@@ -500,6 +522,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: define recovery objectives",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-23",
@@ -522,6 +545,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-24",
@@ -543,6 +567,7 @@ export const domain1Resilience: Question[] = [
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-25",
@@ -564,6 +589,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-26",
@@ -585,6 +611,7 @@ export const domain1Resilience: Question[] = [
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-27",
@@ -606,6 +633,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-28",
@@ -627,6 +655,7 @@ export const domain1Resilience: Question[] = [
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation"],
   },
   {
@@ -649,6 +678,7 @@ export const domain1Resilience: Question[] = [
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -671,6 +701,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-31",
@@ -692,6 +723,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -715,6 +747,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -737,6 +770,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-35",
@@ -759,6 +793,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -782,6 +817,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-37",
@@ -804,6 +840,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-38",
@@ -826,5 +863,6 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
