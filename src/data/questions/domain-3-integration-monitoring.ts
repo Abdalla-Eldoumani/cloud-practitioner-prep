@@ -70,7 +70,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon SNS is a managed publish/subscribe service: a publisher sends a message to a topic and SNS delivers it to all of the topic's subscribers, such as email, SMS, SQS queues, and Lambda functions. SQS is a single-consumer queue rather than a fan-out broadcaster, and EFS and Secrets Manager are unrelated to messaging.",
+      "Amazon SNS is a managed publish/subscribe service: a publisher sends a message to a topic and SNS delivers it to all of the topic's subscribers, such as email, SMS, SQS queues, and Lambda functions. SQS is a single-consumer queue rather than a fan-out broadcaster, and Amazon EFS and Secrets Manager are unrelated to messaging.",
     reference: {
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
@@ -233,7 +233,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Putting a managed queue (Amazon SQS) or a topic (Amazon SNS) between components decouples them, so messages are buffered or fanned out and a brief outage in one component does not directly fail the other. Merging components or co-locating them increases coupling and shared failure, and hiding errors does not improve resilience.",
+      "Putting a managed queue (Amazon SQS) or a topic (Amazon SNS) between components decouples them, so messages are buffered or fanned out and a brief outage in one component does not directly fail the other. Combining both into a single larger instance, or running both on the same physical server to avoid the network, only tightens coupling and shared failure, and hiding errors does not improve resilience.",
     reference: {
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
@@ -256,7 +256,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon EventBridge is a serverless event bus that ingests events from your applications, AWS services, and third-party sources and uses rules to route them to targets, making it the building block for event-driven architectures. RDS is a managed database, S3 is object storage, and Direct Connect is a dedicated network link, none of which is an event bus.",
+      "Amazon EventBridge is a serverless event bus that ingests events from your applications, AWS services, and third-party sources and uses rules to route them to targets, making it the building block for event-driven architectures. Amazon RDS is a managed database, Amazon S3 is object storage, and Direct Connect is a dedicated network link, none of which is an event bus.",
     reference: {
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
@@ -302,7 +302,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Step Functions is a serverless orchestration service that coordinates multiple steps into a workflow, modeled as a state machine with sequencing, branching, retries, and data passed from one step to the next. SQS is a message queue rather than an orchestrator, CloudFront is a content delivery network, and Trusted Advisor gives best-practice recommendations.",
+      "AWS Step Functions is a serverless orchestration service that coordinates multiple steps into a workflow, modeled as a state machine with sequencing, branching, retries, and data passed from one step to the next. Amazon SQS is a message queue rather than an orchestrator, CloudFront is a content delivery network, and Trusted Advisor gives best-practice recommendations.",
     reference: {
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
@@ -326,7 +326,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Step Functions models workflows as state machines built from a series of steps, where each step is a state, and it orchestrates the components of distributed applications and microservices. It is not a database, a content delivery network, or a VPC networking feature.",
+      "Step Functions models workflows as state machines built from a series of steps, where each step is a state, and it orchestrates the components of distributed applications and microservices. It is not a database or a content delivery network, and it is not a virtual private cloud feature for isolating traffic in subnets.",
     reference: {
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
@@ -349,7 +349,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon API Gateway is a fully managed service for creating, publishing, maintaining, monitoring, and securing APIs at any scale, and it acts as a front door for applications to reach backend services such as Lambda functions. EventBridge is an event bus, SNS is publish/subscribe messaging, and Athena queries data in Amazon S3.",
+      "Amazon API Gateway is a fully managed service for creating, publishing, maintaining, monitoring, and securing APIs at any scale, and it acts as a front door for applications to reach backend services such as Lambda functions. EventBridge is an event bus, Amazon SNS is publish/subscribe messaging, and Athena queries data in Amazon S3.",
     reference: {
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
@@ -489,7 +489,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither is object storage or a container runtime.",
+      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither one stores objects nor runs containers.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
@@ -583,7 +583,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudTrail Event history is available automatically when you create an account and provides a viewable, searchable, downloadable record of the past 90 days of management events. It is not a separate purchase, it records API activity rather than performance metrics, and it does not depend on first launching EC2.",
+      "CloudTrail Event history is available automatically when you create an account and provides a viewable, searchable, downloadable record of the past 90 days of management events. It does not have to be purchased separately before events are recorded, it records API activity rather than performance metrics, and it does not depend on first launching EC2.",
     reference: {
       label: "What Is AWS CloudTrail? Event history",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
@@ -652,7 +652,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS X-Ray collects data about requests as they travel through a distributed application and builds a trace map of the components, so you can pinpoint bottlenecks, latency spikes, and errors across services. SQS is a message queue, CloudTrail audits API activity rather than tracing request paths, and Macie discovers sensitive data in Amazon S3.",
+      "AWS X-Ray collects data about requests as they travel through a distributed application and builds a trace map of the components, so you can pinpoint bottlenecks, latency spikes, and errors across services. Amazon SQS is a message queue, CloudTrail audits API activity rather than tracing request paths, and Macie discovers sensitive data in Amazon S3.",
     reference: {
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
@@ -676,7 +676,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "X-Ray traces requests across the services of a distributed application and builds a trace map of the components a request passes through, so you can pinpoint bottlenecks and latency. Object storage and static hosting are Amazon S3, identity is AWS IAM, and a dedicated private link is AWS Direct Connect.",
+      "X-Ray traces requests across the services of a distributed application and builds a trace map of the components a request passes through, so you can pinpoint bottlenecks and latency. Object storage and static hosting are Amazon S3, managing users, groups, and permissions is AWS IAM, and a dedicated private link is AWS Direct Connect.",
     reference: {
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
@@ -699,7 +699,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Step Functions orchestrates ordered, branching workflows, including human-approval steps and different paths for each outcome, modeled as a state machine. SNS fans out notifications, API Gateway fronts APIs, and SQS buffers messages, but none of them orchestrates a multi-step workflow with branching and waits.",
+      "Step Functions orchestrates ordered, branching workflows, including human-approval steps and different paths for each outcome, modeled as a state machine. Amazon SNS fans out notifications, API Gateway fronts APIs, and Amazon SQS buffers messages, but none of them orchestrates a multi-step workflow with branching and waits.",
     reference: {
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
@@ -722,7 +722,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon EventBridge is a serverless event bus that ingests events from AWS services, custom applications, and third-party SaaS providers and uses rules to filter and route each event to the appropriate targets. API Gateway fronts request/response APIs, Step Functions orchestrates a defined workflow, and SQS is a point-to-point queue rather than a content-based event router.",
+      "Amazon EventBridge is a serverless event bus that ingests events from AWS services, custom applications, and third-party SaaS providers and uses rules to filter and route each event to the appropriate targets. API Gateway fronts request/response APIs, Step Functions orchestrates a defined workflow, and Amazon SQS is a point-to-point queue rather than a content-based event router.",
     reference: {
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
@@ -816,7 +816,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudWatch collects and tracks metrics and lets you set alarms that act when a threshold is breached. Recording API calls with caller identity is CloudTrail's job, key management and encryption is AWS KMS, and provisioning virtual servers is Amazon EC2, so those are not CloudWatch capabilities.",
+      "CloudWatch collects and tracks metrics and lets you set alarms that act when a threshold is breached. Recording API calls with caller identity is CloudTrail's job, encrypting data at rest with customer managed keys as a primary function is AWS KMS, and provisioning virtual servers is Amazon EC2, so those are not CloudWatch capabilities.",
     reference: {
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
