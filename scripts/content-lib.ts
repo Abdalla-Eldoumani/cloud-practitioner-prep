@@ -22,12 +22,13 @@ export function resolveGlob(relative: string): string {
 }
 
 // The only hosts a reference URL may use. Mirrors the content-accuracy rule:
-// official AWS documentation, the AWS marketing/site host, and the pricing
-// calculator. Enforced before any network call so live mode never reaches a
-// non-AWS host.
+// official AWS documentation, the AWS marketing/site host, the AWS re:Post
+// community host, and the pricing calculator. Enforced before any network call
+// so live mode never reaches a non-AWS host.
 export const AWS_HOSTS = new Set<string>([
   "docs.aws.amazon.com",
   "aws.amazon.com",
+  "repost.aws",
   "calculator.aws",
 ]);
 
