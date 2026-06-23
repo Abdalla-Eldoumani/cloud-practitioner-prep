@@ -70,12 +70,16 @@ class Reporter {
   }
 
   print(): void {
+    // LINT_FULL prints every violation id (no truncation) so a content pass can
+    // enumerate and fix all of them; default output stays capped for readability.
+    const full = !!process.env.LINT_FULL;
     if (this.warnings.size > 0) {
       console.log("\nWarnings (review, non-blocking):");
       for (const [rule, items] of this.warnings) {
         console.log(`  [${rule}] ${items.length}`);
-        for (const d of items.slice(0, 25)) console.log(`      - ${d}`);
-        if (items.length > 25) console.log(`      ... and ${items.length - 25} more`);
+        const cap = full ? items.length : 25;
+        for (const d of items.slice(0, cap)) console.log(`      - ${d}`);
+        if (items.length > cap) console.log(`      ... and ${items.length - cap} more`);
       }
     }
 
@@ -89,8 +93,9 @@ class Reporter {
     for (const [rule, items] of this.failures) {
       total += items.length;
       console.error(`  [${rule}] ${items.length}`);
-      for (const d of items.slice(0, 50)) console.error(`      - ${d}`);
-      if (items.length > 50) console.error(`      ... and ${items.length - 50} more`);
+      const cap = full ? items.length : 50;
+      for (const d of items.slice(0, cap)) console.error(`      - ${d}`);
+      if (items.length > cap) console.error(`      ... and ${items.length - cap} more`);
     }
     console.error(`\n${total} hard violation(s) across ${this.failures.size} rule(s).`);
   }
