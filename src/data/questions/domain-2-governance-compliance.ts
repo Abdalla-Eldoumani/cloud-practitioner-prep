@@ -28,6 +28,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -51,6 +52,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -73,6 +75,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -95,6 +98,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-05",
@@ -117,6 +121,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-06",
@@ -138,6 +143,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Cloud Compliance",
       url: "https://aws.amazon.com/compliance/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-07",
@@ -159,6 +165,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -203,6 +211,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -225,6 +234,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -247,6 +257,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -270,6 +281,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -292,6 +304,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail", "Amazon S3"],
   },
   {
@@ -315,6 +328,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -337,6 +351,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -359,6 +374,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -382,6 +398,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -404,6 +421,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -426,6 +444,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -448,6 +467,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -471,6 +491,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -493,6 +514,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -515,6 +537,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
   {
@@ -537,6 +560,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -559,6 +583,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -581,6 +606,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -603,6 +629,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower", "AWS Organizations"],
   },
   {
@@ -625,6 +652,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -648,6 +676,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -670,6 +699,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -692,6 +722,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -714,6 +745,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -736,6 +768,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -758,6 +791,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact", "AWS Organizations"],
   },
   {
@@ -781,6 +815,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail", "AWS Config"],
   },
   {
@@ -803,6 +838,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
 ];
