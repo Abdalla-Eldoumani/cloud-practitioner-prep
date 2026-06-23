@@ -250,8 +250,8 @@ export const domain2SharedResponsibility: Question[] = [
     explanation:
       "Security is shared, and for Lambda AWS protects the infrastructure that runs the service, including the servers and operating system. There is no host for the customer to log in to. The customer's responsibility on Lambda is the function code, its data, and the IAM permissions it uses.",
     reference: {
-      label: "Security in AWS Lambda",
-      url: "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html",
+      label: "AWS Shared Responsibility Model",
+      url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
     lastVerified: "2026-06-23",
     services: ["Lambda"],
@@ -273,8 +273,8 @@ export const domain2SharedResponsibility: Question[] = [
     explanation:
       "On Lambda the customer is responsible for the parts that are theirs: the function code, the data it handles, and the IAM execution role and permissions. AWS handles OS patching, provisioning and scaling the fleet, and the physical facilities under security of the cloud.",
     reference: {
-      label: "Security in AWS Lambda",
-      url: "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html",
+      label: "AWS Shared Responsibility Model",
+      url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
     lastVerified: "2026-06-23",
     services: ["Lambda"],
@@ -779,8 +779,8 @@ export const domain2SharedResponsibility: Question[] = [
     explanation:
       "On Lambda the customer owns the function code and the IAM execution role and permissions it uses. AWS protects the infrastructure that runs the service, which covers OS patching, scaling the compute, and physical server security, so those are not the customer's responsibility.",
     reference: {
-      label: "Security in AWS Lambda",
-      url: "https://docs.aws.amazon.com/lambda/latest/dg/lambda-security.html",
+      label: "AWS Shared Responsibility Model",
+      url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
     lastVerified: "2026-06-23",
     services: ["Lambda"],
