@@ -22,7 +22,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS defines a Region as a physical location in the world where it has multiple Availability Zones. It is not a single data center, an edge cache, or an account boundary; a Region is a geographic area that groups several Availability Zones together.",
+      "AWS defines a Region as a physical location in the world where it has multiple Availability Zones. It is not a single data center, a caching server placed close to end users to speed up content delivery, or an account isolation boundary; a Region is a geographic area that groups several Availability Zones together.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
@@ -155,7 +155,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon CloudFront is the content delivery network that speeds up distribution of web content by serving it from edge locations close to users. EC2 provides compute, VPC provides networking isolation, and IAM manages access, none of which is a content delivery network.",
+      "Amazon CloudFront is the content delivery network that speeds up distribution of web content by serving it from edge locations close to users. Amazon EC2 provides compute, Amazon VPC provides networking isolation, and IAM manages access, none of which is a content delivery network.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
@@ -202,7 +202,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudFront routes each request to the lowest-latency edge location, and if the content is not already cached there it retrieves the content from the origin you defined, such as an S3 bucket or HTTP server. It does not pin every request to one Region, route by the origin's Availability Zone, or hand the request to the user's ISP.",
+      "CloudFront routes each request to the lowest-latency edge location, and if the content is not already cached there it retrieves the content from the origin you defined, such as an S3 bucket or HTTP server. It does not pin every request to one Region, route by the origin's Availability Zone, or leave the request answered by the user's own internet service provider instead of AWS.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
@@ -270,7 +270,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Wavelength runs AWS infrastructure and services inside telecommunications partners' data centers at the edge of 5G networks to meet ultra-low-latency needs for mobile and connected devices. CloudFront caches web content, a distant Region adds latency, and EBS is block storage.",
+      "AWS Wavelength runs AWS infrastructure and services inside telecommunications partners' data centers at the edge of 5G networks to meet ultra-low-latency needs for mobile and connected devices. CloudFront caches web content, an AWS Region in another country adds latency, and Amazon EBS is block storage rather than carrier-edge compute.",
     reference: {
       label: "AWS Wavelength",
       url: "https://aws.amazon.com/wavelength/",
@@ -292,7 +292,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Running a workload in a Region closer to end users improves performance and lowers latency, so proximity to the customers is the key factor here. The global count of Regions, console appearance, and other customers' presence do not determine response time for these users.",
+      "Running a workload in a Region closer to end users improves performance and lowers latency, so proximity to the customers is the key factor here. The total number of Regions worldwide, the console color scheme, and the number of other customers already in a Region do not determine response time for these users.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
@@ -403,7 +403,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Because Regions are spread around the world, deploying in an additional Region closer to the new users is how you reduce their latency. Concentrating data in one Availability Zone, deleting the original Region, or renaming a Region does none of that.",
+      "Because Regions are spread around the world, deploying in an additional Region closer to the new users is how you reduce their latency. Concentrating data in one Availability Zone, deleting the original Region, or renaming the existing Region to match the new continent does none of that.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
@@ -448,7 +448,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Edge locations are part of the CloudFront content delivery network and cache content close to users, while Availability Zones are the discrete data centers in a Region where you run compute and store data. They are not the same thing, their roles are not reversed, and edge locations are not larger than Regions.",
+      "Edge locations are part of the CloudFront content delivery network and cache content close to users, while Availability Zones are the discrete data centers in a Region where you run compute and store data. Edge locations do not run your databases while Availability Zones only cache static files, the two are not the same thing, and edge locations are not larger than Regions.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
@@ -494,7 +494,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists running low-latency applications at the edge and meeting stringent state and local data residency requirements, in sectors such as healthcare, financial services, and government, as reasons to use Local Zones. Local Zones do not remove the need for a Region, do not make data transfer free and unlimited, and do not freeze pricing.",
+      "AWS lists running low-latency applications at the edge and meeting stringent state and local data residency requirements, in sectors such as healthcare, financial services, and government, as reasons to use Local Zones. Local Zones do not eliminate the need for any Region, do not provide free unlimited data transfer to the internet, and do not guarantee that no AWS service ever changes price.",
     reference: {
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
@@ -561,7 +561,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "A Region is a geographic area containing multiple Availability Zones, and each Availability Zone is made up of one or more discrete data centers, so the order from largest to smallest is Region, Availability Zone, data center. The other orderings misplace these layers.",
+      "A Region is a geographic area containing multiple Availability Zones, and each Availability Zone is made up of one or more discrete data centers, so the order from largest to smallest is Region, Availability Zone, data center. The other orderings misplace these layers, and an edge location is a CloudFront cache point, not a tier in this Region-to-data-center hierarchy.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
@@ -583,7 +583,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Region selection balances several factors at once: latency or proximity to users, whether needed services and features are available, pricing, and compliance. Choosing by Availability Zone count, alphabetical order, or maximum distance from players ignores the actual requirements.",
+      "Region selection balances several factors at once: latency or proximity to users, whether needed services and features are available, pricing, and compliance. Choosing by Availability Zone count, picking the Region alphabetically first by its code, or picking the Region farthest from the players to spread load all ignore the actual requirements.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
@@ -718,7 +718,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Edge locations are the data centers in the CloudFront network that cache content close to viewers so requests are served from a nearby location with low latency. IAM manages access, a distant Availability Zone increases delay, and an EBS volume is block storage for a single instance.",
+      "Edge locations are the data centers in the CloudFront network that cache content close to viewers so requests are served from a nearby location with low latency. The control plane of AWS IAM manages access, a distant Availability Zone increases delay, and an EBS volume is block storage for a single instance.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
@@ -764,7 +764,7 @@ export const domain1Global: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Multiple Availability Zones give compute high availability and fault tolerance, while CloudFront edge locations cache content close to users to reduce latency, so each tool fits one goal. The reversed pairing is wrong, one Availability Zone does not provide the spread needed for high availability, and IAM addresses access rather than either goal.",
+      "Multiple Availability Zones give compute high availability and fault tolerance, while CloudFront edge locations cache content close to users to reduce latency, so each tool fits one goal. The option that says to use CloudFront edge locations for compute and Availability Zones for caching reverses the roles, one Availability Zone does not provide the spread needed for high availability, and using IAM for both goals addresses access rather than either goal.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
