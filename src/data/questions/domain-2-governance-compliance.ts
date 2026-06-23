@@ -229,7 +229,7 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Config records the historical configuration of a resource, so it answers what the instance looked like at a point in time, while CloudTrail records API activity, so it answers who took an action and when. The pairing is reversed in the second option, and Artifact and CloudWatch do not provide this configuration-and-actor history.",
+      "AWS Config records the historical configuration of a resource, so it answers what the instance looked like at a point in time, while CloudTrail records API activity, so it answers who took an action and when. Pairing CloudTrail with the past configuration state and Config with the actor reverses their roles, and Artifact and CloudWatch do not provide this configuration-and-actor history.",
     reference: {
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
