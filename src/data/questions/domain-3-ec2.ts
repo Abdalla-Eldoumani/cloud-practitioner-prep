@@ -704,16 +704,16 @@ export const domain3Ec2: Question[] = [
     type: "single",
     topic: "Savings Plans",
     difficulty: "medium",
-    stem: "How does a customer make the commitment for a Savings Plan?",
+    stem: "After a team buys a Savings Plan, how does the lower Savings Plans price get applied to their running EC2 usage?",
     options: [
-      { id: "a", text: "By committing to a consistent amount of compute usage measured in dollars per hour for a one-year or three-year term." },
-      { id: "b", text: "By committing to a fixed number of gigabytes of storage per month." },
-      { id: "c", text: "By committing to a maximum monthly bill that AWS will never exceed." },
-      { id: "d", text: "By paying a single fee that covers all compute for five years." },
+      { id: "a", text: "AWS applies it automatically to matching usage each hour, with no need to stop, modify, or relaunch instances." },
+      { id: "b", text: "The team must manually tag each instance that should receive the discount before it applies." },
+      { id: "c", text: "The team must terminate On-Demand instances and relaunch them as Savings Plan instances." },
+      { id: "d", text: "The discount applies only after the team opens a billing support case each month." },
     ],
     correct: ["a"],
     explanation:
-      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for prices below On-Demand. It is not a storage commitment, not a spending cap, and not a five-year one-time fee.",
+      "A Savings Plan lowers the rate AWS charges for usage that matches the plan, and AWS applies it automatically to that usage each hour up to the committed dollar-per-hour amount, so the team does not stop, tag, modify, or relaunch instances and does not open a case to receive it. There is no separate Savings Plan instance type to launch.",
     reference: {
       label: "What are Savings Plans?",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
