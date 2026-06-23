@@ -9,8 +9,17 @@
 import { globby } from "globby";
 import matter from "gray-matter";
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { ALL_QUESTIONS } from "../src/data/questions/index";
 import type { Question } from "../src/lib/types";
+
+// Resolve a path relative to this module into a glob pattern globby accepts on
+// every platform. new URL().pathname yields a leading-slash, drive-letter form
+// (/C:/...) that fast-glob does not match on Windows; fileURLToPath gives native
+// separators, so normalize the backslashes to forward slashes for globby.
+export function resolveGlob(relative: string): string {
+  return fileURLToPath(new URL(relative, import.meta.url)).replace(/\\/g, "/");
+}
 
 // The only hosts a reference URL may use. Mirrors the content-accuracy rule:
 // official AWS documentation, the AWS marketing/site host, and the pricing
@@ -23,8 +32,7 @@ export const AWS_HOSTS = new Set<string>([
 ]);
 
 // Glob roots, resolved relative to this file so the scripts run from any cwd.
-const LESSONS_GLOB = new URL("../src/content/lessons/*.mdx", import.meta.url)
-  .pathname;
+const LESSONS_GLOB = resolveGlob("../src/content/lessons/*.mdx");
 
 // AWS marks superseded pages "for historical reference only". A reference must
 // not point at one. These match the URL forms AWS uses for retired/archived doc
