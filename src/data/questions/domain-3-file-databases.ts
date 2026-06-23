@@ -27,6 +27,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EFS", "EC2"],
   },
   {
@@ -49,6 +50,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EFS"],
   },
   {
@@ -71,6 +73,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EFS", "FSx"],
   },
   {
@@ -93,6 +96,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is FSx for Windows File Server?",
       url: "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["FSx"],
   },
   {
@@ -115,6 +119,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx for Lustre",
       url: "https://aws.amazon.com/fsx/lustre/",
     },
+    lastVerified: "2026-06-23",
     services: ["FSx", "S3"],
   },
   {
@@ -137,6 +142,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx for NetApp ONTAP",
       url: "https://aws.amazon.com/fsx/netapp-ontap/",
     },
+    lastVerified: "2026-06-23",
     services: ["FSx"],
   },
   {
@@ -160,6 +166,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx",
       url: "https://aws.amazon.com/fsx/",
     },
+    lastVerified: "2026-06-23",
     services: ["FSx"],
   },
   {
@@ -182,6 +189,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EFS", "FSx"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3FileDatabases: Question[] = [
       label: "AWS Storage Gateway",
       url: "https://aws.amazon.com/storagegateway/",
     },
+    lastVerified: "2026-06-23",
     services: ["Storage Gateway"],
   },
   {
@@ -226,6 +235,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is AWS Snowball Edge?",
       url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Snow Family"],
   },
   {
@@ -248,6 +258,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is AWS Snowball Edge?",
       url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Snow Family"],
   },
   {
@@ -270,6 +281,7 @@ export const domain3FileDatabases: Question[] = [
       label: "AWS Storage Gateway",
       url: "https://aws.amazon.com/storagegateway/",
     },
+    lastVerified: "2026-06-23",
     services: ["Storage Gateway", "Snow Family"],
   },
   {
@@ -292,6 +304,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -315,6 +328,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -337,6 +351,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "EC2"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Configuring and managing a Multi-AZ deployment for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -382,6 +398,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Working with DB instance read replicas",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -405,6 +422,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Configuring and managing a Multi-AZ deployment for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -427,6 +445,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -449,6 +468,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Aurora",
       url: "https://aws.amazon.com/rds/aurora/",
     },
+    lastVerified: "2026-06-23",
     services: ["Aurora"],
   },
   {
@@ -471,6 +491,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Aurora",
       url: "https://aws.amazon.com/rds/aurora/",
     },
+    lastVerified: "2026-06-23",
     services: ["Aurora"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB"],
   },
   {
@@ -538,6 +561,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB"],
   },
   {
@@ -560,6 +584,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
+    lastVerified: "2026-06-23",
     services: ["ElastiCache"],
   },
   {
@@ -583,6 +608,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
+    lastVerified: "2026-06-23",
     services: ["ElastiCache"],
   },
   {
@@ -606,6 +632,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
+    lastVerified: "2026-06-23",
     services: ["ElastiCache", "RDS"],
   },
   {
@@ -628,6 +655,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Neptune",
       url: "https://aws.amazon.com/neptune/",
     },
+    lastVerified: "2026-06-23",
     services: ["Neptune"],
   },
   {
@@ -650,6 +678,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon DocumentDB",
       url: "https://aws.amazon.com/documentdb/",
     },
+    lastVerified: "2026-06-23",
     services: ["DocumentDB"],
   },
   {
@@ -673,6 +702,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Neptune",
       url: "https://aws.amazon.com/neptune/",
     },
+    lastVerified: "2026-06-23",
     services: ["Neptune", "DocumentDB", "DynamoDB", "ElastiCache", "RDS"],
   },
   {
@@ -696,6 +726,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "DynamoDB"],
   },
   {
@@ -718,6 +749,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB"],
   },
   {
@@ -740,6 +772,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB", "EFS"],
   },
   {
@@ -763,6 +796,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "DynamoDB"],
   },
   {
@@ -785,6 +819,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
+    lastVerified: "2026-06-23",
     services: ["Redshift"],
   },
   {
@@ -807,6 +842,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx for Lustre",
       url: "https://aws.amazon.com/fsx/lustre/",
     },
+    lastVerified: "2026-06-23",
     services: ["FSx", "S3"],
   },
   {
@@ -830,6 +866,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EFS", "ElastiCache", "RDS", "Neptune", "Snow Family"],
   },
   {
@@ -852,6 +889,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["DynamoDB", "RDS"],
   },
 ];
