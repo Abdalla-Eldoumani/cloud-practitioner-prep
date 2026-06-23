@@ -63,7 +63,7 @@ export const endUserComputing: ServiceEntry[] = [
       "Reach for it when you want users to reach internal or SaaS web applications through a browser without managing the browser fleet or keeping the data on their devices.",
     reference: {
       label: "What is Amazon WorkSpaces Secure Browser?",
-      url: "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html",
+      url: "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-secure-browser.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
