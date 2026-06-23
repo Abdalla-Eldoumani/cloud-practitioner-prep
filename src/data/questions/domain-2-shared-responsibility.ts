@@ -498,7 +498,7 @@ export const domain2SharedResponsibility: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states all user data stored in Amazon DynamoDB is fully encrypted at rest, using keys in AWS KMS, and DynamoDB is fully managed, so AWS performs the encryption server side. The customer never installs software on or patches DynamoDB servers, and there is no customer-hardware option.",
+      "AWS states all user data stored in Amazon DynamoDB is fully encrypted at rest by default, using an AWS owned key through its integration with AWS KMS, and DynamoDB is fully managed, so AWS performs the encryption server side. The customer never installs software on or patches DynamoDB servers, and there is no customer-hardware option.",
     reference: {
       label: "DynamoDB encryption at rest",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html",
