@@ -139,7 +139,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a", "c"],
     explanation:
-      "Security groups operate at the instance level and network ACLs at the subnet level, and security groups support allow rules only while network ACLs support both allow and deny. The statefulness is reversed in option b: security groups are stateful and network ACLs are stateless. Security groups cannot express a deny, so the last option is wrong.",
+      "Security groups operate at the instance level and network ACLs at the subnet level, and security groups support allow rules only while network ACLs support both allow and deny. Calling security groups stateless and network ACLs stateful reverses their statefulness: security groups are stateful and network ACLs are stateless. Security groups cannot express a deny, so the claim that both support deny rules is wrong.",
     reference: {
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
@@ -675,7 +675,7 @@ export const domain2NetworkProtection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Network Firewall protects VPC network traffic as a managed network firewall and IDS/IPS, while AWS WAF inspects HTTP and HTTPS requests to web applications. Option b reverses their roles, the services are not interchangeable, and neither is a DDoS or DNS service.",
+      "AWS Network Firewall protects VPC network traffic as a managed network firewall and IDS/IPS, while AWS WAF inspects HTTP and HTTPS requests to web applications. Saying Network Firewall filters HTTP requests while WAF protects the whole VPC reverses their roles, the services are not interchangeable, and neither is a DDoS or DNS service.",
     reference: {
       label: "What is AWS Network Firewall?",
       url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
