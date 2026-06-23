@@ -69,7 +69,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Comprehend is a natural language processing service that uncovers insights such as sentiment, entities, and key phrases in text. Translate converts text between languages, Textract extracts text and data from scanned documents, and Lex builds conversational chatbots, so none of those provide text insight analysis.",
+      "Amazon Comprehend is a natural language processing service that uncovers insights such as sentiment, entities, and key phrases in text. Translate converts text between languages, Textract extracts text and data from scanned documents, and Amazon Lex builds conversational chatbots, so none of those provide text insight analysis.",
     reference: {
       label: "Amazon Comprehend",
       url: "https://aws.amazon.com/comprehend/",
@@ -92,7 +92,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Polly is a service that converts text into lifelike speech using deep learning, which is exactly text to speech. Transcribe does the reverse by turning speech into text, Comprehend analyzes text meaning, and Lex builds chatbots, so they do not generate spoken audio from text.",
+      "Amazon Polly is a service that converts text into lifelike speech using deep learning, which is exactly text to speech. Transcribe does the reverse by turning speech into text, Comprehend analyzes text meaning, and Amazon Lex builds chatbots, so they do not generate spoken audio from text.",
     reference: {
       label: "Amazon Polly",
       url: "https://aws.amazon.com/polly/",
@@ -230,7 +230,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Q Developer is a generative AI powered assistant for building, operating, and transforming software, including coding help and troubleshooting AWS resources. Polly generates speech, Lex builds chatbots, and Translate translates languages, so none act as a software development assistant.",
+      "Amazon Q Developer is a generative AI powered assistant for building, operating, and transforming software, including coding help and troubleshooting AWS resources. Polly generates speech, Amazon Lex builds chatbots, and Translate translates languages, so none act as a software development assistant.",
     reference: {
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
@@ -300,7 +300,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Athena is a serverless, interactive query service that analyzes data directly in Amazon S3 using standard SQL, with no infrastructure to manage and pay-per-query pricing. Redshift requires loading data into a warehouse, RDS is a transactional database, and EMR runs managed clusters, so none match query-in-place over S3 with no servers.",
+      "Amazon Athena is a serverless, interactive query service that analyzes data directly in Amazon S3 using standard SQL, with no infrastructure to manage and pay-per-query pricing. Redshift requires loading data into a warehouse, Amazon RDS is a transactional database, and Amazon EMR runs managed clusters, so none match query-in-place over S3 with no servers.",
     reference: {
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
@@ -646,7 +646,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift and EMR require provisioned clusters that run and bill continuously, and RDS is a managed database that needs data loaded into it, so each adds infrastructure Athena avoids.",
+      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift and Amazon EMR require provisioned clusters that run and bill continuously, and Amazon RDS is a managed database that needs data loaded into it, so each adds infrastructure Athena avoids.",
     reference: {
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
@@ -669,7 +669,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Bedrock is a fully managed service for building generative AI applications on foundation models, including customization with a knowledge base, with no models to host. EMR runs big data frameworks, Kinesis streams data, and Redshift is a data warehouse, so none provide managed foundation models for generative AI.",
+      "Amazon Bedrock is a fully managed service for building generative AI applications on foundation models, including customization with a knowledge base, with no models to host. Amazon EMR runs big data frameworks, Kinesis streams data, and Redshift is a data warehouse, so none provide managed foundation models for generative AI.",
     reference: {
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
