@@ -386,7 +386,7 @@ export const domain2SharedResponsibility: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Patch management is a shared control: AWS is responsible for patching and fixing flaws within the infrastructure, while the customer is responsible for patching their guest operating system and applications. It is wrong to say AWS patches everything including the customer's applications, or that the customer patches everything including the AWS infrastructure; each option collapses the split onto one party.",
+      "Patch management is a shared control: AWS is responsible for patching and fixing flaws within the infrastructure, while the customer is responsible for patching their guest operating system and applications. It is wrong to say AWS patches everything including the customer's applications, or that the customer patches everything including the AWS infrastructure; each wrong answer collapses the split onto one party.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
