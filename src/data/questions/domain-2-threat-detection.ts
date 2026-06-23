@@ -27,6 +27,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -50,6 +51,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -72,6 +74,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -95,6 +98,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "EC2", "ECR", "Lambda"],
   },
   {
@@ -117,6 +121,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -139,6 +144,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -161,6 +167,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
   {
@@ -183,6 +190,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -205,6 +213,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "EC2"],
   },
   {
@@ -227,6 +236,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -249,6 +259,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective", "GuardDuty"],
   },
   {
@@ -271,6 +282,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -294,6 +306,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Inspector", "Macie", "Detective", "Security Hub"],
   },
   {
@@ -316,6 +329,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -339,6 +353,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -361,6 +376,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -383,6 +399,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Detective"],
   },
   {
@@ -405,6 +422,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: reduced effort to collect and prioritize findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -427,6 +445,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: consolidated view of findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -450,6 +469,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "Macie", "GuardDuty", "Security Hub", "Detective"],
   },
   {
@@ -473,6 +493,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -495,6 +516,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -518,6 +540,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie? Evaluate and monitor data for security and access control",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -541,6 +564,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective? How does Detective work?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
   {
@@ -564,6 +588,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -586,6 +611,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -608,6 +634,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Security Hub", "Detective"],
   },
   {
@@ -631,6 +658,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "EC2"],
   },
   {
@@ -653,6 +681,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -675,6 +704,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector? Amazon Inspector Risk score",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -698,6 +728,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie", "Detective"],
   },
   {
@@ -720,6 +751,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -742,6 +774,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "GuardDuty"],
   },
   {
@@ -764,6 +797,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -786,6 +820,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -808,6 +843,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
 ];
