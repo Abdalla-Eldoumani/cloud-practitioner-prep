@@ -32,6 +32,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-02",
@@ -53,6 +54,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-03",
@@ -74,6 +76,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Features of AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-04",
@@ -95,6 +98,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-05",
@@ -116,6 +120,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Features of AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-06",
@@ -137,6 +142,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-07",
@@ -158,6 +164,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Understanding AWS Support response times",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-08",
@@ -180,6 +187,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-09",
@@ -201,6 +209,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Developer, Business, and Enterprise On-Ramp end of support",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-10",
@@ -222,6 +231,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-11",
@@ -244,6 +254,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-12",
@@ -265,6 +276,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-13",
@@ -286,6 +298,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-14",
@@ -307,6 +320,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS re:Post",
       url: "https://aws.amazon.com/repost/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-15",
@@ -328,6 +342,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Marketplace",
       url: "https://aws.amazon.com/marketplace/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-16",
@@ -349,6 +364,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Partner Network",
       url: "https://aws.amazon.com/partners/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-17",
@@ -370,6 +386,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Whitepapers & Guides",
       url: "https://aws.amazon.com/whitepapers/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-18",
@@ -391,6 +408,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Well-Architected Tool",
       url: "https://aws.amazon.com/well-architected-tool/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-19",
@@ -413,6 +431,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS re:Post",
       url: "https://aws.amazon.com/repost/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-20",
@@ -434,6 +453,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Cloud Adoption Framework",
       url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-21",
@@ -456,6 +476,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Cloud Adoption Framework",
       url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-22",
@@ -477,6 +498,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Cloud Adoption Framework",
       url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-23",
@@ -498,6 +520,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-24",
@@ -519,6 +542,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-25",
@@ -540,6 +564,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-26",
@@ -562,6 +587,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-27",
@@ -583,6 +609,7 @@ export const domain4SupportMigration: Question[] = [
       label: "What Is AWS Migration Hub?",
       url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-28",
@@ -604,6 +631,7 @@ export const domain4SupportMigration: Question[] = [
       label: "What Is AWS Migration Hub? (Application Migration Service)",
       url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Migration Service", "EC2"],
   },
   {
@@ -626,6 +654,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Database Migration Service",
       url: "https://aws.amazon.com/dms/",
     },
+    lastVerified: "2026-06-23",
     services: ["DMS"],
   },
   {
@@ -648,6 +677,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Snow Family",
       url: "https://aws.amazon.com/snow/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-31",
@@ -669,6 +699,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS DataSync",
       url: "https://aws.amazon.com/datasync/",
     },
+    lastVerified: "2026-06-23",
     services: ["DataSync", "S3"],
   },
   {
@@ -692,6 +723,7 @@ export const domain4SupportMigration: Question[] = [
       label: "What Is AWS Migration Hub?",
       url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-33",
@@ -714,6 +746,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-34",
@@ -735,6 +768,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Cloud Adoption Framework",
       url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-35",
@@ -757,6 +791,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Cloud Adoption Framework",
       url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/aws-cloud-adoption-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-supportmig-36",
@@ -779,5 +814,6 @@ export const domain4SupportMigration: Question[] = [
       label: "Migration strategies (the 7 Rs)",
       url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/apg-migration-strategies.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
