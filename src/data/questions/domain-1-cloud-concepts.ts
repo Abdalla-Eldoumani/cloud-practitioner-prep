@@ -41,7 +41,7 @@ export const domain1: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "The cloud lets you stop buying hardware upfront (capital expense) and instead pay for what you consume (operating expense). The Free Tier is limited, and pay-as-you-go bills vary with usage rather than staying flat.",
+      "The cloud lets you stop buying hardware upfront (capital expense) and instead pay for what you consume (operating expense). The inverse claim, that the cloud replaces variable spend with a large fixed capital expense, reverses the actual shift. The Free Tier is limited, and pay-as-you-go bills vary with usage rather than staying flat.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -64,7 +64,7 @@ export const domain1: Question[] = [
     ],
     correct: ["a", "c"],
     explanation:
-      "Going global in minutes and getting out of the data center business are stated AWS benefits. Customers still own application and data security under the shared responsibility model, services roll out to Regions over time, and right-sizing and monitoring remain the customer's job.",
+      "Going global in minutes and getting out of the data center business are stated AWS benefits. The cloud does not eliminate the need to secure your own applications and data, since customers still own that security under the shared responsibility model; services roll out to Regions over time rather than all being everywhere, and right-sizing and monitoring remain the customer's job.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
