@@ -115,8 +115,8 @@ export const domain3ServerlessContainers: Question[] = [
     explanation:
       "Standard Lambda functions run for up to 15 minutes per invocation, so a 25-minute task would exceed the timeout and must be split, redesigned, or moved to a service suited to longer runs. There is no unlimited runtime, the limit is not 60 minutes so 25 minutes is not well within range, and it is not a 1-minute cap under which almost no job fits.",
     reference: {
-      label: "What is AWS Lambda: Functions and durable functions",
-      url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+      label: "AWS Lambda quotas",
+      url: "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
     },
     lastVerified: "2026-06-23",
     services: ["Lambda"],
@@ -814,8 +814,8 @@ export const domain3ServerlessContainers: Question[] = [
     explanation:
       "Amazon ECS with the Fargate launch type runs containers without managing servers and does not require Kubernetes, which matches the requirement. Self-managed EC2 means managing servers, a 25-minute task exceeds Lambda's 15-minute limit, and Lightsail bundles are not the fit for serverless container orchestration here.",
     reference: {
-      label: "AWS Overview: AWS Fargate",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
+      label: "AWS Lambda quotas",
+      url: "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
     },
     lastVerified: "2026-06-23",
     services: ["ECS", "Fargate"],
