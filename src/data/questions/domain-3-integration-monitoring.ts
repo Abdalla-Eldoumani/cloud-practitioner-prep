@@ -29,6 +29,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -51,6 +52,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -73,6 +75,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SNS"],
   },
   {
@@ -96,6 +99,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SNS"],
   },
   {
@@ -118,6 +122,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS", "SNS"],
   },
   {
@@ -140,6 +145,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Application integration: the Fanout scenario in Amazon SNS",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SNS", "SQS"],
   },
   {
@@ -163,6 +169,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS", "SNS"],
   },
   {
@@ -185,6 +192,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Amazon SQS queue types",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -207,6 +215,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Amazon SQS queue types",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -229,6 +238,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS", "SNS"],
   },
   {
@@ -251,6 +261,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EventBridge"],
   },
   {
@@ -273,6 +284,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EventBridge"],
   },
   {
@@ -295,6 +307,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Step Functions"],
   },
   {
@@ -318,6 +331,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Step Functions"],
   },
   {
@@ -340,6 +354,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["API Gateway", "Lambda"],
   },
   {
@@ -363,6 +378,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["API Gateway"],
   },
   {
@@ -385,6 +401,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch"],
   },
   {
@@ -407,6 +424,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Using Amazon CloudWatch alarms",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch", "SNS"],
   },
   {
@@ -430,6 +448,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon CloudWatch? Collect, store, and query logs",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch"],
   },
   {
@@ -452,6 +471,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudTrail"],
   },
   {
@@ -474,6 +494,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch", "CloudTrail"],
   },
   {
@@ -496,6 +517,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudTrail"],
   },
   {
@@ -518,6 +540,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch", "SNS"],
   },
   {
@@ -541,6 +564,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch", "CloudTrail"],
   },
   {
@@ -564,6 +588,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail? Event history",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudTrail"],
   },
   {
@@ -586,6 +611,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS Health?",
       url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Health"],
   },
   {
@@ -608,6 +634,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS Health?",
       url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Health"],
   },
   {
@@ -630,6 +657,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
+    lastVerified: "2026-06-23",
     services: ["X-Ray"],
   },
   {
@@ -653,6 +681,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
+    lastVerified: "2026-06-23",
     services: ["X-Ray"],
   },
   {
@@ -675,6 +704,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Step Functions"],
   },
   {
@@ -697,6 +727,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EventBridge"],
   },
   {
@@ -719,6 +750,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudTrail", "CloudWatch"],
   },
   {
@@ -741,6 +773,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SNS"],
   },
   {
@@ -764,6 +797,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Step Functions", "API Gateway", "SQS", "SNS", "EventBridge"],
   },
   {
@@ -787,6 +821,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudWatch"],
   },
   {
@@ -810,6 +845,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS", "SNS"],
   },
 ];
