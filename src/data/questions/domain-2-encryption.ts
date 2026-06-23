@@ -27,6 +27,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-enc-02",
@@ -48,6 +49,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-enc-03",
@@ -69,6 +71,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -91,6 +94,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -114,6 +118,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -136,6 +141,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -159,6 +165,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -203,6 +211,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS (envelope encryption)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "S3"],
   },
   {
@@ -225,6 +234,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -247,6 +257,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3", "KMS"],
   },
   {
@@ -269,6 +280,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "KMS"],
   },
   {
@@ -292,6 +304,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "KMS"],
   },
   {
@@ -314,6 +327,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -337,6 +351,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -359,6 +374,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -381,6 +397,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM"],
   },
   {
@@ -404,6 +421,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM"],
   },
   {
@@ -427,6 +445,7 @@ export const domain2Encryption: Question[] = [
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "ELB", "CloudFront"],
   },
   {
@@ -449,6 +468,7 @@ export const domain2Encryption: Question[] = [
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "EC2"],
   },
   {
@@ -471,6 +491,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Secrets Manager?",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -493,6 +514,7 @@ export const domain2Encryption: Question[] = [
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -515,6 +537,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager", "Systems Manager"],
   },
   {
@@ -537,6 +560,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Systems Manager", "KMS"],
   },
   {
@@ -560,6 +584,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudHSM"],
   },
   {
@@ -582,6 +607,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "CloudHSM"],
   },
   {
@@ -604,6 +630,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "Secrets Manager", "KMS"],
   },
   {
@@ -627,6 +654,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "S3", "EBS"],
   },
   {
@@ -649,6 +677,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "S3", "KMS"],
   },
   {
@@ -672,6 +701,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -694,6 +724,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources (encryption in transit)",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -716,6 +747,7 @@ export const domain2Encryption: Question[] = [
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -738,6 +770,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Secrets Manager? (pricing and encryption)",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager", "KMS"],
   },
   {
@@ -760,6 +793,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudHSM"],
   },
   {
@@ -783,6 +817,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "ACM", "Secrets Manager", "Systems Manager"],
   },
   {
@@ -806,6 +841,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3", "EBS"],
   },
 ];
