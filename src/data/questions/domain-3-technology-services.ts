@@ -22,6 +22,7 @@ export const domain3: Question[] = [
       label: "AWS Lambda",
       url: "https://aws.amazon.com/lambda/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "S3"],
   },
   {
@@ -44,6 +45,7 @@ export const domain3: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -66,6 +68,7 @@ export const domain3: Question[] = [
       label: "Amazon SQS",
       url: "https://aws.amazon.com/sqs/",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
 ];
