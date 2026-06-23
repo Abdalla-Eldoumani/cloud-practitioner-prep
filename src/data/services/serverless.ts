@@ -16,7 +16,7 @@ export const serverless: ServiceEntry[] = [
       "Reach for it when you want to run containers on ECS or EKS but would rather not manage the EC2 instances behind them.",
     reference: {
       label: "What is AWS Fargate?",
-      url: "https://docs.aws.amazon.com/AmazonECS/latest/userguide/what-is-fargate.html",
+      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
