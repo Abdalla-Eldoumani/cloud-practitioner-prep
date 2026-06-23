@@ -64,7 +64,7 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The framework is built on six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Earlier versions listed five before sustainability was added, but the current framework names six.",
+      "The framework is built on six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Earlier versions listed five before sustainability was added, but the current framework names six, so neither four nor seven is correct.",
     reference: {
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
@@ -177,7 +177,7 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when expected, including recovering from failures and meeting demand. Recovering automatically from disruption sits squarely in Reliability, not in cost, performance, or operations.",
+      "The Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when expected, including recovering from failures and meeting demand. Recovering automatically from disruption sits squarely in Reliability; Cost Optimization targets spend, Performance Efficiency targets resource fit, and Operational Excellence targets running and improving workloads, not automatic recovery.",
     reference: {
       label: "Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
@@ -243,7 +243,7 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Sustainability pillar focuses on environmental impacts, especially energy consumption and efficiency, as levers to reduce resource usage. Although right-sizing also lowers cost, the pillar defined by minimizing environmental impact is Sustainability, not Cost Optimization or the others.",
+      "The Sustainability pillar focuses on environmental impacts, especially energy consumption and efficiency, as levers to reduce resource usage. Although right-sizing also lowers cost, the pillar defined by minimizing environmental impact is Sustainability, not Cost Optimization, Performance Efficiency, or Operational Excellence.",
     reference: {
       label: "Sustainability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sustainability.html",
@@ -576,7 +576,7 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Improve through game days is the principle of regularly scheduling simulations of events in production to learn where improvements can be made and to build organizational experience. Production-scale testing, automation, and capacity planning are separate principles that do not describe rehearsing incidents.",
+      "Improve through game days is the principle of regularly scheduling simulations of events in production to learn where improvements can be made and to build organizational experience. Testing systems at production scale, automating with architectural experimentation in mind, and stopping guessing your capacity needs are separate principles that do not describe rehearsing incidents.",
     reference: {
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
