@@ -22,7 +22,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe owning hardware, offline software, or a fixed contract, none of which is the on-demand, consumption-based model AWS describes.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. Buying physical servers in bulk to house in your own building describes owning on-premises hardware, while offline laptop software and a fixed annual server contract are likewise the opposite of the on-demand, consumption-based model AWS describes.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
@@ -66,7 +66,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, mailing physical media, or owning a satellite are not how AWS describes access to cloud resources.",
+      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, shipping a hard drive to the provider, or owning a dedicated satellite are not how AWS describes access to cloud resources.",
     reference: {
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
@@ -200,7 +200,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises or moving everything at once does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
+      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises until the end, or a cloud-only model requiring every workload to move on day one, does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
@@ -447,7 +447,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes massive economies of scale as achieving a lower variable cost than you could on your own because usage from hundreds of thousands of customers is aggregated, which translates into lower pay-as-you-go prices. Ending data center upkeep, increasing agility, and going global are different advantages.",
+      "AWS describes massive economies of scale as achieving a lower variable cost than you could on your own because usage from hundreds of thousands of customers is aggregated, which translates into lower pay-as-you-go prices. The advantage about stopping spending money running and maintaining data centers is about maintenance labor rather than aggregated cost, while increasing agility and going global are different advantages again.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -513,7 +513,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes increase speed and agility as new IT resources being only a click away, cutting provisioning time from weeks to minutes and lowering the cost and time to experiment. The other choices describe data center upkeep, aggregated pricing, and expense type rather than provisioning speed.",
+      "AWS describes increase speed and agility as new IT resources being only a click away, cutting provisioning time from weeks to minutes and lowering the cost and time to experiment. Stopping spending money running and maintaining data centers is about maintenance labor, the benefit from massive economies of scale is about aggregated pricing, and trading fixed for variable expense is about cost type, none of which is provisioning speed.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -627,7 +627,7 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront purchase, the loss of pay-as-you-go, and a single-Region restriction all contradict how AWS describes cloud benefits.",
+      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront hardware purchase, the claim that the cloud removes the option to pay only for what you use, and a single-Region restriction all contradict how AWS describes cloud benefits.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
