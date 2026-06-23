@@ -22,6 +22,7 @@ export const domain2: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -44,6 +45,7 @@ export const domain2: Question[] = [
       label: "Amazon GuardDuty",
       url: "https://aws.amazon.com/guardduty/",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -67,6 +69,7 @@ export const domain2: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
 ];
