@@ -27,6 +27,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-02",
@@ -48,6 +49,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-03",
@@ -69,6 +71,7 @@ export const domain1Global: Question[] = [
       label: "AWS Global Infrastructure: Regions and Availability Zones",
       url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-04",
@@ -90,6 +93,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-05",
@@ -112,6 +116,7 @@ export const domain1Global: Question[] = [
       label: "AWS Global Infrastructure: Regions and Availability Zones",
       url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-06",
@@ -133,6 +138,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-07",
@@ -154,6 +160,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -176,6 +183,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -199,6 +207,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -221,6 +230,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront", "S3"],
   },
   {
@@ -243,6 +253,7 @@ export const domain1Global: Question[] = [
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-12",
@@ -264,6 +275,7 @@ export const domain1Global: Question[] = [
       label: "AWS Wavelength",
       url: "https://aws.amazon.com/wavelength/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-13",
@@ -285,6 +297,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-14",
@@ -306,6 +319,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-15",
@@ -328,6 +342,7 @@ export const domain1Global: Question[] = [
       label: "AWS Global Infrastructure: Regions and Availability Zones",
       url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-16",
@@ -349,6 +364,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-17",
@@ -370,6 +386,7 @@ export const domain1Global: Question[] = [
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-18",
@@ -391,6 +408,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-19",
@@ -413,6 +431,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-20",
@@ -434,6 +453,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -456,6 +476,7 @@ export const domain1Global: Question[] = [
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-22",
@@ -478,6 +499,7 @@ export const domain1Global: Question[] = [
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-23",
@@ -499,6 +521,7 @@ export const domain1Global: Question[] = [
       label: "AWS Global Infrastructure: Regions and Availability Zones",
       url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-24",
@@ -520,6 +543,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront", "S3"],
   },
   {
@@ -542,6 +566,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-26",
@@ -563,6 +588,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-27",
@@ -584,6 +610,7 @@ export const domain1Global: Question[] = [
       label: "AWS Wavelength",
       url: "https://aws.amazon.com/wavelength/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-28",
@@ -606,6 +633,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -629,6 +657,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-30",
@@ -650,6 +679,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-31",
@@ -671,6 +701,7 @@ export const domain1Global: Question[] = [
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-32",
@@ -692,6 +723,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -715,6 +747,7 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-34",
@@ -736,6 +769,7 @@ export const domain1Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFront"],
   },
   {
@@ -759,6 +793,7 @@ export const domain1Global: Question[] = [
       label: "AWS Wavelength",
       url: "https://aws.amazon.com/wavelength/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-global-36",
@@ -781,5 +816,6 @@ export const domain1Global: Question[] = [
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
