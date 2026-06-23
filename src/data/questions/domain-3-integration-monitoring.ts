@@ -422,7 +422,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. It does not delete resources, edit code, or cut off account-wide traffic.",
     reference: {
       label: "Using Amazon CloudWatch alarms",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html",
     },
     lastVerified: "2026-06-23",
     services: ["CloudWatch", "SNS"],
