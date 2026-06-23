@@ -17,7 +17,7 @@ export const domain2: Question[] = [
     ],
     correct: ["c"],
     explanation:
-      "AWS is responsible for security of the cloud (facilities, hardware, and the virtualization layer). The customer is responsible for security in the cloud, which for EC2 includes the guest OS, including its patches, plus applications, data, and access control.",
+      "AWS is responsible for security of the cloud (facilities, hardware, and the virtualization layer). The customer is responsible for security in the cloud, which for EC2 includes the guest OS, including its patches, plus applications, data, and access control. Physical data center security, replacing failed hardware, and patching the hypervisor on the EC2 host all stay with AWS, so they are not the company's responsibility.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
