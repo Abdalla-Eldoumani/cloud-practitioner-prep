@@ -67,7 +67,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Stop guessing capacity is AWS wording for eliminating guesses about infrastructure needs: instead of sitting on idle resources or hitting limits, you access as much or as little capacity as you need and scale up and down with a few minutes' notice. Economies of scale, ending data center spend, and the fixed-to-variable expense shift are distinct advantages and do not describe scaling to match demand.",
+      "Stop guessing capacity is AWS wording for eliminating guesses about infrastructure needs: instead of sitting on idle resources or hitting limits, you access as much or as little capacity as you need and scale up and down with a few minutes' notice. Economies of scale, stopping spending money running and maintaining data centers, and the fixed-to-variable expense shift are distinct advantages and do not describe scaling to match demand.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -200,7 +200,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe buying on-premises hardware, a flat unlimited subscription, or a mandatory long-term lease, none of which match the AWS definition.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The bulk purchase of servers installed in your own building and billed annually describes on-premises hardware, a flat unlimited monthly subscription is not consumption-based, and a leasing model that requires a three-year contract is the opposite of on-demand, so none match the AWS definition.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
@@ -266,7 +266,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; services are not all free; and no multi-year contract is required to use AWS.",
+      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; AWS does not provide every service at no cost; and no multi-year contract is required to use AWS.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -311,7 +311,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, removing all coding, and owning the physical servers are not advantages AWS claims; in the cloud you do not own the underlying hardware.",
+      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, eliminating the need to write any application code, and owning the physical servers are not advantages AWS claims; the cloud does not write your code for you, and you do not own the underlying hardware.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -468,7 +468,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes stop guessing capacity as eliminating the dilemma where a capacity decision made before deployment leaves you with idle resources or limited capacity, because in the cloud you access as much or as little as you need and scale on demand. The fixed-to-variable expense shift, speed and agility, and ending data center spend are separate advantages that do not directly address the over- or under-provisioning trade-off.",
+      "AWS describes stop guessing capacity as eliminating the dilemma where a capacity decision made before deployment leaves you with idle resources or limited capacity, because in the cloud you access as much or as little as you need and scale on demand. The fixed-to-variable expense shift, speed and agility, and stopping spending money running and maintaining data centers are separate advantages that do not directly address the over- or under-provisioning trade-off.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -580,7 +580,7 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, buying hardware upfront, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
+      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, having to buy and install hardware before any workload runs, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
