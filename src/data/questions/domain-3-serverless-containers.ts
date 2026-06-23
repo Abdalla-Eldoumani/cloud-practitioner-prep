@@ -25,6 +25,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -47,6 +48,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -69,6 +71,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -92,6 +95,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Lambda Pricing",
       url: "https://aws.amazon.com/lambda/pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -114,6 +118,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda: Functions and durable functions",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -136,6 +141,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "S3"],
   },
   {
@@ -159,6 +165,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "API Gateway", "EventBridge"],
   },
   {
@@ -181,6 +188,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Lambda Pricing",
       url: "https://aws.amazon.com/lambda/pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "EventBridge", "S3"],
   },
   {
@@ -226,6 +235,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -249,6 +259,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "EC2"],
   },
   {
@@ -271,6 +282,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -293,6 +305,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS"],
   },
   {
@@ -316,6 +329,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "Fargate", "EC2"],
   },
   {
@@ -338,6 +352,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS"],
   },
   {
@@ -382,6 +398,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS: Kubernetes compatibility and support",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS"],
   },
   {
@@ -404,6 +421,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS", "ECS"],
   },
   {
@@ -426,6 +444,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate", "ECS"],
   },
   {
@@ -449,6 +468,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate", "ECS", "EKS"],
   },
   {
@@ -471,6 +491,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "EC2", "Fargate"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "EC2", "Fargate"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate"],
   },
   {
@@ -538,6 +561,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECR",
       url: "https://aws.amazon.com/ecr/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECR"],
   },
   {
@@ -560,6 +584,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Architect your solution for Amazon ECS",
       url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECR", "ECS", "EKS"],
   },
   {
@@ -582,6 +607,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -605,6 +631,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -627,6 +654,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Elastic Beanstalk",
       url: "https://aws.amazon.com/elasticbeanstalk/",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -649,6 +677,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
   {
@@ -672,6 +701,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
   {
@@ -694,6 +724,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: Amazon Lightsail",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lightsail"],
   },
   {
@@ -716,6 +747,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon Lightsail",
       url: "https://aws.amazon.com/lightsail/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lightsail"],
   },
   {
@@ -739,6 +771,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Outposts",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Outposts"],
   },
   {
@@ -761,6 +794,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Outposts",
       url: "https://aws.amazon.com/outposts/",
     },
+    lastVerified: "2026-06-23",
     services: ["Outposts"],
   },
   {
@@ -783,6 +817,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "Fargate"],
   },
   {
@@ -805,6 +840,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -828,6 +864,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: Compute services",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "Fargate", "ECS", "EKS"],
   },
   {
@@ -850,6 +887,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
 ];
