@@ -25,6 +25,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-02",
@@ -47,6 +48,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-03",
@@ -68,6 +70,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-04",
@@ -89,6 +92,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-05",
@@ -110,6 +114,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-06",
@@ -131,6 +136,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -153,6 +159,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -175,6 +182,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Spot Instances",
       url: "https://aws.amazon.com/ec2/spot/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -197,6 +205,7 @@ export const domain4Pricing: Question[] = [
       label: "Spot Instance interruption notices",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-instance-termination-notices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -219,6 +228,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -241,6 +251,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -264,6 +275,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -287,6 +299,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -309,6 +322,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -331,6 +345,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -353,6 +368,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -375,6 +391,7 @@ export const domain4Pricing: Question[] = [
       label: "What is AWS Pricing Calculator?",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-18",
@@ -396,6 +413,7 @@ export const domain4Pricing: Question[] = [
       label: "What is AWS Pricing Calculator?",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-19",
@@ -417,6 +435,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Free Tier",
       url: "https://aws.amazon.com/free/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-20",
@@ -438,6 +457,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-21",
@@ -459,6 +479,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Free Tier",
       url: "https://aws.amazon.com/free/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-22",
@@ -480,6 +501,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Billing User Guide: AWS Free Tier (before July 15, 2025)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-23",
@@ -501,6 +523,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-24",
@@ -522,6 +545,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -544,6 +568,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -566,6 +591,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-27",
@@ -588,6 +614,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -610,6 +637,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
 ];
