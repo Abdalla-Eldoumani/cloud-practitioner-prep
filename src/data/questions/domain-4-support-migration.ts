@@ -73,8 +73,8 @@ export const domain4SupportMigration: Question[] = [
     explanation:
       "Business Support is the lowest classic tier that provides 24/7 phone, chat, and email access to Cloud Support Engineers along with the full set of Trusted Advisor checks, which is why AWS recommends it as a minimum for production workloads. Basic and Developer lack 24/7 engineer access and the full checks. Enterprise adds a designated Technical Account Manager and faster critical response, but at higher cost than required here. AWS is consolidating its lineup, with Business Support reaching end of support on January 1, 2027 and customers moving to Business Support+, but the exam still frames the classic tier.",
     reference: {
-      label: "Features of AWS Support Plans",
-      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+      label: "AWS Support plan end of support",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
     lastVerified: "2026-06-23",
   },
@@ -95,8 +95,8 @@ export const domain4SupportMigration: Question[] = [
     explanation:
       "Developer Support is the entry paid plan aimed at testing and early development. It allows technical support cases with guidance during business hours, which is enough for a non-production experiment. Basic cannot open technical cases, while Business and Enterprise are built for production workloads and cost more than this use needs. AWS is consolidating its lineup, with Developer Support reaching end of support on January 1, 2027 and customers moving to Business Support+, but the exam still frames the classic tier.",
     reference: {
-      label: "AWS Support Plans",
-      url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
+      label: "AWS Support plan end of support",
+      url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
     lastVerified: "2026-06-23",
   },
