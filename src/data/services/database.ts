@@ -40,7 +40,7 @@ export const database: ServiceEntry[] = [
       "Reach for it when your application stores data as documents and you want a managed, MongoDB-compatible database to run it.",
     reference: {
       label: "What is Amazon DocumentDB?",
-      url: "https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html",
+      url: "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
