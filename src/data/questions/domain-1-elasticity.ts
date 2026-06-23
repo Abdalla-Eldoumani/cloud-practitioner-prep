@@ -26,6 +26,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-02",
@@ -47,6 +48,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-03",
@@ -68,6 +70,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-04",
@@ -89,6 +92,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -111,6 +115,7 @@ export const domain1Elasticity: Question[] = [
       label: "Amazon EC2 instance type changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -133,6 +138,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -155,6 +161,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -177,6 +184,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-09",
@@ -199,6 +207,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-10",
@@ -220,6 +229,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: distribute instances across Availability Zones",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-11",
@@ -241,6 +251,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -263,6 +274,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -285,6 +297,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-14",
@@ -306,6 +319,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: better cost management",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -328,6 +342,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -350,6 +365,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-17",
@@ -371,6 +387,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-18",
@@ -392,6 +409,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -414,6 +432,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: better fault tolerance",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -437,6 +456,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-21",
@@ -458,6 +478,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-22",
@@ -479,6 +500,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? Pricing",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -501,6 +523,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-24",
@@ -522,6 +545,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-25",
@@ -543,6 +567,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "CloudWatch"],
   },
   {
@@ -566,6 +591,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -588,6 +614,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-28",
@@ -609,6 +636,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: go global in minutes",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-29",
@@ -630,6 +658,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: stop guessing capacity",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-30",
@@ -651,6 +680,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-31",
@@ -672,6 +702,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-32",
@@ -693,6 +724,7 @@ export const domain1Elasticity: Question[] = [
       label: "High availability for Amazon Aurora",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Aurora", "RDS"],
   },
   {
@@ -716,6 +748,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-34",
@@ -738,6 +771,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-35",
@@ -760,6 +794,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -783,6 +818,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "DynamoDB"],
   },
   {
@@ -806,6 +842,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -829,6 +866,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -852,6 +890,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-40",
@@ -874,6 +913,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-41",
@@ -896,5 +936,6 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
 ];
