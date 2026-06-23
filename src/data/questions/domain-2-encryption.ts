@@ -22,11 +22,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Encryption at rest protects data while it is stored, such as objects in S3 or data on EBS volumes. Encryption in transit protects data while it moves from one system to another over a network. Stored data and moving data are distinct states, so the first is at rest and the second is in transit.",
+      "Encryption at rest protects data while it is stored, such as objects in S3 or data on EBS volumes. Encryption in transit protects data while it moves from one system to another over a network. Stored data and moving data are distinct states, so the first is at rest and the second is in transit. Tokenization and hashing are different techniques, not the names for these two encryption states, and stored data does not count as transit, so calling both protections in transit is wrong.",
     reference: {
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-enc-02",
@@ -43,11 +44,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Transport Layer Security encrypts data in transit so its confidentiality and integrity are protected as it travels between systems. At-rest disk encryption protects stored data, not data on the wire; RAID is for storage redundancy; and DNS resolves names and does not encrypt the payload.",
+      "Transport Layer Security encrypts data in transit so its confidentiality and integrity are protected as it travels between systems. At-rest disk encryption protects stored data, not data on the wire; RAID is for storage redundancy; and DNS resolution maps names to addresses and does not encrypt the payload.",
     reference: {
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-enc-03",
@@ -69,6 +71,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -86,11 +89,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS KMS keys are created, managed, used, and deleted entirely within AWS KMS and never leave the service unencrypted; they are protected by hardware security modules. The other options describe exposing key material, which KMS is specifically designed to prevent.",
+      "AWS KMS keys are created, managed, used, and deleted entirely within AWS KMS and never leave the service unencrypted; they are protected by hardware security modules. KMS does not email key material to the account owner as a backup, it does not store keys as plaintext files in a customer bucket, and it does not print key material into CloudTrail logs each time a key is used; each of those would expose the material KMS is designed to protect.",
     reference: {
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -114,6 +118,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -136,6 +141,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -159,6 +165,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -176,11 +183,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS KMS automatically rotates all AWS managed keys every year, and the customer cannot change that rotation schedule. The other options describe manual or absent rotation, which does not match how AWS handles these keys.",
+      "AWS KMS automatically rotates all AWS managed keys every year, and the customer cannot change that rotation schedule. These keys are not left unrotated to be replaced manually each month, rotation is not triggered by opening a support case, and it does not depend on a flow where the customer deletes and recreates the key; all of those describe manual or absent rotation that does not match how AWS handles these keys.",
     reference: {
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -198,11 +206,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Envelope encryption is the practice of encrypting plaintext data with a data key, and then encrypting that data key with a KMS key, which is how services such as Amazon S3 protect data with AWS KMS. The other options describe double-encrypting with one key, storing keys in plaintext, or tokenization, none of which is envelope encryption.",
+      "Envelope encryption is the practice of encrypting plaintext data with a data key, and then encrypting that data key with a KMS key, which is how services such as Amazon S3 protect data with AWS KMS. The other options describe double-encrypting with one key, storing the data and its key together in plaintext inside the same file, or tokenization, none of which is envelope encryption.",
     reference: {
       label: "Amazon S3 server-side encryption with AWS KMS (envelope encryption)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "S3"],
   },
   {
@@ -225,6 +234,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -242,11 +252,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "SSE-KMS lets Amazon S3 encrypt objects with an AWS KMS key, and choosing a customer managed key gives the team control over key policies, rotation, and auditing of key usage. S3 does support KMS, encryption does not require moving data out of AWS, and hashing is not encryption.",
+      "SSE-KMS lets Amazon S3 encrypt objects with an AWS KMS key, and choosing a customer managed key gives the team control over key policies, rotation, and auditing of key usage. S3 can use KMS keys, so the claim that it cannot is false; encryption does not require the data to leave AWS for processing; and a client-side hashing function is not encryption.",
     reference: {
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3", "KMS"],
   },
   {
@@ -264,11 +275,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon EBS encryption uses AWS KMS keys when creating encrypted volumes and snapshots, so you do not have to build your own key management infrastructure. Route 53 is DNS, ACM manages TLS certificates, and SNS is messaging; none provide EBS encryption keys.",
+      "Amazon EBS encryption uses AWS KMS keys when creating encrypted volumes and snapshots, so you do not have to build your own key management infrastructure. Route 53 is DNS, ACM manages TLS certificates, and Amazon SNS is a messaging service; none provide EBS encryption keys.",
     reference: {
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "KMS"],
   },
   {
@@ -292,6 +304,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EBS", "KMS"],
   },
   {
@@ -309,11 +322,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "You can encrypt an Amazon RDS DB instance only when you create it, not after it already exists as an unencrypted instance. You can still effectively add encryption by snapshotting the instance and restoring from an encrypted copy of that snapshot, but there is no in-place toggle on a running unencrypted instance.",
+      "You can encrypt an Amazon RDS DB instance only when you create it, not after it already exists as an unencrypted instance. It is not gated on a thirty-day waiting period, there is no in-place toggle on a running unencrypted instance, and there is no hidden flag that AWS Support flips on request; instead you snapshot the instance and restore from an encrypted copy of that snapshot.",
     reference: {
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -337,6 +351,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -359,6 +374,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS", "KMS"],
   },
   {
@@ -376,11 +392,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Certificate Manager handles the complexity of creating, storing, and renewing public and private SSL/TLS certificates that protect your AWS websites and applications. KMS manages encryption keys, Secrets Manager manages secrets, and GuardDuty is a threat detection service; none provision and manage TLS certificates.",
+      "AWS Certificate Manager handles the complexity of creating, storing, and renewing public and private SSL/TLS certificates that protect your AWS websites and applications. AWS Key Management Service manages encryption keys, Secrets Manager manages secrets, and GuardDuty is a threat detection service; none provision and manage TLS certificates.",
     reference: {
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM"],
   },
   {
@@ -404,6 +421,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM"],
   },
   {
@@ -427,6 +445,7 @@ export const domain2Encryption: Question[] = [
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "ELB", "CloudFront"],
   },
   {
@@ -444,11 +463,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that ACM is not intended for use with a standalone web server, and you cannot associate an ACM certificate with an EC2 instance that is not connected to a Nitro Enclave; ACM instead deploys certificates to integrated services such as load balancers and CloudFront. The other options misstate how ACM works.",
+      "AWS states that ACM is not intended for use with a standalone web server, and you cannot associate an ACM certificate with an EC2 instance that is not connected to a Nitro Enclave; ACM instead deploys certificates to integrated services such as load balancers and CloudFront. ACM does not automatically install a certificate onto any EC2 instance you choose, its certificates are not limited to EC2, and you do not delete the EC2 instance before ACM will issue a certificate.",
     reference: {
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "EC2"],
   },
   {
@@ -471,6 +491,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Secrets Manager?",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -493,6 +514,7 @@ export const domain2Encryption: Question[] = [
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -510,11 +532,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS recommends Secrets Manager when you manage credentials that require automatic rotation, since it is purpose-built to store and rotate secrets such as database credentials. Parameter Store SecureString parameters are a good fit for encrypted values that do not require rotation, and AWS never recommends hard-coding credentials.",
+      "AWS recommends Secrets Manager when you manage credentials that require automatic rotation, since it is purpose-built to store and rotate secrets such as database credentials. Parameter Store standard parameters do not rotate secrets automatically by default, so neither the claim that they do nor the claim that either service rotates credentials natively with no extra setup is correct, and AWS never recommends hard-coding credentials.",
     reference: {
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager", "Systems Manager"],
   },
   {
@@ -537,6 +560,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Systems Manager", "KMS"],
   },
   {
@@ -555,11 +579,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS CloudHSM provides single-tenant HSMs and gives you full control of your keys and algorithms, with an end-to-end encrypted data plane that is not visible to AWS. AWS does not hold your CloudHSM keys, CloudHSM does not issue public certificates, and it is single-tenant rather than shared across customers.",
+      "AWS CloudHSM provides single-tenant HSMs and gives you full control of your keys and algorithms, with an end-to-end encrypted data plane that is not visible to AWS. It is not a fully managed service in which AWS holds and controls your keys, it does not issue public certificates, and it is single-tenant rather than a multi-tenant service shared across all customers.",
     reference: {
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudHSM"],
   },
   {
@@ -582,6 +607,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "CloudHSM"],
   },
   {
@@ -599,11 +625,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "ACM provisions and manages TLS certificates, Secrets Manager stores and rotates secrets such as database credentials, and AWS KMS centrally manages encryption keys. The other options swap these distinct roles, and ACM does not manage secrets or encryption keys.",
+      "ACM provisions and manages TLS certificates, Secrets Manager stores and rotates secrets such as database credentials, and AWS KMS centrally manages encryption keys. The other options swap these distinct roles, and ACM does not handle all three needs, since it manages certificates but not secrets or encryption keys.",
     reference: {
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "Secrets Manager", "KMS"],
   },
   {
@@ -627,6 +654,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "S3", "EBS"],
   },
   {
@@ -649,6 +677,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ACM", "S3", "KMS"],
   },
   {
@@ -672,6 +701,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS"],
   },
   {
@@ -694,6 +724,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources (encryption in transit)",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -711,11 +742,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Rotation in Secrets Manager updates the credentials in both the secret and the database or service, so the new credential stays in sync with what applications retrieve. Updating only one side, or only sending a reminder, would break authentication, which is not how rotation works.",
+      "Rotation in Secrets Manager updates the credentials in both the secret and the database or service, so the new credential stays in sync with what applications retrieve. Updating only the stored secret while leaving the database credential unchanged, or only the database credential while leaving the stored secret unchanged, or merely sending a reminder would all break authentication, which is not how rotation works.",
     reference: {
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager"],
   },
   {
@@ -733,11 +765,12 @@ export const domain2Encryption: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Secrets Manager encrypts your secrets at rest with AWS KMS, and you can use the AWS managed key aws/secretsmanager to encrypt them for free, or choose your own KMS key. Secrets are not stored in plain text, running CloudHSM is not required, and the protection includes data at rest.",
+      "Secrets Manager encrypts your secrets at rest with AWS KMS, and you can use the AWS managed key aws/secretsmanager to encrypt them for free, or choose your own KMS key. Secrets are not stored in plain text, running CloudHSM is not required, and it does not protect secrets only in transit, since the encryption it provides covers data at rest.",
     reference: {
       label: "What is AWS Secrets Manager? (pricing and encryption)",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Secrets Manager", "KMS"],
   },
   {
@@ -760,6 +793,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudHSM"],
   },
   {
@@ -783,6 +817,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["KMS", "ACM", "Secrets Manager", "Systems Manager"],
   },
   {
@@ -806,6 +841,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3", "EBS"],
   },
 ];

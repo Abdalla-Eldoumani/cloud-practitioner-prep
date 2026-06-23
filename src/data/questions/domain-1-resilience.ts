@@ -26,6 +26,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-02",
@@ -47,6 +48,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-03",
@@ -68,6 +70,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-04",
@@ -89,6 +92,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-05",
@@ -110,6 +114,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: resiliency and the components of reliability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-06",
@@ -126,11 +131,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states the Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when it is expected to, including operating and testing it through its lifecycle. User interface design, minimizing service count, and file format variety are unrelated to that definition.",
+      "AWS states the Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when it is expected to, including operating and testing it through its lifecycle. A visually appealing user interface, using the fewest possible services regardless of the requirement, and storing data in as many file formats as possible are unrelated to that definition.",
     reference: {
       label: "AWS Well-Architected Framework: Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-07",
@@ -152,6 +158,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-08",
@@ -173,6 +180,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-09",
@@ -194,6 +202,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-10",
@@ -216,6 +225,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-11",
@@ -233,11 +243,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS states that using a load balancer to distribute workloads across multiple compute resources increases the availability and fault tolerance of your applications. It does not cap incoming traffic, it depends on having more than one target to balance across, and it is not designed to slow requests down.",
+      "AWS states that using a load balancer to distribute workloads across multiple compute resources increases the availability and fault tolerance of your applications. It does not guarantee the application can never receive too much traffic, it does not remove the need to run more than one server since it balances across several, and it is not designed to slow requests down.",
     reference: {
       label: "What is Elastic Load Balancing?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -255,11 +266,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Elastic Load Balancing monitors the health of its registered targets and routes traffic only to the healthy ones, so a single failing instance does not break the service. It does not keep sending traffic to a failed target, take down the whole application, or delete the instance.",
+      "Elastic Load Balancing monitors the health of its registered targets and routes traffic only to the healthy ones, so a single failing instance does not break the service. It does not keep sending an equal share to the failed server, shut down the entire application, or permanently delete the unhealthy server and its data.",
     reference: {
       label: "What is Elastic Load Balancing?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -277,11 +289,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS lists better fault tolerance as a benefit of EC2 Auto Scaling: it can detect when an instance is unhealthy, terminate it, and launch a replacement, which keeps capacity healthy without manual intervention. Leaving a bad instance in service, scaling to zero, or changing a purchase option would not restore the failed capacity.",
+      "AWS lists better fault tolerance as a benefit of EC2 Auto Scaling: it can detect when an instance is unhealthy, terminate it, and launch a replacement, which keeps capacity healthy without manual intervention. An option that leaves the unhealthy instance in service and notifies no one, scaling the group to zero, or converting the instance to a Reserved Instance would not restore the failed capacity, since a Reserved Instance is a billing commitment rather than a repair.",
     reference: {
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -300,11 +313,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists better fault tolerance and better availability among the benefits of EC2 Auto Scaling: it replaces unhealthy instances and helps keep the right amount of capacity for current demand. It does not promise instances never fail, encrypt data, or remove the value of spanning multiple Availability Zones.",
+      "AWS lists better fault tolerance and better availability among the benefits of EC2 Auto Scaling: it replaces unhealthy instances and helps keep the right amount of capacity for current demand. It does not guarantee that no instance will ever fail, provide automatic encryption of all data stored on the instances, or remove the value of spanning multiple Availability Zones.",
     reference: {
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -322,11 +336,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that if you configure EC2 Auto Scaling to use multiple Availability Zones and one becomes unavailable, it can launch instances in another zone to compensate, which preserves capacity through a zone failure. It does not terminate everything, sit idle until the zone recovers, or require an account change.",
+      "AWS states that if you configure EC2 Auto Scaling to use multiple Availability Zones and one becomes unavailable, it can launch instances in another zone to compensate, which preserves capacity through a zone failure. It does not terminate all instances in every zone immediately, leave the group waiting for the failed zone to return before doing anything, or require moving to a different AWS account.",
     reference: {
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -350,6 +365,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Auto Scaling benefits",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
   {
@@ -372,6 +388,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -394,6 +411,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -416,6 +434,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-19",
@@ -437,6 +456,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-20",
@@ -458,6 +478,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-21",
@@ -479,6 +500,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: define recovery objectives",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-22",
@@ -495,11 +517,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "RPO is the maximum acceptable time after the last data recovery point, which translates to how much recent data could be lost. RTO measures acceptable downtime rather than data loss, while mean time between failures and throughput are not recovery objectives.",
+      "RPO is the maximum acceptable time after the last data recovery point, which translates to how much recent data could be lost. The Recovery Time Objective instead measures the acceptable time to restore service rather than data loss, while mean time between failures and throughput are not recovery objectives.",
     reference: {
       label: "Reliability Pillar: define recovery objectives",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-23",
@@ -517,11 +540,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "RTO is about acceptable downtime and RPO is about acceptable data loss, and AWS frames the choice of DR strategy as a trade-off between tighter RTO and RPO and higher cost and complexity. More stringent objectives are not free, the two objectives are not interchangeable, and RPO is not a per-request latency measure.",
+      "RTO is about acceptable downtime and RPO is about acceptable data loss, and AWS frames the choice of DR strategy as a trade-off between tighter RTO and RPO and higher cost and complexity. More stringent objectives are not always free, RTO and RPO do not mean the same thing and cannot be used interchangeably, and RPO is not a per-request latency measure.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-24",
@@ -543,6 +567,7 @@ export const domain1Resilience: Question[] = [
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-25",
@@ -564,6 +589,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-26",
@@ -585,6 +611,7 @@ export const domain1Resilience: Question[] = [
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-27",
@@ -601,11 +628,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS explains that both keep copies of primary assets in the recovery Region, but pilot light cannot process requests without first turning on and scaling resources, whereas warm standby is already running at reduced capacity and can take traffic immediately. The other options invert or deny this distinction.",
+      "AWS explains that both keep copies of primary assets in the recovery Region, but pilot light cannot process requests without first turning on and scaling resources, whereas warm standby is already running at reduced capacity and can take traffic immediately. The claim that pilot light serves full production traffic while warm standby keeps everything switched off inverts the two, the claim that warm standby needs no resources in the recovery Region is wrong, and the claim that there is no difference and the terms are identical denies the distinction.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-28",
@@ -622,11 +650,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS notes that infrastructure as code, using services such as AWS CloudFormation, lets you redeploy infrastructure quickly and without errors, which lowers recovery time; without it, restoring a workload can be slow and exceed your RTO. It does not eliminate the need for data backups, guarantee zero data loss, or turn backup and restore into an always-on deployment.",
+      "AWS notes that infrastructure as code, using services such as AWS CloudFormation, lets you redeploy infrastructure quickly and without errors, which lowers recovery time; without it, restoring a workload can be slow and exceed your RTO. It does not remove the need to back up data, guarantee zero data loss without backups, or make the recovery Region serve production traffic at all times.",
     reference: {
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation"],
   },
   {
@@ -644,11 +673,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about being able to access the service, and it has nothing to do with upload windows or volume discounts.",
+      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about every retrieval request succeeding instantly; it is not the percentage of the year the service can accept new uploads, and it has nothing to do with volume discounts.",
     reference: {
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -666,11 +696,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that loose coupling isolates the behavior of a component from the others that depend on it, so a failure in one is isolated from others and resilience improves. Forcing components onto one server, sharing a single database directly, or requiring synchronous responses everywhere reintroduces tight coupling and shared failure.",
+      "AWS states that loose coupling isolates the behavior of a component from the others that depend on it, so a failure in one is isolated from others and resilience improves. Forcing components onto one server, sharing a single database directly, or requiring all components to respond synchronously to every request reintroduces tight coupling and shared failure.",
     reference: {
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-31",
@@ -692,6 +723,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -715,6 +747,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
   {
@@ -732,11 +765,12 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS engineers low-latency network connectivity between Availability Zones, which is why a synchronous Multi-AZ database standby and other multi-AZ designs are workable. The zones are interconnected rather than isolated networks, traffic between them stays on the AWS network rather than the public internet, and they sit within about 100 km of each other rather than thousands.",
+      "AWS engineers low-latency network connectivity between Availability Zones, which is why a synchronous Multi-AZ database standby and other multi-AZ designs are workable. It is not true that the zones have no network connection to each other, traffic between them stays on the AWS network rather than the public internet, and they sit within about 100 km of each other rather than thousands of kilometers apart.",
     reference: {
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-35",
@@ -759,6 +793,7 @@ export const domain1Resilience: Question[] = [
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -782,6 +817,7 @@ export const domain1Resilience: Question[] = [
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-37",
@@ -804,6 +840,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-resil-38",
@@ -821,10 +858,11 @@ export const domain1Resilience: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS advises copying backups to another Region for protection and using infrastructure as code so recovery is fast and consistent. You must also back up configuration and application code, not just data; backups should be tested; and keeping the sole copy in the source location offers no protection if that location is lost.",
+      "AWS advises copying backups to another Region for protection and using infrastructure as code so recovery is fast and consistent. You must also back up configuration and application code, not just data; you should not avoid ever testing the backups to save time, since untested backups may fail when needed; and keeping the only copy in the same Availability Zone as the source offers no protection if that location is lost.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];

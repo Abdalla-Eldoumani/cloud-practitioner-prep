@@ -26,6 +26,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-02",
@@ -47,6 +48,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-03",
@@ -63,11 +65,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Scalability is the ability of a system to adapt to a larger level of demand, while elasticity adds acquiring and automatically releasing resources to match demand as it rises and falls. A system that can grow but not automatically shrink is scalable yet not fully elastic, so the terms are not synonyms.",
+      "Scalability is the ability of a system to adapt to a larger level of demand, while elasticity adds acquiring and automatically releasing resources to match demand as it rises and falls. A system that can grow but not automatically shrink is scalable yet not fully elastic; the inverted claim that scalability is only about shrinking misstates scalability, so the terms are not synonyms.",
     reference: {
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-04",
@@ -89,6 +92,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -111,6 +115,7 @@ export const domain1Elasticity: Question[] = [
       label: "Amazon EC2 instance type changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -133,6 +138,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -155,6 +161,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -172,11 +179,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Stop guessing capacity means you can access as much or as little capacity as you need and scale up and down with only a few minutes notice, ending the cycle of idle or insufficient resources. The other options invert the cloud cost model or describe the on-premises constraints the cloud removes.",
+      "Stop guessing capacity means you can access as much or as little capacity as you need and scale up and down with only a few minutes notice, ending the cycle of idle or insufficient resources. Trading variable expense for fixed expense reverses the actual cost shift, spending more time maintaining data centers is the on-premises burden the cloud removes, and committing to fixed capacity for several years is the rigid up-front sizing the cloud lets you avoid.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-09",
@@ -194,11 +202,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Scalability is a system's ability to adapt to greater demand, and elasticity is acquiring resources when needed and releasing them when they are not, so capacity tracks demand in both directions. The terms are not interchangeable, automatic release on a drop is the elastic part rather than the definition of scalability, and elasticity is not limited to resizing one server.",
+      "Scalability is a system's ability to adapt to greater demand, and elasticity is acquiring resources when needed and releasing them when they are not, so capacity tracks demand in both directions. The terms are not interchangeable; the claim that scalability means automatically removing capacity the instant demand drops attributes the elastic behavior to scalability, and elasticity is not limited to resizing one server.",
     reference: {
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-10",
@@ -215,11 +224,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Availability Zones are isolated locations within a Region, so spreading an application across multiple zones means a failure in one zone does not bring the application down, which raises availability. A single server in one zone, a single copy in one place, and planned downtime all reduce availability rather than improve it.",
+      "Availability Zones are isolated locations within a Region, so spreading an application across multiple zones means a failure in one zone does not bring the application down, which raises availability. A single server in one zone, a single copy on one disk, and turning the application off during maintenance windows all reduce availability rather than improve it.",
     reference: {
       label: "Auto Scaling benefits: distribute instances across Availability Zones",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-11",
@@ -236,11 +246,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon EC2 Auto Scaling monitors instance health and, when an instance is unhealthy, terminates it and launches a replacement to maintain the desired capacity. It does not require manual repair, does not permanently shrink the group, and health monitoring is a built-in feature rather than something outside its scope.",
+      "Amazon EC2 Auto Scaling monitors instance health and, when an instance is unhealthy, terminates it and launches a replacement to maintain the desired capacity. It does not just send an email and wait for an administrator to fix the instance by hand, does not permanently reduce the desired capacity, and health monitoring is a built-in feature rather than something outside its scope.",
     reference: {
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -258,11 +269,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Scaling in removes capacity, such as terminating instances, when demand decreases, which is the half of elasticity that controls cost. Adding instances is scaling out, and increasing a single instance size is vertical scaling, not scaling in.",
+      "Scaling in removes capacity, such as terminating instances, when demand decreases, which is the half of elasticity that controls cost. Adding instances is scaling out, moving an application to a larger Region is not a scaling action at all, and increasing a single instance size is vertical scaling, not scaling in.",
     reference: {
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -285,6 +297,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-14",
@@ -301,11 +314,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Because you pay for the EC2 instances you use, Auto Scaling saves money by launching instances when they are needed and terminating them when they are not. AWS does not refund hardware you never bought, elasticity does not turn the bill into a fixed fee, and running instances are billed whether or not they are busy.",
+      "Because you pay for the EC2 instances you use, Auto Scaling saves money by launching instances when they are needed and terminating them when they are not. AWS does not refund the original purchase price of physical servers you never bought, shrinking capacity does not convert the bill into a fixed annual fee, and running instances are billed whether or not they are idle.",
     reference: {
       label: "Auto Scaling benefits: better cost management",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -328,6 +342,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -350,6 +365,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-17",
@@ -371,6 +387,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-18",
@@ -387,11 +404,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon S3 is an elastic, fully managed object store, so capacity scales with the data and the customer does not provision or manage storage servers. The other options describe the manual, capacity-planned model that elastic managed services are designed to remove.",
+      "Amazon S3 is an elastic, fully managed object store, so capacity scales with the data and the customer does not provision or manage storage servers. Pre-purchasing a fixed number of disks before storing data, a capped capacity that cannot grow, and manually adding storage nodes all describe the manual, capacity-planned model that elastic managed services are designed to remove.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -414,6 +432,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: better fault tolerance",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -437,6 +456,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-21",
@@ -458,6 +478,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-22",
@@ -479,6 +500,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? Pricing",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -496,11 +518,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Vertical scaling enlarges one resource and leaves it as a single point of failure, while horizontal scaling adds multiple smaller resources, which AWS recommends to reduce the impact of a single failure on the workload. The other options reverse the definitions or wrongly claim a single large machine is more available.",
+      "Vertical scaling enlarges one resource and leaves it as a single point of failure, while horizontal scaling adds multiple smaller resources, which AWS recommends to reduce the impact of a single failure on the workload. Swapping the two definitions is wrong, claiming both approaches are identical and that neither affects single points of failure ignores that distinction, and claiming vertical scaling always provides higher availability wrongly treats a single large machine as more available.",
     reference: {
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-24",
@@ -522,6 +545,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-25",
@@ -538,11 +562,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "When you specify scaling policies, EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, which is how it follows a metric like CPU. Manual-only resizing and a fixed count are the opposite of automatic scaling, and Region failover is unrelated to this metric-driven behavior.",
+      "When you specify scaling policies, EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, which is how it follows a metric like CPU. A requirement to resize the group only by hand and a fixed count that never changes are the opposite of automatic scaling, and Region failover triggered by billing alerts is unrelated to this metric-driven behavior.",
     reference: {
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "CloudWatch"],
   },
   {
@@ -566,6 +591,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -583,11 +609,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Scalability is the ability to adapt to greater demand, while elasticity adds the automatic acquiring and releasing of resources to match demand, so a scalable system is not automatically elastic. Elasticity is not a default freebie, the two concepts are related, and a scalable system certainly can also be elastic.",
+      "Scalability is the ability to adapt to greater demand, while elasticity adds the automatic acquiring and releasing of resources to match demand, so a scalable system is not automatically elastic. Elasticity is not a default freebie every scalable system already has, the two are not unrelated terms that never appear together, and a scalable system certainly can also be elastic.",
     reference: {
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-28",
@@ -604,11 +631,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Go global in minutes means you can deploy an application in multiple Regions around the world with a few clicks, providing lower latency and a better experience at minimal cost. Building physical data centers first, staying in one location, and reversing the cost model are not what this advantage describes.",
+      "Go global in minutes means you can deploy an application in multiple Regions around the world with a few clicks, providing lower latency and a better experience at minimal cost. Building a new physical data center on each continent first, staying in one location permanently, and trading variable expense for fixed expense are not what this advantage describes.",
     reference: {
       label: "Six advantages of cloud computing: go global in minutes",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-29",
@@ -630,6 +658,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: stop guessing capacity",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-30",
@@ -646,11 +675,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. It does not aim to run the maximum count at all times, sacrifice performance, or hold capacity fixed regardless of load.",
+      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. It does not aim to always run the maximum number of instances, to minimize performance in order to save money, or to keep capacity fixed regardless of load.",
     reference: {
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-31",
@@ -672,6 +702,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-32",
@@ -688,11 +719,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Storing synchronized copies across multiple Availability Zones provides data redundancy so a single zone failure does not cause data loss or an outage, which raises availability and durability. Redundancy across isolated zones increases availability rather than lowering it, does not equalize global latency, and does not make storage free.",
+      "Storing synchronized copies across multiple Availability Zones provides data redundancy so a single zone failure does not cause data loss or an outage, which raises availability and durability. Redundancy across isolated zones increases availability rather than lowering it, does not guarantee identical performance everywhere on earth, and does not make storage free.",
     reference: {
       label: "High availability for Amazon Aurora",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Aurora", "RDS"],
   },
   {
@@ -711,11 +743,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Elasticity is acquiring resources as you need them and releasing them when you no longer need them, so both automatic expansion on rising demand and automatic release on falling demand are required. Sizing once for peak, manual-only scaling, and never releasing resources all contradict elasticity.",
+      "Elasticity is acquiring resources as you need them and releasing them when you no longer need them, so both automatic expansion on rising demand and automatic release on falling demand are required. Sizing once for peak and leaving it unchanged, requiring an administrator to add capacity by hand for every spike, and never being able to reduce resources all contradict elasticity.",
     reference: {
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-34",
@@ -738,6 +771,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-35",
@@ -760,6 +794,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -783,6 +818,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Auto Scaling",
       url: "https://aws.amazon.com/autoscaling/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "DynamoDB"],
   },
   {
@@ -801,11 +837,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Spreading across multiple Availability Zones and automatically replacing unhealthy instances both raise availability, as AWS describes for EC2 Auto Scaling. A single instance in one zone, a single copy of data, and disabled health checks each create a single point of failure and lower availability.",
+      "Spreading across multiple Availability Zones and automatically replacing unhealthy instances both raise availability, as AWS describes for EC2 Auto Scaling. A single instance in one zone, a single copy of data, and disabling health checks to reduce overhead each create a single point of failure or hide failures, lowering availability.",
     reference: {
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -829,6 +866,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -847,11 +885,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Stop guessing capacity addresses both ends of bad capacity decisions: expensive idle resources from over-provisioning and limited capacity when demand outstrips supply. The cloud is not free, does not restrict you to one zone, and keeps scaling available after deployment.",
+      "Stop guessing capacity addresses both ends of bad capacity decisions: expensive idle resources from over-provisioning and limited capacity when demand outstrips supply. You do not pay nothing at all for compute, you are not forced into exactly one Availability Zone, and you do not lose the ability to scale once an application is deployed.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-40",
@@ -874,6 +913,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-elast-41",
@@ -896,5 +936,6 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
 ];

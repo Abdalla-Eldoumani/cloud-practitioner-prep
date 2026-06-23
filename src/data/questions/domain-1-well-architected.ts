@@ -25,6 +25,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-02",
@@ -46,6 +47,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-03",
@@ -62,11 +64,12 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The framework is built on six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Earlier versions listed five before sustainability was added, but the current framework names six.",
+      "The framework is built on six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Earlier versions listed five before sustainability was added, but the current framework names six, so neither four nor seven is correct.",
     reference: {
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-04",
@@ -89,6 +92,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-05",
@@ -111,6 +115,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-06",
@@ -133,6 +138,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Operational excellence pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-07",
@@ -154,6 +160,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Security pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/security.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-08",
@@ -170,11 +177,12 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when expected, including recovering from failures and meeting demand. Recovering automatically from disruption sits squarely in Reliability, not in cost, performance, or operations.",
+      "The Reliability pillar encompasses the ability of a workload to perform its intended function correctly and consistently when expected, including recovering from failures and meeting demand. Recovering automatically from disruption sits squarely in Reliability; Cost Optimization targets spend, Performance Efficiency targets resource fit, and Operational Excellence targets running and improving workloads, not automatic recovery.",
     reference: {
       label: "Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-09",
@@ -196,6 +204,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-10",
@@ -217,6 +226,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Cost optimization pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-11",
@@ -233,11 +243,12 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Sustainability pillar focuses on environmental impacts, especially energy consumption and efficiency, as levers to reduce resource usage. Although right-sizing also lowers cost, the pillar defined by minimizing environmental impact is Sustainability, not Cost Optimization or the others.",
+      "The Sustainability pillar focuses on environmental impacts, especially energy consumption and efficiency, as levers to reduce resource usage. Although right-sizing also lowers cost, the pillar defined by minimizing environmental impact is Sustainability, not Cost Optimization, Performance Efficiency, or Operational Excellence.",
     reference: {
       label: "Sustainability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sustainability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-12",
@@ -259,6 +270,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-13",
@@ -281,6 +293,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Security pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/security.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-14",
@@ -302,6 +315,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Cost optimization pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-15",
@@ -323,6 +337,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-16",
@@ -344,6 +359,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Operational excellence pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-16b",
@@ -366,6 +382,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-17",
@@ -387,6 +404,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Sustainability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sustainability.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-18",
@@ -409,6 +427,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-19",
@@ -430,6 +449,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-20",
@@ -451,6 +471,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-21",
@@ -472,6 +493,7 @@ export const domain1WellArchitected: Question[] = [
       label: "What is AWS Well-Architected Tool?",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-22",
@@ -493,6 +515,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-23",
@@ -514,6 +537,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-24",
@@ -535,6 +559,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-25",
@@ -551,11 +576,12 @@ export const domain1WellArchitected: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Improve through game days is the principle of regularly scheduling simulations of events in production to learn where improvements can be made and to build organizational experience. Production-scale testing, automation, and capacity planning are separate principles that do not describe rehearsing incidents.",
+      "Improve through game days is the principle of regularly scheduling simulations of events in production to learn where improvements can be made and to build organizational experience. Testing systems at production scale, automating with architectural experimentation in mind, and stopping guessing your capacity needs are separate principles that do not describe rehearsing incidents.",
     reference: {
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-26",
@@ -577,6 +603,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-27",
@@ -598,6 +625,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-28",
@@ -619,6 +647,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-29",
@@ -640,6 +669,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-30",
@@ -661,6 +691,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-31",
@@ -682,6 +713,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-32",
@@ -703,6 +735,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -725,6 +758,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-34",
@@ -747,6 +781,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-35",
@@ -768,6 +803,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-36",
@@ -790,6 +826,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-37",
@@ -812,6 +849,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-warch-38",
@@ -834,5 +872,6 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];

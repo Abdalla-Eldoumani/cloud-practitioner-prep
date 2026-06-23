@@ -20,11 +20,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Lambda lets you run code without provisioning or managing servers, and you pay only for the compute time you consume, with no charge when the code is not running. EC2 and Lightsail give you servers you manage, and Outposts places AWS hardware in your own data center.",
+      "AWS Lambda lets you run code without provisioning or managing servers, and you pay only for the compute time you consume, with no charge when the code is not running. Amazon EC2 and Amazon Lightsail give you servers you manage, and AWS Outposts places AWS hardware in your own data center.",
     reference: {
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -42,11 +43,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "With Lambda you are responsible only for your code; Lambda runs it on high-availability compute infrastructure and manages the compute resources, including server and operating system maintenance, capacity provisioning, automatic scaling, and logging. The other options misassign that managed work back to the customer.",
+      "With Lambda you are responsible only for your code; Lambda runs it on high-availability compute infrastructure and manages the compute resources, including server and operating system maintenance, capacity provisioning, automatic scaling, and logging. AWS does not hand the servers, patching, or operating system back to you, and no third-party vendor runs the servers outside of AWS.",
     reference: {
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -69,6 +71,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -87,11 +90,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS bases Lambda charges on the number of requests for your functions and the duration it takes for your code to run, with duration billed by the configured memory. There is no flat monthly platform fee, no per-IAM-user charge, and no hourly rate when the function is idle.",
+      "AWS bases Lambda charges on the number of requests for your functions and the duration it takes for your code to run, with duration billed by the configured memory. There is no flat monthly platform fee, the bill does not depend on the number of IAM users in the account, and no hourly rate applies when the function is idle.",
     reference: {
       label: "AWS Lambda Pricing",
       url: "https://aws.amazon.com/lambda/pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -109,11 +113,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Standard Lambda functions run for up to 15 minutes per invocation, so a 25-minute task would exceed the timeout and must be split, redesigned, or moved to a service suited to longer runs. The other options misstate the 15-minute maximum.",
+      "Standard Lambda functions run for up to 15 minutes per invocation, so a 25-minute task would exceed the timeout and must be split, redesigned, or moved to a service suited to longer runs. There is no unlimited runtime, the limit is not 60 minutes so 25 minutes is not well within range, and it is not a 1-minute cap under which almost no job fits.",
     reference: {
-      label: "What is AWS Lambda: Functions and durable functions",
-      url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+      label: "AWS Lambda quotas",
+      url: "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -131,11 +136,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Lambda is event-driven, and Amazon S3 is a common event source that pushes an event to a function when an object is uploaded, so the function runs automatically. Lambda is not limited to manual starts, and it integrates with S3 directly.",
+      "Lambda is event-driven, and Amazon S3 is a common event source that pushes an event to a function when an object is uploaded, so the function runs automatically. A function does not have to be started manually from the console, no administrator needs to run it by hand after each upload, and Lambda integrates with S3 directly.",
     reference: {
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "S3"],
   },
   {
@@ -154,11 +160,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS documents API Gateway HTTP requests and EventBridge scheduled rules among the events that trigger Lambda functions. Route 53 resolves DNS and does not invoke functions, IAM governs permissions rather than firing events, and Cost Explorer is a cost-analysis tool, not a Lambda event source.",
+      "AWS documents API Gateway HTTP requests and EventBridge scheduled rules among the events that trigger Lambda functions. Route 53 resolves DNS and does not invoke functions, attaching an AWS Identity and Access Management policy governs permissions rather than firing an event, and Cost Explorer is a cost-analysis tool, not a Lambda event source.",
     reference: {
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "API Gateway", "EventBridge"],
   },
   {
@@ -176,11 +183,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "With Lambda you choose the amount of memory for your function and are allocated proportional CPU power and other resources, so increasing memory also increases CPU. The setting is not independent of CPU, CPU is not fixed regardless of memory, and no support ticket is needed.",
+      "With Lambda you choose the amount of memory for your function and are allocated proportional CPU power and other resources, so increasing memory also increases CPU. Memory and CPU are not set independently with no relationship between them, CPU is not fixed regardless of memory, and no support ticket is needed.",
     reference: {
       label: "AWS Lambda Pricing",
       url: "https://aws.amazon.com/lambda/pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "EventBridge", "S3"],
   },
   {
@@ -221,11 +230,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Serverless means you run code without provisioning or managing servers; the servers still exist, but AWS operates them so you focus on your application. It is not the absence of all servers, it requires no hardware purchase, and serverless services such as Lambda run code rather than only storing data.",
+      "Serverless means you run code without provisioning or managing servers; the servers still exist, but AWS operates them so you focus on your application. It does not mean there are literally no servers involved anywhere, you never buy and rack your own servers before using it, and serverless services such as Lambda run code and cannot be reduced to a service that can only store data.",
     reference: {
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -249,6 +259,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "EC2"],
   },
   {
@@ -266,11 +277,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The tradeoff of serverless is reduced control: because AWS provisions and maintains the servers and operating system, you cannot tune host-level or kernel settings. Serverless does run application code, cost depends on usage, and the whole point is that you do not manage the servers.",
+      "The tradeoff of serverless is reduced control: because AWS provisions and maintains the servers and operating system, you cannot tune host-level or kernel settings. Serverless does run application code, it is not always more expensive than every alternative since cost depends on usage, and the whole point is that you do not manage the servers.",
     reference: {
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda"],
   },
   {
@@ -293,6 +305,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS"],
   },
   {
@@ -311,11 +324,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. S3 is storage, Route 53 is DNS, and IAM controls access; none of them are ECS compute options.",
+      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. Amazon S3 buckets hold objects, Route 53 is DNS, and AWS IAM roles grant permissions; none of them are ECS compute options.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "Fargate", "EC2"],
   },
   {
@@ -338,6 +352,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS"],
   },
   {
@@ -382,6 +398,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS: Kubernetes compatibility and support",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS"],
   },
   {
@@ -404,6 +421,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EKS", "ECS"],
   },
   {
@@ -426,6 +444,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate", "ECS"],
   },
   {
@@ -449,6 +468,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate", "ECS", "EKS"],
   },
   {
@@ -471,6 +491,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "EC2", "Fargate"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "EC2", "Fargate"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Fargate"],
   },
   {
@@ -533,11 +556,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon ECR is a fully managed container registry for storing, sharing, and deploying container images. ECS and EKS orchestrate and run containers but are not registries, and EBS provides block storage volumes for EC2.",
+      "Amazon ECR is a fully managed container registry for storing, sharing, and deploying container images. Amazon ECS orchestrates containers and Amazon EKS runs managed Kubernetes, but neither is an image registry, and EBS provides block storage volumes for EC2.",
     reference: {
       label: "Amazon ECR",
       url: "https://aws.amazon.com/ecr/",
     },
+    lastVerified: "2026-06-23",
     services: ["ECR"],
   },
   {
@@ -558,8 +582,9 @@ export const domain3ServerlessContainers: Question[] = [
       "Amazon ECR stores container images, and orchestrators such as Amazon ECS and Amazon EKS pull those images to run them. ECR does not schedule containers, is not the Kubernetes control plane, and is not a relational database.",
     reference: {
       label: "Architect your solution for Amazon ECS",
-      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html",
+      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECR", "ECS", "EKS"],
   },
   {
@@ -577,11 +602,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "With AWS Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring. S3 is object storage, VPC is networking, and Outposts is on-premises AWS hardware, none of which deploy and manage an application this way.",
+      "With AWS Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring. Amazon S3 is object storage, Amazon VPC is networking, and Outposts is on-premises AWS hardware, none of which deploy and manage an application this way.",
     reference: {
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -600,11 +626,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS states that with Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring, while you retain full control over and access to the underlying AWS resources. The resources are not locked away, they run in your own account, and you do not have to wire the load balancer and scaling yourself.",
+      "AWS states that with Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring, while you retain full control over and access to the underlying AWS resources. It does not permanently lock the resources so you cannot view or change them, they run in your own account, and you do not have to wire the load balancer and scaling yourself.",
     reference: {
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -627,6 +654,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Elastic Beanstalk",
       url: "https://aws.amazon.com/elasticbeanstalk/",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -649,6 +677,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
   {
@@ -672,6 +701,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
   {
@@ -689,11 +719,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server, with plans that bundle a virtual machine, SSD storage, data transfer, DNS management, and a static IP for a low, predictable price. Batch runs batch jobs, EKS is managed Kubernetes, and Outposts is on-premises AWS hardware.",
+      "Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server, with plans that bundle a virtual machine, SSD storage, data transfer, DNS management, and a static IP for a low, predictable price. Batch runs batch jobs, Amazon EKS is managed Kubernetes, and Outposts is on-premises AWS hardware.",
     reference: {
       label: "AWS Overview: Amazon Lightsail",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lightsail"],
   },
   {
@@ -716,6 +747,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "Amazon Lightsail",
       url: "https://aws.amazon.com/lightsail/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lightsail"],
   },
   {
@@ -739,6 +771,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Outposts",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Outposts"],
   },
   {
@@ -761,6 +794,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Outposts",
       url: "https://aws.amazon.com/outposts/",
     },
+    lastVerified: "2026-06-23",
     services: ["Outposts"],
   },
   {
@@ -780,9 +814,10 @@ export const domain3ServerlessContainers: Question[] = [
     explanation:
       "Amazon ECS with the Fargate launch type runs containers without managing servers and does not require Kubernetes, which matches the requirement. Self-managed EC2 means managing servers, a 25-minute task exceeds Lambda's 15-minute limit, and Lightsail bundles are not the fit for serverless container orchestration here.",
     reference: {
-      label: "AWS Overview: AWS Fargate",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
+      label: "AWS Lambda quotas",
+      url: "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
     },
+    lastVerified: "2026-06-23",
     services: ["ECS", "Fargate"],
   },
   {
@@ -805,6 +840,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -828,6 +864,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: Compute services",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "Fargate", "ECS", "EKS"],
   },
   {
@@ -845,11 +882,12 @@ export const domain3ServerlessContainers: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Batch plans, schedules, and runs large numbers of batch computing jobs and provisions compute sized to the volume and requirements of the jobs. Lightsail is a virtual private server offering, API Gateway is for managing APIs, and ECR is a container image registry.",
+      "AWS Batch plans, schedules, and runs large numbers of batch computing jobs and provisions compute sized to the volume and requirements of the jobs. Lightsail is a virtual private server offering, API Gateway is for managing APIs, and Amazon ECR is a container image registry.",
     reference: {
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Batch"],
   },
 ];

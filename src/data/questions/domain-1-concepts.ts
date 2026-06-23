@@ -22,11 +22,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe owning hardware, offline software, or a fixed contract, none of which is the on-demand, consumption-based model AWS describes.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. Buying physical servers in bulk to house in your own building describes owning on-premises hardware, while offline laptop software and a fixed annual server contract are likewise the opposite of the on-demand, consumption-based model AWS describes.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-02",
@@ -48,6 +49,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-03",
@@ -64,11 +66,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, mailing physical media, or owning a satellite are not how AWS describes access to cloud resources.",
+      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, shipping a hard drive to the provider, or owning a dedicated satellite are not how AWS describes access to cloud resources.",
     reference: {
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-04",
@@ -91,6 +94,7 @@ export const domain1Concepts: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-05",
@@ -113,6 +117,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-06",
@@ -134,6 +139,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-07",
@@ -155,6 +161,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-08",
@@ -176,6 +183,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-09",
@@ -192,11 +200,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises or moving everything at once does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
+      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises until the end, or a cloud-only model requiring every workload to move on day one, does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-10",
@@ -218,6 +227,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-11",
@@ -240,6 +250,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-12",
@@ -262,6 +273,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-13",
@@ -283,6 +295,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-14",
@@ -304,6 +317,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-15",
@@ -325,6 +339,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -347,6 +362,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -370,6 +386,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-18",
@@ -391,6 +408,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-19",
@@ -412,6 +430,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-20",
@@ -428,11 +447,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes massive economies of scale as achieving a lower variable cost than you could on your own because usage from hundreds of thousands of customers is aggregated, which translates into lower pay-as-you-go prices. Ending data center upkeep, increasing agility, and going global are different advantages.",
+      "AWS describes massive economies of scale as achieving a lower variable cost than you could on your own because usage from hundreds of thousands of customers is aggregated, which translates into lower pay-as-you-go prices. The advantage about stopping spending money running and maintaining data centers is about maintenance labor rather than aggregated cost, while increasing agility and going global are different advantages again.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-21",
@@ -454,6 +474,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-22",
@@ -475,6 +496,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-23",
@@ -491,11 +513,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes increase speed and agility as new IT resources being only a click away, cutting provisioning time from weeks to minutes and lowering the cost and time to experiment. The other choices describe data center upkeep, aggregated pricing, and expense type rather than provisioning speed.",
+      "AWS describes increase speed and agility as new IT resources being only a click away, cutting provisioning time from weeks to minutes and lowering the cost and time to experiment. Stopping spending money running and maintaining data centers is about maintenance labor, the benefit from massive economies of scale is about aggregated pricing, and trading fixed for variable expense is about cost type, none of which is provisioning speed.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-24",
@@ -518,6 +541,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-25",
@@ -539,6 +563,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-26",
@@ -561,6 +586,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-27",
@@ -582,6 +608,7 @@ export const domain1Concepts: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -600,11 +627,12 @@ export const domain1Concepts: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront purchase, the loss of pay-as-you-go, and a single-Region restriction all contradict how AWS describes cloud benefits.",
+      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront hardware purchase, the claim that the cloud removes the option to pay only for what you use, and a single-Region restriction all contradict how AWS describes cloud benefits.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-29",
@@ -626,6 +654,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-30",
@@ -648,6 +677,7 @@ export const domain1Concepts: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-31",
@@ -670,6 +700,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-concepts-32",
@@ -691,6 +722,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -713,5 +745,6 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];

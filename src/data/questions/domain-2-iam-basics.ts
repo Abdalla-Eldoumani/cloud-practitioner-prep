@@ -21,11 +21,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The email address and password used to create an AWS account belong to the AWS account root user, the single sign-in identity that begins with complete access to all AWS services and resources in the account. Its access is not limited to billing, and unlike an IAM user it does not start with no permissions or wait for a policy.",
+      "The email address and password used to create an AWS account belong to the AWS account root user, the single sign-in identity that begins with complete access to all AWS services and resources in the account. Its access is not limited to billing data, it is not confined to only the services explicitly granted by an administrator, and unlike an IAM user it does not start with no permissions or wait for a policy.",
     reference: {
       label: "AWS account root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -48,6 +49,7 @@ export const domain2IamBasics: Question[] = [
       label: "AWS account root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -70,6 +72,7 @@ export const domain2IamBasics: Question[] = [
       label: "Root user best practices for your AWS account",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -87,11 +90,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS strongly recommends that you do not create access keys for the root user, because the root user has full access to everything in the account including billing. The CLI is not restricted to the root user, so a developer should use a less privileged identity, and sharing keys over email is never recommended.",
+      "AWS strongly recommends that you do not create access keys for the root user, because the root user has full access to everything in the account including billing. The CLI is not restricted to the root user, so creating a root key since only it can use the CLI is wrong; root users are not unable to use the CLI, so the claim that the question does not apply is also wrong; and sharing keys over email is never recommended. A developer should instead use a less privileged identity.",
     reference: {
       label: "Root user best practices: Don't create access keys for the root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -114,6 +118,7 @@ export const domain2IamBasics: Question[] = [
       label: "Tasks that require root user credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -137,6 +142,7 @@ export const domain2IamBasics: Question[] = [
       label: "Tasks that require root user credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2", "S3"],
   },
   {
@@ -159,6 +165,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -203,6 +211,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users and permissions",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -220,11 +229,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states explicitly that an IAM user with administrator permissions is not the same thing as the AWS account root user; the root user is the special identity created with the account. The root user is not an IAM user or a group member, and an administrator IAM user cannot perform the tasks AWS reserves for the root user.",
+      "AWS states explicitly that an IAM user with administrator permissions is not the same thing as the AWS account root user; the root user is the special identity created with the account. An administrator IAM user is not exactly the root user under a different name, the root user is not just an IAM user that sits in an Admins group, and an administrator IAM user cannot perform the tasks AWS reserves for the root user.",
     reference: {
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -248,6 +258,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users and credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -265,11 +276,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Each IAM user is associated with one and only one AWS account, and any AWS activity the user performs is billed to that account. IAM users are not shared across accounts, do not need their own payment method, and are tied to the account from creation.",
+      "Each IAM user is associated with one and only one AWS account, and any AWS activity the user performs is billed to that account. IAM users are not shared across accounts, do not need their own payment method, and are tied to the account from creation rather than being unassociated until the user signs in for the first time.",
     reference: {
       label: "IAM users and accounts",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -292,6 +304,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -314,6 +327,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -331,11 +345,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "You attach an identity-based policy to a user group so that all of the users in the group receive the policy's permissions. You cannot name a group as a principal in a resource-based policy, groups cannot be nested inside themselves, and groups do not have their own security credentials.",
+      "You attach an identity-based policy to a user group so that all of the users in the group receive the policy's permissions. You cannot name a group as a principal in a resource-based policy, you cannot add a group as a member of itself to make permissions propagate, and a group does not have its own access keys and password.",
     reference: {
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -353,11 +368,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that user groups cannot be nested; a group can contain only users, not other IAM groups. The other options describe a nesting capability that IAM does not provide.",
+      "AWS states that user groups cannot be nested; a group can contain only users, not other IAM groups. Groups cannot be nested five levels deep, nesting is not enabled by matching policies, and a nested group does not become the parent's administrator, because IAM provides no group nesting at all.",
     reference: {
       label: "IAM user groups: important characteristics",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -375,11 +391,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS notes that when a person changes jobs you can remove them from their old groups and add them to new ones instead of editing their permissions directly. Deleting and recreating the user is unnecessary, no one is converted to the root user, and permissions are not attached to availability zones.",
+      "AWS notes that when a person changes jobs you can remove them from their old groups and add them to new ones instead of editing their permissions directly. You do not delete and recreate the user from scratch with new policies, no one is converted to the root user, and permissions are not attached to availability zones.",
     reference: {
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -398,11 +415,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "A user can belong to multiple user groups, and there is no default group that automatically contains all users in the account. Groups do not have their own sign-in credentials, cannot be named as a principal in a policy because they relate to permissions rather than authentication, and cannot contain other groups.",
+      "A user can belong to multiple user groups, and there is no default group that automatically contains all users in the account. A group does not have its own password and access keys for signing in, cannot be named as a principal in a policy because it relates to permissions rather than authentication, and cannot contain other groups.",
     reference: {
       label: "IAM user groups: important characteristics",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -420,11 +438,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Most policies are stored in AWS as JSON documents that define permissions. They are not binaries, spreadsheets, or shell scripts; the console even offers a visual editor that produces the underlying JSON.",
+      "Most policies are stored in AWS as JSON documents that define permissions. They are not compiled binary files, spreadsheet rows, or shell scripts; the console even offers a visual editor that produces the underlying JSON.",
     reference: {
       label: "Overview of JSON policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -442,11 +461,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Effect element uses the value Allow or Deny to indicate whether the statement allows or denies access. Version sets the policy language version, Sid is an optional statement identifier, and Resource lists what the actions apply to.",
+      "The Effect element uses the value Allow or Deny to indicate whether the statement allows or denies access. The Version element sets the policy language version, the Sid is an optional statement identifier, and the Resource element lists what the actions apply to; none of these set allow or deny.",
     reference: {
       label: "JSON policy document structure",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -470,6 +490,7 @@ export const domain2IamBasics: Question[] = [
       label: "JSON policy document structure",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -492,6 +513,7 @@ export const domain2IamBasics: Question[] = [
       label: "JSON policy document structure: Principal",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -509,11 +531,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "By default all requests are implicitly denied, and a request must be explicitly allowed by a policy to proceed (the account root user is the exception, with full access). AWS does not default to allow, does not queue requests for approval, and does not gate access on time of day by default.",
+      "By default all requests are implicitly denied, and a request must be explicitly allowed by a policy to proceed (the account root user is the exception, with full access). AWS does not default to allow, a request is not queued until an administrator approves it, and access is not gated on business hours by default.",
     reference: {
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -531,11 +554,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS evaluates all applicable policies and an explicit deny in any of them overrides an allow, so the action is denied. An allow does not override a deny, the outcome is deterministic rather than random, and recency of edits does not decide the result.",
+      "AWS evaluates all applicable policies and an explicit deny in any of them overrides an allow, so the action is denied. The request is not allowed on the basis that an explicit allow outranks a deny, the outcome is deterministic rather than random, and the most recently edited policy does not win regardless of allow or deny.",
     reference: {
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "S3"],
   },
   {
@@ -553,11 +577,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "When no statement allows an action, the absence of an allow is an implicit deny and the request is denied. Lack of an explicit deny does not grant access, an absent allow never silently permits read or any other operations.",
+      "When no statement allows an action, the absence of an allow is an implicit deny and the request is denied. The action is not allowed merely because nothing explicitly denies it, it does not trigger an error that grants temporary access, and an absent allow is not silently limited to read operations.",
     reference: {
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -575,11 +600,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Within a single account AWS evaluates identity-based and resource-based policies together, and an explicit deny in either one overrides the allow, so the request is denied. Identity-based policies do not outrank resource-based ones, resource-based policies can contain Deny, and the two types are evaluated together.",
+      "Within a single account AWS evaluates identity-based and resource-based policies together, and an explicit deny in either one overrides the allow, so the request is denied. The request is not allowed because the identity-based policy takes priority over the resource-based one, resource-based policies can contain Deny, and the two types are evaluated together rather than never together.",
     reference: {
       label: "Evaluating identity-based policies with resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -602,6 +628,7 @@ export const domain2IamBasics: Question[] = [
       label: "Apply least-privilege permissions",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -619,11 +646,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS advises starting with a minimum set of permissions and granting additional permissions as necessary, which is more secure than starting too broad and tightening later. Beginning with full admin access, sharing root credentials, or allowing everything all work against least privilege.",
+      "AWS advises starting with a minimum set of permissions and granting additional permissions as necessary, which is more secure than starting too broad and tightening later. Beginning with full admin access, sharing root credentials, or attaching a single policy that allows every action on every resource permanently all work against least privilege.",
     reference: {
       label: "Grant least privilege",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -646,6 +674,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -668,6 +697,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "S3"],
   },
   {
@@ -690,6 +720,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -708,11 +739,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Identity-based policies attach to a user, group, or role and say what that identity can do, while resource-based policies attach to a resource and say who can access it. Option c reverses the two, identity-based policies on a user omit Principal while resource-based policies require it, and both types can contain explicit Deny.",
+      "Identity-based policies attach to a user, group, or role and say what that identity can do, while resource-based policies attach to a resource and say who can access it. Claiming that resource-based policies attach to IAM groups and identity-based policies attach to S3 buckets reverses the two; identity-based policies on a user omit Principal while resource-based policies require it; and both types can contain explicit Deny.",
     reference: {
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -735,6 +767,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -752,11 +785,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Identity and Access Management (IAM) lets you control who is authenticated and authorized to use AWS resources, and it is a feature of your AWS account offered at no additional charge. CloudWatch is for monitoring, S3 is object storage, and Cost Explorer analyzes spending.",
+      "AWS Identity and Access Management (IAM) lets you control who is authenticated and authorized to use AWS resources, and it is a feature of your AWS account offered at no additional charge. CloudWatch is for monitoring, Amazon S3 is object storage, and Cost Explorer analyzes spending.",
     reference: {
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -774,11 +808,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "IAM controls who is authenticated (signed in) and then authorized (has permissions) to use resources, so authentication precedes authorization. The other pairs describe unrelated operations and are not the IAM access flow.",
+      "IAM controls who is authenticated (signed in) and then authorized (has permissions) to use resources, so authentication precedes authorization. Reversing them to authorization then authentication is wrong, and pairs like encryption then replication or provisioning then billing describe unrelated operations that are not the IAM access flow.",
     reference: {
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -801,6 +836,7 @@ export const domain2IamBasics: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
 ];

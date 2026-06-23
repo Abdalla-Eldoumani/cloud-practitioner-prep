@@ -25,6 +25,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -47,6 +48,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (No extra fee)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -69,6 +71,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -92,6 +95,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -109,11 +113,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "For billing purposes, consolidated billing treats all accounts in the organization as one account, so all accounts can receive the hourly cost benefit of Reserved Instances purchased by any other account when usage matches. The reservation is not locked to the buyer by default. (A management account can turn off Reserved Instance discount sharing on the Billing Preferences page if it does not want this behavior.)",
+      "For billing purposes, consolidated billing treats all accounts in the organization as one account, so all accounts can receive the hourly cost benefit of Reserved Instances purchased by any other account when usage matches. The unused reservation benefit does not simply expire and help no one, it can apply beyond the account that bought it rather than ever being locked to the buyer, and AWS does not bill both accounts at On-Demand and refund the difference later. (A management account can turn off Reserved Instance discount sharing on the Billing Preferences page if it does not want this behavior.)",
     reference: {
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "EC2"],
   },
   {
@@ -131,11 +136,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "Reserved Instance and Savings Plans discount sharing is controlled on the Preferences page in the Billing and Cost Management console. The management account can turn sharing off for specific accounts there. It is not set per member account in the EC2 console, does not require AWS Support, and is changeable.",
+      "Reserved Instance and Savings Plans discount sharing is controlled on the Preferences page in the Billing and Cost Management console. The management account can turn sharing off for specific accounts there. It is not set per member account in the EC2 console, does not require AWS Support, and is not something that cannot be changed once consolidated billing is enabled.",
     reference: {
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -158,6 +164,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -180,6 +187,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-09",
@@ -202,6 +210,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-10",
@@ -224,6 +233,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-11",
@@ -245,6 +255,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (notifications)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon SNS"],
   },
   {
@@ -267,6 +278,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-13",
@@ -289,6 +301,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-14",
@@ -310,6 +323,7 @@ export const domain4CostTools: Question[] = [
       label: "Forecasting with Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-15",
@@ -331,6 +345,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-16",
@@ -352,6 +367,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-17",
@@ -373,6 +389,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-18",
@@ -394,6 +411,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-19",
@@ -416,6 +434,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon S3"],
   },
   {
@@ -433,11 +452,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon QuickSight (to visualize). The other groupings are messaging, compute and networking, or account governance services, not the CUR analytics integrations.",
+      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon QuickSight (to visualize). Amazon SQS, Amazon SNS, and AWS Lambda are messaging and compute, Amazon EC2, Amazon EBS, and Elastic Load Balancing are compute, storage, and networking, and AWS IAM, AWS Organizations, and AWS Control Tower are account governance, none of which are the CUR analytics integrations.",
     reference: {
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon Athena", "Amazon Redshift", "Amazon QuickSight", "Amazon S3"],
   },
   {
@@ -460,6 +480,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-22",
@@ -481,6 +502,7 @@ export const domain4CostTools: Question[] = [
       label: "AWS Cost Explorer; AWS Budgets; AWS Cost and Usage Reports",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-23",
@@ -497,11 +519,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Cost Explorer is the interactive, visual tool for exploring and forecasting spend; the Cost and Usage Report is the most comprehensive line-item dataset, delivered to an S3 bucket. Neither estimates future workloads (that is the Pricing Calculator) and neither is primarily an alerting tool (that is Budgets).",
+      "Cost Explorer is the interactive, visual tool for exploring and forecasting spend; the Cost and Usage Report is the most comprehensive line-item dataset, delivered to an S3 bucket. The roles are not reversed: Cost Explorer is not the one delivering raw line items to S3 while the Cost and Usage Report is the console chart. Neither tool exists solely to send threshold alerts by email (that is Budgets), and neither only estimates future workloads (that is the Pricing Calculator).",
     reference: {
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-24",
@@ -518,11 +541,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Billing and Cost Management provides a suite of features to set up billing, retrieve and pay invoices, and analyze and organize costs, including the Bills page and payment settings. The EC2, IAM, and CloudWatch consoles manage compute, identity, and monitoring respectively, not billing and invoices.",
+      "AWS Billing and Cost Management provides a suite of features to set up billing, retrieve and pay invoices, and analyze and organize costs, including the Bills page and payment settings. The Amazon EC2 console manages compute, the AWS IAM console manages identity, and the Amazon CloudWatch console handles monitoring, none of which is the home for billing and invoices.",
     reference: {
       label: "What is AWS Billing and Cost Management?",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-31",
@@ -545,6 +569,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-25",
@@ -567,6 +592,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-26",
@@ -588,6 +614,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-27",
@@ -610,6 +637,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-28",
@@ -631,6 +659,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-29",
@@ -653,6 +682,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-30",
@@ -674,5 +704,6 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];

@@ -25,6 +25,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -47,6 +48,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -69,6 +71,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon Machine Images in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -91,6 +94,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon Machine Images in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -113,6 +117,7 @@ export const domain3Ec2: Question[] = [
       label: "Run commands when you launch an EC2 instance with user data input",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -130,11 +135,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "By default, user data scripts run only during the boot cycle when you first launch an instance; additional configuration is required to run them on later reboots or starts. They do not run on every restart by default, do not run on a schedule, and do not require a manual SSH session to execute.",
+      "By default, user data scripts run only during the boot cycle when you first launch an instance; additional configuration is required to run them on later reboots or starts. They do not run on every restart by default, they do not run once per hour or on any schedule while the instance is running, and they do not wait for an administrator who connects over SSH and runs them by hand.",
     reference: {
       label: "Run commands when you launch an EC2 instance with user data input",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -157,6 +163,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -179,6 +186,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -196,11 +204,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Rebooting keeps the instance on the same host, preserves instance store data, and maintains the public DNS name and private IP address. A stop and start erases instance store data and may change the public address, terminating deletes the instance, and hibernating also erases instance store data.",
+      "Rebooting keeps the instance on the same host, preserves instance store data, and maintains the public DNS name and private IP address. A stop and start erases instance store data and may change the public address; choosing to terminate and relaunch destroys the original instance and its instance store data; and choosing to hibernate also erases the instance store volumes.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -223,6 +232,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -245,6 +255,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -267,6 +278,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 compute optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/co.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -289,6 +301,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 memory optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/mo.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -311,6 +324,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 storage optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -333,6 +347,7 @@ export const domain3Ec2: Question[] = [
       label: "Specifications for Amazon EC2 accelerated computing instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/ac.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -356,6 +371,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -373,11 +389,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Right-sizing means selecting the instance type that matches the workload's actual compute, memory, and storage needs, so an underused large instance should move to a smaller, fitting type to cut cost. Keeping it oversized wastes money, committing to a long term locks in the waste, and a Dedicated Host raises cost rather than addressing the size mismatch.",
+      "Right-sizing means selecting the instance type that matches the workload's actual compute, memory, and storage needs, so an underused large instance should move to a smaller, fitting type to cut cost. Choosing to leave it because a larger instance is always safer just keeps paying for idle capacity, committing to a long term locks in the waste, and a Dedicated Host raises cost rather than addressing the size mismatch.",
     reference: {
       label: "Amazon EC2 instance types",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -395,11 +412,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "By default EC2 instances run on shared tenancy hardware, meaning multiple AWS accounts might share the same physical server. Dedicated tenancy on single-account hardware is an opt-in choice, you do not buy the hardware to launch, and the default host is not reserved solely for one instance.",
+      "By default EC2 instances run on shared tenancy hardware, meaning multiple AWS accounts might share the same physical server. Dedicated tenancy on single-account hardware is an opt-in choice, you never purchase the hardware outright before launching, and the default host is not reserved solely for one instance.",
     reference: {
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -422,6 +440,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -445,6 +464,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -467,6 +487,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -489,6 +510,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -511,6 +533,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -533,6 +556,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -550,11 +574,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "When EC2 needs the capacity back it interrupts the Spot Instance and provides a Spot Instance interruption notice giving a two-minute warning. AWS does not promise a 24-hour notice, the interruption is not silent, and Spot capacity can always be reclaimed, so a no-reclamation guarantee is false.",
+      "When EC2 needs the capacity back it interrupts the Spot Instance and provides a Spot Instance interruption notice giving a two-minute warning. AWS does not promise a 24-hour notice, it is not true that no warning of any kind is given, and Spot capacity can always be reclaimed, so a no-reclamation guarantee is false.",
     reference: {
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -577,6 +602,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -599,6 +625,7 @@ export const domain3Ec2: Question[] = [
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -617,11 +644,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Standard Reserved Instances provide a larger discount but cannot be exchanged, while Convertible Reserved Instances can be exchanged during the term for another Convertible with new attributes such as instance family or tenancy. Standard cannot be exchanged, Convertible still discounts below On-Demand, and Reserved Instances are not interrupted for capacity the way Spot is.",
+      "Standard Reserved Instances provide a larger discount but cannot be exchanged, while Convertible Reserved Instances can be exchanged during the term for another Convertible with new attributes such as instance family or tenancy. A Standard Reserved Instance cannot be exchanged for a Convertible at any time, Convertible still discounts below On-Demand, and Reserved Instances are not interrupted for capacity the way Spot is.",
     reference: {
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -644,6 +672,7 @@ export const domain3Ec2: Question[] = [
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -666,6 +695,7 @@ export const domain3Ec2: Question[] = [
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -674,20 +704,21 @@ export const domain3Ec2: Question[] = [
     type: "single",
     topic: "Savings Plans",
     difficulty: "medium",
-    stem: "How does a customer make the commitment for a Savings Plan?",
+    stem: "After a team buys a Savings Plan, how does the lower Savings Plans price get applied to their running EC2 usage?",
     options: [
-      { id: "a", text: "By committing to a consistent amount of compute usage measured in dollars per hour for a one-year or three-year term." },
-      { id: "b", text: "By committing to a fixed number of gigabytes of storage per month." },
-      { id: "c", text: "By committing to a maximum monthly bill that AWS will never exceed." },
-      { id: "d", text: "By paying a single fee that covers all compute for five years." },
+      { id: "a", text: "AWS applies it automatically to matching usage each hour, with no need to stop, modify, or relaunch instances." },
+      { id: "b", text: "The team must manually tag each instance that should receive the discount before it applies." },
+      { id: "c", text: "The team must terminate On-Demand instances and relaunch them as Savings Plan instances." },
+      { id: "d", text: "The discount applies only after the team opens a billing support case each month." },
     ],
     correct: ["a"],
     explanation:
-      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for prices below On-Demand. It is not a storage commitment, not a spending cap, and not a five-year one-time fee.",
+      "A Savings Plan lowers the rate AWS charges for usage that matches the plan, and AWS applies it automatically to that usage each hour up to the committed dollar-per-hour amount, so the team does not stop, tag, modify, or relaunch instances and does not open a case to receive it. There is no separate Savings Plan instance type to launch.",
     reference: {
       label: "What are Savings Plans?",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -710,6 +741,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -733,6 +765,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -750,11 +783,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Both Reserved Instances and Savings Plans reduce cost below On-Demand in exchange for a one-year or three-year commitment. The committed price is lower, not higher, than On-Demand; they do not prevent continuous running; and both offer All Upfront, Partial Upfront, and No Upfront payment options rather than requiring full prepayment.",
+      "Both Reserved Instances and Savings Plans reduce cost below On-Demand in exchange for a one-year or three-year commitment. They do not cost more per hour than On-Demand in return for the ability to stop anytime; they do not prevent continuous running; and both offer All Upfront, Partial Upfront, and No Upfront payment options rather than requiring full prepayment.",
     reference: {
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -778,6 +812,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -800,6 +835,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -823,6 +859,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -841,11 +878,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon EBS provides persistent storage retained across a stop and start, while instance store is temporary storage erased when you stop, hibernate, or terminate. Instance store does not survive a stop, EBS is not wiped on stop, and EBS does retain data across a stop, so the last two options are wrong.",
+      "Amazon EBS provides persistent storage retained across a stop and start, while instance store is temporary storage erased when you stop, hibernate, or terminate. Instance store does not keep its data through a stop and start, and EBS volumes do not lose their data whenever the instance is stopped, so the claims that instance store persists and that EBS is wiped on every stop are both wrong.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "EBS"],
   },
   {
@@ -864,11 +902,12 @@ export const domain3Ec2: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans are not tied to one family, EC2 Instance plans do not cover Fargate and Lambda, and Savings Plans commit to dollars-per-hour compute usage, not storage.",
+      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans are not tied to one family, EC2 Instance plans do not automatically extend to Fargate and Lambda, and Savings Plans commit to dollars-per-hour compute usage, not storage.",
     reference: {
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -892,6 +931,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -915,6 +955,7 @@ export const domain3Ec2: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -938,6 +979,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
 ];

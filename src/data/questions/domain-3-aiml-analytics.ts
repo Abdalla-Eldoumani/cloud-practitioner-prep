@@ -27,6 +27,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
     },
+    lastVerified: "2026-06-23",
     services: ["SageMaker"],
   },
   {
@@ -50,6 +51,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Rekognition",
       url: "https://aws.amazon.com/rekognition/",
     },
+    lastVerified: "2026-06-23",
     services: ["Rekognition"],
   },
   {
@@ -67,11 +69,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Comprehend is a natural language processing service that uncovers insights such as sentiment, entities, and key phrases in text. Translate converts text between languages, Textract extracts text and data from scanned documents, and Lex builds conversational chatbots, so none of those provide text insight analysis.",
+      "Amazon Comprehend is a natural language processing service that uncovers insights such as sentiment, entities, and key phrases in text. Translate converts text between languages, Textract extracts text and data from scanned documents, and Amazon Lex builds conversational chatbots, so none of those provide text insight analysis.",
     reference: {
       label: "Amazon Comprehend",
       url: "https://aws.amazon.com/comprehend/",
     },
+    lastVerified: "2026-06-23",
     services: ["Comprehend"],
   },
   {
@@ -89,11 +92,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Polly is a service that converts text into lifelike speech using deep learning, which is exactly text to speech. Transcribe does the reverse by turning speech into text, Comprehend analyzes text meaning, and Lex builds chatbots, so they do not generate spoken audio from text.",
+      "Amazon Polly is a service that converts text into lifelike speech using deep learning, which is exactly text to speech. Transcribe does the reverse by turning speech into text, Comprehend analyzes text meaning, and Amazon Lex builds chatbots, so they do not generate spoken audio from text.",
     reference: {
       label: "Amazon Polly",
       url: "https://aws.amazon.com/polly/",
     },
+    lastVerified: "2026-06-23",
     services: ["Polly"],
   },
   {
@@ -116,6 +120,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Transcribe",
       url: "https://aws.amazon.com/transcribe/",
     },
+    lastVerified: "2026-06-23",
     services: ["Transcribe"],
   },
   {
@@ -138,6 +143,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Translate",
       url: "https://aws.amazon.com/translate/",
     },
+    lastVerified: "2026-06-23",
     services: ["Translate"],
   },
   {
@@ -160,6 +166,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Lex",
       url: "https://aws.amazon.com/lex/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lex"],
   },
   {
@@ -182,6 +189,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Textract",
       url: "https://aws.amazon.com/textract/",
     },
+    lastVerified: "2026-06-23",
     services: ["Textract"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
+    lastVerified: "2026-06-23",
     services: ["Bedrock"],
   },
   {
@@ -221,11 +230,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Q Developer is a generative AI powered assistant for building, operating, and transforming software, including coding help and troubleshooting AWS resources. Polly generates speech, Lex builds chatbots, and Translate translates languages, so none act as a software development assistant.",
+      "Amazon Q Developer is a generative AI powered assistant for building, operating, and transforming software, including coding help and troubleshooting AWS resources. Polly generates speech, Amazon Lex builds chatbots, and Translate translates languages, so none act as a software development assistant.",
     reference: {
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon Q"],
   },
   {
@@ -248,6 +258,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon Q"],
   },
   {
@@ -271,6 +282,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon Q"],
   },
   {
@@ -288,11 +300,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Athena is a serverless, interactive query service that analyzes data directly in Amazon S3 using standard SQL, with no infrastructure to manage and pay-per-query pricing. Redshift requires loading data into a warehouse, RDS is a transactional database, and EMR runs managed clusters, so none match query-in-place over S3 with no servers.",
+      "Amazon Athena is a serverless, interactive query service that analyzes data directly in Amazon S3 using standard SQL, with no infrastructure to manage and pay-per-query pricing. Redshift requires loading data into a warehouse, Amazon RDS is a transactional database, and Amazon EMR runs managed clusters, so none match query-in-place over S3 with no servers.",
     reference: {
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
     },
+    lastVerified: "2026-06-23",
     services: ["Athena", "S3"],
   },
   {
@@ -316,6 +329,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS Glue",
       url: "https://aws.amazon.com/glue/",
     },
+    lastVerified: "2026-06-23",
     services: ["Glue"],
   },
   {
@@ -338,6 +352,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
+    lastVerified: "2026-06-23",
     services: ["Redshift"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
+    lastVerified: "2026-06-23",
     services: ["Kinesis"],
   },
   {
@@ -383,6 +399,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
+    lastVerified: "2026-06-23",
     services: ["Kinesis"],
   },
   {
@@ -403,8 +420,9 @@ export const domain3AimlAnalytics: Question[] = [
       "Amazon QuickSight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer.",
     reference: {
       label: "Amazon QuickSight",
-      url: "https://aws.amazon.com/quicksight/",
+      url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["QuickSight"],
   },
   {
@@ -428,6 +446,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon EMR",
       url: "https://aws.amazon.com/emr/",
     },
+    lastVerified: "2026-06-23",
     services: ["EMR"],
   },
   {
@@ -450,6 +469,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation"],
   },
   {
@@ -472,6 +492,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CDK", "CloudFormation"],
   },
   {
@@ -516,6 +538,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS Management Console?",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d3-aiml-22",
@@ -537,6 +560,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS Command Line Interface (AWS CLI)",
       url: "https://aws.amazon.com/cli/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d3-aiml-23",
@@ -559,6 +583,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS SDKs and Tools Reference Guide overview",
       url: "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d3-aiml-24",
@@ -580,6 +605,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Rekognition",
       url: "https://aws.amazon.com/rekognition/",
     },
+    lastVerified: "2026-06-23",
     services: ["Rekognition"],
   },
   {
@@ -602,6 +628,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Transcribe",
       url: "https://aws.amazon.com/transcribe/",
     },
+    lastVerified: "2026-06-23",
     services: ["Transcribe", "Translate"],
   },
   {
@@ -619,11 +646,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift and EMR require provisioned clusters that run and bill continuously, and RDS is a managed database that needs data loaded into it, so each adds infrastructure Athena avoids.",
+      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift and Amazon EMR require provisioned clusters that run and bill continuously, and Amazon RDS is a managed database that needs data loaded into it, so each adds infrastructure Athena avoids.",
     reference: {
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
     },
+    lastVerified: "2026-06-23",
     services: ["Athena", "S3"],
   },
   {
@@ -641,11 +669,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Bedrock is a fully managed service for building generative AI applications on foundation models, including customization with a knowledge base, with no models to host. EMR runs big data frameworks, Kinesis streams data, and Redshift is a data warehouse, so none provide managed foundation models for generative AI.",
+      "Amazon Bedrock is a fully managed service for building generative AI applications on foundation models, including customization with a knowledge base, with no models to host. Amazon EMR runs big data frameworks, Kinesis streams data, and Redshift is a data warehouse, so none provide managed foundation models for generative AI.",
     reference: {
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
+    lastVerified: "2026-06-23",
     services: ["Bedrock"],
   },
   {
@@ -668,6 +697,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
+    lastVerified: "2026-06-23",
     services: ["Redshift", "Athena"],
   },
   {
@@ -691,6 +721,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Polly",
       url: "https://aws.amazon.com/polly/",
     },
+    lastVerified: "2026-06-23",
     services: ["Polly", "Rekognition", "Translate", "Comprehend", "Textract"],
   },
   {
@@ -714,6 +745,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
+    lastVerified: "2026-06-23",
     services: ["Kinesis", "Glue", "QuickSight", "Athena", "EMR"],
   },
   {
@@ -737,6 +769,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS Management Console?",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d3-aiml-32",
@@ -759,6 +792,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "CloudFormation template format",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation"],
   },
   {
@@ -781,6 +815,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
+    lastVerified: "2026-06-23",
     services: ["Bedrock"],
   },
   {
@@ -803,6 +838,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Textract",
       url: "https://aws.amazon.com/textract/",
     },
+    lastVerified: "2026-06-23",
     services: ["Textract"],
   },
   {
@@ -825,6 +861,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
+    lastVerified: "2026-06-23",
     services: ["CloudFormation", "CDK"],
   },
 ];
