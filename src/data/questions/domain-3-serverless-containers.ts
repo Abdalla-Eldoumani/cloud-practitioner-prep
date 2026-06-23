@@ -582,7 +582,7 @@ export const domain3ServerlessContainers: Question[] = [
       "Amazon ECR stores container images, and orchestrators such as Amazon ECS and Amazon EKS pull those images to run them. ECR does not schedule containers, is not the Kubernetes control plane, and is not a relational database.",
     reference: {
       label: "Architect your solution for Amazon ECS",
-      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html",
+      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-configuration.html",
     },
     lastVerified: "2026-06-23",
     services: ["ECR", "ECS", "EKS"],
