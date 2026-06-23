@@ -45,7 +45,7 @@ export const migrationTransfer: ServiceEntry[] = [
       "Reach for it when you want to move existing applications to AWS with minimal changes by lifting and shifting whole servers rather than rebuilding them.",
     reference: {
       label: "What is AWS Application Migration Service?",
-      url: "https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html",
+      url: "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
@@ -115,7 +115,7 @@ export const migrationTransfer: ServiceEntry[] = [
       "Reach for it when a migration spans several tools and you want one dashboard to follow the status of each application as it moves to AWS.",
     reference: {
       label: "What is AWS Migration Hub?",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishumigrationhub.html",
+      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
@@ -161,7 +161,7 @@ export const migrationTransfer: ServiceEntry[] = [
       "Reach for it when you have so much data, or such limited bandwidth, that shipping it on a physical device is faster and cheaper than sending it over the internet.",
     reference: {
       label: "What is the AWS Snow Family?",
-      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html",
+      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
