@@ -35,7 +35,7 @@ export const managementGovernance: ServiceEntry[] = [
       "Reach for it when demand on your application rises and falls and you want capacity to scale out and back in automatically instead of guessing a fixed size.",
     reference: {
       label: "What is AWS Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html",
+      url: "https://aws.amazon.com/autoscaling/",
     },
     lastVerified: "2026-06-24",
     aliases: [
@@ -263,7 +263,7 @@ export const managementGovernance: ServiceEntry[] = [
       "Reach for it when you want to point and click to explore services, create resources, or check on your account without writing code or commands.",
     reference: {
       label: "AWS Management Console",
-      url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/getting-started.html",
+      url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
