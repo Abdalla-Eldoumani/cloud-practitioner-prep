@@ -141,11 +141,13 @@ export const analytics: ServiceEntry[] = [
       "Reach for it when you want to turn your data into dashboards and reports that people across an organization can explore.",
     reference: {
       label: "What is Amazon QuickSight?",
-      url: "https://docs.aws.amazon.com/quicksight/latest/user/welcome.html",
+      url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
     },
     lastVerified: "2026-06-24",
     aliases: [
       "QuickSight",
+      "Amazon Quick",
+      "Amazon Quick Suite",
       "BI dashboards",
       "business intelligence",
       "dashboards",
