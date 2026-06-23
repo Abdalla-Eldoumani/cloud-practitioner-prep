@@ -233,7 +233,7 @@ export const domain3FileDatabases: Question[] = [
       "The AWS Snow Family uses physical devices such as Snowball Edge that AWS ships to you; you load the data and ship the device back, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway and Transfer Acceleration still move data over the network, and Amazon EFS is a file system, not a data-transfer device.",
     reference: {
       label: "What is AWS Snowball Edge?",
-      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html",
+      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
     lastVerified: "2026-06-23",
     services: ["Snow Family"],
@@ -256,7 +256,7 @@ export const domain3FileDatabases: Question[] = [
       "Snowball Edge devices support local compute so you can run EC2 instances and Lambda functions on the device to process data at the edge, which is useful in disconnected or remote locations. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity, and it is a physical edge and transfer device rather than a cloud database.",
     reference: {
       label: "What is AWS Snowball Edge?",
-      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html",
+      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
     lastVerified: "2026-06-23",
     services: ["Snow Family"],
