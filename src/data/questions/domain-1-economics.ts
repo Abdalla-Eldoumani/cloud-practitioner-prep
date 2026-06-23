@@ -28,6 +28,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-02",
@@ -49,6 +50,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-03",
@@ -70,6 +72,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-04",
@@ -91,6 +94,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-05",
@@ -112,6 +116,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-06",
@@ -133,6 +138,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-07",
@@ -154,6 +160,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-08",
@@ -176,6 +183,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-09",
@@ -197,6 +205,7 @@ export const domain1Economics: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-10",
@@ -218,6 +227,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-11",
@@ -239,6 +249,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-12",
@@ -260,6 +271,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-13",
@@ -281,6 +293,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-14",
@@ -303,6 +316,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-15",
@@ -325,6 +339,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-16",
@@ -346,6 +361,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -368,6 +384,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-18",
@@ -389,6 +406,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-19",
@@ -410,6 +428,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-20",
@@ -432,6 +451,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-21",
@@ -453,6 +473,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-22",
@@ -475,6 +496,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-23",
@@ -496,6 +518,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-24",
@@ -517,6 +540,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-25",
@@ -538,6 +562,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-26",
@@ -560,6 +585,7 @@ export const domain1Economics: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-27",
@@ -582,6 +608,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-28",
@@ -603,6 +630,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-29",
@@ -624,6 +652,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-30",
@@ -645,6 +674,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-31",
@@ -666,6 +696,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-32",
@@ -688,6 +719,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-33",
@@ -709,5 +741,6 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
