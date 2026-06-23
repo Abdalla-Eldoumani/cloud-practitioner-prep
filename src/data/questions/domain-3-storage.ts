@@ -90,7 +90,7 @@ export const domain3Storage: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon S3 is object storage that stores data as objects in buckets addressed by key, and Amazon EBS is block storage providing volumes that attach to EC2 instances. The remaining options swap the models: S3 is not a block drive, EBS is not key-addressed object storage, and instance store is temporary local disk, not durable object storage.",
+      "Amazon S3 is object storage that stores data as objects in buckets addressed by key, and Amazon EBS is block storage providing volumes that attach to EC2 instances. The remaining options swap the models: S3 is not a block drive, EBS is not object storage reached over HTTP by key, and instance store is temporary local disk, not durable object storage.",
     reference: {
       label: "What is Amazon S3? How Amazon S3 works",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
@@ -487,7 +487,7 @@ export const domain3Storage: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon S3 lets you store an unlimited number of objects in a bucket and charges only for what you actually use, with no capacity to buy in advance. There is no 100-object cap, no required up-front reservation, and billing is usage-based rather than a flat fee.",
+      "Amazon S3 lets you store an unlimited number of objects in a bucket and charges only for what you actually use, with no capacity to buy in advance. A bucket does not hold at most 100 objects, you do not reserve a fixed number of gigabytes before storing data, and billing is usage-based rather than a flat fee.",
     reference: {
       label: "Uploading objects (unlimited number of objects in a bucket)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html",
@@ -510,7 +510,7 @@ export const domain3Storage: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "By default S3 buckets and the objects in them are private, and you have access only to the resources you create unless you explicitly grant access. They are not public by default, not open to everyone in a Region, and not open to all AWS customers.",
+      "By default S3 buckets and the objects in them are private, and you have access only to the resources you create unless you explicitly grant access. They are not open to anyone on the internet until you turn on a private setting, not open to everyone in a Region, and not open to all AWS customers.",
     reference: {
       label: "What is Amazon S3? Access management and security",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
