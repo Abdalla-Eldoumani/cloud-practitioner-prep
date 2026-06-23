@@ -25,6 +25,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -47,6 +48,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (No extra fee)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -69,6 +71,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -92,6 +95,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -114,6 +118,7 @@ export const domain4CostTools: Question[] = [
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "EC2"],
   },
   {
@@ -136,6 +141,7 @@ export const domain4CostTools: Question[] = [
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -158,6 +164,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -180,6 +187,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-09",
@@ -202,6 +210,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-10",
@@ -224,6 +233,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-11",
@@ -245,6 +255,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (notifications)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon SNS"],
   },
   {
@@ -267,6 +278,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-13",
@@ -289,6 +301,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-14",
@@ -310,6 +323,7 @@ export const domain4CostTools: Question[] = [
       label: "Forecasting with Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-15",
@@ -331,6 +345,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-16",
@@ -352,6 +367,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-17",
@@ -373,6 +389,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-18",
@@ -394,6 +411,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-19",
@@ -416,6 +434,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon S3"],
   },
   {
@@ -438,6 +457,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Amazon Athena", "Amazon Redshift", "Amazon QuickSight", "Amazon S3"],
   },
   {
@@ -460,6 +480,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-22",
@@ -481,6 +502,7 @@ export const domain4CostTools: Question[] = [
       label: "AWS Cost Explorer; AWS Budgets; AWS Cost and Usage Reports",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-23",
@@ -502,6 +524,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-24",
@@ -523,6 +546,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management?",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-31",
@@ -545,6 +569,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-25",
@@ -567,6 +592,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-26",
@@ -588,6 +614,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-27",
@@ -610,6 +637,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-28",
@@ -631,6 +659,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-29",
@@ -653,6 +682,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-costtools-30",
@@ -674,5 +704,6 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];
