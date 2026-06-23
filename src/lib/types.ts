@@ -39,6 +39,51 @@ export interface Question {
   services?: string[];
 }
 
+// ---- Service catalog (the AWS service reference + glossary) ----
+
+// One AWS service entry in the catalog. Mirrors Question's verification
+// contract: a `reference` to an official AWS doc and a required `lastVerified`
+// date, so the same link-checker and freshness lint treat services like
+// questions. Reuses Domain and DocReference rather than forking either.
+export interface ServiceEntry {
+  id: string; // stable slug, globally unique, e.g. "amazon-ec2", "aws-kms"
+  name: string; // canonical exam name, e.g. "Amazon EC2"
+  shortName?: string; // common short form for search/compare, e.g. "EC2", "KMS"
+  domain: Domain; // primary exam domain 1-4 (lint enforces 1..4)
+  category: string; // the AWS appendix category, e.g. "Compute"
+  purpose: string; // one-line "what it is" (CAT-01)
+  whenToUse: string; // the "reach for this when..." note (CAT-01)
+  reference: DocReference; // official AWS doc URL backing the entry (CAT-04)
+  // ISO date (YYYY-MM-DD), required, so the compiler refuses an entry that ships
+  // without a verification date, exactly as Question does.
+  lastVerified: string;
+  aliases?: string[]; // alternate names/acronyms so search + glossary find it
+  relatedTerms?: string[]; // glossary cross-references / plain-English concepts
+  relatedServices?: string[]; // ids of related services (powers "see also")
+}
+
+// One row of a compare group: a distinguishing axis and a short value per
+// compared service.
+export interface CompareRow {
+  axis: string; // the question the row answers, e.g. "What it is"
+  // Keyed by ServiceEntry id, never column position, so a responsive reorder or
+  // a stacked mobile layout cannot desync a cell from its service.
+  cells: Record<string, string>;
+}
+
+// A side-by-side disambiguation card for a commonly-confused group. Compare
+// groups are content too, so each carries a required lastVerified and is
+// lint-checked.
+export interface CompareGroup {
+  id: string; // slug, e.g. "ec2-vs-lambda-vs-fargate"
+  title: string; // e.g. "EC2 vs Lambda vs Fargate"
+  framing: string; // one-line "the quick way to tell them apart"
+  serviceIds: string[]; // the ServiceEntry ids being compared (column order)
+  rows: CompareRow[]; // distinguishing axes
+  reference?: DocReference; // optional doc that contrasts them; else each entry's
+  lastVerified: string; // ISO date (YYYY-MM-DD), required
+}
+
 // One answer the user submitted for one question.
 export interface AttemptAnswer {
   questionId: string;
