@@ -21,6 +21,11 @@
 //                  null, undefined, a bare string, a number) falls back to
 //                  defaultProgress() WITHOUT throwing (the call is wrapped and a
 //                  throw is a hard failure), and the result deep-equals defaults.
+//   v2-missing-reviewSchedule  a v2 blob that predates the additive reviewSchedule
+//                  field (every other v2 field present, reviewSchedule omitted)
+//                  loads with the field SEEDED as an object (not undefined) and
+//                  without throwing — proving the additive field needed no version
+//                  bump, the merge-over-defaults loader seeds it for older blobs.
 //
 // Mirrors check-drill.ts / check-deck.ts: a self-contained tsx CLI that collects
 // every failure, prints a grouped report with counts, then exits 0 (clean) or 1
@@ -189,6 +194,41 @@ function main(): void {
     }
     if (!deepEqual(result, defaults)) {
       report.fail("corrupt-default", `migrateProgress(${label}) should deep-equal defaultProgress()`);
+    }
+  }
+
+  // ---- v2-missing-reviewSchedule: an older v2 blob without the additive field ----
+  // A hand-built v2 blob from before reviewSchedule existed: every other v2 field
+  // present, the new field omitted. The additive field stays on version: 2, so
+  // this must load through the same merge-over-defaults path with reviewSchedule
+  // seeded as an object (never undefined), and must not throw. This is the proof
+  // that no v3 bump was needed.
+  const v2NoSchedule = {
+    version: 2,
+    completedLessons: ["intro"],
+    flaggedQuestions: ["d2-x-01"],
+    incorrectQuestions: ["d3-y-02"],
+    attempts: [],
+    topicStats: {},
+    flashcards: { known: [], learning: [] },
+    // reviewSchedule intentionally omitted
+  };
+  let seededLoad: ProgressState | undefined;
+  try {
+    seededLoad = migrateProgress(v2NoSchedule);
+  } catch (err) {
+    report.fail("v2-missing-reviewSchedule", `migrateProgress threw on a v2 blob without reviewSchedule: ${(err as Error).message}`);
+  }
+  if (seededLoad) {
+    if (typeof seededLoad.reviewSchedule !== "object" || seededLoad.reviewSchedule === null) {
+      report.fail("v2-missing-reviewSchedule", `reviewSchedule should be seeded as an object on a v2 blob that omits it, got ${String(seededLoad.reviewSchedule)}`);
+    }
+    if (seededLoad.version !== 2) {
+      report.fail("v2-missing-reviewSchedule", `version should stay 2 (no v3 bump), got ${seededLoad.version}`);
+    }
+    // The pre-existing fields must still survive the merge untouched.
+    if (!deepEqual(seededLoad.flaggedQuestions, ["d2-x-01"]) || !deepEqual(seededLoad.incorrectQuestions, ["d3-y-02"])) {
+      report.fail("v2-missing-reviewSchedule", `the union lists must be preserved while the new field is seeded`);
     }
   }
 
