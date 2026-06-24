@@ -244,6 +244,11 @@ export const domain1Concepts: Question[] = [
       { id: "e", text: "Elastic" },
     ],
     correct: ["a", "b"],
+    distractorRationales: {
+      c: "Pay-as-you-go is how AWS bills for consumption, not one of the cloud, hybrid, or on-premises deployment models.",
+      d: "Reserved is an EC2 purchase option for committed capacity, not a deployment model.",
+      e: "Elastic describes scaling capacity with demand, not where an application is deployed.",
+    },
     explanation:
       "AWS names cloud, hybrid, and on-premises (private cloud) as deployment models, so cloud and hybrid are both correct. Pay-as-you-go is a pricing approach, reserved is a purchase option, and elastic describes scaling, none of which is a deployment model.",
     reference: {
