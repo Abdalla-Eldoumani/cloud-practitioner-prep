@@ -4,11 +4,14 @@ const KEY = "ccp-prep:progress:v1";
 
 export function defaultProgress(): ProgressState {
   return {
-    version: 1,
+    version: 2,
     completedLessons: [],
     flaggedQuestions: [],
     incorrectQuestions: [],
     attempts: [],
+    topicStats: {},
+    flashcards: { known: [], learning: [] },
+    confidenceByQuestion: {},
   };
 }
 
@@ -43,11 +46,33 @@ export function loadProgress(): ProgressState {
   const raw = canUseStorage() ? safeGet() : memoryFallback;
   if (!raw) return defaultProgress();
   try {
-    const parsed = JSON.parse(raw) as ProgressState;
-    if (parsed && parsed.version === 1) return { ...defaultProgress(), ...parsed };
+    // Parse loosely: a stored blob is untrusted input and may be any version
+    // (or hand-edited), so read the version off an unknown shape before trusting
+    // it. Both known versions merge OVER defaultProgress(), so a field added in
+    // v2 is always present even when the stored blob predates it.
+    const parsed = JSON.parse(raw) as Omit<Partial<ProgressState>, "version"> & {
+      version?: number;
+    };
+    if (parsed && typeof parsed === "object") {
+      // v1 -> v2 upgrade. Spread the stored payload over the v2 defaults to
+      // KEEP every existing field (completedLessons, flaggedQuestions,
+      // incorrectQuestions, attempts), then force version: 2 so the next save
+      // persists as v2 and the stale v1 marker never round-trips. A returning
+      // learner must not lose flagged/missed/attempt history on this bump.
+      if (parsed.version === 1) {
+        return { ...defaultProgress(), ...parsed, version: 2 };
+      }
+      // Native v2 load. Same merge so any field a forward-compatible blob omits
+      // falls back to its default rather than landing undefined.
+      if (parsed.version === 2) {
+        return { ...defaultProgress(), ...parsed, version: 2 };
+      }
+    }
   } catch {
     // corrupt payload: start clean rather than crash
   }
+  // Absent, unparseable, or an unrecognized version: safe defaults, never throw
+  // into the UI.
   return defaultProgress();
 }
 
