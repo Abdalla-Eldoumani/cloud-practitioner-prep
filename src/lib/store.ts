@@ -6,6 +6,13 @@ import type {
   ProgressState,
 } from "./types";
 import { loadProgress, saveProgress } from "./progress";
+import { normalizeTopic } from "./topics";
+
+// Re-exported so existing importers keep `import { normalizeTopic } from
+// "./store"` working. The definition lives in the store-free `topics.ts` so the
+// pure assembly layer (exam.ts) can share the exact same key function without
+// pulling nanostores into it.
+export { normalizeTopic };
 
 // Single source of truth for client-side progress. Islands subscribe via
 // @nanostores/react useStore, so a change in one island (mark a lesson done)
@@ -55,15 +62,6 @@ export function recordAttempt(
     incorrectQuestions: [...missed],
     attempts: [attempt, ...cur.attempts].slice(0, 100),
   });
-}
-
-// Topic key for the rolling per-topic stats. The bank has casing collisions
-// (e.g. "Consolidated billing" vs "Consolidated Billing") that would otherwise
-// fork into two buckets, so a topic is keyed by its trimmed, lowercased form.
-// The human-readable label is kept on the stored stat (first-seen casing). The
-// adaptive drill builder reuses this exact function so both agree on keys.
-export function normalizeTopic(topic: string): string {
-  return topic.trim().toLowerCase();
 }
 
 // One question's outcome in a sitting: which topic/domain it belongs to, whether
