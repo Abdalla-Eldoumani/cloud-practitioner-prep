@@ -104,6 +104,33 @@ export function recordQuestionResults(results: QuestionResult[]): void {
   commit({ ...cur, topicStats, confidenceByQuestion });
 }
 
+// Self-grade one flashcard: move its id into `flashcards.known` or
+// `flashcards.learning`, removing it from the other so the two stay disjoint (a
+// forged duplicate cannot double-count), and stamp `lastSeen[cardId]` for the
+// later review schedule. One commit through commit(), so it persists via the
+// same localStorage path and degrades to memory in private mode like the rest.
+export function setFlashcardStatus(
+  cardId: string,
+  status: "known" | "learning",
+): void {
+  const cur = $progress.get();
+  const known = new Set(cur.flashcards.known);
+  const learning = new Set(cur.flashcards.learning);
+  if (status === "known") {
+    known.add(cardId);
+    learning.delete(cardId);
+  } else {
+    learning.add(cardId);
+    known.delete(cardId);
+  }
+  const lastSeen = { ...(cur.flashcards.lastSeen ?? {}) };
+  lastSeen[cardId] = Date.now();
+  commit({
+    ...cur,
+    flashcards: { known: [...known], learning: [...learning], lastSeen },
+  });
+}
+
 // Clearing from review removes a question from both lists, because the review
 // set is the union of missed and flagged. Dropping only one would leave a
 // question the reader marked as understood still sitting in the queue.
