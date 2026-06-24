@@ -65,6 +65,11 @@ export const domain1Global: Question[] = [
       { id: "d", text: "Five" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "One is below the AWS minimum; a Region is never built with a single Availability Zone.",
+      c: "Two is below the minimum of three isolated, physically separate Availability Zones per Region.",
+      d: "Five overstates the floor; AWS guarantees a minimum of three Availability Zones, not five.",
+    },
     explanation:
       "AWS states that each Region consists of a minimum of three isolated, physically separate Availability Zones. A Region never has just one or two Availability Zones, and the floor is three rather than five.",
     reference: {
@@ -560,6 +565,11 @@ export const domain1Global: Question[] = [
       { id: "d", text: "Edge location, then Region, then Availability Zone" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "An Availability Zone sits inside a Region, so it cannot be the largest scope ahead of the Region.",
+      c: "A data center is the smallest unit, not the largest, so leading with it inverts the hierarchy.",
+      d: "An edge location is a CloudFront cache point, not a tier in the Region-to-data-center hierarchy.",
+    },
     explanation:
       "A Region is a geographic area containing multiple Availability Zones, and each Availability Zone is made up of one or more discrete data centers, so the order from largest to smallest is Region, Availability Zone, data center. The other orderings misplace these layers, and an edge location is a CloudFront cache point, not a tier in this Region-to-data-center hierarchy.",
     reference: {
