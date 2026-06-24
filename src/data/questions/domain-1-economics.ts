@@ -154,6 +154,11 @@ export const domain1Economics: Question[] = [
       { id: "d", text: "Converting variable costs into a single fixed upfront purchase" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the shift; AWS replaces upfront capital expense with low variable cost, not the other way around.",
+      c: "Cloud is not free; AWS bills low variable costs that scale with usage rather than eliminating expense.",
+      d: "Pay-as-you-go costs rise and fall with usage; they do not become one fixed upfront purchase.",
+    },
     explanation:
       "AWS states that a key benefit of cloud computing is the opportunity to replace upfront capital infrastructure expenses with low variable costs that scale with your business, which is the shift from capital expenditure to operational expenditure. The reverse direction is wrong, cloud is not free, and pay-as-you-go costs vary with usage rather than becoming one fixed upfront purchase.",
     reference: {
