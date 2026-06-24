@@ -7,19 +7,20 @@ import type {
   QuizMode,
 } from "@/lib/types";
 import { EXAM } from "@/lib/constants";
-import { scoreAttempt } from "@/lib/scoring";
+import { isAnswerCorrect, scoreAttempt } from "@/lib/scoring";
 import {
   buildDomainQuiz,
   buildDrill,
   buildMockExam,
-  buildReviewSet,
   shuffle,
 } from "@/lib/exam";
+import { orderReviewQueue } from "@/lib/review";
 import {
   $progress,
   clearMissed,
   recordAttempt,
   recordQuestionResults,
+  reviewQuestion,
   toggleFlag,
 } from "@/lib/store";
 import QuestionCard from "./QuestionCard";
@@ -122,10 +123,16 @@ export default function QuizEngine({
     if (mode === "exam") return buildMockExam(pool, examTotal);
     if (mode === "review") {
       const p = $progress.get();
+      // The review set is the deduplicated union of flagged and missed questions
+      // (a question that is both appears once). Order that union by the spaced-
+      // repetition schedule so the soonest-due / weakest questions surface first;
+      // orderReviewQueue returns a permutation of the ids (never drops one), and
+      // reconstruct maps each id to its question in that order, skipping any id no
+      // longer in the pool. An empty union yields an empty set -> the empty phase.
       const ids = Array.from(
         new Set([...p.flaggedQuestions, ...p.incorrectQuestions]),
       );
-      return buildReviewSet(pool, ids);
+      return reconstruct(pool, orderReviewQueue(ids, p.reviewSchedule ?? {}));
     }
     if (mode === "drill") {
       // Build the set from the learner's weakest topics, read from the store at
@@ -499,7 +506,19 @@ export default function QuizEngine({
                     ? `confidence-hint-${q.id}`
                     : undefined
                 }
-                onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
+                onClick={() => {
+                  // Review mode grades the spaced-repetition schedule here,
+                  // because this is the moment the engine knows the question and
+                  // the submitted answer: a correct answer promotes its box (a
+                  // longer interval before it resurfaces), a wrong one resets it
+                  // to box 0 (it comes back fastest). Other modes do not touch the
+                  // schedule. "Clear from review" already prunes the entry, so no
+                  // extra cleanup is needed here.
+                  if (mode === "review") {
+                    reviewQuestion(q.id, isAnswerCorrect(q, answers[q.id] ?? []));
+                  }
+                  setRevealed((r) => ({ ...r, [q.id]: true }));
+                }}
                 className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Check answer
