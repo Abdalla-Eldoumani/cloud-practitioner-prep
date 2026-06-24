@@ -138,6 +138,11 @@ export const domain2NetworkProtection: Question[] = [
       { id: "e", text: "Both security groups and network ACLs support deny rules." },
     ],
     correct: ["a", "c"],
+    distractorRationales: {
+      b: "This reverses statefulness; security groups are stateful and network ACLs are stateless.",
+      d: "This reverses the layers; security groups act at the instance level and network ACLs at the subnet level.",
+      e: "Security groups support allow rules only, so the claim that both support deny rules is wrong.",
+    },
     explanation:
       "Security groups operate at the instance level and network ACLs at the subnet level, and security groups support allow rules only while network ACLs support both allow and deny. Calling security groups stateless and network ACLs stateful reverses their statefulness: security groups are stateful and network ACLs are stateless. Security groups cannot express a deny, so the claim that both support deny rules is wrong.",
     reference: {
@@ -207,6 +212,11 @@ export const domain2NetworkProtection: Question[] = [
       { id: "d", text: "Security group: account level. Network ACL: Region level." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This swaps the layers; the security group is instance-level and the network ACL is subnet-level.",
+      c: "Neither control operates at the VPC or account level; the pairing is instance and subnet.",
+      d: "Neither control operates at the account or Region level; the pairing is instance and subnet.",
+    },
     explanation:
       "A security group operates at the instance level and a network ACL operates at the subnet level. The other options swap these or attach the controls to the wrong scope; neither operates at the account or Region level.",
     reference: {
@@ -837,6 +847,11 @@ export const domain2NetworkProtection: Question[] = [
       { id: "d", text: "Only Amazon S3 bucket policies" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Network Firewall uses stateful rules as well as stateless ones, so limiting it to stateless rules is wrong.",
+      c: "Network Firewall filters network traffic; it does not use IAM identity-based rules, which govern API permissions.",
+      d: "Network Firewall does not filter traffic with Amazon S3 bucket policies, which control access to S3 objects.",
+    },
     explanation:
       "AWS Network Firewall uses stateless rule groups and stateful rule groups to inspect and filter VPC traffic, with stateful inspection powered by the open source Suricata IPS. It is not limited to stateless rules, and it does not filter traffic with only IAM identity-based rules or with Amazon S3 bucket policies.",
     reference: {
