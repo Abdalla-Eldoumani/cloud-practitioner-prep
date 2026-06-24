@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { DOMAINS } from "@/lib/constants";
+
+// The cheat-sheet index: a card per exam domain linking its printable per-domain
+// sheet at /cheat-sheet/<id>. Mirrors the practice-hub card idiom so the set is
+// discoverable from the practice area. The sheets themselves carry the print
+// styling; this page is on-screen navigation only.
+---
+
+<BaseLayout title="Cheat sheets">
+  <p class="text-sm">
+    <a href="/practice" class="text-brand underline underline-offset-2">
+      ← Back to practice
+    </a>
+  </p>
+
+  <header class="mt-4 max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Cheat sheets
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      One printable summary per exam domain: the key concepts, services, and the
+      comparisons that are easiest to confuse, distilled from the lessons. Open a
+      sheet and print it for last-minute review.
+    </p>
+    <p class="mt-2 text-sm text-ink-soft">
+      Domains are weighted 24% / 30% / 34% / 12% of the scored exam.
+    </p>
+  </header>
+
+  <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+    {
+      DOMAINS.map((d) => (
+        <li>
+          <a
+            href={`/cheat-sheet/${d.id}`}
+            class="flex h-full flex-col rounded-lg border border-hairline bg-raised p-6 transition-colors hover:border-brand"
+          >
+            <div class="flex flex-wrap items-center gap-3">
+              <DomainBadge domain={d.id} showName={false} />
+              <h2 class="text-lg font-bold text-ink">{d.name}</h2>
+              <span class="text-sm text-ink-soft">{d.weight}%</span>
+            </div>
+            <p class="mt-2 text-ink-soft">{d.blurb}</p>
+            <span class="mt-3 inline-block font-medium text-brand">
+              Open cheat sheet →
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
