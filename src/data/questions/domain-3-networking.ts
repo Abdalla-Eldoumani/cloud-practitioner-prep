@@ -42,6 +42,11 @@ export const domain3Networking: Question[] = [
       { id: "d", text: "Between a /28 netmask and a /32 netmask" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "A /8 to /16 range falls outside the allowed VPC CIDR block sizes; the largest permitted is /16.",
+      c: "The VPC CIDR block size is not fixed at /24; AWS allows a range from /16 to /28.",
+      d: "A /28 to /32 range is too small; /28 is the smallest VPC CIDR block AWS permits.",
+    },
     explanation:
       "AWS allows a VPC IPv4 CIDR block size between a /16 netmask (65,536 addresses) and a /28 netmask (16 addresses). The other ranges fall outside what AWS permits for a VPC CIDR block, and the size is not fixed at /24.",
     reference: {
@@ -88,6 +93,11 @@ export const domain3Networking: Question[] = [
       { id: "d", text: "Subnet type depends only on the size of its CIDR block, not its routing." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the rule; a route to the internet gateway makes a subnet public, not private.",
+      c: "Sharing a VPC does not make both subnets public; the one with no internet-gateway route is private.",
+      d: "Subnet type comes from routing, not CIDR block size, so the size does not classify it.",
+    },
     explanation:
       "AWS defines a public subnet as one whose route table has a route to an internet gateway, and a private subnet as one whose route table does not. The classification comes from routing, not from being in the same VPC or from CIDR block size.",
     reference: {
@@ -134,6 +144,11 @@ export const domain3Networking: Question[] = [
       { id: "d", text: "A customer gateway" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "A NAT gateway enables outbound-only access for private subnets; it does not allow inbound internet traffic to a public server.",
+      c: "A VPC endpoint reaches AWS services privately; it does not connect the VPC to the public internet.",
+      d: "A customer gateway represents your on-premises device for a VPN; it is not the VPC-to-internet component.",
+    },
     explanation:
       "An internet gateway is a horizontally scaled, redundant, highly available VPC component that allows communication between your VPC and the internet for resources with public addresses. A NAT gateway enables only outbound access for private subnets, a VPC endpoint reaches AWS services privately, and a customer gateway represents your on-premises device.",
     reference: {
