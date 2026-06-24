@@ -36,6 +36,7 @@
     "sync": "astro sync",
     "check": "astro check",
     "lint:content": "tsx scripts/lint-content.ts",
+    "lint:catalog": "tsx scripts/lint-catalog.ts",
     "lint:links": "tsx scripts/check-links.ts",
     "lint:links:live": "tsx scripts/check-links.ts --live",
     "astro": "astro"

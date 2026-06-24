@@ -11,7 +11,9 @@ import matter from "gray-matter";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { ALL_QUESTIONS } from "../src/data/questions/index";
-import type { Question } from "../src/lib/types";
+import { COMPARE_GROUPS } from "../src/data/services/compare";
+import { ALL_SERVICES } from "../src/data/services/index";
+import type { Question, ServiceEntry } from "../src/lib/types";
 
 // Resolve a path relative to this module into a glob pattern globby accepts on
 // every platform. new URL().pathname yields a leading-slash, drive-letter form
@@ -67,6 +69,25 @@ export function loadQuestions(): Question[] {
 // link-checker dedupes). Length equals the question count.
 export function questionRefUrls(): string[] {
   return loadQuestions().map((q) => q.reference.url);
+}
+
+// Load the typed service catalog. A thin wrapper mirroring loadQuestions so the
+// catalog data path lives in one spot.
+export function loadServices(): ServiceEntry[] {
+  return ALL_SERVICES;
+}
+
+// Every catalog reference URL: one per service, plus any reference URL a compare
+// group carries (compare groups can cite a doc that contrasts the services).
+// Feeds the link-checker so catalog doc links get the same AWS-host allowlist
+// and live reachability check as questions. Duplicates included; the
+// link-checker dedupes.
+export function catalogRefUrls(): string[] {
+  const serviceUrls = loadServices().map((s) => s.reference.url);
+  const compareUrls = COMPARE_GROUPS.flatMap((g) =>
+    g.reference ? [g.reference.url] : [],
+  );
+  return [...serviceUrls, ...compareUrls];
 }
 
 // Count questions per domain id, e.g. { 1: 223, 2: 262, 3: 303, 4: 98 }.

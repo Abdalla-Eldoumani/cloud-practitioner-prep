@@ -17,6 +17,7 @@
 import {
   AWS_HOSTS,
   HISTORICAL_MARKERS,
+  catalogRefUrls,
   extractMdxLinks,
   parseUrl,
   questionRefUrls,
@@ -38,7 +39,11 @@ function samePath(from: URL, to: URL): boolean {
 async function main(): Promise<void> {
   const live = process.argv.includes("--live");
 
-  const all = [...questionRefUrls(), ...(await extractMdxLinks())];
+  const all = [
+    ...questionRefUrls(),
+    ...catalogRefUrls(),
+    ...(await extractMdxLinks()),
+  ];
   const distinct = [...new Set(all)].sort();
 
   const failures: Failure[] = [];
