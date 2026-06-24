@@ -38,6 +38,7 @@
     "lint:content": "tsx scripts/lint-content.ts",
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "lint:shuffle": "tsx scripts/check-shuffle-uniformity.ts",
+    "check:migration": "tsx scripts/check-migration.ts",
     "check:drill": "tsx scripts/check-drill.ts",
     "check:deck": "tsx scripts/check-deck.ts",
     "lint:links": "tsx scripts/check-links.ts",
