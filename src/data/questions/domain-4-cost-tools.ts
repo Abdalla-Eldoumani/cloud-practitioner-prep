@@ -249,6 +249,11 @@ export const domain4CostTools: Question[] = [
       { id: "d", text: "AWS CloudTrail event history only" },
     ],
     correct: ["b"],
+    distractorRationales: {
+      a: "AWS Budgets can also publish to an Amazon SNS topic, so notifications are not limited to email.",
+      c: "Budgets sends alerts to email and SNS topics, not to CloudWatch Logs.",
+      d: "CloudTrail records API activity; it is not a Budgets notification target.",
+    },
     explanation:
       "AWS Budgets can send notifications to an email address, to an Amazon SNS topic, or to both. Routing through an SNS topic lets automated systems subscribe and react. CloudWatch Logs and CloudTrail are not budget notification targets.",
     reference: {
@@ -474,6 +479,11 @@ export const domain4CostTools: Question[] = [
       { id: "d", text: "Pricing Calculator for the raw detail, AWS Budgets for the quick visual" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This is reversed: Cost Explorer gives the quick visual and the Cost and Usage Report gives the raw line-item detail.",
+      c: "Budgets tracks spend against thresholds and the Pricing Calculator estimates future cost; neither provides raw billing detail or a spend visual.",
+      d: "The Pricing Calculator estimates costs before use and Budgets sends threshold alerts; neither stores raw line items or shows spend trends.",
+    },
     explanation:
       "The Cost and Usage Report delivers the most granular line-item data to an S3 bucket for long-term storage and querying, while Cost Explorer provides an in-console visual view of cost trends with no setup. Budgets alerts on thresholds and the Pricing Calculator estimates future costs, so neither fits these two needs.",
     reference: {
@@ -496,6 +506,11 @@ export const domain4CostTools: Question[] = [
       { id: "d", text: "Cost Explorer for the chart, Cost and Usage Report for the alert, Budgets for the export" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Budgets does not draw spend charts and Cost Explorer does not send budget alerts; their roles are swapped.",
+      c: "The Cost and Usage Report is the raw export, not a chart source, and Cost Explorer visualizes spend rather than exporting line items.",
+      d: "The Cost and Usage Report exports line items rather than sending alerts, and Budgets alerts rather than exports; the alert and export roles are swapped.",
+    },
     explanation:
       "Cost Explorer visualizes and analyzes historical spend, AWS Budgets sends notifications when costs exceed or are forecasted to exceed a threshold, and the Cost and Usage Report exports the most detailed line-item data to Amazon S3. Each of the other mappings swaps at least one of these roles.",
     reference: {

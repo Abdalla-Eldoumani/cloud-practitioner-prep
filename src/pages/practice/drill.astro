@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import QuizEngine from "@/components/quiz/QuizEngine.tsx";
+import { ALL_QUESTIONS } from "@/data/questions";
+
+// The drill builds its set in the browser from the learner's stored weak topics,
+// so the page passes the full pool and lets the engine assemble the run at mount.
+// The chosen weak topics are named inside the running engine (the transparency
+// header), and the empty state shows when there is not enough history yet.
+const available = ALL_QUESTIONS.length;
+const count = Math.min(15, available);
+---
+
+<BaseLayout title="Weak-area drill">
+  <header class="mx-auto max-w-2xl">
+    <a
+      href="/practice"
+      class="text-sm font-medium text-brand underline underline-offset-2"
+    >
+      Back to practice
+    </a>
+    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      Weak-area drill
+    </h1>
+    <p class="mt-2 text-ink-soft">
+      A focused set built from the topics you miss most, with instant feedback on
+      every question. Answer a few practice sets first and your weakest topics
+      surface here automatically.
+    </p>
+  </header>
+
+  <div class="mx-auto mt-8 max-w-2xl">
+    <QuizEngine client:load pool={ALL_QUESTIONS} mode="drill" count={count} />
+  </div>
+</BaseLayout>

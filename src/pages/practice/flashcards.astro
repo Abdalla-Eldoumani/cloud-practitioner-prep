@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Flashcards from "@/components/quiz/Flashcards.tsx";
+import { ALL_SERVICES } from "@/data/services";
+import { ALL_QUESTIONS } from "@/data/questions";
+
+// The deck is assembled in the browser: the island reads the learner's missed
+// ids from $progress at mount and resolves them against the pool, so the page
+// ships the verified catalog and the full question pool as serialized props and
+// lets the island build and shuffle the deck. The catalog always yields cards
+// (113 services), so the empty state is effectively only reachable if both
+// sources were emptied.
+---
+
+<BaseLayout title="Flashcards">
+  <header class="mx-auto max-w-2xl">
+    <a
+      href="/practice"
+      class="text-sm font-medium text-brand underline underline-offset-2"
+    >
+      Back to practice
+    </a>
+    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      Flashcards
+    </h1>
+    <p class="mt-2 text-ink-soft">
+      Quick recall from the service catalog and the questions you missed. Flip
+      each card, then mark whether you knew it. Works fully by keyboard.
+    </p>
+  </header>
+
+  <div class="mx-auto mt-8 max-w-2xl">
+    <Flashcards client:load services={ALL_SERVICES} pool={ALL_QUESTIONS} />
+  </div>
+</BaseLayout>

@@ -1,14 +1,27 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { AttemptResult, Domain, Question, QuizMode } from "@/lib/types";
+import type {
+  AttemptResult,
+  Confidence,
+  Domain,
+  Question,
+  QuizMode,
+} from "@/lib/types";
 import { EXAM } from "@/lib/constants";
 import { scoreAttempt } from "@/lib/scoring";
 import {
   buildDomainQuiz,
+  buildDrill,
   buildMockExam,
   buildReviewSet,
   shuffle,
 } from "@/lib/exam";
-import { $progress, clearMissed, recordAttempt, toggleFlag } from "@/lib/store";
+import {
+  $progress,
+  clearMissed,
+  recordAttempt,
+  recordQuestionResults,
+  toggleFlag,
+} from "@/lib/store";
 import QuestionCard from "./QuestionCard";
 import ResultsPanel from "./ResultsPanel";
 
@@ -90,7 +103,15 @@ export default function QuizEngine({
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [flagged, setFlagged] = useState<Record<string, boolean>>({});
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
+  // Pre-reveal confidence per question, transient for the sitting. Folded into
+  // the recorded attempt at finish; never duplicated into persisted progress
+  // here (the store owns that). Captured before reveal by the Check-answer gate.
+  const [confidence, setConfidence] = useState<Record<string, Confidence>>({});
   const [result, setResult] = useState<AttemptResult | null>(null);
+  // The weak topics a drill was built from, by display label, so the run can
+  // name them ("Drilling: …") — the transparency requirement. Empty in other
+  // modes and on a cold-start drill that fell back to a mixed draw.
+  const [weakTopics, setWeakTopics] = useState<string[]>([]);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState<number>(Date.now());
   const [hasSaved, setHasSaved] = useState(false);
@@ -105,6 +126,19 @@ export default function QuizEngine({
         new Set([...p.flaggedQuestions, ...p.incorrectQuestions]),
       );
       return buildReviewSet(pool, ids);
+    }
+    if (mode === "drill") {
+      // Build the set from the learner's weakest topics, read from the store at
+      // build time (mirroring review). buildDrill guards on a seen threshold and
+      // falls back to a mixed draw on cold start, so this is never empty for a
+      // non-empty pool. Stash the chosen topics so the run can name them.
+      const { questions, weakTopics: topics } = buildDrill(
+        pool,
+        $progress.get(),
+        count,
+      );
+      setWeakTopics(topics);
+      return questions;
     }
     if (domain) return buildDomainQuiz(pool, domain, count);
     return shuffle(pool).slice(0, count);
@@ -124,7 +158,10 @@ export default function QuizEngine({
     setStartedAt(Date.now());
   }, [mode, buildSet]);
 
-  const recordDomain: Domain | "all" = mode === "exam" ? "all" : (domain ?? "all");
+  // Exam and drill are cross-domain by nature, so they record under "all"; a
+  // focused practice run records its own domain.
+  const recordDomain: Domain | "all" =
+    mode === "exam" || mode === "drill" ? "all" : (domain ?? "all");
 
   const finish = useCallback(
     (qs: Question[], ans: Record<string, string[]>, started: number) => {
@@ -135,20 +172,34 @@ export default function QuizEngine({
       }));
       const duration = Math.max(0, Math.round((Date.now() - started) / 1000));
       const r = scoreAttempt(qs, answerList, mode, duration);
-      const missed = qs
-        .filter((q) => {
-          const sel = ans[q.id] ?? [];
-          if (sel.length !== q.correct.length) return true;
-          const want = new Set(q.correct);
-          return !sel.every((id) => want.has(id));
-        })
-        .map((q) => q.id);
-      recordAttempt(r, recordDomain, missed);
+      const missedSet = new Set(
+        qs
+          .filter((q) => {
+            const sel = ans[q.id] ?? [];
+            if (sel.length !== q.correct.length) return true;
+            const want = new Set(q.correct);
+            return !sel.every((id) => want.has(id));
+          })
+          .map((q) => q.id),
+      );
+      recordAttempt(r, recordDomain, [...missedSet]);
+      // Fold per-question topic/correctness/confidence into the v2 store so the
+      // adaptive drill can later weight confident-but-wrong topics. Confidence
+      // is the pre-reveal value captured in island state.
+      recordQuestionResults(
+        qs.map((q) => ({
+          questionId: q.id,
+          topic: q.topic,
+          domain: q.domain,
+          correct: !missedSet.has(q.id),
+          confidence: confidence[q.id],
+        })),
+      );
       setResult(r);
       setPhase("results");
       clearSavedExam();
     },
-    [flagged, mode, recordDomain],
+    [flagged, mode, recordDomain, confidence],
   );
 
   // Exam countdown. Remaining time is derived from the start timestamp, so a
@@ -260,6 +311,7 @@ export default function QuizEngine({
     setAnswers({});
     setFlagged({});
     setRevealed({});
+    setConfidence({});
     setCurrent(0);
     if (mode === "exam") {
       setStartedAt(null);
@@ -285,13 +337,20 @@ export default function QuizEngine({
   // ---- render ----
 
   if (phase === "empty") {
+    // The empty copy is mode-aware: a drill with no history yet explains how to
+    // build one, while review explains how the queue fills. Both land on the
+    // same shipped panel idiom and link back to practice.
+    const isDrill = mode === "drill";
+    const emptyHeading = isDrill
+      ? "Not enough history yet"
+      : "Nothing to review yet";
+    const emptyBody = isDrill
+      ? "Answer a practice set or two and your weakest topics will surface here for a focused drill."
+      : "Flag tricky questions or miss a few in practice and they will collect here for a focused review session.";
     return (
       <div className="rounded-lg border border-hairline bg-raised p-8 text-center">
-        <h2 className="text-xl font-semibold text-ink">Nothing to review yet</h2>
-        <p className="mx-auto mt-2 max-w-prose text-ink-soft">
-          Flag tricky questions or miss a few in practice and they will collect
-          here for a focused review session.
-        </p>
+        <h2 className="text-xl font-semibold text-ink">{emptyHeading}</h2>
+        <p className="mx-auto mt-2 max-w-prose text-ink-soft">{emptyBody}</p>
         <a
           href="/practice"
           className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
@@ -360,6 +419,7 @@ export default function QuizEngine({
                 total={questions.length}
                 onToggleOption={() => {}}
                 onToggleFlag={() => {}}
+                showConfidence={false}
               />
             ))}
           </div>
@@ -404,6 +464,13 @@ export default function QuizEngine({
         </div>
       )}
 
+      {mode === "drill" && weakTopics.length > 0 && (
+        <p className="text-sm text-ink-soft">
+          These questions target your weakest topics:{" "}
+          <span className="font-medium text-ink">{weakTopics.join(", ")}</span>.
+        </p>
+      )}
+
       <QuestionCard
         question={q}
         selected={selected}
@@ -413,19 +480,39 @@ export default function QuizEngine({
         total={questions.length}
         onToggleOption={onToggleOption}
         onToggleFlag={onToggleFlag}
+        showConfidence={!isExam}
+        confidence={confidence[q.id]}
+        onSetConfidence={(level) =>
+          setConfidence((c) => ({ ...c, [q.id]: level }))
+        }
       />
 
       {!isExam && (
         <div className="flex flex-wrap items-center gap-3">
           {!isRevealed ? (
-            <button
-              type="button"
-              disabled={selected.length === 0}
-              onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
-              className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Check answer
-            </button>
+            <>
+              <button
+                type="button"
+                disabled={selected.length === 0 || !confidence[q.id]}
+                aria-describedby={
+                  selected.length > 0 && !confidence[q.id]
+                    ? `confidence-hint-${q.id}`
+                    : undefined
+                }
+                onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
+                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Check answer
+              </button>
+              {selected.length > 0 && !confidence[q.id] && (
+                <p
+                  id={`confidence-hint-${q.id}`}
+                  className="text-sm text-ink-soft"
+                >
+                  Rate your confidence first
+                </p>
+              )}
+            </>
           ) : (
             <>
               {mode === "review" && (

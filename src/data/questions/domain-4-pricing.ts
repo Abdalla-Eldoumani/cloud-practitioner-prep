@@ -64,6 +64,11 @@ export const domain4Pricing: Question[] = [
       { id: "d", text: "All data transfer, in and out, is charged at the same flat rate." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the rule: inbound transfer from the internet is the free direction, not outbound.",
+      c: "Outbound data transfer to the internet is billed beyond the free allowance, so it is not all free.",
+      d: "Inbound is generally free and outbound is tiered, not a single flat rate for both directions.",
+    },
     explanation:
       "In most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the data transfer out rate. Inbound and outbound are not always the same: claiming inbound is billed and outbound free inverts the rule, and a single flat rate for all transfer flattens the inbound-versus-outbound distinction.",
     reference: {

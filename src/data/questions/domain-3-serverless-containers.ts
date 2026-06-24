@@ -415,6 +415,11 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "d", text: "AWS Lambda for both, since containers are not supported on AWS." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the pairing; EKS is the managed Kubernetes option and ECS is the AWS-native one, not the other way around.",
+      c: "Plain Amazon EC2 provides compute but no container orchestration service for either team.",
+      d: "Containers are supported on AWS, so AWS Lambda is not the orchestration answer for either team.",
+    },
     explanation:
       "Amazon EKS gives a managed Kubernetes control plane and the Kubernetes API and ecosystem, which suits a Kubernetes-standardized organization, while Amazon ECS is AWS's own orchestration for teams that do not need Kubernetes. The reversed pairing is wrong, plain EC2 provides no orchestration service, and containers are supported on AWS.",
     reference: {

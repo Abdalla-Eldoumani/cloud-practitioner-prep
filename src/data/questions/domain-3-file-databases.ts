@@ -160,6 +160,11 @@ export const domain3FileDatabases: Question[] = [
       { id: "e", text: "Amazon FSx for EC2" },
     ],
     correct: ["a", "b"],
+    distractorRationales: {
+      c: "There is no FSx for DynamoDB; DynamoDB is a NoSQL database, not an FSx file system type.",
+      d: "There is no FSx for Redshift; Redshift is a data warehouse, not an FSx file system type.",
+      e: "There is no FSx for EC2; EC2 is a compute service, not an FSx file system type.",
+    },
     explanation:
       "Amazon FSx offers four file system types: FSx for Windows File Server, FSx for Lustre, FSx for NetApp ONTAP, and FSx for OpenZFS. There is no FSx for DynamoDB, FSx for Redshift, or FSx for EC2; those name a NoSQL database, a data warehouse, and a compute service rather than file systems.",
     reference: {
@@ -183,6 +188,11 @@ export const domain3FileDatabases: Question[] = [
       { id: "d", text: "EFS is block storage attached to one instance, and FSx is a NoSQL database." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the operating systems; EFS serves Linux over NFS and FSx for Windows File Server serves Windows over SMB.",
+      c: "Neither is object storage; both are file systems, not services that store data as objects in buckets.",
+      d: "This mislabels them; EFS is a shared file system, not block storage, and FSx is a file system, not a NoSQL database.",
+    },
     explanation:
       "EFS is a fully elastic NFS file system that Linux instances mount, while FSx for Windows File Server provides Windows file shares over SMB with Active Directory. The other options reverse the operating systems, call them object storage, or mislabel them as block storage and a database.",
     reference: {
@@ -720,6 +730,11 @@ export const domain3FileDatabases: Question[] = [
       { id: "e", text: "Relational database: Amazon S3" },
     ],
     correct: ["a", "b"],
+    distractorRationales: {
+      c: "DynamoDB is a NoSQL key-value database, not a relational one, so this pairing is wrong.",
+      d: "Amazon RDS is the relational service, not a NoSQL key-value database, so this pairing is wrong.",
+      e: "Amazon S3 is object storage, not a relational database, so this pairing is wrong.",
+    },
     explanation:
       "Amazon RDS is the managed relational database service, and Amazon DynamoDB is the managed NoSQL key-value database. DynamoDB is not relational, RDS is not NoSQL key-value, and Amazon S3 is object storage rather than a relational database.",
     reference: {

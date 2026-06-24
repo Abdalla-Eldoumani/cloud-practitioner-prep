@@ -1,6 +1,18 @@
 import { atom } from "nanostores";
-import type { AttemptResult, Domain, ProgressState } from "./types";
+import type {
+  AttemptResult,
+  Confidence,
+  Domain,
+  ProgressState,
+} from "./types";
 import { loadProgress, saveProgress } from "./progress";
+import { normalizeTopic } from "./topics";
+
+// Re-exported so existing importers keep `import { normalizeTopic } from
+// "./store"` working. The definition lives in the store-free `topics.ts` so the
+// pure assembly layer (exam.ts) can share the exact same key function without
+// pulling nanostores into it.
+export { normalizeTopic };
 
 // Single source of truth for client-side progress. Islands subscribe via
 // @nanostores/react useStore, so a change in one island (mark a lesson done)
@@ -49,6 +61,73 @@ export function recordAttempt(
     ...cur,
     incorrectQuestions: [...missed],
     attempts: [attempt, ...cur.attempts].slice(0, 100),
+  });
+}
+
+// One question's outcome in a sitting: which topic/domain it belongs to, whether
+// it was answered correctly, and the pre-reveal confidence if one was captured.
+export interface QuestionResult {
+  questionId: string;
+  topic: string;
+  domain: Domain;
+  correct: boolean;
+  confidence?: Confidence;
+}
+
+// Fold a sitting's per-question outcomes into the v2 store: accumulate rolling
+// per-topic accuracy and record the latest pre-reveal confidence per question.
+// Called alongside recordAttempt at finish; the attempt summary stays its job.
+// One commit through commit() so it persists via the same localStorage path and
+// no progress is duplicated in component state.
+export function recordQuestionResults(results: QuestionResult[]): void {
+  if (results.length === 0) return;
+  const cur = $progress.get();
+  const topicStats = { ...cur.topicStats };
+  const confidenceByQuestion = { ...(cur.confidenceByQuestion ?? {}) };
+  const now = Date.now();
+
+  for (const r of results) {
+    const key = normalizeTopic(r.topic);
+    const prev = topicStats[key] ?? { topic: r.topic, seen: 0, correct: 0 };
+    topicStats[key] = {
+      // Keep the first-seen human-readable label, not a later casing variant.
+      topic: prev.topic,
+      seen: prev.seen + 1,
+      correct: prev.correct + (r.correct ? 1 : 0),
+      lastSeen: now,
+    };
+    if (r.confidence !== undefined) {
+      confidenceByQuestion[r.questionId] = r.confidence;
+    }
+  }
+
+  commit({ ...cur, topicStats, confidenceByQuestion });
+}
+
+// Self-grade one flashcard: move its id into `flashcards.known` or
+// `flashcards.learning`, removing it from the other so the two stay disjoint (a
+// forged duplicate cannot double-count), and stamp `lastSeen[cardId]` for the
+// later review schedule. One commit through commit(), so it persists via the
+// same localStorage path and degrades to memory in private mode like the rest.
+export function setFlashcardStatus(
+  cardId: string,
+  status: "known" | "learning",
+): void {
+  const cur = $progress.get();
+  const known = new Set(cur.flashcards.known);
+  const learning = new Set(cur.flashcards.learning);
+  if (status === "known") {
+    known.add(cardId);
+    learning.delete(cardId);
+  } else {
+    learning.add(cardId);
+    known.delete(cardId);
+  }
+  const lastSeen = { ...(cur.flashcards.lastSeen ?? {}) };
+  lastSeen[cardId] = Date.now();
+  commit({
+    ...cur,
+    flashcards: { known: [...known], learning: [...learning], lastSeen },
   });
 }
 

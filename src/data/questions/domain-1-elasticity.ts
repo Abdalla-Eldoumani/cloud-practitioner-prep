@@ -109,6 +109,11 @@ export const domain1Elasticity: Question[] = [
       { id: "d", text: "Load balancing" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Horizontal scaling adds more instances to share load; it does not resize one instance to a larger type.",
+      c: "Scaling in removes capacity as demand falls; it is the opposite of moving to a larger instance.",
+      d: "Load balancing distributes traffic across targets; it does not change an instance's size.",
+    },
     explanation:
       "Resizing a single instance by changing it to a larger instance type with more resources is vertical scaling, or scaling up. Horizontal scaling adds more instances instead, scaling in removes capacity, and load balancing distributes traffic rather than resizing an instance.",
     reference: {
@@ -517,6 +522,11 @@ export const domain1Elasticity: Question[] = [
       { id: "d", text: "Vertical scaling always provides higher availability than horizontal scaling." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This swaps the definitions; horizontal scaling adds more resources and vertical scaling enlarges one resource, not the reverse.",
+      c: "The two approaches are not identical, and resource count does affect single points of failure, so this is wrong.",
+      d: "A single large resource concentrates risk; vertical scaling does not always provide higher availability than horizontal.",
+    },
     explanation:
       "Vertical scaling enlarges one resource and leaves it as a single point of failure, while horizontal scaling adds multiple smaller resources, which AWS recommends to reduce the impact of a single failure on the workload. Swapping the two definitions is wrong, claiming both approaches are identical and that neither affects single points of failure ignores that distinction, and claiming vertical scaling always provides higher availability wrongly treats a single large machine as more available.",
     reference: {
