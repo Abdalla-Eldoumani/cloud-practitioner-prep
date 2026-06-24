@@ -152,4 +152,55 @@
   a {
     text-decoration: underline;
   }
+
+  /*
+    Cheat sheet: a per-domain summary printed as ink on paper. The chrome-hiding
+    rules above (header, footer, theme toggle, skip link) strip the site frame,
+    but the cheat sheet's own body must stay fully visible, never blanked. So
+    nothing here hides .cheat-sheet content; these rules only keep it readable
+    and paginating cleanly once color has flattened to black.
+
+    Drop the on-screen-only affordances the sheet carries (the print button and
+    the back link have .print-hide), keep the layout block, and stop a card,
+    section, or list item from being split across a page break mid-thought.
+  */
+  .print-hide {
+    display: none !important;
+  }
+
+  .cheat-sheet,
+  .cheat-sheet * {
+    /* Guard the body against any inherited chrome rule: it always renders. */
+    visibility: visible;
+  }
+
+  .cheat-sheet {
+    display: block;
+    max-width: none;
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+
+  .cheat-sheet section,
+  .cheat-sheet li,
+  .cheat-sheet .cheat-card {
+    break-inside: avoid;
+  }
+
+  .cheat-sheet h2,
+  .cheat-sheet h3 {
+    break-after: avoid;
+  }
+
+  /*
+    Color carries no meaning on paper: the flatten turns every token color black,
+    so the domain badge and the section chips would lose their tint. Give them a
+    visible outline and transparent fill instead, so the shape and the label do
+    the work the color did on screen (color is never the only signal anyway, but
+    this keeps the borders legible when everything is ink).
+  */
+  .cheat-sheet [class*="border-"] {
+    border-color: #000000 !important;
+    background: transparent !important;
+  }
 }

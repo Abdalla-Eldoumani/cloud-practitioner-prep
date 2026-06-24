@@ -41,6 +41,10 @@
     "check:migration": "tsx scripts/check-migration.ts",
     "check:drill": "tsx scripts/check-drill.ts",
     "check:deck": "tsx scripts/check-deck.ts",
+    "check:review": "tsx scripts/check-review-schedule.ts",
+    "check:readiness": "tsx scripts/check-readiness.ts",
+    "lint:coverage": "tsx scripts/lint-coverage.ts",
+    "check:progress-io": "tsx scripts/check-progress-io.ts",
     "lint:links": "tsx scripts/check-links.ts",
     "lint:links:live": "tsx scripts/check-links.ts --live",
     "astro": "astro"
