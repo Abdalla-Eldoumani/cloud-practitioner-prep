@@ -228,6 +228,11 @@ export const domain2GovernanceCompliance: Question[] = [
       { id: "d", text: "Amazon CloudWatch for both questions" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the roles; Config records the past configuration state and CloudTrail records who acted and when.",
+      c: "AWS Artifact serves compliance documents; it does not record configuration history or who made a change.",
+      d: "Amazon CloudWatch handles metrics and logs; it does not record resource configuration history or the actor.",
+    },
     explanation:
       "AWS Config records the historical configuration of a resource, so it answers what the instance looked like at a point in time, while CloudTrail records API activity, so it answers who took an action and when. Pairing CloudTrail with the past configuration state and Config with the actor reverses their roles, and Artifact and CloudWatch do not provide this configuration-and-actor history.",
     reference: {
