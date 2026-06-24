@@ -1,0 +1,161 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { TASK_STATEMENTS } from "@/data/blueprint";
+import { ALL_QUESTIONS } from "@/data/questions";
+import { normalizeTopic } from "@/lib/topics";
+import { DOMAINS } from "@/lib/constants";
+import type { Domain } from "@/lib/types";
+
+// The blueprint coverage map: every CLF-C02 task statement linked to the lessons
+// and questions that cover it. This is a pure build-time render of the verified
+// TASK_STATEMENTS join (no client state). The completeness lint hard-fails if any
+// statement resolves to zero covering lessons or questions, so every statement
+// shown here is genuinely covered — the map is honest by construction, not a
+// vacuous "all green".
+
+// Resolve lesson slugs against the live content collection (skip drafts), so a
+// covering-lesson link only renders for a lesson that actually exists. Keyed by
+// the entry id, which is the slug used in the /learn/<slug> route.
+const lessonEntries = (await getCollection("lessons")).filter(
+  (l) => !l.data.draft,
+);
+const lessonById = new Map(lessonEntries.map((l) => [l.id, l]));
+
+// One rendered statement: its verbatim title, the covering lessons that resolve
+// to a live entry, the count of covering questions, the topic tags, and the
+// exam-guide reference. Questions resolve exactly as the lint does — same
+// domain, topic matched through normalizeTopic — so the page cannot fork from it.
+const statements = TASK_STATEMENTS.map((ts) => {
+  const topicSet = new Set(ts.topics.map(normalizeTopic));
+  const questionCount = ALL_QUESTIONS.filter(
+    (q) => q.domain === ts.domain && topicSet.has(normalizeTopic(q.topic)),
+  ).length;
+  // Drop a slug with no live lesson defensively, though the lint guarantees each
+  // resolves; keep the title for the link text.
+  const lessons = ts.lessonSlugs
+    .map((slug) => {
+      const entry = lessonById.get(slug);
+      return entry ? { slug, title: entry.data.title } : null;
+    })
+    .filter((l): l is { slug: string; title: string } => l !== null);
+  return { ...ts, lessons, questionCount };
+});
+
+// Group the statements under the four exam domains, in guide order, so each
+// section carries the domain name and weight the same way the lessons and
+// practice pages do.
+const byDomain = DOMAINS.map((meta) => ({
+  meta,
+  statements: statements.filter((s) => s.domain === (meta.id as Domain)),
+}));
+
+const totalStatements = TASK_STATEMENTS.length;
+---
+
+<BaseLayout title="Exam coverage map">
+  <p class="text-sm">
+    <a href="/practice" class="text-brand underline underline-offset-2">
+      ← Back to practice
+    </a>
+  </p>
+
+  <header class="mt-4 max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Exam coverage map
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      All {totalStatements} task statements from the AWS Certified Cloud
+      Practitioner (CLF-C02) exam guide, grouped by domain, each linked to the
+      lessons and practice questions that cover it. Use it to study by the
+      blueprint and confirm nothing on the exam is left uncovered.
+    </p>
+    <p class="mt-2 text-sm text-ink-soft">
+      Domains are weighted 24% / 30% / 34% / 12% of the scored exam.
+    </p>
+  </header>
+
+  <div class="mt-10 flex flex-col gap-10">
+    {
+      byDomain.map((group) => (
+        <section>
+          <div class="flex flex-wrap items-center gap-3">
+            <DomainBadge domain={group.meta.id} showName={false} />
+            <h2 class="text-xl font-bold text-ink">{group.meta.name}</h2>
+            <span class="text-sm text-ink-soft">{group.meta.weight}%</span>
+          </div>
+
+          <ul class="mt-4 flex flex-col gap-4">
+            {group.statements.map((s) => (
+              <li class="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <h3 class="text-base font-semibold text-ink">
+                    <span class="text-ink-soft">{s.id}</span> {s.title}
+                  </h3>
+                  <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-correct bg-correct-soft px-2.5 py-0.5 text-xs font-medium text-ink">
+                    <span aria-hidden="true">✓</span> Covered
+                  </span>
+                </div>
+
+                <div class="mt-4">
+                  <h4 class="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                    Lessons
+                  </h4>
+                  <ul class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                    {s.lessons.map((lesson) => (
+                      <li>
+                        <a
+                          href={`/learn/${lesson.slug}`}
+                          class="text-brand underline underline-offset-2"
+                        >
+                          {lesson.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-4">
+                  <h4 class="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                    Questions
+                  </h4>
+                  <p class="mt-1.5 text-sm text-ink">
+                    <a
+                      href={`/practice/${s.domain}`}
+                      class="font-medium text-brand underline underline-offset-2"
+                    >
+                      {s.questionCount} practice{" "}
+                      {s.questionCount === 1 ? "question" : "questions"}
+                    </a>{" "}
+                    <span class="text-ink-soft">
+                      in {group.meta.name} practice.
+                    </span>
+                  </p>
+                  <ul class="mt-2 flex flex-wrap gap-1.5">
+                    {s.topics.map((topic) => (
+                      <li class="rounded-full border border-hairline px-2 py-0.5 text-xs text-ink-soft">
+                        {topic}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <p class="mt-4 text-sm">
+                  <a
+                    href={s.reference.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-brand underline underline-offset-2"
+                  >
+                    Exam guide ↗
+                  </a>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
