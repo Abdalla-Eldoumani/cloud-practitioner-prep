@@ -147,6 +147,17 @@ export interface AttemptSummary {
 // is an honest signal; later consumed by the review schedule.
 export type Confidence = "guessing" | "unsure" | "confident";
 
+// One question's spaced-repetition state in the review queue (a Leitner box).
+// `box` 0 is the just-missed band that resurfaces fastest; a correct review
+// promotes to a higher box (longer interval), a wrong one resets to 0. `due` and
+// `lastReviewed` are epoch ms, so the scheduler is pure arithmetic over a clock
+// passed in (never Date.now() inside the ordering), keeping it deterministic.
+export interface ReviewEntry {
+  box: number; // 0..MAX_BOX; 0 = just missed, resurfaces fastest
+  due: number; // epoch ms the item is next eligible
+  lastReviewed: number; // epoch ms of the last grade
+}
+
 // Rolling per-topic accuracy, keyed by Question.topic. Topic is finer than
 // domain, so an adaptive drill can target real weak spots, and the same map
 // backs per-topic readiness later. `seen`/`correct` accumulate across attempts.
@@ -179,4 +190,10 @@ export interface ProgressState {
   // Most recent pre-reveal confidence per question id. Optional and additive so
   // a v1 upgrade and any older v2 blob without it both load cleanly.
   confidenceByQuestion?: Record<string, Confidence>;
+  // Spaced-repetition schedule per question id, for the review queue (the union
+  // of flagged + missed). Optional and additive on the SAME version: 2 — the
+  // migrator merges a stored blob over defaults, so an older v2 (or upgraded v1)
+  // blob without this field loads with it seeded, exactly like
+  // confidenceByQuestion. No version bump.
+  reviewSchedule?: Record<string, ReviewEntry>;
 }
