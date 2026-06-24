@@ -574,6 +574,11 @@ export const domain2IamAdvanced: Question[] = [
       { id: "d", text: "An unlimited number." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Exactly one would block zero-downtime rotation; AWS allows a second key so the old one can be retired after cutover.",
+      c: "Ten overstates the limit; an IAM user is capped at two access keys.",
+      d: "There is no unlimited allowance; the cap is two access keys per IAM user.",
+    },
     explanation:
       "An IAM user can have a maximum of two access keys, which lets you create a new key, update applications, and then deactivate and delete the old key without interruption. The limit is two, not exactly one with no exceptions, and not ten or an unlimited number.",
     reference: {
