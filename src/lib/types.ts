@@ -62,6 +62,22 @@ export interface ServiceEntry {
   relatedServices?: string[]; // ids of related services (powers "see also")
 }
 
+// One self-graded flashcard, built from the catalog or a missed question. A
+// view type only (not persisted): the deck is reassembled per sitting by
+// buildDeck from ALL_SERVICES + the learner's missed ids, so a card holds the
+// display text plus the doc reference and its source id. `id` is stable
+// (`service:<id>` / `question:<id>`) so deck order is stable while shown and the
+// known/learning keys do not drift between sittings.
+export interface Flashcard {
+  id: string; // stable card id, e.g. "service:amazon-ec2" / "question:d2-iam-01"
+  kind: "service" | "question";
+  front: string; // the term (service name) or the question stem
+  back: string; // the purpose, or the correct answer text(s)
+  detail?: string; // when-to-use, or the explanation
+  reference: DocReference; // the official AWS doc backing the card
+  sourceId: string; // the underlying ServiceEntry/Question id (without the prefix)
+}
+
 // One row of a compare group: a distinguishing axis and a short value per
 // compared service.
 export interface CompareRow {
