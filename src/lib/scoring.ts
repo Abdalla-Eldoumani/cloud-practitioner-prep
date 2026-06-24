@@ -1,6 +1,7 @@
 import type {
   AttemptAnswer,
   AttemptResult,
+  AttemptSummary,
   Domain,
   DomainScore,
   Question,
@@ -85,4 +86,14 @@ export function scoreAttempt(
     finishedAt: Date.now(),
     durationSeconds,
   };
+}
+
+// The mock score trend: exam attempts only, oldest-to-newest. recordAttempt
+// persists attempts newest-first, but the trend reads left-to-right oldest-first
+// (so a climbing score reads as climbing), hence the reverse. Copy before
+// reversing so the caller's array is never mutated. This is the single source
+// the trend view and its check both read, so the filter/order rule lives in one
+// tested place rather than inline in the island.
+export function mockTrend(attempts: AttemptSummary[]): AttemptSummary[] {
+  return attempts.filter((a) => a.mode === "exam").slice().reverse();
 }
