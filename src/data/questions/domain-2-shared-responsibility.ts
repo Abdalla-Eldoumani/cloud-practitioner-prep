@@ -20,6 +20,11 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "d", text: "Security beside the cloud" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Security in the cloud is the customer's half, covering their data and configuration, not the AWS half.",
+      c: "Security around the cloud is an invented phrase; it is not part of the Shared Responsibility Model.",
+      d: "Security beside the cloud is an invented phrase; it is not part of the Shared Responsibility Model.",
+    },
     explanation:
       "AWS frames its half as security of the cloud: protecting the infrastructure that runs AWS services, including hardware, software, networking, and facilities. The customer's half is security in the cloud. Security around the cloud and security beside the cloud are invented phrases that are not part of the model.",
     reference: {
@@ -340,6 +345,11 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "d", text: "The AWS account's billing contact only" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "AWS secures the infrastructure but never decides what customer data to store or how to classify it.",
+      c: "A third-party auditor verifies controls; it does not own or classify the customer's data.",
+      d: "A billing contact handles payment matters and has no role in data classification or access.",
+    },
     explanation:
       "The customer is always responsible for their data: what to store, how to classify it, and how to manage access to it. This duty does not transfer to AWS regardless of service. The auditor verifies controls, and a billing contact role has nothing to do with data classification.",
     reference: {
@@ -385,6 +395,11 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "d", text: "The customer patches everything, including the AWS infrastructure" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This swaps the split; AWS patches the infrastructure and the customer patches their own guest OS, not the reverse.",
+      c: "AWS does not patch the customer's applications; patching above the guest OS stays with the customer.",
+      d: "The customer never patches the AWS infrastructure; that side of the shared control belongs to AWS.",
+    },
     explanation:
       "Patch management is a shared control: AWS is responsible for patching and fixing flaws within the infrastructure, while the customer is responsible for patching their guest operating system and applications. It is wrong to say AWS patches everything including the customer's applications, or that the customer patches everything including the AWS infrastructure; each wrong answer collapses the split onto one party.",
     reference: {
