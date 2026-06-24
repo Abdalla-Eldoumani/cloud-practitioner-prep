@@ -744,6 +744,11 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "d", text: "Amazon SNS for the audit trail, and Amazon SQS for the metrics." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the roles; CloudTrail records account activity and CloudWatch provides metrics and alarms, not the other way around.",
+      c: "AWS Config tracks configuration state; it does not serve performance metric graphs or CPU and latency alarms.",
+      d: "Amazon SNS and SQS are messaging services, not the audit-trail and metrics tools this needs.",
+    },
     explanation:
       "CloudTrail answers who changed what and when through its record of API activity, while CloudWatch provides the metrics, graphs, and alarms for operational health. The roles are not reversed, AWS Config tracks configuration state rather than serving performance graphs and API alarms, and SNS and SQS are messaging services, not monitoring or audit tools.",
     reference: {
