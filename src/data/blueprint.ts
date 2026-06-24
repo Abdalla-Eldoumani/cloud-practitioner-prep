@@ -17,12 +17,16 @@
 //                 && normalizedTopicSet.has(normalizeTopic(q.topic)))
 // so a statement's topics are matched to questions THROUGH normalizeTopic (the
 // same key the store and the drill use) and constrained to the statement's own
-// domain. Authoring note: this question bank tags every migration / Cloud
-// Adoption Framework question under Domain 4, while the exam guide places
-// migration under Domain 1 (statement 1.3). 1.3's question topics below are
-// therefore the Domain-1 deployment-model / on-premises-tradeoff / disaster-
-// recovery cluster that genuinely covers "benefits of and strategies for
-// migration", while its lesson side points at the dedicated migration lesson.
+// domain. Authoring note: this question bank's domain tagging diverges from the
+// guide's domain placement for two statements. Migration / Cloud Adoption
+// Framework questions are tagged Domain 4 though the guide places migration under
+// Domain 1 (1.3); Region / Availability Zone / edge-location questions are tagged
+// Domain 1 though the guide places global infrastructure under Domain 3 (3.2). For
+// each, the question side below uses the in-domain topics that genuinely cover the
+// statement (1.3: the Domain-1 deployment-model / on-premises-tradeoff / disaster-
+// recovery cluster; 3.2: the Domain-3 edge and infrastructure-extending service
+// topics) while the lesson side points at the dedicated lesson. Both are flagged
+// for the content-auditor pass.
 
 import type { Domain, DocReference } from "../lib/types";
 
@@ -257,15 +261,19 @@ export const TASK_STATEMENTS: TaskStatement[] = [
     title: "Define the AWS global infrastructure.",
     reference: EXAM_GUIDE,
     lessonSlugs: ["global-infrastructure-and-resilience"],
+    // Like 1.3, the bank tags the Region / Availability Zone / edge-location
+    // questions under Domain 1, while the guide places global infrastructure under
+    // Domain 3. 3.2's Domain-3 question coverage is therefore the global-
+    // infrastructure SERVICE topics the bank does tag in Domain 3: the edge
+    // network (CloudFront, Global Accelerator) and the infrastructure-extending
+    // services (Outposts, Snow Family). The lesson side points at the dedicated
+    // global-infrastructure lesson.
     topics: [
-      "AWS global infrastructure",
-      "AWS Regions",
-      "Availability Zones",
-      "Edge locations",
       "Amazon CloudFront",
-      "AWS Local Zones",
-      "AWS Wavelength",
-      "Choosing a Region",
+      "AWS Global Accelerator",
+      "Content delivery and acceleration",
+      "AWS Outposts",
+      "AWS Snow Family",
     ],
   },
   {
