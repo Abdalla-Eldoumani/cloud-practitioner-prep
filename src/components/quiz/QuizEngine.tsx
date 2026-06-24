@@ -12,13 +12,16 @@ import {
   buildDomainQuiz,
   buildDrill,
   buildMockExam,
+  remainingSeconds,
   shuffle,
 } from "@/lib/exam";
+import { orderedOptions } from "@/lib/options";
 import { orderReviewQueue } from "@/lib/review";
 import {
   $progress,
   clearMissed,
   recordAttempt,
+  recordMockSeen,
   recordQuestionResults,
   reviewQuestion,
   toggleFlag,
@@ -41,11 +44,19 @@ interface QuizEngineProps {
 type Phase = "intro" | "active" | "results" | "empty";
 
 // In-progress exams are saved so a refresh or accidental tab close can resume
-// with the correct remaining time, computed from the start timestamp.
-const EXAM_KEY = "ccp-prep:exam-active:v1";
+// with the correct remaining time, computed from the start timestamp. The key is
+// versioned: it bumped to :v2 when optionOrder joined the saved shape, so a
+// pre-field in-flight save written by the older engine is simply not found and a
+// fresh start is offered instead of a half-restore.
+const EXAM_KEY = "ccp-prep:exam-active:v2";
 
 interface SavedExam {
   questionIds: string[];
+  // Per-question shuffled option order (question id -> ordered option ids),
+  // persisted so a resumed mock renders the exact order shown before the reload
+  // rather than reshuffling under the learner (quiz-integrity). Scoring stays by
+  // id, so order never affects grading.
+  optionOrder: Record<string, string[]>;
   answers: Record<string, string[]>;
   flags: string[];
   startedAt: number;
@@ -56,7 +67,16 @@ function readSavedExam(): SavedExam | null {
     const raw = window.localStorage.getItem(EXAM_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as SavedExam;
-    if (parsed && Array.isArray(parsed.questionIds) && parsed.startedAt) {
+    if (
+      parsed &&
+      Array.isArray(parsed.questionIds) &&
+      parsed.startedAt &&
+      // Require optionOrder to be a present object: a saved exam lacking it is a
+      // pre-field blob (or hand-edited), so treat it as "no resume" rather than
+      // half-restore with options reshuffled.
+      parsed.optionOrder !== null &&
+      typeof parsed.optionOrder === "object"
+    ) {
       return parsed;
     }
   } catch {
@@ -91,6 +111,16 @@ function reconstruct(pool: Question[], ids: string[]): Question[] {
   return out;
 }
 
+// Compute a stable per-question option order for a drawn set: call orderedOptions
+// once per question (the single shuffle path) and keep only the ordered ids. Run
+// once when an exam set is established so the order persists for the sitting and
+// is what gets saved/restored — never recomputed on a re-render.
+function computeOptionOrder(qs: Question[]): Record<string, string[]> {
+  const order: Record<string, string[]> = {};
+  for (const q of qs) order[q.id] = orderedOptions(q).map((o) => o.id);
+  return order;
+}
+
 export default function QuizEngine({
   pool,
   mode,
@@ -100,6 +130,11 @@ export default function QuizEngine({
 }: QuizEngineProps) {
   const [phase, setPhase] = useState<Phase>(mode === "exam" ? "intro" : "active");
   const [questions, setQuestions] = useState<Question[]>([]);
+  // Per-question option order (question id -> ordered option ids), computed once
+  // per sitting so a re-render never reshuffles, persisted with the saved exam,
+  // and restored verbatim on resume. Only populated for exam mode; other modes
+  // let QuestionCard shuffle per instance.
+  const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>({});
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [flagged, setFlagged] = useState<Record<string, boolean>>({});
@@ -120,7 +155,11 @@ export default function QuizEngine({
   // Build the working set for practice and review on mount. Exam waits for the
   // intro screen so the timer starts when the user is ready.
   const buildSet = useCallback((): Question[] => {
-    if (mode === "exam") return buildMockExam(pool, examTotal);
+    // Pass the learner's mock seen-counts (read from the store at draw time,
+    // mirroring how review/drill read $progress here) so each new sitting draws
+    // with low overlap, preferring never-seen questions.
+    if (mode === "exam")
+      return buildMockExam(pool, examTotal, $progress.get().mockSeen);
     if (mode === "review") {
       const p = $progress.get();
       // The review set is the deduplicated union of flagged and missed questions
@@ -202,6 +241,14 @@ export default function QuizEngine({
           confidence: confidence[q.id],
         })),
       );
+      // A finished mock bumps each drawn question's seen-count exactly once, so
+      // the next sitting's LRU draw prefers never-seen questions. Gated to exam:
+      // an abandoned exam never reaches finish() so its questions stay fresh, and
+      // practice/drill/review must never touch mockSeen. Covers both the manual
+      // submit and the auto-submit effect (both call finish()).
+      if (mode === "exam") {
+        recordMockSeen(qs.map((q) => q.id));
+      }
       setResult(r);
       setPhase("results");
       clearSavedExam();
@@ -210,10 +257,12 @@ export default function QuizEngine({
   );
 
   // Exam countdown. Remaining time is derived from the start timestamp, so a
-  // throttled background tab still resolves to the correct value on return.
+  // throttled background tab still resolves to the correct value on return. Uses
+  // the pure remainingSeconds helper so the island and the auto-submit check
+  // share one expression; behavior is identical to the prior inline form.
   const remaining =
     mode === "exam" && startedAt
-      ? EXAM.timeLimitSeconds - Math.floor((now - startedAt) / 1000)
+      ? remainingSeconds(EXAM.timeLimitSeconds, startedAt, now)
       : null;
 
   useEffect(() => {
@@ -228,16 +277,18 @@ export default function QuizEngine({
     }
   }, [remaining, phase, questions, answers, startedAt, finish]);
 
-  // Persist exam progress so a refresh can resume.
+  // Persist exam progress so a refresh can resume. optionOrder is saved with the
+  // rest so resume restores the exact shown order rather than reshuffling.
   useEffect(() => {
     if (phase !== "active" || mode !== "exam" || startedAt === null) return;
     writeSavedExam({
       questionIds: questions.map((q) => q.id),
+      optionOrder,
       answers,
       flags: Object.keys(flagged).filter((k) => flagged[k]),
       startedAt,
     });
-  }, [phase, mode, questions, answers, flagged, startedAt]);
+  }, [phase, mode, questions, optionOrder, answers, flagged, startedAt]);
 
   const startExam = useCallback(() => {
     // A saved attempt would be silently overwritten by a fresh start, so
@@ -249,8 +300,12 @@ export default function QuizEngine({
       if (!ok) return;
     }
     clearSavedExam();
-    const set = buildMockExam(pool, examTotal);
+    // Draw with the learner's seen-counts for low cross-sitting overlap, then fix
+    // the per-question option order once so it stays stable for the sitting and
+    // is what gets persisted/restored.
+    const set = buildMockExam(pool, examTotal, $progress.get().mockSeen);
     setQuestions(set);
+    setOptionOrder(computeOptionOrder(set));
     setAnswers({});
     setFlagged({});
     setCurrent(0);
@@ -271,6 +326,9 @@ export default function QuizEngine({
     }
     const elapsed = Math.floor((Date.now() - saved.startedAt) / 1000);
     setQuestions(qs);
+    // Restore the saved per-question option order verbatim so the resumed mock
+    // shows the exact order from before the reload (no fresh shuffle).
+    setOptionOrder(saved.optionOrder ?? {});
     setAnswers(saved.answers ?? {});
     setFlagged(Object.fromEntries((saved.flags ?? []).map((id) => [id, true])));
     setStartedAt(saved.startedAt);
@@ -319,6 +377,7 @@ export default function QuizEngine({
     setFlagged({});
     setRevealed({});
     setConfidence({});
+    setOptionOrder({});
     setCurrent(0);
     if (mode === "exam") {
       setStartedAt(null);
@@ -426,6 +485,7 @@ export default function QuizEngine({
                 total={questions.length}
                 onToggleOption={() => {}}
                 onToggleFlag={() => {}}
+                optionOrder={optionOrder[q.id]}
                 showConfidence={false}
               />
             ))}
@@ -487,6 +547,7 @@ export default function QuizEngine({
         total={questions.length}
         onToggleOption={onToggleOption}
         onToggleFlag={onToggleFlag}
+        optionOrder={optionOrder[q.id]}
         showConfidence={!isExam}
         confidence={confidence[q.id]}
         onSetConfidence={(level) =>
