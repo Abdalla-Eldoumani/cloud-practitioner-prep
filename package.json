@@ -39,6 +39,7 @@
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "lint:shuffle": "tsx scripts/check-shuffle-uniformity.ts",
     "check:drill": "tsx scripts/check-drill.ts",
+    "check:deck": "tsx scripts/check-deck.ts",
     "lint:links": "tsx scripts/check-links.ts",
     "lint:links:live": "tsx scripts/check-links.ts --live",
     "astro": "astro"
