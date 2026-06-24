@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { AttemptResult, Domain, Question, QuizMode } from "@/lib/types";
+import type {
+  AttemptResult,
+  Confidence,
+  Domain,
+  Question,
+  QuizMode,
+} from "@/lib/types";
 import { EXAM } from "@/lib/constants";
 import { scoreAttempt } from "@/lib/scoring";
 import {
@@ -8,7 +14,13 @@ import {
   buildReviewSet,
   shuffle,
 } from "@/lib/exam";
-import { $progress, clearMissed, recordAttempt, toggleFlag } from "@/lib/store";
+import {
+  $progress,
+  clearMissed,
+  recordAttempt,
+  recordQuestionResults,
+  toggleFlag,
+} from "@/lib/store";
 import QuestionCard from "./QuestionCard";
 import ResultsPanel from "./ResultsPanel";
 
@@ -90,6 +102,10 @@ export default function QuizEngine({
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [flagged, setFlagged] = useState<Record<string, boolean>>({});
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
+  // Pre-reveal confidence per question, transient for the sitting. Folded into
+  // the recorded attempt at finish; never duplicated into persisted progress
+  // here (the store owns that). Captured before reveal by the Check-answer gate.
+  const [confidence, setConfidence] = useState<Record<string, Confidence>>({});
   const [result, setResult] = useState<AttemptResult | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState<number>(Date.now());
@@ -135,20 +151,34 @@ export default function QuizEngine({
       }));
       const duration = Math.max(0, Math.round((Date.now() - started) / 1000));
       const r = scoreAttempt(qs, answerList, mode, duration);
-      const missed = qs
-        .filter((q) => {
-          const sel = ans[q.id] ?? [];
-          if (sel.length !== q.correct.length) return true;
-          const want = new Set(q.correct);
-          return !sel.every((id) => want.has(id));
-        })
-        .map((q) => q.id);
-      recordAttempt(r, recordDomain, missed);
+      const missedSet = new Set(
+        qs
+          .filter((q) => {
+            const sel = ans[q.id] ?? [];
+            if (sel.length !== q.correct.length) return true;
+            const want = new Set(q.correct);
+            return !sel.every((id) => want.has(id));
+          })
+          .map((q) => q.id),
+      );
+      recordAttempt(r, recordDomain, [...missedSet]);
+      // Fold per-question topic/correctness/confidence into the v2 store so the
+      // adaptive drill can later weight confident-but-wrong topics. Confidence
+      // is the pre-reveal value captured in island state.
+      recordQuestionResults(
+        qs.map((q) => ({
+          questionId: q.id,
+          topic: q.topic,
+          domain: q.domain,
+          correct: !missedSet.has(q.id),
+          confidence: confidence[q.id],
+        })),
+      );
       setResult(r);
       setPhase("results");
       clearSavedExam();
     },
-    [flagged, mode, recordDomain],
+    [flagged, mode, recordDomain, confidence],
   );
 
   // Exam countdown. Remaining time is derived from the start timestamp, so a
@@ -260,6 +290,7 @@ export default function QuizEngine({
     setAnswers({});
     setFlagged({});
     setRevealed({});
+    setConfidence({});
     setCurrent(0);
     if (mode === "exam") {
       setStartedAt(null);
@@ -360,6 +391,7 @@ export default function QuizEngine({
                 total={questions.length}
                 onToggleOption={() => {}}
                 onToggleFlag={() => {}}
+                showConfidence={false}
               />
             ))}
           </div>
@@ -413,19 +445,39 @@ export default function QuizEngine({
         total={questions.length}
         onToggleOption={onToggleOption}
         onToggleFlag={onToggleFlag}
+        showConfidence={!isExam}
+        confidence={confidence[q.id]}
+        onSetConfidence={(level) =>
+          setConfidence((c) => ({ ...c, [q.id]: level }))
+        }
       />
 
       {!isExam && (
         <div className="flex flex-wrap items-center gap-3">
           {!isRevealed ? (
-            <button
-              type="button"
-              disabled={selected.length === 0}
-              onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
-              className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Check answer
-            </button>
+            <>
+              <button
+                type="button"
+                disabled={selected.length === 0 || !confidence[q.id]}
+                aria-describedby={
+                  selected.length > 0 && !confidence[q.id]
+                    ? `confidence-hint-${q.id}`
+                    : undefined
+                }
+                onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
+                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Check answer
+              </button>
+              {selected.length > 0 && !confidence[q.id] && (
+                <p
+                  id={`confidence-hint-${q.id}`}
+                  className="text-sm text-ink-soft"
+                >
+                  Rate your confidence first
+                </p>
+              )}
+            </>
           ) : (
             <>
               {mode === "review" && (
