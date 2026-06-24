@@ -127,10 +127,40 @@ export interface AttemptSummary {
   durationSeconds: number;
 }
 
+// How sure the learner was before seeing the answer. Captured pre-reveal so it
+// is an honest signal; later consumed by the review schedule.
+export type Confidence = "guessing" | "unsure" | "confident";
+
+// Rolling per-topic accuracy, keyed by Question.topic. Topic is finer than
+// domain, so an adaptive drill can target real weak spots, and the same map
+// backs per-topic readiness later. `seen`/`correct` accumulate across attempts.
+export interface TopicStat {
+  topic: string;
+  seen: number;
+  correct: number;
+  lastSeen?: number; // epoch ms of the most recent answer in this topic
+}
+
+// version 2: adds per-topic stats, a flashcard known/learning slice, and an
+// optional per-question confidence map. The existing arrays are unchanged so a
+// stored v1 blob upgrades by seeding the new fields (see progress.ts).
 export interface ProgressState {
-  version: 1;
+  version: 2;
   completedLessons: string[]; // lesson slugs marked done
   flaggedQuestions: string[]; // question ids flagged for review
   incorrectQuestions: string[]; // question ids missed at least once
   attempts: AttemptSummary[];
+  // Per-topic rolling accuracy, keyed by Question.topic. Populated by the
+  // attempt-recording path; read by the adaptive drill builder.
+  topicStats: Record<string, TopicStat>;
+  // Self-graded flashcard recall: card ids the learner marked known vs still
+  // learning, with an optional last-seen map for later scheduling.
+  flashcards: {
+    known: string[];
+    learning: string[];
+    lastSeen?: Record<string, number>;
+  };
+  // Most recent pre-reveal confidence per question id. Optional and additive so
+  // a v1 upgrade and any older v2 blob without it both load cleanly.
+  confidenceByQuestion?: Record<string, Confidence>;
 }
