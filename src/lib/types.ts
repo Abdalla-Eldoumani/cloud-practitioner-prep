@@ -113,7 +113,7 @@ export interface AttemptResult {
   durationSeconds: number;
 }
 
-export type QuizMode = "practice" | "exam" | "review";
+export type QuizMode = "practice" | "exam" | "review" | "drill";
 
 // ---- Progress (persisted in the browser) ----
 
