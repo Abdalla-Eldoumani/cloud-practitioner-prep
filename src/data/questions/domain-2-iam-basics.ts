@@ -622,6 +622,11 @@ export const domain2IamBasics: Question[] = [
       { id: "d", text: "Pay-as-you-go" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Full access by default is the opposite of granting only what a task needs.",
+      c: "Shared responsibility describes the AWS-customer split of security duties, not how to scope permissions.",
+      d: "Pay-as-you-go is a pricing concept, unrelated to how permissions are granted.",
+    },
     explanation:
       "Granting only the permissions required to perform a task is the principle of least privilege, which AWS recommends as a best practice. Full access by default is the opposite, shared responsibility describes the split of security duties between AWS and the customer, and pay-as-you-go is a pricing concept.",
     reference: {
@@ -668,6 +673,11 @@ export const domain2IamBasics: Question[] = [
       { id: "d", text: "A VPC endpoint policy" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "A resource-based policy attaches to a resource, not directly to an identity.",
+      c: "An access control list grants cross-account access without JSON; it is not attached to an identity to define its actions.",
+      d: "A VPC endpoint policy attaches to an endpoint to control access through it, not to an identity.",
+    },
     explanation:
       "Identity-based policies are attached to an IAM user, group, or role and specify what that identity can do. Resource-based policies attach to resources, access control lists control cross-account access without JSON, and VPC endpoint policies attach to endpoints.",
     reference: {
@@ -807,6 +817,11 @@ export const domain2IamBasics: Question[] = [
       { id: "d", text: "Provisioning, then billing" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the order; signing in (authentication) comes before being granted permissions (authorization).",
+      c: "Encryption then replication are data operations, not the IAM sign-in and permission flow.",
+      d: "Provisioning then billing are unrelated operations, not the IAM access flow.",
+    },
     explanation:
       "IAM controls who is authenticated (signed in) and then authorized (has permissions) to use resources, so authentication precedes authorization. Reversing them to authorization then authentication is wrong, and pairs like encryption then replication or provisioning then billing describe unrelated operations that are not the IAM access flow.",
     reference: {
