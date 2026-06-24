@@ -21,6 +21,11 @@ export const domain2Encryption: Question[] = [
       { id: "d", text: "Encryption in transit for both, since storage also counts as transit" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the order; protecting stored data is at rest and protecting data on the network is in transit.",
+      c: "Tokenization and hashing are different techniques, not the names for these two encryption states.",
+      d: "Stored data is not transit, so calling both protections in transit misclassifies the data-at-rest case.",
+    },
     explanation:
       "Encryption at rest protects data while it is stored, such as objects in S3 or data on EBS volumes. Encryption in transit protects data while it moves from one system to another over a network. Stored data and moving data are distinct states, so the first is at rest and the second is in transit. Tokenization and hashing are different techniques, not the names for these two encryption states, and stored data does not count as transit, so calling both protections in transit is wrong.",
     reference: {
@@ -624,6 +629,11 @@ export const domain2Encryption: Question[] = [
       { id: "d", text: "ACM for all three, since it handles certificates, secrets, and keys" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This swaps the roles; KMS manages encryption keys, not TLS certificates, and ACM does not store database credentials.",
+      c: "This swaps the roles; Secrets Manager handles credentials, not TLS certificates, and ACM does not manage encryption keys.",
+      d: "ACM manages certificates only; it does not store secrets or centrally manage encryption keys, so it cannot cover all three.",
+    },
     explanation:
       "ACM provisions and manages TLS certificates, Secrets Manager stores and rotates secrets such as database credentials, and AWS KMS centrally manages encryption keys. The other options swap these distinct roles, and ACM does not handle all three needs, since it manages certificates but not secrets or encryption keys.",
     reference: {
@@ -671,6 +681,11 @@ export const domain2Encryption: Question[] = [
       { id: "d", text: "Both protect data in transit only." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "The TLS certificate protects data moving over the network, which is in transit, not at rest, so calling both at rest is wrong.",
+      c: "This swaps the two; the TLS certificate is in transit and SSE-KMS on stored objects is at rest.",
+      d: "SSE-KMS protects stored objects, which is at rest, not in transit, so calling both in transit is wrong.",
+    },
     explanation:
       "An ACM certificate enables TLS, which protects data while it moves over the network, so that is encryption in transit; SSE-KMS encrypts objects stored in Amazon S3, so that is encryption at rest. The other options misassign one or both protections.",
     reference: {
