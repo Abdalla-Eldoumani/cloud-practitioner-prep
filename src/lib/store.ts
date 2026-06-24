@@ -6,6 +6,7 @@ import type {
   ProgressState,
 } from "./types";
 import { loadProgress, saveProgress } from "./progress";
+import { nextEntry } from "./review";
 import { normalizeTopic } from "./topics";
 
 // Re-exported so existing importers keep `import { normalizeTopic } from
@@ -131,14 +132,35 @@ export function setFlashcardStatus(
   });
 }
 
+// Grade one question in the review queue: advance its Leitner schedule entry via
+// the pure nextEntry (correct promotes to a longer interval, wrong resets to box
+// 0). One commit through commit(), so it persists via the same localStorage path
+// and degrades to memory in private mode like every other mutation. The review
+// engine (plan 05) calls this at reveal, where it knows the selected answer.
+export function reviewQuestion(questionId: string, correct: boolean): void {
+  const cur = $progress.get();
+  const schedule = cur.reviewSchedule ?? {};
+  const next = nextEntry(schedule[questionId], correct);
+  commit({
+    ...cur,
+    reviewSchedule: { ...schedule, [questionId]: next },
+  });
+}
+
 // Clearing from review removes a question from both lists, because the review
 // set is the union of missed and flagged. Dropping only one would leave a
-// question the reader marked as understood still sitting in the queue.
+// question the reader marked as understood still sitting in the queue. Drop its
+// schedule entry too: the entry only has meaning while the question is in the
+// union, so keeping it would leak a stale id and grow the persisted blob without
+// bound (a question is gone from review, yet still carries a box and due date).
 export function clearMissed(questionId: string): void {
   const cur = $progress.get();
+  const reviewSchedule = { ...(cur.reviewSchedule ?? {}) };
+  delete reviewSchedule[questionId];
   commit({
     ...cur,
     incorrectQuestions: cur.incorrectQuestions.filter((id) => id !== questionId),
     flaggedQuestions: cur.flaggedQuestions.filter((id) => id !== questionId),
+    reviewSchedule,
   });
 }
