@@ -43,18 +43,60 @@ export function domainTargets(total: number): Record<Domain, number> {
   return result;
 }
 
+// Pick one domain's slice of a mock. The bucket is shuffled FIRST so every
+// sitting varies, then, when seen-counts are supplied, a STABLE sort by
+// times-seen ascending floats never-seen (count 0) questions ahead of any seen
+// one — the low-overlap guarantee while the fresh pool lasts. Because the sort
+// is stable (ES2019+), equal-seen questions keep their random order, so two
+// sittings over the same fully-seen tier still differ. The slice always takes
+// `target`, so a short fresh pool is backfilled by the next-fewest-seen and the
+// per-domain target is never returned short.
+function pickForDomain(
+  bucket: readonly Question[],
+  target: number,
+  seenCounts?: Record<string, number>,
+): Question[] {
+  const randomized = shuffle(bucket);
+  if (seenCounts) {
+    randomized.sort((a, b) => (seenCounts[a.id] ?? 0) - (seenCounts[b.id] ?? 0));
+  }
+  return randomized.slice(0, target);
+}
+
 // Build a full mock that mirrors the real exam: questionCount items distributed
-// across domains by weight, drawn at random, then shuffled into one sequence.
-// When a domain pool is short, all of its questions are used.
-export function buildMockExam(pool: readonly Question[], total: number = EXAM.questionCount): Question[] {
+// across domains by weight, then shuffled into one sequence. When a domain pool
+// is short, all of its questions are used.
+//
+// With no seenCounts the per-domain draw is purely random (back-compat for the
+// existing 2-arg callers). When seenCounts is supplied (question id -> times
+// drawn in a finished mock), each domain draws least-recently-used: never-seen
+// questions first, then fewest-seen, ties random — so repeat sittings overlap
+// little while fresh questions remain, and the target is always met.
+export function buildMockExam(
+  pool: readonly Question[],
+  total: number = EXAM.questionCount,
+  seenCounts?: Record<string, number>,
+): Question[] {
   const targets = domainTargets(total);
   const buckets = byDomain(pool);
   const picked: Question[] = [];
   for (const d of DOMAINS) {
-    const available = shuffle(buckets.get(d.id) ?? []);
-    picked.push(...available.slice(0, targets[d.id]));
+    picked.push(...pickForDomain(buckets.get(d.id) ?? [], targets[d.id], seenCounts));
   }
   return shuffle(picked);
+}
+
+// Remaining seconds in a timed mock, derived from a start timestamp and an
+// injected clock (no Date.now() inside) so the auto-submit decision is pure and
+// testable. Goes <= 0 once now reaches startedAt + the limit, and can go
+// negative — the caller treats <= 0 as time-up. Floor the elapsed so a partial
+// second never reads as a whole second already gone.
+export function remainingSeconds(
+  timeLimitSeconds: number,
+  startedAt: number,
+  now: number,
+): number {
+  return timeLimitSeconds - Math.floor((now - startedAt) / 1000);
 }
 
 // Build a focused quiz for one domain.

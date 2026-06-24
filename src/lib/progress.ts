@@ -13,6 +13,7 @@ export function defaultProgress(): ProgressState {
     flashcards: { known: [], learning: [] },
     confidenceByQuestion: {},
     reviewSchedule: {},
+    mockSeen: {},
   };
 }
 

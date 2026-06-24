@@ -26,6 +26,11 @@
 //                  loads with the field SEEDED as an object (not undefined) and
 //                  without throwing — proving the additive field needed no version
 //                  bump, the merge-over-defaults loader seeds it for older blobs.
+//   v2-missing-mockSeen  the same proof for the additive mockSeen field: a v2
+//                  blob with every other v2 field present (INCLUDING
+//                  reviewSchedule, so the two cases stay independent) but mockSeen
+//                  omitted loads with mockSeen SEEDED as an object, version stays
+//                  2, and the union lists survive — no v3 bump.
 //
 // Mirrors check-drill.ts / check-deck.ts: a self-contained tsx CLI that collects
 // every failure, prints a grouped report with counts, then exits 0 (clean) or 1
@@ -229,6 +234,48 @@ function main(): void {
     // The pre-existing fields must still survive the merge untouched.
     if (!deepEqual(seededLoad.flaggedQuestions, ["d2-x-01"]) || !deepEqual(seededLoad.incorrectQuestions, ["d3-y-02"])) {
       report.fail("v2-missing-reviewSchedule", `the union lists must be preserved while the new field is seeded`);
+    }
+  }
+
+  // ---- v2-missing-mockSeen: an older v2 blob without the additive field ----
+  // The direct sibling of v2-missing-reviewSchedule for the mockSeen field. A
+  // hand-built v2 blob with every other v2 field present — INCLUDING
+  // reviewSchedule, so this case is independent of the one above — but mockSeen
+  // omitted. mockSeen is additive on version: 2, so this must load through the
+  // same merge-over-defaults path with mockSeen seeded as an object (never
+  // undefined), version unchanged, and must not throw. This is the proof that the
+  // mock seen-count field needed no v3 bump.
+  const v2NoMockSeen = {
+    version: 2,
+    completedLessons: ["intro"],
+    flaggedQuestions: ["d2-x-01"],
+    incorrectQuestions: ["d3-y-02"],
+    attempts: [],
+    topicStats: {},
+    flashcards: { known: [], learning: [] },
+    reviewSchedule: { "d3-y-02": { box: 0, due: 0, lastReviewed: 0 } },
+    // mockSeen intentionally omitted
+  };
+  let seededMockSeen: ProgressState | undefined;
+  try {
+    seededMockSeen = migrateProgress(v2NoMockSeen);
+  } catch (err) {
+    report.fail("v2-missing-mockSeen", `migrateProgress threw on a v2 blob without mockSeen: ${(err as Error).message}`);
+  }
+  if (seededMockSeen) {
+    if (typeof seededMockSeen.mockSeen !== "object" || seededMockSeen.mockSeen === null) {
+      report.fail("v2-missing-mockSeen", `mockSeen should be seeded as an object on a v2 blob that omits it, got ${String(seededMockSeen.mockSeen)}`);
+    }
+    if (seededMockSeen.version !== 2) {
+      report.fail("v2-missing-mockSeen", `version should stay 2 (no v3 bump), got ${seededMockSeen.version}`);
+    }
+    // The pre-existing fields (and the independently-present reviewSchedule) must
+    // still survive the merge untouched.
+    if (!deepEqual(seededMockSeen.flaggedQuestions, ["d2-x-01"]) || !deepEqual(seededMockSeen.incorrectQuestions, ["d3-y-02"])) {
+      report.fail("v2-missing-mockSeen", `the union lists must be preserved while mockSeen is seeded`);
+    }
+    if (!seededMockSeen.reviewSchedule || !deepEqual(seededMockSeen.reviewSchedule["d3-y-02"], { box: 0, due: 0, lastReviewed: 0 })) {
+      report.fail("v2-missing-mockSeen", `an already-present reviewSchedule must survive while mockSeen is seeded`);
     }
   }
 

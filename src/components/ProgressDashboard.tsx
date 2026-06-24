@@ -6,7 +6,7 @@ import {
   storageAvailable,
 } from "@/lib/progress";
 import { domainName, EXAM } from "@/lib/constants";
-import { readinessFromPercent, readinessLabel } from "@/lib/scoring";
+import { mockTrend, readinessFromPercent, readinessLabel } from "@/lib/scoring";
 import {
   computeReadiness,
   EXAM_READY_PERCENT,
@@ -58,6 +58,13 @@ export default function ProgressDashboard({
     examAttempts.length > 0
       ? Math.max(...examAttempts.map((a) => a.percent))
       : null;
+
+  // The mock score trend, oldest-to-newest, from the single pure source so the
+  // filter/order rule is not re-derived here. The list below carries the data;
+  // the sparkline is the labelled visual summary over the same points.
+  const trend = mockTrend(progress.attempts);
+  const latestTrendPercent =
+    trend.length > 0 ? trend[trend.length - 1].percent : null;
 
   // Headline of the review queue = the deduplicated union of flagged and missed
   // (a question both flagged and missed counts once); the flagged/missed numbers
@@ -219,6 +226,109 @@ export default function ProgressDashboard({
           by AWS. A domain reads ready only at {EXAM_READY_PERCENT}% or above over
           at least {MIN_DOMAIN_SAMPLE} answered questions.
         </p>
+      </div>
+
+      <div className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
+        <h2 className="text-lg font-semibold text-ink">Mock score trend</h2>
+        <p className="mt-1 text-sm text-ink-soft">
+          Your overall score on each full mock, oldest to newest.
+        </p>
+
+        {trend.length === 0 ? (
+          <p className="mt-4 text-ink-soft">
+            Your mock scores will chart here once you finish a full mock.{" "}
+            <a
+              href="/practice/exam"
+              className="font-medium text-brand underline underline-offset-2 hover:text-brand-strong"
+            >
+              Sit a mock
+            </a>{" "}
+            to start your trend.
+          </p>
+        ) : (
+          <>
+            {/* The sparkline is a labelled visual summary; the dated list below
+                is its text alternative and carries the same data. A single
+                attempt renders a dot, never an empty polyline. Percents map
+                straight to the 0-100 viewBox, so a corrupt out-of-range value
+                only skews a coordinate — it never executes or breaks render. */}
+            <div className="mt-4 text-brand">
+              {(() => {
+                const w = 300;
+                const h = 80;
+                const padX = 6;
+                const padY = 6;
+                const span = w - padX * 2;
+                const inner = h - padY * 2;
+                const n = trend.length;
+                const x = (i: number) =>
+                  n === 1 ? w / 2 : padX + (span * i) / (n - 1);
+                const y = (percent: number) =>
+                  padY + inner * (1 - percent / 100);
+                const points = trend
+                  .map((a, i) => `${x(i)},${y(a.percent)}`)
+                  .join(" ");
+                const label =
+                  n === 1
+                    ? `Mock score trend: one mock at ${trend[0].percent}%.`
+                    : `Mock score trend over ${n} mocks, from ${trend[0].percent}% to ${latestTrendPercent}%.`;
+                return (
+                  <svg
+                    role="img"
+                    aria-label={label}
+                    viewBox={`0 0 ${w} ${h}`}
+                    preserveAspectRatio="none"
+                    className="h-20 w-full"
+                  >
+                    {n > 1 && (
+                      <polyline
+                        points={points}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    )}
+                    {trend.map((a, i) => (
+                      <circle
+                        key={a.id}
+                        cx={x(i)}
+                        cy={y(a.percent)}
+                        r={3}
+                        fill="currentColor"
+                      />
+                    ))}
+                  </svg>
+                );
+              })()}
+            </div>
+
+            <ol className="mt-4 flex flex-col divide-y divide-hairline">
+              {trend.map((a, i) => (
+                <li
+                  key={a.id}
+                  className="flex items-center justify-between gap-3 py-2.5 text-sm"
+                >
+                  <span className="text-ink-soft">
+                    Mock {i + 1}
+                    <span className="text-ink-soft">
+                      {" · "}
+                      {formatDate(a.finishedAt)}
+                    </span>
+                  </span>
+                  <span className="flex items-center gap-3">
+                    <span className="text-ink-soft">
+                      {readinessLabel(readinessFromPercent(a.percent))}
+                    </span>
+                    <span className="font-semibold text-ink">{a.percent}%</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
       </div>
 
       <div className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">

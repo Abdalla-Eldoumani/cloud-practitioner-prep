@@ -40,6 +40,7 @@
     "lint:shuffle": "tsx scripts/check-shuffle-uniformity.ts",
     "check:migration": "tsx scripts/check-migration.ts",
     "check:drill": "tsx scripts/check-drill.ts",
+    "check:mock": "tsx scripts/check-mock.ts",
     "check:deck": "tsx scripts/check-deck.ts",
     "check:review": "tsx scripts/check-review-schedule.ts",
     "check:readiness": "tsx scripts/check-readiness.ts",

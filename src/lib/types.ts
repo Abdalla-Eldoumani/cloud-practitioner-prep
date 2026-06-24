@@ -168,9 +168,11 @@ export interface TopicStat {
   lastSeen?: number; // epoch ms of the most recent answer in this topic
 }
 
-// version 2: adds per-topic stats, a flashcard known/learning slice, and an
-// optional per-question confidence map. The existing arrays are unchanged so a
-// stored v1 blob upgrades by seeding the new fields (see progress.ts).
+// version 2: adds per-topic stats, a flashcard known/learning slice, an
+// optional per-question confidence map, the review schedule, and the
+// mock seen-count map. The existing arrays are unchanged so a stored v1 blob
+// upgrades by seeding the new fields (see progress.ts). reviewSchedule and
+// mockSeen are both additive on this SAME version: 2 (no v3 bump).
 export interface ProgressState {
   version: 2;
   completedLessons: string[]; // lesson slugs marked done
@@ -196,4 +198,11 @@ export interface ProgressState {
   // blob without this field loads with it seeded, exactly like
   // confidenceByQuestion. No version bump.
   reviewSchedule?: Record<string, ReviewEntry>;
+  // Times each question has been drawn in a FINISHED mock, keyed by question id.
+  // Drives the low-overlap LRU draw so repeat sittings prefer never-seen
+  // questions. Optional and additive on the SAME version: 2 — the migrator
+  // merges a stored blob over defaults, so an older v2 (or upgraded v1) blob
+  // without this field loads with it seeded, exactly like reviewSchedule. No
+  // version bump.
+  mockSeen?: Record<string, number>;
 }
