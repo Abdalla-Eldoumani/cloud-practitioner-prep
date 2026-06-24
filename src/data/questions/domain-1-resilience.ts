@@ -583,6 +583,11 @@ export const domain1Resilience: Question[] = [
       { id: "d", text: "Pilot light, multi-site active-active, backup and restore, warm standby" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This is the reverse progression, leading with the costliest near-zero-recovery strategy instead of the longest-recovery one.",
+      c: "This scrambles the sequence, placing warm standby and pilot light out of their cost-and-recovery order.",
+      d: "This scrambles the sequence, putting the highest-cost strategy second rather than last.",
+    },
     explanation:
       "AWS lists the four strategies in increasing order of cost and complexity and decreasing order of RTO and RPO: backup and restore, pilot light, warm standby, then multi-site active-active. The other orderings scramble that progression.",
     reference: {
