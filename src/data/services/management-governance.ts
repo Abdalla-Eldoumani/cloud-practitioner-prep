@@ -407,7 +407,7 @@ export const managementGovernance: ServiceEntry[] = [
     id: "aws-well-architected-tool",
     name: "AWS Well-Architected Tool",
     shortName: "Well-Architected Tool",
-    domain: 4,
+    domain: 1,
     category: "Management and Governance",
     purpose:
       "A service that helps you review the state of your workloads against AWS architectural best practices and gives guidance to improve them.",
