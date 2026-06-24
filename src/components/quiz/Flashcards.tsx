@@ -136,6 +136,7 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (total === 0) return;
+      if (e.repeat) return; // ignore auto-repeat from a held key
       const onButton =
         e.target instanceof HTMLElement && e.target.closest("button") !== null;
       switch (e.key) {
