@@ -577,6 +577,11 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "e", text: "YAML" },
     ],
     correct: ["a", "b"],
+    distractorRationales: {
+      c: "HTML is a markup language for web page structure, not a programming language with an AWS SDK.",
+      d: "CSS is a styling language for web pages, not a programming language with an AWS SDK.",
+      e: "YAML is a data format used for templates, not a programming language with an AWS SDK.",
+    },
     explanation:
       "AWS provides SDKs, which are language-specific libraries for calling AWS service APIs from code, for languages including Python and Java. HTML and CSS are markup and styling languages for web pages, not programming languages with an AWS SDK, and YAML is a data format used for templates rather than an SDK language.",
     reference: {
@@ -622,6 +627,11 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "d", text: "Amazon Textract to create the transcript, then Amazon Lex to translate it" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Polly produces speech rather than transcripts, and Comprehend analyzes text but does not translate it.",
+      c: "Translate does not transcribe audio and Transcribe does not translate, so this pairing has both roles wrong.",
+      d: "Textract extracts data from documents, not audio, and Lex builds chatbots rather than translating text.",
+    },
     explanation:
       "Amazon Transcribe converts the recorded speech into a text transcript, and Amazon Translate then converts that text into English, which matches the workflow. Polly produces speech rather than transcripts, Comprehend analyzes text but does not translate, Translate and Textract do not transcribe audio, and Lex builds chatbots, so the other pairings fail.",
     reference: {
