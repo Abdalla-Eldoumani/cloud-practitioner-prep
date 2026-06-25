@@ -5,78 +5,98 @@ import { serviceById } from "@/data/services/index";
 // The core-services map for the ec2-fundamentals lesson (the first Domain-3
 // compute lesson, where the EC2 <-> Lambda axis gives the map real anchors). It
 // supplies the static SVG geometry + the node notes to the shared DiagramFigure
-// (which owns the accessibility contract). The figure groups the core AWS service
-// CATEGORIES a learner meets on the exam — Compute, Storage, Database,
-// Networking, Serverless — each with one or two flagship services beneath it, so
-// the categories and their headline services read as one labelled topology. No JS
-// is needed to read it: every label is in the static SVG.
+// (which owns the accessibility contract). The figure groups core AWS service
+// CATEGORIES a learner meets on the exam, each with one or two flagship services
+// beneath it, so the categories and their headline services read as one labelled
+// topology. No JS is needed to read it: every label is in the static SVG.
 //
-// This is the highest invention-risk diagram (it names many services), so the
-// guard is STRUCTURAL: every service label is resolved from the verified service
-// catalog via serviceById at module load, NEVER hand-typed. A typo'd or invented
-// id throws here (see resolveService) rather than rendering an unverified name,
-// and the module also exports its ids in meta.serviceIds so the check:diagrams
-// service-labels-resolve rule asserts every one resolves. Category names mirror
-// AWS's own service categories. Colors come from currentColor on token-colored
-// <g> wrappers (text-ink / text-brand / text-accent / text-ink-soft) so both
-// themes resolve and no raw hex appears; each category is labelled in TEXT, so
-// the grouping is never carried by color alone.
+// This is the highest invention-risk diagram (it names many services AND asserts
+// their categories), so the guard is STRUCTURAL and total: each column lists only
+// service IDS; BOTH the service name AND the category header are resolved from the
+// verified service catalog (serviceById) at module load, never hand-typed. A
+// column whose services do not all share one catalog category throws here (see
+// resolveGroup), so a service can never be shown under the wrong category and the
+// header can never drift from the catalog the way a hand-typed label could. The
+// module also exports its ids in meta.serviceIds so the check:diagrams
+// service-labels-resolve rule asserts every one resolves. Colors come from
+// currentColor on token-colored <g> wrappers (text-ink / text-brand / text-accent
+// / text-ink-soft) so both themes resolve and no raw hex appears; each category is
+// labelled in TEXT, so the grouping is never carried by color alone.
 
-// One category group: the AWS category name a learner recognizes, and the
-// flagship service IDS under it. The label and note for each service are resolved
-// from the catalog below — only the id is authored here, so a name can never
-// drift from the verified entry.
-interface CategoryGroup {
-  // The category label, mirroring the catalog's AWS category names.
-  category: string;
-  // The flagship service ids for this category. Every id must resolve via
-  // serviceById; resolveService throws on one that does not.
-  serviceIds: string[];
-}
+// One category column: only the flagship service IDS are authored. The category
+// label and each service name/note are resolved from the catalog, so the only
+// authored fact about a column is which services it groups — a name or a category
+// can never drift from the verified entry.
+type CategoryColumn = string[];
 
-// The authored grouping. Each id is confirmed present in the verified catalog
-// (compute / serverless / storage / database / networking). The flagship picks
-// mirror what the EC2 lesson already names (EC2, Lambda) plus the headline
-// service of each other core category.
-const CATEGORY_GROUPS: CategoryGroup[] = [
-  { category: "Compute", serviceIds: ["amazon-ec2", "aws-lambda"] },
-  { category: "Storage", serviceIds: ["amazon-s3", "amazon-ebs"] },
-  { category: "Database", serviceIds: ["amazon-rds", "amazon-dynamodb"] },
-  { category: "Networking", serviceIds: ["amazon-vpc", "amazon-route-53"] },
-  { category: "Serverless", serviceIds: ["aws-fargate", "amazon-ecs"] },
+// The authored grouping: each column is a set of service ids that share ONE catalog
+// category. The category label is derived from the catalog (resolveGroup), so the
+// header always matches the verified category of the services beneath it. The picks
+// mirror what the EC2 lesson names (EC2, Lambda) plus the headline service of each
+// other core category.
+const CATEGORY_COLUMNS: CategoryColumn[] = [
+  ["amazon-ec2"], // Compute
+  ["aws-lambda", "aws-fargate"], // Serverless
+  ["amazon-s3", "amazon-ebs"], // Storage
+  ["amazon-rds", "amazon-dynamodb"], // Database
+  ["amazon-vpc", "amazon-route-53"], // Networking and Content Delivery
 ];
 
-// Resolve one service id to its verified catalog name + a short note, throwing on
-// a non-resolving id so the map NEVER shows an unverified name. The note is the
-// first clause of the entry's official `purpose` (the verified one-line summary),
-// trimmed to a single phrase for the callout.
-function resolveService(id: string): { id: string; name: string; note: string } {
+interface ResolvedService {
+  id: string;
+  name: string;
+  note: string;
+}
+
+// Resolve one service id to its verified catalog entry, throwing on a non-resolving
+// id so the map NEVER shows an unverified name.
+function resolveEntry(id: string) {
   const entry = serviceById(id);
   if (entry === undefined) {
     throw new Error(
       `CoreServicesDiagram: service id "${id}" does not resolve to a catalog entry; every label must come from the verified catalog.`,
     );
   }
-  const note = `${entry.category}: ${entry.purpose}`;
-  return { id: entry.id, name: entry.name, note };
+  return entry;
 }
 
-// Build-time resolution: a flat list of every group with its services resolved
-// to verified names. Evaluated once at module load (typed data, no DOM), so the
-// island receives only plain serializable shapes and the gate can import() this
-// module safely. A bad id throws right here, at discovery.
-const RESOLVED_GROUPS = CATEGORY_GROUPS.map((group) => ({
-  category: group.category,
-  services: group.serviceIds.map(resolveService),
-}));
+// Resolve one column to its catalog-derived category label + its resolved services.
+// Every service in the column must share one catalog category; a mixed column throws
+// here (at module load, which the gate triggers on import), so a service can never
+// be filed under the wrong category and the header IS the catalog's own verified
+// category string.
+function resolveGroup(ids: CategoryColumn): {
+  category: string;
+  services: ResolvedService[];
+} {
+  const entries = ids.map(resolveEntry);
+  const category = entries[0].category;
+  for (const entry of entries) {
+    if (entry.category !== category) {
+      throw new Error(
+        `CoreServicesDiagram: column [${ids.join(", ")}] mixes catalog categories ("${entry.category}" vs "${category}"); every service in a column must share one verified category.`,
+      );
+    }
+  }
+  const services = entries.map((entry) => ({
+    id: entry.id,
+    name: entry.name,
+    // The note names the SAME catalog category shown in the header, so the callout
+    // and the column header can never disagree.
+    note: `${entry.category}: ${entry.purpose}`,
+  }));
+  return { category, services };
+}
 
-// The flat list of every service id the map renders, for meta.serviceIds. This is
-// what arms the gate's service-labels-resolve rule.
-const SERVICE_IDS = CATEGORY_GROUPS.flatMap((group) => group.serviceIds);
+const RESOLVED_GROUPS = CATEGORY_COLUMNS.map(resolveGroup);
+
+// The flat list of every service id the map renders, for meta.serviceIds — what
+// arms the gate's service-labels-resolve rule.
+const SERVICE_IDS = CATEGORY_COLUMNS.flat();
 
 // The interactive nodes: one per flagship service, its visible label the verified
-// catalog name and its note the verified one-line purpose. Built from the
-// resolved groups so a label can never be authored free-hand.
+// catalog name and its note the verified one-line purpose. Built from the resolved
+// groups so a label can never be authored free-hand.
 const nodes: DiagramNode[] = RESOLVED_GROUPS.flatMap((group) =>
   group.services.map((service) => ({
     id: service.id,
@@ -85,18 +105,36 @@ const nodes: DiagramNode[] = RESOLVED_GROUPS.flatMap((group) =>
   })),
 );
 
-// The static SVG geometry. Five category columns across a 16:9 frame, each a
-// labelled category header with its flagship service tiles beneath, connected by
-// a short link so the "category contains these services" relationship reads. Every
-// label lives in the SVG (the category name in the header, each service name in
-// its tile) so the figure reads fully without interaction. currentColor inherits
-// from the per-element token text color; stroke widths stay ~1.5 for the design
-// weight. The column layout is computed so the labels stay aligned as the group
-// list changes, but no value is hand-typed twice.
+// Split a category label into at most two balanced lines so a long verified label
+// (e.g. "Networking and Content Delivery") fits a fixed-width column header without
+// truncating the catalog's own wording. Short labels stay on one line.
+function headerLines(category: string): string[] {
+  if (category.length <= 16) return [category];
+  const words = category.split(" ");
+  let best = 1;
+  let bestDiff = Infinity;
+  for (let i = 1; i < words.length; i++) {
+    const diff = Math.abs(
+      words.slice(0, i).join(" ").length - words.slice(i).join(" ").length,
+    );
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = i;
+    }
+  }
+  return [words.slice(0, best).join(" "), words.slice(best).join(" ")];
+}
+
+// The static SVG geometry. Five category columns across the frame, each a labelled
+// category header (its verified catalog category, wrapped to two lines when long)
+// with its flagship service tiles beneath, connected by a short link so the
+// "category contains these services" relationship reads. Every label lives in the
+// SVG so the figure reads fully without interaction. currentColor inherits from the
+// per-element token text color.
 function CoreServicesGeometry() {
   const columnWidth = 60;
-  const columnGap = 4;
-  const firstColumnX = 6;
+  const columnGap = 3;
+  const firstColumnX = 4;
   const headerY = 26;
   const headerHeight = 20;
 
@@ -119,9 +157,11 @@ function CoreServicesGeometry() {
       {RESOLVED_GROUPS.map((group, columnIndex) => {
         const x = firstColumnX + columnIndex * (columnWidth + columnGap);
         const centerX = x + columnWidth / 2;
+        const lines = headerLines(group.category);
         return (
           <g key={group.category}>
-            {/* The category header box, labelled with the AWS category name. */}
+            {/* The category header box, labelled with the verified catalog category
+                name (wrapped to two lines when it is long). */}
             <g className="text-brand">
               <rect
                 x={x}
@@ -135,18 +175,24 @@ function CoreServicesGeometry() {
               />
               <text
                 x={centerX}
-                y={headerY + 13}
+                y={lines.length === 1 ? headerY + 13 : headerY + 9}
                 textAnchor="middle"
-                className="fill-current font-sans text-[8px] font-semibold"
+                className="fill-current font-sans text-[7px] font-semibold"
                 fill="currentColor"
               >
-                {group.category}
+                {lines.length === 1
+                  ? group.category
+                  : lines.map((line, i) => (
+                      <tspan key={line} x={centerX} dy={i === 0 ? 0 : 8}>
+                        {line}
+                      </tspan>
+                    ))}
               </text>
             </g>
 
-            {/* The flagship service tiles beneath the header, each labelled with
-                the verified catalog name, connected to the header by a short
-                link so the containment reads. */}
+            {/* The flagship service tiles beneath the header, each labelled with the
+                verified catalog name, connected to the header by a short link so the
+                containment reads. */}
             <g className="text-ink">
               {group.services.map((service, serviceIndex) => {
                 const tileY = 58 + serviceIndex * 30;
@@ -191,8 +237,8 @@ function CoreServicesGeometry() {
         );
       })}
 
-      {/* The takeaway label: the categories are how AWS groups its services, and
-          a learner navigates the exam by category first. Text, not color. */}
+      {/* The takeaway label: the categories are how AWS groups its services, and a
+          learner navigates the exam by category first. Text, not color. */}
       <g className="text-ink-soft">
         <text
           x="160"
@@ -213,7 +259,7 @@ export default function CoreServicesDiagram() {
     <DiagramFigure
       idBase="core-services"
       title="A map of core AWS service categories"
-      description="The core AWS service categories the exam covers — Compute, Storage, Database, Networking, and Serverless — each shown with one or two of its flagship services beneath it. Every service name is drawn from the verified service catalog. Select a service below to read what it does."
+      description="Core AWS service categories the exam covers — Compute, Serverless, Storage, Database, and Networking and Content Delivery — each shown with one or two of its flagship services beneath it. Every service name and category is drawn from the verified service catalog. Select a service below to read what it does."
       nodes={nodes}
       viewBox="0 0 320 180"
       calloutLabel="Service"
@@ -224,10 +270,10 @@ export default function CoreServicesDiagram() {
 }
 
 // The inline knowledge-check datum the lesson embeds after the diagram. Single
-// answer, stable content-named option ids, no option-letter or positional
-// phrasing; the option text is real catalog names and the explanation names
-// option CONTENT. It checks that a learner can place a flagship service in its
-// category — the skill the map builds. Traces to the EC2 service page.
+// answer, stable content-named option ids, no option-letter or positional phrasing;
+// the option text is real catalog names and the explanation names option CONTENT. It
+// checks that a learner can place a flagship service in its category — the skill the
+// map builds. Traces to the EC2 service page.
 const coreServicesCheck: KnowledgeCheckDatum = {
   prompt: "Which of these AWS services is in the Compute category?",
   options: [
@@ -238,7 +284,7 @@ const coreServicesCheck: KnowledgeCheckDatum = {
   ],
   correct: ["ec2-compute"],
   explanation:
-    "Amazon EC2 is the flagship Compute service: resizable virtual servers you launch and scale. Amazon S3 is object Storage, Amazon RDS is a managed relational Database, and Amazon Route 53 is a Networking (DNS) service, so each of those belongs to a different core category.",
+    "Amazon EC2 is the flagship Compute service: resizable virtual servers you launch and scale. Amazon S3 is object Storage, Amazon RDS is a managed relational Database, and Amazon Route 53 is a Networking and Content Delivery (DNS) service, so each of those belongs to a different core category.",
   reference: {
     label: "AWS: What is Amazon EC2?",
     url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
