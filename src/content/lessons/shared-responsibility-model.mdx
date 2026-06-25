@@ -16,6 +16,8 @@ draft: false
 ---
 
 import Callout from "@/components/Callout.astro";
+import SharedResponsibilityDiagram, { meta as sharedResponsibilityMeta } from "@/components/diagrams/SharedResponsibilityDiagram";
+import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 Security in AWS is a partnership. AWS secures the parts you cannot touch, and you
 secure the parts you control. This split is the Shared Responsibility Model, and
@@ -30,6 +32,10 @@ Security OF the cloud is AWS protecting the infrastructure that runs every
 service. Security IN the cloud is you protecting what you put on top of it: your
 data, your configuration, and who can reach it.
 </Callout>
+
+<SharedResponsibilityDiagram client:visible />
+
+<KnowledgeCheck client:visible {...sharedResponsibilityMeta.check} />
 
 ## What AWS is responsible for
 

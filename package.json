@@ -42,6 +42,7 @@
     "check:drill": "tsx scripts/check-drill.ts",
     "check:mock": "tsx scripts/check-mock.ts",
     "check:deck": "tsx scripts/check-deck.ts",
+    "check:diagrams": "tsx scripts/check-diagrams.ts",
     "check:review": "tsx scripts/check-review-schedule.ts",
     "check:readiness": "tsx scripts/check-readiness.ts",
     "lint:coverage": "tsx scripts/lint-coverage.ts",
