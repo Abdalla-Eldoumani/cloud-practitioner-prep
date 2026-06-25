@@ -18,7 +18,7 @@
 //   - overallReady is the all-domains gate, NEVER an average.
 //   - Raw percent + band only. This module never computes or surfaces the AWS
 //     scaled score (100-1000 / passing 700); the ResultsPanel disclaimer copy is
-//     the model for how plan 06 renders this.
+//     the model for how the progress dashboard renders this.
 //
 // Pure and store-free / React-free, like topics.ts and scoring.ts: it takes the
 // progress slice and the question pool as plain inputs, so it is deterministic
@@ -33,14 +33,14 @@ import { normalizeTopic } from "./topics";
 import { readinessFromPercent } from "./scoring";
 
 // A domain is called ready only when its accuracy clears this threshold. Aligned
-// with the existing >=85 exam-ready band: the PRD wants the readiness bar set
+// with the existing >=85 exam-ready band: the readiness bar is set deliberately
 // high (~85-90), well above the ~70% real pass line, so a green signal means real
 // readiness rather than a bare pass.
 export const EXAM_READY_PERCENT = 85;
 
 // ...and only over at least this many answered questions. A domain is not called
 // ready on a handful of answers — 100% of three is noise, not readiness
-// (RESEARCH Pitfall 2: readiness inflated by a tiny sample).
+// (so a tiny sample can never inflate the signal).
 export const MIN_DOMAIN_SAMPLE = 20;
 
 // One topic's accuracy snapshot, attributed to its domain through the pool.

@@ -160,8 +160,8 @@ async function main(): Promise<void> {
 
   const moduleFiles = await globby(DIAGRAMS_GLOB);
 
-  // Wave 0: no diagram modules yet. Every downstream rule is vacuous, so the
-  // gate announces the empty discovery and exits clean.
+  // No diagram modules yet (the foundation state). Every downstream rule is
+  // vacuous, so the gate announces the empty discovery and exits clean.
   if (moduleFiles.length === 0) {
     console.log(
       "Diagram contract: no diagram modules yet (glob src/components/diagrams/*Diagram.tsx is empty); every rule is vacuous.",

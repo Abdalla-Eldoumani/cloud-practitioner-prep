@@ -33,7 +33,7 @@ export interface WeakTopic {
 // qualifying topics (seen >= minSeen) sorted by accuracy ascending, ties broken
 // by fewer attempts first (least-practiced surfaces sooner), then by most-recent
 // activity. Topics below the seen floor are excluded entirely: an untouched
-// topic is not weak, just unmeasured (RESEARCH Pitfall 4). With no qualifying
+// topic is not weak, just unmeasured. With no qualifying
 // topics (cold start) this returns [] and the caller falls back to a mixed draw.
 export function rankWeakTopics(
   topicStats: Record<string, TopicStat>,

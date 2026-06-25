@@ -5,8 +5,8 @@
 // script collects them all, prints a grouped report, and exits 1 if any fired,
 // else 0.
 //
-// The point of this gate is to make the coverage map honest rather than vacuous
-// (RESEARCH Pitfall 3): a statement is "covered" only if it resolves to a real
+// The point of this gate is to make the coverage map honest rather than
+// vacuous: a statement is "covered" only if it resolves to a real
 // lesson AND a real question, and every authored slug/topic must resolve to
 // something, so a typo is a hard failure rather than a silent zero.
 //

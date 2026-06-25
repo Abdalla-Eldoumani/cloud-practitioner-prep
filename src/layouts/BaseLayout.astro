@@ -30,7 +30,7 @@ const serviceIndex = buildServiceIndex(ALL_SERVICES);
 const {
   title,
   description = "Learn AWS and prepare for the Certified Cloud Practitioner exam with free lessons, practice questions, and full timed mock exams.",
-  image,
+  image = "/og.png",
 } = Astro.props;
 
 const siteName = "Cloud Practitioner Prep";
@@ -119,7 +119,7 @@ function isActive(href: string): boolean {
           Cloud Practitioner Prep
         </a>
         <nav aria-label="Primary">
-          <ul class="flex items-center gap-1 text-sm">
+          <ul class="flex flex-wrap items-center justify-end gap-1 gap-y-2 text-sm">
             {
               nav.map((item) => (
                 <li>
