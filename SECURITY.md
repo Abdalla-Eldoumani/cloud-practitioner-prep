@@ -10,6 +10,18 @@ The areas that are still worth reporting are things like a cross-site scripting
 issue in how content renders, an insecure outbound link, or a dependency with a
 known advisory that affects the built site.
 
+## Hardening
+
+Production responses set a strict Content-Security-Policy (`default-src 'self'`,
+with no third-party origins allowed), HTTP Strict Transport Security,
+`X-Content-Type-Options: nosniff`, `frame-ancestors 'none'` with
+`X-Frame-Options: DENY`, a same-origin Cross-Origin-Opener-Policy, and a
+restrictive Permissions-Policy. These live in `vercel.json` for the production
+host and are mirrored in `public/_headers` for hosts that read that file. Fonts
+are self-hosted, so the browser loads nothing from a third-party origin at
+runtime, and the service worker is same-origin and precaches only the site's own
+build output.
+
 ## Reporting a vulnerability
 
 Please do not open a public issue for a security report.
