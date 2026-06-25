@@ -389,6 +389,41 @@ async function main(): Promise<void> {
     }
   }
 
+  // ---- manifest-linked: the manifest <link> reaches the built HTML ----
+  // The manifest FILE existing in dist/ is not enough — a browser only discovers
+  // it (and offers install) when the page <head> links it. The integration's
+  // automatic head injection does not run on this Astro version, so BaseLayout
+  // declares the tags explicitly; assert they actually reach the built HTML so a
+  // regression (or a future integration change that drops them) fails here, not
+  // silently in the browser. index.html stands for every page (one shared layout).
+  const indexHtml = readFileSync(DIST_INDEX, "utf8");
+  const manifestLinkRe = /<link\b[^>]*\brel=["']manifest["'][^>]*>/i;
+  if (!manifestLinkRe.test(indexHtml)) {
+    report.fail(
+      "manifest-linked",
+      'dist/index.html has no <link rel="manifest"> — the app is not installable (the browser cannot discover the manifest)',
+    );
+  } else {
+    const href = indexHtml
+      .match(manifestLinkRe)?.[0]
+      .match(/\bhref=["']([^"']+)["']/i)?.[1];
+    if (href) {
+      const rel = href.replace(/^\//, "");
+      if (!existsSync(`${DIST_ROOT}/${rel}`)) {
+        report.fail(
+          "manifest-linked",
+          `the linked manifest "${href}" does not resolve to a file under dist/`,
+        );
+      }
+    }
+  }
+  if (!/<meta\b[^>]*\bname=["']theme-color["'][^>]*>/i.test(indexHtml)) {
+    report.fail(
+      "manifest-linked",
+      "dist/index.html has no theme-color meta (the OS chrome would be unthemed)",
+    );
+  }
+
   console.log(
     `pwa check: manifest "${manifestName}", ${icons.length} icon(s), precache ${precacheCount} entries, registerType prompt, island mounted.`,
   );
