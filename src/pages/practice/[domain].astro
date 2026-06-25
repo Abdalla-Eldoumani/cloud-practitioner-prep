@@ -19,7 +19,10 @@ const available = domainQuestions.length;
 const count = Math.min(10, available);
 ---
 
-<BaseLayout title={`Practice: ${name}`}>
+<BaseLayout
+  title={`Practice: ${name}`}
+  description={`Free AWS Cloud Practitioner practice questions on ${name} (CLF-C02), with instant feedback and an explanation for every answer.`}
+>
   <header class="mx-auto max-w-2xl">
     <a
       href="/practice"
