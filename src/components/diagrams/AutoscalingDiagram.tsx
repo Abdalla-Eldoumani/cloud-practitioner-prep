@@ -194,10 +194,10 @@ function AutoscalingGeometry() {
             {[0, 1].map((i) => (
               <rect
                 key={i}
-                x={az.x + 30 + i * 44}
-                y="104"
+                x={az.x + 38 + i * 28}
+                y="102"
                 width="24"
-                height="14"
+                height="12"
                 rx="3"
                 fill="none"
                 stroke="currentColor"
@@ -206,7 +206,7 @@ function AutoscalingGeometry() {
             ))}
             <text
               x={az.x + 64}
-              y="113"
+              y="121"
               textAnchor="middle"
               className="fill-current font-sans text-[5.5px]"
               fill="currentColor"
