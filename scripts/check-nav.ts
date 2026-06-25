@@ -27,13 +27,20 @@
 //                        id and no extra (exact set equality).
 //   citations-allowlisted  every EXAM_DAY_CITATIONS url parses, is on AWS_HOSTS,
 //                        and matches no HISTORICAL_MARKER.
+//   exam-day-literals    src/pages/exam-day.astro imports EXAM AND carries no
+//                        bare exam-fact number (65/50/700/90) in its body where a
+//                        typed EXAM constant exists. This makes "the page sources
+//                        EXAM" enforceable: a number that drifts from EXAM by
+//                        being re-typed as a literal fails, so the page can only
+//                        derive it (EXAM.questionCount / scoredCount /
+//                        passingScaledScore / round(timeLimitSeconds/60)).
 //
 // PENDING_ROUTES: routes planned in a later change. routes-resolve emits a
 // notice (not a failure) for a PENDING href whose page file is absent, and each
-// entry is removed here when its page lands. It currently holds exactly
-// "/exam-day" (the exam-day page lands in a later change, which removes this
-// entry in the same change so the gate tightens to fully fatal). Every
-// NON-pending missing route is fatal — the gate stays non-vacuous.
+// entry is removed here when its page lands. It is currently empty: the exam-day
+// page now exists, so its route is fully fatal like every other target (the
+// mechanism stays for any future planned route). Every NON-pending missing route
+// is fatal — the gate stays non-vacuous.
 //
 // Mirrors check-diagrams.ts / check-mock.ts: a self-contained tsx CLI. Run via
 // `npm run check:nav` (sandbox OFF, as a script file — it prints nothing under
@@ -56,15 +63,31 @@ import {
   buildServiceIndex,
 } from "../src/lib/navigation";
 import { ALL_SERVICES } from "../src/data/services/index";
+import { EXAM } from "../src/lib/constants";
 import type { Domain } from "../src/lib/types";
 
 // Routes planned in a later change. A PENDING href whose page is absent is a
-// notice, not a failure; remove an entry here when its page lands.
-const PENDING_ROUTES = new Set<string>(["/exam-day"]);
+// notice, not a failure; remove an entry here when its page lands. Currently
+// empty — every navigable route now resolves to a real page.
+const PENDING_ROUTES = new Set<string>([]);
 
 const PAGES_GLOB = resolveGlob("../src/pages/**/*.{astro,md,mdx}");
 const PAGES_ROOT = resolveGlob("../src/pages");
 const LESSONS_GLOB = resolveGlob("../src/content/lessons/**/*.{md,mdx}");
+const EXAM_DAY_PAGE = resolveGlob("../src/pages/exam-day.astro");
+
+// The exam-fact numbers that have a typed EXAM home, so the exam-day page must
+// derive each from EXAM rather than re-type it as a bare literal. Drawn from the
+// SAME EXAM constant the page imports (never re-hardcoded here): the question
+// count, the scored count, the passing scaled score, and the minutes the page
+// renders as Math.round(timeLimitSeconds / 60). A bare occurrence of one of
+// these as a standalone number in the page body is the drift this rule catches.
+const EXAM_FACT_LITERALS = new Set<number>([
+  EXAM.questionCount,
+  EXAM.scoredCount,
+  EXAM.passingScaledScore,
+  Math.round(EXAM.timeLimitSeconds / 60),
+]);
 
 class Reporter {
   private failures = new Map<string, string[]>();
@@ -91,7 +114,7 @@ class Reporter {
 
     if (this.failures.size === 0) {
       console.log(
-        "\nPASS: every command/lesson/service target resolves to a real route, the index covers every lesson and service exactly, and every exam-day citation is allowlisted and non-historical.",
+        "\nPASS: every command/lesson/service target resolves to a real route, the index covers every lesson and service exactly, every exam-day citation is allowlisted and non-historical, and the exam-day page sources its fact numbers from EXAM.",
       );
       return;
     }
@@ -316,6 +339,55 @@ async function main(): Promise<void> {
         "citations-allowlisted",
         `${c.id}: historical-reference URL "${c.url}"`,
       );
+    }
+  }
+
+  // ---- exam-day-literals: the page sources EXAM, no re-typed fact number ----
+  // The page renders the verified exam-format numbers; they must come from the
+  // typed EXAM constant, not be re-typed as bare literals (a re-typed number can
+  // drift from EXAM and ship uncaught — the link-checker does not scan .astro,
+  // and routes-resolve only proves the page exists, not that its facts match
+  // EXAM). This rule makes "facts come from EXAM" enforceable. It (a) requires an
+  // EXAM import/reference in the frontmatter, then (b) strips every {...} JSX
+  // expression from the body (those are the legitimate EXAM-derived insertions,
+  // e.g. {EXAM.passingScaledScore} / {minutes}) and fails on any standalone
+  // EXAM-fact number (65/50/700/90) left in the literal markup text.
+  let examDaySource = "";
+  try {
+    examDaySource = readFileSync(EXAM_DAY_PAGE, "utf8");
+  } catch {
+    report.fail(
+      "exam-day-literals",
+      `cannot read ${EXAM_DAY_PAGE} (the exam-day page must exist and source EXAM)`,
+    );
+  }
+  if (examDaySource) {
+    // Split the frontmatter (the first --- fenced block) from the body markup.
+    const fmMatch = examDaySource.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const frontmatter = fmMatch ? fmMatch[1] : "";
+    const body = fmMatch
+      ? examDaySource.slice(fmMatch[0].length)
+      : examDaySource;
+
+    if (!/\bEXAM\b/.test(frontmatter)) {
+      report.fail(
+        "exam-day-literals",
+        "exam-day.astro frontmatter does not reference EXAM — every exam-fact number must come from the typed EXAM constant",
+      );
+    }
+
+    // Drop every {...} JSX expression: those are the EXAM-derived interpolations
+    // (and any other computed value). What remains is the literal text the page
+    // hard-codes — a fact number there is the re-typed drift this rule forbids.
+    const literalText = body.replace(/\{[^{}]*\}/g, " ");
+    for (const m of literalText.matchAll(/(?<![\d.,])\d+(?![\d.,])/g)) {
+      const value = Number(m[0]);
+      if (EXAM_FACT_LITERALS.has(value)) {
+        report.fail(
+          "exam-day-literals",
+          `exam-day.astro hard-codes the exam-fact number ${value} as a bare literal; derive it from EXAM (e.g. EXAM.questionCount / EXAM.scoredCount / EXAM.passingScaledScore / Math.round(EXAM.timeLimitSeconds / 60))`,
+        );
+      }
     }
   }
 
