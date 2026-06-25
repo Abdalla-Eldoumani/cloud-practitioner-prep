@@ -148,7 +148,7 @@ export interface DrillResult {
 //    over the whole pool.
 //
 // The result length is min(count, pool.length) and is NEVER 0 for a non-empty
-// pool (RESEARCH Pitfall 4 / EDGE_CASES "never render a blank"). Order within
+// pool (the drill must never render a blank set). Order within
 // the drill is random, so callers assert on membership/size/skew, not order.
 export function buildDrill(
   pool: readonly Question[],
