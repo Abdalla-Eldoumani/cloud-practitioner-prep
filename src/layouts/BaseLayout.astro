@@ -198,9 +198,10 @@ function isActive(href: string): boolean {
       anywhere as an opt-in reload — never an auto-reload that would interrupt an
       in-progress timed exam. client:idle (not load): it is not needed at first
       paint and only ever appears once a new version is waiting. It takes no
-      props (it reads the service-worker registration itself). The manifest link
-      and theme-color are auto-injected by the build, so none are hand-added to
-      <head> here.
+      props (it reads the service-worker registration itself). The manifest link,
+      theme-color, and apple-touch-icon are declared explicitly in <head> above,
+      because the build's automatic head injection does not run on this Astro
+      version.
     */}
     <ReloadPrompt client:idle />
 
