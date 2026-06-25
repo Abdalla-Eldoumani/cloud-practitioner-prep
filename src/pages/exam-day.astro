@@ -19,9 +19,63 @@ import { EXAM_DAY_CITATIONS } from "@/lib/navigation";
 const scored = EXAM.scoredCount;
 const unscored = EXAM.questionCount - EXAM.scoredCount;
 const minutes = Math.round(EXAM.timeLimitSeconds / 60);
+
+// FAQ structured data. Every answer is built from the same EXAM source as the
+// visible facts above, so the two never diverge (a requirement for FAQ rich
+// results: the marked-up answer must match the on-page text).
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: `How many questions are on the AWS Cloud Practitioner (${EXAM.code}) exam?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `The ${EXAM.code} exam has ${EXAM.questionCount} questions: ${scored} that count toward your score and ${unscored} unscored questions that do not affect your result.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the passing score for the AWS Cloud Practitioner exam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `AWS reports a scaled score from 100 to 1,000, and the minimum passing score is ${EXAM.passingScaledScore}. It is not a raw percentage of questions answered correctly.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long is the AWS Cloud Practitioner exam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `You get ${minutes} minutes to complete the ${EXAM.questionCount}-question exam.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does the AWS Cloud Practitioner exam cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The exam fee is 100 USD.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long is the AWS Cloud Practitioner certification valid?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `The certification is valid for ${EXAM.validityYears} years, after which you recertify.`,
+      },
+    },
+  ],
+};
 ---
 
-<BaseLayout title="Exam day">
+<BaseLayout
+  title="AWS Cloud Practitioner Exam Day Guide (CLF-C02)"
+  description="AWS Cloud Practitioner exam day guide: the CLF-C02 format, question count, timing, the 100 to 1,000 scaled score, the passing mark, and what to expect."
+  jsonLd={faqJsonLd}
+>
   <p class="text-sm">
     <a href="/practice" class="text-brand underline underline-offset-2">
       ← Back to practice
