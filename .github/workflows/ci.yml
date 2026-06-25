@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-check:
+    name: Build and check
+    runs-on: ubuntu-latest
+    # The live link check walks ~302 AWS doc URLs sequentially, so the job
+    # needs more than the usual headroom.
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build first: it type-checks and emits dist/, which the PWA build
+      # contract step below asserts over.
+      - name: Build
+        run: npm run build
+
+      - name: Shuffle uniformity
+        run: npm run lint:shuffle
+
+      - name: Content lints
+        run: npm run lint:content
+
+      - name: Catalog lint
+        run: npm run lint:catalog
+        env:
+          CATALOG_COMPLETE: "1"
+
+      - name: Coverage lint
+        run: npm run lint:coverage
+
+      # Hits every AWS reference live (no proxy on hosted runners). A flagged
+      # URL is a redirect to a new path, which is a content fix; an
+      # intermittent network blip reds the run and is a re-run.
+      - name: Link check (live)
+        run: npm run lint:links:live
+        timeout-minutes: 20
+
+      - name: Mock exam checks
+        run: npm run check:mock
+
+      - name: Progress migration checks
+        run: npm run check:migration
+
+      - name: Review schedule checks
+        run: npm run check:review
+
+      - name: Readiness checks
+        run: npm run check:readiness
+
+      - name: Progress import/export checks
+        run: npm run check:progress-io
+
+      - name: Drill checks
+        run: npm run check:drill
+
+      - name: Deck checks
+        run: npm run check:deck
+
+      - name: Diagram checks
+        run: npm run check:diagrams
+
+      - name: Navigation checks
+        run: npm run check:nav
+
+      # Runs last: asserts the manifest, icons, service worker, and precache
+      # over the dist/ produced by the build step above.
+      - name: PWA build contract
+        run: npm run check:pwa
