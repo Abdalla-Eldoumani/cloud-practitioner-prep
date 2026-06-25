@@ -129,6 +129,7 @@ repository and accepting the defaults does this.
 - [CONTRIBUTING.md](./CONTRIBUTING.md), [SECURITY.md](./SECURITY.md), and
   [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) cover local setup, the content-integrity rules, the
   security posture, and how we work together.
+- [CHANGELOG.md](./CHANGELOG.md) is the release history.
 
 ## Contributing
 
