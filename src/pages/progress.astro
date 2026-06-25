@@ -10,7 +10,10 @@ const totalLessons = (await getCollection("lessons")).filter(
 ).length;
 ---
 
-<BaseLayout title="Your progress">
+<BaseLayout
+  title="Your progress"
+  description="Track your AWS Cloud Practitioner (CLF-C02) readiness: per-domain scores, your mock exam trend, and a conservative ready or not-yet signal. Saved on your device."
+>
   <header class="max-w-2xl">
     <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
       Your progress
