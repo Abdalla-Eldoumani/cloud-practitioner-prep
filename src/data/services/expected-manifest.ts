@@ -7,7 +7,7 @@
 //
 // Derived from the official CLF-C02 in-scope-services appendix (19 categories,
 // 115 listed services/features), with these collapsing decisions applied
-// uniformly (also documented in this directory's CLAUDE.md):
+// uniformly:
 //   - The VPN trio (AWS VPN + AWS Site-to-Site VPN + AWS Client VPN) collapses
 //     to one entry, "aws-vpn", which covers the Site-to-Site and Client variants.
 //   - AWS Management Console and AWS CLI are access tools, not services, but are
