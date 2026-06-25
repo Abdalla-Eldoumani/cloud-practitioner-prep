@@ -28,7 +28,7 @@ const totalLessons = (await getCollection("lessons")).filter(
     <ProgressDashboard
       client:load
       totalLessons={totalLessons}
-      pool={ALL_QUESTIONS}
+      pool={ALL_QUESTIONS.map((q) => ({ topic: q.topic, domain: q.domain }))}
     />
   </div>
 
