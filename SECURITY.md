@@ -22,6 +22,17 @@ are self-hosted, so the browser loads nothing from a third-party origin at
 runtime, and the service worker is same-origin and precaches only the site's own
 build output.
 
+The `script-src` directive allows `'unsafe-inline'`. The inline scripts on each
+page are the site's own code: the pre-paint theme switch, the keyboard-shortcut
+handler, the service-worker registration, and the framework's per-page hydration
+bootstraps. A static single-header deployment cannot carry the per-page hashes
+those generated scripts would otherwise need, so `'unsafe-inline'` is kept
+deliberately. It is safe here because the site renders no untrusted input as
+HTML or script: every dynamic value, such as the catalog search query or an
+imported progress file, is rendered as text and never evaluated, so there is no
+injection point an inline-script allowance could be exploited through. Every
+other directive stays locked to `'self'` with no third-party origins.
+
 ## Reporting a vulnerability
 
 Please do not open a public issue for a security report.
