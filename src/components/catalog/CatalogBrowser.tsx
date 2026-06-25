@@ -39,6 +39,27 @@ export default function CatalogBrowser({ services }: CatalogBrowserProps) {
   const [deferredQuery, setDeferredQuery] = useState("");
   const [domain, setDomain] = useState<DomainFilter>("all");
 
+  // A deep link can pre-fill the search: opening /catalog?q=<term> (for example
+  // from picking a service in the command palette) lands here already filtered
+  // to that service. We read the URL once after mount — not during render — so
+  // the first render keeps the empty defaults and the server and client markup
+  // match. The value comes back decoded from URLSearchParams and is rendered
+  // only as the controlled input's value and used as a substring needle, never
+  // as markup, so a hostile q can at most filter the list to nothing. Seeding
+  // deferredQuery too means the results and the live count reflect the term on
+  // load instead of flashing the full list for one debounce interval. With no
+  // q (or only whitespace) the defaults are left untouched and a plain visit is
+  // unchanged.
+  useEffect(() => {
+    const initial = new URLSearchParams(window.location.search)
+      .get("q")
+      ?.trim();
+    if (initial) {
+      setQuery(initial);
+      setDeferredQuery(initial);
+    }
+  }, []);
+
   useEffect(() => {
     const id = window.setTimeout(() => setDeferredQuery(query), DEBOUNCE_MS);
     return () => window.clearTimeout(id);

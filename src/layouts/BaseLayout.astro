@@ -2,6 +2,14 @@
 import "@fontsource-variable/inter";
 import "@fontsource-variable/source-serif-4";
 import "@/styles/global.css";
+import { getCollection } from "astro:content";
+import { ALL_SERVICES } from "@/data/services";
+import {
+  NAV_TARGETS,
+  buildLessonIndex,
+  buildServiceIndex,
+} from "@/lib/navigation";
+import CommandPalette from "@/components/navigation/CommandPalette.tsx";
 
 interface Props {
   title: string;
@@ -9,6 +17,14 @@ interface Props {
   /** Optional absolute or root-relative image for social cards. */
   image?: string;
 }
+
+// Build the command-palette search index at build time and hand it to the
+// island as plain JSON props, so the palette ships with the lesson and service
+// lists baked in and never fetches at runtime. Static per render; the same
+// shared mappers the build-time gate uses, so the index can never drift from
+// what the gate validates.
+const lessonIndex = buildLessonIndex(await getCollection("lessons"));
+const serviceIndex = buildServiceIndex(ALL_SERVICES);
 
 const {
   title,
@@ -151,6 +167,67 @@ function isActive(href: string): boolean {
         </div>
       </div>
     </footer>
+
+    {/*
+      The command palette and the shortcuts help, mounted once for every page so
+      Cmd/Ctrl+K and "?" work site-wide. client:idle (not load): the palette is
+      not needed at first paint, and the inline trigger below covers any keypress
+      that lands before the island hydrates by dispatching an event the island
+      replays on mount. The search index is computed above and passed as props.
+    */}
+    <CommandPalette
+      client:idle
+      routes={NAV_TARGETS}
+      lessons={lessonIndex}
+      services={serviceIndex}
+    />
+
+    {/*
+      The global keyboard trigger. Runs on every page regardless of island
+      hydration: it owns Cmd/Ctrl+K (open the palette) and "?" (open the help),
+      dispatching a window event the island listens for. It is the only thing
+      guaranteed present before hydration, so the shortcut never depends on the
+      React island having loaded yet.
+
+      Guards: "?" only fires when focus is NOT in a text field, so typing "?"
+      into the palette's own search (or any input) inserts a literal "?" instead
+      of reopening the help. Only the handled keys are preventDefault'd; the
+      browser's native find (Ctrl/Cmd+F) is never bound or intercepted.
+    */}
+    <script is:inline>
+      (function () {
+        function isTypingTarget(el) {
+          if (!el) return false;
+          var tag = el.tagName;
+          return (
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT" ||
+            el.isContentEditable === true
+          );
+        }
+        // A latch for the open intent. If a shortcut is pressed before the
+        // client:idle island has hydrated and subscribed, the event alone would
+        // be missed, so the latest intent is also recorded on a global the island
+        // reads once on mount. The island clears it after replaying, so it only
+        // ever fires for a keypress that genuinely preceded hydration.
+        function signal(name) {
+          window.__ccpPaletteIntent = name;
+          window.dispatchEvent(new CustomEvent(name));
+        }
+        window.addEventListener("keydown", function (e) {
+          if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+            e.preventDefault();
+            signal("ccp:open-palette");
+            return;
+          }
+          if (e.key === "?" && !isTypingTarget(document.activeElement)) {
+            e.preventDefault();
+            signal("ccp:open-help");
+          }
+        });
+      })();
+    </script>
 
     <script is:inline>
       (function () {
