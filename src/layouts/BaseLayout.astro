@@ -17,6 +17,10 @@ interface Props {
   description?: string;
   /** Optional absolute or root-relative image for social cards. */
   image?: string;
+  /** og:type; "website" for hub pages, "article" for lessons. */
+  ogType?: string;
+  /** Page-specific JSON-LD object(s), appended after the site-wide graph. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 // Build the command-palette search index at build time and hand it to the
@@ -31,6 +35,8 @@ const {
   title,
   description = "Learn AWS and prepare for the Certified Cloud Practitioner exam with free lessons, practice questions, and full timed mock exams.",
   image = "/og.png",
+  ogType = "website",
+  jsonLd,
 } = Astro.props;
 
 const siteName = "Cloud Practitioner Prep";
@@ -44,6 +50,45 @@ const canonical = Astro.site
   : Astro.url.pathname;
 const ogImage =
   image && Astro.site ? new URL(image, Astro.site).href : image;
+
+// Structured data. The site-wide graph (a WebSite with a catalog search action
+// and the publishing Organization) renders on every page; individual pages may
+// pass page-specific JSON-LD (a Course, an FAQ, breadcrumbs) via the jsonLd
+// prop. URLs are built by string join so the search-action template braces are
+// not percent-encoded the way new URL() would encode them.
+const siteUrl = Astro.site?.href ?? `${Astro.url.origin}/`;
+const orgId = `${siteUrl}#org`;
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      url: siteUrl,
+      name: siteName,
+      description:
+        "Free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02): lessons, original practice questions, and full timed mock exams.",
+      inLanguage: "en",
+      publisher: { "@id": orgId },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteUrl}catalog?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: siteName,
+      url: siteUrl,
+      ...(ogImage ? { logo: ogImage } : {}),
+    },
+  ],
+};
+const pageJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
 const nav = [
   { href: "/", label: "Home" },
@@ -82,12 +127,29 @@ function isActive(href: string): boolean {
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteName} />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    {
+      ogImage && (
+        <meta
+          property="og:image:alt"
+          content="Cloud Practitioner Prep, free AWS Cloud Practitioner CLF-C02 lessons, practice questions, and mock exams"
+        />
+      )
+    }
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
+    {
+      pageJsonLd.map((obj) => (
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(obj)} />
+      ))
+    }
     {/* Apply the saved theme before paint so there is no flash of the wrong one. */}
     <script is:inline>
       (function () {
