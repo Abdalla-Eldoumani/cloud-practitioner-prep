@@ -17,10 +17,11 @@ import type { Question, QuizMode } from "@/lib/types";
 interface ProgressDashboardProps {
   // Passed from the Astro page, which can count the content collection.
   totalLessons: number;
-  // The full question pool, passed from the page (islands take the pool as a
-  // prop, never import it). Used to attribute each answered topic to its domain
-  // for the readiness signal.
-  pool: Question[];
+  // Only the topic and domain of each question, passed from the page (islands
+  // take their data as props, never import the bank). Readiness attributes each
+  // answered topic to its domain through this join and reads nothing else, so the
+  // page sends this slim projection instead of inlining the whole question text.
+  pool: Pick<Question, "topic" | "domain">[];
 }
 
 function modeLabel(mode: QuizMode): string {
