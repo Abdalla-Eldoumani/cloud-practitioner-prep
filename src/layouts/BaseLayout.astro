@@ -10,6 +10,7 @@ import {
   buildServiceIndex,
 } from "@/lib/navigation";
 import CommandPalette from "@/components/navigation/CommandPalette.tsx";
+import ReloadPrompt from "@/components/pwa/ReloadPrompt.tsx";
 
 interface Props {
   title: string;
@@ -181,6 +182,17 @@ function isActive(href: string): boolean {
       lessons={lessonIndex}
       services={serviceIndex}
     />
+
+    {/*
+      The reload prompt, mounted once for every page so a new version can surface
+      anywhere as an opt-in reload — never an auto-reload that would interrupt an
+      in-progress timed exam. client:idle (not load): it is not needed at first
+      paint and only ever appears once a new version is waiting. It takes no
+      props (it reads the service-worker registration itself). The manifest link
+      and theme-color are auto-injected by the build, so none are hand-added to
+      <head> here.
+    */}
+    <ReloadPrompt client:idle />
 
     {/*
       The global keyboard trigger. Runs on every page regardless of island
