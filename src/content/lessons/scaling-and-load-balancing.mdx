@@ -15,6 +15,8 @@ draft: false
 ---
 
 import Callout from "@/components/Callout.astro";
+import AutoscalingDiagram, { meta as autoscalingMeta } from "@/components/diagrams/AutoscalingDiagram";
+import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 A fixed fleet of servers wastes money when traffic is low and falls over when
 traffic is high. Two services solve that pairing. Amazon EC2 Auto Scaling adjusts
@@ -73,6 +75,10 @@ Elastic Load Balancing pairs naturally with Auto Scaling. When the group launche
 or terminates an instance, that instance is automatically registered with or
 removed from the load balancer, so traffic always flows to current, healthy
 capacity.
+
+<AutoscalingDiagram client:visible />
+
+<KnowledgeCheck client:visible {...autoscalingMeta.check} />
 
 ## The load balancer types
 

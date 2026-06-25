@@ -44,6 +44,17 @@ export function domainName(id: Domain): string {
   return meta ? meta.name : `Domain ${id}`;
 }
 
+// Minimum questions per domain. Derived proportionally from the domain weights
+// (24 / 30 / 34 / 12) against a 720-question anchor, then floored. Set below the
+// current bank counts so this guards against regression rather than forcing new
+// authoring, and leaves headroom for the mock exam's low-overlap per-domain draw.
+export const DOMAIN_QUESTION_FLOORS: Record<Domain, number> = {
+  1: 173,
+  2: 216,
+  3: 245,
+  4: 86,
+};
+
 // Real-exam format. The mock exam mirrors the question count and time limit.
 export const EXAM = {
   code: "CLF-C02",

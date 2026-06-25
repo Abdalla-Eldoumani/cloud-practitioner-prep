@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import AstroPWA from "@vite-pwa/astro";
 import tailwindcss from "@tailwindcss/vite";
 
 // Set this to the deployed origin before launch. Sitemap and canonical URLs read from it.
@@ -14,7 +15,46 @@ export default defineConfig({
   // Static output: the whole site is prerendered. Quiz state lives in the browser,
   // so no server runtime is needed and the site hosts anywhere static.
   output: "static",
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [
+    react(),
+    mdx(),
+    sitemap(),
+    AstroPWA({
+      // prompt, not autoUpdate: a new version never reloads a learner out of an
+      // in-progress timed exam. The reload offer is surfaced; the user decides.
+      registerType: "prompt",
+      manifest: {
+        name: "Cloud Practitioner Prep",
+        short_name: "CCP Prep",
+        description:
+          "Learn AWS and prepare for the Certified Cloud Practitioner exam with free lessons, practice questions, and full timed mock exams.",
+        start_url: "/",
+        scope: "/",
+        display: "standalone",
+        // A manifest holds one static color, so it uses the light theme: the
+        // brand for the theme color, the light surface for the background.
+        theme_color: "#2a4fcb",
+        background_color: "#fbfaf7",
+      },
+      // Wires pwa-assets.config.ts: the icon set is generated from favicon.svg.
+      pwaAssets: { config: true },
+      workbox: {
+        // The whole static build is precached. Every offline surface ships its
+        // data baked into this JS (the bank, the catalog, the diagrams never
+        // fetch at runtime), so precaching the build covers them all. Source
+        // maps and the sitemap are deliberately left out.
+        globPatterns: ["**/*.{html,js,css,svg,woff2}"],
+        // Offline navigations fall back to the precached shell.
+        navigateFallback: "/",
+        // A new deploy revisions the precache; this evicts the prior one so a
+        // returning user is never served a stale build.
+        cleanupOutdatedCaches: true,
+      },
+      // Dev runs without the service worker; build + preview exercises the real
+      // one. Keeps the SW from caching stale assets during development.
+      devOptions: { enabled: false },
+    }),
+  ],
   vite: {
     // Tailwind v4 is wired through its official Vite plugin. The deprecated
     // @astrojs/tailwind integration is intentionally not used.

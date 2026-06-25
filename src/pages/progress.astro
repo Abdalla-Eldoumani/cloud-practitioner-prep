@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProgressDashboard from "@/components/ProgressDashboard.tsx";
+import ProgressIO from "@/components/ProgressIO.tsx";
+import { ALL_QUESTIONS } from "@/data/questions";
 
 const totalLessons = (await getCollection("lessons")).filter(
   (l) => !l.data.draft,
@@ -20,6 +22,22 @@ const totalLessons = (await getCollection("lessons")).filter(
   </header>
 
   <div class="mt-8">
-    <ProgressDashboard client:load totalLessons={totalLessons} />
+    <ProgressDashboard
+      client:load
+      totalLessons={totalLessons}
+      pool={ALL_QUESTIONS}
+    />
+  </div>
+
+  <p class="mt-6 text-sm text-ink-soft">
+    The readiness band above is this site's own study signal, not the AWS scaled
+    score.{" "}
+    <a href="/exam-day" class="font-medium text-brand underline underline-offset-2">
+      See how AWS actually scores the real exam →
+    </a>
+  </p>
+
+  <div class="mt-6">
+    <ProgressIO client:load />
   </div>
 </BaseLayout>

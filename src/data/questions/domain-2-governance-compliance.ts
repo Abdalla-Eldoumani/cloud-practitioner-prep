@@ -28,6 +28,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -51,6 +52,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -68,11 +70,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Artifact lets you review and accept agreements for your account or organization, including the BAA that HIPAA-regulated companies use to safeguard PHI, and you can designate accounts that may legally process PHI. The other options do not manage AWS legal agreements.",
+      "AWS Artifact lets you review and accept agreements for your account or organization, including the BAA that HIPAA-regulated companies use to safeguard PHI, and you can designate accounts that may legally process PHI. Opening a billing support case, the Amazon S3 console bucket policy editor, and AWS Trusted Advisor checks do not manage AWS legal agreements.",
     reference: {
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -95,6 +98,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-05",
@@ -117,6 +121,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-06",
@@ -138,6 +143,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Cloud Compliance",
       url: "https://aws.amazon.com/compliance/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d2-gov-07",
@@ -159,6 +165,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -198,11 +206,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Config rules evaluate the configuration settings of your resources and flag a resource as noncompliant when it violates a rule, continuously as resources are created, changed, or deleted. Trails capture API activity, SCPs set permission guardrails, and Artifact provides documents, so none of those evaluate configuration compliance.",
+      "AWS Config rules evaluate the configuration settings of your resources and flag a resource as noncompliant when it violates a rule, continuously as resources are created, changed, or deleted. Trails capture API activity, service control policies set permission guardrails, and Artifact provides documents, so none of those evaluate configuration compliance.",
     reference: {
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -219,12 +228,18 @@ export const domain2GovernanceCompliance: Question[] = [
       { id: "d", text: "Amazon CloudWatch for both questions" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the roles; Config records the past configuration state and CloudTrail records who acted and when.",
+      c: "AWS Artifact serves compliance documents; it does not record configuration history or who made a change.",
+      d: "Amazon CloudWatch handles metrics and logs; it does not record resource configuration history or the actor.",
+    },
     explanation:
-      "AWS Config records the historical configuration of a resource, so it answers what the instance looked like at a point in time, while CloudTrail records API activity, so it answers who took an action and when. The pairing is reversed in the second option, and Artifact and CloudWatch do not provide this configuration-and-actor history.",
+      "AWS Config records the historical configuration of a resource, so it answers what the instance looked like at a point in time, while CloudTrail records API activity, so it answers who took an action and when. Pairing CloudTrail with the past configuration state and Config with the actor reverses their roles, and Artifact and CloudWatch do not provide this configuration-and-actor history.",
     reference: {
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -247,6 +262,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -270,6 +286,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -292,6 +309,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail", "Amazon S3"],
   },
   {
@@ -310,11 +328,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Config answers what a resource was configured like and whether that complies with rules, while CloudTrail answers who took an action and when. Recording sign-in activity is a CloudTrail function not a Config one, evaluating configuration compliance is a Config function not a CloudTrail one, and neither service downloads compliance certifications, which is the role of AWS Artifact.",
+      "Config answers what a resource was configured like and whether that complies with rules, while CloudTrail answers who took an action and when. It is not Config that records who signed in to the console and from which address, and it is not CloudTrail that evaluates resource settings against desired configurations and flags noncompliance; those describe CloudTrail and Config respectively. Neither service downloads compliance certifications, which is the role of AWS Artifact.",
     reference: {
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -332,11 +351,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Organizations helps you centrally manage and govern your environment as you scale, letting you create accounts, group them into organizational units, apply policies, and consolidate billing. IAM manages identities within an account, VPC is networking, and Config records configuration, so none of those centrally govern multiple accounts.",
+      "AWS Organizations helps you centrally manage and govern your environment as you scale, letting you create accounts, group them into organizational units, apply policies, and consolidate billing. AWS IAM manages identities within a single account, Amazon VPC is networking, and Config records configuration, so none of those centrally govern multiple accounts.",
     reference: {
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -354,11 +374,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Consolidated billing in AWS Organizations gives you one bill for multiple accounts, with the management account paying the charges of all member accounts. SCPs are permission guardrails, Config aggregators centralize configuration data, and trails store API activity, so none of those consolidate billing.",
+      "Consolidated billing in AWS Organizations gives you one bill for multiple accounts, with the management account paying the charges of all member accounts. Service control policies are permission guardrails, Config aggregators centralize configuration data, and trails store API activity, so none of those consolidate billing.",
     reference: {
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -382,6 +403,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -404,6 +426,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -426,6 +449,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -448,6 +472,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -471,6 +496,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -493,6 +519,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -515,6 +542,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
   {
@@ -537,6 +565,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -554,11 +583,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Control Tower builds a landing zone, a well-architected multi-account environment based on security and compliance best practices that contains your OUs, accounts, users, and other governed resources. A VPC is a network, an Availability Zone is a data center location, and a placement group controls instance placement, none of which describe this environment.",
+      "Control Tower builds a landing zone, a well-architected multi-account environment based on security and compliance best practices that contains your OUs, accounts, users, and other governed resources. A Virtual Private Cloud is a network, an Availability Zone is a data center location, and a placement group controls instance placement, none of which describe this environment.",
     reference: {
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -576,11 +606,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "In Control Tower a control, also called a guardrail, is a high-level rule expressed in plain language that provides ongoing governance, and the kinds are preventive, detective, and proactive. It is not an instance firewall rule, a billing alarm, or a compliance certificate.",
+      "In Control Tower a control, also called a guardrail, is a high-level rule expressed in plain language that provides ongoing governance, and the kinds are preventive, detective, and proactive. It is not an instance firewall rule, a billing alarm, or a downloadable ISO certification from AWS.",
     reference: {
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower"],
   },
   {
@@ -598,11 +629,12 @@ export const domain2GovernanceCompliance: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Control Tower orchestrates the capabilities of several services, including AWS Organizations, AWS Service Catalog, and AWS IAM Identity Center, to build a landing zone. The other groupings are compute and storage, content delivery and networking, or compliance and cost tools, none of which are the services Control Tower is built on for multi-account governance.",
+      "Control Tower orchestrates the capabilities of several services, including AWS Organizations, AWS Service Catalog, and AWS IAM Identity Center, to build a landing zone. Amazon EC2, Amazon S3, and Amazon RDS are compute and storage; Amazon CloudFront, AWS Global Accelerator, and Route 53 are content delivery and networking; and Artifact, Budgets, and Cost Explorer are compliance and cost tools, none of which are the services Control Tower is built on for multi-account governance.",
     reference: {
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Control Tower", "AWS Organizations"],
   },
   {
@@ -625,6 +657,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -648,6 +681,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -670,6 +704,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact"],
   },
   {
@@ -692,6 +727,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Config"],
   },
   {
@@ -714,6 +750,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail"],
   },
   {
@@ -736,6 +773,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations"],
   },
   {
@@ -758,6 +796,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Artifact", "AWS Organizations"],
   },
   {
@@ -781,6 +820,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS CloudTrail", "AWS Config"],
   },
   {
@@ -803,6 +843,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
+    lastVerified: "2026-06-23",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
 ];

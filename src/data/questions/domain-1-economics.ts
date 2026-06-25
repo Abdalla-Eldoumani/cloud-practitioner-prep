@@ -28,6 +28,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-02",
@@ -49,6 +50,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-03",
@@ -65,11 +67,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Stop guessing capacity is AWS wording for eliminating guesses about infrastructure needs: instead of sitting on idle resources or hitting limits, you access as much or as little capacity as you need and scale up and down with a few minutes' notice. Economies of scale, ending data center spend, and the fixed-to-variable expense shift are distinct advantages and do not describe scaling to match demand.",
+      "Stop guessing capacity is AWS wording for eliminating guesses about infrastructure needs: instead of sitting on idle resources or hitting limits, you access as much or as little capacity as you need and scale up and down with a few minutes' notice. Economies of scale, stopping spending money running and maintaining data centers, and the fixed-to-variable expense shift are distinct advantages and do not describe scaling to match demand.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-04",
@@ -91,6 +94,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-05",
@@ -112,6 +116,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-06",
@@ -133,6 +138,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-07",
@@ -148,12 +154,18 @@ export const domain1Economics: Question[] = [
       { id: "d", text: "Converting variable costs into a single fixed upfront purchase" },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the shift; AWS replaces upfront capital expense with low variable cost, not the other way around.",
+      c: "Cloud is not free; AWS bills low variable costs that scale with usage rather than eliminating expense.",
+      d: "Pay-as-you-go costs rise and fall with usage; they do not become one fixed upfront purchase.",
+    },
     explanation:
       "AWS states that a key benefit of cloud computing is the opportunity to replace upfront capital infrastructure expenses with low variable costs that scale with your business, which is the shift from capital expenditure to operational expenditure. The reverse direction is wrong, cloud is not free, and pay-as-you-go costs vary with usage rather than becoming one fixed upfront purchase.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-08",
@@ -176,6 +188,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-09",
@@ -192,11 +205,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The other options describe buying on-premises hardware, a flat unlimited subscription, or a mandatory long-term lease, none of which match the AWS definition.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The bulk purchase of servers installed in your own building and billed annually describes on-premises hardware, a flat unlimited monthly subscription is not consumption-based, and a leasing model that requires a three-year contract is the opposite of on-demand, so none match the AWS definition.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-10",
@@ -218,6 +232,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-11",
@@ -239,6 +254,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-12",
@@ -255,11 +271,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; services are not all free; and no multi-year contract is required to use AWS.",
+      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; AWS does not provide every service at no cost; and no multi-year contract is required to use AWS.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-13",
@@ -281,6 +298,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-14",
@@ -298,11 +316,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, removing all coding, and owning the physical servers are not advantages AWS claims; in the cloud you do not own the underlying hardware.",
+      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, eliminating the need to write any application code, and owning the physical servers are not advantages AWS claims; the cloud does not write your code for you, and you do not own the underlying hardware.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-15",
@@ -325,6 +344,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-16",
@@ -346,6 +366,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -368,6 +389,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-18",
@@ -389,6 +411,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-19",
@@ -410,6 +433,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-20",
@@ -432,6 +456,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-21",
@@ -448,11 +473,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes stop guessing capacity as eliminating the dilemma where a capacity decision made before deployment leaves you with idle resources or limited capacity, because in the cloud you access as much or as little as you need and scale on demand. The fixed-to-variable expense shift, speed and agility, and ending data center spend are separate advantages that do not directly address the over- or under-provisioning trade-off.",
+      "AWS describes stop guessing capacity as eliminating the dilemma where a capacity decision made before deployment leaves you with idle resources or limited capacity, because in the cloud you access as much or as little as you need and scale on demand. The fixed-to-variable expense shift, speed and agility, and stopping spending money running and maintaining data centers are separate advantages that do not directly address the over- or under-provisioning trade-off.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-22",
@@ -475,6 +501,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-23",
@@ -496,6 +523,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-24",
@@ -517,6 +545,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-25",
@@ -538,6 +567,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-26",
@@ -555,11 +585,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, buying hardware upfront, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
+      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, having to buy and install hardware before any workload runs, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-27",
@@ -582,6 +613,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-28",
@@ -603,6 +635,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-29",
@@ -624,6 +657,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-30",
@@ -645,6 +679,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-31",
@@ -666,6 +701,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-32",
@@ -688,6 +724,7 @@ export const domain1Economics: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d1-econ-33",
@@ -709,5 +746,6 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
+    lastVerified: "2026-06-23",
   },
 ];

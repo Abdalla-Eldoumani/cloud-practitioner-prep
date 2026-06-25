@@ -14,6 +14,8 @@ draft: false
 ---
 
 import Callout from "@/components/Callout.astro";
+import RegionsAzDiagram, { meta as regionsAzMeta } from "@/components/diagrams/RegionsAzDiagram";
+import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 AWS does not run one giant data center. It spreads capacity across the globe in
 a structure you should be able to draw from memory: Regions contain Availability
@@ -51,6 +53,10 @@ A Region is a geographic area. An Availability Zone is one or more isolated data
 centers inside that Region. High availability comes from spreading a workload
 across several AZs in the same Region, so one AZ failing does not take you down.
 </Callout>
+
+<RegionsAzDiagram client:visible />
+
+<KnowledgeCheck client:visible {...regionsAzMeta.check} />
 
 ## Edge locations and Amazon CloudFront
 

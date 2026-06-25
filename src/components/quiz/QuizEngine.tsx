@@ -1,14 +1,31 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { AttemptResult, Domain, Question, QuizMode } from "@/lib/types";
+import type {
+  AttemptResult,
+  Confidence,
+  Domain,
+  Question,
+  QuizMode,
+} from "@/lib/types";
 import { EXAM } from "@/lib/constants";
-import { scoreAttempt } from "@/lib/scoring";
+import { isAnswerCorrect, scoreAttempt } from "@/lib/scoring";
 import {
   buildDomainQuiz,
+  buildDrill,
   buildMockExam,
-  buildReviewSet,
+  remainingSeconds,
   shuffle,
 } from "@/lib/exam";
-import { $progress, clearMissed, recordAttempt, toggleFlag } from "@/lib/store";
+import { orderedOptions } from "@/lib/options";
+import { orderReviewQueue } from "@/lib/review";
+import {
+  $progress,
+  clearMissed,
+  recordAttempt,
+  recordMockSeen,
+  recordQuestionResults,
+  reviewQuestion,
+  toggleFlag,
+} from "@/lib/store";
 import QuestionCard from "./QuestionCard";
 import ResultsPanel from "./ResultsPanel";
 
@@ -27,11 +44,19 @@ interface QuizEngineProps {
 type Phase = "intro" | "active" | "results" | "empty";
 
 // In-progress exams are saved so a refresh or accidental tab close can resume
-// with the correct remaining time, computed from the start timestamp.
-const EXAM_KEY = "ccp-prep:exam-active:v1";
+// with the correct remaining time, computed from the start timestamp. The key is
+// versioned: it bumped to :v2 when optionOrder joined the saved shape, so a
+// pre-field in-flight save written by the older engine is simply not found and a
+// fresh start is offered instead of a half-restore.
+const EXAM_KEY = "ccp-prep:exam-active:v2";
 
 interface SavedExam {
   questionIds: string[];
+  // Per-question shuffled option order (question id -> ordered option ids),
+  // persisted so a resumed mock renders the exact order shown before the reload
+  // rather than reshuffling under the learner (quiz-integrity). Scoring stays by
+  // id, so order never affects grading.
+  optionOrder: Record<string, string[]>;
   answers: Record<string, string[]>;
   flags: string[];
   startedAt: number;
@@ -42,7 +67,16 @@ function readSavedExam(): SavedExam | null {
     const raw = window.localStorage.getItem(EXAM_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as SavedExam;
-    if (parsed && Array.isArray(parsed.questionIds) && parsed.startedAt) {
+    if (
+      parsed &&
+      Array.isArray(parsed.questionIds) &&
+      parsed.startedAt &&
+      // Require optionOrder to be a present object: a saved exam lacking it is a
+      // pre-field blob (or hand-edited), so treat it as "no resume" rather than
+      // half-restore with options reshuffled.
+      parsed.optionOrder !== null &&
+      typeof parsed.optionOrder === "object"
+    ) {
       return parsed;
     }
   } catch {
@@ -77,6 +111,16 @@ function reconstruct(pool: Question[], ids: string[]): Question[] {
   return out;
 }
 
+// Compute a stable per-question option order for a drawn set: call orderedOptions
+// once per question (the single shuffle path) and keep only the ordered ids. Run
+// once when an exam set is established so the order persists for the sitting and
+// is what gets saved/restored — never recomputed on a re-render.
+function computeOptionOrder(qs: Question[]): Record<string, string[]> {
+  const order: Record<string, string[]> = {};
+  for (const q of qs) order[q.id] = orderedOptions(q).map((o) => o.id);
+  return order;
+}
+
 export default function QuizEngine({
   pool,
   mode,
@@ -86,11 +130,24 @@ export default function QuizEngine({
 }: QuizEngineProps) {
   const [phase, setPhase] = useState<Phase>(mode === "exam" ? "intro" : "active");
   const [questions, setQuestions] = useState<Question[]>([]);
+  // Per-question option order (question id -> ordered option ids), computed once
+  // per sitting so a re-render never reshuffles, persisted with the saved exam,
+  // and restored verbatim on resume. Only populated for exam mode; other modes
+  // let QuestionCard shuffle per instance.
+  const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>({});
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [flagged, setFlagged] = useState<Record<string, boolean>>({});
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
+  // Pre-reveal confidence per question, transient for the sitting. Folded into
+  // the recorded attempt at finish; never duplicated into persisted progress
+  // here (the store owns that). Captured before reveal by the Check-answer gate.
+  const [confidence, setConfidence] = useState<Record<string, Confidence>>({});
   const [result, setResult] = useState<AttemptResult | null>(null);
+  // The weak topics a drill was built from, by display label, so the run can
+  // name them ("Drilling: …") — the transparency requirement. Empty in other
+  // modes and on a cold-start drill that fell back to a mixed draw.
+  const [weakTopics, setWeakTopics] = useState<string[]>([]);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState<number>(Date.now());
   const [hasSaved, setHasSaved] = useState(false);
@@ -98,13 +155,36 @@ export default function QuizEngine({
   // Build the working set for practice and review on mount. Exam waits for the
   // intro screen so the timer starts when the user is ready.
   const buildSet = useCallback((): Question[] => {
-    if (mode === "exam") return buildMockExam(pool, examTotal);
+    // Pass the learner's mock seen-counts (read from the store at draw time,
+    // mirroring how review/drill read $progress here) so each new sitting draws
+    // with low overlap, preferring never-seen questions.
+    if (mode === "exam")
+      return buildMockExam(pool, examTotal, $progress.get().mockSeen);
     if (mode === "review") {
       const p = $progress.get();
+      // The review set is the deduplicated union of flagged and missed questions
+      // (a question that is both appears once). Order that union by the spaced-
+      // repetition schedule so the soonest-due / weakest questions surface first;
+      // orderReviewQueue returns a permutation of the ids (never drops one), and
+      // reconstruct maps each id to its question in that order, skipping any id no
+      // longer in the pool. An empty union yields an empty set -> the empty phase.
       const ids = Array.from(
         new Set([...p.flaggedQuestions, ...p.incorrectQuestions]),
       );
-      return buildReviewSet(pool, ids);
+      return reconstruct(pool, orderReviewQueue(ids, p.reviewSchedule ?? {}));
+    }
+    if (mode === "drill") {
+      // Build the set from the learner's weakest topics, read from the store at
+      // build time (mirroring review). buildDrill guards on a seen threshold and
+      // falls back to a mixed draw on cold start, so this is never empty for a
+      // non-empty pool. Stash the chosen topics so the run can name them.
+      const { questions, weakTopics: topics } = buildDrill(
+        pool,
+        $progress.get(),
+        count,
+      );
+      setWeakTopics(topics);
+      return questions;
     }
     if (domain) return buildDomainQuiz(pool, domain, count);
     return shuffle(pool).slice(0, count);
@@ -124,7 +204,10 @@ export default function QuizEngine({
     setStartedAt(Date.now());
   }, [mode, buildSet]);
 
-  const recordDomain: Domain | "all" = mode === "exam" ? "all" : (domain ?? "all");
+  // Exam and drill are cross-domain by nature, so they record under "all"; a
+  // focused practice run records its own domain.
+  const recordDomain: Domain | "all" =
+    mode === "exam" || mode === "drill" ? "all" : (domain ?? "all");
 
   const finish = useCallback(
     (qs: Question[], ans: Record<string, string[]>, started: number) => {
@@ -135,27 +218,51 @@ export default function QuizEngine({
       }));
       const duration = Math.max(0, Math.round((Date.now() - started) / 1000));
       const r = scoreAttempt(qs, answerList, mode, duration);
-      const missed = qs
-        .filter((q) => {
-          const sel = ans[q.id] ?? [];
-          if (sel.length !== q.correct.length) return true;
-          const want = new Set(q.correct);
-          return !sel.every((id) => want.has(id));
-        })
-        .map((q) => q.id);
-      recordAttempt(r, recordDomain, missed);
+      const missedSet = new Set(
+        qs
+          .filter((q) => {
+            const sel = ans[q.id] ?? [];
+            if (sel.length !== q.correct.length) return true;
+            const want = new Set(q.correct);
+            return !sel.every((id) => want.has(id));
+          })
+          .map((q) => q.id),
+      );
+      recordAttempt(r, recordDomain, [...missedSet]);
+      // Fold per-question topic/correctness/confidence into the v2 store so the
+      // adaptive drill can later weight confident-but-wrong topics. Confidence
+      // is the pre-reveal value captured in island state.
+      recordQuestionResults(
+        qs.map((q) => ({
+          questionId: q.id,
+          topic: q.topic,
+          domain: q.domain,
+          correct: !missedSet.has(q.id),
+          confidence: confidence[q.id],
+        })),
+      );
+      // A finished mock bumps each drawn question's seen-count exactly once, so
+      // the next sitting's LRU draw prefers never-seen questions. Gated to exam:
+      // an abandoned exam never reaches finish() so its questions stay fresh, and
+      // practice/drill/review must never touch mockSeen. Covers both the manual
+      // submit and the auto-submit effect (both call finish()).
+      if (mode === "exam") {
+        recordMockSeen(qs.map((q) => q.id));
+      }
       setResult(r);
       setPhase("results");
       clearSavedExam();
     },
-    [flagged, mode, recordDomain],
+    [flagged, mode, recordDomain, confidence],
   );
 
   // Exam countdown. Remaining time is derived from the start timestamp, so a
-  // throttled background tab still resolves to the correct value on return.
+  // throttled background tab still resolves to the correct value on return. Uses
+  // the pure remainingSeconds helper so the island and the auto-submit check
+  // share one expression; behavior is identical to the prior inline form.
   const remaining =
     mode === "exam" && startedAt
-      ? EXAM.timeLimitSeconds - Math.floor((now - startedAt) / 1000)
+      ? remainingSeconds(EXAM.timeLimitSeconds, startedAt, now)
       : null;
 
   useEffect(() => {
@@ -170,16 +277,18 @@ export default function QuizEngine({
     }
   }, [remaining, phase, questions, answers, startedAt, finish]);
 
-  // Persist exam progress so a refresh can resume.
+  // Persist exam progress so a refresh can resume. optionOrder is saved with the
+  // rest so resume restores the exact shown order rather than reshuffling.
   useEffect(() => {
     if (phase !== "active" || mode !== "exam" || startedAt === null) return;
     writeSavedExam({
       questionIds: questions.map((q) => q.id),
+      optionOrder,
       answers,
       flags: Object.keys(flagged).filter((k) => flagged[k]),
       startedAt,
     });
-  }, [phase, mode, questions, answers, flagged, startedAt]);
+  }, [phase, mode, questions, optionOrder, answers, flagged, startedAt]);
 
   const startExam = useCallback(() => {
     // A saved attempt would be silently overwritten by a fresh start, so
@@ -191,8 +300,12 @@ export default function QuizEngine({
       if (!ok) return;
     }
     clearSavedExam();
-    const set = buildMockExam(pool, examTotal);
+    // Draw with the learner's seen-counts for low cross-sitting overlap, then fix
+    // the per-question option order once so it stays stable for the sitting and
+    // is what gets persisted/restored.
+    const set = buildMockExam(pool, examTotal, $progress.get().mockSeen);
     setQuestions(set);
+    setOptionOrder(computeOptionOrder(set));
     setAnswers({});
     setFlagged({});
     setCurrent(0);
@@ -213,6 +326,9 @@ export default function QuizEngine({
     }
     const elapsed = Math.floor((Date.now() - saved.startedAt) / 1000);
     setQuestions(qs);
+    // Restore the saved per-question option order verbatim so the resumed mock
+    // shows the exact order from before the reload (no fresh shuffle).
+    setOptionOrder(saved.optionOrder ?? {});
     setAnswers(saved.answers ?? {});
     setFlagged(Object.fromEntries((saved.flags ?? []).map((id) => [id, true])));
     setStartedAt(saved.startedAt);
@@ -260,6 +376,8 @@ export default function QuizEngine({
     setAnswers({});
     setFlagged({});
     setRevealed({});
+    setConfidence({});
+    setOptionOrder({});
     setCurrent(0);
     if (mode === "exam") {
       setStartedAt(null);
@@ -285,13 +403,20 @@ export default function QuizEngine({
   // ---- render ----
 
   if (phase === "empty") {
+    // The empty copy is mode-aware: a drill with no history yet explains how to
+    // build one, while review explains how the queue fills. Both land on the
+    // same shipped panel idiom and link back to practice.
+    const isDrill = mode === "drill";
+    const emptyHeading = isDrill
+      ? "Not enough history yet"
+      : "Nothing to review yet";
+    const emptyBody = isDrill
+      ? "Answer a practice set or two and your weakest topics will surface here for a focused drill."
+      : "Flag tricky questions or miss a few in practice and they will collect here for a focused review session.";
     return (
       <div className="rounded-lg border border-hairline bg-raised p-8 text-center">
-        <h2 className="text-xl font-semibold text-ink">Nothing to review yet</h2>
-        <p className="mx-auto mt-2 max-w-prose text-ink-soft">
-          Flag tricky questions or miss a few in practice and they will collect
-          here for a focused review session.
-        </p>
+        <h2 className="text-xl font-semibold text-ink">{emptyHeading}</h2>
+        <p className="mx-auto mt-2 max-w-prose text-ink-soft">{emptyBody}</p>
         <a
           href="/practice"
           className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
@@ -360,6 +485,8 @@ export default function QuizEngine({
                 total={questions.length}
                 onToggleOption={() => {}}
                 onToggleFlag={() => {}}
+                optionOrder={optionOrder[q.id]}
+                showConfidence={false}
               />
             ))}
           </div>
@@ -404,6 +531,13 @@ export default function QuizEngine({
         </div>
       )}
 
+      {mode === "drill" && weakTopics.length > 0 && (
+        <p className="text-sm text-ink-soft">
+          These questions target your weakest topics:{" "}
+          <span className="font-medium text-ink">{weakTopics.join(", ")}</span>.
+        </p>
+      )}
+
       <QuestionCard
         question={q}
         selected={selected}
@@ -413,19 +547,52 @@ export default function QuizEngine({
         total={questions.length}
         onToggleOption={onToggleOption}
         onToggleFlag={onToggleFlag}
+        optionOrder={optionOrder[q.id]}
+        showConfidence={!isExam}
+        confidence={confidence[q.id]}
+        onSetConfidence={(level) =>
+          setConfidence((c) => ({ ...c, [q.id]: level }))
+        }
       />
 
       {!isExam && (
         <div className="flex flex-wrap items-center gap-3">
           {!isRevealed ? (
-            <button
-              type="button"
-              disabled={selected.length === 0}
-              onClick={() => setRevealed((r) => ({ ...r, [q.id]: true }))}
-              className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Check answer
-            </button>
+            <>
+              <button
+                type="button"
+                disabled={selected.length === 0 || !confidence[q.id]}
+                aria-describedby={
+                  selected.length > 0 && !confidence[q.id]
+                    ? `confidence-hint-${q.id}`
+                    : undefined
+                }
+                onClick={() => {
+                  // Review mode grades the spaced-repetition schedule here,
+                  // because this is the moment the engine knows the question and
+                  // the submitted answer: a correct answer promotes its box (a
+                  // longer interval before it resurfaces), a wrong one resets it
+                  // to box 0 (it comes back fastest). Other modes do not touch the
+                  // schedule. "Clear from review" already prunes the entry, so no
+                  // extra cleanup is needed here.
+                  if (mode === "review") {
+                    reviewQuestion(q.id, isAnswerCorrect(q, answers[q.id] ?? []));
+                  }
+                  setRevealed((r) => ({ ...r, [q.id]: true }));
+                }}
+                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Check answer
+              </button>
+              {selected.length > 0 && !confidence[q.id] && (
+                <p
+                  id={`confidence-hint-${q.id}`}
+                  className="text-sm text-ink-soft"
+                >
+                  Rate your confidence first
+                </p>
+              )}
+            </>
           ) : (
             <>
               {mode === "review" && (

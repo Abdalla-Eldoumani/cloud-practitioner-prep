@@ -1,4 +1,5 @@
 /// <reference path="../.astro/types.d.ts" />
+/// <reference types="vite-plugin-pwa/react" />
 
 // Variable font packages are imported for their side effects (the @font-face CSS).
 // They ship no type declarations, so declare them as ambient modules.

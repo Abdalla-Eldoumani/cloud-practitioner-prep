@@ -2,6 +2,15 @@
 import "@fontsource-variable/inter";
 import "@fontsource-variable/source-serif-4";
 import "@/styles/global.css";
+import { getCollection } from "astro:content";
+import { ALL_SERVICES } from "@/data/services";
+import {
+  NAV_TARGETS,
+  buildLessonIndex,
+  buildServiceIndex,
+} from "@/lib/navigation";
+import CommandPalette from "@/components/navigation/CommandPalette.tsx";
+import ReloadPrompt from "@/components/pwa/ReloadPrompt.tsx";
 
 interface Props {
   title: string;
@@ -10,10 +19,18 @@ interface Props {
   image?: string;
 }
 
+// Build the command-palette search index at build time and hand it to the
+// island as plain JSON props, so the palette ships with the lesson and service
+// lists baked in and never fetches at runtime. Static per render; the same
+// shared mappers the build-time gate uses, so the index can never drift from
+// what the gate validates.
+const lessonIndex = buildLessonIndex(await getCollection("lessons"));
+const serviceIndex = buildServiceIndex(ALL_SERVICES);
+
 const {
   title,
   description = "Learn AWS and prepare for the Certified Cloud Practitioner exam with free lessons, practice questions, and full timed mock exams.",
-  image,
+  image = "/og.png",
 } = Astro.props;
 
 const siteName = "Cloud Practitioner Prep";
@@ -32,6 +49,7 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "/learn", label: "Learn" },
   { href: "/practice", label: "Practice" },
+  { href: "/catalog", label: "Catalog" },
   { href: "/progress", label: "Progress" },
   { href: "/about", label: "About" },
 ];
@@ -49,6 +67,16 @@ function isActive(href: string): boolean {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {/*
+      The PWA manifest, theme color, and Apple touch icon are linked explicitly.
+      The build emits manifest.webmanifest + the icons, but the integration's
+      automatic head injection does not run on this Astro version, so these tags
+      are declared here to make the app installable. The colors match the
+      manifest (the brand theme color, the light surface as the icon backdrop).
+    */}
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#2a4fcb" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -91,7 +119,7 @@ function isActive(href: string): boolean {
           Cloud Practitioner Prep
         </a>
         <nav aria-label="Primary">
-          <ul class="flex items-center gap-1 text-sm">
+          <ul class="flex flex-wrap items-center justify-end gap-1 gap-y-2 text-sm">
             {
               nav.map((item) => (
                 <li>
@@ -150,6 +178,79 @@ function isActive(href: string): boolean {
         </div>
       </div>
     </footer>
+
+    {/*
+      The command palette and the shortcuts help, mounted once for every page so
+      Cmd/Ctrl+K and "?" work site-wide. client:idle (not load): the palette is
+      not needed at first paint, and the inline trigger below covers any keypress
+      that lands before the island hydrates by dispatching an event the island
+      replays on mount. The search index is computed above and passed as props.
+    */}
+    <CommandPalette
+      client:idle
+      routes={NAV_TARGETS}
+      lessons={lessonIndex}
+      services={serviceIndex}
+    />
+
+    {/*
+      The reload prompt, mounted once for every page so a new version can surface
+      anywhere as an opt-in reload — never an auto-reload that would interrupt an
+      in-progress timed exam. client:idle (not load): it is not needed at first
+      paint and only ever appears once a new version is waiting. It takes no
+      props (it reads the service-worker registration itself). The manifest link,
+      theme-color, and apple-touch-icon are declared explicitly in <head> above,
+      because the build's automatic head injection does not run on this Astro
+      version.
+    */}
+    <ReloadPrompt client:idle />
+
+    {/*
+      The global keyboard trigger. Runs on every page regardless of island
+      hydration: it owns Cmd/Ctrl+K (open the palette) and "?" (open the help),
+      dispatching a window event the island listens for. It is the only thing
+      guaranteed present before hydration, so the shortcut never depends on the
+      React island having loaded yet.
+
+      Guards: "?" only fires when focus is NOT in a text field, so typing "?"
+      into the palette's own search (or any input) inserts a literal "?" instead
+      of reopening the help. Only the handled keys are preventDefault'd; the
+      browser's native find (Ctrl/Cmd+F) is never bound or intercepted.
+    */}
+    <script is:inline>
+      (function () {
+        function isTypingTarget(el) {
+          if (!el) return false;
+          var tag = el.tagName;
+          return (
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT" ||
+            el.isContentEditable === true
+          );
+        }
+        // A latch for the open intent. If a shortcut is pressed before the
+        // client:idle island has hydrated and subscribed, the event alone would
+        // be missed, so the latest intent is also recorded on a global the island
+        // reads once on mount. The island clears it after replaying, so it only
+        // ever fires for a keypress that genuinely preceded hydration.
+        function signal(name) {
+          window.__ccpPaletteIntent = name;
+          window.dispatchEvent(new CustomEvent(name));
+        }
+        window.addEventListener("keydown", function (e) {
+          if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+            e.preventDefault();
+            signal("ccp:open-palette");
+            return;
+          }
+          if (e.key === "?" && !isTypingTarget(document.activeElement)) {
+            e.preventDefault();
+            signal("ccp:open-help");
+          }
+        });
+      })();
+    </script>
 
     <script is:inline>
       (function () {

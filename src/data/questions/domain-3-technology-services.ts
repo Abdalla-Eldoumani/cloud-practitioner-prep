@@ -17,11 +17,12 @@ export const domain3: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Lambda runs event-driven code with no servers to manage and bills per request and compute time. EC2 and ECS on EC2 require managing instances, and Elastic Beanstalk provisions and exposes underlying EC2 resources.",
+      "Lambda runs event-driven code with no servers to manage and bills per request and compute time. Amazon EC2 is a virtual server you provision and manage, Amazon ECS on EC2 still leaves the instances for you to run, and Elastic Beanstalk provisions and exposes underlying EC2 resources rather than hiding the servers.",
     reference: {
       label: "AWS Lambda",
       url: "https://aws.amazon.com/lambda/",
     },
+    lastVerified: "2026-06-23",
     services: ["Lambda", "S3"],
   },
   {
@@ -44,6 +45,7 @@ export const domain3: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
+    lastVerified: "2026-06-23",
     services: ["RDS"],
   },
   {
@@ -61,11 +63,12 @@ export const domain3: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "Amazon SQS is a durable message queue: producers send messages and consumers pull them when ready, which absorbs spikes and decouples tiers. SNS is publish/subscribe push, CloudFront is a CDN, and a load balancer distributes requests but does not store them.",
+      "Amazon SQS is a durable message queue: producers send messages and consumers pull them when ready, which absorbs spikes and decouples tiers. Amazon SNS is publish/subscribe push that fans messages out to subscribers rather than holding them for a consumer to poll, CloudFront is a CDN, and a load balancer distributes requests but does not store them.",
     reference: {
       label: "Amazon SQS",
       url: "https://aws.amazon.com/sqs/",
     },
+    lastVerified: "2026-06-23",
     services: ["SQS"],
   },
 ];

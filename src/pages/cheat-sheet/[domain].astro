@@ -1,0 +1,976 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { DOMAINS, domainName } from "@/lib/constants";
+import type { Domain, DocReference } from "@/lib/types";
+
+// The per-domain printable cheat sheet. One static page per exam domain (1-4),
+// emitted by getStaticPaths so /cheat-sheet/1 .. /cheat-sheet/4 all build. The
+// page wraps its body in <div class="cheat-sheet">, the class the print block in
+// global.css targets: on paper the site chrome is hidden and this body prints
+// in full, ink on white, with cards kept off page breaks.
+//
+// Content is distilled from the verified lessons listed per domain below (the
+// same lessons the coverage map links). Every fact here traces to one of those
+// lessons; nothing is authored new. The lessonSlugs are recorded so the
+// content-auditor can cross-check each sheet against its sources.
+
+interface Fact {
+  term: string; // the concept, service, or model name
+  detail: string; // its one-line exam-relevant fact, from the lesson
+}
+
+interface Section {
+  heading: string;
+  facts: Fact[];
+}
+
+interface Comparison {
+  title: string; // the pair or trio the lessons flag as easily confused
+  detail: string; // the distinction that tells them apart
+}
+
+interface DomainSheet {
+  lessonSlugs: string[]; // the verified lessons this sheet distills (for the auditor)
+  intro: string; // one line on what the domain covers
+  sections: Section[];
+  comparisons: Comparison[]; // the "tell these apart" gotchas the lessons stress
+}
+
+// The exam guide, the same DocReference the blueprint uses, on the link-checker's
+// AWS-host allowlist. Links each sheet back to the blueprint it summarizes.
+const EXAM_GUIDE: DocReference = {
+  label: "AWS Certified Cloud Practitioner (CLF-C02) Exam Guide",
+  url: "https://docs.aws.amazon.com/aws-certification/latest/examguides/cloud-practitioner-02.html",
+};
+
+const SHEETS: Record<Domain, DomainSheet> = {
+  // ---- Domain 1: Cloud Concepts (24%) ----
+  1: {
+    lessonSlugs: [
+      "what-is-cloud-computing",
+      "six-benefits-of-the-cloud",
+      "well-architected-framework",
+      "global-infrastructure-and-resilience",
+      "migration-and-the-caf",
+    ],
+    intro:
+      "The value of the AWS Cloud, its economics, the design framework, the global infrastructure, and how to move to the cloud.",
+    sections: [
+      {
+        heading: "What cloud computing is",
+        facts: [
+          {
+            term: "Definition",
+            detail:
+              "On-demand delivery of IT resources over the internet with pay-as-you-go pricing.",
+          },
+          {
+            term: "Client-server model",
+            detail:
+              "A client sends a request; a server checks the caller is allowed, then returns a response. Almost everything in AWS follows it.",
+          },
+          {
+            term: "CapEx to OpEx",
+            detail:
+              "Buying servers is a large upfront capital expense; paying for cloud usage is a variable operating expense that tracks demand.",
+          },
+        ],
+      },
+      {
+        heading: "Six benefits of the cloud",
+        facts: [
+          {
+            term: "Trade fixed expense for variable",
+            detail: "Pay only when you consume resources, and only for how much.",
+          },
+          {
+            term: "Massive economies of scale",
+            detail:
+              "Aggregated demand lowers AWS's cost, passed through as lower pay-as-you-go prices.",
+          },
+          {
+            term: "Stop guessing capacity",
+            detail:
+              "Request what you need and scale up or down within minutes instead of sizing ahead.",
+          },
+          {
+            term: "Increase speed and agility",
+            detail:
+              "New resources are minutes away, so experimenting is cheap and teams ship faster.",
+          },
+          {
+            term: "Stop running data centers",
+            detail:
+              "Hand racking, powering, cooling, and hardware repair to AWS and focus on the product.",
+          },
+          {
+            term: "Go global in minutes",
+            detail:
+              "Deploy across worldwide locations with a few clicks to serve users near them at low latency.",
+          },
+        ],
+      },
+      {
+        heading: "Well-Architected Framework: the six pillars",
+        facts: [
+          {
+            term: "Operational Excellence",
+            detail: "Running and monitoring systems and improving processes over time.",
+          },
+          {
+            term: "Security",
+            detail: "Protecting data, systems, and assets using cloud technologies.",
+          },
+          {
+            term: "Reliability",
+            detail: "Performing correctly and consistently and recovering from failures.",
+          },
+          {
+            term: "Performance Efficiency",
+            detail: "Using cloud resources efficiently to meet performance needs.",
+          },
+          {
+            term: "Cost Optimization",
+            detail: "Delivering business value at the lowest price point.",
+          },
+          {
+            term: "Sustainability",
+            detail:
+              "Reducing the environmental impact of running workloads (the one people forget).",
+          },
+        ],
+      },
+      {
+        heading: "Global infrastructure",
+        facts: [
+          {
+            term: "Region",
+            detail:
+              "A physical location clustering data centers; each has a minimum of three isolated Availability Zones. You choose the Region; data stays there unless you move it.",
+          },
+          {
+            term: "Availability Zone (AZ)",
+            detail:
+              "One or more discrete data centers with redundant power and networking, physically separated yet linked by low-latency connections. Spreading across AZs gives high availability.",
+          },
+          {
+            term: "Edge location",
+            detail:
+              "A separate, much larger set of sites that Amazon CloudFront uses to cache content close to users for lower latency.",
+          },
+          {
+            term: "Choosing a Region",
+            detail:
+              "Weigh latency/proximity, compliance and data residency, service availability, and pricing.",
+          },
+        ],
+      },
+      {
+        heading: "Migration and the Cloud Adoption Framework",
+        facts: [
+          {
+            term: "AWS CAF, six perspectives",
+            detail:
+              "Business, People, Governance (business side); Platform, Security, Operations (technical side).",
+          },
+          {
+            term: "7 Rs",
+            detail:
+              "Retire, Retain, Rehost (lift and shift), Relocate (hypervisor level), Repurchase (often to SaaS), Replatform (lift and reshape), Refactor (re-architect).",
+          },
+          {
+            term: "Migration tools",
+            detail:
+              "Migration Hub tracks a migration; Application Migration Service rehosts servers; DMS migrates databases; Snow Family ships data offline; DataSync transfers data online.",
+          },
+        ],
+      },
+    ],
+    comparisons: [
+      {
+        title: "Region vs Availability Zone",
+        detail:
+          "A Region is a geographic area; an AZ is one or more isolated data centers inside it. High availability comes from spreading a workload across several AZs.",
+      },
+      {
+        title: "Reliability vs Performance Efficiency",
+        detail:
+          "Reliability asks whether the workload keeps doing its job when something fails; Performance Efficiency asks whether it uses resources well.",
+      },
+      {
+        title: "Snow Family vs DataSync",
+        detail:
+          "Snow Family ships physical devices for offline transfer when the network is too slow or limited; DataSync is online transfer over a good network. The deciding factor is the network.",
+      },
+    ],
+  },
+
+  // ---- Domain 2: Security and Compliance (30%) ----
+  2: {
+    lessonSlugs: [
+      "shared-responsibility-model",
+      "iam-fundamentals",
+      "data-protection-kms-acm",
+      "network-and-app-protection",
+      "detect-investigate-respond",
+    ],
+    intro:
+      "Who secures what, identity and access, data protection, network defenses, and the services that detect and investigate.",
+    sections: [
+      {
+        heading: "Shared Responsibility Model",
+        facts: [
+          {
+            term: "AWS: security OF the cloud",
+            detail:
+              "The infrastructure running every service: data centers, hardware, the host and hypervisor, global infrastructure, and managed-service software.",
+          },
+          {
+            term: "Customer: security IN the cloud",
+            detail:
+              "Your data, identity and access, the guest OS on servers you run, network and firewall configuration, and application security.",
+          },
+          {
+            term: "The line moves with the service",
+            detail:
+              "On EC2 you patch the OS and firewall; on S3, Lambda, and managed RDS, AWS patches the host and engine. The simple test: who can change the setting.",
+          },
+        ],
+      },
+      {
+        heading: "IAM",
+        facts: [
+          {
+            term: "Root user",
+            detail:
+              "Complete access to the account. Secure it, enable MFA, and stop using it for daily work; treat it as break-glass.",
+          },
+          {
+            term: "User / group / role",
+            detail:
+              "A user is a permanent identity with long-term credentials; a group attaches one policy to many users; a role is assumed for temporary credentials and is how services act on your behalf.",
+          },
+          {
+            term: "Policies",
+            detail:
+              "JSON documents stating allowed or denied actions on resources, attached to a user, group, or role.",
+          },
+          {
+            term: "Least privilege",
+            detail: "Grant only the permissions a task requires, and nothing more.",
+          },
+          {
+            term: "MFA + temporary credentials",
+            detail:
+              "Require a second proof at sign-in; prefer short-lived credentials from roles (issued by AWS STS) over long-lived access keys.",
+          },
+          {
+            term: "IAM Identity Center",
+            detail:
+              "Centralizes workforce access across accounts and apps; the current name for the former AWS SSO.",
+          },
+        ],
+      },
+      {
+        heading: "Data protection",
+        facts: [
+          {
+            term: "At rest vs in transit",
+            detail:
+              "At rest is data in storage; in transit is data moving across a network. Encryption protects both.",
+          },
+          {
+            term: "AWS KMS",
+            detail:
+              "Creates and controls encryption keys, protected in hardware security modules. AWS managed keys are convenient and free to hold; customer managed keys give full control of policy and rotation for a monthly cost. Uses envelope encryption so the key stays in the service.",
+          },
+          {
+            term: "AWS Certificate Manager (ACM)",
+            detail:
+              "Creates, stores, and auto-renews TLS certificates for services that terminate TLS, such as load balancers and CloudFront.",
+          },
+          {
+            term: "AWS Secrets Manager",
+            detail:
+              "Stores credentials out of your code and rotates them on a schedule; uses KMS underneath.",
+          },
+        ],
+      },
+      {
+        heading: "Network and application protection",
+        facts: [
+          {
+            term: "Security group",
+            detail:
+              "Stateful firewall at the instance level, allow rules only; return traffic is automatic.",
+          },
+          {
+            term: "Network ACL",
+            detail:
+              "Stateless firewall at the subnet level, allow and deny rules evaluated in number order; return traffic needs its own rule.",
+          },
+          {
+            term: "AWS WAF",
+            detail:
+              "Web application firewall at layer 7; allows, blocks, or counts HTTP(S) requests and guards against SQL injection and cross-site scripting. Attaches to CloudFront, ALB, and API Gateway.",
+          },
+          {
+            term: "AWS Shield",
+            detail:
+              "DDoS protection. Standard is automatic and free; Advanced is a paid subscription with expanded, application-layer coverage and a response team.",
+          },
+          {
+            term: "AWS Network Firewall",
+            detail:
+              "Managed stateful firewall with intrusion detection and prevention at the VPC perimeter.",
+          },
+        ],
+      },
+      {
+        heading: "Detect, investigate, respond",
+        facts: [
+          {
+            term: "CloudTrail",
+            detail: "Records API actions: who did what and when, for audit and governance.",
+          },
+          {
+            term: "AWS Config",
+            detail:
+              "Tracks resource configuration and changes over time and evaluates compliance with rules.",
+          },
+          {
+            term: "Amazon GuardDuty",
+            detail:
+              "Threat detection; continuously monitors for malicious or unauthorized activity and produces findings.",
+          },
+          {
+            term: "Amazon Inspector",
+            detail:
+              "Scans workloads for software vulnerabilities and unintended network exposure.",
+          },
+          {
+            term: "Amazon Macie",
+            detail: "Discovers sensitive data such as PII in Amazon S3.",
+          },
+          {
+            term: "AWS Security Hub",
+            detail:
+              "Aggregates and prioritizes findings from GuardDuty, Inspector, Macie, and partners into one view.",
+          },
+          {
+            term: "Amazon Detective",
+            detail:
+              "Investigates a finding to its root cause using log analysis and graph visualizations.",
+          },
+        ],
+      },
+    ],
+    comparisons: [
+      {
+        title: "Security group vs network ACL",
+        detail:
+          "Stateful, instance level, allow-only vs stateless, subnet level, allow and deny in number order. If a question hinges on return traffic or a deny rule, it tests this.",
+      },
+      {
+        title: "KMS vs Secrets Manager",
+        detail:
+          "KMS manages cryptographic keys; Secrets Manager stores and rotates application credentials. They work together but answer different needs.",
+      },
+      {
+        title: "CloudTrail vs Config vs GuardDuty",
+        detail:
+          "CloudTrail logs who did what; Config tracks how resources are set up and compliance; GuardDuty detects threats.",
+      },
+      {
+        title: "Detect vs aggregate vs investigate",
+        detail:
+          "GuardDuty, Inspector, and Macie detect; Security Hub aggregates and prioritizes; Detective digs into a finding for the root cause.",
+      },
+    ],
+  },
+
+  // ---- Domain 3: Cloud Technology and Services (34%) ----
+  3: {
+    lessonSlugs: [
+      "ec2-fundamentals",
+      "scaling-and-load-balancing",
+      "serverless-and-containers",
+      "databases-on-aws",
+      "vpc-networking",
+      "storage-on-aws",
+      "ai-ml-and-analytics",
+      "messaging-and-integration",
+      "monitoring-cloudwatch-cloudtrail",
+    ],
+    intro:
+      "Compute, scaling, serverless and containers, databases, networking, storage, AI/ML and analytics, integration, and monitoring.",
+    sections: [
+      {
+        heading: "Compute: Amazon EC2",
+        facts: [
+          {
+            term: "EC2",
+            detail:
+              "Virtual servers (instances) you launch, stop, and terminate in minutes, billed mainly while running. AWS runs the host and hypervisor; you choose the OS.",
+          },
+          {
+            term: "Instance families",
+            detail:
+              "General purpose, compute optimized, memory optimized, accelerated computing (GPUs), and storage optimized.",
+          },
+          {
+            term: "Pricing models",
+            detail:
+              "On-Demand (no commitment), Savings Plans (commit to spend/hour), Reserved Instances (commit to a configuration), Spot (spare capacity, interruptible), Dedicated Hosts (single-tenant hardware for licensing/compliance).",
+          },
+          {
+            term: "Stopping vs storage",
+            detail:
+              "Stopping an instance stops compute charges, but an attached EBS volume can still cost for storage until deleted.",
+          },
+        ],
+      },
+      {
+        heading: "Scaling and load balancing",
+        facts: [
+          {
+            term: "EC2 Auto Scaling",
+            detail:
+              "Holds a group between a minimum and maximum at a desired capacity, scaling out and in with demand and replacing unhealthy instances. No extra charge beyond the instances.",
+          },
+          {
+            term: "Scaling methods",
+            detail: "Manual, scheduled, dynamic (incl. target tracking), and predictive.",
+          },
+          {
+            term: "Elastic Load Balancing",
+            detail:
+              "Single point of contact that distributes traffic across healthy targets in one or more AZs and registers/deregisters Auto Scaling instances automatically.",
+          },
+          {
+            term: "ELB types",
+            detail:
+              "Application Load Balancer (layer 7, HTTP/HTTPS, content routing); Network Load Balancer (layer 4, TCP/UDP/TLS, very high throughput); Gateway Load Balancer (layer 3, inline third-party appliances).",
+          },
+        ],
+      },
+      {
+        heading: "Serverless and containers",
+        facts: [
+          {
+            term: "AWS Lambda",
+            detail:
+              "Runs code with no servers to manage, event-driven, billed per request and compute time while running.",
+          },
+          {
+            term: "Serverless",
+            detail:
+              "No servers to provision or manage, and it scales automatically with demand.",
+          },
+          {
+            term: "Amazon ECS",
+            detail: "AWS-native container orchestration, no separate control plane to run.",
+          },
+          {
+            term: "Amazon EKS",
+            detail: "Managed Kubernetes; AWS runs the Kubernetes control plane.",
+          },
+          {
+            term: "AWS Fargate",
+            detail:
+              "Serverless compute engine for containers; runs ECS or EKS tasks with no EC2 instances to manage.",
+          },
+        ],
+      },
+      {
+        heading: "Databases",
+        facts: [
+          {
+            term: "Amazon RDS",
+            detail:
+              "Managed relational database running PostgreSQL, MySQL, MariaDB, Oracle, SQL Server, Db2, and Aurora.",
+          },
+          {
+            term: "Amazon Aurora",
+            detail:
+              "AWS-built, MySQL- and PostgreSQL-compatible engine inside RDS, tuned for performance and availability.",
+          },
+          {
+            term: "Amazon DynamoDB",
+            detail:
+              "Fully managed serverless NoSQL key-value database with single-digit millisecond performance at scale.",
+          },
+          {
+            term: "Amazon ElastiCache",
+            detail:
+              "Managed in-memory cache (Valkey, Memcached, Redis OSS) that speeds hot reads and offloads a database.",
+          },
+          {
+            term: "Amazon Redshift",
+            detail:
+              "Cloud data warehouse for SQL analytics over large datasets, distinct from RDS's transactional traffic.",
+          },
+        ],
+      },
+      {
+        heading: "Networking: Amazon VPC",
+        facts: [
+          {
+            term: "VPC",
+            detail: "A logically isolated virtual network you define and control.",
+          },
+          {
+            term: "Subnets",
+            detail:
+              "IP ranges, each in one AZ; public when the route table routes to an internet gateway, private otherwise.",
+          },
+          {
+            term: "Gateways",
+            detail:
+              "Internet gateway allows two-way communication for public addresses; NAT gateway gives private instances outbound-only access.",
+          },
+          {
+            term: "Amazon Route 53",
+            detail:
+              "DNS web service: registers domains, routes traffic, and health-checks resources.",
+          },
+          {
+            term: "Hybrid links",
+            detail:
+              "Direct Connect is a dedicated private line bypassing the internet; Site-to-Site VPN is an encrypted IPsec tunnel over the internet.",
+          },
+        ],
+      },
+      {
+        heading: "Storage",
+        facts: [
+          {
+            term: "Three shapes",
+            detail:
+              "Object (whole files by key, Amazon S3), block (a disk for one instance, Amazon EBS), file (a shared file system, Amazon EFS / FSx).",
+          },
+          {
+            term: "Amazon S3",
+            detail:
+              "Object storage in buckets, designed for eleven nines of durability. Storage classes trade cost for access: Standard, Intelligent-Tiering, Standard-IA, One Zone-IA, and the Glacier classes down to Deep Archive.",
+          },
+          {
+            term: "Amazon EBS",
+            detail:
+              "Block volumes for EC2, living in one AZ and replicated within it.",
+          },
+          {
+            term: "Amazon EFS / FSx",
+            detail:
+              "EFS is a shared, elastic NFS file system for Linux; FSx runs managed third-party file systems such as Windows File Server (SMB).",
+          },
+          {
+            term: "AWS Storage Gateway",
+            detail:
+              "Hybrid storage that lets on-premises applications use AWS cloud storage with a local cache.",
+          },
+        ],
+      },
+      {
+        heading: "AI/ML and analytics",
+        facts: [
+          {
+            term: "Amazon SageMaker",
+            detail: "Build, train, and deploy your own machine learning models.",
+          },
+          {
+            term: "Ready-made AI",
+            detail:
+              "Rekognition (image/video), Comprehend (NLP on text), Polly (text to speech), Transcribe (speech to text), Translate (translation), Lex (chat/voice bots).",
+          },
+          {
+            term: "Generative AI",
+            detail:
+              "Amazon Bedrock builds generative AI apps on foundation models; Amazon Q is the AWS generative AI assistant (Q Business, Q Developer).",
+          },
+          {
+            term: "Analytics",
+            detail:
+              "Athena (SQL on S3), Glue (serverless ETL), QuickSight (BI dashboards), Kinesis (real-time streaming), EMR (big-data frameworks like Spark).",
+          },
+        ],
+      },
+      {
+        heading: "Integration and monitoring",
+        facts: [
+          {
+            term: "Amazon SQS",
+            detail: "Managed message queue; one message is pulled by one consumer, decoupling producer and consumer.",
+          },
+          {
+            term: "Amazon SNS",
+            detail: "Publish/subscribe; one message fans out to many subscribers at once.",
+          },
+          {
+            term: "EventBridge / Step Functions / API Gateway",
+            detail:
+              "EventBridge routes events by rules; Step Functions orchestrates multi-step workflows; API Gateway is the managed front door for APIs.",
+          },
+          {
+            term: "CloudWatch vs CloudTrail",
+            detail:
+              "CloudWatch monitors performance (metrics, logs, alarms, dashboards); CloudTrail audits API actions.",
+          },
+          {
+            term: "Health Dashboard / X-Ray",
+            detail:
+              "Health Dashboard shows AWS service status and account-specific events; X-Ray traces a request across microservices.",
+          },
+        ],
+      },
+    ],
+    comparisons: [
+      {
+        title: "EC2 vs Lambda",
+        detail:
+          "EC2 gives the most control and operational work; Lambda runs event-driven code with no servers, billed only while it runs.",
+      },
+      {
+        title: "Internet gateway vs NAT gateway",
+        detail:
+          "Internet gateway allows two-way traffic for public addresses; NAT gateway allows outbound-only for private instances.",
+      },
+      {
+        title: "SQS vs SNS",
+        detail:
+          "SQS is a queue pulled by one consumer (buffer and decouple); SNS is a topic pushed to many subscribers (fan-out).",
+      },
+      {
+        title: "Direct Connect vs Site-to-Site VPN",
+        detail:
+          "Direct Connect is a dedicated private line, consistent but provisioned over weeks; VPN is a quick encrypted tunnel over the internet.",
+      },
+    ],
+  },
+
+  // ---- Domain 4: Billing, Pricing, and Support (12%) ----
+  4: {
+    lessonSlugs: ["pricing-models", "cost-management-tools", "support-plans"],
+    intro:
+      "How AWS prices resources, the tools that estimate and control cost, and the support plans and Trusted Advisor.",
+    sections: [
+      {
+        heading: "Pricing principles",
+        facts: [
+          {
+            term: "Pay as you go",
+            detail: "Pay for what you consume while you consume it, with no large upfront purchase.",
+          },
+          {
+            term: "Save when you commit",
+            detail:
+              "Commit to predictable usage for a one- or three-year term to pay less per unit; Savings Plans are the main way.",
+          },
+          {
+            term: "Pay less by using more",
+            detail:
+              "Tiered pricing for services such as S3 and data transfer out lowers the per-unit price at higher volumes.",
+          },
+        ],
+      },
+      {
+        heading: "EC2 purchase options",
+        facts: [
+          {
+            term: "On-Demand",
+            detail: "Pay by the second, no commitment; for short, spiky, or unpredictable work.",
+          },
+          {
+            term: "Savings Plans",
+            detail:
+              "Commit to a consistent dollars-per-hour amount for a lower rate with flexibility across instance choices.",
+          },
+          {
+            term: "Reserved Instances",
+            detail:
+              "Commit to a consistent instance configuration for a lower rate; for steady, known workloads.",
+          },
+          {
+            term: "Spot Instances",
+            detail:
+              "Spare capacity at a steep discount that AWS can reclaim; for fault-tolerant, interruptible work.",
+          },
+        ],
+      },
+      {
+        heading: "Free Tier and data transfer",
+        facts: [
+          {
+            term: "Free plan (new accounts)",
+            detail:
+              "A new account starts with up to 200 USD in credits (100 at sign-up, up to 100 more with use) for up to six months or until credits run out.",
+          },
+          {
+            term: "Always free / short-term trials",
+            detail:
+              "Over 30 always-free offers up to a monthly limit, plus short-term trials of selected paid services.",
+          },
+          {
+            term: "Data transfer",
+            detail:
+              "Data in is generally free; data out to the internet is charged after a 100 GB monthly free allowance, then priced in tiers.",
+          },
+        ],
+      },
+      {
+        heading: "Cost management tools",
+        facts: [
+          {
+            term: "AWS Pricing Calculator",
+            detail: "Estimates the cost of a planned design before you build it.",
+          },
+          {
+            term: "AWS Cost Explorer",
+            detail:
+              "Views and forecasts actual cost and usage (up to the last 13 months) with trends and recommendations.",
+          },
+          {
+            term: "AWS Budgets",
+            detail:
+              "Sets custom budgets and alerts you when cost or usage crosses (or is forecast to cross) a threshold.",
+          },
+          {
+            term: "Cost and Usage Report (CUR)",
+            detail:
+              "The most detailed billing data, written to an S3 bucket for deep analysis or chargeback.",
+          },
+          {
+            term: "Billing console",
+            detail:
+              "The dashboard for spend summary, credits, and activating cost allocation tags.",
+          },
+          {
+            term: "Consolidated billing (Organizations)",
+            detail:
+              "One bill across accounts with combined-usage volume discounts at no extra fee.",
+          },
+          {
+            term: "Cost allocation tags",
+            detail:
+              "Key-value labels that attribute costs to teams; must be activated in the Billing console.",
+          },
+        ],
+      },
+      {
+        heading: "Support plans and Trusted Advisor",
+        facts: [
+          {
+            term: "Plans are changing — verify near exam day",
+            detail:
+              "AWS is consolidating support to Basic, Business Support+, Enterprise Support, and AWS Unified Operations; Developer, Business, and Enterprise On-Ramp reach end of support on January 1, 2027. The exam still tests the five established tiers below, so learn them, but check the live AWS Support plans page near your exam date.",
+          },
+          {
+            term: "Basic",
+            detail:
+              "Free for every account; account and billing questions, documentation, and the core Trusted Advisor checks. No technical support cases.",
+          },
+          {
+            term: "Developer",
+            detail:
+              "Business-hours technical support by email for one contact; for development and testing.",
+          },
+          {
+            term: "Business",
+            detail:
+              "First tier for production: 24x7 support, unlimited cases for any authorized user, a production-down response target under one hour, and the full Trusted Advisor checks.",
+          },
+          {
+            term: "Enterprise On-Ramp",
+            detail:
+              "Adds a faster critical-case response target (under 30 minutes) and access to a pool of Technical Account Managers.",
+          },
+          {
+            term: "Enterprise",
+            detail:
+              "A designated Technical Account Manager and the fastest response target (under 15 minutes) for critical cases.",
+          },
+          {
+            term: "AWS Trusted Advisor",
+            detail:
+              "Inspects an account against best practices across cost optimization, performance, security, fault tolerance, service limits, and operational excellence; full checks on Business and above.",
+          },
+        ],
+      },
+    ],
+    comparisons: [
+      {
+        title: "Calculator vs Cost Explorer",
+        detail:
+          "The Pricing Calculator estimates a planned workload before you build it; Cost Explorer analyzes what existing workloads have already cost.",
+      },
+      {
+        title: "Cost Explorer vs Budgets",
+        detail:
+          "Cost Explorer is analysis after the fact; Budgets warns you before you cross a threshold.",
+      },
+      {
+        title: "Which tier for production",
+        detail:
+          "Business is the first tier with 24x7 support, unlimited cases, a production-down response target, and full Trusted Advisor checks. A designated Technical Account Manager comes only with Enterprise.",
+      },
+    ],
+  },
+};
+
+// One static page per domain id. The param is the domain number as a string.
+export function getStaticPaths() {
+  return DOMAINS.map((d) => ({ params: { domain: String(d.id) } }));
+}
+
+// Validate the param maps to a real domain (1-4) before rendering; an unknown
+// value returns a 404 rather than a half-rendered page.
+const { domain } = Astro.params;
+const domainId = Number(domain) as Domain;
+const meta = DOMAINS.find((d) => d.id === domainId);
+if (!meta || !SHEETS[domainId]) {
+  return new Response(null, { status: 404 });
+}
+const sheet = SHEETS[domainId];
+
+// Resolve the lesson titles for the "distilled from" footer from the content
+// collection, so a renamed lesson surfaces here too. Imported lazily to keep the
+// page a pure static render.
+const { getCollection } = await import("astro:content");
+const lessonEntries = (await getCollection("lessons")).filter(
+  (l) => !l.data.draft,
+);
+const lessonById = new Map(lessonEntries.map((l) => [l.id, l.data.title]));
+const sourceLessons = sheet.lessonSlugs.map((slug) => ({
+  slug,
+  title: lessonById.get(slug) ?? slug,
+}));
+
+const prevId = domainId > 1 ? ((domainId - 1) as Domain) : null;
+const nextId = domainId < 4 ? ((domainId + 1) as Domain) : null;
+---
+
+<BaseLayout title={`${domainName(domainId)} cheat sheet`}>
+  <p class="print-hide text-sm">
+    <a href="/cheat-sheet" class="text-brand underline underline-offset-2">
+      ← All cheat sheets
+    </a>
+  </p>
+
+  <div class="cheat-sheet mt-4">
+    <header class="max-w-2xl">
+      <div class="flex flex-wrap items-center gap-3">
+        <DomainBadge domain={domainId} showName={false} />
+        <h1 class="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          {meta.name} cheat sheet
+        </h1>
+        <span class="text-sm text-ink-soft">{meta.weight}% of the exam</span>
+      </div>
+      <p class="mt-3 text-ink-soft">{sheet.intro}</p>
+      <div class="print-hide mt-4">
+        <button
+          id="print-cheat-sheet"
+          type="button"
+          class="rounded-md border border-hairline bg-raised px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:border-brand"
+        >
+          Print this page
+        </button>
+        <span class="ml-2 text-sm text-ink-soft">or press Ctrl/Cmd + P</span>
+      </div>
+    </header>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      {
+        sheet.sections.map((section) => (
+          <section class="cheat-card rounded-lg border border-hairline bg-raised p-5">
+            <h2 class="text-base font-bold text-ink">{section.heading}</h2>
+            <dl class="mt-3 flex flex-col gap-2.5">
+              {section.facts.map((fact) => (
+                <div>
+                  <dt class="text-sm font-semibold text-ink">{fact.term}</dt>
+                  <dd class="text-sm text-ink-soft">{fact.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-8">
+      <h2 class="text-lg font-bold text-ink">Tell these apart</h2>
+      <ul class="mt-3 flex flex-col gap-3">
+        {
+          sheet.comparisons.map((c) => (
+            <li class="cheat-card rounded-lg border border-hairline bg-raised p-4">
+              <p class="text-sm font-semibold text-ink">{c.title}</p>
+              <p class="mt-1 text-sm text-ink-soft">{c.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <footer class="mt-8 border-t border-hairline pt-4 text-sm text-ink-soft">
+      <p>
+        Distilled from these lessons:{" "}
+        {
+          sourceLessons.map((lesson, i) => (
+            <>
+              {i > 0 && ", "}
+              <a
+                href={`/learn/${lesson.slug}`}
+                class="text-brand underline underline-offset-2"
+              >
+                {lesson.title}
+              </a>
+            </>
+          ))
+        }.
+      </p>
+      <p class="mt-2">
+        Every fact maps to the{" "}
+        <a
+          href={EXAM_GUIDE.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-brand underline underline-offset-2"
+        >
+          CLF-C02 exam guide ↗
+        </a>{" "}
+        and the verified lessons above.
+      </p>
+    </footer>
+  </div>
+
+  <nav
+    class="print-hide mt-10 flex justify-between gap-4 border-t border-hairline pt-6 text-sm"
+    aria-label="Other cheat sheets"
+  >
+    {
+      prevId ? (
+        <a href={`/cheat-sheet/${prevId}`} class="text-brand underline underline-offset-2">
+          ← {domainName(prevId)}
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      nextId ? (
+        <a href={`/cheat-sheet/${nextId}`} class="text-brand underline underline-offset-2">
+          {domainName(nextId)} →
+        </a>
+      ) : (
+        <span />
+      )
+    }
+  </nav>
+</BaseLayout>
+
+<script>
+  // The print button just opens the browser print dialog; the print CSS does
+  // the rest. Plain inline behavior, no island needed.
+  const btn = document.getElementById("print-cheat-sheet");
+  if (btn) btn.addEventListener("click", () => window.print());
+</script>

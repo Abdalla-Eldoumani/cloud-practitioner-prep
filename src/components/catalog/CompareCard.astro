@@ -1,0 +1,96 @@
+---
+import type { CompareGroup } from "@/lib/types";
+import { serviceById } from "@/data/services";
+import DomainBadge from "@/components/DomainBadge.astro";
+
+interface Props {
+  group: CompareGroup;
+}
+
+const { group } = Astro.props;
+
+// Resolve each member once so its name and domain stay single-sourced from the
+// catalog. Unknown ids are dropped defensively, though the catalog lint already
+// guarantees every serviceId resolves.
+const members = group.serviceIds
+  .map((id) => serviceById(id))
+  .filter((s): s is NonNullable<typeof s> => s !== undefined);
+---
+
+<div
+  id={group.id}
+  class="scroll-mt-8 rounded-lg border border-hairline bg-raised p-5 sm:p-6"
+>
+  <h3 class="text-lg font-semibold text-ink">{group.title}</h3>
+  <p class="mt-1 text-sm text-ink-soft">{group.framing}</p>
+
+  {/*
+    Below sm: a 3-way table is too tight for a phone, so the members stack as
+    labelled blocks (a heading per service, then the axes as a definition list).
+    From sm: the same data renders as a real side-by-side table. Responsive
+    classes only, no JS, so there is never horizontal scroll on phones.
+  */}
+  <div class="mt-4 flex flex-col gap-6 sm:hidden">
+    {
+      members.map((service) => (
+        <div>
+          <div class="flex items-center gap-2">
+            <DomainBadge domain={service.domain} showName={false} />
+            <span class="font-semibold text-ink">{service.name}</span>
+          </div>
+          <dl class="mt-2 flex flex-col gap-2">
+            {group.rows.map((row) => (
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                  {row.axis}
+                </dt>
+                <dd class="text-sm text-ink">{row.cells[service.id]}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-4 hidden sm:block">
+    <table class="w-full border-collapse text-left">
+      <thead>
+        <tr class="border-b border-hairline">
+          <th scope="col" class="p-3 align-bottom">
+            <span class="sr-only">Attribute</span>
+          </th>
+          {
+            members.map((service) => (
+              <th scope="col" class="p-3 align-bottom">
+                <span class="flex flex-col gap-1.5">
+                  <DomainBadge domain={service.domain} showName={false} />
+                  <span class="font-semibold text-ink">{service.name}</span>
+                </span>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          group.rows.map((row) => (
+            <tr class="border-b border-hairline last:border-0">
+              <th
+                scope="row"
+                class="p-3 align-top text-sm font-semibold text-ink-soft"
+              >
+                {row.axis}
+              </th>
+              {members.map((service) => (
+                <td class="p-3 align-top text-sm text-ink">
+                  {row.cells[service.id]}
+                </td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

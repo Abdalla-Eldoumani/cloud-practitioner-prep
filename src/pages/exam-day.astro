@@ -1,0 +1,235 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DomainBadge from "@/components/DomainBadge.astro";
+import { DOMAINS, EXAM } from "@/lib/constants";
+import { EXAM_DAY_CITATIONS } from "@/lib/navigation";
+
+// The exam-day checklist: a zero-JS static page of the verified CLF-C02 format,
+// timing, and scoring facts. Every number comes from the single typed EXAM /
+// DOMAINS source (never re-hardcoded), and every AWS link comes from the typed
+// EXAM_DAY_CITATIONS, the only allowlisted citations on the page — the nav check
+// guards both, because the reference link-checker does not scan .astro pages.
+//
+// Content discipline: every fact here is stated in the site's own words at
+// foundational depth and traces to an official AWS source. Nothing is invented.
+// The scaled score is presented AS AWS's own model and is kept distinct from the
+// site's raw-percent readiness signal, so the two are never conflated.
+
+// Derive every format number from EXAM, not from a re-typed literal.
+const scored = EXAM.scoredCount;
+const unscored = EXAM.questionCount - EXAM.scoredCount;
+const minutes = Math.round(EXAM.timeLimitSeconds / 60);
+---
+
+<BaseLayout title="Exam day">
+  <p class="text-sm">
+    <a href="/practice" class="text-brand underline underline-offset-2">
+      ← Back to practice
+    </a>
+  </p>
+
+  <header class="mt-4 max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Exam day
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      What the AWS Certified Cloud Practitioner (CLF-C02) exam is, how it is
+      timed, and how AWS scores it. Every fact below traces to an official AWS
+      source, listed at the end.
+    </p>
+  </header>
+
+  <div class="mt-10 flex flex-col gap-10">
+    <!-- The format: the verified question/timing facts, all numbers from EXAM. -->
+    <section>
+      <h2 class="text-xl font-bold tracking-tight text-ink">The format</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">Questions and time</h3>
+          <ul class="mt-3 flex flex-col gap-2 text-sm text-ink-soft">
+            <li>
+              <span class="font-semibold text-ink">{EXAM.questionCount} questions</span>{" "}
+              total — {scored} that count toward your score, plus {unscored}{" "}
+              unscored questions that do not affect your result and are not
+              marked on the exam.
+            </li>
+            <li>
+              <span class="font-semibold text-ink">{minutes} minutes</span> to
+              complete it.
+            </li>
+            <li>
+              <span class="font-semibold text-ink">{EXAM.code}</span> is the
+              current exam version.
+            </li>
+            <li>
+              The exam fee is{" "}
+              <span class="font-semibold text-ink">100 USD</span>.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">Question types</h3>
+          <ul class="mt-3 flex flex-col gap-2 text-sm text-ink-soft">
+            <li>
+              <span class="font-semibold text-ink">Multiple choice</span> — one
+              correct answer and three incorrect ones.
+            </li>
+            <li>
+              <span class="font-semibold text-ink">Multiple response</span> —
+              two or more correct answers out of five or more options.
+            </li>
+            <li>
+              <span class="font-semibold text-ink">Answer everything.</span>{" "}
+              An unanswered question is scored as incorrect, and there is no
+              penalty for guessing — so never leave one blank.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-4 rounded-lg border border-hairline bg-raised p-5">
+        <h3 class="text-base font-bold text-ink">What it weighs</h3>
+        <p class="mt-2 text-sm text-ink-soft">
+          The scored content is split across four domains. Spend your study time
+          in proportion to the weights.
+        </p>
+        <ul class="mt-3 flex flex-col gap-2">
+          {
+            DOMAINS.map((d) => (
+              <li class="flex flex-wrap items-center justify-between gap-3 border-b border-hairline pb-2 last:border-b-0 last:pb-0">
+                <span class="flex flex-wrap items-center gap-2">
+                  <DomainBadge domain={d.id} showName={false} />
+                  <span class="text-sm font-medium text-ink">{d.name}</span>
+                </span>
+                <span class="text-sm font-semibold text-ink-soft">
+                  {d.weight}%
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- How the score works: AWS's scaled model, kept distinct from readiness. -->
+    <section>
+      <h2 class="text-xl font-bold tracking-tight text-ink">
+        How the score works
+      </h2>
+      <div class="mt-4 rounded-lg border border-hairline bg-raised p-5">
+        <ul class="flex flex-col gap-2.5 text-sm text-ink-soft">
+          <li>
+            AWS reports your result as a{" "}
+            <span class="font-semibold text-ink">
+              scaled score from 100 to 1,000
+            </span>
+            , and the minimum passing score is{" "}
+            <span class="font-semibold text-ink">
+              {EXAM.passingScaledScore}
+            </span>
+            .
+          </li>
+          <li>
+            The result is{" "}
+            <span class="font-semibold text-ink">pass or fail</span>. Scoring is
+            compensatory: you do not need to pass each domain on its own, only
+            the overall exam.
+          </li>
+          <li>
+            The scale equates difficulty across different versions of the exam,
+            so the number is{" "}
+            <span class="font-semibold text-ink">not a raw percentage</span> —
+            the passing mark is not the same as answering that share of
+            questions correctly.
+          </li>
+        </ul>
+
+        <!-- The framing rule: AWS's scale is AWS's; the site's readiness is a
+             separate raw-percent study signal, never the scaled score. -->
+        <div class="mt-4 rounded-md border border-hairline bg-info-soft p-4">
+          <p class="text-sm text-ink">
+            <span class="font-semibold">
+              This 100–1,000 scale is AWS's, not this site's.
+            </span>{" "}
+            Your progress here is reported as a plain percentage of questions
+            you answered correctly, plus a readiness band — a conservative study
+            signal that sits above the rough passing line. It is{" "}
+            <span class="font-semibold">not</span> the AWS scaled score, so do
+            not map your practice percentage onto the AWS passing mark. Use the
+            readiness band to judge when you are ready; the scaled score is only
+            what AWS hands you on exam day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What to expect: logistics, clearly separate from the format facts. -->
+    <section>
+      <h2 class="text-xl font-bold tracking-tight text-ink">
+        What to expect on the day
+      </h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">Identification</h3>
+          <p class="mt-3 text-sm text-ink-soft">
+            Bring an original, unexpired, government-issued photo ID. The first
+            and last name on it must match the name on your AWS Certification
+            Account exactly — a mismatch can cost you the appointment.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">Checking in</h3>
+          <p class="mt-3 text-sm text-ink-soft">
+            At a test center, arrive 15 to 30 minutes early. For an online exam,
+            you can launch up to 30 minutes early; arriving more than 15 minutes
+            late forfeits the fee.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">Breaks</h3>
+          <p class="mt-3 text-sm text-ink-soft">
+            At a test center you may take an unscheduled break, but the clock
+            keeps running. For an online exam you may not stand up or leave the
+            camera's view for any reason during the test.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-raised p-5">
+          <h3 class="text-base font-bold text-ink">After you pass</h3>
+          <p class="mt-3 text-sm text-ink-soft">
+            The certification is valid for {EXAM.validityYears} years. To stay
+            current you recertify every {EXAM.validityYears} years.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources: rendered ONLY from the typed, allowlisted EXAM_DAY_CITATIONS. -->
+    <section class="border-t border-hairline pt-6">
+      <h2 class="text-xl font-bold tracking-tight text-ink">Sources</h2>
+      <p class="mt-2 text-sm text-ink-soft">
+        Every fact on this page comes from the official AWS exam guide and
+        certification pages:
+      </p>
+      <ul class="mt-3 flex flex-col gap-2 text-sm">
+        {
+          EXAM_DAY_CITATIONS.map((c) => (
+            <li>
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-brand underline underline-offset-2"
+              >
+                {c.label} ↗
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

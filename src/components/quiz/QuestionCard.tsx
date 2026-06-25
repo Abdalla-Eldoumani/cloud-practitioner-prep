@@ -1,4 +1,12 @@
-import type { Question } from "@/lib/types";
+import type { Confidence, Option, Question } from "@/lib/types";
+
+// The confidence levels in ascending order, left to right. The label carries the
+// state (never color alone), and the value is what the store records.
+const CONFIDENCE_LEVELS: { value: Confidence; label: string }[] = [
+  { value: "guessing", label: "Guessing" },
+  { value: "unsure", label: "Unsure" },
+  { value: "confident", label: "Confident" },
+];
 
 interface QuestionCardProps {
   question: Question;
@@ -11,6 +19,15 @@ interface QuestionCardProps {
   total: number;
   onToggleOption: (optionId: string) => void;
   onToggleFlag: () => void;
+  // Ordered option ids, computed once per instance by the engine and passed in so
+  // a resumed exam shows the exact saved order (never a fresh shuffle). When
+  // absent or empty the card renders question.options as-is.
+  optionOrder?: string[];
+  // Confidence gate (practice/review only). When showConfidence is false (exam,
+  // results-review map) the fieldset is not rendered and there is no gate.
+  showConfidence?: boolean;
+  confidence?: Confidence;
+  onSetConfidence?: (level: Confidence) => void;
 }
 
 function optionStateClass(
@@ -37,10 +54,25 @@ export default function QuestionCard({
   total,
   onToggleOption,
   onToggleFlag,
+  optionOrder,
+  showConfidence = false,
+  confidence,
+  onSetConfidence,
 }: QuestionCardProps) {
   const isMulti = question.type === "multi";
   const inputType = isMulti ? "checkbox" : "radio";
   const groupName = `q-${question.id}`;
+  const rationales = question.distractorRationales;
+  // Render in the engine-supplied id order when given (resume restores the exact
+  // shown order); map each id to its option, dropping any id with no match
+  // defensively. Fall back to question.options when no order is supplied.
+  const byId = new Map(question.options.map((o) => [o.id, o]));
+  const displayOptions: Option[] =
+    optionOrder && optionOrder.length > 0
+      ? optionOrder
+          .map((id) => byId.get(id))
+          .filter((o): o is Option => o !== undefined)
+      : question.options;
 
   return (
     <article className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
@@ -73,9 +105,14 @@ export default function QuestionCard({
         )}
 
         <ul className="flex flex-col gap-2.5">
-          {question.options.map((opt) => {
+          {displayOptions.map((opt) => {
             const isSelected = selected.includes(opt.id);
             const isCorrect = question.correct.includes(opt.id);
+            // Per-distractor reason: only for wrong options, only when an
+            // authored rationale exists. No structured reason -> no line; the
+            // reveal-block prose explanation always carries the why.
+            const reason =
+              revealed && !isCorrect ? rationales?.[opt.id] : undefined;
             return (
               <li key={opt.id}>
                 <label
@@ -106,11 +143,58 @@ export default function QuestionCard({
                     </span>
                   )}
                 </label>
+                {reason && (
+                  // Indented to align under the option text (clears the control
+                  // box + gap). Muted text, not text-danger: the row border
+                  // already signals wrong, and color-as-text fails AA.
+                  <div className="mt-1.5 pl-7">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                      Why not this
+                    </p>
+                    <p className="text-sm text-ink-soft">{reason}</p>
+                  </div>
+                )}
               </li>
             );
           })}
         </ul>
       </fieldset>
+
+      {showConfidence && (
+        // Confidence gate: a level must be picked before Check answer is
+        // enabled, so confidence is captured before the reveal. After reveal the
+        // pills lock (disabled) but the chosen one stays visibly selected.
+        <fieldset className="mt-5" disabled={revealed}>
+          <legend className="mb-2 text-sm font-medium text-ink">
+            How sure are you?
+          </legend>
+          <div className="flex flex-wrap gap-2">
+            {CONFIDENCE_LEVELS.map((level) => {
+              const isActive = confidence === level.value;
+              return (
+                <label
+                  key={level.value}
+                  className={`cursor-pointer rounded-md border px-3 py-2 text-sm font-medium transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand ${
+                    isActive
+                      ? "border-brand bg-info-soft text-brand"
+                      : "border-hairline text-ink-soft hover:border-brand"
+                  } ${revealed ? "cursor-default" : ""}`}
+                >
+                  <input
+                    type="radio"
+                    name={`confidence-${question.id}`}
+                    value={level.value}
+                    checked={isActive}
+                    onChange={() => onSetConfidence?.(level.value)}
+                    className="sr-only"
+                  />
+                  {level.label}
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      )}
 
       {revealed && (
         <div className="mt-5 rounded-md border border-hairline bg-surface p-4">

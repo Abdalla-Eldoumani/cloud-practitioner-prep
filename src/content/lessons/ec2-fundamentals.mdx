@@ -15,11 +15,21 @@ draft: false
 ---
 
 import Callout from "@/components/Callout.astro";
+import CoreServicesDiagram, { meta as coreServicesMeta } from "@/components/diagrams/CoreServicesDiagram";
+import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 Amazon EC2 gives you virtual servers, called instances, that you can launch,
 stop, and terminate in minutes. You pay primarily while an instance runs. EC2 is
 the service people picture first when they think of the cloud, and it anchors the
 compute part of the exam.
+
+EC2 is one service in a wider map. Before going deeper, here are the core service
+categories the exam covers and a flagship service or two in each, so you can see
+where EC2 sits among them.
+
+<CoreServicesDiagram client:visible />
+
+<KnowledgeCheck client:visible {...coreServicesMeta.check} />
 
 ## How EC2 works under the hood
 

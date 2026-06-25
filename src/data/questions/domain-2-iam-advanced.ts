@@ -21,11 +21,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a role does not have standard long-term credentials like a password or access keys; instead, assuming the role provides temporary security credentials for that session. Roles are not limited to the root user, and they avoid storing long-term keys on a resource.",
+      "AWS states that a role does not have standard long-term credentials like a password or access keys; instead, assuming the role provides temporary security credentials for that session. A role does not always carry a permanent password and a permanent pair of access keys, it is not limited to the root user, and it does not store access keys in plaintext on the instance that uses it.",
     reference: {
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -48,6 +49,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2", "S3"],
   },
   {
@@ -70,6 +72,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2"],
   },
   {
@@ -87,11 +90,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Because role credentials delivered to an instance are temporary and updated automatically, applications do not manage or rotate them by hand. There is no weekly key pair to regenerate, and the credentials are temporary rather than permanent.",
+      "Because role credentials delivered to an instance are temporary and updated automatically, applications do not manage or rotate them by hand. There is no daily manual rotation and no weekly key pair to regenerate, and it is not the case that the credentials never expire so that rotation is unnecessary; they are temporary and refresh before expiry.",
     reference: {
       label: "Use an IAM role to grant permissions to applications running on Amazon EC2 instances",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "EC2"],
   },
   {
@@ -114,6 +118,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -131,11 +136,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS STS creates and provides temporary security credentials that control access to AWS resources, and AWS describes those credentials as the basis for roles and identity federation. KMS manages encryption keys, ACM manages TLS certificates, and Secrets Manager stores secrets, none of which issue STS role credentials.",
+      "AWS STS creates and provides temporary security credentials that control access to AWS resources, and AWS describes those credentials as the basis for roles and identity federation. AWS Key Management Service manages encryption keys, ACM manages TLS certificates, and Secrets Manager stores secrets, none of which issue STS role credentials.",
     reference: {
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -153,11 +159,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states temporary security credentials are short-term, can be configured to last from a few minutes to several hours, and once expired they cannot be reused and AWS no longer allows access with them. They are not indefinite, and a limited lifetime is exactly what distinguishes them from long-term keys.",
+      "AWS states temporary security credentials are short-term, can be configured to last from a few minutes to several hours, and once expired they cannot be reused and AWS no longer allows access with them. They do not last indefinitely until an administrator deletes them, they do not expire only when the account is closed, and a limited lifetime is exactly what distinguishes them from long-term keys.",
     reference: {
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -181,6 +188,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -203,6 +211,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -225,6 +234,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -247,6 +257,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -269,6 +280,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -291,6 +303,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage AWS accounts with permission sets",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -313,6 +326,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -335,6 +349,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -357,6 +372,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -379,6 +395,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "Cognito"],
   },
   {
@@ -396,11 +413,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "MFA adds extra security by requiring a unique authentication response from a supported MFA mechanism in addition to the user's normal sign-in credentials. It does not remove the password, change permissions, or encrypt storage.",
+      "MFA adds extra security by requiring a unique authentication response from a supported MFA mechanism in addition to the user's normal sign-in credentials. It does not replace the password, it does not grant administrator permissions, and it does not encrypt data stored in Amazon S3 by default.",
     reference: {
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -424,6 +442,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -441,11 +460,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS recommends phishing-resistant MFA such as passkeys and security keys, which use public key cryptography based on FIDO standards and resist phishing, man-in-the-middle, and replay attacks. AWS has ended support for SMS-based MFA, and email links or re-entering a password are not MFA factors.",
+      "AWS recommends phishing-resistant MFA such as passkeys and security keys, which use public key cryptography based on FIDO standards and resist phishing, man-in-the-middle, and replay attacks. AWS has ended support for SMS text message codes as MFA, and email confirmation links or re-entering a password are not MFA factors.",
     reference: {
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -468,6 +488,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -485,11 +506,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "An access key consists of an access key ID and a secret access key that you use together to authenticate programmatic requests to the AWS CLI or API. A username and password are for console sign-in, and the other options are not access keys.",
+      "An access key consists of an access key ID and a secret access key that you use together to authenticate programmatic requests to the AWS CLI or API. A username and console password are for console sign-in, while an email address with a one-time PIN and a public TLS certificate are not access keys.",
     reference: {
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -512,6 +534,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -529,11 +552,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "For use cases that require long-term credentials, AWS recommends updating access keys when needed, using last-used information to rotate and remove them safely. Never rotating, publishing keys, or reusing root credentials all increase risk and contradict the guidance.",
+      "For use cases that require long-term credentials, AWS recommends updating access keys when needed, using last-used information to rotate and remove them safely. Never changing the keys, posting them in a shared wiki for the team to find, or reusing the root user credentials all increase risk and contradict the guidance.",
     reference: {
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -550,12 +574,18 @@ export const domain2IamAdvanced: Question[] = [
       { id: "d", text: "An unlimited number." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "Exactly one would block zero-downtime rotation; AWS allows a second key so the old one can be retired after cutover.",
+      c: "Ten overstates the limit; an IAM user is capped at two access keys.",
+      d: "There is no unlimited allowance; the cap is two access keys per IAM user.",
+    },
     explanation:
-      "An IAM user can have a maximum of two access keys, which lets you create a new key, update applications, and then deactivate and delete the old key without interruption. The limit is two, not one, ten, or unlimited.",
+      "An IAM user can have a maximum of two access keys, which lets you create a new key, update applications, and then deactivate and delete the old key without interruption. The limit is two, not exactly one with no exceptions, and not ten or an unlimited number.",
     reference: {
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -578,6 +608,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -601,6 +632,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -623,6 +655,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Set an account password policy for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -646,6 +679,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -663,11 +697,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Least privilege means granting only the permissions required to perform a task, defining specific actions on specific resources. Granting everything, giving all users administrator access, or removing all access are not least privilege.",
+      "Least privilege means granting only the permissions required to perform a task, defining specific actions on specific resources. Granting every permission, giving all users the same administrator policy, or stripping permissions down so that no one can remove or do anything are not least privilege.",
     reference: {
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -690,6 +725,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -712,6 +748,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -734,6 +771,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -757,6 +795,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -779,6 +818,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "IAM Identity Center"],
   },
   {
@@ -796,11 +836,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS describes a role as an identity that is intended to be assumable by anyone who needs it, providing temporary credentials, rather than being uniquely associated with one person like an IAM user with long-term credentials. The two are not identical, roles are created by the customer, and it is the role (not the user) that provides temporary credentials.",
+      "AWS describes a role as an identity that is intended to be assumable by anyone who needs it, providing temporary credentials, rather than being uniquely associated with one person like an IAM user with long-term credentials. The two are not identical, roles are created by the customer rather than AWS Support, and it is the role that provides temporary credentials, not the user, so the claim that a role always uses long-term access keys is reversed.",
     reference: {
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -824,6 +865,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -847,6 +889,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM Identity Center"],
   },
   {
@@ -865,11 +908,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "MFA adds a second factor on top of normal sign-in credentials, and AWS recommends phishing-resistant options like passkeys and security keys. MFA does not replace the password, AWS has ended SMS-based MFA support, and MFA does not change a user's permissions.",
+      "MFA adds a second factor on top of normal sign-in credentials, and AWS recommends phishing-resistant options like passkeys and security keys. MFA does not replace the password, AWS does not still recommend SMS text messages as the preferred MFA method since it has ended SMS support, and MFA does not change a user's permissions.",
     reference: {
       label: "AWS Multi-factor authentication in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -893,6 +937,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Manage access keys for IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
   {
@@ -916,6 +961,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM", "STS"],
   },
   {
@@ -934,11 +980,12 @@ export const domain2IamAdvanced: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Requiring human users to federate with an identity provider for temporary credentials and regularly removing unused identities and credentials are both AWS best practices. Sharing long-term keys, using the root user for routine work, and disabling MFA all run counter to the guidance.",
+      "Requiring human users to federate with an identity provider for temporary credentials and regularly removing unused identities and credentials are both AWS best practices. Sharing long-term keys, using the root user for routine work, and turning off MFA to make sign-in faster for administrators all run counter to the guidance.",
     reference: {
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["IAM"],
   },
 ];

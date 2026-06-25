@@ -1,0 +1,202 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CatalogBrowser from "@/components/catalog/CatalogBrowser.tsx";
+import CompareCard from "@/components/catalog/CompareCard.astro";
+import { ALL_SERVICES } from "@/data/services";
+import { COMPARE_GROUPS } from "@/data/services/compare";
+
+// The compare section is server-rendered and static. It only appears when there
+// are groups to show; both the jump list and the cards guard the empty case so
+// the page stays clean while the compare content is still being authored.
+const hasCompare = COMPARE_GROUPS.length > 0;
+
+// Security group vs Network ACL is the one comparison that cannot be a
+// COMPARE_GROUPS card: both are VPC features, not standalone catalog services,
+// so neither has a ServiceEntry id to key on. It ships here as a static table
+// keyed on plain concept labels, using the same four fixed attribute rows and
+// the same stacked-on-mobile / side-by-side-from-sm reflow as CompareCard, so
+// the comparison renders without forcing an off-manifest entry or a lint
+// exception. It is appended to the compare section and the jump list below.
+const sgNaclId = "security-group-vs-network-acl";
+const sgNaclTitle = "Security group vs Network ACL";
+const sgNaclFraming =
+  "two VPC firewalls at different levels — a stateful one on the instance and a stateless one on the subnet.";
+const sgNaclColumns = [
+  { key: "security-group", name: "Security group" },
+  { key: "network-acl", name: "Network ACL" },
+] as const;
+const sgNaclRows: { axis: string; cells: Record<string, string> }[] = [
+  {
+    axis: "What it is",
+    cells: {
+      "security-group":
+        "A virtual firewall at the instance level (attached to an ENI), evaluating allow rules only.",
+      "network-acl":
+        "A firewall at the subnet level that evaluates allow and deny rules for traffic entering or leaving the subnet.",
+    },
+  },
+  {
+    axis: "You manage",
+    cells: {
+      "security-group":
+        "Inbound and outbound allow rules; return traffic is allowed automatically because it is stateful.",
+      "network-acl":
+        "Numbered inbound and outbound rules, allow or deny; you must allow return traffic too because it is stateless.",
+    },
+  },
+  {
+    axis: "Best for",
+    cells: {
+      "security-group":
+        "The everyday control of what can reach a specific instance or resource.",
+      "network-acl":
+        "A broad, coarse guardrail across a whole subnet, such as blocking a range of addresses.",
+    },
+  },
+  {
+    axis: "Watch out for",
+    cells: {
+      "security-group":
+        "It is stateful and allow-only; you cannot write an explicit deny rule in it.",
+      "network-acl":
+        "It is stateless: forgetting the matching outbound (or inbound) rule silently breaks the return path.",
+    },
+  },
+];
+const sgNaclReference = {
+  label: "Security in your VPC (security groups and network ACLs)",
+  url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security.html",
+};
+---
+
+<BaseLayout title="Service catalog">
+  <header class="max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+      Service catalog
+    </h1>
+    <p class="mt-3 text-lg text-ink-soft">
+      Every AWS service the Cloud Practitioner exam can ask about, with what it
+      is, when to reach for it, and a link to the official docs. Search by name
+      or filter by exam domain.
+    </p>
+  </header>
+
+  {
+    hasCompare && (
+      <section class="mt-12">
+        <h2 class="text-xl font-bold text-ink">Tell similar services apart</h2>
+        <p class="mt-1 text-ink-soft">
+          The pairs and trios that are easiest to confuse, side by side.
+        </p>
+        <nav aria-label="Jump to comparisons" class="mt-4">
+          <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <span class="text-ink-soft">Jump to:</span>
+            {COMPARE_GROUPS.map((g) => (
+              <a
+                href={`#${g.id}`}
+                class="text-brand underline underline-offset-2"
+              >
+                {g.title}
+              </a>
+            ))}
+            <a
+              href={`#${sgNaclId}`}
+              class="text-brand underline underline-offset-2"
+            >
+              {sgNaclTitle}
+            </a>
+          </p>
+        </nav>
+        <div class="mt-6 flex flex-col gap-6">
+          {COMPARE_GROUPS.map((g) => (
+            <CompareCard group={g} />
+          ))}
+
+          {/*
+            Security group vs Network ACL: a static card (these are VPC
+            features, not catalog services, so they are not in COMPARE_GROUPS).
+            Same four fixed rows and the same stacked-on-mobile / table-from-sm
+            reflow as CompareCard, keyed on plain concept labels.
+          */}
+          <div
+            id={sgNaclId}
+            class="scroll-mt-8 rounded-lg border border-hairline bg-raised p-5 sm:p-6"
+          >
+            <h3 class="text-lg font-semibold text-ink">{sgNaclTitle}</h3>
+            <p class="mt-1 text-sm text-ink-soft">{sgNaclFraming}</p>
+
+            <div class="mt-4 flex flex-col gap-6 sm:hidden">
+              {sgNaclColumns.map((col) => (
+                <div>
+                  <span class="font-semibold text-ink">{col.name}</span>
+                  <dl class="mt-2 flex flex-col gap-2">
+                    {sgNaclRows.map((row) => (
+                      <div>
+                        <dt class="text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                          {row.axis}
+                        </dt>
+                        <dd class="text-sm text-ink">{row.cells[col.key]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 hidden sm:block">
+              <table class="w-full border-collapse text-left">
+                <thead>
+                  <tr class="border-b border-hairline">
+                    <th scope="col" class="p-3 align-bottom">
+                      <span class="sr-only">Attribute</span>
+                    </th>
+                    {sgNaclColumns.map((col) => (
+                      <th scope="col" class="p-3 align-bottom">
+                        <span class="font-semibold text-ink">{col.name}</span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sgNaclRows.map((row) => (
+                    <tr class="border-b border-hairline last:border-0">
+                      <th
+                        scope="row"
+                        class="p-3 align-top text-sm font-semibold text-ink-soft"
+                      >
+                        {row.axis}
+                      </th>
+                      {sgNaclColumns.map((col) => (
+                        <td class="p-3 align-top text-sm text-ink">
+                          {row.cells[col.key]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p class="mt-4 text-sm">
+              <a
+                href={sgNaclReference.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-brand underline underline-offset-2"
+              >
+                {sgNaclReference.label}
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="mt-12">
+    <h2 class="text-xl font-bold text-ink">Browse all services</h2>
+    <div class="mt-6">
+      <CatalogBrowser client:load services={ALL_SERVICES} />
+    </div>
+  </section>
+</BaseLayout>

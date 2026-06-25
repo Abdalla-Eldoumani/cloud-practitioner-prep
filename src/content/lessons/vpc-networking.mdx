@@ -16,6 +16,8 @@ draft: false
 ---
 
 import Callout from "@/components/Callout.astro";
+import VpcDiagram, { meta as vpcMeta } from "@/components/diagrams/VpcDiagram";
+import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 Every resource you launch needs a network around it. On AWS that network is a
 Virtual Private Cloud, and the way you carve it into subnets and attach gateways
@@ -73,6 +75,10 @@ addresses. A NAT gateway allows outbound-only access for private resources. A
 question about letting private instances fetch updates while staying unreachable
 from outside is describing a NAT gateway.
 </Callout>
+
+<VpcDiagram client:visible />
+
+<KnowledgeCheck client:visible {...vpcMeta.check} />
 
 ## Amazon Route 53
 

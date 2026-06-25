@@ -28,7 +28,76 @@ export interface Question {
   correct: string[];
   explanation: string; // why the answer is right, and why distractors are wrong
   reference: DocReference;
+  // ISO date (YYYY-MM-DD) the facts were last checked against AWS docs, so a
+  // reader can judge the content's age and a lint can flag unverified questions.
+  // Required: the whole bank is stamped, so the compiler refuses any question
+  // that ships without a verification date.
+  lastVerified: string;
+  // Sourced reason each wrong option is wrong, keyed by the incorrect option id.
+  // Keyed by id, never position, so it survives the render-time option shuffle.
+  distractorRationales?: Record<string, string>;
   services?: string[];
+}
+
+// ---- Service catalog (the AWS service reference + glossary) ----
+
+// One AWS service entry in the catalog. Mirrors Question's verification
+// contract: a `reference` to an official AWS doc and a required `lastVerified`
+// date, so the same link-checker and freshness lint treat services like
+// questions. Reuses Domain and DocReference rather than forking either.
+export interface ServiceEntry {
+  id: string; // stable slug, globally unique, e.g. "amazon-ec2", "aws-kms"
+  name: string; // canonical exam name, e.g. "Amazon EC2"
+  shortName?: string; // common short form for search/compare, e.g. "EC2", "KMS"
+  domain: Domain; // primary exam domain 1-4 (lint enforces 1..4)
+  category: string; // the AWS appendix category, e.g. "Compute"
+  purpose: string; // one-line "what it is" (CAT-01)
+  whenToUse: string; // the "reach for this when..." note (CAT-01)
+  reference: DocReference; // official AWS doc URL backing the entry (CAT-04)
+  // ISO date (YYYY-MM-DD), required, so the compiler refuses an entry that ships
+  // without a verification date, exactly as Question does.
+  lastVerified: string;
+  aliases?: string[]; // alternate names/acronyms so search + glossary find it
+  relatedTerms?: string[]; // glossary cross-references / plain-English concepts
+  relatedServices?: string[]; // ids of related services (powers "see also")
+}
+
+// One self-graded flashcard, built from the catalog or a missed question. A
+// view type only (not persisted): the deck is reassembled per sitting by
+// buildDeck from ALL_SERVICES + the learner's missed ids, so a card holds the
+// display text plus the doc reference and its source id. `id` is stable
+// (`service:<id>` / `question:<id>`) so deck order is stable while shown and the
+// known/learning keys do not drift between sittings.
+export interface Flashcard {
+  id: string; // stable card id, e.g. "service:amazon-ec2" / "question:d2-iam-01"
+  kind: "service" | "question";
+  front: string; // the term (service name) or the question stem
+  back: string; // the purpose, or the correct answer text(s)
+  detail?: string; // when-to-use, or the explanation
+  reference: DocReference; // the official AWS doc backing the card
+  sourceId: string; // the underlying ServiceEntry/Question id (without the prefix)
+}
+
+// One row of a compare group: a distinguishing axis and a short value per
+// compared service.
+export interface CompareRow {
+  axis: string; // the question the row answers, e.g. "What it is"
+  // Keyed by ServiceEntry id, never column position, so a responsive reorder or
+  // a stacked mobile layout cannot desync a cell from its service.
+  cells: Record<string, string>;
+}
+
+// A side-by-side disambiguation card for a commonly-confused group. Compare
+// groups are content too, so each carries a required lastVerified and is
+// lint-checked.
+export interface CompareGroup {
+  id: string; // slug, e.g. "ec2-vs-lambda-vs-fargate"
+  title: string; // e.g. "EC2 vs Lambda vs Fargate"
+  framing: string; // one-line "the quick way to tell them apart"
+  serviceIds: string[]; // the ServiceEntry ids being compared (column order)
+  rows: CompareRow[]; // distinguishing axes
+  reference?: DocReference; // optional doc that contrasts them; else each entry's
+  lastVerified: string; // ISO date (YYYY-MM-DD), required
 }
 
 // One answer the user submitted for one question.
@@ -60,7 +129,7 @@ export interface AttemptResult {
   durationSeconds: number;
 }
 
-export type QuizMode = "practice" | "exam" | "review";
+export type QuizMode = "practice" | "exam" | "review" | "drill";
 
 // ---- Progress (persisted in the browser) ----
 
@@ -74,10 +143,66 @@ export interface AttemptSummary {
   durationSeconds: number;
 }
 
+// How sure the learner was before seeing the answer. Captured pre-reveal so it
+// is an honest signal; later consumed by the review schedule.
+export type Confidence = "guessing" | "unsure" | "confident";
+
+// One question's spaced-repetition state in the review queue (a Leitner box).
+// `box` 0 is the just-missed band that resurfaces fastest; a correct review
+// promotes to a higher box (longer interval), a wrong one resets to 0. `due` and
+// `lastReviewed` are epoch ms, so the scheduler is pure arithmetic over a clock
+// passed in (never Date.now() inside the ordering), keeping it deterministic.
+export interface ReviewEntry {
+  box: number; // 0..MAX_BOX; 0 = just missed, resurfaces fastest
+  due: number; // epoch ms the item is next eligible
+  lastReviewed: number; // epoch ms of the last grade
+}
+
+// Rolling per-topic accuracy, keyed by Question.topic. Topic is finer than
+// domain, so an adaptive drill can target real weak spots, and the same map
+// backs per-topic readiness later. `seen`/`correct` accumulate across attempts.
+export interface TopicStat {
+  topic: string;
+  seen: number;
+  correct: number;
+  lastSeen?: number; // epoch ms of the most recent answer in this topic
+}
+
+// version 2: adds per-topic stats, a flashcard known/learning slice, an
+// optional per-question confidence map, the review schedule, and the
+// mock seen-count map. The existing arrays are unchanged so a stored v1 blob
+// upgrades by seeding the new fields (see progress.ts). reviewSchedule and
+// mockSeen are both additive on this SAME version: 2 (no v3 bump).
 export interface ProgressState {
-  version: 1;
+  version: 2;
   completedLessons: string[]; // lesson slugs marked done
   flaggedQuestions: string[]; // question ids flagged for review
   incorrectQuestions: string[]; // question ids missed at least once
   attempts: AttemptSummary[];
+  // Per-topic rolling accuracy, keyed by Question.topic. Populated by the
+  // attempt-recording path; read by the adaptive drill builder.
+  topicStats: Record<string, TopicStat>;
+  // Self-graded flashcard recall: card ids the learner marked known vs still
+  // learning, with an optional last-seen map for later scheduling.
+  flashcards: {
+    known: string[];
+    learning: string[];
+    lastSeen?: Record<string, number>;
+  };
+  // Most recent pre-reveal confidence per question id. Optional and additive so
+  // a v1 upgrade and any older v2 blob without it both load cleanly.
+  confidenceByQuestion?: Record<string, Confidence>;
+  // Spaced-repetition schedule per question id, for the review queue (the union
+  // of flagged + missed). Optional and additive on the SAME version: 2 — the
+  // migrator merges a stored blob over defaults, so an older v2 (or upgraded v1)
+  // blob without this field loads with it seeded, exactly like
+  // confidenceByQuestion. No version bump.
+  reviewSchedule?: Record<string, ReviewEntry>;
+  // Times each question has been drawn in a FINISHED mock, keyed by question id.
+  // Drives the low-overlap LRU draw so repeat sittings prefer never-seen
+  // questions. Optional and additive on the SAME version: 2 — the migrator
+  // merges a stored blob over defaults, so an older v2 (or upgraded v1) blob
+  // without this field loads with it seeded, exactly like reviewSchedule. No
+  // version bump.
+  mockSeen?: Record<string, number>;
 }

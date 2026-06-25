@@ -25,6 +25,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-02",
@@ -47,6 +48,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-03",
@@ -62,12 +64,18 @@ export const domain4Pricing: Question[] = [
       { id: "d", text: "All data transfer, in and out, is charged at the same flat rate." },
     ],
     correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the rule: inbound transfer from the internet is the free direction, not outbound.",
+      c: "Outbound data transfer to the internet is billed beyond the free allowance, so it is not all free.",
+      d: "Inbound is generally free and outbound is tiered, not a single flat rate for both directions.",
+    },
     explanation:
-      "In most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the data transfer out rate. The other options invert or flatten this rule.",
+      "In most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the data transfer out rate. Inbound and outbound are not always the same: claiming inbound is billed and outbound free inverts the rule, and a single flat rate for all transfer flattens the inbound-versus-outbound distinction.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-04",
@@ -84,11 +92,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Reservations give a greater discount in exchange for committing to capacity ahead of time, which AWS frames as saving when you reserve. Committing lowers the rate rather than raising it, and AWS billing is not a single flat rate.",
+      "Reservations give a greater discount in exchange for committing to capacity ahead of time, which AWS frames as saving when you reserve. Committing lowers the rate rather than raising it, AWS billing is not a single flat rate, and the principle is about reservation discounts, not a usage allowance that is free for the first year only.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-05",
@@ -105,11 +114,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS uses volume-based, tiered pricing where the more you use, the less you pay per unit, which AWS states directly for data transfer out and storage. Usage above a tier is not free; it is billed at the lower tier rate.",
+      "AWS uses volume-based, tiered pricing where the more you use, the less you pay per unit, which AWS states directly for data transfer out and storage. The per-unit price does not increase with volume, it is not fixed and unchanging, and usage above a tier is not free; it is billed at the lower tier rate.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-06",
@@ -131,6 +141,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -153,6 +164,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -175,6 +187,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Spot Instances",
       url: "https://aws.amazon.com/ec2/spot/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -197,6 +210,7 @@ export const domain4Pricing: Question[] = [
       label: "Spot Instance interruption notices",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-instance-termination-notices.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -219,6 +233,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -241,6 +256,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -264,6 +280,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -287,6 +304,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -309,6 +327,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -331,6 +350,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -353,6 +373,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -375,6 +396,7 @@ export const domain4Pricing: Question[] = [
       label: "What is AWS Pricing Calculator?",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-18",
@@ -391,11 +413,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Pricing Calculator is a free planning tool, and AWS states you need no cloud or AWS experience to use it. It estimates planned usage rather than only running resources, and threshold alerting is the job of AWS Budgets.",
+      "AWS Pricing Calculator is a free planning tool, and AWS states you need no cloud or AWS experience to use it. It charges no monthly subscription fee, it estimates planned usage rather than only running resources, and threshold alerting is the job of AWS Budgets.",
     reference: {
       label: "What is AWS Pricing Calculator?",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-19",
@@ -412,11 +435,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Under the restructured Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more, up to 200 total, usable until the earlier of six months or the credits running out. The Free Tier is not unlimited use of everything, not a permanent discount, and requires no setup fee.",
+      "Under the restructured Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more, up to 200 total. Two separate windows apply: the Free Plan itself lasts up to six months, ending at the earlier of six months after sign-up or the credits being used up, while the sign-up credits expire twelve months after the account is created. The Free Tier is not unlimited use of everything, not a permanent discount, and requires no setup fee.",
     reference: {
       label: "AWS Free Tier",
       url: "https://aws.amazon.com/free/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-20",
@@ -433,11 +457,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states the Free Plan lasts until the earlier of six months from opening the account or exhausting the Free Tier credits. It is not a fixed twelve-month or thirty-day window, and it ends on those conditions rather than only on manual account closure.",
+      "AWS states the Free Plan lasts until the earlier of six months from opening the account or exhausting the Free Tier credits. It is not a fixed twelve-month or thirty-day window, and it ends on those conditions rather than persisting until the customer manually closes the account.",
     reference: {
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-21",
@@ -454,11 +479,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "The Always Free tier includes 30 or more services that stay free within monthly usage limits and do not expire, available on both the Free and Paid plans. The other labels are not AWS Free Tier categories; Always Free needs no reservation, idle capacity, or support plan.",
+      "The Always Free tier includes 30 or more services that stay free within monthly usage limits and do not expire, available on both the Free and Paid plans. The other labels are not AWS Free Tier categories: Always Free carries no year-long reserved commitment, needs no idle capacity, and is not gated behind a support plan.",
     reference: {
       label: "AWS Free Tier",
       url: "https://aws.amazon.com/free/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-22",
@@ -466,20 +492,21 @@ export const domain4Pricing: Question[] = [
     type: "single",
     topic: "AWS Free Tier",
     difficulty: "hard",
-    stem: "An account was created well before mid-2025 and still follows the older Free Tier model. Which set of offer types describes that legacy Free Tier?",
+    stem: "A learner read an old guide describing a year of free usage on selected services from sign-up. For an AWS account created today, which statement is accurate?",
     options: [
-      { id: "a", text: "Always Free, 12 months free, and short-term trials" },
-      { id: "b", text: "Only a single 30-day money-back trial" },
-      { id: "c", text: "Credits of 200 US dollars over six months" },
-      { id: "d", text: "Unlimited free usage with no limits" },
+      { id: "a", text: "That older model was replaced on July 15, 2025; a new account now starts on the credit-based Free Plan instead." },
+      { id: "b", text: "A new account today still gets a full year of free usage on those selected services from sign-up." },
+      { id: "c", text: "A new account today receives unlimited free usage of every service with no limits." },
+      { id: "d", text: "A new account today must pay a one-time setup fee before any service is free." },
     ],
     correct: ["a"],
     explanation:
-      "For accounts created before July 15, 2025, the Free Tier provides three offer types: always free, 12 months free from sign-up, and short-term trials. The credit-based plan applies to newer accounts, and the legacy model is neither a single 30-day trial nor unlimited free usage.",
+      "AWS restructured its sign-up offer on July 15, 2025. An account opened today starts on the credit-based Free Plan, which gives up to 200 US dollars in credits over up to six months plus the Always Free offers, rather than the older year-of-usage arrangement that newer accounts no longer receive. New accounts do not get unlimited free usage and pay no setup fee to begin.",
     reference: {
-      label: "AWS Billing User Guide: AWS Free Tier (before July 15, 2025)",
-      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html",
+      label: "AWS Free Tier",
+      url: "https://aws.amazon.com/free/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-23",
@@ -501,6 +528,7 @@ export const domain4Pricing: Question[] = [
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-24",
@@ -517,11 +545,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS notes that one advantage of cloud resources is that you do not pay for them when they are not running, so turning off unused instances cuts cost. Leaving them on wastes money, Dedicated Hosts raise cost for this case, and a long reservation for idle time is the opposite of saving.",
+      "AWS notes that one advantage of cloud resources is that you do not pay for them when they are not running, so turning off unused instances cuts cost. Choosing to leave them running continuously to avoid a startup delay keeps paying for idle compute, converting them to Dedicated Hosts raises cost for this case, and a long reservation for idle time is the opposite of saving.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -539,11 +568,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS bills data storage and transfer per gigabyte, and in most cases there is no charge for inbound data transfer. Storage is not a flat fee independent of volume, uploading is generally not charged the way storage is, and storage itself is a billed cost driver.",
+      "AWS bills data storage and transfer per gigabyte, and in most cases there is no charge for inbound data transfer. It is not a fixed monthly fee charged regardless of how much you store, uploading is generally not charged the way storage is, and storage itself is a billed cost driver.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
     services: ["S3"],
   },
   {
@@ -561,11 +591,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Pay as you go, save when you reserve, and pay less by using more are the ways AWS frames its pricing. Charging more per unit as usage grows is the opposite of AWS volume-based pricing, so it is not one of them.",
+      "Paying as you go, saving when you reserve, and paying less per unit by using more are the ways AWS frames its pricing. Charging a higher per-unit rate as usage grows is the opposite of AWS volume-based pricing, so it is the one that does not belong.",
     reference: {
       label: "How AWS Pricing Works: key principles",
       url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-pricing-27",
@@ -588,6 +619,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -605,11 +637,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for lower prices. It is not a storage commitment, a spending cap, or a five-year one-time fee.",
+      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for lower prices. It is not a commitment to a number of gigabytes of storage, it is not a maximum monthly bill that AWS will never let you exceed, and it is not a five-year one-time fee.",
     reference: {
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2", "Lambda", "Fargate"],
   },
 ];

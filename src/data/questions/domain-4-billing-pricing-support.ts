@@ -22,6 +22,7 @@ export const domain4: Question[] = [
       label: "AWS Pricing Calculator",
       url: "https://calculator.aws/",
     },
+    lastVerified: "2026-06-23",
   },
   {
     id: "d4-spot-01",
@@ -43,6 +44,7 @@ export const domain4: Question[] = [
       label: "Amazon EC2 Spot Instances",
       url: "https://aws.amazon.com/ec2/spot/",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2"],
   },
   {
@@ -65,5 +67,6 @@ export const domain4: Question[] = [
       label: "AWS Support plans",
       url: "https://aws.amazon.com/premiumsupport/plans/",
     },
+    lastVerified: "2026-06-23",
   },
 ];

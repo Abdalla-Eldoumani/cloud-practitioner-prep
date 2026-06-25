@@ -26,6 +26,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -48,6 +49,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -65,11 +67,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "EC2 Auto Scaling ensures the group never goes below the minimum size or above the maximum size, and if you set a desired capacity it maintains that number of instances. The maximum is a hard ceiling, not a constant running count; the schedule described is not implied by these settings; and the minimum and maximum are enforced limits, not suggestions.",
+      "EC2 Auto Scaling ensures the group never goes below the minimum size or above the maximum size, and if you set a desired capacity it maintains that number of instances. The maximum is a hard ceiling, so the group does not always run exactly 8 instances at all times; nothing here makes it run 2 during the day and 8 at night on a fixed clock; and the minimum and maximum are enforced limits, not suggestions.",
     reference: {
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -92,6 +95,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -114,6 +118,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -131,11 +136,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "EC2 Auto Scaling monitors the health of running instances and automatically replaces terminated or impaired instances to maintain the desired capacity. It does not require manual intervention, it does not lower the desired capacity, and the point of health checks is to stop relying on an unhealthy instance, not keep using it.",
+      "EC2 Auto Scaling monitors the health of running instances and automatically replaces terminated or impaired instances to maintain the desired capacity. It does not require manual intervention, it does not permanently reduce the desired capacity to two, and rather than leaving the unhealthy instance in service and sending it traffic, the health check exists to take that instance out of rotation.",
     reference: {
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -159,6 +165,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Balancing capacity across Availability Zones)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -181,6 +188,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Pricing)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -204,6 +212,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Scalability)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -226,6 +235,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -248,6 +258,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "CloudWatch"],
   },
   {
@@ -271,6 +282,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -293,6 +305,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -315,6 +328,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -337,6 +351,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -360,6 +375,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling", "Elastic Load Balancing"],
   },
   {
@@ -377,11 +393,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Elastic Load Balancing distributes incoming traffic across healthy targets in multiple Availability Zones, and EC2 Auto Scaling keeps the desired number of instances running, replacing unhealthy ones and scaling with demand; together they provide a highly available, elastic web tier. A single instance is a single point of failure, S3 with SQS does not run a dynamic compute fleet, and Config with alarms observes resources but does not balance traffic or replace instances.",
+      "Elastic Load Balancing distributes incoming traffic across healthy targets in multiple Availability Zones, and EC2 Auto Scaling keeps the desired number of instances running, replacing unhealthy ones and scaling with demand; together they provide a highly available, elastic web tier. A single instance is a single point of failure, Amazon S3 static website hosting paired with Amazon SQS serves and queues but does not run a dynamic compute fleet, and Config with alarms observes resources but does not balance traffic or replace instances.",
     reference: {
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
   {
@@ -400,11 +417,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Elastic Load Balancing automatically distributes incoming traffic across multiple targets in one or more Availability Zones, monitors target health, and routes traffic only to healthy targets. It does not handle disk encryption, scheduled backups, or IAM role assignment.",
+      "Elastic Load Balancing automatically distributes incoming traffic across multiple targets in one or more Availability Zones, monitors target health, and routes traffic only to healthy targets. It does not encrypt the data stored on the instances' disks, it does not back instances up to Amazon S3 on a schedule, and it does not assign IAM roles to the instances.",
     reference: {
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -428,6 +446,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -445,11 +464,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "An Application Load Balancer functions at the application layer, the seventh layer of the OSI model, and handles HTTP and HTTPS traffic. Layer 4 describes the Network Load Balancer, layer 3 describes the Gateway Load Balancer, and layer 1 is unrelated to load balancing.",
+      "An Application Load Balancer functions at the application layer, the seventh layer of the OSI model, and handles HTTP and HTTPS traffic. The layer 4 transport layer for raw TCP and UDP describes the Network Load Balancer, the layer 3 network layer describes the Gateway Load Balancer, and the layer 1 physical layer for cabling is unrelated to load balancing.",
     reference: {
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -472,6 +492,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Path conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -494,6 +515,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Host conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -511,11 +533,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "A Network Load Balancer functions at the fourth layer of the OSI model and supports connection-based protocols such as TCP, UDP, and TLS. Layer 7 with HTTP and HTTPS describes the Application Load Balancer, layer 3 for IP packets to appliances describes the Gateway Load Balancer, and layer 2 is not where any Elastic Load Balancing type operates.",
+      "A Network Load Balancer functions at the fourth layer of the OSI model and supports connection-based protocols such as TCP, UDP, and TLS. Layer 7 with HTTP and HTTPS describes the Application Load Balancer, layer 3 for IP packets to appliances describes the Gateway Load Balancer, and the layer 2 data link layer that forwards by MAC addresses is not where any Elastic Load Balancing type operates.",
     reference: {
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -538,6 +561,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -561,6 +585,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -583,6 +608,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -600,11 +626,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "A Gateway Load Balancer operates at the third layer of the OSI model, the network layer, where it listens for all IP packets and forwards them to virtual appliances. Layer 7 is the Application Load Balancer, layer 4 is the Network Load Balancer, and no Elastic Load Balancing type is described as operating at layer 6.",
+      "A Gateway Load Balancer operates at the third layer of the OSI model, the network layer, where it listens for all IP packets and forwards them to virtual appliances. The layer 7 application layer is the Application Load Balancer, the layer 4 transport layer is the Network Load Balancer, and no Elastic Load Balancing type is described as operating at the layer 6 presentation layer.",
     reference: {
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -627,6 +654,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer"],
   },
   {
@@ -650,6 +678,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Elastic Load Balancing features",
       url: "https://aws.amazon.com/elasticloadbalancing/features/",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "Network Load Balancer", "Gateway Load Balancer"],
   },
   {
@@ -672,6 +701,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -695,6 +725,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "Lambda"],
   },
   {
@@ -717,6 +748,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Custom health checks)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -740,6 +772,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Increase or decrease compute capacity with scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -762,6 +795,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Network Load Balancer"],
   },
   {
@@ -780,11 +814,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "EC2 Auto Scaling replaces unhealthy instances to maintain the desired capacity and uses launch templates as the configuration template for new instances. There is no additional fee beyond the resources used, the service both scales out and scales in, and it balances instances across Availability Zones automatically rather than requiring manual placement.",
+      "EC2 Auto Scaling replaces unhealthy instances to maintain the desired capacity and uses launch templates as the configuration template for new instances. There is no additional fee beyond the resources used; it does not only ever increase capacity and never decrease it, since the service both scales out and scales in; and it balances instances across Availability Zones automatically rather than requiring manual placement.",
     reference: {
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
+    lastVerified: "2026-06-23",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -802,11 +837,12 @@ export const domain3ScalingElb: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Because the Application Load Balancer reports health checks and many metrics at the target group level, attaching each target group to its own Auto Scaling group lets each service scale dynamically based on its own demand. It does not force services to scale as one fleet, it does not remove health checks, and it does not change the load balancer's type.",
+      "Because the Application Load Balancer reports health checks and many metrics at the target group level, attaching each target group to its own Auto Scaling group lets each service scale dynamically based on its own demand. It does not force services to scale as one fleet, it never removes the need for health checks on the targets, and it does not change the load balancer's type.",
     reference: {
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Application Load Balancer", "EC2 Auto Scaling"],
   },
 ];

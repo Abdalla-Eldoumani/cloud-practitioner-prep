@@ -27,6 +27,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -50,6 +51,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -72,6 +74,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -95,6 +98,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "EC2", "ECR", "Lambda"],
   },
   {
@@ -117,6 +121,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -139,6 +144,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -161,6 +167,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
   {
@@ -183,6 +190,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -205,6 +213,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "EC2"],
   },
   {
@@ -227,6 +236,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -249,6 +259,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective", "GuardDuty"],
   },
   {
@@ -271,6 +282,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -294,6 +306,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Inspector", "Macie", "Detective", "Security Hub"],
   },
   {
@@ -316,6 +329,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -334,11 +348,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Inspector scans for software vulnerabilities and unintended network exposure, creating a finding when it detects either. Discovering PII in S3 is Macie, detecting anomalous sign-ins is closer to GuardDuty, and budget thresholds are handled by AWS Budgets, not Inspector.",
+      "Amazon Inspector scans for software vulnerabilities and unintended network exposure, creating a finding when it detects either. Discovering sensitive data such as PII inside Amazon S3 objects is Macie, detecting anomalous sign-ins is closer to GuardDuty, and budget thresholds are handled by AWS Budgets, not Inspector.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -356,11 +371,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Macie inventories and evaluates Amazon S3 buckets and discovers sensitive data in S3 objects. It is specific to Amazon S3; it does not scan EBS volumes, EFS file systems, or FSx file systems for sensitive data.",
+      "Amazon Macie inventories and evaluates Amazon S3 buckets and discovers sensitive data in S3 objects. It is specific to Amazon S3; it does not scan Amazon EBS volumes, Amazon EFS file systems, or Amazon FSx file systems for sensitive data.",
     reference: {
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -378,11 +394,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "GuardDuty is the detection service that generates findings, and Detective ingests GuardDuty findings and builds visualizations to investigate and identify root cause. The relationship is not reversed, and neither service is a vulnerability scanner or a sensitive-data discovery tool.",
+      "GuardDuty is the detection service that generates findings, and Detective ingests GuardDuty findings and builds visualizations to investigate and identify root cause. The relationship is not reversed: GuardDuty does not generate findings that Detective then merely passes on, nor is it GuardDuty that investigates while Detective detects. Neither service is a vulnerability scanner or a sensitive-data discovery tool.",
     reference: {
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Detective"],
   },
   {
@@ -405,6 +422,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: reduced effort to collect and prioritize findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -427,6 +445,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: consolidated view of findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -450,6 +469,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "Macie", "GuardDuty", "Security Hub", "Detective"],
   },
   {
@@ -468,11 +488,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "GuardDuty generates a security finding about the potentially compromised resource and consolidates findings so you can review them and decide on remediation. It does not patch software, write IAM policies, or delete resources on its own; responding to a finding is a separate step you take.",
+      "GuardDuty generates a security finding about the potentially compromised resource and consolidates findings so you can review them and decide on remediation. It does not patch software; it never writes an IAM policy that blocks the activity without action from you, and it never deletes the affected resource to stop the threat. Responding to a finding is a separate step you take.",
     reference: {
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -490,11 +511,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Inspector automatically discovers eligible resources and continually scans them, rescanning in response to changes such as installing a package or when a new CVE that affects a resource is published. You do not need to schedule or manually trigger each scan, and it is not a one-time or annual check.",
+      "Amazon Inspector automatically discovers eligible resources and continually scans them, rescanning in response to changes such as installing a package or when a new CVE that affects a resource is published. It does not scan only once when you first enable it and never again, you do not need to manually start each assessment, and it does not run only on the first day of each calendar year.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -513,11 +535,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Macie discovers and reports sensitive data in S3 objects, and it maintains an inventory of S3 general purpose buckets while evaluating and monitoring them for security and access control, generating a policy finding when, for example, a bucket becomes publicly accessible. Macie reports issues rather than encrypting buckets or blocking public access for you, and patch scanning of EC2 is Inspector's role.",
+      "Macie discovers and reports sensitive data in S3 objects, and it maintains an inventory of S3 general purpose buckets while evaluating and monitoring them for security and access control, generating a policy finding when, for example, a bucket becomes publicly accessible. Macie reports issues rather than acting for you: it does not encrypt every bucket automatically with a customer managed key, and it never scans EC2 instances for missing operating system patches, which is Inspector's role.",
     reference: {
       label: "What is Amazon Macie? Evaluate and monitor data for security and access control",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -536,11 +559,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Detective builds a behavior graph from collected log data and uses machine learning, statistical analysis, and graph theory to produce the visualizations that drive an investigation. Vulnerability scanning is Inspector, discovering PII in S3 is Macie, and Detective does not auto-remediate by deleting resources.",
+      "Detective builds a behavior graph from collected log data and uses machine learning, statistical analysis, and graph theory to produce the visualizations that drive an investigation. Detective is not the service that scans EC2 instances and container images for software vulnerabilities, which is Inspector, nor the one that discovers personally identifiable information stored in Amazon S3, which is Macie, and it does not auto-remediate by deleting resources.",
     reference: {
       label: "What is Amazon Detective? How does Detective work?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
   {
@@ -564,6 +588,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -586,6 +611,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -608,6 +634,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "Security Hub", "Detective"],
   },
   {
@@ -626,11 +653,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists unauthorized cryptomining and compromised, exfiltrated credentials among the threats GuardDuty detects by analyzing logs and data sources. Finding an unpatched CVE is Inspector, locating PII in S3 is Macie, and budget alerting is AWS Budgets, not GuardDuty.",
+      "AWS lists unauthorized cryptomining and compromised, exfiltrated credentials among the threats GuardDuty detects by analyzing logs and data sources. Finding an unpatched CVE is Inspector, flagging an S3 bucket that contains unencrypted personally identifiable information is Macie, and budget alerting is AWS Budgets, not GuardDuty.",
     reference: {
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty", "EC2"],
   },
   {
@@ -653,6 +681,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub"],
   },
   {
@@ -670,11 +699,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Inspector produces an Inspector risk score that takes the National Vulnerability Database base score and adjusts it for your environment, for example lowering it when there is no open network path to exploit a vulnerability. It is unrelated to the certification exam scale, to PII sensitivity, or to resource cost.",
+      "Amazon Inspector produces an Inspector risk score that takes the National Vulnerability Database base score and adjusts it for your environment, for example lowering it when there is no open network path to exploit a vulnerability. It is unrelated to the certification exam scale and to PII sensitivity, and it is not a billing score based on how much the affected resource costs per hour.",
     reference: {
       label: "What is Amazon Inspector? Amazon Inspector Risk score",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector"],
   },
   {
@@ -693,11 +723,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Security Hub receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not feed Inspector, Security Hub aggregates findings rather than performing the vulnerability scan itself, and investigating root cause is Detective's role, not Inspector's.",
+      "Security Hub receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not send its findings to Inspector for vulnerability scoring, Security Hub aggregates findings rather than scanning EC2 instances directly for software vulnerabilities itself, and investigating root cause is Detective's role, not Inspector's.",
     reference: {
       label: "AWS Security Hub User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie", "Detective"],
   },
   {
@@ -720,6 +751,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Macie", "S3"],
   },
   {
@@ -737,11 +769,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services or assign them roles that belong to Macie or Security Hub.",
+      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services, claim both find sensitive data in S3, or claim both aggregate findings from other services while GuardDuty also runs standard checks, which instead describes Security Hub.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Inspector", "GuardDuty"],
   },
   {
@@ -764,6 +797,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -786,6 +820,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
+    lastVerified: "2026-06-23",
     services: ["GuardDuty"],
   },
   {
@@ -808,6 +843,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
+    lastVerified: "2026-06-23",
     services: ["Detective"],
   },
 ];
