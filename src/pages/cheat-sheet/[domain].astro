@@ -850,7 +850,10 @@ const prevId = domainId > 1 ? ((domainId - 1) as Domain) : null;
 const nextId = domainId < 4 ? ((domainId + 1) as Domain) : null;
 ---
 
-<BaseLayout title={`${domainName(domainId)} cheat sheet`}>
+<BaseLayout
+  title={`${domainName(domainId)} cheat sheet`}
+  description={`AWS Cloud Practitioner ${domainName(domainId)} cheat sheet (CLF-C02): the key services and facts to review for this exam domain.`}
+>
   <p class="print-hide text-sm">
     <a href="/cheat-sheet" class="text-brand underline underline-offset-2">
       ← All cheat sheets
