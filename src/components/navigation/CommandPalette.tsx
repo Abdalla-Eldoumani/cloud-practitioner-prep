@@ -197,6 +197,22 @@ export default function CommandPalette({
     }
     window.addEventListener(OPEN_PALETTE_EVENT, onOpenPalette);
     window.addEventListener(OPEN_HELP_EVENT, onOpenHelp);
+
+    // Replay a keypress that landed before this island hydrated: the inline
+    // trigger records its last open intent on a global, which the dispatched
+    // event would have missed because no listener was attached yet. Read it once
+    // on mount, then clear it so it never reopens on a later remount.
+    const pending = (
+      window as Window & { __ccpPaletteIntent?: string }
+    ).__ccpPaletteIntent;
+    if (pending === OPEN_PALETTE_EVENT) {
+      onOpenPalette();
+    } else if (pending === OPEN_HELP_EVENT) {
+      onOpenHelp();
+    }
+    delete (window as Window & { __ccpPaletteIntent?: string })
+      .__ccpPaletteIntent;
+
     return () => {
       window.removeEventListener(OPEN_PALETTE_EVENT, onOpenPalette);
       window.removeEventListener(OPEN_HELP_EVENT, onOpenHelp);
