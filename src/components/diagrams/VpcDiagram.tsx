@@ -107,15 +107,16 @@ function VpcGeometry() {
         </text>
       </g>
 
-      {/* The internet gateway and NAT gateway, sitting on the VPC boundary. The
-          IGW is the two-way internet door for public resources; the NAT gateway
-          is the outbound-only door for private ones. */}
+      {/* The internet gateway and NAT gateway, the internet-facing doors on the
+          top edge of the VPC boundary. They sit above the VPC label so they never
+          overlap it; the IGW is the two-way internet door for public resources and
+          the NAT gateway is the outbound-only door for private ones. */}
       <g className="text-accent">
         <rect
           x="64"
-          y="20"
+          y="6"
           width="44"
-          height="16"
+          height="14"
           rx="3"
           fill="none"
           stroke="currentColor"
@@ -123,27 +124,19 @@ function VpcGeometry() {
         />
         <text
           x="86"
-          y="31"
+          y="15"
           textAnchor="middle"
           className="fill-current font-sans text-[6.5px] font-semibold"
           fill="currentColor"
         >
           Internet gw
         </text>
-        <line
-          x1="86"
-          y1="20"
-          x2="86"
-          y2="16"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
 
         <rect
           x="212"
-          y="20"
+          y="6"
           width="44"
-          height="16"
+          height="14"
           rx="3"
           fill="none"
           stroke="currentColor"
@@ -152,7 +145,7 @@ function VpcGeometry() {
         />
         <text
           x="234"
-          y="31"
+          y="15"
           textAnchor="middle"
           className="fill-current font-sans text-[6.5px] font-semibold"
           fill="currentColor"
