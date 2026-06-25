@@ -136,7 +136,7 @@ export function setFlashcardStatus(
 // the pure nextEntry (correct promotes to a longer interval, wrong resets to box
 // 0). One commit through commit(), so it persists via the same localStorage path
 // and degrades to memory in private mode like every other mutation. The review
-// engine (plan 05) calls this at reveal, where it knows the selected answer.
+// flow calls this at reveal, where it knows the selected answer.
 export function reviewQuestion(questionId: string, correct: boolean): void {
   const cur = $progress.get();
   const schedule = cur.reviewSchedule ?? {};
@@ -149,8 +149,8 @@ export function reviewQuestion(questionId: string, correct: boolean): void {
 
 // Record that a finished mock drew these questions: bump each id's mockSeen
 // count by one through commit(), so the next sitting's LRU draw prefers
-// never-seen questions. Called once per FINISHED exam (plan 02 wires it into the
-// island's finish(), gated to mode === "exam") — an abandoned exam leaves
+// never-seen questions. Called once per FINISHED exam (the exam island wires it
+// into finish(), gated to mode === "exam") — an abandoned exam leaves
 // mockSeen untouched, so its questions stay fresh. An empty list is a no-op; a
 // missing count starts at 0. One commit, same localStorage path, memory
 // fallback in private mode like every other mutation.
