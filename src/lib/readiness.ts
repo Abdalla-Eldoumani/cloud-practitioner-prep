@@ -83,7 +83,10 @@ function percentOf(correct: number, seen: number): number {
 // pass the whole ProgressState or a `{ topicStats }` stub.
 export function computeReadiness(
   progress: Pick<ProgressState, "topicStats">,
-  pool: readonly Question[],
+  // Only the topic and domain of each pool question are read (the topic -> domain
+  // join below). The narrow type lets a caller pass that slim projection instead
+  // of the whole question text, which a full Question still satisfies.
+  pool: readonly Pick<Question, "topic" | "domain">[],
 ): ReadinessReport {
   // Build the topic -> domain join from the pool. A topic belongs to one domain
   // in this bank, so first writer wins; the key is the SAME normalized form the
