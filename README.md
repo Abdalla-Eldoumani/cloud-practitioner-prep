@@ -1,5 +1,7 @@
 # Cloud Practitioner Prep
 
+[![CI](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml/badge.svg)](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml)
+
 A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 22
 lessons, drill 886 original practice questions by domain, take full timed mock exams, and track your
 readiness, all in the browser with nothing to sign up for.
