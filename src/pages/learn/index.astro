@@ -16,9 +16,55 @@ const byDomain = DOMAINS.map((d) => ({
 }));
 
 const total = entries.length;
+
+// Course structured data that ties the lessons together; each lesson points
+// back to this @id via its own isPartOf. The workload is the summed lesson
+// estimates, rounded to whole hours.
+const siteUrl = Astro.site?.href ?? `${Astro.url.origin}/`;
+const totalMinutes = entries.reduce(
+  (sum, l) => sum + (l.data.estimatedMinutes ?? 0),
+  0,
+);
+const courseJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "@id": `${siteUrl}learn/#course`,
+  name: "AWS Certified Cloud Practitioner (CLF-C02) Study Course",
+  description:
+    "A free, beginner-friendly course covering every domain of the AWS Certified Cloud Practitioner (CLF-C02) exam.",
+  url: `${siteUrl}learn/`,
+  inLanguage: "en",
+  isAccessibleForFree: true,
+  about: [
+    "AWS",
+    "Cloud computing",
+    "AWS Certified Cloud Practitioner",
+    "CLF-C02",
+  ],
+  provider: {
+    "@type": "Organization",
+    name: "Cloud Practitioner Prep",
+    "@id": `${siteUrl}#org`,
+  },
+  offers: {
+    "@type": "Offer",
+    category: "Free",
+    price: 0,
+    priceCurrency: "USD",
+  },
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "online",
+    courseWorkload: `PT${Math.max(1, Math.round(totalMinutes / 60))}H`,
+  },
+};
 ---
 
-<BaseLayout title="Lessons">
+<BaseLayout
+  title="AWS Cloud Practitioner Lessons (CLF-C02)"
+  description="Free AWS Cloud Practitioner lessons covering every CLF-C02 exam domain, written for beginners and verified against official AWS documentation."
+  jsonLd={courseJsonLd}
+>
   <header class="max-w-2xl">
     <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
       Lessons
