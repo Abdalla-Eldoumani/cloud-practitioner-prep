@@ -29,6 +29,14 @@ const totalLessons = (await getCollection("lessons")).filter(
     />
   </div>
 
+  <p class="mt-6 text-sm text-ink-soft">
+    The readiness band above is this site's own study signal, not the AWS scaled
+    score.{" "}
+    <a href="/exam-day" class="font-medium text-brand underline underline-offset-2">
+      See how AWS actually scores the real exam →
+    </a>
+  </p>
+
   <div class="mt-6">
     <ProgressIO client:load />
   </div>
