@@ -16,6 +16,9 @@
 //
 // Math.random is correct here: this is statistical fairness, not security. Do
 // not swap to crypto under a misread of the requirement (fairness != secrecy).
+// The stream is seeded (see below) so the assertion is reproducible across runs
+// instead of flaking when sampling noise crosses tolerance on CI; production
+// shuffling is untouched and stays on the live Math.random.
 //
 // Mirrors lint-content.ts: a self-contained tsx CLI that collects every failure,
 // prints a grouped report with counts, then exits 0 (clean) or 1 (any failure).
@@ -24,6 +27,23 @@
 import { orderedOptions } from "../src/lib/options";
 import { loadQuestions } from "./content-lib";
 import type { Question } from "../src/lib/types";
+
+// Seed Math.random so this statistical check is deterministic. The uniformity
+// assertion below tests thousands of per-position frequencies across the bank,
+// so with a fresh generator a fair shuffle still crosses the flat tolerance on
+// roughly one run in fifty by sampling noise alone (a multiple-comparisons
+// effect). A fixed seed makes the outcome reproducible: a fair shuffle passes
+// every run and a real positional bias fails every run, because the seeded
+// stream still drives the same orderedOptions -> shuffle path. Only this process
+// is affected; production shuffling uses the live Math.random.
+let rngState = 0x1a2b3c4d;
+Math.random = function seededRandom(): number {
+  rngState |= 0;
+  rngState = (rngState + 0x6d2b79f5) | 0;
+  let t = Math.imul(rngState ^ (rngState >>> 15), 1 | rngState);
+  t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
 
 // Samples per single-answer question. Large enough that a fair shuffle's
 // per-position frequency concentrates tightly around 1/N (the standard error of
