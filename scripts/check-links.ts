@@ -7,8 +7,11 @@
 // allowlist is enforced before any fetch, so live mode never reaches a non-AWS
 // host.
 //
-// Live mode (--live): additionally fetches each distinct URL and flags an error
-// status or a redirect to a different path (a soft-404 signal). Live HTTPS to
+// Live mode (--live): additionally fetches each distinct URL and flags a
+// removed-page status (404/410) or a redirect to a different path (a soft-404
+// signal). A known AWS host often gatekeeps an automated request (403/405) or
+// rate-limits a burst (429), and a 5xx is a transient blip — those are retried
+// and then treated as reachable, never reported as a dead reference. Live HTTPS to
 // the AWS docs host is unreliable behind an HTTPS-inspecting proxy, so run live
 // mode in CI (no proxy) or locally with `NODE_OPTIONS=--use-system-ca`. This
 // script never sets NODE_TLS_REJECT_UNAUTHORIZED; disabling TLS verification is
@@ -70,32 +73,53 @@ async function main(): Promise<void> {
   }
 
   // Live checks run only when asked, and only against URLs that passed the
-  // structural gate above (so a non-AWS host is never fetched).
+  // structural gate above (so a non-AWS host is never fetched). Only a removed
+  // page (404/410) or a soft-404 redirect fails: AWS hosts routinely gatekeep an
+  // automated GET (403/405) or rate-limit a burst (429), and a 5xx is a server
+  // blip — none mean the page is gone, so they are retried and then treated as
+  // reachable rather than flaking the run.
   if (live) {
+    const TRANSIENT = new Set([408, 425, 429, 500, 502, 503, 504]);
+    const GONE = new Set([404, 410]);
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
     for (const url of fetchable) {
-      try {
-        const res = await fetch(url.href, {
-          method: "GET",
-          redirect: "manual",
-        });
-        if (res.status >= 400) {
-          failures.push({ url: url.href, reason: `HTTP ${res.status}` });
+      let res: Response | null = null;
+      let netError = "";
+      // Up to three attempts with backoff so a transient status or a dropped
+      // connection under a burst does not fail a link that is actually live.
+      for (let attempt = 0; attempt < 3; attempt++) {
+        if (attempt > 0) await sleep(400 * attempt);
+        try {
+          res = await fetch(url.href, { method: "GET", redirect: "manual" });
+        } catch (err) {
+          res = null;
+          netError = err instanceof Error ? err.message : String(err);
           continue;
         }
-        if (res.status >= 300 && res.status < 400) {
-          const location = res.headers.get("location");
-          const target = location ? parseUrl(new URL(location, url).href) : null;
-          if (!target || !samePath(url, target)) {
-            failures.push({
-              url: url.href,
-              reason: `redirect to a different path (${location ?? "no location"}) — review for a moved page`,
-            });
-          }
-        }
-      } catch (err) {
-        const message = err instanceof Error ? err.message : String(err);
-        failures.push({ url: url.href, reason: `fetch failed: ${message}` });
+        if (!TRANSIENT.has(res.status)) break; // settled: good, gone, gated, or a redirect
       }
+
+      if (res === null) {
+        failures.push({ url: url.href, reason: `fetch failed: ${netError}` });
+        continue;
+      }
+      if (GONE.has(res.status)) {
+        failures.push({ url: url.href, reason: `HTTP ${res.status}` });
+        continue;
+      }
+      if (res.status >= 300 && res.status < 400) {
+        const location = res.headers.get("location");
+        const target = location ? parseUrl(new URL(location, url).href) : null;
+        if (!target || !samePath(url, target)) {
+          failures.push({
+            url: url.href,
+            reason: `redirect to a different path (${location ?? "no location"}) — review for a moved page`,
+          });
+        }
+      }
+      // Anything else (2xx, a gated 403/405, or a transient status that never
+      // settled) means the page is there for our purposes — not a failure.
     }
   }
 
