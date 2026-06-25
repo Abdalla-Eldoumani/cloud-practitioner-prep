@@ -40,9 +40,49 @@ const updatedLabel = updated.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
+
+// Structured data for this lesson: a free LearningResource that is part of the
+// CLF-C02 course, plus a breadcrumb trail. URLs resolve against the configured
+// site; dateModified is the last-verified date.
+const siteUrl = Astro.site?.href ?? `${Astro.url.origin}/`;
+const lessonUrl = `${siteUrl}learn/${slug}/`;
+const lessonJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  name: title,
+  description,
+  url: lessonUrl,
+  inLanguage: "en",
+  isAccessibleForFree: true,
+  learningResourceType: "lesson",
+  educationalLevel: "Beginner",
+  timeRequired: `PT${estimatedMinutes}M`,
+  about: "AWS Certified Cloud Practitioner (CLF-C02)",
+  teaches: services,
+  dateModified: updated.toISOString().slice(0, 10),
+  isPartOf: {
+    "@type": "Course",
+    name: "AWS Certified Cloud Practitioner (CLF-C02) Study Course",
+    "@id": `${siteUrl}learn/#course`,
+  },
+};
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Lessons", item: `${siteUrl}learn/` },
+    { "@type": "ListItem", position: 3, name: title, item: lessonUrl },
+  ],
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  jsonLd={[lessonJsonLd, breadcrumbJsonLd]}
+>
   <article class="mx-auto max-w-2xl">
     <a
       href="/learn"
