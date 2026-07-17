@@ -518,9 +518,9 @@ export const domain4SupportMigration: Question[] = [
       "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. A refactor re-architects the application using cloud-native features, a repurchase replaces it with a different product such as a SaaS offering, and a retire decommissions an application that is no longer needed.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-17",
   },
   {
     id: "d4-supportmig-24",
@@ -540,9 +540,9 @@ export const domain4SupportMigration: Question[] = [
       "Retire means decommissioning an application that is no longer needed, which removes cost and effort from the migration. Retain keeps an application in its current environment for now, replatform makes a few cloud optimizations without re-architecting, and relocate moves infrastructure such as VMware workloads to AWS without changing the applications.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-17",
   },
   {
     id: "d4-supportmig-25",
@@ -562,9 +562,9 @@ export const domain4SupportMigration: Question[] = [
       "Repurchasing, sometimes called drop and shop, replaces an existing application with a different product, commonly a SaaS offering. Rehosting would move the existing server as is, replatforming would make small cloud optimizations to it, and refactoring would re-architect it using cloud-native services.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-17",
   },
   {
     id: "d4-supportmig-26",
@@ -585,9 +585,9 @@ export const domain4SupportMigration: Question[] = [
       "The 7 Rs are retire, retain, rehost, relocate, repurchase, replatform, and refactor (re-architect). Replatform and relocate are two of them. Resell, replicate, and restore are not migration strategies in this framework.",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-17",
   },
   {
     id: "d4-supportmig-27",
@@ -812,8 +812,8 @@ export const domain4SupportMigration: Question[] = [
       "Rehost is lift and shift with little or no code change, and replatform makes a few cloud optimizations (lift, tinker, and shift) without re-architecting. Retire decommissions an unneeded application (not keep it), refactor re-architects with cloud-native services (repurchase is the SaaS swap), and relocate moves infrastructure such as VMware workloads to AWS (not decommission).",
     reference: {
       label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-retiring-applications/welcome.html",
+      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-17",
   },
 ];
