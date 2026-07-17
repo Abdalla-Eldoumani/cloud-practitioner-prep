@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useStore } from "@nanostores/react";
 import type { Flashcard, Question, ServiceEntry } from "@/lib/types";
 import { buildDeck } from "@/lib/flashcards";
@@ -39,6 +39,13 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
   // under the learner mid-session, so the deck is seeded once and only a manual
   // restart rebuilds it. `epoch` bumps to force a fresh shuffle on restart.
   const [epoch, setEpoch] = useState(0);
+  // The deck order shuffles per sitting, which the server cannot agree with
+  // the client about — so the island renders nothing until mounted (the same
+  // hydration rule as the knowledge check).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const deck = useMemo(
     () =>
       buildDeck({
@@ -175,19 +182,30 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
     [total, flip, next, prev, grade],
   );
 
+  if (!mounted) return null;
+
   // ---- empty state ----
   if (total === 0 || !card) {
     return (
-      <div className="rounded-lg border border-hairline bg-raised p-8 text-center">
-        <h2 className="text-xl font-semibold text-ink">No cards to study yet</h2>
-        <p className="mx-auto mt-2 max-w-prose text-ink-soft">
-          Browse the service catalog and miss a few practice questions; both feed
-          your flashcard deck.
+      <div className="flex flex-col items-start gap-3 rounded-r3 border border-line-1 bg-ground-1 px-6 py-8">
+        <span className="inline-flex items-center gap-3">
+          <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true">
+            <circle cx="9" cy="9" r="6.6" fill="none" stroke="var(--ink-3)" strokeWidth="1.6" />
+          </svg>
+          <span
+            aria-hidden="true"
+            className="inline-block w-14 border-t-2 border-dotted"
+            style={{ borderColor: "color-mix(in srgb, var(--blueprint) 50%, transparent)" }}
+          />
+          <span className="font-mono text-[10px] tracking-[0.12em]" style={{ color: "var(--kicker-ink)" }}>
+            NO CARDS YET
+          </span>
+        </span>
+        <p className="t-body-sm max-w-prose text-ink-2">
+          Browse the service catalog and miss a few practice questions; both
+          feed your flashcard deck.
         </p>
-        <a
-          href="/catalog"
-          className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-        >
+        <a href="/catalog" className="btn-secondary">
           Browse the catalog
         </a>
       </div>
@@ -202,23 +220,26 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
           running known/to-revisit tally. */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-3">
-          <span className="font-mono text-sm tabular-nums text-ink-soft">
-            {current + 1} / {total}
+          <span className="t-mono tabular-nums text-ink-3">
+            {String(current + 1).padStart(3, "0")} / {String(total).padStart(3, "0")}
           </span>
-          <span className="text-sm text-ink-soft">
-            {knownCount} known &middot; {learningCount} to revisit
+          <span className="t-mono-sm uppercase text-ink-3">
+            {knownCount} known · {learningCount} to revisit
           </span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-surface">
+        <div className="h-1 overflow-hidden rounded-[1px] bg-ground-3">
           <div
-            className="h-full bg-brand transition-[width]"
-            style={{ width: `${((current + 1) / total) * 100}%` }}
+            className="h-full transition-[width]"
+            style={{
+              width: `${((current + 1) / total) * 100}%`,
+              background: "var(--blueprint)",
+            }}
           />
         </div>
       </div>
 
       {!storageAvailable() && (
-        <p className="text-sm text-ink-soft">
+        <p className="t-body-sm text-ink-3">
           Progress will not be saved in this browser.
         </p>
       )}
@@ -233,41 +254,66 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
         aria-label="Flashcard"
         tabIndex={0}
         onKeyDown={onKeyDown}
-        className="rounded-lg outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand"
+        className="relative rounded-r3 outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus"
+        style={{ perspective: "1200px" }}
       >
+        {/* The deck: two slivers wait behind the live card. */}
         <div
-          className="rounded-lg border border-hairline bg-raised p-5 transition-transform sm:p-6"
-          style={{ transform: flipped ? "rotateY(360deg)" : "rotateY(0deg)" }}
+          aria-hidden="true"
+          className="absolute inset-0 rounded-r3 border border-line-2 bg-ground-1"
+          style={{ transform: "translateY(14px) scale(0.97)", opacity: 0.3 }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 rounded-r3 border border-line-2 bg-ground-1"
+          style={{ transform: "translateY(7px) scale(0.985)", opacity: 0.55 }}
+        />
+        <div
+          className={`relative flex min-h-[280px] flex-col rounded-r3 border border-line-2 p-5 sm:min-h-[320px] sm:p-6 ${
+            flipped ? "bg-ground-2" : "bg-ground-1"
+          }`}
+          style={{
+            transform: flipped ? "rotateY(360deg)" : "rotateY(0deg)",
+            transition: "transform 320ms var(--ease-flip)",
+            backfaceVisibility: "hidden",
+          }}
         >
-          <p className="font-mono text-xs uppercase tracking-wide text-ink-soft">
-            {eyebrow}
-          </p>
+          <div className="flex items-baseline gap-3">
+            <span className="t-mono tabular-nums text-ink-3">
+              {String(current + 1).padStart(3, "0")}
+            </span>
+            <span className="t-mono-label ml-auto text-ink-3">
+              {flipped ? "ANSWER" : eyebrow}
+            </span>
+          </div>
 
           {!flipped ? (
-            <div className="mt-3">
-              <p className="text-lg font-semibold text-ink">{card.front}</p>
-              <p className="mt-6 text-sm text-ink-soft">
-                Press Space or Enter to flip
+            <div className="flex flex-1 flex-col items-center justify-center py-6 text-center">
+              <p className="t-title text-ink-1" style={{ textWrap: "balance" }}>
+                {card.front}
+              </p>
+              <p className="t-mono-sm mt-7 uppercase text-ink-3">
+                Space / Enter to flip
               </p>
             </div>
           ) : (
-            <div className="mt-3">
-              <p className="text-base text-ink">{card.back}</p>
+            <div className="flex flex-1 flex-col justify-center py-5">
+              <p className="t-note text-ink-1">{card.back}</p>
               {card.detail && (
-                <p className="mt-2 text-sm text-ink-soft">{card.detail}</p>
+                <p className="t-note mt-2 text-ink-2">{card.detail}</p>
               )}
               <a
                 href={card.reference.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-medium text-brand underline underline-offset-2"
+                className="t-mono-sm mt-4 inline-flex w-fit items-center gap-1 rounded-r1 border px-2 py-1 uppercase transition-colors hover:text-ink-1"
+                style={{
+                  color: "var(--kicker-ink)",
+                  borderColor: "color-mix(in srgb, var(--blueprint) 40%, transparent)",
+                }}
               >
-                {card.reference.label}
+                {card.reference.label} &#8599;
               </a>
-              <p className="mt-6 text-sm text-ink-soft">
-                K &mdash; know it &middot; J &mdash; still learning &middot;
-                &larr; &rarr; move
-              </p>
             </div>
           )}
         </div>
@@ -278,9 +324,12 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
           still-learning. */}
       {mark !== "none" && (
         <p
-          className={`inline-flex items-center gap-2 self-start rounded-md border px-2.5 py-1 text-sm font-medium text-ink ${
-            mark === "known" ? "border-correct" : "border-danger"
-          }`}
+          className="t-mono-sm inline-flex items-center gap-2 self-start rounded-r1 border px-2.5 py-1 uppercase"
+          style={
+            mark === "known"
+              ? { color: "var(--ok)", borderColor: "var(--ok-line)", background: "var(--ok-fill)" }
+              : { color: "var(--err)", borderColor: "var(--err-line)", background: "var(--err-fill)" }
+          }
         >
           <span aria-hidden="true">{mark === "known" ? "✓" : "✗"}</span>
           {mark === "known" ? "Known" : "Still learning"}
@@ -290,18 +339,14 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
       {/* Visible controls — every keyboard action has a button so the deck is
           fully operable by mouse and touch. */}
       <div className="flex flex-wrap items-center gap-3">
-        <button
-          type="button"
-          onClick={flip}
-          className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-        >
+        <button type="button" onClick={flip} className="btn-primary">
           Flip
         </button>
         <button
           type="button"
           onClick={prev}
           disabled={current === 0}
-          className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
+          className="btn-secondary disabled:cursor-not-allowed disabled:opacity-[0.38]"
         >
           Prev
         </button>
@@ -309,35 +354,33 @@ export default function Flashcards({ services, pool }: FlashcardsProps) {
           type="button"
           onClick={next}
           disabled={current === total - 1}
-          className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
+          className="btn-secondary disabled:cursor-not-allowed disabled:opacity-[0.38]"
         >
           Next
         </button>
         <button
           type="button"
-          onClick={() => grade("known")}
-          className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-correct"
-        >
-          Know it
-        </button>
-        <button
-          type="button"
           onClick={() => grade("learning")}
-          className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-danger"
+          className="btn-ghost"
+          style={{ color: "var(--err)" }}
         >
-          Still learning
+          Still learning (J)
         </button>
         <button
           type="button"
-          onClick={restart}
-          className="ml-auto text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink"
+          onClick={() => grade("known")}
+          className="btn-ghost"
+          style={{ color: "var(--ok)" }}
         >
+          Know it (K)
+        </button>
+        <button type="button" onClick={restart} className="btn-ghost ml-auto">
           Restart deck
         </button>
       </div>
 
       {/* Keyboard legend so the map is discoverable without trial and error. */}
-      <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
+      <p className="t-mono-sm flex flex-wrap gap-x-4 gap-y-1 uppercase text-ink-3">
         <span>Space / Enter: flip</span>
         <span>&larr; &rarr; or P / N: move</span>
         <span>K: know it</span>

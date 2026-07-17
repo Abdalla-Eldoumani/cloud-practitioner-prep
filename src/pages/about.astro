@@ -14,18 +14,19 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
   description="About this free, open-source AWS Cloud Practitioner (CLF-C02) study site: how the original practice questions are written and verified, and how scoring works."
 >
   <div class="mx-auto max-w-2xl">
-    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-      About this project
-    </h1>
-    <p class="mt-4 text-lg text-ink-soft">
+    <p class="t-mono-sm uppercase" style="color: var(--kicker-ink)">
+      About · independent · open source
+    </p>
+    <h1 class="t-page mt-3 text-ink-1">About this project</h1>
+    <p class="t-prose mt-5 text-ink-2">
       A free, open-source way to learn AWS fundamentals and prepare for the
       Certified Cloud Practitioner exam, built so a focused week of study is
       enough to walk in ready.
     </p>
 
-    <section class="mt-10">
-      <h2 class="text-xl font-bold text-ink">Not affiliated with AWS</h2>
-      <p class="mt-2 text-ink-soft">
+    <section class="mt-8 rounded-r-r2 border-l-[3px] px-5 py-4" style="background: var(--ground-2); border-color: var(--blueprint)">
+      <h2 class="t-mono-label" style="color: var(--kicker-ink)">Note — not affiliated with AWS</h2>
+      <p class="t-note mt-2 text-ink-2">
         This is an independent study aid. It is not affiliated with, authorized
         by, sponsored by, or endorsed by Amazon Web Services in any way, and it
         is not an AWS partner or official training provider. AWS, Amazon Web
@@ -37,8 +38,8 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
     </section>
 
     <section class="mt-8">
-      <h2 class="text-xl font-bold text-ink">How the questions are made</h2>
-      <p class="mt-2 text-ink-soft">
+      <h2 class="t-title text-[21px] text-ink-1">How the questions are made</h2>
+      <p class="t-note mt-2.5 text-ink-2">
         Every practice question is original, written to test the concepts in the
         published exam guide. None of it is copied from the real exam, and none
         of it comes from leaked or shared exam content. Each answer explanation
@@ -47,14 +48,14 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
     </section>
 
     <section class="mt-8">
-      <h2 class="text-xl font-bold text-ink">How scoring works here</h2>
-      <p class="mt-2 text-ink-soft">
+      <h2 class="t-title text-[21px] text-ink-1">How scoring works here</h2>
+      <p class="t-note mt-2.5 text-ink-2">
         Results show a raw percentage and a per-domain breakdown, plus an honest
         readiness band: building, on track, or exam ready. The bands sit above
         the rough passing line on purpose, so a green result means real
         readiness rather than a bare pass.
       </p>
-      <p class="mt-2 text-ink-soft">
+      <p class="t-note mt-2.5 text-ink-2">
         These are study signals, not the official score. The real exam reports a
         scaled score from 100 to 1000 with a passing mark of {
           EXAM.passingScaledScore
@@ -64,8 +65,8 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
     </section>
 
     <section class="mt-8">
-      <h2 class="text-xl font-bold text-ink">The exam at a glance</h2>
-      <ul class="mt-3 flex flex-col gap-2 text-ink-soft">
+      <h2 class="t-title text-[21px] text-ink-1">The exam at a glance</h2>
+      <ul class="t-note mt-3 flex flex-col gap-2 text-ink-2">
         <li>
           Exam code {EXAM.code}, the current version of the Cloud Practitioner
           exam.
@@ -86,13 +87,13 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
           The certification is valid for {EXAM.validityYears} years.
         </li>
       </ul>
-      <p class="mt-3 text-sm text-ink-soft">
+      <p class="t-body-sm mt-3 text-ink-3">
         Sources:{" "}
         <a
           href={examGuide}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-brand underline underline-offset-2"
+          class="underline underline-offset-2 transition-colors hover:text-ink-1" style="color: var(--kicker-ink)"
         >
           official exam guide
         </a>{" "}
@@ -101,7 +102,7 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
           href={certPage}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-brand underline underline-offset-2"
+          class="underline underline-offset-2 transition-colors hover:text-ink-1" style="color: var(--kicker-ink)"
         >
           certification page
         </a>. Always confirm current details with AWS before you book, since
@@ -110,15 +111,15 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
     </section>
 
     <section class="mt-8">
-      <h2 class="text-xl font-bold text-ink">Open source and self-hostable</h2>
-      <p class="mt-2 text-ink-soft">
+      <h2 class="t-title text-[21px] text-ink-1">Open source and self-hostable</h2>
+      <p class="t-note mt-2.5 text-ink-2">
         This whole site is open source under the MIT license, and you can run
         your own copy. It builds to static files with no backend, no database,
         and no accounts, so you can clone the repository and deploy it for free
         to Vercel or any static host, or run it locally. Your study progress
         stays in your own browser and never leaves your device.
       </p>
-      <p class="mt-2 text-ink-soft">
+      <p class="t-note mt-2.5 text-ink-2">
         Contributions are welcome: new lessons, more practice questions, and
         corrections. If you find a claim that no longer matches the AWS
         documentation, please open an issue.
@@ -127,10 +128,21 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
         href={repo}
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-3 inline-block rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand"
+        class="btn-secondary mt-4 inline-block"
       >
         View the source on GitHub
       </a>
+    </section>
+
+    <section class="mt-10 rounded-r3 border border-line-1 bg-ground-1 px-5 py-4.5 sm:px-6">
+      <p class="t-mono-label" style="color: var(--kicker-ink)">Colophon</p>
+      <div class="mt-3 grid grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 font-mono text-[11.5px]">
+        <span class="text-ink-3">STACK</span><span class="text-ink-2">Astro · Tailwind v4 · React islands</span>
+        <span class="text-ink-3">STORAGE</span><span class="text-ink-2">localStorage only — no accounts, no tracking</span>
+        <span class="text-ink-3">TYPE</span><span class="text-ink-2">Archivo · Literata · Sometype Mono (Fontsource)</span>
+        <span class="text-ink-3">LICENSE</span><span class="text-ink-2">MIT · source on GitHub</span>
+        <span class="text-ink-3">VERIFIED</span><span class="text-ink-2">Facts checked against AWS docs</span>
+      </div>
     </section>
   </div>
 </BaseLayout>
