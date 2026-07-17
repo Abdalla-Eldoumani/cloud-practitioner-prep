@@ -18,7 +18,18 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    sitemap({
+      // The app links, the canonical tags, and the service worker precache all
+      // use slashless page URLs; the sitemap publishes the same form so search
+      // engines send visitors to the exact paths the app serves offline.
+      serialize(item) {
+        const url = new URL(item.url);
+        if (url.pathname.length > 1) {
+          item.url = item.url.replace(/\/+$/, "");
+        }
+        return item;
+      },
+    }),
     AstroPWA({
       // prompt, not autoUpdate: a new version never reloads a learner out of an
       // in-progress timed exam. The reload offer is surfaced; the user decides.
