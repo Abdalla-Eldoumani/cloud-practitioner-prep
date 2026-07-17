@@ -1,34 +1,32 @@
+import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
 import { $progress } from "@/lib/store";
-import {
-  clearProgress,
-  defaultProgress,
-  storageAvailable,
-} from "@/lib/progress";
-import { domainName, EXAM } from "@/lib/constants";
+import { storageAvailable } from "@/lib/progress";
+import { domainName } from "@/lib/constants";
 import { mockTrend, readinessFromPercent, readinessLabel } from "@/lib/scoring";
-import {
-  computeReadiness,
-  EXAM_READY_PERCENT,
-  MIN_DOMAIN_SAMPLE,
-} from "@/lib/readiness";
-import type { Question, QuizMode } from "@/lib/types";
+import { computeReadiness, MIN_DOMAIN_SAMPLE } from "@/lib/readiness";
+import BandChip, { readinessVars } from "@/components/BandChip";
+import type { AttemptSummary, Question, Readiness } from "@/lib/types";
+
+// The progress page: readiness legible in three seconds. Verdict chip first,
+// one plain sentence naming what holds it down, three stats — then the mock
+// traverse (attempts as survey stations against the band contours), domain
+// bars, and the attempt history. Conservative by design: the overall verdict
+// is only as strong as the weakest domain.
 
 interface ProgressDashboardProps {
-  // Passed from the Astro page, which can count the content collection.
   totalLessons: number;
-  // Only the topic and domain of each question, passed from the page (islands
-  // take their data as props, never import the bank). Readiness attributes each
-  // answered topic to its domain through this join and reads nothing else, so the
-  // page sends this slim projection instead of inlining the whole question text.
+  // Slim projection of the bank (topic + domain per question) for readiness
+  // attribution; islands take data as props, never import the bank.
   pool: Pick<Question, "topic" | "domain">[];
 }
 
-function modeLabel(mode: QuizMode): string {
-  if (mode === "exam") return "Mock exam";
-  if (mode === "review") return "Review";
-  return "Practice";
-}
+const BAND_RANK: Record<Readiness, number> = {
+  "not-ready": 0,
+  building: 1,
+  "on-track": 2,
+  "exam-ready": 3,
+};
 
 function formatDate(ms: number): string {
   try {
@@ -41,347 +39,565 @@ function formatDate(ms: number): string {
   }
 }
 
+// The mock traverse: attempts as stations on a percent elevation, band
+// thresholds as dotted contours. One drawing for any count — the axis never
+// changes, nothing extrapolates. Desktop and mobile are separate drawings of
+// the same data, never a shrunken copy.
+function Traverse({
+  trend,
+  compact,
+}: {
+  trend: AttemptSummary[];
+  compact: boolean;
+}) {
+  const w = compact ? 560 : 1120;
+  const h = compact ? 250 : 268;
+  const yAt60 = compact ? 164 : 176;
+  const k = compact ? 3.0 : 3.2; // px per percent
+  // Elevation is honest; only the drawing position clamps so an outlier
+  // cannot leave the panel. The printed number stays the true score.
+  const y = (p: number) => yAt60 - (Math.max(30, Math.min(100, p)) - 60) * k;
+  const xL = compact ? 42 : 76;
+  const xR = compact ? 476 : 1000;
+  const n = trend.length;
+  const x = (i: number) =>
+    n === 1 ? (xL + xR) / 2 : xL + ((xR - xL) * i) / (n - 1);
+  const lineEnd = compact ? 508 : 1020;
+  const labelX = compact ? 512 : 1028;
+  const labelStep = Math.max(1, Math.ceil(n / 8));
+  const label =
+    n === 1
+      ? `One mock attempt at ${trend[0].percent} percent.`
+      : `${n} mock attempts drawn as survey stations from ${trend[0].percent} to ${trend[n - 1].percent} percent against the band contours at 60, 75, and 85.`;
+  const contours: { p: number; color: string; text: string }[] = [
+    { p: 60, color: "var(--err)", text: compact ? "60" : "60 — BUILDING LINE" },
+    { p: 75, color: "var(--flag)", text: compact ? "75" : "75 — ON TRACK LINE" },
+    { p: 85, color: "var(--ok)", text: compact ? "85" : "85 — EXAM READY" },
+  ];
+  return (
+    <svg
+      viewBox={`0 0 ${w} ${h}`}
+      className="mt-3 h-auto w-full"
+      role="img"
+      aria-label={label}
+    >
+      {contours.map((c) => (
+        <g key={c.p}>
+          <path
+            d={`M${xL - (compact ? 22 : 36)} ${y(c.p)}H${lineEnd}`}
+            stroke={c.color}
+            strokeOpacity="0.4"
+            strokeWidth="1"
+            strokeDasharray="2 5"
+          />
+          <text
+            x={labelX}
+            y={y(c.p) + 4}
+            fontFamily="Sometype Mono Variable, monospace"
+            fontSize={compact ? 12 : 9}
+            fill={c.color}
+          >
+            {c.text}
+          </text>
+        </g>
+      ))}
+      {n > 1 && (
+        <polyline
+          points={trend.map((a, i) => `${x(i)},${y(a.percent)}`).join(" ")}
+          fill="none"
+          stroke="var(--blueprint)"
+          strokeWidth="1.6"
+          strokeDasharray="0.1 6.5"
+          strokeLinecap="round"
+          opacity="0.8"
+        />
+      )}
+      {trend.map((a, i) => {
+        const last = i === n - 1;
+        return (
+          <g key={a.id}>
+            {last && (
+              <circle
+                cx={x(i)}
+                cy={y(a.percent)}
+                r="10"
+                fill="none"
+                stroke="color-mix(in srgb, var(--blueprint) 50%, transparent)"
+                strokeWidth="1.5"
+              />
+            )}
+            <circle
+              cx={x(i)}
+              cy={y(a.percent)}
+              r="7"
+              fill="var(--ground-1)"
+              stroke="var(--ink-1)"
+              strokeWidth="1.6"
+            />
+            <circle cx={x(i)} cy={y(a.percent)} r="2.4" fill="var(--ink-1)" />
+            {(i % labelStep === 0 || last) && (
+              <text
+                x={x(i)}
+                y={h - (compact ? 30 : 36)}
+                textAnchor="middle"
+                fontFamily="Sometype Mono Variable, monospace"
+                fontSize={compact ? 13 : 9.5}
+                fill={last ? "var(--ink-1)" : "var(--ink-3)"}
+              >
+                {compact ? a.percent : `A${i + 1} · ${a.percent}`}
+              </text>
+            )}
+            {last && !compact && (
+              <text
+                x={x(i)}
+                y={y(a.percent) - 21}
+                textAnchor="middle"
+                fontFamily="Sometype Mono Variable, monospace"
+                fontSize="8.5"
+                fill="var(--blueprint)"
+              >
+                LATEST
+              </text>
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 export default function ProgressDashboard({
   totalLessons,
   pool,
 }: ProgressDashboardProps) {
   const progress = useStore($progress);
   const persists = storageAvailable();
+  const [bannerDismissed, setBannerDismissed] = useState(() => {
+    try {
+      return sessionStorage.getItem("ccp-prep:storage-banner") === "dismissed";
+    } catch {
+      return false;
+    }
+  });
+  const [showAllAttempts, setShowAllAttempts] = useState(false);
+  // Everything here reads browser-only state (the store, storage
+  // availability), so the server renders nothing and the view mounts after
+  // hydration; otherwise the server's empty snapshot mismatches the client's
+  // loaded one.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const lessonsDone = progress.completedLessons.length;
-  const lessonPercent =
-    totalLessons === 0
-      ? 0
-      : Math.round((lessonsDone / totalLessons) * 100);
-
-  const examAttempts = progress.attempts.filter((a) => a.mode === "exam");
-  const bestExam =
-    examAttempts.length > 0
-      ? Math.max(...examAttempts.map((a) => a.percent))
-      : null;
-
-  // The mock score trend, oldest-to-newest, from the single pure source so the
-  // filter/order rule is not re-derived here. The list below carries the data;
-  // the sparkline is the labelled visual summary over the same points.
   const trend = mockTrend(progress.attempts);
-  const latestTrendPercent =
-    trend.length > 0 ? trend[trend.length - 1].percent : null;
-
-  // Headline of the review queue = the deduplicated union of flagged and missed
-  // (a question both flagged and missed counts once); the flagged/missed numbers
-  // below it are the detail.
+  const bestMock =
+    trend.length > 0 ? Math.max(...trend.map((a) => a.percent)) : null;
   const reviewQueueSize = new Set([
     ...progress.flaggedQuestions,
     ...progress.incorrectQuestions,
   ]).size;
 
-  // The honest readiness signal: per-domain and per-topic accuracy plus ONE
-  // conservative ready/not-yet verdict, derived only from answered questions.
   const readiness = computeReadiness(progress, pool);
-  // Per-topic snapshot sorted by domain, then weakest first within a domain, so
-  // real weak spots surface at the top of each domain group.
-  const topicsByDomain = [...readiness.byTopic].sort(
-    (a, b) => a.domain - b.domain || a.percent - b.percent,
-  );
+  const answeredTotal = readiness.byDomain.reduce((s, d) => s + d.seen, 0);
 
-  function handleClear() {
-    const ok = window.confirm(
-      "Clear all saved progress on this device? This cannot be undone.",
-    );
-    if (!ok) return;
-    clearProgress();
-    $progress.set(defaultProgress());
+  const empty =
+    progress.attempts.length === 0 && lessonsDone === 0 && reviewQueueSize === 0;
+
+  // The verdict: exam-ready only when every domain clears the bar over a real
+  // sample; otherwise the weakest measured domain's band, capped at building
+  // while any domain is still unmeasured.
+  const measured = readiness.byDomain.filter((d) => d.seen > 0);
+  const unmeasured = readiness.byDomain.filter((d) => d.seen === 0);
+  let verdict: Readiness | null = null;
+  if (measured.length > 0) {
+    verdict = readiness.overallReady
+      ? "exam-ready"
+      : measured.reduce<Readiness>((acc, d) => {
+          const b = readinessFromPercent(d.percent);
+          return BAND_RANK[b] < BAND_RANK[acc] ? b : acc;
+        }, "exam-ready");
+    if (!readiness.overallReady && unmeasured.length > 0 && BAND_RANK[verdict] > 1) {
+      verdict = "building";
+    }
   }
 
+  const weakNames = measured
+    .filter((d) => d.seen >= MIN_DOMAIN_SAMPLE && d.percent < 75)
+    .map((d) => domainName(d.domain));
+  const thinNames = readiness.byDomain
+    .filter((d) => d.seen < MIN_DOMAIN_SAMPLE)
+    .map((d) => domainName(d.domain));
+  const naming = (names: string[]) =>
+    names.length === 1
+      ? names[0]
+      : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  const sentence = readiness.overallReady
+    ? "Every domain reads exam-ready over a real sample. If your last two mocks agree, trust them and book."
+    : weakNames.length > 0
+      ? `${naming(weakNames)} ${weakNames.length === 1 ? "is" : "are"} holding the verdict down. Exam-ready needs every domain on track — the verdict is only as strong as the weakest one.`
+      : thinNames.length > 0
+        ? `${naming(thinNames)} ${thinNames.length === 1 ? "has" : "have"} not logged enough answers to read yet. A domain needs ${MIN_DOMAIN_SAMPLE} answered questions before its band counts.`
+        : "Every measured domain is on track. Push each one past 85 to read exam-ready.";
+
+  const historyRows = [...trend].reverse();
+  const visibleRows = showAllAttempts ? historyRows : historyRows.slice(0, 4);
+
+  const dismissBanner = () => {
+    setBannerDismissed(true);
+    try {
+      sessionStorage.setItem("ccp-prep:storage-banner", "dismissed");
+    } catch {
+      // session-only dismissal simply will not stick
+    }
+  };
+
+  if (!mounted) return null;
+
   return (
-    <div className="flex flex-col gap-6">
-      {!persists && (
-        <div className="rounded-md border border-flag bg-surface px-4 py-3 text-sm text-ink">
-          Storage is unavailable in this browser, so progress will not be saved
-          between visits. Everything still works for this session.
+    <div className="flex flex-col gap-5">
+      {!persists && !bannerDismissed && (
+        <div
+          className="flex flex-wrap items-center gap-3 rounded-r2 border px-4 py-3"
+          style={{
+            background: "var(--flag-fill)",
+            borderColor: "var(--flag-line)",
+          }}
+        >
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="var(--flag)"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3.5 14.5V2.5" />
+            <path d="M3.5 3h8.5l-2.2 2.8L12 8.5H3.5" />
+          </svg>
+          <span className="t-body-sm font-[520]" style={{ color: "var(--flag)" }}>
+            This browser is blocking storage. Everything works — nothing will
+            persist after you leave.
+          </span>
+          <button
+            type="button"
+            onClick={dismissBanner}
+            className="t-mono-sm ml-auto rounded-r1 border px-2.5 py-1 uppercase text-ink-3 transition-colors hover:text-ink-1"
+            style={{ borderColor: "var(--flag-line)" }}
+          >
+            Dismiss
+          </button>
         </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-lg border border-hairline bg-raised p-5">
-          <p className="text-sm font-medium text-ink-soft">Lessons complete</p>
-          <p className="mt-1 text-3xl font-bold text-ink">
-            {lessonsDone}
-            <span className="text-lg font-medium text-ink-soft">
-              {" "}
-              / {totalLessons}
-            </span>
-          </p>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface">
-            <div
-              className="h-full rounded-full bg-brand"
-              style={{ width: `${lessonPercent}%` }}
+      {empty ? (
+        <div className="flex flex-col items-start gap-3.5 rounded-r3 border border-line-1 bg-ground-1 px-6 py-9 sm:px-8">
+          <span className="inline-flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true">
+              <circle
+                cx="9"
+                cy="9"
+                r="6.6"
+                fill="none"
+                stroke="var(--ink-3)"
+                strokeWidth="1.6"
+              />
+            </svg>
+            <span
+              aria-hidden="true"
+              className="inline-block w-[72px] border-t-2 border-dotted"
+              style={{
+                borderColor: "color-mix(in srgb, var(--blueprint) 50%, transparent)",
+              }}
             />
-          </div>
-        </div>
-
-        <div className="rounded-lg border border-hairline bg-raised p-5">
-          <p className="text-sm font-medium text-ink-soft">Best mock score</p>
-          <p className="mt-1 text-3xl font-bold text-ink">
-            {bestExam === null ? "—" : `${bestExam}%`}
-          </p>
-          <p className="mt-2 text-sm text-ink-soft">
-            {bestExam === null
-              ? "No full mock yet"
-              : readinessLabel(readinessFromPercent(bestExam))}
-          </p>
-        </div>
-
-        <div className="rounded-lg border border-hairline bg-raised p-5">
-          <p className="text-sm font-medium text-ink-soft">Review queue</p>
-          <p className="mt-1 text-3xl font-bold text-ink">{reviewQueueSize}</p>
-          <p className="mt-2 text-sm text-ink-soft">
-            {progress.flaggedQuestions.length} flagged,{" "}
-            {progress.incorrectQuestions.length} missed
-          </p>
-        </div>
-      </div>
-
-      <div className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
-        <h2 className="text-lg font-semibold text-ink">Readiness</h2>
-        <p className="mt-1 text-sm text-ink-soft">
-          Based only on the questions you have answered so far.
-        </p>
-
-        <div
-          className={`mt-4 rounded-lg border px-4 py-3 ${
-            readiness.overallReady
-              ? "border-correct bg-correct-soft text-correct"
-              : "border-flag bg-surface text-flag"
-          }`}
-        >
-          <p className="text-xs font-medium uppercase tracking-wide text-ink-soft">
-            Overall
-          </p>
-          <p className="text-xl font-bold">
-            {readiness.overallReady ? "Looks ready" : "Not yet ready"}
-          </p>
-          <p className="mt-1 text-sm text-ink">{readiness.reason}</p>
-        </div>
-
-        <div className="mt-6">
-          <h3 className="mb-3 text-sm font-semibold text-ink">By exam domain</h3>
-          <ul className="flex flex-col gap-3">
-            {readiness.byDomain.map((d) => {
-              const underSampled = d.seen < MIN_DOMAIN_SAMPLE;
-              return (
-                <li key={d.domain}>
-                  <div className="mb-1 flex items-baseline justify-between gap-3 text-sm">
-                    <span className="font-medium text-ink">
-                      {domainName(d.domain)}
-                    </span>
-                    <span className="text-ink-soft">
-                      {underSampled
-                        ? "not enough data yet"
-                        : `${d.correct}/${d.seen} (${d.percent}%) · ${readinessLabel(
-                            readinessFromPercent(d.percent),
-                          )}`}
-                    </span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-surface">
-                    <div
-                      className="h-full rounded-full bg-brand"
-                      style={{ width: `${d.percent}%` }}
-                    />
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        {topicsByDomain.length > 0 && (
-          <div className="mt-6">
-            <h3 className="mb-3 text-sm font-semibold text-ink">By topic</h3>
-            <ul className="flex flex-col gap-2">
-              {topicsByDomain.map((t) => (
-                <li
-                  key={t.key}
-                  className="flex items-baseline justify-between gap-3 text-sm"
-                >
-                  <span className="text-ink">
-                    {t.label}
-                    <span className="text-ink-soft">
-                      {" · "}
-                      {domainName(t.domain)}
-                    </span>
-                  </span>
-                  <span className="text-ink-soft">
-                    {t.correct}/{t.seen} ({t.percent}%)
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <p className="mt-6 border-t border-hairline pt-4 text-sm text-ink-soft">
-          This percentage and readiness band are study signals from this question
-          set. They are not the official AWS scaled score, which runs from 100 to
-          1000 with a passing mark of {EXAM.passingScaledScore} and is calculated
-          by AWS. A domain reads ready only at {EXAM_READY_PERCENT}% or above over
-          at least {MIN_DOMAIN_SAMPLE} answered questions.
-        </p>
-      </div>
-
-      <div className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
-        <h2 className="text-lg font-semibold text-ink">Mock score trend</h2>
-        <p className="mt-1 text-sm text-ink-soft">
-          Your overall score on each full mock, oldest to newest.
-        </p>
-
-        {trend.length === 0 ? (
-          <p className="mt-4 text-ink-soft">
-            Your mock scores will chart here once you finish a full mock.{" "}
-            <a
-              href="/practice/exam"
-              className="font-medium text-brand underline underline-offset-2 hover:text-brand-strong"
+            <span
+              className="font-mono text-[10px] tracking-[0.14em]"
+              style={{ color: "var(--kicker-ink)" }}
             >
-              Sit a mock
-            </a>{" "}
-            to start your trend.
+              FIRST STATION AHEAD
+            </span>
+          </span>
+          <p className="t-sub text-ink-1">No marks yet.</p>
+          <p className="t-body-sm max-w-[400px] text-ink-2">
+            Fix your first station — day one is 75 minutes — or sit a mock cold
+            to see where you stand. Both leave marks here.
           </p>
-        ) : (
-          <>
-            {/* The sparkline is a labelled visual summary; the dated list below
-                is its text alternative and carries the same data. A single
-                attempt renders a dot, never an empty polyline. Percents map
-                straight to the 0-100 viewBox, so a corrupt out-of-range value
-                only skews a coordinate — it never executes or breaks render. */}
-            <div className="mt-4 text-brand">
-              {(() => {
-                const w = 300;
-                const h = 80;
-                const padX = 6;
-                const padY = 6;
-                const span = w - padX * 2;
-                const inner = h - padY * 2;
-                const n = trend.length;
-                const x = (i: number) =>
-                  n === 1 ? w / 2 : padX + (span * i) / (n - 1);
-                const y = (percent: number) =>
-                  padY + inner * (1 - percent / 100);
-                const points = trend
-                  .map((a, i) => `${x(i)},${y(a.percent)}`)
-                  .join(" ");
-                const label =
-                  n === 1
-                    ? `Mock score trend: one mock at ${trend[0].percent}%.`
-                    : `Mock score trend over ${n} mocks, from ${trend[0].percent}% to ${latestTrendPercent}%.`;
-                return (
-                  <svg
-                    role="img"
-                    aria-label={label}
-                    viewBox={`0 0 ${w} ${h}`}
-                    preserveAspectRatio="none"
-                    className="h-20 w-full"
-                  >
-                    {n > 1 && (
-                      <polyline
-                        points={points}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    )}
-                    {trend.map((a, i) => (
-                      <circle
-                        key={a.id}
-                        cx={x(i)}
-                        cy={y(a.percent)}
-                        r={3}
-                        fill="currentColor"
-                      />
-                    ))}
+          <div className="mt-1.5 flex flex-wrap gap-3">
+            <a href="/learn" className="btn-primary">
+              Start day 1
+            </a>
+            <a href="/practice/exam" className="btn-secondary">
+              Sit a mock cold
+            </a>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* The three-second readout. */}
+          <div className="flex flex-col rounded-r3 border border-line-1 bg-ground-1 md:flex-row md:items-stretch">
+            <div className="flex flex-[1.4] flex-col gap-2.5 px-6 py-6 sm:px-8">
+              {verdict ? (
+                <BandChip readiness={verdict} className="w-fit" />
+              ) : (
+                <span className="t-mono-sm w-fit rounded-r1 border border-line-2 px-3 py-2 uppercase tracking-[0.14em] text-ink-3">
+                  No verdict yet
+                </span>
+              )}
+              <p className="t-body-sm max-w-[420px] text-ink-2">{sentence}</p>
+            </div>
+            <div className="flex flex-col justify-center gap-1 border-t border-line-1 px-6 py-5 md:flex-1 md:border-t-0 md:border-l sm:px-8">
+              <span className="font-mono text-[9.5px] tracking-[0.18em] text-ink-3">
+                BEST MOCK
+              </span>
+              <span className="t-mono-lg tabular-nums text-ink-1">
+                {bestMock === null ? "—" : bestMock}
+                {bestMock !== null && (
+                  <span className="text-sm text-ink-3">%</span>
+                )}
+              </span>
+            </div>
+            <div className="flex flex-col justify-center gap-1 border-t border-line-1 px-6 py-5 md:flex-1 md:border-t-0 md:border-l sm:px-8">
+              <span className="font-mono text-[9.5px] tracking-[0.18em] text-ink-3">
+                LESSONS FIXED
+              </span>
+              <span className="t-mono-lg tabular-nums text-ink-1">
+                {lessonsDone}
+                <span className="text-sm text-ink-3">/{totalLessons}</span>
+              </span>
+              <span
+                className="mt-1 flex flex-wrap gap-[3px]"
+                role="img"
+                aria-label={`${lessonsDone} of ${totalLessons} lessons fixed`}
+              >
+                {Array.from({ length: totalLessons }, (_, i) => (
+                  <span
+                    key={i}
+                    className="block h-1 w-[9px]"
+                    style={{
+                      background:
+                        i < lessonsDone
+                          ? "var(--ink-1)"
+                          : "color-mix(in srgb, var(--blueprint) 30%, transparent)",
+                    }}
+                  />
+                ))}
+              </span>
+            </div>
+            <div className="flex flex-col justify-center gap-1 border-t border-line-1 px-6 py-5 md:flex-1 md:border-t-0 md:border-l sm:px-8">
+              <span className="font-mono text-[9.5px] tracking-[0.18em] text-ink-3">
+                REVIEW QUEUE
+              </span>
+              <span className="t-mono-lg tabular-nums text-ink-1">
+                {reviewQueueSize}
+              </span>
+              <a
+                href="/practice/review"
+                className="t-mono-sm uppercase text-ink-3 transition-colors hover:text-ink-1"
+              >
+                Unfixed points &rarr;
+              </a>
+            </div>
+          </div>
+
+          {/* The mock traverse: the page's one instrument. */}
+          <div className="substrate relative rounded-r3 border border-line-1 bg-ground-1 px-5 py-5 sm:px-7">
+            <span
+              aria-hidden="true"
+              className="absolute -top-px -left-px size-3.5 border-t-2 border-l-2 border-blueprint"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute -top-px -right-px size-3.5 border-t-2 border-r-2 border-blueprint"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-px -left-px size-3.5 border-b-2 border-l-2 border-blueprint"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-px -right-px size-3.5 border-b-2 border-r-2 border-blueprint"
+            />
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <p className="t-mono-label" style={{ color: "var(--kicker-ink)" }}>
+                Mock traverse — {trend.length} attempt{trend.length === 1 ? "" : "s"}
+              </p>
+              {trend.length > 0 && (
+                <p className="t-mono-sm hidden uppercase text-ink-3 sm:block">
+                  Elev = raw % · contours = bands
+                </p>
+              )}
+            </div>
+            {trend.length === 0 ? (
+              <div className="mt-4 flex flex-col items-start gap-3 py-4">
+                <span className="inline-flex items-center gap-3">
+                  <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                    <circle
+                      cx="9"
+                      cy="9"
+                      r="6.6"
+                      fill="none"
+                      stroke="var(--ink-3)"
+                      strokeWidth="1.6"
+                    />
                   </svg>
-                );
-              })()}
+                  <span
+                    aria-hidden="true"
+                    className="inline-block w-[64px] border-t-2 border-dotted"
+                    style={{
+                      borderColor:
+                        "color-mix(in srgb, var(--blueprint) 50%, transparent)",
+                    }}
+                  />
+                </span>
+                <p className="t-body-sm max-w-[420px] text-ink-2">
+                  The traverse draws after your first full mock. Every attempt
+                  becomes a station on this elevation.
+                </p>
+                <a href="/practice/exam" className="btn-secondary">
+                  Sit a mock
+                </a>
+              </div>
+            ) : (
+              <>
+                <div className="hidden md:block">
+                  <Traverse trend={trend} compact={false} />
+                </div>
+                <div className="md:hidden">
+                  <Traverse trend={trend} compact />
+                </div>
+                {trend.length <= 2 && (
+                  <p className="t-body-sm mt-2 text-ink-3">
+                    {trend.length === 1
+                      ? "One attempt in. The contours already mean something."
+                      : "Two attempts in. The traverse is short — the contours already mean something."}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
+            {/* Domain accuracy bars. */}
+            <div className="rounded-r3 border border-line-1 bg-ground-1 px-5 py-5 sm:px-7">
+              <p className="t-mono-label" style={{ color: "var(--kicker-ink)" }}>
+                By domain — practice accuracy
+              </p>
+              <div className="mt-4 flex flex-col gap-4">
+                {readiness.byDomain.map((d) => {
+                  const domainVar = `var(--d${d.domain})`;
+                  const thin = d.seen < MIN_DOMAIN_SAMPLE;
+                  const rowBand = readinessFromPercent(d.percent);
+                  return (
+                    <div
+                      key={d.domain}
+                      className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5"
+                    >
+                      <span
+                        className="t-mono-sm w-6 flex-none"
+                        style={{ color: domainVar }}
+                      >
+                        D{d.domain}
+                      </span>
+                      <span className="t-body-sm w-[170px] flex-none truncate text-ink-2">
+                        {domainName(d.domain)}
+                      </span>
+                      <span className="relative h-1.5 min-w-[80px] flex-1 overflow-hidden rounded-[1px] bg-ground-3">
+                        <span
+                          className="absolute inset-y-0 left-0"
+                          style={{ width: `${d.percent}%`, background: domainVar }}
+                        />
+                      </span>
+                      <span className="t-mono w-[42px] flex-none text-right tabular-nums text-ink-1">
+                        {thin ? "—" : `${d.percent}%`}
+                      </span>
+                      <span className="hidden w-[92px] flex-none text-right font-mono text-[10px] text-ink-3 sm:block">
+                        {d.seen} ANSWERED
+                      </span>
+                      <span
+                        className="hidden w-[90px] flex-none text-right font-mono text-[10px] uppercase tracking-[0.1em] sm:block"
+                        style={{
+                          color: thin
+                            ? "var(--ink-3)"
+                            : readinessVars(rowBand).color,
+                        }}
+                      >
+                        {thin ? "THIN DATA" : readinessLabel(rowBand)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="t-body-sm mt-4 text-ink-3">
+                {answeredTotal} answers recorded across {pool.length} questions.
+                Accuracy counts every recorded answer; a domain reads only after{" "}
+                {MIN_DOMAIN_SAMPLE} of them.
+              </p>
             </div>
 
-            <ol className="mt-4 flex flex-col divide-y divide-hairline">
-              {trend.map((a, i) => (
-                <li
-                  key={a.id}
-                  className="flex items-center justify-between gap-3 py-2.5 text-sm"
-                >
-                  <span className="text-ink-soft">
-                    Mock {i + 1}
-                    <span className="text-ink-soft">
-                      {" · "}
-                      {formatDate(a.finishedAt)}
-                    </span>
-                  </span>
-                  <span className="flex items-center gap-3">
-                    <span className="text-ink-soft">
-                      {readinessLabel(readinessFromPercent(a.percent))}
-                    </span>
-                    <span className="font-semibold text-ink">{a.percent}%</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </>
-        )}
-      </div>
-
-      <div className="rounded-lg border border-hairline bg-raised p-5 sm:p-6">
-        <h2 className="text-lg font-semibold text-ink">Recent attempts</h2>
-        {progress.attempts.length === 0 ? (
-          <p className="mt-2 text-ink-soft">
-            Your practice and mock results will appear here.
-          </p>
-        ) : (
-          <ul className="mt-4 flex flex-col divide-y divide-hairline">
-            {progress.attempts.slice(0, 12).map((a) => (
-              <li
-                key={a.id}
-                className="flex items-center justify-between gap-3 py-2.5"
-              >
-                <div>
-                  <span className="font-medium text-ink">
-                    {modeLabel(a.mode)}
-                  </span>
-                  <span className="text-ink-soft">
-                    {a.domain === "all"
-                      ? " · all domains"
-                      : ` · ${domainName(a.domain)}`}
-                  </span>
+            {/* Attempt history. */}
+            <div className="rounded-r3 border border-line-1 bg-ground-1 px-5 py-5 sm:px-7">
+              <div className="flex items-baseline justify-between">
+                <p className="t-mono-label" style={{ color: "var(--kicker-ink)" }}>
+                  Attempt history
+                </p>
+                <p className="t-mono-sm uppercase text-ink-3">
+                  {trend.length} total
+                </p>
+              </div>
+              {historyRows.length === 0 ? (
+                <p className="t-body-sm mt-3 text-ink-2">
+                  Finished mocks log here, newest first.
+                </p>
+              ) : (
+                <div className="mt-2 flex flex-col">
+                  {visibleRows.map((a, i) => {
+                    const number = historyRows.length - i;
+                    const rowBand = readinessFromPercent(a.percent);
+                    return (
+                      <div
+                        key={a.id}
+                        className="flex items-center gap-3 border-b border-line-1 py-2.5 last:border-b-0"
+                      >
+                        <span className="t-mono-sm w-7 flex-none text-ink-3">
+                          A{number}
+                        </span>
+                        <span className="w-11 flex-none font-mono text-sm tabular-nums text-ink-1">
+                          {a.percent}%
+                        </span>
+                        <span
+                          className="font-mono text-[9.5px] uppercase tracking-[0.1em]"
+                          style={{ color: readinessVars(rowBand).color }}
+                        >
+                          {readinessLabel(rowBand)}
+                        </span>
+                        <span className="t-mono-sm ml-auto flex-none text-ink-3">
+                          {Math.round(a.durationSeconds / 60)} MIN
+                        </span>
+                        <span className="t-mono-sm flex-none text-ink-3">
+                          {formatDate(a.finishedAt)}
+                        </span>
+                      </div>
+                    );
+                  })}
+                  {historyRows.length > 4 && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllAttempts((v) => !v)}
+                      className="t-mono-sm self-start pt-3 uppercase text-ink-3 transition-colors hover:text-ink-1"
+                    >
+                      {showAllAttempts
+                        ? "Show fewer ▴"
+                        : `Show all ${historyRows.length} ▾`}
+                    </button>
+                  )}
                 </div>
-                <div className="flex items-center gap-4 text-sm">
-                  <span className="text-ink-soft">{formatDate(a.finishedAt)}</span>
-                  <span className="font-semibold text-ink">{a.percent}%</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <a
-          href="/practice"
-          className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-        >
-          Practice now
-        </a>
-        {progress.attempts.length > 0 && (
-          <button
-            type="button"
-            onClick={handleClear}
-            className="text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-danger"
-          >
-            Clear all progress
-          </button>
-        )}
-      </div>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

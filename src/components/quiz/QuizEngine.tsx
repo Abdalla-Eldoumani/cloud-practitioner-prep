@@ -36,6 +36,7 @@ import ExamBar from "./ExamBar";
 import MarkSheet, { type MarkCell } from "./MarkSheet";
 import QuestionCard from "./QuestionCard";
 import ResultsPanel from "./ResultsPanel";
+import ReviewList from "./ReviewList";
 
 interface QuizEngineProps {
   // The full question pool, serialized from the data layer by the Astro page.
@@ -472,7 +473,7 @@ export default function QuizEngine({
   if (phase === "intro") {
     const mins = Math.round(EXAM.timeLimitSeconds / 60);
     return (
-      <div className="mx-auto mt-8 w-full max-w-[760px]">
+      <div className="mx-auto mt-8 w-full max-w-[920px]">
         <div className="rounded-r3 border border-line-1 bg-ground-1 p-6 sm:p-8">
           <h2 className="t-title text-ink-1">Full mock exam</h2>
           <p className="t-mono mt-2 uppercase text-ink-3">
@@ -507,15 +508,34 @@ export default function QuizEngine({
   }
 
   if (phase === "results" && result) {
+    if (mode === "exam") {
+      // The exam ceremony: the tally over the sitting's questions, the
+      // attempt number from the just-recorded store, and the missed-first
+      // review list in place of full card re-renders.
+      const tally = questions.map((q, i) => ({
+        n: i + 1,
+        correct: isAnswerCorrect(q, answers[q.id] ?? []),
+      }));
+      const attemptNumber = $progress
+        .get()
+        .attempts.filter((a) => a.mode === "exam").length;
+      return (
+        <div className="mx-auto mt-8 w-full max-w-[920px]">
+          <ResultsPanel
+            result={result}
+            onRetake={reset}
+            tally={tally}
+            attemptNumber={attemptNumber}
+          />
+          <ReviewList questions={questions} answers={answers} />
+        </div>
+      );
+    }
     return (
-      <div
-        className={`flex flex-col gap-6 ${
-          mode === "exam" ? "mx-auto mt-8 w-full max-w-[880px]" : ""
-        }`}
-      >
+      <div className="flex flex-col gap-6">
         <ResultsPanel result={result} onRetake={reset} />
-        <details className="rounded-lg border border-hairline bg-raised p-5">
-          <summary className="cursor-pointer font-semibold text-ink">
+        <details className="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <summary className="t-sub cursor-pointer text-ink-1">
             Review every question
           </summary>
           <div className="mt-4 flex flex-col gap-4">
