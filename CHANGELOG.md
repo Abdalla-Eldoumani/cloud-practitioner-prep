@@ -4,6 +4,30 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-07-17
+
+The Marked Ground redesign: the whole site restyled around a surveyor's
+field-notes language, with measured grounds, ink-on-paper contrast, and
+instrument-styled controls.
+
+### Added
+
+- A resume banner on the home and practice pages that returns you to an
+  in-progress mock exam with its remaining time intact.
+- A mark sheet in the exam room: the full question grid with flag pennants,
+  presented as a bottom sheet on small screens.
+
+### Changed
+
+- New type system: Archivo for interface text, Literata for lesson prose, and
+  Sometype Mono for figures and labels.
+- Every surface rebuilt on one shared token set: the home study traverse, the
+  learn index stations, the lesson layout, the exam room, the results ceremony
+  and its missed-first review list, the progress dashboard, the catalog, and
+  the cheat sheets.
+- The exam room consolidates its timer, progress, and flag controls into a
+  single bar, with keyboard shortcuts for flagging and for opening the grid.
+
 ## [2.0.0] - 2026-06-25
 
 A major expansion from a lessons-and-quiz site into a complete CLF-C02 study
@@ -47,5 +71,6 @@ tool, with a hardening and discoverability pass on top.
   questions with explanations and documentation links, a full timed mock exam, a
   review queue, progress tracking in the browser, and light and dark themes.
 
+[2.1.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.1.0
 [2.0.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.0.0
 [1.0.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v1.0

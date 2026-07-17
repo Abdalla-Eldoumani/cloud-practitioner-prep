@@ -81,9 +81,11 @@ export default function KnowledgeCheck({
   // The same fairness rule as the quiz: authored order (correct first) never
   // reaches the screen. Shuffled once per mount, stable while the check is on
   // screen, fresh on the next visit to the lesson. The shuffle is client-only
-  // (the server would draw a different order and hydration would mismatch),
-  // so the check renders nothing until mounted — the honest alternatives are
-  // an authored-order flash or a seeded, never-changing order, and both lose.
+  // (the server would draw a different order and hydration would mismatch), so
+  // the option rows render only after mount. The card shell around them still
+  // server-renders: this island hydrates client:visible, and Astro's visible
+  // loader observes the island's server-rendered children — an island with no
+  // SSR output has nothing to observe and never hydrates at all.
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -125,8 +127,6 @@ export default function KnowledgeCheck({
     setRevealed(false);
   }
 
-  if (!mounted) return null;
-
   return (
     <div className="my-6 rounded-lg border border-line-1 bg-ground-1 p-4 sm:p-5">
       <div className="mb-3 flex items-center gap-2">
@@ -156,7 +156,8 @@ export default function KnowledgeCheck({
         )}
 
         <ul className="flex flex-col gap-2.5">
-          {displayOptions.map((opt) => {
+          {mounted &&
+            displayOptions.map((opt) => {
             const isSelected = selected.includes(opt.id);
             const optIsCorrect = correctSet.has(opt.id);
             return (

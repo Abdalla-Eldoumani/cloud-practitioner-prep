@@ -302,7 +302,7 @@ export default function QuizEngine({
     }
   }, [pool, finish]);
 
-  // Deep link from the resume banner: /practice/exam/#resume skips the gate
+  // Deep link from the resume banner: /practice/exam#resume skips the gate
   // and restores the saved attempt directly. A hash rather than a query so
   // the service worker's navigation fallback still precache-matches the URL.
   // Once per page load; a fresh start after results must land on the gate,

@@ -83,7 +83,7 @@ export default function ResumeExamBanner() {
         {/* Hash, not query: the service worker's navigation fallback only
             precache-matches clean URLs, and a hash never reaches it. */}
         <a
-          href="/practice/exam/#resume"
+          href="/practice/exam#resume"
           className="btn-primary px-[18px] py-2 text-[13.5px]"
         >
           Resume exam

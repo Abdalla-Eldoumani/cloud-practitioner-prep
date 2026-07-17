@@ -18,7 +18,18 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    sitemap({
+      // The app links, the canonical tags, and the service worker precache all
+      // use slashless page URLs; the sitemap publishes the same form so search
+      // engines send visitors to the exact paths the app serves offline.
+      serialize(item) {
+        const url = new URL(item.url);
+        if (url.pathname.length > 1) {
+          item.url = item.url.replace(/\/+$/, "");
+        }
+        return item;
+      },
+    }),
     AstroPWA({
       // prompt, not autoUpdate: a new version never reloads a learner out of an
       // in-progress timed exam. The reload offer is surfaced; the user decides.
@@ -44,6 +55,30 @@ export default defineConfig({
         // fetch at runtime), so precaching the build covers them all. Source
         // maps and the sitemap are deliberately left out.
         globPatterns: ["**/*.{html,js,css,svg,woff2}"],
+        // Supplying manifestTransforms replaces the integration's default
+        // transform (the one that turns raw x/index.html paths into clean
+        // URLs), so this transform does both jobs itself: each built page is
+        // precached under the slashless URL every internal link uses AND under
+        // the trailing-slash spelling a bookmark or older external link may
+        // carry. A navigation that misses the precache falls back to the
+        // shell, which would serve the wrong page, so both spellings must hit.
+        manifestTransforms: [
+          (entries) => {
+            const manifest = entries.flatMap((e) => {
+              if (e.url === "index.html") return [{ ...e, url: "/" }];
+              if (e.url.endsWith("/index.html")) {
+                const base = e.url.slice(0, -"/index.html".length);
+                return [{ ...e, url: base }, { ...e, url: `${base}/` }];
+              }
+              if (e.url.endsWith(".html")) {
+                const base = e.url.slice(0, -".html".length);
+                return [{ ...e, url: base }, { ...e, url: `${base}/` }];
+              }
+              return [e];
+            });
+            return { manifest };
+          },
+        ],
         // Offline navigations fall back to the precached shell.
         navigateFallback: "/",
         // A new deploy revisions the precache; this evicts the prior one so a

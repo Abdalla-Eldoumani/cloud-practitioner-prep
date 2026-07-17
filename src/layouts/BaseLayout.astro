@@ -57,10 +57,15 @@ const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const year = new Date().getFullYear();
 
 // Canonical and og:url resolve against the configured site. Astro.site is set
-// in astro.config.mjs; the build warns if it is missing.
-const canonical = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).href
-  : Astro.url.pathname;
+// in astro.config.mjs; the build warns if it is missing. The path is
+// canonicalized without a trailing slash because every internal link and the
+// service worker's precache use the slashless form; publishing the same form
+// keeps an indexed URL on the exact path the app serves offline.
+const pagePath =
+  Astro.url.pathname.length > 1
+    ? Astro.url.pathname.replace(/\/+$/, "")
+    : Astro.url.pathname;
+const canonical = Astro.site ? new URL(pagePath, Astro.site).href : pagePath;
 const ogImage =
   image && Astro.site ? new URL(image, Astro.site).href : image;
 
