@@ -123,6 +123,8 @@
   --d4: #7d5f22;
   --focus: #34596a;
   --scrim: rgba(33, 29, 19, 0.4);
+  --action-hover: #0d0b07;
+  --action-active: #37311f;
   --shadow-float: 0 16px 40px -8px rgba(33, 29, 19, 0.18),
     0 2px 8px rgba(33, 29, 19, 0.08);
   /* Structure text that must read at small sizes uses the strong blue in
@@ -163,6 +165,8 @@
   --d4: #cfa963;
   --focus: #7fa3b0;
   --scrim: rgba(13, 11, 8, 0.62);
+  --action-hover: #fbf4e4;
+  --action-active: #e2dbc9;
   --shadow-float: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
   --kicker-ink: var(--blueprint);
   --legacy-brand: var(--blueprint);
@@ -335,6 +339,85 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--kicker-ink);
+  }
+
+  /* Buttons. Commitment is the highest-contrast thing on screen: the primary
+     fills with the action ink (paper in dark, ink in light). */
+  .btn-primary {
+    background: var(--action);
+    color: var(--ink-inverse);
+    border-radius: var(--radius-r1);
+    padding: 10px 22px;
+    font-weight: 620;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition: background-color 120ms var(--ease-settle);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--action-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    background: var(--action-active);
+    transform: translateY(0.5px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink-1);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-r1);
+    padding: 9px 21px;
+    font-weight: 520;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition:
+      background-color 120ms var(--ease-settle),
+      border-color 120ms var(--ease-settle);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--ground-2);
+    border-color: var(--line-3);
+  }
+  .btn-secondary:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    color: var(--ink-2);
+    border-radius: var(--radius-r1);
+    padding: 10px 14px;
+    font-weight: 450;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition:
+      color 120ms var(--ease-settle),
+      background-color 120ms var(--ease-settle);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--ink-1);
+    background: var(--ground-2);
+  }
+
+  /* Destructive: a secondary that names the risk. Clear progress and discard
+     exam only. */
+  .btn-destructive {
+    background: transparent;
+    color: var(--err);
+    border: 1px solid var(--err-line);
+    border-radius: var(--radius-r1);
+    padding: 9px 21px;
+    font-weight: 520;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition: background-color 120ms var(--ease-settle);
+  }
+  .btn-destructive:hover:not(:disabled) {
+    background: var(--err-fill);
   }
 
   /* 26px survey grid. Instrument panels only, never ambient texture. */
