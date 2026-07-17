@@ -26,8 +26,9 @@ time (turning typed data into pages) or runs entirely in the visitor's browser.
 - **TypeScript** throughout, including the question bank and the study data.
 - **MDX** authors the lessons.
 - **`@vite-pwa/astro`** (Workbox) makes the site installable and offline-capable.
-- Fonts are self-hosted with Fontsource (Inter for UI, Source Serif 4 for lesson
-  prose), so nothing loads from a third-party origin at runtime.
+- Fonts are self-hosted with Fontsource (Archivo for UI, Literata for lesson
+  prose, Sometype Mono for figures and labels), so nothing loads from a
+  third-party origin at runtime.
 
 ## Directory map
 
