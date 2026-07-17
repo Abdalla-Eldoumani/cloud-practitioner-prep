@@ -549,6 +549,85 @@ html[data-exam-active] .exam-hide {
 }
 
 /*
+  Station-state contract. A container carries data-state (open | current |
+  done); descendants marked data-when render only in their state. Pages
+  server-render the honest cold state (day one current, the rest open) and an
+  inline script re-marks containers from saved progress, so the chain and the
+  traverse read the same truth with or without JavaScript.
+*/
+[data-state] [data-when] {
+  display: none;
+}
+
+[data-state="done"] [data-when="done"],
+[data-state="current"] [data-when="current"],
+[data-state="open"] [data-when="open"] {
+  display: revert;
+}
+
+/* A fixed day's waiting ring settles to ink. */
+[data-state="done"] svg circle[stroke="var(--ink-3)"] {
+  stroke: var(--ink-1);
+}
+
+/*
+  M10 — the hero draws itself once per session (the page script adds
+  .hero-draw to <html> behind a sessionStorage key and a reduced-motion
+  check): the sight-line fades in, stations pop left to right, the
+  cross-section marks rise by domain row.
+*/
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html.hero-draw .hd-line {
+  animation: exam-fade-in 280ms var(--ease-settle) 160ms backwards;
+}
+
+html.hero-draw .hd-station {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-pop 200ms var(--ease-settle)
+    calc(160ms + var(--hd-i, 0) * 40ms) backwards;
+}
+
+html.hero-draw .hd-mark {
+  animation: hero-rise 220ms var(--ease-settle)
+    calc(480ms + var(--hd-i, 0) * 30ms) backwards;
+}
+
+/* On phones the traverse keeps only its stations and day labels: the fine
+   annotations (minutes, contour values, state captions) need more room than
+   a 340px drawing can give them. */
+@media (max-width: 639px) {
+  .hd-fine {
+    display: none;
+  }
+
+  .hd-day {
+    font-size: 13px;
+  }
+}
+
+/*
   Print: lessons and cheat sheets leave as ink on paper. Field Paper flattens
   to white, structure blue flattens to ink, fills disappear, and the domain
   colors become outlines; shape and label carry what color carried on screen.
