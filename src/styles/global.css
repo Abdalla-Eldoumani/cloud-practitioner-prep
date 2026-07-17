@@ -527,6 +527,27 @@ html[data-exam-active] .exam-hide {
   animation: exam-confirm-up 200ms var(--ease-settle) backwards;
 }
 
+/* Results ceremony: the band chip stamps once after the percent counts up.
+   Rows below fade in staggered via animation-delay. */
+@keyframes result-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-stamp-in {
+  animation: result-stamp 200ms var(--ease-settle) 400ms backwards;
+}
+
+.result-fade-in {
+  animation: exam-fade-in 220ms var(--ease-settle) backwards;
+}
+
 /*
   Print: lessons and cheat sheets leave as ink on paper. Field Paper flattens
   to white, structure blue flattens to ink, fills disappear, and the domain
