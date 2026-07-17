@@ -6,7 +6,13 @@ import { z } from "astro/zod";
 // of the four exam domains and to a study-plan day so the site can present the
 // same body of content as a domain syllabus and as a seven-day path.
 const lessons = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/lessons" }),
+  loader: glob({
+    // Lesson files are lowercase kebab-case slugs. Anything starting with an
+    // uppercase letter (a README, local notes) is not a lesson, so it is
+    // excluded here rather than validated against the lesson schema.
+    pattern: ["**/*.{md,mdx}", "!**/[A-Z]*"],
+    base: "./src/content/lessons",
+  }),
   schema: z.object({
     title: z.string().min(8).max(90),
     description: z.string().max(180),

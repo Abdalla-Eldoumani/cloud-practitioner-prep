@@ -457,13 +457,36 @@ export default function QuizEngine({
       ? "Answer a practice set or two and your weakest topics will surface here for a focused drill."
       : "Flag tricky questions or miss a few in practice and they will collect here for a focused review session.";
     return (
-      <div className="rounded-lg border border-hairline bg-raised p-8 text-center">
-        <h2 className="text-xl font-semibold text-ink">{emptyHeading}</h2>
-        <p className="mx-auto mt-2 max-w-prose text-ink-soft">{emptyBody}</p>
-        <a
-          href="/practice"
-          className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-        >
+      <div className="flex flex-col items-start gap-3 rounded-r3 border border-line-1 bg-ground-1 px-6 py-8">
+        <span className="inline-flex items-center gap-3">
+          <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true">
+            <circle
+              cx="9"
+              cy="9"
+              r="6.6"
+              fill="none"
+              stroke="var(--ink-3)"
+              strokeWidth="1.6"
+            />
+          </svg>
+          <span
+            aria-hidden="true"
+            className="inline-block w-14 border-t-2 border-dotted"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--blueprint) 50%, transparent)",
+            }}
+          />
+          <span
+            className="font-mono text-[10px] tracking-[0.12em]"
+            style={{ color: "var(--kicker-ink)" }}
+          >
+            {isDrill ? "NOT ENOUGH HISTORY" : "NO UNFIXED POINTS"}
+          </span>
+        </span>
+        <p className="t-sub text-ink-1">{emptyHeading}</p>
+        <p className="t-body-sm max-w-prose text-ink-2">{emptyBody}</p>
+        <a href="/practice" className="btn-secondary">
           Go to practice
         </a>
       </div>

@@ -48,26 +48,6 @@
   --color-focus: var(--focus);
   --color-scrim: var(--scrim);
 
-  /*
-    Transitional aliases: the pre-restyle utility names, pointed at the nearest
-    Marked Ground value so every existing surface re-skins at once. Each surface
-    pass replaces these class names; the aliases are removed when the last one
-    lands.
-  */
-  --color-ink: var(--ink-1);
-  --color-ink-soft: var(--ink-2);
-  --color-surface: var(--ground-0);
-  --color-raised: var(--ground-1);
-  --color-hairline: var(--line-1);
-  --color-brand: var(--legacy-brand);
-  --color-brand-strong: var(--blueprint-strong);
-  --color-accent: var(--flag);
-  --color-correct: var(--ok);
-  --color-correct-soft: var(--ok-fill);
-  --color-danger: var(--err);
-  --color-danger-soft: var(--err-fill);
-  --color-info-soft: var(--blueprint-dim);
-
   /* Radii: r1 buttons and chips, r2 rows and inputs, r3 panels. Nothing
      rounder than 6px except the mark pill, which uses its own geometry. */
   --radius-r1: 3px;
@@ -130,7 +110,6 @@
   /* Structure text that must read at small sizes uses the strong blue in
      light; kickers and links resolve through this. */
   --kicker-ink: var(--blueprint-strong);
-  --legacy-brand: var(--blueprint-strong);
 }
 
 .dark {
@@ -169,7 +148,6 @@
   --action-active: #e2dbc9;
   --shadow-float: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
   --kicker-ink: var(--blueprint);
-  --legacy-brand: var(--blueprint);
 }
 
 @layer base {

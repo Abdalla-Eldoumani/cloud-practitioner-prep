@@ -60,7 +60,7 @@ export default function ShortcutsHelp({ open, onClose }: ShortcutsHelpProps) {
     <div
       aria-hidden="true"
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-start justify-center bg-ink/40 p-4 pt-[12vh]"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-scrim p-4 pt-[12vh]"
     >
       <div
         ref={dialogRef}
@@ -68,12 +68,12 @@ export default function ShortcutsHelp({ open, onClose }: ShortcutsHelpProps) {
         aria-modal="true"
         aria-labelledby="shortcuts-help-title"
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md rounded-lg border border-hairline bg-raised p-5 shadow-lg sm:p-6"
+        className="w-full max-w-md rounded-r3 border border-line-2 bg-ground-1 p-5 sm:p-6" style={{ boxShadow: "var(--shadow-float)" }}
       >
         <div className="flex items-start justify-between gap-4">
           <h2
             id="shortcuts-help-title"
-            className="text-lg font-bold text-ink"
+            className="t-title text-[19px] text-ink-1"
           >
             Keyboard shortcuts
           </h2>
@@ -81,7 +81,7 @@ export default function ShortcutsHelp({ open, onClose }: ShortcutsHelpProps) {
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="rounded-md border border-hairline px-2.5 py-1 text-sm font-medium text-ink-soft transition-colors hover:border-brand hover:text-brand"
+            className="t-mono-sm rounded-r1 border border-line-1 px-2.5 py-1 uppercase text-ink-3 transition-colors hover:border-line-2 hover:text-ink-1"
           >
             Close
           </button>
@@ -91,14 +91,14 @@ export default function ShortcutsHelp({ open, onClose }: ShortcutsHelpProps) {
           {SHORTCUTS.map((s) => (
             <div
               key={s.keys}
-              className="flex items-center justify-between gap-4 border-b border-hairline pb-2 last:border-0 last:pb-0"
+              className="flex items-center justify-between gap-4 border-b border-line-1 pb-2 last:border-0 last:pb-0"
             >
               <dt>
-                <kbd className="rounded border border-hairline bg-surface px-2 py-0.5 font-mono text-xs text-ink">
+                <kbd className="rounded-r1 border border-line-1 bg-ground-0 px-2 py-0.5 font-mono text-xs text-ink-1">
                   {s.keys}
                 </kbd>
               </dt>
-              <dd className="text-right text-sm text-ink-soft">{s.action}</dd>
+              <dd className="text-right text-sm text-ink-2">{s.action}</dd>
             </div>
           ))}
         </dl>

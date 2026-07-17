@@ -9,23 +9,17 @@ interface Props {
 
 const { domain, showName = true } = Astro.props;
 
-// Each domain gets a stable tint so it is recognizable across the site. The
-// label text stays ink for legibility (accent and the soft-chip status colors
-// fail AA as small text in light mode); the colored border carries the tint and
-// the D-number and name carry the meaning, so color is never the only signal.
-const tint: Record<Domain, string> = {
-  1: "border-brand bg-info-soft text-ink",
-  2: "border-accent text-ink",
-  3: "border-correct bg-correct-soft text-ink",
-  4: "border-flag text-ink",
-};
-
+// The domain badge chip: the domain color carries the tint (40% border,
+// 10% fill, colored text — the light-theme domain values are AA-darkened at
+// the token level), and the D-number and name carry the meaning, so color is
+// never the only signal.
 const name = domainName(domain);
 ---
 
 <span
-  class={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${tint[domain]}`}
+  class="t-mono-sm inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 uppercase"
+  style={`color: var(--d${domain}); border-color: color-mix(in srgb, var(--d${domain}) 40%, transparent); background: color-mix(in srgb, var(--d${domain}) 10%, transparent)`}
 >
-  <span class="font-semibold">D{domain}</span>
+  <span class="font-[620]">D{domain}</span>
   {showName && <span>{name}</span>}
 </span>
