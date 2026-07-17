@@ -13,8 +13,8 @@ import type { KnowledgeCheckDatum } from "@/components/diagrams/KnowledgeCheck";
 // notes). AWS's canonical phrasing is lowercase "security of/in the cloud"; the
 // lesson capitalizes OF/IN for emphasis, so the diagram matches the lesson's
 // emphasis while each note keeps AWS's exact claim. Colors come from
-// currentColor on token-colored <g> wrappers (text-brand for the AWS column,
-// text-accent for the Customer column, text-ink / text-ink-soft for shared
+// currentColor on token-colored <g> wrappers (text-blueprint for the AWS column,
+// text-flag for the Customer column, text-ink-1 / text-ink-2 for shared
 // chrome) so both themes resolve and no raw hex appears.
 
 const nodes: DiagramNode[] = [
@@ -62,7 +62,7 @@ function SharedResponsibilityGeometry() {
   return (
     <>
       {/* The AWS column: security OF the cloud. */}
-      <g className="text-brand">
+      <g className="text-blueprint">
         <rect
           x="10"
           y="14"
@@ -115,7 +115,7 @@ function SharedResponsibilityGeometry() {
       </g>
 
       {/* The Customer column: security IN the cloud. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <rect
           x="168"
           y="14"
@@ -159,7 +159,7 @@ function SharedResponsibilityGeometry() {
       </g>
 
       {/* The dividing line + the "line moves with the service" cue. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <line
           x1="160"
           y1="20"
