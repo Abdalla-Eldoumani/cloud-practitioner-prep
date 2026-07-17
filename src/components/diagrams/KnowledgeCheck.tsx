@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { shuffle } from "@/lib/exam";
 import MarkPill, { type MarkState } from "@/components/quiz/MarkPill";
 
@@ -80,7 +80,14 @@ export default function KnowledgeCheck({
 
   // The same fairness rule as the quiz: authored order (correct first) never
   // reaches the screen. Shuffled once per mount, stable while the check is on
-  // screen, fresh on the next visit to the lesson.
+  // screen, fresh on the next visit to the lesson. The shuffle is client-only
+  // (the server would draw a different order and hydration would mismatch),
+  // so the check renders nothing until mounted — the honest alternatives are
+  // an authored-order flash or a seeded, never-changing order, and both lose.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const displayOptions = useMemo(() => shuffle(options), [options]);
 
   // Single-answer when exactly one id is correct: native radios. Otherwise
@@ -117,6 +124,8 @@ export default function KnowledgeCheck({
     setSelected([]);
     setRevealed(false);
   }
+
+  if (!mounted) return null;
 
   return (
     <div className="my-6 rounded-lg border border-line-1 bg-ground-1 p-4 sm:p-5">
