@@ -14,17 +14,20 @@ const totalLessons = (await getCollection("lessons")).filter(
   title="Your progress"
   description="Track your AWS Cloud Practitioner (CLF-C02) readiness: per-domain scores, your mock exam trend, and a conservative ready or not-yet signal. Saved on your device."
 >
-  <header class="max-w-2xl">
-    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-      Your progress
-    </h1>
-    <p class="mt-3 text-lg text-ink-soft">
-      Lessons completed, mock scores over time, and the questions waiting in your
-      review queue. Everything here is saved on this device only.
-    </p>
+  <header
+    class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+  >
+    <div>
+      <p class="t-mono-sm uppercase" style="color: var(--kicker-ink)">
+        Progress · stored in this browser
+      </p>
+      <h1 class="t-page mt-3 text-ink-1">Progress</h1>
+    </div>
+    {/* Export / import / clear: progress is a file the learner owns. */}
+    <ProgressIO client:load />
   </header>
 
-  <div class="mt-8">
+  <div class="mt-7">
     <ProgressDashboard
       client:load
       totalLessons={totalLessons}
@@ -32,15 +35,16 @@ const totalLessons = (await getCollection("lessons")).filter(
     />
   </div>
 
-  <p class="mt-6 text-sm text-ink-soft">
-    The readiness band above is this site's own study signal, not the AWS scaled
-    score.{" "}
-    <a href="/exam-day" class="font-medium text-brand underline underline-offset-2">
-      See how AWS actually scores the real exam →
-    </a>
-  </p>
-
-  <div class="mt-6">
-    <ProgressIO client:load />
+  <div class="mt-6 border-l-[3px] border-blueprint py-1 pl-[18px]">
+    <p class="t-body-sm max-w-[680px] text-ink-3">
+      The readiness band is this site's own study signal, not the AWS scaled
+      score.
+      <a
+        href="/exam-day"
+        class="underline underline-offset-2 transition-colors hover:text-ink-1"
+      >
+        See how AWS actually scores the real exam &rarr;
+      </a>
+    </p>
   </div>
 </BaseLayout>
