@@ -109,12 +109,6 @@ export function buildDomainQuiz(
   return shuffle(inDomain).slice(0, count);
 }
 
-// Build a review set from a list of question ids (flagged or previously missed).
-export function buildReviewSet(pool: readonly Question[], ids: readonly string[]): Question[] {
-  const wanted = new Set(ids);
-  return pool.filter((q) => wanted.has(q.id));
-}
-
 // ---- Adaptive weak-area drill ----
 
 // Attempts a topic needs before the drill will call it weak. The bank's median
