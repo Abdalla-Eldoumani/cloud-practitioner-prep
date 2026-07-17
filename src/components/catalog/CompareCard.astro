@@ -1,8 +1,11 @@
 ---
 import type { CompareGroup } from "@/lib/types";
 import { serviceById } from "@/data/services";
-import DomainBadge from "@/components/DomainBadge.astro";
 
+// A DON'T CONFUSE instrument: the services the exam loves to swap, laid out
+// on one comparison table. Mono column heads carry the service names; under
+// 768 the first column pins and the table scrolls inside its own border,
+// never the page.
 interface Props {
   group: CompareGroup;
 }
@@ -19,53 +22,58 @@ const members = group.serviceIds
 
 <div
   id={group.id}
-  class="scroll-mt-8 rounded-lg border border-hairline bg-raised p-5 sm:p-6"
+  class="relative scroll-mt-8 rounded-r3 border border-line-1 bg-ground-1 p-4 sm:p-5"
 >
-  <h3 class="text-lg font-semibold text-ink">{group.title}</h3>
-  <p class="mt-1 text-sm text-ink-soft">{group.framing}</p>
+  <span
+    aria-hidden="true"
+    class="absolute -top-px -left-px size-3 border-t-2 border-l-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -top-px -right-px size-3 border-t-2 border-r-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -bottom-px -left-px size-3 border-b-2 border-l-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -bottom-px -right-px size-3 border-b-2 border-r-2 border-blueprint"
+  ></span>
 
-  {/*
-    Below sm: a 3-way table is too tight for a phone, so the members stack as
-    labelled blocks (a heading per service, then the axes as a definition list).
-    From sm: the same data renders as a real side-by-side table. Responsive
-    classes only, no JS, so there is never horizontal scroll on phones.
-  */}
-  <div class="mt-4 flex flex-col gap-6 sm:hidden">
-    {
-      members.map((service) => (
-        <div>
-          <div class="flex items-center gap-2">
-            <DomainBadge domain={service.domain} showName={false} />
-            <span class="font-semibold text-ink">{service.name}</span>
-          </div>
-          <dl class="mt-2 flex flex-col gap-2">
-            {group.rows.map((row) => (
-              <div>
-                <dt class="text-xs font-semibold uppercase tracking-wide text-ink-soft">
-                  {row.axis}
-                </dt>
-                <dd class="text-sm text-ink">{row.cells[service.id]}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      ))
-    }
+  <div class="flex flex-wrap items-center gap-2.5">
+    <h3 class="t-mono-label" style="color: var(--kicker-ink)">
+      Don't confuse — {group.title}
+    </h3>
+    <span
+      class="ml-auto rounded-r1 border px-2 py-0.5 font-mono text-[9px] tracking-[0.12em] whitespace-nowrap"
+      style="color: var(--flag); border-color: var(--flag-line)"
+    >
+      EXAM FAVORITE
+    </span>
   </div>
+  <p class="t-body-sm mt-1.5 text-ink-2">{group.framing}</p>
 
-  <div class="mt-4 hidden sm:block">
-    <table class="w-full border-collapse text-left">
+  <div class="mt-3.5 overflow-x-auto rounded-r2 border border-line-1">
+    <table class="w-full min-w-[560px] border-collapse text-left">
       <thead>
-        <tr class="border-b border-hairline">
-          <th scope="col" class="p-3 align-bottom">
+        <tr class="border-b border-line-1">
+          <th scope="col" class="sticky left-0 bg-ground-1 p-3 align-bottom">
             <span class="sr-only">Attribute</span>
           </th>
           {
             members.map((service) => (
               <th scope="col" class="p-3 align-bottom">
-                <span class="flex flex-col gap-1.5">
-                  <DomainBadge domain={service.domain} showName={false} />
-                  <span class="font-semibold text-ink">{service.name}</span>
+                <span class="flex items-baseline gap-2">
+                  <span class="font-mono text-[12px] font-[560] text-ink-1">
+                    {service.name}
+                  </span>
+                  <span
+                    class="font-mono text-[9px] tracking-[0.1em]"
+                    style={`color: var(--d${service.domain})`}
+                  >
+                    D{service.domain}
+                  </span>
                 </span>
               </th>
             ))
@@ -75,15 +83,15 @@ const members = group.serviceIds
       <tbody>
         {
           group.rows.map((row) => (
-            <tr class="border-b border-hairline last:border-0">
+            <tr class="border-b border-line-1 last:border-0">
               <th
                 scope="row"
-                class="p-3 align-top text-sm font-semibold text-ink-soft"
+                class="sticky left-0 bg-ground-1 p-3 align-top font-mono text-[10px] tracking-[0.12em] text-ink-3 uppercase"
               >
                 {row.axis}
               </th>
               {members.map((service) => (
-                <td class="p-3 align-top text-sm text-ink">
+                <td class="t-body-sm p-3 align-top text-ink-2">
                   {row.cells[service.id]}
                 </td>
               ))}
