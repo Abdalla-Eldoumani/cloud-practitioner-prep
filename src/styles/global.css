@@ -450,6 +450,47 @@
     font-weight: 640;
     color: var(--ink-1);
   }
+
+  /* Lesson tables are T2 sheets: mono column heads, hairline rules, no
+     zebra. The decide/measure voices carry the cells; the serif stays in
+     the prose around them. */
+  .prose-lesson :where(table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--line-1);
+    border-radius: var(--radius-r3);
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+  .prose-lesson :where(thead th) {
+    font-family: var(--font-mono);
+    font-weight: 560;
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: left;
+    background: var(--ground-1);
+    border-bottom: 1px solid var(--line-1);
+    padding: 10px 16px;
+  }
+  .prose-lesson :where(tbody td) {
+    font-size: 0.84375rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--line-1);
+    padding: 11px 16px;
+    vertical-align: top;
+  }
+  .prose-lesson :where(tbody td:first-child) {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--ink-1);
+  }
+  .prose-lesson :where(tbody tr:last-child td) {
+    border-bottom: none;
+  }
 }
 
 /*
