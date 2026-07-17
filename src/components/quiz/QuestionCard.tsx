@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import type { Confidence, Option, Question } from "@/lib/types";
 import { orderedOptions } from "@/lib/options";
 import MarkPill, { type MarkState } from "./MarkPill";
@@ -47,6 +47,13 @@ interface QuestionCardProps {
   // The exam room hides the domain badge: the real exam does not label
   // questions by domain, and the mock simulates the room.
   showDomain?: boolean;
+  // Exam-room presentation: wider padding, the F key hint on the flag chip,
+  // no domain badge, and the flag chip yields to the bottom action bar's flag
+  // square on small screens (one control per fact per viewport).
+  examRoom?: boolean;
+  // Rendered inside the card after everything else; the exam room passes its
+  // Previous/Next row here so navigation reads as part of the sheet.
+  footer?: ReactNode;
 }
 
 function markState(
@@ -90,6 +97,8 @@ export default function QuestionCard({
   confidence,
   onSetConfidence,
   showDomain = true,
+  examRoom = false,
+  footer,
 }: QuestionCardProps) {
   const isMulti = question.type === "multi";
   const inputType = isMulti ? "checkbox" : "radio";
@@ -134,7 +143,11 @@ export default function QuestionCard({
     : [];
 
   return (
-    <article className="rounded-lg border border-line-1 bg-ground-1 p-5 sm:p-6">
+    <article
+      className={`rounded-lg border border-line-1 bg-ground-1 p-5 ${
+        examRoom ? "sm:px-9 sm:py-[30px]" : "sm:p-6"
+      }`}
+    >
       <div className="mb-4 flex items-center justify-between gap-3">
         <div className="flex min-w-0 flex-wrap items-center gap-2.5">
           <span className="t-mono text-ink-3">
@@ -143,7 +156,7 @@ export default function QuestionCard({
             </span>{" "}
             / {total}
           </span>
-          {showDomain && (
+          {showDomain && !examRoom && (
             <span
               className="t-mono-sm inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 uppercase"
               style={{
@@ -166,6 +179,8 @@ export default function QuestionCard({
           onClick={onToggleFlag}
           aria-pressed={flagged}
           className={`t-mono-sm flex shrink-0 items-center gap-1.5 rounded-sm border px-2.5 py-1.5 uppercase transition-colors ${
+            examRoom ? "max-sm:hidden" : ""
+          } ${
             flagged
               ? "border-flag-line bg-flag-fill text-flag"
               : "border-line-1 text-ink-3 hover:border-flag-line hover:text-flag"
@@ -180,6 +195,14 @@ export default function QuestionCard({
               strokeLinejoin="round"></path>
           </svg>
           {flagged ? "Flagged" : "Flag"}
+          {examRoom && (
+            <span
+              aria-hidden="true"
+              className="rounded-r1 border border-line-2 bg-ground-0 px-[5px] text-[10px] normal-case text-ink-3"
+            >
+              F
+            </span>
+          )}
         </button>
       </div>
 
@@ -351,6 +374,8 @@ export default function QuestionCard({
           )}
         </div>
       )}
+
+      {footer}
     </article>
   );
 }
