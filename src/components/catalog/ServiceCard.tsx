@@ -1,63 +1,49 @@
-import type { Domain, ServiceEntry } from "@/lib/types";
-import { domainName } from "@/lib/constants";
+import type { ServiceEntry } from "@/lib/types";
 
-// DomainBadge is an Astro component and cannot mount inside a React island, so
-// its visual treatment is reproduced here. The tints, the D-number, and the
-// name match DomainBadge.astro exactly so the badge reads identically wherever
-// it appears; color is never the only signal (the D-number and name carry it).
-const domainTint: Record<Domain, string> = {
-  1: "border-brand bg-info-soft text-ink",
-  2: "border-accent text-ink",
-  3: "border-correct bg-correct-soft text-ink",
-  4: "border-flag text-ink",
-};
-
-interface ServiceCardProps {
-  service: ServiceEntry;
-}
-
-// One catalog entry as a presentational card. Rendered inside a grid <li> by
-// CatalogBrowser; it is not itself a link (it contains the doc link), so it
-// never nests interactive elements.
-export default function ServiceCard({ service }: ServiceCardProps) {
+// One catalog entry as a list row: name in the deciding voice, the domain id
+// in its color, what-it-is in a quieter ink, and the dotted reach-for-it-when
+// line that answers the exam's phrasing. Rendered inside a hairline-divided
+// <li> by CatalogBrowser; it is not itself a link (it contains the doc link),
+// so it never nests interactive elements.
+export default function ServiceCard({ service }: { service: ServiceEntry }) {
   const { domain, category, name, purpose, whenToUse, reference, aliases } =
     service;
   const primaryAlias = aliases && aliases.length > 0 ? aliases[0] : null;
 
   return (
-    <div className="h-full rounded-lg border border-hairline bg-raised p-5 sm:p-6">
-      <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-1.5 px-1 py-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <h3 className="t-sub text-ink-1">
+          {name}
+          {primaryAlias && (
+            <span className="t-body-sm ml-2 font-[450] text-ink-3">
+              {primaryAlias}
+            </span>
+          )}
+        </h3>
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium ${domainTint[domain]}`}
+          className="font-mono text-[9.5px] tracking-[0.1em]"
+          style={{ color: `var(--d${domain})` }}
         >
-          <span className="font-semibold">D{domain}</span>
-          <span>{domainName(domain)}</span>
+          D{domain}
         </span>
-        <span className="ml-auto text-xs text-ink-soft">{category}</span>
+        <span className="t-mono-sm hidden uppercase text-ink-3 sm:inline">
+          {category}
+        </span>
+        <a
+          href={reference.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="t-mono-sm ml-auto uppercase transition-colors hover:text-ink-1"
+          style={{ color: "var(--kicker-ink)" }}
+        >
+          Docs &#8599;
+        </a>
       </div>
-
-      <h3 className="mt-3 text-lg font-semibold text-ink">{name}</h3>
-      {primaryAlias && (
-        <p className="text-sm text-ink-soft">{primaryAlias}</p>
-      )}
-
-      <p className="mt-2 text-base text-ink">{purpose}</p>
-
-      <div className="mt-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">
-          When to use
-        </p>
-        <p className="text-sm text-ink-soft">{whenToUse}</p>
-      </div>
-
-      <a
-        href={reference.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 inline-block text-sm font-medium text-brand underline underline-offset-2"
-      >
-        {reference.label}
-      </a>
+      <p className="t-body-sm text-ink-2">{purpose}</p>
+      <p className="t-body-sm w-fit border-b-2 border-dotted border-line-1 pb-1 text-ink-3">
+        Reach for it when: {whenToUse}
+      </p>
     </div>
   );
 }
