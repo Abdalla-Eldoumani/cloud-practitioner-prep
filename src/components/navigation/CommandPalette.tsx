@@ -283,7 +283,7 @@ export default function CommandPalette({
         <div
           aria-hidden="true"
           onClick={closePalette}
-          className="fixed inset-0 z-50 flex items-start justify-center bg-ink/40 p-4 pt-[10vh]"
+          className="fixed inset-0 z-50 flex items-start justify-center bg-scrim p-4 pt-[12vh]"
         >
           <div
             ref={dialogRef}
@@ -291,9 +291,26 @@ export default function CommandPalette({
             aria-modal="true"
             aria-label="Command palette"
             onClick={(e) => e.stopPropagation()}
-            className="flex max-h-[70vh] w-full max-w-lg flex-col overflow-hidden rounded-lg border border-hairline bg-raised shadow-lg"
+            className="flex max-h-[70vh] w-full max-w-[560px] flex-col overflow-hidden rounded-lg border border-line-2 bg-ground-1 shadow-[var(--shadow-float)]"
           >
-            <div className="border-b border-hairline p-3">
+            <div className="flex items-center gap-3 border-b border-line-1 px-4 py-3">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <circle
+                  cx="9"
+                  cy="9"
+                  r="6.6"
+                  fill="none"
+                  stroke="var(--blueprint)"
+                  strokeWidth="1.6"
+                />
+                <circle cx="9" cy="9" r="2.3" fill="var(--blueprint)" />
+              </svg>
               <label htmlFor="cmdp-search" className="sr-only">
                 Search navigation, lessons, and services
               </label>
@@ -311,8 +328,11 @@ export default function CommandPalette({
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={onInputKeyDown}
                 placeholder="Search pages, lessons, services…"
-                className="w-full rounded-md border border-hairline bg-surface px-3 py-2 text-base text-ink"
+                className="w-full bg-transparent text-base text-ink-1 placeholder:text-ink-3 focus:outline-none"
               />
+              <span className="t-mono-sm shrink-0 rounded-sm border border-line-1 px-1.5 py-0.5 text-ink-3">
+                ESC
+              </span>
             </div>
 
             <ul
@@ -327,7 +347,7 @@ export default function CommandPalette({
                   role="option"
                   aria-selected="false"
                   aria-disabled="true"
-                  className="px-3 py-6 text-center text-sm text-ink-soft"
+                  className="px-3 py-6 text-center text-sm text-ink-2"
                 >
                   No results. Try a different search.
                 </li>
@@ -337,7 +357,7 @@ export default function CommandPalette({
                     <p
                       id={`cmdp-group-${section.group}`}
                       role="presentation"
-                      className="px-2 pb-1 pt-2 font-mono text-xs uppercase tracking-wide text-ink-soft"
+                      className="t-mono-label px-2 pb-1 pt-2.5 text-ink-3"
                     >
                       {section.label}
                     </p>
@@ -352,30 +372,31 @@ export default function CommandPalette({
                             aria-selected={isActive}
                             onClick={() => activate(item)}
                             onMouseMove={() => setActiveIndex(index)}
-                            className={`flex cursor-pointer items-start gap-2 rounded-md px-2 py-2 ${
+                            className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-sm border-l-2 px-2.5 py-2 ${
                               isActive
-                                ? "bg-info-soft font-semibold text-ink ring-1 ring-brand"
-                                : "text-ink"
+                                ? "border-blueprint bg-ground-2 font-[560] text-ink-1"
+                                : "border-transparent text-ink-1"
                             }`}
                           >
-                            {/* A non-color active cue: a leading ">" marker plus
-                                the font-weight and ring above, so the active row
-                                is distinguishable without relying on color. */}
-                            <span
-                              aria-hidden="true"
-                              className="w-3 shrink-0 text-brand"
-                            >
-                              {isActive ? ">" : ""}
-                            </span>
-                            <span className="min-w-0">
+                            {/* A non-color active cue: a leading return glyph
+                                plus the font weight and fill above, so the
+                                active row reads without relying on color. */}
+                            <span className="min-w-0 flex-1">
                               <span className="block truncate">
                                 {primaryText(item)}
                               </span>
                               {item.group === "lesson" && (
-                                <span className="block truncate text-xs text-ink-soft">
+                                <span className="block truncate text-xs text-ink-2">
                                   {item.description}
                                 </span>
                               )}
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              className="t-mono-sm shrink-0 rounded-sm border border-line-1 px-1.5 py-0.5 text-ink-3"
+                              style={{ visibility: isActive ? "visible" : "hidden" }}
+                            >
+                              &#9166;
                             </span>
                           </li>
                         );
@@ -386,11 +407,9 @@ export default function CommandPalette({
               )}
             </ul>
 
-            <div className="border-t border-hairline px-3 py-2">
-              <p className="text-xs text-ink-soft">
-                <span className="font-mono">Up/Down</span> to move ·{" "}
-                <span className="font-mono">Enter</span> to open ·{" "}
-                <span className="font-mono">Esc</span> to close
+            <div className="border-t border-line-1 px-4 py-2">
+              <p className="t-mono-sm text-ink-3">
+                Up/Down move · Enter open · Esc close
               </p>
             </div>
           </div>

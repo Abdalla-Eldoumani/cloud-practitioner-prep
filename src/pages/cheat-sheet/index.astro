@@ -14,21 +14,21 @@ import { DOMAINS } from "@/lib/constants";
   description="Free printable AWS Cloud Practitioner cheat sheets, one per CLF-C02 exam domain: key services, facts, and easily confused comparisons for last-minute review."
 >
   <p class="text-sm">
-    <a href="/practice" class="text-brand underline underline-offset-2">
+    <a href="/practice" class="t-mono-sm uppercase transition-colors hover:text-ink-1" style="color: var(--kicker-ink)">
       ← Back to practice
     </a>
   </p>
 
   <header class="mt-4 max-w-2xl">
-    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+    <h1 class="t-page text-ink-1">
       Cheat sheets
     </h1>
-    <p class="mt-3 text-lg text-ink-soft">
+    <p class="t-body-lg mt-3 text-ink-2">
       One printable summary per exam domain: the key concepts, services, and the
       comparisons that are easiest to confuse, distilled from the lessons. Open a
       sheet and print it for last-minute review.
     </p>
-    <p class="mt-2 text-sm text-ink-soft">
+    <p class="t-mono-sm mt-3 uppercase text-ink-3">
       Domains are weighted 24% / 30% / 34% / 12% of the scored exam.
     </p>
   </header>
@@ -39,15 +39,15 @@ import { DOMAINS } from "@/lib/constants";
         <li>
           <a
             href={`/cheat-sheet/${d.id}`}
-            class="flex h-full flex-col rounded-lg border border-hairline bg-raised p-6 transition-colors hover:border-brand"
+            class="flex h-full flex-col rounded-r3 border border-line-1 bg-ground-1 p-6 transition-colors hover:border-line-2"
           >
             <div class="flex flex-wrap items-center gap-3">
               <DomainBadge domain={d.id} showName={false} />
-              <h2 class="text-lg font-bold text-ink">{d.name}</h2>
-              <span class="text-sm text-ink-soft">{d.weight}%</span>
+              <h2 class="t-sub text-ink-1">{d.name}</h2>
+              <span class="t-body-sm text-ink-2">{d.weight}%</span>
             </div>
-            <p class="mt-2 text-ink-soft">{d.blurb}</p>
-            <span class="mt-3 inline-block font-medium text-brand">
+            <p class="t-body-sm mt-2 text-ink-2">{d.blurb}</p>
+            <span class="mt-3 inline-block t-mono-sm uppercase text-ink-3">
               Open cheat sheet →
             </span>
           </a>

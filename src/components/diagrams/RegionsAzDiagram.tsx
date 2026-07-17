@@ -13,8 +13,8 @@ import type { KnowledgeCheckDatum } from "@/components/diagrams/KnowledgeCheck";
 // Every label traces to an official AWS source (see the per-node notes). The
 // count caution is honored: the diagram shows ">= 3 AZs per Region", never a
 // specific or global tally (those are volatile). Colors come from currentColor
-// on token-colored <g> wrappers (text-ink / text-brand / text-accent /
-// text-ink-soft) so both themes resolve and no raw hex appears.
+// on token-colored <g> wrappers (text-ink-1 / text-blueprint / text-flag /
+// text-ink-2) so both themes resolve and no raw hex appears.
 
 // The interactive nodes. Each note is drawn ONLY from verified AWS phrasing.
 const nodes: DiagramNode[] = [
@@ -49,7 +49,7 @@ function RegionsAzGeometry() {
   return (
     <>
       {/* "You choose the Region" cue, above the Region frame. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="12"
           y="16"
@@ -61,7 +61,7 @@ function RegionsAzGeometry() {
       </g>
 
       {/* The Region frame: a labelled boundary containing the AZs. */}
-      <g className="text-brand">
+      <g className="text-blueprint">
         <rect
           x="10"
           y="24"
@@ -84,7 +84,7 @@ function RegionsAzGeometry() {
 
       {/* The three Availability Zones inside the Region. The "&ge; 3" note is
           drawn as a label so the relationship reads without a count. */}
-      <g className="text-ink">
+      <g className="text-ink-1">
         {[0, 1, 2].map((i) => {
           const x = 22 + i * 66;
           return (
@@ -142,7 +142,7 @@ function RegionsAzGeometry() {
 
       {/* The low-latency interconnect between the AZs. Solid lines (not motion)
           so the relationship is legible statically. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <line
           x1="78"
           y1="97"
@@ -171,7 +171,7 @@ function RegionsAzGeometry() {
       </g>
 
       {/* The edge-location layer OUTSIDE the Region, tied to CloudFront. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <rect
           x="236"
           y="40"

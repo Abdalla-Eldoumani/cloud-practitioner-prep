@@ -69,17 +69,17 @@ export default function ReloadPrompt() {
       role="status"
       aria-live="polite"
       aria-label="Update available"
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-sm rounded-lg border border-hairline bg-raised p-4 text-ink shadow-lg sm:left-auto sm:right-4 sm:mx-0"
+      className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-sm rounded-r3 border border-line-2 bg-ground-1 p-4 text-ink-1 sm:left-auto sm:right-4 sm:mx-0" style={{ boxShadow: "var(--shadow-float)" }}
     >
       <p className="text-sm font-semibold">A new version is available.</p>
-      <p className="mt-1 text-sm text-ink-soft">
+      <p className="t-body-sm mt-1 text-ink-2">
         Reload to get the latest lessons and questions.
       </p>
       <div className="mt-3 flex items-center gap-2">
         <button
           type="button"
           onClick={reload}
-          className="rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-raised transition-colors hover:bg-brand-strong"
+          className="btn-primary px-3.5 py-1.5 text-[13.5px]"
         >
           Reload
         </button>
@@ -87,7 +87,7 @@ export default function ReloadPrompt() {
           type="button"
           onClick={dismiss}
           aria-label="Dismiss update notice"
-          className="rounded-md border border-hairline px-3 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+          className="btn-secondary px-3.5 py-1.5 text-[13.5px]"
         >
           Dismiss
         </button>

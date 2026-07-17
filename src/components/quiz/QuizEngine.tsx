@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   AttemptResult,
   Confidence,
@@ -26,8 +26,17 @@ import {
   reviewQuestion,
   toggleFlag,
 } from "@/lib/store";
+import {
+  clearSavedExam,
+  confirmDiscardExam,
+  readSavedExam,
+  writeSavedExam,
+} from "@/lib/exam-save";
+import ExamBar from "./ExamBar";
+import MarkSheet, { type MarkCell } from "./MarkSheet";
 import QuestionCard from "./QuestionCard";
 import ResultsPanel from "./ResultsPanel";
+import ReviewList from "./ReviewList";
 
 interface QuizEngineProps {
   // The full question pool, serialized from the data layer by the Astro page.
@@ -43,63 +52,9 @@ interface QuizEngineProps {
 
 type Phase = "intro" | "active" | "results" | "empty";
 
-// In-progress exams are saved so a refresh or accidental tab close can resume
-// with the correct remaining time, computed from the start timestamp. The key is
-// versioned: it bumped to :v2 when optionOrder joined the saved shape, so a
-// pre-field in-flight save written by the older engine is simply not found and a
-// fresh start is offered instead of a half-restore.
-const EXAM_KEY = "ccp-prep:exam-active:v2";
-
-interface SavedExam {
-  questionIds: string[];
-  // Per-question shuffled option order (question id -> ordered option ids),
-  // persisted so a resumed mock renders the exact order shown before the reload
-  // rather than reshuffling under the learner (quiz-integrity). Scoring stays by
-  // id, so order never affects grading.
-  optionOrder: Record<string, string[]>;
-  answers: Record<string, string[]>;
-  flags: string[];
-  startedAt: number;
-}
-
-function readSavedExam(): SavedExam | null {
-  try {
-    const raw = window.localStorage.getItem(EXAM_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as SavedExam;
-    if (
-      parsed &&
-      Array.isArray(parsed.questionIds) &&
-      parsed.startedAt &&
-      // Require optionOrder to be a present object: a saved exam lacking it is a
-      // pre-field blob (or hand-edited), so treat it as "no resume" rather than
-      // half-restore with options reshuffled.
-      parsed.optionOrder !== null &&
-      typeof parsed.optionOrder === "object"
-    ) {
-      return parsed;
-    }
-  } catch {
-    // ignore unreadable state
-  }
-  return null;
-}
-
-function writeSavedExam(state: SavedExam): void {
-  try {
-    window.localStorage.setItem(EXAM_KEY, JSON.stringify(state));
-  } catch {
-    // storage unavailable: resume simply will not be offered
-  }
-}
-
-function clearSavedExam(): void {
-  try {
-    window.localStorage.removeItem(EXAM_KEY);
-  } catch {
-    // ignore
-  }
-}
+// In-progress exams are saved (through the shared exam-save module, which the
+// resume banner also reads) so a refresh or accidental tab close can resume
+// with the correct remaining time, computed from the start timestamp.
 
 function reconstruct(pool: Question[], ids: string[]): Question[] {
   const byId = new Map(pool.map((q) => [q.id, q]));
@@ -132,8 +87,10 @@ export default function QuizEngine({
   const [questions, setQuestions] = useState<Question[]>([]);
   // Per-question option order (question id -> ordered option ids), computed once
   // per sitting so a re-render never reshuffles, persisted with the saved exam,
-  // and restored verbatim on resume. Only populated for exam mode; other modes
-  // let QuestionCard shuffle per instance.
+  // and restored verbatim on resume. Only populated for exam mode, which needs
+  // the exact order saved and restored; every other mode relies on
+  // QuestionCard's own per-instance shuffle fallback, which draws through the
+  // same orderedOptions path, so an unshuffled authored order can never render.
   const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>({});
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
@@ -151,6 +108,13 @@ export default function QuizEngine({
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [now, setNow] = useState<number>(Date.now());
   const [hasSaved, setHasSaved] = useState(false);
+  // Exam-room surfaces: the mark-sheet rail (wide viewports, on by default),
+  // the mark-sheet bottom sheet (below 1200, opened on demand), and the
+  // guarded submit confirm bar — the only place a primary submit exists.
+  const [gridOn, setGridOn] = useState(true);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const autoResumed = useRef(false);
 
   // Build the working set for practice and review on mount. Exam waits for the
   // intro screen so the timer starts when the user is ready.
@@ -251,6 +215,8 @@ export default function QuizEngine({
       }
       setResult(r);
       setPhase("results");
+      setConfirmOpen(false);
+      setSheetOpen(false);
       clearSavedExam();
     },
     [flagged, mode, recordDomain, confidence],
@@ -291,14 +257,9 @@ export default function QuizEngine({
   }, [phase, mode, questions, optionOrder, answers, flagged, startedAt]);
 
   const startExam = useCallback(() => {
-    // A saved attempt would be silently overwritten by a fresh start, so
-    // confirm before discarding it. window.confirm is fine for a static site.
-    if (readSavedExam() !== null) {
-      const ok = window.confirm(
-        "Starting a new exam will discard your in-progress attempt. Continue?",
-      );
-      if (!ok) return;
-    }
+    // A saved attempt would be silently overwritten by a fresh start, and
+    // dropping it is destructive, so it takes the typed word.
+    if (readSavedExam() !== null && !confirmDiscardExam()) return;
     clearSavedExam();
     // Draw with the learner's seen-counts for low cross-sitting overlap, then fix
     // the per-question option order once so it stays stable for the sitting and
@@ -341,6 +302,43 @@ export default function QuizEngine({
     }
   }, [pool, finish]);
 
+  // Deep link from the resume banner: /practice/exam/#resume skips the gate
+  // and restores the saved attempt directly. A hash rather than a query so
+  // the service worker's navigation fallback still precache-matches the URL.
+  // Once per page load; a fresh start after results must land on the gate,
+  // not re-resume.
+  useEffect(() => {
+    if (autoResumed.current || mode !== "exam") return;
+    autoResumed.current = true;
+    if (window.location.hash === "#resume" && readSavedExam() !== null) {
+      resumeExam();
+    }
+  }, [mode, resumeExam]);
+
+  const isExamActive = mode === "exam" && phase === "active";
+
+  // While an attempt is live the island owns the viewport: the flag on <html>
+  // sends the site chrome away (see the exam-room block in the stylesheet)
+  // and everything reverses when the attempt ends.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isExamActive) root.setAttribute("data-exam-active", "");
+    else root.removeAttribute("data-exam-active");
+    return () => root.removeAttribute("data-exam-active");
+  }, [isExamActive]);
+
+  // Exam start lands focus on the first option, so keyboard sitters can mark
+  // immediately.
+  useEffect(() => {
+    if (!isExamActive) return;
+    const id = window.requestAnimationFrame(() => {
+      document
+        .querySelector<HTMLInputElement>("[data-exam-root] fieldset input")
+        ?.focus();
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [isExamActive]);
+
   const onToggleOption = useCallback(
     (optionId: string) => {
       const q = questions[current];
@@ -371,6 +369,43 @@ export default function QuizEngine({
     });
   }, [questions, current]);
 
+  // Room keys: F flags the question, G toggles the mark sheet (the rail at
+  // wide viewports, the bottom sheet below 1200), Escape backs out of the
+  // confirm bar or the sheet. Text-entry targets keep their keystrokes (the
+  // command palette stays usable mid-exam); option marks are inputs too, so
+  // radio/checkbox targets still get the keys.
+  useEffect(() => {
+    if (!isExamActive) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.tagName === "TEXTAREA" || target.isContentEditable) return;
+        if (
+          target.tagName === "INPUT" &&
+          (target as HTMLInputElement).type !== "radio" &&
+          (target as HTMLInputElement).type !== "checkbox"
+        ) {
+          return;
+        }
+      }
+      if (e.key === "f" || e.key === "F") {
+        onToggleFlag();
+      } else if (e.key === "g" || e.key === "G") {
+        if (window.matchMedia("(min-width: 1200px)").matches) {
+          setGridOn((v) => !v);
+        } else {
+          setSheetOpen((v) => !v);
+        }
+      } else if (e.key === "Escape") {
+        if (confirmOpen) setConfirmOpen(false);
+        else if (sheetOpen) setSheetOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isExamActive, onToggleFlag, confirmOpen, sheetOpen]);
+
   const reset = useCallback(() => {
     setResult(null);
     setAnswers({});
@@ -379,6 +414,9 @@ export default function QuizEngine({
     setConfidence({});
     setOptionOrder({});
     setCurrent(0);
+    setGridOn(true);
+    setSheetOpen(false);
+    setConfirmOpen(false);
     if (mode === "exam") {
       setStartedAt(null);
       setPhase("intro");
@@ -400,6 +438,11 @@ export default function QuizEngine({
     [questions, answers],
   );
 
+  const flaggedCount = useMemo(
+    () => questions.filter((q) => flagged[q.id]).length,
+    [questions, flagged],
+  );
+
   // ---- render ----
 
   if (phase === "empty") {
@@ -414,13 +457,36 @@ export default function QuizEngine({
       ? "Answer a practice set or two and your weakest topics will surface here for a focused drill."
       : "Flag tricky questions or miss a few in practice and they will collect here for a focused review session.";
     return (
-      <div className="rounded-lg border border-hairline bg-raised p-8 text-center">
-        <h2 className="text-xl font-semibold text-ink">{emptyHeading}</h2>
-        <p className="mx-auto mt-2 max-w-prose text-ink-soft">{emptyBody}</p>
-        <a
-          href="/practice"
-          className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-        >
+      <div className="flex flex-col items-start gap-3 rounded-r3 border border-line-1 bg-ground-1 px-6 py-8">
+        <span className="inline-flex items-center gap-3">
+          <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true">
+            <circle
+              cx="9"
+              cy="9"
+              r="6.6"
+              fill="none"
+              stroke="var(--ink-3)"
+              strokeWidth="1.6"
+            />
+          </svg>
+          <span
+            aria-hidden="true"
+            className="inline-block w-14 border-t-2 border-dotted"
+            style={{
+              borderColor:
+                "color-mix(in srgb, var(--blueprint) 50%, transparent)",
+            }}
+          />
+          <span
+            className="font-mono text-[10px] tracking-[0.12em]"
+            style={{ color: "var(--kicker-ink)" }}
+          >
+            {isDrill ? "NOT ENOUGH HISTORY" : "NO UNFIXED POINTS"}
+          </span>
+        </span>
+        <p className="t-sub text-ink-1">{emptyHeading}</p>
+        <p className="t-body-sm max-w-prose text-ink-2">{emptyBody}</p>
+        <a href="/practice" className="btn-secondary">
           Go to practice
         </a>
       </div>
@@ -430,47 +496,69 @@ export default function QuizEngine({
   if (phase === "intro") {
     const mins = Math.round(EXAM.timeLimitSeconds / 60);
     return (
-      <div className="rounded-lg border border-hairline bg-raised p-6 sm:p-8">
-        <h2 className="text-2xl font-bold text-ink">Full mock exam</h2>
-        <p className="mt-2 text-ink-soft">
-          {examTotal} questions, {mins} minutes, scored across all four domains.
-        </p>
-        <ul className="mt-4 flex flex-col gap-2 text-ink-soft">
-          <li>The timer runs continuously once you start.</li>
-          <li>Move freely between questions and flag any to revisit.</li>
-          <li>
-            Every question here is scored so you get full feedback. On the real
-            exam, 15 of the 65 questions are unscored and not identified.
-          </li>
-        </ul>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={startExam}
-            className="rounded-md bg-brand px-5 py-2.5 font-medium text-raised transition-colors hover:bg-brand-strong"
-          >
-            Start exam
-          </button>
-          {hasSaved && (
-            <button
-              type="button"
-              onClick={resumeExam}
-              className="rounded-md border border-hairline px-5 py-2.5 font-medium text-ink transition-colors hover:border-brand"
-            >
-              Resume in-progress exam
+      <div className="mx-auto mt-8 w-full max-w-[920px]">
+        <div className="rounded-r3 border border-line-1 bg-ground-1 p-6 sm:p-8">
+          <h2 className="t-title text-ink-1">Full mock exam</h2>
+          <p className="t-mono mt-2 uppercase text-ink-3">
+            {examTotal} questions · {mins} min · all four domains
+          </p>
+          <ul className="t-body mt-5 flex flex-col gap-2 text-ink-2">
+            <li>The timer runs continuously once you start.</li>
+            <li>Move freely between questions and flag any to revisit.</li>
+            <li>
+              Every question here is scored so you get full feedback. On the
+              real exam, 15 of the 65 questions are unscored and not
+              identified.
+            </li>
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button type="button" onClick={startExam} className="btn-primary">
+              Start exam
             </button>
-          )}
+            {hasSaved && (
+              <button
+                type="button"
+                onClick={resumeExam}
+                className="btn-secondary"
+              >
+                Resume in-progress exam
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );
   }
 
   if (phase === "results" && result) {
+    if (mode === "exam") {
+      // The exam ceremony: the tally over the sitting's questions, the
+      // attempt number from the just-recorded store, and the missed-first
+      // review list in place of full card re-renders.
+      const tally = questions.map((q, i) => ({
+        n: i + 1,
+        correct: isAnswerCorrect(q, answers[q.id] ?? []),
+      }));
+      const attemptNumber = $progress
+        .get()
+        .attempts.filter((a) => a.mode === "exam").length;
+      return (
+        <div className="mx-auto mt-8 w-full max-w-[920px]">
+          <ResultsPanel
+            result={result}
+            onRetake={reset}
+            tally={tally}
+            attemptNumber={attemptNumber}
+          />
+          <ReviewList questions={questions} answers={answers} />
+        </div>
+      );
+    }
     return (
       <div className="flex flex-col gap-6">
         <ResultsPanel result={result} onRetake={reset} />
-        <details className="rounded-lg border border-hairline bg-raised p-5">
-          <summary className="cursor-pointer font-semibold text-ink">
+        <details className="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <summary className="t-sub cursor-pointer text-ink-1">
             Review every question
           </summary>
           <div className="mt-4 flex flex-col gap-4">
@@ -501,40 +589,266 @@ export default function QuizEngine({
   const isRevealed = !isExam && !!revealed[q.id];
   const selected = answers[q.id] ?? [];
   const isLast = current === questions.length - 1;
-  const minutes = remaining !== null ? Math.floor(remaining / 60) : 0;
-  const seconds = remaining !== null ? remaining % 60 : 0;
-  const lowTime = remaining !== null && remaining <= 300;
+
+  if (isExam) {
+    const cells: MarkCell[] = questions.map((qq, i) => ({
+      id: qq.id,
+      n: i + 1,
+      answered: (answers[qq.id] ?? []).length > 0,
+      flagged: !!flagged[qq.id],
+      current: i === current,
+    }));
+    const blank = questions.length - answeredCount;
+    const openConfirm = () => setConfirmOpen(true);
+    const jumpTo = (i: number) => {
+      setCurrent(i);
+      setSheetOpen(false);
+    };
+    const goPrev = () => setCurrent((c) => Math.max(0, c - 1));
+    const goNext = () =>
+      setCurrent((c) => Math.min(questions.length - 1, c + 1));
+
+    return (
+      <div data-exam-root>
+        <ExamBar
+          remaining={remaining ?? 0}
+          answered={answeredCount}
+          total={questions.length}
+          flaggedCount={flaggedCount}
+          gridOn={gridOn}
+          onToggleGrid={() => {
+            if (window.matchMedia("(min-width: 1200px)").matches) {
+              setGridOn((v) => !v);
+            } else {
+              setSheetOpen((v) => !v);
+            }
+          }}
+          onSubmit={openConfirm}
+        />
+
+        <div className="mx-auto flex w-full max-w-[1200px] justify-center gap-12 px-[18px] pt-5 pb-28 sm:px-6 sm:pt-10 min-[1920px]:max-w-[1280px] xl:px-12">
+          <div className="exam-q-in w-full min-w-0 max-w-[880px] min-[1920px]:max-w-[920px]">
+            <QuestionCard
+              question={q}
+              selected={selected}
+              revealed={false}
+              flagged={!!flagged[q.id]}
+              index={current}
+              total={questions.length}
+              onToggleOption={onToggleOption}
+              onToggleFlag={onToggleFlag}
+              optionOrder={optionOrder[q.id]}
+              showConfidence={false}
+              examRoom
+              footer={
+                <div className="mt-7 hidden items-center justify-between gap-3 border-t border-line-1 pt-[22px] sm:flex">
+                  <button
+                    type="button"
+                    disabled={current === 0}
+                    onClick={goPrev}
+                    className="btn-ghost disabled:cursor-not-allowed disabled:opacity-[0.38]"
+                  >
+                    &larr; Previous
+                  </button>
+                  {isLast ? (
+                    <button
+                      type="button"
+                      onClick={openConfirm}
+                      className="btn-primary"
+                    >
+                      Submit exam
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      className="btn-primary"
+                    >
+                      Next &rarr;
+                    </button>
+                  )}
+                </div>
+              }
+            />
+          </div>
+
+          {gridOn && (
+            <div className="hidden w-[272px] flex-none min-[1200px]:block min-[1920px]:w-[288px]">
+              <div className="sticky top-20">
+                <MarkSheet cells={cells} onJump={jumpTo} variant="rail" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <MarkSheet
+          cells={cells}
+          onJump={jumpTo}
+          variant="sheet"
+          open={sheetOpen}
+          onClose={() => setSheetOpen(false)}
+          onSubmit={() => {
+            setSheetOpen(false);
+            setConfirmOpen(true);
+          }}
+          answered={answeredCount}
+          total={questions.length}
+        />
+
+        {/* Bottom action bar: 48px thumb targets pinned to the bottom on
+            phones. The flag square replaces the card's flag chip there. */}
+        {!confirmOpen && (
+          <div className="fixed inset-x-0 bottom-0 z-20 flex gap-2.5 border-t border-line-1 bg-ground-1 px-4 pt-3 pb-5 sm:hidden">
+            <button
+              type="button"
+              onClick={onToggleFlag}
+              aria-pressed={!!flagged[q.id]}
+              aria-label={
+                flagged[q.id]
+                  ? "Remove the flag from this question"
+                  : "Flag this question"
+              }
+              className={`flex size-12 flex-none items-center justify-center rounded-r1 border transition-colors ${
+                flagged[q.id]
+                  ? "border-flag-line bg-flag-fill text-flag"
+                  : "border-line-1 text-ink-2"
+              }`}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill={flagged[q.id] ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3.5 14.5V2.5" />
+                <path d="M3.5 3h8.5l-2.2 2.8L12 8.5H3.5" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              disabled={current === 0}
+              onClick={goPrev}
+              className="btn-secondary inline-flex h-12 flex-1 items-center justify-center disabled:cursor-not-allowed disabled:opacity-[0.38]"
+            >
+              &larr; Prev
+            </button>
+            {isLast ? (
+              <button
+                type="button"
+                onClick={openConfirm}
+                className="btn-primary inline-flex h-12 flex-[1.6] items-center justify-center"
+              >
+                Submit
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={goNext}
+                className="btn-primary inline-flex h-12 flex-[1.6] items-center justify-center"
+              >
+                Next &rarr;
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* The guarded submit: facts first, then the only primary submit in
+            the room. Auto-submit at 0:00 runs the same finish sequence. */}
+        {confirmOpen && (
+          <div className="exam-confirm-in fixed inset-x-0 bottom-0 z-40 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line-2 bg-ground-2 px-[18px] py-4 sm:px-7">
+            <span className="font-mono text-xs uppercase tabular-nums text-ink-1">
+              {answeredCount} of {questions.length} answered · {flaggedCount}{" "}
+              flagged · {blank} blank will score zero
+            </span>
+            <span className="ml-auto flex items-center gap-2">
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setConfirmOpen(false)}
+                className="btn-ghost"
+              >
+                Keep working
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  finish(questions, answers, startedAt as number)
+                }
+                className="btn-primary"
+              >
+                Submit now
+              </button>
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-5">
-      {isExam && remaining !== null && (
-        <div className="flex items-center justify-between gap-3 rounded-md border border-hairline bg-raised px-4 py-2.5">
-          <span className="text-sm text-ink-soft">
-            {answeredCount} of {questions.length} answered
-          </span>
-          <span
-            className={`font-mono text-lg font-semibold tabular-nums ${
-              lowTime ? "text-danger" : "text-ink"
-            }`}
-          >
-            {minutes}:{seconds.toString().padStart(2, "0")}
-          </span>
-        </div>
-      )}
-
       {!isExam && (
-        <div className="h-1.5 overflow-hidden rounded-full bg-surface">
-          <div
-            className="h-full bg-brand transition-[width]"
-            style={{ width: `${((current + 1) / questions.length) * 100}%` }}
-          />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* The set rail: one tick per question in the set. The current tick
+              reads blueprint, checked answers settle to their verdict, and the
+              rest wait as faint structure. Never color alone: the mono count
+              beside it carries the same facts as text. */}
+          <span
+            role="img"
+            aria-label={`Question ${current + 1} of ${questions.length}, ${
+              questions.filter(
+                (qq) => revealed[qq.id] && isAnswerCorrect(qq, answers[qq.id] ?? []),
+              ).length
+            } correct so far`}
+            className="flex flex-wrap items-center gap-1"
+          >
+            {questions.map((qq, i) => {
+              const done = !!revealed[qq.id];
+              const wasCorrect =
+                done && isAnswerCorrect(qq, answers[qq.id] ?? []);
+              const bg =
+                i === current
+                  ? "var(--blueprint)"
+                  : done
+                    ? wasCorrect
+                      ? "var(--ok)"
+                      : "var(--err)"
+                    : "color-mix(in srgb, var(--blueprint) 34%, transparent)";
+              return (
+                <span
+                  key={qq.id}
+                  style={{
+                    width: "13px",
+                    height: "3px",
+                    display: "block",
+                    background: bg,
+                  }}
+                />
+              );
+            })}
+          </span>
+          <span className="t-mono-sm uppercase text-ink-3">
+            {questions.filter((qq) => revealed[qq.id]).length}/
+            {questions.length} ·{" "}
+            {
+              questions.filter(
+                (qq) =>
+                  revealed[qq.id] && isAnswerCorrect(qq, answers[qq.id] ?? []),
+              ).length
+            }{" "}
+            correct
+          </span>
         </div>
       )}
 
       {mode === "drill" && weakTopics.length > 0 && (
-        <p className="text-sm text-ink-soft">
-          These questions target your weakest topics:{" "}
-          <span className="font-medium text-ink">{weakTopics.join(", ")}</span>.
+        <p className="t-body-sm text-ink-2">
+          <span className="t-mono-label mr-2 text-ink-3">Drilling</span>
+          {weakTopics.join(" · ")}
         </p>
       )}
 
@@ -556,12 +870,19 @@ export default function QuizEngine({
       />
 
       {!isExam && (
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 max-sm:sticky max-sm:bottom-0 max-sm:z-10 max-sm:-mx-[18px] max-sm:border-t max-sm:border-line-1 max-sm:bg-ground-0 max-sm:px-[18px] max-sm:py-3">
           {!isRevealed ? (
             <>
               <button
                 type="button"
-                disabled={selected.length === 0 || !confidence[q.id]}
+                disabled={
+                  selected.length === 0 ||
+                  !confidence[q.id] ||
+                  // Multi-answer stems name their count ("Choose TWO"), so the
+                  // check waits for exactly that many marks: a partial set can
+                  // only score wrong, and the gate makes the contract visible.
+                  (q.type === "multi" && selected.length !== q.correct.length)
+                }
                 aria-describedby={
                   selected.length > 0 && !confidence[q.id]
                     ? `confidence-hint-${q.id}`
@@ -580,14 +901,29 @@ export default function QuizEngine({
                   }
                   setRevealed((r) => ({ ...r, [q.id]: true }));
                 }}
-                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+                className="btn-primary"
               >
                 Check answer
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  // Skipping leaves the question unanswered: it scores as a
+                  // miss at finish, which is the honest reading of a skip.
+                  if (isLast) {
+                    finish(questions, answers, startedAt as number);
+                  } else {
+                    setCurrent((c) => c + 1);
+                  }
+                }}
+                className="btn-ghost"
+              >
+                Skip
               </button>
               {selected.length > 0 && !confidence[q.id] && (
                 <p
                   id={`confidence-hint-${q.id}`}
-                  className="text-sm text-ink-soft"
+                  className="t-body-sm text-ink-2"
                 >
                   Rate your confidence first
                 </p>
@@ -595,20 +931,11 @@ export default function QuizEngine({
             </>
           ) : (
             <>
-              {mode === "review" && (
-                <button
-                  type="button"
-                  onClick={() => clearMissed(q.id)}
-                  className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-correct"
-                >
-                  Clear from review
-                </button>
-              )}
               {!isLast ? (
                 <button
                   type="button"
                   onClick={() => setCurrent((c) => c + 1)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
+                  className="btn-primary"
                 >
                   Next question
                 </button>
@@ -616,9 +943,18 @@ export default function QuizEngine({
                 <button
                   type="button"
                   onClick={() => finish(questions, answers, startedAt as number)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
+                  className="btn-primary"
                 >
                   See results
+                </button>
+              )}
+              {mode === "review" && (
+                <button
+                  type="button"
+                  onClick={() => clearMissed(q.id)}
+                  className="btn-secondary"
+                >
+                  Clear from review
                 </button>
               )}
             </>
@@ -626,105 +962,6 @@ export default function QuizEngine({
         </div>
       )}
 
-      {isExam && (
-        <>
-          <div className="flex items-center justify-between gap-3">
-            <button
-              type="button"
-              disabled={current === 0}
-              onClick={() => setCurrent((c) => Math.max(0, c - 1))}
-              className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Previous
-            </button>
-            {!isLast ? (
-              <button
-                type="button"
-                onClick={() =>
-                  setCurrent((c) => Math.min(questions.length - 1, c + 1))
-                }
-                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-              >
-                Next
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => finish(questions, answers, startedAt as number)}
-                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-              >
-                Submit exam
-              </button>
-            )}
-          </div>
-
-          <nav aria-label="Jump to question">
-            <ul className="flex flex-wrap gap-1.5">
-              {questions.map((qq, i) => {
-                const isAnswered = (answers[qq.id] ?? []).length > 0;
-                const isCurrent = i === current;
-                const isFlagged = !!flagged[qq.id];
-                // State must not ride on color alone (design-system rule), so
-                // each button carries a spoken state and a shape marker: a flag
-                // glyph for flagged, a filled dot for answered.
-                const state = isFlagged
-                  ? "flagged"
-                  : isAnswered
-                    ? "answered"
-                    : "not answered";
-                return (
-                  <li key={qq.id}>
-                    <button
-                      type="button"
-                      onClick={() => setCurrent(i)}
-                      aria-current={isCurrent ? "true" : undefined}
-                      aria-label={`Question ${i + 1}, ${state}`}
-                      className={`relative h-9 w-9 rounded-md border text-sm font-medium transition-colors ${
-                        isCurrent
-                          ? "border-brand bg-brand text-raised"
-                          : isFlagged
-                            ? "border-flag text-flag"
-                            : isAnswered
-                              ? "border-brand bg-info-soft text-brand"
-                              : "border-hairline text-ink-soft hover:border-brand"
-                      }`}
-                    >
-                      {i + 1}
-                      {isFlagged && (
-                        <span
-                          aria-hidden="true"
-                          className="absolute -right-0.5 -top-0.5 text-[10px] leading-none"
-                        >
-                          &#9873;
-                        </span>
-                      )}
-                      {!isFlagged && isAnswered && !isCurrent && (
-                        <span
-                          aria-hidden="true"
-                          className="absolute bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-brand"
-                        />
-                      )}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-            <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
-              <span>&#9873; flagged</span>
-              <span>&bull; answered</span>
-              <span>no mark: not answered</span>
-            </p>
-          </nav>
-
-          <button
-            type="button"
-            onClick={() => finish(questions, answers, startedAt as number)}
-            className="self-start text-sm font-medium text-ink-soft underline underline-offset-2 hover:text-ink"
-          >
-            Submit exam now
-          </button>
-        </>
-      )}
     </div>
   );
 }

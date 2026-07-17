@@ -1,5 +1,9 @@
 ---
-// A highlighted box for lessons. Used inside MDX via <Callout type="key">.
+// The two lesson callouts, and only two: NOTE (structure speaking — blueprint
+// rule on the explanation ground) and EXAM TIP (the flag family with its
+// pennant). Legacy MDX types map onto them: key/note read as NOTE, tip/warning
+// as EXAM TIP. Body text is the reflection voice (Literata). Never stack two
+// callouts adjacently in content.
 interface Props {
   type?: "key" | "note" | "tip" | "warning";
   title?: string;
@@ -7,27 +11,40 @@ interface Props {
 
 const { type = "note", title } = Astro.props;
 
-const styles: Record<string, string> = {
-  key: "border-brand bg-info-soft",
-  note: "border-hairline bg-surface",
-  tip: "border-correct bg-correct-soft",
-  warning: "border-flag bg-surface",
-};
-
-const labels: Record<string, string> = {
-  key: "Key point",
-  note: "Note",
-  tip: "Tip",
-  warning: "Watch out",
-};
-
-const boxClass = styles[type] ?? styles.note;
-const heading = title ?? labels[type] ?? labels.note;
+const isTip = type === "tip" || type === "warning";
+const heading = title ?? (isTip ? "Exam tip" : "Note");
 ---
 
-<aside class={`not-prose my-6 rounded-md border-l-4 p-4 ${boxClass}`}>
-  <p class="mb-1 text-sm font-semibold text-ink">{heading}</p>
-  <div class="text-ink-soft [&_p]:m-0 [&_p+p]:mt-2">
+<aside
+  class="not-prose my-6 rounded-r-r2 border-l-[3px] px-5 py-4"
+  style={isTip
+    ? "background: var(--flag-fill); border-color: var(--flag)"
+    : "background: var(--ground-2); border-color: var(--blueprint)"}
+>
+  <p
+    class="t-mono-label m-0 inline-flex items-center gap-2"
+    style={isTip ? "color: var(--flag)" : "color: var(--kicker-ink)"}
+  >
+    {
+      isTip && (
+        <svg
+          width="11"
+          height="11"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3.5 14.5V2.5"></path>
+          <path d="M3.5 3h8.5l-2.2 2.8L12 8.5H3.5"></path>
+        </svg>
+      )
+    }
+    {heading}
+  </p>
+  <div class="t-note mt-2 text-ink-2 [&_p]:m-0 [&_p+p]:mt-2">
     <slot />
   </div>
 </aside>

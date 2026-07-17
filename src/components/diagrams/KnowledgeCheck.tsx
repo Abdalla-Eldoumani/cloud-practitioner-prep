@@ -1,4 +1,6 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
+import { shuffle } from "@/lib/exam";
+import MarkPill, { type MarkState } from "@/components/quiz/MarkPill";
 
 // A LOCAL inline self-check. It mirrors the quiz reveal idiom in miniature but
 // holds its own state ONLY: no nanostores, no $progress, no markLessonComplete,
@@ -7,9 +9,9 @@ import { useId, useState } from "react";
 // lesson and the check is fresh; nothing was persisted.
 //
 // The shipped QuestionCard is engine-shaped (it takes a Question, confidence,
-// flag, index/total), so this does NOT import it; it replicates the few lines of
-// reveal styling and the fieldset/legend + native input structure instead, the
-// way the small islands stay small and focused.
+// flag, index/total), so this does NOT import it; it shares only the small
+// MarkPill primitive and replicates the reveal styling, the way the small
+// islands stay small and focused.
 
 // One option: a stable id and its visible text. Ids are how correctness is
 // compared — never a letter, never a position.
@@ -35,23 +37,33 @@ export interface KnowledgeCheckDatum {
   reference?: { label: string; url: string };
 }
 
-// The reveal color logic, replicated from the shipped question reveal so the
-// check looks native. Not revealed: selected is brand/info, the rest are plain.
-// Revealed: a correct option is green, a selected-but-wrong option is red, and
-// every other option dims so the eye lands on the answer.
-function optionStateClass(
+function markState(
+  revealed: boolean,
+  isCorrect: boolean,
+  isSelected: boolean,
+): MarkState {
+  if (!revealed) return isSelected ? "marked" : "empty";
+  if (isCorrect && isSelected) return "ok";
+  if (isCorrect) return "ok-outline";
+  if (isSelected) return "err";
+  return "dim";
+}
+
+// The reveal surface logic, mirroring the quiz option rows so the check looks
+// native inside a lesson.
+function rowClass(
   revealed: boolean,
   isCorrect: boolean,
   isSelected: boolean,
 ): string {
   if (!revealed) {
     return isSelected
-      ? "border-brand bg-info-soft"
-      : "border-hairline bg-raised hover:border-brand";
+      ? "border-blueprint bg-blueprint-dim"
+      : "border-line-1 bg-ground-1 hover:border-line-2 hover:bg-ground-2";
   }
-  if (isCorrect) return "border-correct bg-correct-soft";
-  if (isSelected) return "border-danger bg-danger-soft";
-  return "border-hairline bg-raised opacity-70";
+  if (isCorrect) return "border-ok-line bg-ok-fill";
+  if (isSelected) return "border-err-line bg-err-fill";
+  return "border-line-1 bg-ground-1 opacity-[0.62]";
 }
 
 export default function KnowledgeCheck({
@@ -65,6 +77,18 @@ export default function KnowledgeCheck({
   // chosen option ids; `revealed` flips on Check. Nothing leaves this component.
   const [selected, setSelected] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(false);
+
+  // The same fairness rule as the quiz: authored order (correct first) never
+  // reaches the screen. Shuffled once per mount, stable while the check is on
+  // screen, fresh on the next visit to the lesson. The shuffle is client-only
+  // (the server would draw a different order and hydration would mismatch),
+  // so the check renders nothing until mounted — the honest alternatives are
+  // an authored-order flash or a seeded, never-changing order, and both lose.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  const displayOptions = useMemo(() => shuffle(options), [options]);
 
   // Single-answer when exactly one id is correct: native radios. Otherwise
   // checkboxes with a "select all that apply" hint, matching the quiz idiom.
@@ -101,30 +125,44 @@ export default function KnowledgeCheck({
     setRevealed(false);
   }
 
+  if (!mounted) return null;
+
   return (
-    <div className="my-6 rounded-lg border border-hairline bg-raised p-4 sm:p-5">
-      <p className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">
-        Check yourself
-      </p>
+    <div className="my-6 rounded-lg border border-line-1 bg-ground-1 p-4 sm:p-5">
+      <div className="mb-3 flex items-center gap-2">
+        <svg width="13" height="13" viewBox="0 0 18 18" aria-hidden="true">
+          <circle
+            cx="9"
+            cy="9"
+            r="6.6"
+            fill="none"
+            stroke="var(--kicker-ink)"
+            strokeWidth="1.6"
+          />
+          <circle cx="9" cy="9" r="2.3" fill="var(--kicker-ink)" />
+        </svg>
+        <p className="kicker">Knowledge check</p>
+        <span className="t-mono-sm ml-auto uppercase text-ink-3">
+          Not scored
+        </span>
+      </div>
 
       <fieldset disabled={revealed}>
-        <legend className="mb-3 text-base font-semibold leading-snug text-ink">
-          {prompt}
-        </legend>
+        <legend className="t-sub mb-3 text-ink-1">{prompt}</legend>
         {isMulti && (
-          <p className="mb-3 -mt-1 text-sm text-ink-soft">
+          <p className="t-body-sm mb-3 -mt-1 text-ink-2">
             Select all that apply.
           </p>
         )}
 
         <ul className="flex flex-col gap-2.5">
-          {options.map((opt) => {
+          {displayOptions.map((opt) => {
             const isSelected = selected.includes(opt.id);
             const optIsCorrect = correctSet.has(opt.id);
             return (
               <li key={opt.id}>
                 <label
-                  className={`flex cursor-pointer items-start gap-3 rounded-md border p-3 transition-colors ${optionStateClass(
+                  className={`flex min-h-11 cursor-pointer items-center gap-[15px] rounded-md border px-4 py-3 transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus ${rowClass(
                     revealed,
                     optIsCorrect,
                     isSelected,
@@ -136,21 +174,32 @@ export default function KnowledgeCheck({
                     value={opt.id}
                     checked={isSelected}
                     onChange={() => toggle(opt.id)}
-                    className="mt-0.5 h-4 w-4 shrink-0 accent-brand"
+                    className="sr-only"
+                  />
+                  <MarkPill
+                    multi={isMulti}
+                    state={markState(revealed, optIsCorrect, isSelected)}
                   />
                   {/* Rendered as TEXT (React escapes it); never innerHTML, so an
                       authored label can carry no markup injection. */}
-                  <span className="text-ink">{opt.text}</span>
+                  <span className="t-body min-w-0 flex-1 font-sans text-ink-1">
+                    {opt.text}
+                  </span>
                   {/* The state labels are TEXT, not color alone, so the reveal
                       reads the same to a screen reader and in high contrast. */}
-                  {revealed && optIsCorrect && (
-                    <span className="ml-auto shrink-0 text-sm font-semibold text-ink">
-                      Correct
+                  {revealed && optIsCorrect && isSelected && (
+                    <span className="t-mono-sm shrink-0 uppercase text-ok">
+                      Your mark — correct
+                    </span>
+                  )}
+                  {revealed && optIsCorrect && !isSelected && (
+                    <span className="t-mono-sm shrink-0 uppercase text-ok">
+                      Correct answer
                     </span>
                   )}
                   {revealed && isSelected && !optIsCorrect && (
-                    <span className="ml-auto shrink-0 text-sm font-semibold text-ink">
-                      Your choice
+                    <span className="t-mono-sm shrink-0 uppercase text-err">
+                      Your mark — incorrect
                     </span>
                   )}
                 </label>
@@ -166,16 +215,12 @@ export default function KnowledgeCheck({
             type="button"
             onClick={() => setRevealed(true)}
             disabled={selected.length === 0}
-            className="rounded-md bg-brand px-4 py-2 text-sm font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+            className="btn-primary"
           >
             Check
           </button>
         ) : (
-          <button
-            type="button"
-            onClick={reset}
-            className="rounded-md border border-hairline px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-brand"
-          >
+          <button type="button" onClick={reset} className="btn-secondary">
             Try again
           </button>
         )}
@@ -187,21 +232,29 @@ export default function KnowledgeCheck({
           names option content, never a letter. */}
       <div id={resultId} role="status" aria-live="polite" className="mt-4">
         {revealed && (
-          <div className="rounded-md border border-hairline bg-surface p-4">
-            <p className="mb-1 text-sm font-semibold text-ink">
-              {isCorrect ? "Correct" : "Not quite"}
-            </p>
-            <p className="text-ink-soft">{explanation}</p>
-            {reference && (
-              <a
-                href={reference.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-medium text-brand underline underline-offset-2"
+          <div className="rounded-lg bg-ground-2 p-4">
+            <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
+              <p
+                className={`t-mono-label ${isCorrect ? "text-ok" : "text-err"}`}
               >
-                {reference.label}
-              </a>
-            )}
+                {isCorrect ? "Correct" : "Not quite"}
+              </p>
+              {reference && (
+                <a
+                  href={reference.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="t-mono-sm inline-flex items-center gap-1 rounded-sm border px-2 py-1 uppercase text-blueprint-strong transition-colors hover:text-ink-1"
+                  style={{
+                    borderColor:
+                      "color-mix(in srgb, var(--blueprint) 40%, transparent)",
+                  }}
+                >
+                  {reference.label} ↗
+                </a>
+              )}
+            </div>
+            <p className="t-note text-ink-2">{explanation}</p>
           </div>
         )}
       </div>

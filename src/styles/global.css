@@ -5,70 +5,156 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  Design tokens. Light values live here; .dark redefines the same custom
-  properties so utilities like bg-surface and text-ink resolve per theme.
-  Full rationale and the dark palette are in the project design system doc.
+  Marked Ground tokens. Two layers with meaning: structure prints in drop-out
+  blue (--blueprint) like the pre-printed rules on an answer sheet; commitment
+  lands in ink (--ink-1 / --action). Dark ("Graphite") is the primary theme,
+  light ("Field Paper") is its equal. Utilities resolve through the custom
+  properties, so each theme redefines the raw values only.
 */
-@theme {
-  --color-ink: #1a1d24;
-  --color-ink-soft: #51586a;
-  --color-surface: #fbfaf7;
-  --color-raised: #ffffff;
-  --color-hairline: #e6e2d8;
-
-  --color-brand: #2a4fcb;
-  --color-brand-strong: #1e3da8;
-  --color-accent: #e8770c;
-
-  --color-correct: #2f8f4e;
-  --color-correct-soft: #e7f4ec;
-  --color-danger: #ce3b3b;
-  --color-danger-soft: #fbe9e9;
-  /* Darkened from #c9971b so the flagged-state text and number labels clear
-     WCAG AA (4.5:1) on surface and raised; the light amber failed as text. */
-  --color-flag: #9a6a09;
-  --color-info-soft: #eaf0fb;
-
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Source Serif 4 Variable", Georgia, Cambria, "Times New Roman",
-    serif;
-  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+@theme inline {
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Literata Variable", Georgia, "Times New Roman", serif;
+  --font-mono: "Sometype Mono Variable", ui-monospace, "SF Mono", Menlo,
     monospace;
 
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  --color-ground-0: var(--ground-0);
+  --color-ground-1: var(--ground-1);
+  --color-ground-2: var(--ground-2);
+  --color-ground-3: var(--ground-3);
+  --color-line-1: var(--line-1);
+  --color-line-2: var(--line-2);
+  --color-line-3: var(--line-3);
+  --color-ink-1: var(--ink-1);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-action: var(--action);
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-strong: var(--blueprint-strong);
+  --color-blueprint-dim: var(--blueprint-dim);
+  --color-ok: var(--ok);
+  --color-ok-line: var(--ok-line);
+  --color-ok-fill: var(--ok-fill);
+  --color-err: var(--err);
+  --color-err-line: var(--err-line);
+  --color-err-fill: var(--err-fill);
+  --color-flag: var(--flag);
+  --color-flag-line: var(--flag-line);
+  --color-flag-fill: var(--flag-fill);
+  --color-d1: var(--d1);
+  --color-d2: var(--d2);
+  --color-d3: var(--d3);
+  --color-d4: var(--d4);
+  --color-focus: var(--focus);
+  --color-scrim: var(--scrim);
 
+  /* Radii: r1 buttons and chips, r2 rows and inputs, r3 panels. Nothing
+     rounder than 6px except the mark pill, which uses its own geometry. */
+  --radius-r1: 3px;
+  --radius-r2: 4px;
+  --radius-r3: 6px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+
+  --ease-settle: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-flip: cubic-bezier(0.3, 0.7, 0.1, 1);
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --ease-entrance: cubic-bezier(0.3, 0, 0, 1);
+  --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:root {
+  /* Field Paper (light) */
+  --ground-0: #efeade;
+  --ground-1: #faf7ef;
+  --ground-2: #e7e1d1;
+  --ground-3: #ddd6c3;
+  --line-1: #d6cfba;
+  --line-2: #b5ac93;
+  --line-3: #978d72;
+  --ink-1: #211d13;
+  --ink-2: #5b5340;
+  /* Darkened from the drafted #7d7460: 13.5px muted text must clear 4.5:1 on
+     both grounds. */
+  --ink-3: #6f664f;
+  --ink-inverse: #f6f2e7;
+  --action: #211d13;
+  --blueprint: #497384;
+  --blueprint-strong: #34596a;
+  --blueprint-dim: rgba(73, 115, 132, 0.15);
+  /* ok darkened from #337d52 for the same small-text reason. */
+  --ok: #2e714a;
+  --ok-line: #7fae8c;
+  --ok-fill: #e2ecdc;
+  /* err darkened from #b25438. */
+  --err: #a54c31;
+  --err-line: #cc9179;
+  --err-fill: #f4e3d8;
+  /* flag darkened from #8a6512 so flagged text reads on the flag fill. */
+  --flag: #7a5808;
+  --flag-line: #c0a054;
+  --flag-fill: #f0e6c8;
+  --d1: #3e6c96;
+  --d2: #a44d67;
+  /* d3 and d4 darkened from #2e7a5e / #8a6a2a for badge-size text. */
+  --d3: #2b7359;
+  --d4: #7d5f22;
+  --focus: #34596a;
+  --scrim: rgba(33, 29, 19, 0.4);
+  --action-hover: #0d0b07;
+  --action-active: #37311f;
+  --shadow-float: 0 16px 40px -8px rgba(33, 29, 19, 0.18),
+    0 2px 8px rgba(33, 29, 19, 0.08);
+  /* Structure text that must read at small sizes uses the strong blue in
+     light; kickers and links resolve through this. */
+  --kicker-ink: var(--blueprint-strong);
 }
 
 .dark {
-  --color-ink: #e8eaf0;
-  --color-ink-soft: #9aa2b4;
-  --color-surface: #0e1118;
-  --color-raised: #161a24;
-  --color-hairline: #262c3a;
-
-  --color-brand: #6e8bff;
-  --color-brand-strong: #8aa1ff;
-  --color-accent: #f2992e;
-
-  --color-correct: #4cae6b;
-  --color-correct-soft: #16271c;
-  --color-danger: #e26a6a;
-  --color-danger-soft: #2a1717;
-  --color-flag: #d8b03e;
-  --color-info-soft: #161f33;
+  /* Graphite (primary) */
+  --ground-0: #171511;
+  --ground-1: #1e1b16;
+  --ground-2: #26221b;
+  --ground-3: #2e2920;
+  --line-1: #363028;
+  --line-2: #4a443a;
+  --line-3: #5f5849;
+  --ink-1: #ede7da;
+  --ink-2: #b3aa97;
+  --ink-3: #877e6c;
+  --ink-inverse: #171511;
+  --action: #ede7da;
+  --blueprint: #7fa3b0;
+  --blueprint-strong: #a8c4cf;
+  --blueprint-dim: rgba(127, 163, 176, 0.16);
+  --ok: #7cc292;
+  --ok-line: #3f6b4d;
+  --ok-fill: #1f2e22;
+  --err: #dd8a70;
+  --err-line: #6b4437;
+  --err-fill: #2e211c;
+  --flag: #d9b05c;
+  --flag-line: #6b5527;
+  --flag-fill: #2c2515;
+  --d1: #85aed1;
+  --d2: #d791a4;
+  --d3: #74bfa8;
+  --d4: #cfa963;
+  --focus: #7fa3b0;
+  --scrim: rgba(13, 11, 8, 0.62);
+  --action-hover: #fbf4e4;
+  --action-active: #e2dbc9;
+  --shadow-float: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+  --kicker-ink: var(--blueprint);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-surface);
-    color: var(--color-ink);
+    background-color: var(--ground-0);
+    color: var(--ink-1);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -86,13 +172,26 @@
 
   body {
     font-family: var(--font-sans);
+    font-weight: 450;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
+  ::selection {
+    background: var(--blueprint-dim);
+  }
+
+  /* Every number lines up: the mono is structural, not decorative. */
+  code,
+  kbd,
+  samp,
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
   /* Keyboard focus is always visible. Quiz navigation depends on it. */
   :focus-visible {
-    outline: 2px solid var(--color-brand);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -102,35 +201,502 @@
   h3,
   h4 {
     font-family: var(--font-sans);
-    font-weight: 700;
+    font-weight: 680;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.012em;
   }
 }
 
-/* Long-form lesson prose. Reading body is the serif; code stays mono. */
-.prose-lesson {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  max-width: 68ch;
-}
-.prose-lesson :where(code, pre) {
-  font-family: var(--font-mono);
+@layer components {
+  /* Type scale. Fluid levels interpolate 375 to 1440 and hold at both ends. */
+  .t-display {
+    font-weight: 730;
+    font-size: clamp(2.5rem, 1.972rem + 2.254vw, 4rem);
+    line-height: clamp(2.75rem, 2.266rem + 2.066vw, 4.125rem);
+    letter-spacing: -0.022em;
+  }
+  .t-page {
+    font-weight: 700;
+    font-size: clamp(1.8125rem, 1.571rem + 1.033vw, 2.5rem);
+    line-height: clamp(2.125rem, 1.86rem + 1.127vw, 2.875rem);
+    letter-spacing: -0.018em;
+  }
+  .t-title {
+    font-weight: 680;
+    font-size: 1.625rem;
+    line-height: 2rem;
+    letter-spacing: -0.012em;
+  }
+  .t-stem {
+    font-weight: 600;
+    font-size: clamp(1.125rem, 1.059rem + 0.282vw, 1.3125rem);
+    line-height: clamp(1.625rem, 1.537rem + 0.376vw, 1.875rem);
+    letter-spacing: -0.008em;
+  }
+  .t-sub {
+    font-weight: 620;
+    font-size: 1.0625rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.004em;
+  }
+  .t-body-lg {
+    font-weight: 440;
+    font-size: 1.125rem;
+    line-height: 1.8125rem;
+  }
+  .t-body {
+    font-weight: 450;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+  }
+  .t-body-sm {
+    font-weight: 450;
+    font-size: 0.84375rem;
+    line-height: 1.25rem;
+  }
+  .t-prose {
+    font-family: var(--font-serif);
+    font-weight: 420;
+    font-size: clamp(1rem, 0.978rem + 0.094vw, 1.0625rem);
+    line-height: clamp(1.6875rem, 1.643rem + 0.188vw, 1.8125rem);
+  }
+  .t-note {
+    font-family: var(--font-serif);
+    font-weight: 430;
+    font-size: 0.96875rem;
+    line-height: 1.625rem;
+  }
+  .t-mono-hero {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 4rem;
+    line-height: 4rem;
+    letter-spacing: -0.02em;
+  }
+  .t-mono-xl {
+    font-family: var(--font-mono);
+    font-weight: 560;
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+  .t-mono-lg {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+  .t-mono {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.78125rem;
+    line-height: 1.125rem;
+  }
+  .t-mono-sm {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    line-height: 0.9375rem;
+    letter-spacing: 0.04em;
+  }
+  .t-mono-label {
+    font-family: var(--font-mono);
+    font-weight: 560;
+    font-size: 0.65625rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Section wayfinding: condensed caps in structure blue. */
+  .kicker,
+  .t-kicker {
+    font-weight: 640;
+    font-stretch: 82%;
+    font-size: 0.71875rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kicker-ink);
+  }
+
+  /* Buttons. Commitment is the highest-contrast thing on screen: the primary
+     fills with the action ink (paper in dark, ink in light). */
+  .btn-primary {
+    background: var(--action);
+    color: var(--ink-inverse);
+    border-radius: var(--radius-r1);
+    padding: 10px 22px;
+    font-weight: 620;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition: background-color 120ms var(--ease-settle);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--action-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    background: var(--action-active);
+    transform: translateY(0.5px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink-1);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-r1);
+    padding: 9px 21px;
+    font-weight: 520;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition:
+      background-color 120ms var(--ease-settle),
+      border-color 120ms var(--ease-settle);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--ground-2);
+    border-color: var(--line-3);
+  }
+  .btn-secondary:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    color: var(--ink-2);
+    border-radius: var(--radius-r1);
+    padding: 10px 14px;
+    font-weight: 450;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition:
+      color 120ms var(--ease-settle),
+      background-color 120ms var(--ease-settle);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--ink-1);
+    background: var(--ground-2);
+  }
+
+  /* Destructive: a secondary that names the risk. Clear progress and discard
+     exam only. */
+  .btn-destructive {
+    background: transparent;
+    color: var(--err);
+    border: 1px solid var(--err-line);
+    border-radius: var(--radius-r1);
+    padding: 9px 21px;
+    font-weight: 520;
+    font-size: 0.96875rem;
+    line-height: 1.5rem;
+    transition: background-color 120ms var(--ease-settle);
+  }
+  .btn-destructive:hover:not(:disabled) {
+    background: var(--err-fill);
+  }
+
+  /* 26px survey grid. Instrument panels only, never ambient texture. */
+  .substrate {
+    background-image: linear-gradient(var(--blueprint-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blueprint-dim) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /* Long-form lesson prose: the reflection voice, 660px measure. */
+  .prose-lesson {
+    font-family: var(--font-serif);
+    font-weight: 420;
+    font-size: 1.0625rem;
+    line-height: 1.8125rem;
+    max-width: 41.25rem;
+  }
+  .prose-lesson :where(code) {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    background: var(--ground-2);
+    border: 1px solid var(--line-1);
+    border-radius: var(--radius-r1);
+    padding: 0.0625rem 0.375rem;
+  }
+  .prose-lesson :where(pre) {
+    font-family: var(--font-mono);
+  }
+  .prose-lesson :where(strong) {
+    font-weight: 640;
+    color: var(--ink-1);
+  }
+
+  /* Lesson tables are T2 sheets: mono column heads, hairline rules, no
+     zebra. The decide/measure voices carry the cells; the serif stays in
+     the prose around them. */
+  .prose-lesson :where(table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--line-1);
+    border-radius: var(--radius-r3);
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+  .prose-lesson :where(thead th) {
+    font-family: var(--font-mono);
+    font-weight: 560;
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: left;
+    background: var(--ground-1);
+    border-bottom: 1px solid var(--line-1);
+    padding: 10px 16px;
+  }
+  .prose-lesson :where(tbody td) {
+    font-size: 0.84375rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--line-1);
+    padding: 11px 16px;
+    vertical-align: top;
+  }
+  .prose-lesson :where(tbody td:first-child) {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--ink-1);
+  }
+  .prose-lesson :where(tbody tr:last-child td) {
+    border-bottom: none;
+  }
 }
 
 /*
-  Print: a lesson should print as clean reading, not the app. Drop the site
-  chrome (header, footer, theme toggle, skip link) and the lesson's own
-  navigation and progress controls, then flatten color so it is ink on paper.
+  Exam room. While a mock attempt is live the island sets data-exam-active on
+  <html>: site chrome leaves and the instrument bar owns the top. The header
+  lifts out of flow in one instant reflow (fixed) and slides away; the footer
+  and the page's own heading simply hide; main gives up its column so the bar
+  can span the viewport. Everything reverses when the attribute is removed.
+*/
+html[data-exam-active] body > header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transform: translateY(-101%);
+  transition: transform 240ms var(--ease-exit);
+}
+
+html[data-exam-active] body > footer {
+  display: none;
+}
+
+html[data-exam-active] main {
+  max-width: none;
+  padding: 0;
+}
+
+html[data-exam-active] .exam-hide {
+  display: none;
+}
+
+/* Exam start: the bar settles in from above while the first question fades
+   up behind it. Timings stagger so the whole entrance lands under 620ms. */
+@keyframes exam-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes exam-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes exam-confirm-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exam-bar-in {
+  animation: exam-slide-in 320ms var(--ease-settle) 200ms backwards;
+}
+
+.exam-q-in {
+  animation: exam-fade-in 240ms var(--ease-settle) 280ms backwards;
+}
+
+.exam-confirm-in {
+  animation: exam-confirm-up 200ms var(--ease-settle) backwards;
+}
+
+/* Results ceremony: the band chip stamps once after the percent counts up.
+   Rows below fade in staggered via animation-delay. */
+@keyframes result-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-stamp-in {
+  animation: result-stamp 200ms var(--ease-settle) 400ms backwards;
+}
+
+.result-fade-in {
+  animation: exam-fade-in 220ms var(--ease-settle) backwards;
+}
+
+/*
+  Station-state contract. A container carries data-state (open | current |
+  done); descendants marked data-when render only in their state. Pages
+  server-render the honest cold state (day one current, the rest open) and an
+  inline script re-marks containers from saved progress, so the chain and the
+  traverse read the same truth with or without JavaScript.
+*/
+[data-state] [data-when] {
+  display: none;
+}
+
+[data-state="done"] [data-when="done"],
+[data-state="current"] [data-when="current"],
+[data-state="open"] [data-when="open"] {
+  display: revert;
+}
+
+/* A fixed day's waiting ring settles to ink. */
+[data-state="done"] svg circle[stroke="var(--ink-3)"] {
+  stroke: var(--ink-1);
+}
+
+/*
+  M10 — the hero draws itself once per session (the page script adds
+  .hero-draw to <html> behind a sessionStorage key and a reduced-motion
+  check): the sight-line fades in, stations pop left to right, the
+  cross-section marks rise by domain row.
+*/
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html.hero-draw .hd-line {
+  animation: exam-fade-in 280ms var(--ease-settle) 160ms backwards;
+}
+
+html.hero-draw .hd-station {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-pop 200ms var(--ease-settle)
+    calc(160ms + var(--hd-i, 0) * 40ms) backwards;
+}
+
+html.hero-draw .hd-mark {
+  animation: hero-rise 220ms var(--ease-settle)
+    calc(480ms + var(--hd-i, 0) * 30ms) backwards;
+}
+
+/* On phones the traverse keeps only its stations and day labels: the fine
+   annotations (minutes, contour values, state captions) need more room than
+   a 340px drawing can give them. */
+@media (max-width: 639px) {
+  .hd-fine {
+    display: none;
+  }
+
+  .hd-day {
+    font-size: 13px;
+  }
+}
+
+/*
+  Print: lessons and cheat sheets leave as ink on paper. Field Paper flattens
+  to white, structure blue flattens to ink, fills disappear, and the domain
+  colors become outlines; shape and label carry what color carried on screen.
 */
 @media print {
+  :root,
+  .dark {
+    --ground-0: #ffffff;
+    --ground-1: #ffffff;
+    --ground-2: #ffffff;
+    --ground-3: #ffffff;
+    --ink-1: #1a1712;
+    --ink-2: #1a1712;
+    --ink-3: #5c554a;
+    --line-1: #b9b2a4;
+    --line-2: #1a1712;
+    --line-3: #1a1712;
+    --blueprint: #1a1712;
+    --blueprint-strong: #1a1712;
+    --kicker-ink: #1a1712;
+    --d1: #1a1712;
+    --d2: #1a1712;
+    --d3: #1a1712;
+    --d4: #1a1712;
+    --ok-fill: #ffffff;
+    --err-fill: #ffffff;
+    --flag-fill: #ffffff;
+  }
+
   header,
   footer,
-  nav[aria-label="Lesson navigation"],
-  a[href="#main"],
-  #theme-toggle {
+  nav,
+  .no-print,
+  .print-hide,
+  [data-quiz-island],
+  .theme-toggle,
+  #theme-toggle,
+  a[href="#main"] {
     display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #1a1712 !important;
+  }
+
+  body {
+    font-size: 10.5pt;
+    line-height: 1.45;
   }
 
   main {
@@ -139,10 +705,8 @@
     margin: 0 !important;
   }
 
-  html,
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
+  .substrate {
+    background-image: none;
   }
 
   .prose-lesson {
@@ -153,24 +717,18 @@
     text-decoration: underline;
   }
 
-  /*
-    Cheat sheet: a per-domain summary printed as ink on paper. The chrome-hiding
-    rules above (header, footer, theme toggle, skip link) strip the site frame,
-    but the cheat sheet's own body must stay fully visible, never blanked. So
-    nothing here hides .cheat-sheet content; these rules only keep it readable
-    and paginating cleanly once color has flattened to black.
-
-    Drop the on-screen-only affordances the sheet carries (the print button and
-    the back link have .print-hide), keep the layout block, and stop a card,
-    section, or list item from being split across a page break mid-thought.
-  */
-  .print-hide {
-    display: none !important;
+  /* External references print their address so the paper stays usable. */
+  .prose-lesson a[href^="http"]::after,
+  .cheat-sheet a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    color: #5c554a;
   }
 
+  /* The cheat sheet body always renders; only chrome is stripped. */
   .cheat-sheet,
   .cheat-sheet * {
-    /* Guard the body against any inherited chrome rule: it always renders. */
     visibility: visible;
   }
 
@@ -192,15 +750,8 @@
     break-after: avoid;
   }
 
-  /*
-    Color carries no meaning on paper: the flatten turns every token color black,
-    so the domain badge and the section chips would lose their tint. Give them a
-    visible outline and transparent fill instead, so the shape and the label do
-    the work the color did on screen (color is never the only signal anyway, but
-    this keeps the borders legible when everything is ink).
-  */
   .cheat-sheet [class*="border-"] {
-    border-color: #000000 !important;
+    border-color: #1a1712 !important;
     background: transparent !important;
   }
 }

@@ -1,10 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import HomeTraverse from "@/components/HomeTraverse.astro";
+import ResumeExamBanner from "@/components/quiz/ResumeExamBanner.tsx";
 import StudyDayCard from "@/components/StudyDayCard.astro";
 import { STUDY_PLAN } from "@/data/study-plan";
-import { DOMAINS, EXAM } from "@/lib/constants";
+import { EXAM } from "@/lib/constants";
 import { ALL_QUESTIONS } from "@/data/questions";
+import { ALL_SERVICES } from "@/data/services";
 
 const lessonEntries = (await getCollection("lessons")).filter(
   (l) => !l.data.draft,
@@ -16,110 +19,257 @@ const lessons = lessonEntries.map((l) => ({
 
 const lessonCount = lessons.length;
 const questionCount = ALL_QUESTIONS.length;
+const flashcardCount = ALL_SERVICES.length;
+const mockMinutes = Math.round(EXAM.timeLimitSeconds / 60);
+
+// Day 1's first written lesson is where "Start day 1" lands.
+const day1 = STUDY_PLAN[0];
+const bySlug = new Set(lessons.map((l) => l.slug));
+const day1First = day1.lessonSlugs.find((s) => bySlug.has(s));
+const startHref = day1First ? `/learn/${day1First}` : "/learn";
 ---
 
 <BaseLayout
   title="Free AWS Cloud Practitioner Practice Exam & Study Guide (CLF-C02)"
   description={`Free, no-signup AWS Certified Cloud Practitioner prep: ${lessonCount} lessons, ${questionCount} original practice questions, and full timed ${EXAM.code} mock exams. Go from zero to exam-ready in about a week.`}
 >
-  <section class="mx-auto max-w-3xl text-center">
-    <p class="font-medium text-brand">Free and open source</p>
-    <h1
-      class="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl"
-    >
-      Learn AWS and pass the Cloud Practitioner exam in a week
-    </h1>
-    <p class="mx-auto mt-5 max-w-2xl text-lg text-ink-soft">
-      A focused path through the {EXAM.code} exam: clear lessons on every domain,
-      original practice questions, and full timed mock exams. Read, practice,
-      and walk in confident.
-    </p>
-    <div class="mt-7 flex flex-wrap justify-center gap-3">
-      <a
-        href="/learn"
-        class="rounded-md bg-brand px-5 py-2.5 font-medium text-raised transition-colors hover:bg-brand-strong"
-      >
-        Start learning
-      </a>
-      <a
-        href="/practice/exam"
-        class="rounded-md border border-hairline px-5 py-2.5 font-medium text-ink transition-colors hover:border-brand"
-      >
-        Take a mock exam
-      </a>
-    </div>
-    <p class="mt-6 text-sm text-ink-soft">
-      {lessonCount} lessons · {questionCount} practice questions · a 7-day plan
-    </p>
-  </section>
+  {/* Surfaces a live mock attempt (resume or discard); renders nothing
+      otherwise. */}
+  <ResumeExamBanner client:load />
 
-  <section class="mt-16">
-    <h2 class="text-2xl font-bold tracking-tight text-ink">
-      What the exam covers
-    </h2>
-    <p class="mt-2 max-w-2xl text-ink-soft">
-      The {EXAM.code} exam scores four domains. These weightings drive the study
-      plan: Security and Technology together are most of the exam.
-    </p>
-    <ul class="mt-6 flex flex-col gap-4">
+  {/* Hero: the claim, the commitment pill, and the site's one instrument. */}
+  <section class="relative pt-6 lg:pt-12">
+    <div
+      aria-hidden="true"
+      class="absolute -left-9 top-2 bottom-2 hidden flex-col items-center justify-between xl:flex"
+    >
       {
-        DOMAINS.map((d) => (
-          <li>
-            <div class="mb-1 flex items-baseline justify-between gap-3">
-              <span class="font-medium text-ink">
-                <span class="text-ink-soft">D{d.id}</span> {d.name}
-              </span>
-              <span class="text-sm font-semibold text-ink">{d.weight}%</span>
-            </div>
-            <div class="h-2.5 overflow-hidden rounded-full bg-raised">
-              <div
-                class="h-full rounded-full bg-brand"
-                style={`width: ${d.weight}%`}
-              />
-            </div>
-            <p class="mt-1.5 text-sm text-ink-soft">{d.blurb}</p>
-          </li>
+        Array.from({ length: lessonCount }, () => (
+          <span
+            class="block h-[3px] w-[13px]"
+            style="background: color-mix(in srgb, var(--blueprint) 34%, transparent)"
+          />
         ))
       }
-    </ul>
-  </section>
+    </div>
 
-  <section class="mt-16">
-    <h2 class="text-2xl font-bold tracking-tight text-ink">
-      The seven-day plan
-    </h2>
-    <p class="mt-2 max-w-2xl text-ink-soft">
-      One week, front-loaded toward the heaviest domains, with timed mocks at the
-      end to build exam stamina.
-    </p>
-    <div class="mt-6 grid gap-4 sm:grid-cols-2">
-      {STUDY_PLAN.map((day) => <StudyDayCard day={day} lessons={lessons} />)}
+    <div
+      class="grid items-start gap-10 lg:grid-cols-[1.12fr_1fr] lg:gap-14 xl:gap-[76px]"
+    >
+      <div class="lg:pt-5">
+        <p class="t-mono-sm uppercase" style="color: var(--kicker-ink)">
+          Form {EXAM.code} · free · open source · no account
+        </p>
+        <h1 class="t-display mt-5 text-ink-1" style="text-wrap: balance">
+          Zero to Cloud Practitioner in{" "}
+          <span
+            class="inline-block rounded-[10px] bg-action px-3 leading-[1.14] text-ink-inverse sm:px-4"
+          >
+            one week.
+          </span>
+        </h1>
+        <p
+          class="t-body-lg mt-6 max-w-[520px] text-ink-2"
+          style="text-wrap: pretty"
+        >
+          {lessonCount} short lessons, {questionCount} original practice
+          questions, and full timed mock exams. Every fact checked against AWS
+          docs. Nothing to sign up for.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-3.5">
+          <a href={startHref} class="btn-primary px-6 py-3 text-center">
+            Start day 1
+          </a>
+          <a
+            href="/practice/exam"
+            class="btn-secondary px-6 py-3 text-center"
+          >
+            Sit a mock exam
+          </a>
+        </div>
+        <div
+          class="mt-10 grid max-w-[620px] grid-cols-2 gap-y-4 sm:grid-cols-4 lg:mt-14"
+        >
+          <div class="border-l border-line-1 py-0.5 pl-4">
+            <p class="t-mono-lg text-ink-1">{lessonCount}</p>
+            <p class="t-mono-label mt-1" style="color: var(--kicker-ink)">
+              Lessons
+            </p>
+          </div>
+          <div class="border-l border-line-1 py-0.5 pl-4">
+            <p class="t-mono-lg text-ink-1">{questionCount}</p>
+            <p class="t-mono-label mt-1" style="color: var(--kicker-ink)">
+              Questions
+            </p>
+          </div>
+          <div class="border-l border-line-1 py-0.5 pl-4">
+            <p class="t-mono-lg text-ink-1">
+              {EXAM.questionCount}<span class="text-[15px] text-ink-3"
+                >q · {mockMinutes}'</span
+              >
+            </p>
+            <p class="t-mono-label mt-1" style="color: var(--kicker-ink)">
+              Timed mock
+            </p>
+          </div>
+          <div class="border-l border-line-1 py-0.5 pl-4">
+            <p class="t-mono-lg text-ink-1">{flashcardCount}</p>
+            <p class="t-mono-label mt-1" style="color: var(--kicker-ink)">
+              Flashcards
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <HomeTraverse />
     </div>
   </section>
 
-  <section
-    class="mt-16 rounded-lg border border-hairline bg-raised p-6 text-center sm:p-10"
-  >
-    <h2 class="text-2xl font-bold tracking-tight text-ink">
-      Ready when you are
-    </h2>
-    <p class="mx-auto mt-2 max-w-xl text-ink-soft">
-      Start with the lessons or jump straight into a mock exam to see where you
-      stand. Your progress is saved on this device as you go.
-    </p>
-    <div class="mt-6 flex flex-wrap justify-center gap-3">
-      <a
-        href="/learn"
-        class="rounded-md bg-brand px-5 py-2.5 font-medium text-raised transition-colors hover:bg-brand-strong"
+  {/* The seven days. */}
+  <section class="mt-14 lg:mt-16">
+    <div class="flex flex-wrap items-center gap-3 border-t border-line-1 pt-9">
+      <svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true">
+        <circle
+          cx="7.5"
+          cy="7.5"
+          r="5.6"
+          fill="none"
+          stroke="var(--blueprint)"
+          stroke-width="1.5"></circle>
+        <circle cx="7.5" cy="7.5" r="2" fill="var(--blueprint)"></circle>
+      </svg>
+      <span
+        class="font-mono text-[11px] tracking-[0.18em]"
+        style="color: var(--kicker-ink)">§01</span
       >
-        Browse lessons
+      <h2 class="t-title text-ink-1">The seven days</h2>
+      <span
+        class="t-mono-sm ml-auto hidden uppercase text-ink-3 md:block"
+        data-days-fixed
+      >
+        0 of 7 fixed · exit criteria: exam-ready on two mocks
+      </span>
+    </div>
+    <p class="t-mono-sm mt-2 uppercase text-ink-3 md:hidden" data-days-fixed-sm>
+      0 of 7 fixed
+    </p>
+
+    <div class="relative mt-8">
+      {/* The chain: horizontal behind the nodes on wide screens, a vertical
+          rail on phones. */}
+      <div
+        aria-hidden="true"
+        class="absolute top-4 right-[60px] left-[60px] hidden border-t-2 border-dotted md:block"
+        style="border-color: color-mix(in srgb, var(--blueprint) 40%, transparent)"
+      >
+      </div>
+      <div
+        aria-hidden="true"
+        class="absolute top-4 bottom-4 left-[15px] border-l-2 border-dotted md:hidden"
+        style="border-color: color-mix(in srgb, var(--blueprint) 40%, transparent)"
+      >
+      </div>
+      <div class="flex flex-col gap-2.5 md:grid md:grid-cols-7 md:gap-3">
+        {STUDY_PLAN.map((day) => <StudyDayCard day={day} lessons={lessons} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* Closing CTA. */}
+  <section class="mt-14 lg:mt-16">
+    <div
+      class="flex flex-col gap-4 rounded-r3 border border-line-1 bg-ground-1 px-6 py-6 sm:px-8 md:flex-row md:items-center md:gap-7"
+    >
+      <div>
+        <p class="t-title text-[21px] text-ink-1">Free, and it stays free.</p>
+        <p class="t-body-sm mt-1.5 text-ink-2">
+          No account. Progress lives in this browser — export it anytime from
+          the Progress page.
+        </p>
+      </div>
+      <a
+        href={startHref}
+        class="btn-primary flex-none px-6 py-3 text-center md:ml-auto"
+      >
+        Start day 1
       </a>
       <a
-        href="/practice"
-        class="rounded-md border border-hairline px-5 py-2.5 font-medium text-ink transition-colors hover:border-brand"
+        href="https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep"
+        rel="noopener"
+        class="t-mono-sm flex-none uppercase text-ink-3 transition-colors hover:text-ink-1"
       >
-        Practice questions
+        MIT · GitHub &#8599;
       </a>
     </div>
   </section>
+
+  {/* M10: the hero draws itself once per session; reduced motion skips it. */}
+  <script is:inline>
+    (function () {
+      try {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
+        if (sessionStorage.getItem("mg-hero-drawn")) return;
+        sessionStorage.setItem("mg-hero-drawn", "1");
+        document.documentElement.classList.add("hero-draw");
+      } catch (e) {}
+    })();
+  </script>
+
+  {/* Re-mark the chain and the traverse from saved progress: a day is fixed
+      when every written lesson in it is complete; the first unfixed day is
+      current. Without JS or progress, the server's cold state stands. */}
+  <script is:inline>
+    (function () {
+      try {
+        var raw = localStorage.getItem("ccp-prep:progress:v1");
+        if (!raw) return;
+        var done = new Set(JSON.parse(raw).completedLessons || []);
+        var els = Array.prototype.slice.call(
+          document.querySelectorAll("[data-day-lessons]"),
+        );
+        var states = {};
+        var fixedCount = 0;
+        var currentAssigned = false;
+        els.forEach(function (el) {
+          var n = el.getAttribute("data-day");
+          var slugs = el
+            .getAttribute("data-day-lessons")
+            .split(",")
+            .filter(Boolean);
+          var isDone =
+            slugs.length > 0 &&
+            slugs.every(function (s) {
+              return done.has(s);
+            });
+          var state = "open";
+          if (isDone) {
+            state = "done";
+            fixedCount += 1;
+          } else if (!currentAssigned) {
+            state = "current";
+            currentAssigned = true;
+          }
+          states[n] = state;
+        });
+        Object.keys(states).forEach(function (n) {
+          document
+            .querySelectorAll('[data-day="' + n + '"]')
+            .forEach(function (el) {
+              el.setAttribute("data-state", states[n]);
+            });
+        });
+        var label = document.querySelector("[data-days-fixed]");
+        if (label) {
+          label.textContent =
+            fixedCount +
+            " OF 7 FIXED · EXIT CRITERIA: EXAM-READY ON TWO MOCKS";
+        }
+        var labelSm = document.querySelector("[data-days-fixed-sm]");
+        if (labelSm) {
+          labelSm.textContent = fixedCount + " OF 7 FIXED";
+        }
+      } catch (e) {}
+    })();
+  </script>
 </BaseLayout>

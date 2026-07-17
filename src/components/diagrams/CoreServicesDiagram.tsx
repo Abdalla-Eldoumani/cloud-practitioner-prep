@@ -20,7 +20,7 @@ import {
 // { id, name, note } arrive as serialized props. The build-time resolver throws on a
 // non-resolving id or a mixed-category column (the invention guard), and check:diagrams
 // asserts meta.serviceIds all resolve. Colors come from currentColor on token-colored
-// <g> wrappers (text-ink / text-brand / text-accent / text-ink-soft) so both themes
+// <g> wrappers (text-ink-1 / text-blueprint / text-flag / text-ink-2) so both themes
 // resolve and no raw hex appears; each category is labelled in TEXT, so the grouping is
 // never carried by color alone.
 
@@ -66,7 +66,7 @@ function CoreServicesGeometry({ groups }: { groups: ResolvedCategory[] }) {
     <>
       {/* The framing caption: these are the core service categories the exam
           covers. Drawn as a label, not color, so it reads statically. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="160"
           y="14"
@@ -86,7 +86,7 @@ function CoreServicesGeometry({ groups }: { groups: ResolvedCategory[] }) {
           <g key={group.category}>
             {/* The category header box, labelled with the verified catalog category
                 name (wrapped to two lines when it is long). */}
-            <g className="text-brand">
+            <g className="text-blueprint">
               <rect
                 x={x}
                 y={headerY}
@@ -117,7 +117,7 @@ function CoreServicesGeometry({ groups }: { groups: ResolvedCategory[] }) {
             {/* The flagship service tiles beneath the header, each labelled with the
                 verified catalog name, connected to the header by a short link so the
                 containment reads. */}
-            <g className="text-ink">
+            <g className="text-ink-1">
               {group.services.map((service, serviceIndex) => {
                 const tileY = 58 + serviceIndex * 30;
                 const tileHeight = 22;
@@ -130,7 +130,7 @@ function CoreServicesGeometry({ groups }: { groups: ResolvedCategory[] }) {
                       y1={serviceIndex === 0 ? headerY + headerHeight : tileY - 8}
                       x2={centerX}
                       y2={tileY}
-                      className="text-accent"
+                      className="text-flag"
                       stroke="currentColor"
                       strokeWidth="1.5"
                     />
@@ -163,7 +163,7 @@ function CoreServicesGeometry({ groups }: { groups: ResolvedCategory[] }) {
 
       {/* The takeaway label: the categories are how AWS groups its services, and a
           learner navigates the exam by category first. Text, not color. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="160"
           y="168"

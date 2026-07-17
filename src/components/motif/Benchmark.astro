@@ -1,0 +1,18 @@
+---
+// Benchmark: the surveyor's triangle. Marks mock exams and exam day only;
+// never decorative.
+interface Props {
+  size?: number;
+}
+const { size = 19 } = Astro.props;
+---
+
+<svg width={size} height={size} viewBox="0 0 18 18" aria-hidden="true">
+  <polygon
+    points="9,2.5 16.5,15.5 1.5,15.5"
+    fill="var(--ground-0)"
+    stroke="var(--flag)"
+    stroke-width="1.6"
+    stroke-linejoin="round"></polygon>
+  <circle cx="9" cy="11.6" r="1.8" fill="var(--flag)"></circle>
+</svg>

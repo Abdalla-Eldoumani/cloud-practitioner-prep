@@ -1,15 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="7" fill="#2a4fcb" />
-  <path
-    d="M11 20.5h11a3.5 3.5 0 0 0 .4-6.98 5 5 0 0 0-9.53-1.36A4 4 0 0 0 11 20.5Z"
-    fill="#ffffff"
-  />
-  <path
-    d="m13.8 16.2 1.9 1.9 3.4-3.6"
-    fill="none"
-    stroke="#e8770c"
-    stroke-width="1.6"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+  <style>
+    .bg { fill: #171511; }
+    .ring { stroke: #ede7da; }
+    .dot { fill: #ede7da; }
+    .tick { stroke: #7fa3b0; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #efeade; }
+      .ring { stroke: #211d13; }
+      .dot { fill: #211d13; }
+      .tick { stroke: #497384; }
+    }
+  </style>
+  <rect class="bg" width="56" height="56" rx="12"></rect>
+  <circle class="ring" cx="28" cy="28" r="14" fill="none" stroke-width="3"></circle>
+  <circle class="dot" cx="28" cy="28" r="4.6"></circle>
+  <path class="tick" d="M28 6v7M28 43v7M6 28h7M43 28h7" fill="none" stroke-width="2.5" stroke-linecap="round"></path>
 </svg>

@@ -106,27 +106,40 @@ export default function CatalogBrowser({ services }: CatalogBrowserProps) {
     <div>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full sm:max-w-sm">
-          <label
-            htmlFor="catalog-search"
-            className="mb-1 block text-sm font-medium text-ink"
-          >
+          <label htmlFor="catalog-search" className="sr-only">
             Search services
           </label>
           <div className="flex items-center gap-2">
-            <input
-              id="catalog-search"
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by service name…"
-              className="w-full rounded-md border border-hairline bg-raised px-3 py-2 text-base text-ink"
-            />
+            <div className="relative w-full">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="var(--ink-3)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2"
+              >
+                <circle cx="7" cy="7" r="4.6" />
+                <path d="M10.5 10.5 14 14" />
+              </svg>
+              <input
+                id="catalog-search"
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={`Search ${total} services…`}
+                className="w-full rounded-r2 border border-line-1 bg-ground-0 py-2.5 pr-3.5 pl-10 text-[14px] text-ink-1 transition-colors focus:border-blueprint"
+              />
+            </div>
             {query !== "" && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
                 aria-label="Clear search"
-                className="shrink-0 rounded-md border border-hairline px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:border-brand hover:text-brand"
+                className="btn-ghost shrink-0 px-3 py-2 text-[13.5px]"
               >
                 Clear
               </button>
@@ -137,45 +150,68 @@ export default function CatalogBrowser({ services }: CatalogBrowserProps) {
         <p
           role="status"
           aria-live="polite"
-          className="text-sm text-ink-soft sm:self-end sm:pb-2"
+          className="t-mono-sm uppercase text-ink-3 sm:self-end sm:pb-2"
         >
           {countLabel}
         </p>
       </div>
 
       <fieldset className="mt-4">
-        <legend className="text-sm font-medium text-ink">
-          Filter by domain
-        </legend>
+        <legend className="sr-only">Filter by domain</legend>
         <div className="mt-2 flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setDomain("all")}
             aria-pressed={domain === "all"}
-            className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
+            className={`rounded-r1 border px-3 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.08em] transition-colors ${
               domain === "all"
-                ? "border-brand bg-info-soft text-brand"
-                : "border-hairline text-ink-soft hover:border-brand"
+                ? "border-blueprint bg-blueprint-dim"
+                : "border-line-1 text-ink-3 hover:border-line-2 hover:text-ink-1"
             }`}
+            style={
+              domain === "all" ? { color: "var(--kicker-ink)" } : undefined
+            }
           >
-            All
+            All{domain === "all" ? " ✓" : ""}
           </button>
           {DOMAINS.map((d) => {
             const active = domain === d.id;
+            const glyphColor = `var(--d${d.id})`;
             return (
               <button
                 key={d.id}
                 type="button"
                 onClick={() => setDomain(d.id)}
                 aria-pressed={active}
-                className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                className="inline-flex items-center gap-1.5 rounded-r1 border px-3 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.08em] transition-colors"
+                style={
                   active
-                    ? "border-brand bg-info-soft text-brand"
-                    : "border-hairline text-ink-soft hover:border-brand"
-                }`}
+                    ? {
+                        color: glyphColor,
+                        borderColor: glyphColor,
+                        borderWidth: "1.5px",
+                        padding: "5.5px 11.5px",
+                        background: `color-mix(in srgb, ${glyphColor} 12%, transparent)`,
+                      }
+                    : { color: "var(--ink-3)", borderColor: "var(--line-1)" }
+                }
               >
-                <span className="font-semibold">D{d.id}</span>{" "}
-                {domainName(d.id)}
+                <svg width="10" height="10" viewBox="0 0 11 11" aria-hidden="true">
+                  {d.id === 1 && (
+                    <circle cx="5.5" cy="5.5" r="4.2" fill={active ? glyphColor : "none"} stroke={glyphColor} strokeWidth="1.6" />
+                  )}
+                  {d.id === 2 && (
+                    <rect x="2.4" y="2.4" width="6.2" height="6.2" fill={active ? glyphColor : "none"} stroke={glyphColor} strokeWidth="1.6" transform="rotate(45 5.5 5.5)" />
+                  )}
+                  {d.id === 3 && (
+                    <polygon points="2,2.6 9,2.6 5.5,9" fill={active ? glyphColor : "none"} stroke={glyphColor} strokeWidth="1.6" strokeLinejoin="round" />
+                  )}
+                  {d.id === 4 && (
+                    <rect x="2.2" y="2.2" width="6.6" height="6.6" fill={active ? glyphColor : "none"} stroke={glyphColor} strokeWidth="1.6" />
+                  )}
+                </svg>
+                D{d.id} {domainName(d.id)}
+                {active ? " ✓" : ""}
               </button>
             );
           })}
@@ -183,24 +219,32 @@ export default function CatalogBrowser({ services }: CatalogBrowserProps) {
       </fieldset>
 
       {count === 0 ? (
-        <div className="mt-6 rounded-lg border border-hairline bg-raised p-8 text-center">
-          <h3 className="text-xl font-semibold text-ink">No services match</h3>
-          <p className="mx-auto mt-2 max-w-prose text-ink-soft">
-            Try a different search term or clear the domain filter to see the
-            full catalog.
+        <div className="mt-7 flex flex-col items-start gap-3 rounded-r3 border border-line-1 bg-ground-1 px-6 py-8">
+          <span className="inline-flex items-center gap-3">
+            <svg width="17" height="17" viewBox="0 0 18 18" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.6" fill="none" stroke="var(--ink-3)" strokeWidth="1.6" />
+            </svg>
+            <span
+              aria-hidden="true"
+              className="inline-block w-14 border-t-2 border-dotted"
+              style={{ borderColor: "color-mix(in srgb, var(--blueprint) 50%, transparent)" }}
+            />
+            <span className="font-mono text-[10px] tracking-[0.12em]" style={{ color: "var(--kicker-ink)" }}>
+              NO MATCH ON THE MAP
+            </span>
+          </span>
+          <p className="t-body-sm max-w-prose text-ink-2">
+            Nothing answers to that. Try another term or clear the domain
+            filter to see the full catalog.
           </p>
-          <button
-            type="button"
-            onClick={clearAll}
-            className="mt-5 inline-block rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
-          >
+          <button type="button" onClick={clearAll} className="btn-secondary">
             Clear filters
           </button>
         </div>
       ) : (
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-5 flex flex-col">
           {visible.map((service) => (
-            <li key={service.id} className="h-full">
+            <li key={service.id} className="border-b border-line-1 last:border-b-0">
               <ServiceCard service={service} />
             </li>
           ))}

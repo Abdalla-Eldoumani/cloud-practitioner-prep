@@ -81,13 +81,41 @@ export default function DiagramFigure({
       role="group"
       aria-labelledby={titleId}
       aria-describedby={descId}
-      className="my-6 flex flex-col gap-4 rounded-lg border border-hairline bg-raised p-4 sm:p-5"
+      className="substrate relative my-6 flex flex-col gap-4 rounded-r3 border border-line-1 bg-ground-1 p-4 not-prose sm:p-5"
     >
+      {/* T1 survey plot: reticle ends on the panel, the grid substrate behind
+          the geometry, and the mono plot header. */}
+      <span
+        aria-hidden="true"
+        className="absolute -top-px -left-px size-3.5 border-t-2 border-l-2 border-blueprint"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -top-px -right-px size-3.5 border-t-2 border-r-2 border-blueprint"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-px -left-px size-3.5 border-b-2 border-l-2 border-blueprint"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -bottom-px -right-px size-3.5 border-b-2 border-r-2 border-blueprint"
+      />
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="t-mono-label" style={{ color: "var(--kicker-ink)" }}>
+          Survey plot — {title}
+        </p>
+        {nodes.length > 0 && (
+          <p className="t-mono-sm hidden uppercase text-ink-3 sm:block">
+            Tap a part · tab works too
+          </p>
+        )}
+      </div>
       {/* role="img" gives the graphic a single accessible name+description for a
           screen reader reading the static figure; the <title>/<desc> are its
           first children, referenced by the ids above. The wrapper is a token
           text color so any currentColor stroke in the geometry is theme-aware. */}
-      <div className="text-ink">
+      <div className="text-ink-1">
         <svg
           role="img"
           aria-labelledby={`${titleId} ${descId}`}
@@ -109,7 +137,7 @@ export default function DiagramFigure({
           the focus ring. When there are no nodes this block renders nothing and
           the static figure stands alone. */}
       {nodes.length > 0 && (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3.5">
           <ul className="flex flex-wrap gap-2" aria-label="Diagram parts">
             {nodes.map((node) => {
               const isActive = node.id === activeId;
@@ -120,49 +148,47 @@ export default function DiagramFigure({
                     onClick={() => toggle(node.id)}
                     aria-pressed={isActive}
                     aria-controls={calloutId}
-                    className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                    className={`inline-flex min-h-[34px] items-center gap-1.5 rounded-r1 border px-3.5 py-[7px] font-mono text-[10.5px] uppercase tracking-[0.1em] transition-colors ${
                       isActive
-                        ? "border-accent bg-info-soft text-ink"
-                        : "border-hairline bg-surface text-ink-soft hover:border-brand hover:text-ink"
+                        ? "border-blueprint bg-blueprint-dim"
+                        : "border-line-1 text-ink-3 hover:border-line-2 hover:text-ink-1"
                     }`}
+                    style={isActive ? { color: "var(--kicker-ink)" } : undefined}
                   >
-                    {/* The leading marker is the non-color cue: a filled dot when
-                        active, a hollow ring otherwise, so the selected part is
-                        legible without relying on the border tint. */}
-                    <span aria-hidden="true">{isActive ? "●" : "○"}</span>
                     {node.label}
+                    {/* The trailing check is the non-color cue for the
+                        selected part. */}
+                    {isActive && <span aria-hidden="true">✓</span>}
                   </button>
                 </li>
               );
             })}
           </ul>
 
-          {/* The adjacent callout: a labelled aria-live region, NOT a tooltip
-              that traps focus. The active node's note appears here, announced
-              politely so a screen reader hears it without focus moving. It is
-              always in the DOM (so the live region is registered before the
-              first update) and reads a resting prompt when nothing is active. */}
+          {/* The SELECTED panel: a labelled aria-live region, NOT a tooltip
+              that traps focus. The active node's note appears here in the
+              reflection voice, announced politely so a screen reader hears it
+              without focus moving. It is always in the DOM (so the live
+              region is registered before the first update) and reads a
+              resting prompt when nothing is active. */}
           <div
             id={calloutId}
             role="status"
             aria-live="polite"
-            className="min-h-[2.5rem] rounded-md border border-hairline bg-surface p-3 text-sm text-ink"
+            className="min-h-[2.5rem] border-t border-line-1 pt-3.5"
           >
-            <span className="mr-1 font-semibold text-ink-soft">
-              {calloutLabel}:
-            </span>
-            {activeNode ? (
-              <span>
-                <span className="font-semibold text-ink">
-                  {activeNode.label}
-                </span>{" "}
-                — {activeNode.note}
-              </span>
-            ) : (
-              <span className="text-ink-soft">
-                Select a part above to read about it.
-              </span>
-            )}
+            <p className="t-mono-label" style={{ color: "var(--kicker-ink)" }}>
+              Selected{activeNode ? ` — ${activeNode.label}` : ""}
+            </p>
+            <p className="t-note mt-2 text-ink-2">
+              {activeNode ? (
+                activeNode.note
+              ) : (
+                <span className="text-ink-3">
+                  Select a {calloutLabel.toLowerCase()} above to read about it.
+                </span>
+              )}
+            </p>
           </div>
         </div>
       )}

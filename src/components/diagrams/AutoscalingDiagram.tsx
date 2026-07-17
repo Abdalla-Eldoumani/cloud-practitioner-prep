@@ -15,8 +15,8 @@ import type { KnowledgeCheckDatum } from "@/components/diagrams/KnowledgeCheck";
 // Every label traces to an official AWS source (see the per-node notes and the
 // plan's aws_sources). It references Elastic Load Balancing / current-generation
 // load balancers, NEVER the Classic Load Balancer. Colors come from currentColor
-// on token-colored <g> wrappers (text-ink / text-brand / text-accent /
-// text-ink-soft) so both themes resolve and no raw hex appears; the healthy-vs-
+// on token-colored <g> wrappers (text-ink-1 / text-blueprint / text-flag /
+// text-ink-2) so both themes resolve and no raw hex appears; the healthy-vs-
 // the rest distinction and every relationship are carried in TEXT, not color.
 
 // The interactive nodes. Each note is drawn ONLY from verified AWS phrasing.
@@ -59,7 +59,7 @@ function AutoscalingGeometry() {
   return (
     <>
       {/* Clients arriving at the single entry point. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="160"
           y="12"
@@ -72,7 +72,7 @@ function AutoscalingGeometry() {
       </g>
 
       {/* The load balancer: the single point of contact. */}
-      <g className="text-brand">
+      <g className="text-blueprint">
         <rect
           x="96"
           y="18"
@@ -105,7 +105,7 @@ function AutoscalingGeometry() {
 
       {/* The two distribution paths, one into each AZ, labelled "healthy" so the
           routes-only-to-healthy rule reads in text. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <line
           x1="120"
           y1="42"
@@ -143,7 +143,7 @@ function AutoscalingGeometry() {
       </g>
 
       {/* The Auto Scaling group frame spanning the two Availability Zones. */}
-      <g className="text-brand">
+      <g className="text-blueprint">
         <rect
           x="14"
           y="64"
@@ -166,7 +166,7 @@ function AutoscalingGeometry() {
       </g>
 
       {/* Two Availability Zone tiles inside the group, each with instances. */}
-      <g className="text-ink">
+      <g className="text-ink-1">
         {[
           { x: 24, label: "Availability Zone A" },
           { x: 168, label: "Availability Zone B" },
@@ -218,7 +218,7 @@ function AutoscalingGeometry() {
       </g>
 
       {/* The min/desired/max annotation on the group. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="160"
           y="136"
@@ -231,7 +231,7 @@ function AutoscalingGeometry() {
       </g>
 
       {/* The scaling-policy trigger and the auto-register relationship. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <text
           x="160"
           y="148"
