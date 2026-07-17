@@ -8,19 +8,25 @@ import { ALL_QUESTIONS } from "@/data/questions";
   title="AWS Cloud Practitioner Mock Exam (CLF-C02)"
   description="A full, timed AWS Cloud Practitioner mock exam (CLF-C02): domain-weighted questions under real exam conditions, scored with a per-domain breakdown."
 >
-  <header class="mx-auto max-w-2xl">
+  {/*
+    The page's own heading carries exam-hide: while an attempt is live the
+    island removes all chrome and the instrument bar owns the top, so this
+    header exists only around the gate and the results.
+  */}
+  <header class="exam-hide mx-auto w-full max-w-[760px]">
     <a
       href="/practice"
-      class="text-sm font-medium text-brand underline underline-offset-2"
+      class="t-mono-sm uppercase text-[var(--kicker-ink)] transition-colors hover:text-ink-1"
     >
-      Back to practice
+      &larr; Back to practice
     </a>
-    <h1 class="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-      Mock exam
-    </h1>
+    <h1 class="t-page mt-3 text-ink-1">Mock exam</h1>
   </header>
 
-  <div class="mx-auto mt-8 max-w-2xl">
-    <QuizEngine client:load pool={ALL_QUESTIONS} mode="exam" />
-  </div>
+  {/*
+    No width constraint or margin here: the island sizes and spaces each phase
+    itself (gate and results center on their own measure; the live exam room
+    spans the viewport with the instrument bar hard against the top).
+  */}
+  <QuizEngine client:load pool={ALL_QUESTIONS} mode="exam" />
 </BaseLayout>
