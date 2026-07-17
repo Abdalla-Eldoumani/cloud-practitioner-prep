@@ -15,7 +15,7 @@ import type { KnowledgeCheckDatum } from "@/components/diagrams/KnowledgeCheck";
 // Every label traces to an official AWS source (see the per-node notes and the
 // plan's aws_sources). The public-vs-private subnet distinction is carried by a
 // TEXT label, never color alone. Colors come from currentColor on token-colored
-// <g> wrappers (text-ink / text-brand / text-accent / text-ink-soft) so both
+// <g> wrappers (text-ink-1 / text-blueprint / text-flag / text-ink-2) so both
 // themes resolve and no raw hex appears.
 
 // The interactive nodes. Each note is drawn ONLY from verified AWS phrasing.
@@ -73,7 +73,7 @@ function VpcGeometry() {
   return (
     <>
       {/* The internet, outside the VPC, that the gateways connect to. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <text
           x="160"
           y="13"
@@ -86,7 +86,7 @@ function VpcGeometry() {
       </g>
 
       {/* The VPC frame: the labelled isolated-network boundary. */}
-      <g className="text-brand">
+      <g className="text-blueprint">
         <rect
           x="10"
           y="20"
@@ -111,7 +111,7 @@ function VpcGeometry() {
           top edge of the VPC boundary. They sit above the VPC label so they never
           overlap it; the IGW is the two-way internet door for public resources and
           the NAT gateway is the outbound-only door for private ones. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <rect
           x="64"
           y="6"
@@ -155,7 +155,7 @@ function VpcGeometry() {
       </g>
 
       {/* The public subnet (single AZ), routed to the internet gateway. */}
-      <g className="text-ink">
+      <g className="text-ink-1">
         <rect
           x="22"
           y="52"
@@ -196,7 +196,7 @@ function VpcGeometry() {
       </g>
 
       {/* The private subnet (single AZ), outbound-only via the NAT gateway. */}
-      <g className="text-ink">
+      <g className="text-ink-1">
         <rect
           x="174"
           y="52"
@@ -239,7 +239,7 @@ function VpcGeometry() {
       {/* The security group (instance level, stateful) inside the public subnet
           and the network ACL (subnet level, stateless) on the subnet edge, so
           the two-layer model reads in text, not color. */}
-      <g className="text-ink-soft">
+      <g className="text-ink-2">
         <rect
           x="34"
           y="104"
@@ -283,7 +283,7 @@ function VpcGeometry() {
       </g>
 
       {/* The route table band: it decides where each subnet's traffic goes. */}
-      <g className="text-accent">
+      <g className="text-flag">
         <rect
           x="60"
           y="140"
