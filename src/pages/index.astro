@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ResumeExamBanner from "@/components/quiz/ResumeExamBanner.tsx";
 import StudyDayCard from "@/components/StudyDayCard.astro";
 import { STUDY_PLAN } from "@/data/study-plan";
 import { DOMAINS, EXAM } from "@/lib/constants";
@@ -22,6 +23,10 @@ const questionCount = ALL_QUESTIONS.length;
   title="Free AWS Cloud Practitioner Practice Exam & Study Guide (CLF-C02)"
   description={`Free, no-signup AWS Certified Cloud Practitioner prep: ${lessonCount} lessons, ${questionCount} original practice questions, and full timed ${EXAM.code} mock exams. Go from zero to exam-ready in about a week.`}
 >
+  {/* Surfaces a live mock attempt (resume or discard); renders nothing
+      otherwise. */}
+  <ResumeExamBanner client:load />
+
   <section class="mx-auto max-w-3xl text-center">
     <p class="font-medium text-brand">Free and open source</p>
     <h1

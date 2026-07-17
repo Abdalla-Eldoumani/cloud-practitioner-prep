@@ -453,6 +453,81 @@
 }
 
 /*
+  Exam room. While a mock attempt is live the island sets data-exam-active on
+  <html>: site chrome leaves and the instrument bar owns the top. The header
+  lifts out of flow in one instant reflow (fixed) and slides away; the footer
+  and the page's own heading simply hide; main gives up its column so the bar
+  can span the viewport. Everything reverses when the attribute is removed.
+*/
+html[data-exam-active] body > header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transform: translateY(-101%);
+  transition: transform 240ms var(--ease-exit);
+}
+
+html[data-exam-active] body > footer {
+  display: none;
+}
+
+html[data-exam-active] main {
+  max-width: none;
+  padding: 0;
+}
+
+html[data-exam-active] .exam-hide {
+  display: none;
+}
+
+/* Exam start: the bar settles in from above while the first question fades
+   up behind it. Timings stagger so the whole entrance lands under 620ms. */
+@keyframes exam-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes exam-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes exam-confirm-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exam-bar-in {
+  animation: exam-slide-in 320ms var(--ease-settle) 200ms backwards;
+}
+
+.exam-q-in {
+  animation: exam-fade-in 240ms var(--ease-settle) 280ms backwards;
+}
+
+.exam-confirm-in {
+  animation: exam-confirm-up 200ms var(--ease-settle) backwards;
+}
+
+/*
   Print: lessons and cheat sheets leave as ink on paper. Field Paper flattens
   to white, structure blue flattens to ink, fills disappear, and the domain
   colors become outlines; shape and label carry what color carried on screen.

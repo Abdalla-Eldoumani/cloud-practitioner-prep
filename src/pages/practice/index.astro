@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DomainBadge from "@/components/DomainBadge.astro";
+import ResumeExamBanner from "@/components/quiz/ResumeExamBanner.tsx";
 import { DOMAINS, EXAM } from "@/lib/constants";
 import { ALL_QUESTIONS } from "@/data/questions";
 import type { Domain } from "@/lib/types";
@@ -16,6 +17,10 @@ const mins = Math.round(EXAM.timeLimitSeconds / 60);
   title="AWS Cloud Practitioner Practice Questions & Mock Exam"
   description="Free AWS Cloud Practitioner practice questions (CLF-C02): drill by domain with instant feedback, sit a full timed mock exam, and review what you miss. No signup."
 >
+  {/* Surfaces a live mock attempt (resume or discard); renders nothing
+      otherwise. */}
+  <ResumeExamBanner client:load />
+
   <header class="max-w-2xl">
     <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
       Practice
