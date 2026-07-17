@@ -1,0 +1,336 @@
+---
+import { DOMAINS } from "@/lib/constants";
+import { STUDY_PLAN } from "@/data/study-plan";
+
+// The home page's one instrument (T1): the seven-day traverse — study days as
+// survey stations on a minutes-per-day elevation, mock days as benchmark
+// triangles — and below it the cross-section: one mark per percent of scored
+// exam content in the domain colors. Server-rendered in the honest cold state
+// (day 1 current, everything open); the page's inline script re-marks the
+// stations from saved progress, and the same data-state contract drives both
+// this SVG and the day chain below it.
+
+// Elevation scale, fitted to the drawn frame: 75 minutes sits at y=167 and
+// each extra minute climbs 2.2px.
+const y = (mins: number) => 167 + (75 - mins) * 2.2;
+const xs = [34, 110, 186, 262, 338, 414, 494];
+const days = STUDY_PLAN.map((d, i) => ({
+  n: d.day,
+  x: xs[i],
+  y: y(d.targetMinutes),
+  mins: d.targetMinutes,
+  isMock: !!d.milestone,
+}));
+const linePoints = days.map((d) => `${d.x},${d.y}`).join(" ");
+
+const GLYPHS: Record<number, string> = {
+  1: "circle",
+  2: "diamond",
+  3: "triangle",
+  4: "square",
+};
+const SHORT_NAME: Record<number, string> = {
+  1: "Cloud Concepts",
+  2: "Security & Compliance",
+  3: "Technology & Services",
+  4: "Billing, Pricing & Support",
+};
+---
+
+<div
+  class="substrate relative rounded-r3 border border-line-1 bg-ground-1 px-5 py-6 sm:px-7"
+>
+  <span
+    aria-hidden="true"
+    class="absolute -top-px -left-px size-3.5 border-t-2 border-l-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -top-px -right-px size-3.5 border-t-2 border-r-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -bottom-px -left-px size-3.5 border-b-2 border-l-2 border-blueprint"
+  ></span>
+  <span
+    aria-hidden="true"
+    class="absolute -bottom-px -right-px size-3.5 border-b-2 border-r-2 border-blueprint"
+  ></span>
+
+  <div class="flex flex-wrap items-baseline justify-between gap-2">
+    <p class="t-mono-label" style="color: var(--kicker-ink)">
+      The traverse — seven days to ready
+    </p>
+    <p class="t-mono-sm hidden uppercase text-ink-3 sm:block">Elev = min/day</p>
+  </div>
+
+  <svg
+    viewBox="0 0 520 216"
+    class="mt-2.5 h-auto w-full"
+    role="img"
+    aria-label="Seven study days as survey stations; elevation equals minutes of work; days five and seven are mock-exam benchmarks"
+  >
+    <path
+      d={`M30 ${y(90)}H508`}
+      stroke="var(--blueprint)"
+      stroke-opacity="0.25"
+      stroke-width="1"
+      stroke-dasharray="2 5"></path>
+    <path
+      d={`M30 ${y(120)}H508`}
+      stroke="var(--blueprint)"
+      stroke-opacity="0.25"
+      stroke-width="1"
+      stroke-dasharray="2 5"></path>
+    <text
+      x="513"
+      y={y(90) + 3}
+      text-anchor="end"
+      font-family="Sometype Mono Variable, monospace"
+      font-size="9"
+      class="hd-fine"
+      fill="var(--ink-3)">90'</text>
+    <text
+      x="513"
+      y={y(120) + 3}
+      text-anchor="end"
+      font-family="Sometype Mono Variable, monospace"
+      font-size="9"
+      class="hd-fine"
+      fill="var(--ink-3)">120'</text>
+
+    <polyline
+      class="hd-line"
+      points={linePoints}
+      fill="none"
+      stroke="var(--blueprint)"
+      stroke-width="1.6"
+      stroke-dasharray="0.1 6.5"
+      stroke-linecap="round"
+      opacity="0.8"></polyline>
+
+    {
+      days.map((d, i) => (
+        <g
+          class="hd-station"
+          style={`--hd-i:${i}`}
+          data-day={d.n}
+          data-state={d.n === 1 ? "current" : "open"}
+        >
+          {/* current: reticle brackets + an ink ring */}
+          <g data-when="current">
+            <path
+              d={`M${d.x - 14} ${d.y - 14}h6M${d.x - 14} ${d.y - 14}v6M${d.x + 14} ${d.y - 14}h-6M${d.x + 14} ${d.y - 14}v6M${d.x - 14} ${d.y + 14}h6M${d.x - 14} ${d.y + 14}v-6M${d.x + 14} ${d.y + 14}h-6M${d.x + 14} ${d.y + 14}v-6`}
+              stroke="var(--blueprint)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            {!d.isMock && (
+              <circle
+                cx={d.x}
+                cy={d.y}
+                r="7"
+                fill="var(--ground-1)"
+                stroke="var(--ink-1)"
+                stroke-width="1.6"
+              />
+            )}
+            <text
+              x={d.x}
+              y={d.y - 21}
+              text-anchor="middle"
+              font-family="Sometype Mono Variable, monospace"
+              font-size="8.5"
+              class="hd-fine"
+              fill="var(--blueprint)"
+            >
+              YOU ARE HERE
+            </text>
+          </g>
+          {/* fixed: ink ring with the center dot */}
+          <g data-when="done">
+            {!d.isMock && (
+              <>
+                <circle
+                  cx={d.x}
+                  cy={d.y}
+                  r="7"
+                  fill="var(--ground-1)"
+                  stroke="var(--ink-1)"
+                  stroke-width="1.6"
+                />
+                <circle cx={d.x} cy={d.y} r="2.4" fill="var(--ink-1)" />
+              </>
+            )}
+            <text
+              x={d.x}
+              y={d.y - 17}
+              text-anchor="middle"
+              font-family="Sometype Mono Variable, monospace"
+              font-size="8.5"
+              class="hd-fine"
+              fill="var(--ink-3)"
+            >
+              FIXED
+            </text>
+          </g>
+          {/* open: waiting ring */}
+          <g data-when="open">
+            {!d.isMock && (
+              <circle
+                cx={d.x}
+                cy={d.y}
+                r="7"
+                fill="var(--ground-1)"
+                stroke="var(--ink-3)"
+                stroke-width="1.5"
+              />
+            )}
+          </g>
+          {/* benchmark triangle: mock days keep it in every state */}
+          {d.isMock && (
+            <g>
+              <polygon
+                points={`${d.x},${d.y - 12} ${d.x + 9},${d.y + 5} ${d.x - 9},${d.y + 5}`}
+                fill="var(--ground-1)"
+                stroke="var(--flag)"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+              <circle cx={d.x} cy={d.y} r="1.9" fill="var(--flag)" />
+            </g>
+          )}
+          <text
+            x={d.x}
+            y="192"
+            text-anchor="middle"
+            font-family="Sometype Mono Variable, monospace"
+            font-size="9.5"
+            class="hd-day max-sm:hidden"
+            fill={d.isMock ? "var(--flag)" : "var(--ink-2)"}
+          >
+            {d.isMock ? `D${d.n}·MOCK${d.n === 7 ? "S" : ""}` : `D${d.n}`}
+          </text>
+          <text
+            x={d.x}
+            y="192"
+            text-anchor="middle"
+            font-family="Sometype Mono Variable, monospace"
+            font-size="9.5"
+            class="hd-day sm:hidden"
+            fill={d.isMock ? "var(--flag)" : "var(--ink-2)"}
+          >
+            {`D${d.n}`}
+          </text>
+          <text
+            x={d.x}
+            y="205"
+            text-anchor="middle"
+            font-family="Sometype Mono Variable, monospace"
+            font-size="9"
+            class="hd-fine"
+            fill="var(--ink-3)"
+          >
+            {d.mins}'
+          </text>
+        </g>
+      ))
+    }
+    <text
+      x={xs[6]}
+      y={y(120) - 21}
+      text-anchor="middle"
+      font-family="Sometype Mono Variable, monospace"
+      font-size="8.5"
+      class="hd-fine"
+      fill="var(--ink-3)">READY</text>
+  </svg>
+
+  <div class="mt-4 border-t border-line-1 pt-4">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <p class="t-mono-label" style="color: var(--kicker-ink)">
+        Cross-section — the scored 100
+      </p>
+      <p class="t-mono-sm hidden uppercase text-ink-3 sm:block">1 mark = 1%</p>
+    </div>
+    <div
+      class="mt-3 flex max-w-[496px] flex-wrap gap-[5px]"
+      role="img"
+      aria-label={`The scored exam as 100 marks: ${DOMAINS.map((d) => `${d.weight} for ${d.name}`).join(", ")}`}
+    >
+      {
+        DOMAINS.map((d, di) =>
+          Array.from({ length: d.weight }, () => (
+            <span
+              class="hd-mark block h-2.5 w-5 rounded-full"
+              style={`background: var(--d${d.id}); --hd-i:${di}`}></span>
+          )),
+        )
+      }
+    </div>
+    <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-[7px] sm:grid-cols-2">
+      {
+        DOMAINS.map((d) => (
+          <span class="flex items-center gap-2 text-[12.5px] text-ink-2">
+            <svg width="10" height="10" viewBox="0 0 11 11" aria-hidden="true">
+              {GLYPHS[d.id] === "circle" && (
+                <circle
+                  cx="5.5"
+                  cy="5.5"
+                  r="4.2"
+                  fill="none"
+                  stroke={`var(--d${d.id})`}
+                  stroke-width="1.6"
+                />
+              )}
+              {GLYPHS[d.id] === "diamond" && (
+                <rect
+                  x="2.4"
+                  y="2.4"
+                  width="6.2"
+                  height="6.2"
+                  fill="none"
+                  stroke={`var(--d${d.id})`}
+                  stroke-width="1.6"
+                  transform="rotate(45 5.5 5.5)"
+                />
+              )}
+              {GLYPHS[d.id] === "triangle" && (
+                <polygon
+                  points="2,2.6 9,2.6 5.5,9"
+                  fill="none"
+                  stroke={`var(--d${d.id})`}
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+              )}
+              {GLYPHS[d.id] === "square" && (
+                <rect
+                  x="2.2"
+                  y="2.2"
+                  width="6.6"
+                  height="6.6"
+                  fill="none"
+                  stroke={`var(--d${d.id})`}
+                  stroke-width="1.6"
+                />
+              )}
+            </svg>
+            <span
+              class="font-mono text-[10.5px]"
+              style={`color: var(--d${d.id})`}
+            >
+              D{d.id}
+            </span>
+            {SHORT_NAME[d.id]}
+            <span class="t-mono ml-auto text-ink-1">{d.weight}</span>
+          </span>
+        ))
+      }
+    </div>
+    <p class="t-body-sm mt-3.5 max-w-[520px] text-ink-3">
+      One mark per percent of scored content. Security and Technology together
+      are 64 of the 100 — weight your week accordingly.
+    </p>
+  </div>
+</div>
