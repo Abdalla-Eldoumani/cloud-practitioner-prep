@@ -1,0 +1,18 @@
+---
+// SightLine: dotted connector between stations. Used only where a real
+// sequence exists (a chain of lessons, days, or attempts), never as a
+// divider.
+interface Props {
+  direction?: "h" | "v";
+  length?: string;
+  class?: string;
+}
+const { direction = "h", length = "100%", class: className } = Astro.props;
+const dot = "2px dotted color-mix(in srgb, var(--blueprint) 42%, transparent)";
+const style =
+  direction === "h"
+    ? `width:${length};border-top:${dot}`
+    : `height:${length};border-left:${dot}`;
+---
+
+<span aria-hidden="true" class:list={["block", className]} style={style}></span>
