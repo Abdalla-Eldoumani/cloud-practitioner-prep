@@ -1,0 +1,29 @@
+---
+// Reticle: corner brackets marking a live instrument panel or the current
+// cell. Place inside a position:relative parent. Decorative to a screen
+// reader; the parent carries the semantics.
+interface Props {
+  size?: number;
+  inset?: string;
+}
+const { size = 14, inset = "-1px" } = Astro.props;
+const b = "2px solid var(--blueprint)";
+const s = `${size}px`;
+---
+
+<span
+  aria-hidden="true"
+  style={`position:absolute;top:${inset};left:${inset};width:${s};height:${s};border-top:${b};border-left:${b}`}
+></span>
+<span
+  aria-hidden="true"
+  style={`position:absolute;top:${inset};right:${inset};width:${s};height:${s};border-top:${b};border-right:${b}`}
+></span>
+<span
+  aria-hidden="true"
+  style={`position:absolute;bottom:${inset};left:${inset};width:${s};height:${s};border-bottom:${b};border-left:${b}`}
+></span>
+<span
+  aria-hidden="true"
+  style={`position:absolute;bottom:${inset};right:${inset};width:${s};height:${s};border-bottom:${b};border-right:${b}`}
+></span>
