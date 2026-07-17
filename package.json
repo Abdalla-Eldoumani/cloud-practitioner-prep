@@ -54,8 +54,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "5.2.8",
-    "@fontsource-variable/source-serif-4": "5.2.9",
+    "@fontsource-variable/archivo": "5.2.8",
+    "@fontsource-variable/literata": "5.2.8",
+    "@fontsource-variable/sometype-mono": "5.2.7",
     "@nanostores/react": "1.1.0",
     "astro": "6.4.6",
     "nanostores": "1.3.0",
