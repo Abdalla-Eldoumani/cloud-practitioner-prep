@@ -132,8 +132,10 @@ export default function QuizEngine({
   const [questions, setQuestions] = useState<Question[]>([]);
   // Per-question option order (question id -> ordered option ids), computed once
   // per sitting so a re-render never reshuffles, persisted with the saved exam,
-  // and restored verbatim on resume. Only populated for exam mode; other modes
-  // let QuestionCard shuffle per instance.
+  // and restored verbatim on resume. Only populated for exam mode, which needs
+  // the exact order saved and restored; every other mode relies on
+  // QuestionCard's own per-instance shuffle fallback, which draws through the
+  // same orderedOptions path, so an unshuffled authored order can never render.
   const [optionOrder, setOptionOrder] = useState<Record<string, string[]>>({});
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
@@ -523,18 +525,63 @@ export default function QuizEngine({
       )}
 
       {!isExam && (
-        <div className="h-1.5 overflow-hidden rounded-full bg-surface">
-          <div
-            className="h-full bg-brand transition-[width]"
-            style={{ width: `${((current + 1) / questions.length) * 100}%` }}
-          />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* The set rail: one tick per question in the set. The current tick
+              reads blueprint, checked answers settle to their verdict, and the
+              rest wait as faint structure. Never color alone: the mono count
+              beside it carries the same facts as text. */}
+          <span
+            role="img"
+            aria-label={`Question ${current + 1} of ${questions.length}, ${
+              questions.filter(
+                (qq) => revealed[qq.id] && isAnswerCorrect(qq, answers[qq.id] ?? []),
+              ).length
+            } correct so far`}
+            className="flex flex-wrap items-center gap-1"
+          >
+            {questions.map((qq, i) => {
+              const done = !!revealed[qq.id];
+              const wasCorrect =
+                done && isAnswerCorrect(qq, answers[qq.id] ?? []);
+              const bg =
+                i === current
+                  ? "var(--blueprint)"
+                  : done
+                    ? wasCorrect
+                      ? "var(--ok)"
+                      : "var(--err)"
+                    : "color-mix(in srgb, var(--blueprint) 34%, transparent)";
+              return (
+                <span
+                  key={qq.id}
+                  style={{
+                    width: "13px",
+                    height: "3px",
+                    display: "block",
+                    background: bg,
+                  }}
+                />
+              );
+            })}
+          </span>
+          <span className="t-mono-sm uppercase text-ink-3">
+            {questions.filter((qq) => revealed[qq.id]).length}/
+            {questions.length} ·{" "}
+            {
+              questions.filter(
+                (qq) =>
+                  revealed[qq.id] && isAnswerCorrect(qq, answers[qq.id] ?? []),
+              ).length
+            }{" "}
+            correct
+          </span>
         </div>
       )}
 
       {mode === "drill" && weakTopics.length > 0 && (
-        <p className="text-sm text-ink-soft">
-          These questions target your weakest topics:{" "}
-          <span className="font-medium text-ink">{weakTopics.join(", ")}</span>.
+        <p className="t-body-sm text-ink-2">
+          <span className="t-mono-label mr-2 text-ink-3">Drilling</span>
+          {weakTopics.join(" · ")}
         </p>
       )}
 
@@ -556,12 +603,19 @@ export default function QuizEngine({
       />
 
       {!isExam && (
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 max-sm:sticky max-sm:bottom-0 max-sm:z-10 max-sm:-mx-[18px] max-sm:border-t max-sm:border-line-1 max-sm:bg-ground-0 max-sm:px-[18px] max-sm:py-3">
           {!isRevealed ? (
             <>
               <button
                 type="button"
-                disabled={selected.length === 0 || !confidence[q.id]}
+                disabled={
+                  selected.length === 0 ||
+                  !confidence[q.id] ||
+                  // Multi-answer stems name their count ("Choose TWO"), so the
+                  // check waits for exactly that many marks: a partial set can
+                  // only score wrong, and the gate makes the contract visible.
+                  (q.type === "multi" && selected.length !== q.correct.length)
+                }
                 aria-describedby={
                   selected.length > 0 && !confidence[q.id]
                     ? `confidence-hint-${q.id}`
@@ -580,14 +634,29 @@ export default function QuizEngine({
                   }
                   setRevealed((r) => ({ ...r, [q.id]: true }));
                 }}
-                className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-50"
+                className="btn-primary"
               >
                 Check answer
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  // Skipping leaves the question unanswered: it scores as a
+                  // miss at finish, which is the honest reading of a skip.
+                  if (isLast) {
+                    finish(questions, answers, startedAt as number);
+                  } else {
+                    setCurrent((c) => c + 1);
+                  }
+                }}
+                className="btn-ghost"
+              >
+                Skip
               </button>
               {selected.length > 0 && !confidence[q.id] && (
                 <p
                   id={`confidence-hint-${q.id}`}
-                  className="text-sm text-ink-soft"
+                  className="t-body-sm text-ink-2"
                 >
                   Rate your confidence first
                 </p>
@@ -595,20 +664,11 @@ export default function QuizEngine({
             </>
           ) : (
             <>
-              {mode === "review" && (
-                <button
-                  type="button"
-                  onClick={() => clearMissed(q.id)}
-                  className="rounded-md border border-hairline px-4 py-2 font-medium text-ink transition-colors hover:border-correct"
-                >
-                  Clear from review
-                </button>
-              )}
               {!isLast ? (
                 <button
                   type="button"
                   onClick={() => setCurrent((c) => c + 1)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
+                  className="btn-primary"
                 >
                   Next question
                 </button>
@@ -616,9 +676,18 @@ export default function QuizEngine({
                 <button
                   type="button"
                   onClick={() => finish(questions, answers, startedAt as number)}
-                  className="rounded-md bg-brand px-4 py-2 font-medium text-raised transition-colors hover:bg-brand-strong"
+                  className="btn-primary"
                 >
                   See results
+                </button>
+              )}
+              {mode === "review" && (
+                <button
+                  type="button"
+                  onClick={() => clearMissed(q.id)}
+                  className="btn-secondary"
+                >
+                  Clear from review
                 </button>
               )}
             </>
