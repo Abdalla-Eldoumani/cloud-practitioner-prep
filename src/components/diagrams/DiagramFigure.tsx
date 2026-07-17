@@ -115,7 +115,7 @@ export default function DiagramFigure({
           screen reader reading the static figure; the <title>/<desc> are its
           first children, referenced by the ids above. The wrapper is a token
           text color so any currentColor stroke in the geometry is theme-aware. */}
-      <div className="text-ink">
+      <div className="text-ink-1">
         <svg
           role="img"
           aria-labelledby={`${titleId} ${descId}`}
