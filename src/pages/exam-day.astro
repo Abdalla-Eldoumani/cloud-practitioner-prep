@@ -76,65 +76,133 @@ const faqJsonLd = {
   description="AWS Cloud Practitioner exam day guide: the CLF-C02 format, question count, timing, the 100 to 1,000 scaled score, the passing mark, and what to expect."
   jsonLd={faqJsonLd}
 >
-  <p class="text-sm">
-    <a href="/practice" class="text-brand underline underline-offset-2">
-      ← Back to practice
+  <p>
+    <a href="/practice" class="t-mono-sm uppercase transition-colors hover:text-ink-1" style="color: var(--kicker-ink)">
+      &larr; Back to practice
     </a>
   </p>
 
   <header class="mt-4 max-w-2xl">
-    <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-      Exam day
-    </h1>
-    <p class="mt-3 text-lg text-ink-soft">
+    <p class="t-mono-sm uppercase" style="color: var(--kicker-ink)">Exam day · go / no-go</p>
+    <h1 class="t-page mt-3 text-ink-1">Exam day</h1>
+    <p class="t-body-lg mt-3 text-ink-2">
       What the AWS Certified Cloud Practitioner (CLF-C02) exam is, how it is
       timed, and how AWS scores it. Every fact below traces to an official AWS
       source, listed at the end.
     </p>
   </header>
 
+  {/* The go/no-go checklist: dot-leader rows whose checks persist in this
+      browser. Prints as empty squares in ink. */}
+  <section class="mt-9 max-w-2xl">
+    <h2 class="t-title text-[21px] text-ink-1">The morning of</h2>
+    {
+      [
+        {
+          group: "BEFORE YOU LEAVE",
+          items: [
+            ["Photo ID, name matching the booking exactly", "REQUIRED"],
+            ["Online exam: run the system test the day before", "ONLINE ONLY"],
+            ["Skim one cheat sheet — not new material", "30 MIN MAX"],
+          ],
+        },
+        {
+          group: "DURING",
+          items: [
+            ["Flag and move on; the grid brings you back", "PACE"],
+            ["Answer everything — blanks score zero", "NO PENALTY"],
+          ],
+        },
+      ].map((g) => (
+        <>
+          <p class="t-mono-label mt-5 text-ink-3">{g.group}</p>
+          <div class="mt-1 flex flex-col">
+            {g.items.map(([text, note]) => (
+              <label class="flex cursor-pointer items-baseline gap-3 border-b border-line-1 py-3 last:border-b-0">
+                <input
+                  type="checkbox"
+                  data-godo={text}
+                  class="peer sr-only"
+                />
+                <span
+                  aria-hidden="true"
+                  class="box-border inline-flex size-[17px] flex-none translate-y-[3px] items-center justify-center rounded-r1 border-[1.5px] border-line-2 peer-checked:border-line-2 peer-checked:bg-action peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100"
+                >
+                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="var(--ink-inverse)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8.6 6.4 12l6.8-8" /></svg>
+                </span>
+                <span class="text-[14.5px] font-[560] text-ink-1">{text}</span>
+                <span
+                  aria-hidden="true"
+                  class="min-w-5 flex-1 -translate-y-1 border-b-2 border-dotted border-line-1"
+                />
+                <span class="t-mono-sm flex-none whitespace-nowrap text-ink-3">
+                  {note}
+                </span>
+              </label>
+            ))}
+          </div>
+        </>
+      ))
+    }
+    <div
+      class="mt-5 flex items-center gap-3 rounded-r2 border px-4 py-3"
+      style="border-color: var(--ok-line); background: var(--ok-fill)"
+    >
+      <svg width="14" height="14" viewBox="0 0 18 18" aria-hidden="true">
+        <circle cx="9" cy="9" r="6.6" fill="none" stroke="var(--ok)" stroke-width="1.6"></circle>
+        <circle cx="9" cy="9" r="2.3" fill="var(--ok)"></circle>
+      </svg>
+      <span class="t-body-sm text-ink-2">
+        If the last two mocks read exam-ready, trust them. You measured this.
+      </span>
+    </div>
+    <p class="t-mono-sm mt-3 uppercase text-ink-3 print-hide">
+      Checks persist in this browser · prints as empty squares
+    </p>
+  </section>
+
   <div class="mt-10 flex flex-col gap-10">
     <!-- The format: the verified question/timing facts, all numbers from EXAM. -->
     <section>
-      <h2 class="text-xl font-bold tracking-tight text-ink">The format</h2>
+      <h2 class="t-title text-[21px] text-ink-1">The format</h2>
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">Questions and time</h3>
-          <ul class="mt-3 flex flex-col gap-2 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">Questions and time</h3>
+          <ul class="mt-3 flex flex-col gap-2 t-body-sm text-ink-2">
             <li>
-              <span class="font-semibold text-ink">{EXAM.questionCount} questions</span>{" "}
+              <span class="font-[640] text-ink-1">{EXAM.questionCount} questions</span>{" "}
               total — {scored} that count toward your score, plus {unscored}{" "}
               unscored questions that do not affect your result and are not
               marked on the exam.
             </li>
             <li>
-              <span class="font-semibold text-ink">{minutes} minutes</span> to
+              <span class="font-[640] text-ink-1">{minutes} minutes</span> to
               complete it.
             </li>
             <li>
-              <span class="font-semibold text-ink">{EXAM.code}</span> is the
+              <span class="font-[640] text-ink-1">{EXAM.code}</span> is the
               current exam version.
             </li>
             <li>
               The exam fee is{" "}
-              <span class="font-semibold text-ink">100 USD</span>.
+              <span class="font-[640] text-ink-1">100 USD</span>.
             </li>
           </ul>
         </div>
 
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">Question types</h3>
-          <ul class="mt-3 flex flex-col gap-2 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">Question types</h3>
+          <ul class="mt-3 flex flex-col gap-2 t-body-sm text-ink-2">
             <li>
-              <span class="font-semibold text-ink">Multiple choice</span> — one
+              <span class="font-[640] text-ink-1">Multiple choice</span> — one
               correct answer and three incorrect ones.
             </li>
             <li>
-              <span class="font-semibold text-ink">Multiple response</span> —
+              <span class="font-[640] text-ink-1">Multiple response</span> —
               two or more correct answers out of five or more options.
             </li>
             <li>
-              <span class="font-semibold text-ink">Answer everything.</span>{" "}
+              <span class="font-[640] text-ink-1">Answer everything.</span>{" "}
               An unanswered question is scored as incorrect, and there is no
               penalty for guessing — so never leave one blank.
             </li>
@@ -142,21 +210,21 @@ const faqJsonLd = {
         </div>
       </div>
 
-      <div class="mt-4 rounded-lg border border-hairline bg-raised p-5">
-        <h3 class="text-base font-bold text-ink">What it weighs</h3>
-        <p class="mt-2 text-sm text-ink-soft">
+      <div class="mt-4 rounded-r3 border border-line-1 bg-ground-1 p-5">
+        <h3 class="t-sub text-ink-1">What it weighs</h3>
+        <p class="mt-2 t-body-sm text-ink-2">
           The scored content is split across four domains. Spend your study time
           in proportion to the weights.
         </p>
         <ul class="mt-3 flex flex-col gap-2">
           {
             DOMAINS.map((d) => (
-              <li class="flex flex-wrap items-center justify-between gap-3 border-b border-hairline pb-2 last:border-b-0 last:pb-0">
+              <li class="flex flex-wrap items-center justify-between gap-3 border-b border-line-1 pb-2 last:border-b-0 last:pb-0">
                 <span class="flex flex-wrap items-center gap-2">
                   <DomainBadge domain={d.id} showName={false} />
-                  <span class="text-sm font-medium text-ink">{d.name}</span>
+                  <span class="t-body-sm font-[600] text-ink-1">{d.name}</span>
                 </span>
-                <span class="text-sm font-semibold text-ink-soft">
+                <span class="text-sm font-semibold text-ink-2">
                   {d.weight}%
                 </span>
               </li>
@@ -168,32 +236,32 @@ const faqJsonLd = {
 
     <!-- How the score works: AWS's scaled model, kept distinct from readiness. -->
     <section>
-      <h2 class="text-xl font-bold tracking-tight text-ink">
+      <h2 class="t-title text-[21px] text-ink-1">
         How the score works
       </h2>
-      <div class="mt-4 rounded-lg border border-hairline bg-raised p-5">
-        <ul class="flex flex-col gap-2.5 text-sm text-ink-soft">
+      <div class="mt-4 rounded-r3 border border-line-1 bg-ground-1 p-5">
+        <ul class="flex flex-col gap-2.5 t-body-sm text-ink-2">
           <li>
             AWS reports your result as a{" "}
-            <span class="font-semibold text-ink">
+            <span class="font-[640] text-ink-1">
               scaled score from 100 to 1,000
             </span>
             , and the minimum passing score is{" "}
-            <span class="font-semibold text-ink">
+            <span class="font-[640] text-ink-1">
               {EXAM.passingScaledScore}
             </span>
             .
           </li>
           <li>
             The result is{" "}
-            <span class="font-semibold text-ink">pass or fail</span>. Scoring is
+            <span class="font-[640] text-ink-1">pass or fail</span>. Scoring is
             compensatory: you do not need to pass each domain on its own, only
             the overall exam.
           </li>
           <li>
             The scale equates difficulty across different versions of the exam,
             so the number is{" "}
-            <span class="font-semibold text-ink">not a raw percentage</span> —
+            <span class="font-[640] text-ink-1">not a raw percentage</span> —
             the passing mark is not the same as answering that share of
             questions correctly.
           </li>
@@ -201,8 +269,8 @@ const faqJsonLd = {
 
         <!-- The framing rule: AWS's scale is AWS's; the site's readiness is a
              separate raw-percent study signal, never the scaled score. -->
-        <div class="mt-4 rounded-md border border-hairline bg-info-soft p-4">
-          <p class="text-sm text-ink">
+        <div class="mt-4 rounded-r-r2 border-l-[3px] px-5 py-4" style="background: var(--ground-2); border-color: var(--blueprint)">
+          <p class="t-note text-ink-2">
             <span class="font-semibold">
               This 100–1,000 scale is AWS's, not this site's.
             </span>{" "}
@@ -220,40 +288,40 @@ const faqJsonLd = {
 
     <!-- What to expect: logistics, clearly separate from the format facts. -->
     <section>
-      <h2 class="text-xl font-bold tracking-tight text-ink">
+      <h2 class="t-title text-[21px] text-ink-1">
         What to expect on the day
       </h2>
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">Identification</h3>
-          <p class="mt-3 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">Identification</h3>
+          <p class="mt-3 t-body-sm text-ink-2">
             Bring an original, unexpired, government-issued photo ID. The first
             and last name on it must match the name on your AWS Certification
             Account exactly — a mismatch can cost you the appointment.
           </p>
         </div>
 
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">Checking in</h3>
-          <p class="mt-3 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">Checking in</h3>
+          <p class="mt-3 t-body-sm text-ink-2">
             At a test center, arrive 15 to 30 minutes early. For an online exam,
             you can launch up to 30 minutes early; arriving more than 15 minutes
             late forfeits the fee.
           </p>
         </div>
 
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">Breaks</h3>
-          <p class="mt-3 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">Breaks</h3>
+          <p class="mt-3 t-body-sm text-ink-2">
             At a test center you may take an unscheduled break, but the clock
             keeps running. For an online exam you may not stand up or leave the
             camera's view for any reason during the test.
           </p>
         </div>
 
-        <div class="rounded-lg border border-hairline bg-raised p-5">
-          <h3 class="text-base font-bold text-ink">After you pass</h3>
-          <p class="mt-3 text-sm text-ink-soft">
+        <div class="rounded-r3 border border-line-1 bg-ground-1 p-5">
+          <h3 class="t-sub text-ink-1">After you pass</h3>
+          <p class="mt-3 t-body-sm text-ink-2">
             The certification is valid for {EXAM.validityYears} years. To stay
             current you recertify every {EXAM.validityYears} years.
           </p>
@@ -262,9 +330,9 @@ const faqJsonLd = {
     </section>
 
     <!-- Sources: rendered ONLY from the typed, allowlisted EXAM_DAY_CITATIONS. -->
-    <section class="border-t border-hairline pt-6">
-      <h2 class="text-xl font-bold tracking-tight text-ink">Sources</h2>
-      <p class="mt-2 text-sm text-ink-soft">
+    <section class="border-t border-line-1 pt-6">
+      <h2 class="t-title text-[21px] text-ink-1">Sources</h2>
+      <p class="mt-2 t-body-sm text-ink-2">
         Every fact on this page comes from the official AWS exam guide and
         certification pages:
       </p>
@@ -276,7 +344,7 @@ const faqJsonLd = {
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-brand underline underline-offset-2"
+                class="underline underline-offset-2 transition-colors hover:text-ink-1"
               >
                 {c.label} ↗
               </a>
@@ -286,4 +354,25 @@ const faqJsonLd = {
       </ul>
     </section>
   </div>
+
+  {/* Persist the go/no-go checks in this browser. */}
+  <script is:inline>
+    (function () {
+      try {
+        var KEY = "ccp-prep:exam-day-checks";
+        var saved = new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
+        var boxes = document.querySelectorAll("[data-godo]");
+        boxes.forEach(function (b) {
+          if (saved.has(b.getAttribute("data-godo"))) b.checked = true;
+          b.addEventListener("change", function () {
+            var next = [];
+            boxes.forEach(function (x) {
+              if (x.checked) next.push(x.getAttribute("data-godo"));
+            });
+            localStorage.setItem(KEY, JSON.stringify(next));
+          });
+        });
+      } catch (e) {}
+    })();
+  </script>
 </BaseLayout>
