@@ -4,6 +4,10 @@ import type { Question } from "../../lib/types";
 // Consolidated Billing, AWS Budgets, Cost Explorer, the Cost and Usage Report,
 // the Billing and Cost Management console, and cost allocation tags.
 // Original practice questions, each grounded in current AWS documentation.
+//
+// Ids keep their historical d2-gov- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files and
+// stays put when a question is retagged to another domain.
 export const domain4CostTools: Question[] = [
   {
     id: "d4-costtools-01",
@@ -25,7 +29,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -48,7 +52,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (No extra fee)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -71,7 +75,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -90,12 +94,12 @@ export const domain4CostTools: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Consolidated billing combines usage to share volume pricing discounts, Reserved Instance discounts, and Savings Plans across accounts. Support fees are charged per account, not shared as a discount, and AWS Marketplace prices and Free Tier benefits are not pooled by consolidated billing.",
+      "Consolidated billing combines usage to share volume pricing discounts, Reserved Instance discounts, and Savings Plans across accounts. Support fees are charged per account, not shared as a discount, AWS Marketplace subscription prices are not discounted this way, and the AWS Free Tier is applied once to the organization's combined usage rather than granted to each account, so there are no per-account free tier credits to share.",
     reference: {
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -118,7 +122,7 @@ export const domain4CostTools: Question[] = [
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations", "EC2"],
   },
   {
@@ -141,7 +145,7 @@ export const domain4CostTools: Question[] = [
       label: "Reserved Instances under consolidated billing",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -164,7 +168,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -187,7 +191,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-09",
@@ -210,7 +214,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-10",
@@ -233,7 +237,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-11",
@@ -260,7 +264,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (notifications)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon SNS"],
   },
   {
@@ -283,7 +287,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets (budget types)",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-13",
@@ -306,7 +310,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-14",
@@ -328,7 +332,7 @@ export const domain4CostTools: Question[] = [
       label: "Forecasting with Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-15",
@@ -350,7 +354,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-16",
@@ -372,7 +376,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-17",
@@ -394,7 +398,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-18",
@@ -416,7 +420,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-19",
@@ -439,7 +443,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon S3"],
   },
   {
@@ -462,7 +466,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon Athena", "Amazon Redshift", "Amazon QuickSight", "Amazon S3"],
   },
   {
@@ -490,7 +494,7 @@ export const domain4CostTools: Question[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-22",
@@ -517,7 +521,7 @@ export const domain4CostTools: Question[] = [
       label: "AWS Cost Explorer; AWS Budgets; AWS Cost and Usage Reports",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-23",
@@ -539,7 +543,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-24",
@@ -561,7 +565,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management?",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-31",
@@ -584,7 +588,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-25",
@@ -607,7 +611,7 @@ export const domain4CostTools: Question[] = [
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-26",
@@ -629,7 +633,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-27",
@@ -652,7 +656,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-28",
@@ -674,7 +678,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-29",
@@ -697,7 +701,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-costtools-30",
@@ -719,6 +723,76 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d2-gov-16",
+    domain: 4,
+    type: "single",
+    topic: "Consolidated billing",
+    difficulty: "easy",
+    stem: "A finance department wants a single bill for all of the company's AWS accounts and one payment method instead of paying each account separately. Which AWS Organizations feature provides this?",
+    options: [
+      { id: "a", text: "Consolidated billing" },
+      { id: "b", text: "Service control policies" },
+      { id: "c", text: "AWS Config aggregators" },
+      { id: "d", text: "CloudTrail trails" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Consolidated billing in AWS Organizations gives you one bill for multiple accounts, with the management account paying the charges of all member accounts. Service control policies are permission guardrails, Config aggregators centralize configuration data, and trails store API activity, so none of those consolidate billing.",
+    reference: {
+      label: "Consolidating billing for AWS Organizations",
+      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["AWS Organizations"],
+  },
+  {
+    id: "d2-gov-17",
+    domain: 4,
+    type: "multi",
+    topic: "Consolidated billing",
+    difficulty: "medium",
+    stem: "A company is weighing the benefits of consolidated billing in AWS Organizations. Which TWO statements are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "Usage can be combined across accounts so the organization shares volume pricing, Reserved Instance, and Savings Plans discounts." },
+      { id: "b", text: "Consolidated billing is offered at no additional cost." },
+      { id: "c", text: "Consolidated billing charges a percentage fee on every member account's bill." },
+      { id: "d", text: "Each account must still pay its own bill with a separate payment method." },
+      { id: "e", text: "Combining accounts removes all per-service charges." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Consolidated billing combines usage across accounts so the organization can share volume, Reserved Instance, and Savings Plans discounts, and it is offered at no additional cost. It does not add a percentage fee, the management account pays a single combined bill rather than each account paying separately, and per-service charges still apply.",
+    reference: {
+      label: "Consolidating billing for AWS Organizations",
+      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["AWS Organizations"],
+  },
+  {
+    id: "d2-gov-33",
+    domain: 4,
+    type: "single",
+    topic: "AWS Organizations",
+    difficulty: "medium",
+    stem: "In an AWS Organizations setup, which account pays the charges for all of the member accounts under consolidated billing?",
+    options: [
+      { id: "a", text: "The management account" },
+      { id: "b", text: "Each member account pays its own charges" },
+      { id: "c", text: "A randomly selected member account each month" },
+      { id: "d", text: "AWS Support on the customer's behalf" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Every organization has a management account that pays the charges of all the member accounts under consolidated billing. Member accounts do not each pay separately under this model, the payer is not chosen at random, and AWS Support does not pay customer charges.",
+    reference: {
+      label: "Consolidating billing for AWS Organizations",
+      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["AWS Organizations"],
   },
 ];
