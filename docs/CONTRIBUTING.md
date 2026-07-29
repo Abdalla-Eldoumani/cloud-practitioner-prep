@@ -73,16 +73,26 @@ Questions are plain typed TypeScript under `src/data/questions/`, split into
 per-domain topic files (for example `domain-3-storage.ts`).
 
 1. Add your question to the matching topic file, or create a new topic file for
-   a new cluster.
+   a new cluster. The `N` in a `domain-N-*.ts` file name must equal the `domain`
+   field of every question inside it, so pick the file by domain first and by
+   subject second.
 2. If you created a new file, export its array and add it to `ALL_QUESTIONS` in
    `src/data/questions/index.ts`. That is the one place the files connect.
 3. Give the question a unique, stable `id` (for example
-   `d2-shared-responsibility-37`).
+   `d2-shared-responsibility-37`). An id is the key a learner's saved progress is
+   stored under, so it is permanent: never renumber one, and never change a
+   prefix to match a later retag.
 4. Set `type` to `single` (one correct option) or `multi` (two or more). The
    length of `correct` must match: 1 for single, 2 or more for multi.
-5. Write the `explanation` and at least one `reference` URL into current AWS
-   docs.
-6. Run `npm run check`.
+5. Set `topic` to a string listed under a task statement in
+   `src/data/blueprint.ts` in the same domain. Reuse an existing string where one
+   fits; a new one is only finished once it is listed there, or the question is
+   unreachable from the coverage map and the coverage lint fails.
+6. Write the `explanation` and at least one `reference` URL into current AWS
+   docs, and set `lastVerified` to the day you checked. Name options by their
+   content, never by letter or position: options shuffle on every sitting, so
+   "option B" means nothing on screen, and the content lint rejects it.
+7. Run `npm run check`, `npm run lint:content`, and `npm run lint:coverage`.
 
 ## Adding a lesson
 
