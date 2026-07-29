@@ -40,7 +40,7 @@ Content is validated separately, by one check per concern:
 npm run lint:content    # the question bank: floors, duplicate stems, option wording
 npm run lint:coverage   # the exam blueprint join, in both directions
 npm run lint:catalog    # the service catalog
-npm run lint:links      # every AWS reference URL (add --live to fetch each one)
+npm run lint:links      # every AWS reference URL (lint:links:live fetches each one)
 npm run lint:shuffle    # answer-option position fairness
 ```
 
