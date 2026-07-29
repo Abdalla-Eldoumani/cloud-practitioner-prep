@@ -92,9 +92,10 @@ JSON-serializable props, so an island never imports the whole catalog or questio
 bank into the browser bundle.
 
 The constants that describe the exam itself, question count, scored split, time
-limit, passing scaled score, domain weights, live once in `src/lib/constants`
-(`EXAM`, `DOMAINS`). Pages and the exam builder read them; no page re-hardcodes a
-number. Change a fact there and it updates everywhere, including the structured
+limit, passing scaled score, retake wait, domain weights, live once in
+`src/lib/constants` (`EXAM`, `DOMAINS`), alongside `DOMAIN_QUESTION_FLOORS`, the
+minimum bank size per domain. Pages and the exam builder read them; no page
+re-hardcodes a number. Change a fact there and it updates everywhere, including the structured
 data.
 
 ## How questions are filed and tagged
@@ -202,12 +203,33 @@ hosts). See [SECURITY.md](./SECURITY.md).
 ## The verification gate
 
 `scripts/` holds a focused check per concern, wired as npm scripts and run in CI:
-content and catalog lints, the diagram and navigation contracts, the PWA head
-check, the question shuffle uniformity check, and behavioral checks for the
-drill, mock, deck, review schedule, readiness, progress migration, and progress
-import/export. `npm run build` runs the type check and a full build; the link
-checker validates the documentation references. Run these before sending a change;
-see [CONTRIBUTING.md](./CONTRIBUTING.md).
+content, catalog, and coverage lints, the reference link checker, the diagram and
+navigation contracts, the PWA build check, the answer-shuffle uniformity check,
+and behavioral checks for the drill, mock, deck, review schedule, readiness,
+progress migration, and progress import/export.
+
+Several of these exist to catch a specific way content goes wrong:
+
+- `lint:coverage` fails in both directions. A task statement with no covering
+  lesson or no covering question fails, and so does a question whose topic joins
+  no statement in its own domain, so the map cannot read green by leaving
+  something out of it.
+- The same lint fails a lesson credited to a statement in another domain, unless
+  the pair is on a short allowlist named in the script for the few lessons that
+  genuinely teach across the domain line.
+- `lint:content` rejects an explanation or a distractor rationale that names an
+  option by letter or position. Options shuffle on every sitting, so "option B"
+  is wrong on screen as often as not.
+- `lint:content` also enforces `DOMAIN_QUESTION_FLOORS`, so no domain can quietly
+  thin out below its share of the exam.
+- `lint:links` accepts only the AWS documentation, AWS site, and pricing
+  calculator hosts. Community forums are not official documentation, so they are
+  not a valid reference. It also rejects known archived paths, and in live mode
+  it fetches each distinct URL and fails a removed page, a soft-404 redirect, or
+  a page carrying AWS's "for historical reference" banner.
+
+`npm run build` runs the type check and a full build. Run the checks before
+sending a change; see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Making your own version
 
@@ -219,7 +241,8 @@ into a study site for a different exam is mostly a content exercise:
 2. Replace the questions in `src/data/questions/`, the services in
    `src/data/services/`, the blueprint in `src/data/blueprint`, and the lessons
    in `src/content/lessons/`.
-3. Update the exam facts in `src/lib/constants` (`EXAM`, `DOMAINS`).
+3. Update the exam facts in `src/lib/constants` (`EXAM`, `DOMAINS`, and
+   `DOMAIN_QUESTION_FLOORS`).
 4. Keep the content-integrity rules: original questions, every fact sourced, and
    run the gate.
 
