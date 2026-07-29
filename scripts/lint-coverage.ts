@@ -16,6 +16,8 @@
 //   lessons-nonempty  lessonSlugs is non-empty
 //   questions-nonempty resolved questions (domain + normalized topic) > 0
 //   lesson-resolves   every authored lessonSlug is a real lesson slug
+//   lesson-domain     a lessonSlug's lesson sits in the statement's domain,
+//                     unless the pair is on CROSS_DOMAIN_LESSONS
 //   topic-resolves    every authored topic resolves to >=1 question IN its domain
 //   topic-covered     the reverse: every question's topic joins >=1 statement in
 //                     the question's OWN domain, so no question is unreachable
@@ -26,6 +28,8 @@
 // catalog lint has one only because its content is authored incrementally).
 
 import { globby } from "globby";
+import matter from "gray-matter";
+import { readFileSync } from "node:fs";
 import { basename, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { TASK_STATEMENTS } from "../src/data/blueprint";
@@ -55,6 +59,19 @@ const EXPECTED_IDS: readonly string[] = [
   "4.2",
   "4.3",
 ];
+
+// The "<statement id>:<lesson slug>" pairs where a lesson deliberately covers a
+// statement outside its own domain. Some lessons teach across the domain line:
+// the cloud-computing primer defines the deployment and operating models
+// statement 3.1 asks for, and the monitoring lesson teaches X-Ray for 3.8 and the
+// AWS Health Dashboard for 4.3. Every other cross-domain pairing is a mis-join
+// (usually a slug pasted under the wrong statement) and fails, so this list stays
+// short and each entry is a deliberate teaching decision, not a convenience.
+const CROSS_DOMAIN_LESSONS: ReadonlySet<string> = new Set<string>([
+  "3.1:what-is-cloud-computing",
+  "3.8:monitoring-cloudwatch-cloudtrail",
+  "4.3:monitoring-cloudwatch-cloudtrail",
+]);
 
 // Resolve a path relative to this module into a glob pattern globby accepts on
 // every platform. new URL().pathname yields a leading-slash, drive-letter form
@@ -122,21 +139,24 @@ class Reporter {
   }
 }
 
-// The lesson slugs that actually exist on disk: each file's basename without its
-// extension, exactly the slug the content collection keys lessons by.
-async function loadLessonSlugs(): Promise<Set<string>> {
+// The lessons that actually exist on disk, keyed by the slug the content
+// collection uses (the basename without its extension) and valued by the domain
+// the lesson's frontmatter declares. Frontmatter is parsed with gray-matter, the
+// same way the content lints read it.
+async function loadLessons(): Promise<Map<string, number>> {
   const files = await globby(LESSONS_GLOB);
-  const slugs = new Set<string>();
+  const lessons = new Map<string, number>();
   for (const file of files) {
-    slugs.add(basename(file, extname(file)));
+    const { data } = matter(readFileSync(file, "utf8"));
+    lessons.set(basename(file, extname(file)), Number(data.domain));
   }
-  return slugs;
+  return lessons;
 }
 
 async function main(): Promise<void> {
   const report = new Reporter();
 
-  const lessonSlugs = await loadLessonSlugs();
+  const lessons = await loadLessons();
   // The normalized topic keys present in the bank, and the count of questions
   // each key resolves to within a given domain (so topic-resolves can require a
   // match in the statement's OWN domain, mirroring the page's resolver).
@@ -187,11 +207,21 @@ async function main(): Promise<void> {
     }
 
     // lesson-resolves: every authored slug is a real lesson (catch a typo).
+    // lesson-domain: and it teaches this statement's domain, unless the pair is
+    // an allowlisted deliberate cross-domain lesson.
     for (const slug of ts.lessonSlugs) {
-      if (!lessonSlugs.has(slug)) {
+      const lessonDomain = lessons.get(slug);
+      if (lessonDomain === undefined) {
         report.fail(
           "lesson-resolves",
           `${where}: lessonSlug "${slug}" does not match any lesson file`,
+        );
+        continue;
+      }
+      if (lessonDomain !== ts.domain && !CROSS_DOMAIN_LESSONS.has(`${ts.id}:${slug}`)) {
+        report.fail(
+          "lesson-domain",
+          `${where}: lesson "${slug}" is domain ${lessonDomain}, not ${ts.domain}, and is not on the cross-domain allowlist`,
         );
       }
     }
@@ -264,7 +294,7 @@ async function main(): Promise<void> {
 
   // Summary header before the detail report.
   console.log(
-    `Coverage lint: ${TASK_STATEMENTS.length} statements, ${EXPECTED_IDS.length} expected (manifest), ${lessonSlugs.size} lesson slugs, ${ALL_QUESTIONS.length} questions.`,
+    `Coverage lint: ${TASK_STATEMENTS.length} statements, ${EXPECTED_IDS.length} expected (manifest), ${lessons.size} lesson slugs, ${ALL_QUESTIONS.length} questions.`,
   );
 
   report.print();
