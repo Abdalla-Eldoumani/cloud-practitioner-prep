@@ -31,7 +31,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-02",
@@ -53,7 +53,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-03",
@@ -75,7 +75,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-04",
@@ -97,7 +97,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -120,7 +120,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -143,7 +143,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-07",
@@ -165,7 +165,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -183,12 +183,12 @@ export const domain2SharedResponsibility: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "With Amazon RDS, AWS handles the processes it manages, which include the underlying operating system and database engine patching, so the customer does not configure security for those processes. The customer still manages access, database settings, and data. Managed databases do receive patches; AWS applies them.",
+      "Amazon RDS takes over operating system installation and patching and database software installation and patching, which stay with the customer on EC2 or on premises. The customer still manages access, database settings, and data. Managed databases do receive patches; AWS applies them.",
     reference: {
-      label: "Security in Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html",
+      label: "Amazon RDS responsibilities compared with Amazon EC2",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -212,7 +212,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -235,7 +235,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "RDS"],
   },
   {
@@ -258,7 +258,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Lambda"],
   },
   {
@@ -281,7 +281,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Lambda"],
   },
   {
@@ -305,7 +305,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -328,7 +328,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -356,7 +356,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-16",
@@ -379,7 +379,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-17",
@@ -406,7 +406,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-18",
@@ -428,7 +428,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-19",
@@ -450,7 +450,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-20",
@@ -473,7 +473,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-21",
@@ -495,7 +495,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Amazon S3 default encryption FAQ",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -518,7 +518,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "DynamoDB encryption at rest",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB"],
   },
   {
@@ -541,7 +541,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "S3", "DynamoDB"],
   },
   {
@@ -564,7 +564,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -588,7 +588,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-26",
@@ -610,7 +610,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -633,7 +633,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-28",
@@ -655,7 +655,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-29",
@@ -678,7 +678,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "IAM"],
   },
   {
@@ -702,7 +702,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -726,7 +726,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -750,7 +750,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-srm-33",
@@ -770,10 +770,10 @@ export const domain2SharedResponsibility: Question[] = [
     explanation:
       "On Amazon RDS, AWS takes on database engine patching and the underlying operating system, which the team handled themselves on EC2. Choosing which IAM identities may manage the database and deciding how sensitive the stored data is both remain the customer's, as does configuring the security group, so those stay with the customer.",
     reference: {
-      label: "Security in Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html",
+      label: "Amazon RDS responsibilities compared with Amazon EC2",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "RDS"],
   },
   {
@@ -797,7 +797,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Lambda"],
   },
   {
@@ -820,7 +820,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "S3", "Lambda", "RDS"],
   },
   {
@@ -843,6 +843,6 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
 ];
