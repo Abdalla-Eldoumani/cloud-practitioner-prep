@@ -18,7 +18,7 @@ export const iot: ServiceEntry[] = [
       label: "What is AWS IoT Core?",
       url: "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "IoT Core",
       "Internet of Things",
