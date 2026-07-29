@@ -1,6 +1,6 @@
 ---
 title: "Amazon EC2 Fundamentals"
-description: "Virtual servers you launch in minutes, the instance families and sizes, and the five pricing models that decide how much they cost."
+description: "Virtual servers you launch in minutes, the instance families and sizes, and the purchase options that decide how much they cost."
 domain: 3
 module: 2
 order: 0
@@ -10,7 +10,14 @@ services:
   - Amazon EC2
   - AWS Lambda
   - Amazon EBS
-updated: 2026-06-12
+  - AWS Fargate
+  - Amazon S3
+  - Amazon RDS
+  - Amazon DynamoDB
+  - Amazon VPC
+  - Amazon Route 53
+  - AWS CloudFormation
+updated: 2026-07-29
 draft: false
 ---
 
@@ -39,14 +46,51 @@ hypervisor keeps them isolated so one tenant cannot see or disturb another. AWS
 operates the host and the hypervisor. You choose the operating system, install
 your software, and decide how the instance connects to the network.
 
-Everything is driven by an API. You can click through the console to learn, run
-commands through the CLI to automate, or call the service from code with an SDK.
-The console is fine for one-off tasks; automation is how real fleets are managed.
+### Amazon Machine Images
+
+An Amazon Machine Image (AMI) is the image that provides the software required
+to set up and boot an instance: the operating system plus anything preinstalled
+on top of it. You must specify one at launch. An AMI is specific to a Region, an
+operating system, and a processor architecture, so there are AMIs for Linux and
+for Windows alike. Launching from an AMI does not consume it, so you can start
+many identical instances from one, and you can create your own AMI from an
+instance you have configured.
+
+Three other launch inputs are easy to confuse. User data is a script you pass at
+launch so the instance configures itself without you logging in. Instance
+metadata is data about the running instance, such as its instance id or
+Availability Zone. A key pair is the credential that proves your identity when
+you connect. By default a user data script runs only on the first boot; running
+it on later reboots or starts takes extra configuration, such as the persist
+flag.
+
+### Reboot, stop, terminate
+
+The three lifecycle actions differ in what survives. A reboot is an operating
+system restart: the instance stays on the same host and keeps its public DNS
+name, its addresses, and any data on instance store volumes. Stopping and
+starting typically moves the instance to a new host, so it comes back with a new
+public IPv4 address and its instance store data erased. Terminating is
+permanent: the instance is deleted and cannot be recovered or started again.
 
 <Callout type="note" title="Stopping versus storage cost">
 Stopping an instance stops its compute charges. An attached EBS volume can still
 cost money for storage until you delete it. The exam likes this distinction.
 </Callout>
+
+### Ways to reach AWS
+
+Everything is driven by an API. You can click through the console to learn, run
+commands through the CLI to automate, or call the service from code with an SDK.
+The console is fine for one-off tasks; automation is how real fleets are managed.
+
+A fourth way is infrastructure as code. AWS CloudFormation provisions AWS
+resources from a declarative template written in JSON or YAML and manages the
+related resources it creates as a single unit called a stack, so you create,
+update, and delete the whole collection together. The AWS Cloud Development Kit
+(AWS CDK) lets you define the same infrastructure in a general-purpose
+programming language such as TypeScript or Python, then deploys it through
+CloudFormation.
 
 ## Instance families and sizing
 
@@ -55,34 +99,43 @@ AWS groups instances into families tuned for different work:
 - General purpose: a balance of compute, memory, and networking.
 - Compute optimized: for CPU-heavy work such as batch processing.
 - Memory optimized: for large in-memory datasets.
-- Accelerated computing: GPUs and similar hardware for graphics, machine
-  learning, and high-performance computing.
+- Accelerated computing: GPUs and other hardware accelerators for graphics and
+  machine learning.
 - Storage optimized: for workloads that need high local disk throughput.
+- HPC optimized: purpose built for running high-performance computing workloads
+  at scale.
 
 Right-sizing means picking the family and size that fit the workload, then
 adjusting later as needs change. You are not locked into your first choice.
 
-## The five pricing models
+## EC2 purchase options
 
-This list is worth memorizing, because billing questions often turn on choosing
-the right purchase option:
+AWS documents these options for optimizing what EC2 costs, and the exam guide
+names the same set. Billing questions often turn on picking the right one:
 
 - On-Demand: pay per running second or hour with no commitment. Good for short
   or unpredictable workloads.
 - Savings Plans: commit to a steady amount of spend per hour for one or three
-  years for a large discount. The commitment also applies to Fargate and Lambda.
+  years for a large discount. A Compute Savings Plan covers Fargate and Lambda
+  usage as well as EC2; an EC2 Instance Savings Plan buys a deeper discount on
+  one instance family in one Region and does not.
 - Reserved Instances: commit to specific instance usage for one or three years
   for steady, predictable workloads.
 - Spot Instances: use spare AWS capacity at a steep discount, with the catch
   that AWS can reclaim it with a short warning. Good for interruptible work.
-- Dedicated Hosts: a physical server reserved for you, used for licensing or
-  compliance rules that require single-tenant hardware.
+- Dedicated Hosts: a physical server reserved for you, billed per host, with
+  visibility of its sockets and cores so you can bring server-bound licenses.
+- Dedicated Instances: instances on hardware dedicated to your account, billed
+  per instance, with no visibility or control over placement.
+- Capacity Reservations: reserve capacity for your instances in a specific
+  Availability Zone.
 
 <Callout type="key" title="Match the model to the scenario">
 Unpredictable and short, choose On-Demand. Steady for a year or more, choose a
 Savings Plan or Reserved Instances. Interruptible and cost-sensitive, choose
-Spot. A licensing or compliance rule that demands single tenancy, choose
-Dedicated Hosts.
+Spot. Single tenancy for licensing or compliance, choose Dedicated Hosts when
+you need visibility of sockets and cores or full bring-your-own-license support,
+and Dedicated Instances when dedicated hardware on its own is enough.
 </Callout>
 
 ## Where EC2 sits among compute options
@@ -97,5 +150,5 @@ operational work to AWS.
 ## What to take away
 
 Know that EC2 is virtual servers billed mainly while running, that the families
-map to workload shapes, and that the five pricing models each fit a different
-demand pattern. Those are the points the exam returns to again and again.
+map to workload shapes, and that each purchase option fits a different demand
+pattern. Those are the points the exam returns to again and again.

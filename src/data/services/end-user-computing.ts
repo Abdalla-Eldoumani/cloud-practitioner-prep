@@ -4,6 +4,10 @@ import type { ServiceEntry } from "../../lib/types";
 // WorkSpaces, Amazon WorkSpaces Secure Browser. Authored against the official
 // in-scope appendix; each entry carries a sourced reference and a lastVerified
 // date. Expected ids: see expected-manifest.ts.
+// Naming: the appendix still lists Amazon AppStream 2.0, which AWS now ships as
+// Amazon WorkSpaces Applications, so the exam term stays the primary name and
+// the current name is carried in purpose, aliases, and the reference label. The
+// appendix likewise names WorkSpaces Secure Browser, formerly WorkSpaces Web.
 export const endUserComputing: ServiceEntry[] = [
   {
     id: "amazon-appstream-2-0",
@@ -12,17 +16,19 @@ export const endUserComputing: ServiceEntry[] = [
     domain: 3,
     category: "End User Computing",
     purpose:
-      "A fully managed application streaming service that delivers desktop applications to users through a web browser.",
+      "A fully managed application streaming service that delivers desktop applications to users through a web browser. AWS has renamed the service Amazon WorkSpaces Applications; the CLF-C02 exam guide still lists it as Amazon AppStream 2.0.",
     whenToUse:
       "Reach for it when you want users to run a desktop application from a browser, with the application hosted in AWS instead of installed on each device.",
     reference: {
-      label: "What is Amazon AppStream 2.0?",
+      label: "What Is Amazon WorkSpaces Applications? (formerly Amazon AppStream 2.0)",
       url: "https://docs.aws.amazon.com/appstream2/latest/developerguide/what-is-appstream.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "AppStream",
       "AppStream 2.0",
+      "Amazon WorkSpaces Applications",
+      "WorkSpaces Applications",
       "application streaming",
       "stream applications",
     ],
@@ -42,7 +48,7 @@ export const endUserComputing: ServiceEntry[] = [
       label: "What is Amazon WorkSpaces?",
       url: "https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "WorkSpaces",
       "virtual desktop",
@@ -65,9 +71,11 @@ export const endUserComputing: ServiceEntry[] = [
       label: "What is Amazon WorkSpaces Secure Browser?",
       url: "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-secure-browser.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "WorkSpaces Secure Browser",
+      "Amazon WorkSpaces Web",
+      "WorkSpaces Web",
       "secure browser",
       "managed browser",
       "browser isolation",

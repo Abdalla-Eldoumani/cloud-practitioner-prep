@@ -9,7 +9,7 @@ estimatedMinutes: 12
 services:
   - Amazon EC2
   - Amazon S3
-updated: 2026-06-12
+updated: 2026-07-29
 draft: false
 ---
 
@@ -62,9 +62,23 @@ paying and showing ID is authentication and authorization, and the coffee is the
 response. You pay per cup, not for the whole cafe.
 </Callout>
 
+## Deployment models
+
+AWS groups deployments into three models, and a question will often describe a
+situation and expect you to name it. A cloud deployment is fully deployed in the
+cloud, with every part of the application running on cloud services, whether it
+was built there or migrated there. A hybrid deployment connects cloud resources
+to existing resources that are not in the cloud, most commonly an on-premises
+data center, which is what a company mid-migration or one keeping a regulated
+system in house ends up with. An on-premises deployment, which AWS sometimes
+calls the private cloud, means deploying resources in your own data center using
+virtualization and resource management tools. It can provide dedicated
+resources, but it does not provide many of the benefits of cloud computing.
+
 ## What to take away
 
-You should be able to state the definition from memory, recognize the
-client-server pattern in a scenario, and explain why usage-based billing lets a
-business stop paying for idle capacity. Those three points are the spine of the
-Cloud Concepts domain.
+You should be able to state the definition from memory, name the deployment
+model a scenario is describing, and explain why usage-based billing lets a
+business stop paying for idle capacity. The definition and the economics are the
+spine of Cloud Concepts; the client-server picture is the mental model the rest
+of the course rests on.

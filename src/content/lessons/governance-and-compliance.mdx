@@ -1,0 +1,152 @@
+---
+title: "Governance and Compliance on AWS"
+description: "AWS Artifact, the compliance programs behind it, and how Organizations, service control policies, and Control Tower govern a multi-account environment."
+domain: 2
+module: 4
+order: 5
+day: 3
+estimatedMinutes: 8
+services:
+  - AWS Artifact
+  - AWS Organizations
+  - AWS Control Tower
+updated: 2026-07-29
+draft: false
+---
+
+import Callout from "@/components/Callout.astro";
+
+Security asks whether a setting is safe. Governance asks two other things: how
+you prove the platform beneath you was audited, and how you hold dozens of
+accounts to one set of rules. Both belong to Security and Compliance.
+
+## Proving compliance with AWS Artifact
+
+AWS Artifact provides on-demand downloads of AWS security and compliance
+documents: reports on compliance with International Organization for
+Standardization (ISO) standards and Payment Card Industry (PCI) Security
+Standards, and System and Organization Controls (SOC) reports. AWS provides them
+free of charge. You submit them to auditors or regulators as audit artifacts:
+they are the third-party attestations behind the controls you inherit from AWS
+rather than implement yourself.
+
+Artifact has a second job that questions like to test. You use it to review,
+accept, and track the status of your agreements with AWS, for one account or for
+your whole organization. The example AWS names is HIPAA: companies subject to it
+typically require a Business Associate Addendum (BAA) with AWS so that protected
+health information is appropriately safeguarded. In the Artifact console you
+accept that agreement and designate an account that can legally process PHI. With
+AWS Organizations you can accept the BAA on behalf of all accounts in the
+organization, and existing and subsequent member accounts are covered
+automatically.
+
+## Compliance programs and who audits them
+
+AWS aligns with a long list of compliance programs in three categories:
+certifications and attestations, laws, regulations, and privacy, and alignments
+and frameworks. Certifications and attestations are assessed by a third-party,
+independent auditor and result in a certification, audit report, or attestation
+of compliance. Recognition is enough for the exam: SOC 1, SOC 2, and SOC 3,
+ISO 27001, and PCI DSS sit among the global certifications and attestations, and
+HIPAA sits under laws and regulations.
+
+<Callout type="note" title="AWS's evidence, not yours">
+Artifact hands you AWS's documents. AWS states that customers are responsible for
+developing or obtaining the documents that demonstrate the security and
+compliance of their own companies, so compliance splits the way security does.
+</Callout>
+
+## AWS Organizations puts many accounts under one policy
+
+One account stops being enough quickly. AWS Organizations helps you centrally
+manage and govern your environment as you grow: create accounts, group them,
+apply policies for governance, and simplify billing with a single payment method
+for all of your accounts.
+
+An organization has one management account, the account used to create it. It has
+final control over security, infrastructure, and finance policies and pays the
+charges of every account in the organization. Every other account is a member
+account, and a member account belongs to only one organization at a time.
+
+Organizations also enables an audit capability worth memorizing: you can activate
+AWS CloudTrail across accounts, creating a log of all activity in your cloud
+environment that member accounts cannot turn off or modify.
+
+## Organizational units group the accounts
+
+Accounts sit under a root and are grouped into organizational units. An OU is a
+group of AWS accounts within an organization, and an OU can contain other OUs.
+OUs matter because policies attach to them: to apply the same controls to a
+subset of accounts, put those accounts in one OU and attach the policy once.
+Scenarios use the obvious case, development accounts in one OU and production
+accounts in another.
+
+## Service control policies are a ceiling, not a grant
+
+A service control policy offers central control over the maximum available
+permissions for the IAM users and IAM roles in your organization.
+
+The sentence to memorize: an SCP never grants permissions. It defines a
+permission guardrail, a limit on the actions those users and roles can perform.
+Permissions still come from IAM identity-based and resource-based policies, and
+effective permissions are the logical intersection of what the SCP allows and
+what those policies allow. A user with no IAM permission policy has no access
+even when the SCPs allow every service and every action.
+
+Two more rules decide most questions. SCPs affect only member accounts and have
+no effect on users or roles in the management account. Inside a member account an
+SCP restricts every principal, including that account's root user, so attaching
+the AdministratorAccess policy locally does not restore an action the SCP blocks.
+
+That is why an SCP is the answer whenever a restriction must hold
+organization-wide. It can limit which services and resources principals reach and
+the conditions of their requests, for example the Region. Deny every action
+outside an approved Region list, or the actions that stop or delete CloudTrail
+logging, and the limit holds for every account in the OU.
+
+<Callout type="tip" title="Read the verb in the option">
+If an option says an SCP grants permissions, it is wrong. If a scenario has
+permissive SCPs but a user who can do nothing, the missing piece is an IAM
+permission policy. If a restriction must survive an account administrator, the
+answer is an SCP on the OU.
+</Callout>
+
+## AWS Control Tower builds and governs the environment
+
+AWS Control Tower is the setup and governance layer above all of this. AWS calls
+it the easiest way to set up and govern a secure, compliant, multi-account AWS
+environment based on best practices. It replaces nothing: it orchestrates the
+capabilities of other services, including AWS Organizations, AWS Service Catalog,
+and AWS IAM Identity Center, to build a landing zone.
+
+A landing zone is a well-architected, multi-account environment based on security
+and compliance best practices, the enterprise-wide container that holds the OUs,
+accounts, users, and other resources you want subject to compliance regulation.
+
+To keep that environment from drifting, Control Tower applies controls, which AWS
+also calls guardrails; the two terms are synonymous. A control is a high-level
+rule, expressed in plain language, that provides ongoing governance for your
+overall AWS environment, and it applies to an entire OU, so every account in the
+OU is affected. Preventive controls disallow actions that lead to policy
+violations, detective controls find noncompliant resources and alert you, and
+proactive controls scan resources before they are provisioned.
+
+## The account is the natural boundary
+
+Underneath all of it is one idea. AWS accounts are natural boundaries for
+permission, security, costs, and workloads, and using a multi-account environment
+is a recommended best practice when scaling your cloud environment. So when a
+scenario wants the strongest separation between production and a sandbox, the
+answer is separate accounts. That does not remove work: accounts share no single
+permission set, AWS does not merge them into one security domain, and each still
+needs IAM permissions inside it.
+
+## What to take away
+
+Artifact for AWS's compliance documents and agreements such as the BAA, free, and
+acceptable organization-wide. Programs such as SOC, ISO 27001, PCI DSS, and
+HIPAA, assessed by independent third-party auditors. Organizations for central
+management: one management account, many member accounts, OUs, one payment
+method. SCPs as a ceiling that grants nothing and skips the management account.
+Control Tower for a landing zone governed by controls. And the account as the
+boundary all of it rests on.

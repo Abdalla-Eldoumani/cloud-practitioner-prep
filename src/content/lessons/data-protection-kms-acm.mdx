@@ -8,9 +8,11 @@ day: 3
 estimatedMinutes: 14
 services:
   - AWS KMS
+  - AWS CloudHSM
   - AWS Certificate Manager
   - AWS Secrets Manager
-updated: 2026-06-13
+  - AWS Systems Manager
+updated: 2026-07-29
 draft: false
 ---
 
@@ -37,14 +39,35 @@ AWS managed key is created and rotated by an AWS service on your behalf; you do
 not manage it and there is no monthly charge for the key to exist. A customer
 managed key is one you create and fully control: you set its access policy,
 enable or disable it, and choose its rotation, and it carries a monthly cost.
-Reach for a customer managed key when you need that control or an audit trail;
-otherwise the managed option is simpler.
+Reach for a customer managed key when you need that control; otherwise the
+managed option is simpler. A third type, the AWS owned key, sits in an account
+the service owns rather than yours, costs nothing, and asks nothing of you, but
+you cannot see its policy or audit its use, so a requirement to audit key
+activity rules it out.
 
 <Callout type="key" title="Managed versus customer managed">
 If a scenario stresses full control over the key, its policy, or its rotation,
 the answer is a customer managed key. If it stresses convenience and no key
 administration, an AWS managed key fits.
 </Callout>
+
+### Encryption at rest across services
+
+Many services encrypt at rest by default, so the real question is usually which
+key they use. Amazon S3 applies server-side encryption with Amazon S3 managed
+keys (SSE-S3) as the base level of encryption for every bucket, so since
+January 5, 2023 new object uploads are encrypted automatically at no additional
+cost; if you need to control the key yourself, choose SSE-KMS and point it at a
+customer managed key. Amazon DynamoDB encrypts all table data at rest through
+its AWS KMS integration, using an AWS owned key unless you choose an AWS managed
+or customer managed key.
+
+Amazon EBS encryption happens on the servers that host the EC2 instances, so it
+covers both data at rest on the volume and data in transit between the instance
+and its attached storage. Snapshots taken from an encrypted volume, and volumes
+restored from those snapshots, are encrypted as well, and you cannot encrypt an
+existing unencrypted volume in place: you snapshot it and create a new encrypted
+volume from that snapshot.
 
 ### Envelope encryption, briefly
 
@@ -57,19 +80,29 @@ read the data later, you send the encrypted data key back to KMS, which decrypts
 it so you can decrypt the data. The high-value KMS key stays in KMS and never has
 to touch the bulk of your data.
 
+### AWS CloudHSM for single-tenant hardware
+
+Some workloads have to run their cryptography on single-tenant hardware security
+modules. AWS CloudHSM provides them: HSMs in the AWS Cloud that no other
+customer shares, with full control of the keys and algorithms you use. The data
+plane is end-to-end encrypted and not visible to AWS, and the trade for that
+control is more operational responsibility than a managed service asks of you.
+If you want a managed service for creating and controlling keys and you do not
+want to operate your own HSMs, AWS points you at KMS.
+
 ## AWS Certificate Manager handles TLS certificates
 
 Encryption in transit on the web means TLS, the protocol behind HTTPS, and TLS
 needs a certificate. AWS Certificate Manager (ACM) creates, stores, and renews
 the public and private SSL/TLS certificates that secure your sites and
 applications. Its main appeal is that it removes the manual renewal work:
-certificates ACM issues are renewed automatically, so you avoid an expired
-certificate taking a site offline.
+certificates ACM issues and that stay attached to an AWS service are renewed for
+you, so you avoid an expired certificate taking a site offline.
 
-ACM certificates attach to AWS services that terminate TLS for you, such as
-Elastic Load Balancing and Amazon CloudFront, rather than to a standalone server.
-Public certificates that you provision through ACM carry no additional charge;
-you pay only for the AWS resources running your workload.
+ACM certificates typically attach to AWS services that terminate TLS for you,
+such as Elastic Load Balancing and Amazon CloudFront. Public certificates that
+you provision through ACM for use with ACM-integrated services carry no
+additional charge; you pay only for the AWS resources running your workload.
 
 ## AWS Secrets Manager stores and rotates secrets
 
@@ -85,6 +118,13 @@ without you editing and redeploying the application. That shrinks the window in
 which a leaked credential is useful. Note the division of labor with KMS: KMS is
 for encryption keys, while Secrets Manager is for application credentials, and
 Secrets Manager uses KMS underneath to encrypt the secrets it holds.
+
+AWS Systems Manager Parameter Store is the other place AWS stores configuration
+data. String and StringList parameters hold plain text, SecureString parameters
+are encrypted with AWS KMS, and standard-tier parameters carry no additional
+charge. Reach for Parameter Store for configuration values such as endpoint URLs
+and environment names, and for Secrets Manager when a credential has to be
+rotated automatically.
 
 <Callout type="note" title="KMS or Secrets Manager?">
 A question about managing cryptographic keys points to KMS. A question about

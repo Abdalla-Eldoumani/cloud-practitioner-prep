@@ -4,8 +4,14 @@ import type { Question } from "../../lib/types";
 // Original practice questions written to test the exam-guide concepts. These
 // are not real exam items. Every fact is verified against current AWS
 // documentation; each question cites the page that backs its answer. The focus
-// is matching the right file or database service to a scenario, and the
-// relational-vs-NoSQL and managed-vs-self-managed distinctions.
+// is matching the right file or database service to a scenario, the
+// relational-vs-NoSQL and managed-vs-self-managed distinctions, and Amazon RDS
+// Multi-AZ deployments.
+//
+// Ids keep their historical d1-resil- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files and
+// stays put when a question is retagged to another domain. A retired id is
+// burned and never reused, so the sequences have gaps.
 export const domain3FileDatabases: Question[] = [
   {
     id: "d3-db-01",
@@ -27,7 +33,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EFS", "EC2"],
   },
   {
@@ -50,7 +56,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EFS"],
   },
   {
@@ -73,7 +79,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EFS", "FSx"],
   },
   {
@@ -96,31 +102,8 @@ export const domain3FileDatabases: Question[] = [
       label: "What is FSx for Windows File Server?",
       url: "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["FSx"],
-  },
-  {
-    id: "d3-db-05",
-    domain: 3,
-    type: "single",
-    topic: "Amazon FSx for Lustre",
-    difficulty: "medium",
-    stem: "A research team runs high-performance computing and machine learning jobs that need a file system delivering very high throughput and sub-millisecond latencies, with the ability to link the file system to data in an Amazon S3 bucket. Which service is built for this?",
-    options: [
-      { id: "a", text: "Amazon FSx for Lustre" },
-      { id: "b", text: "Amazon FSx for Windows File Server" },
-      { id: "c", text: "Amazon EFS One Zone" },
-      { id: "d", text: "Amazon EBS" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon FSx for Lustre is fully managed storage built on the Lustre high-performance file system, designed for HPC, machine learning, and media processing, with sub-millisecond latencies and the ability to link the file system to S3 buckets. FSx for Windows targets Windows workloads, Amazon EFS One Zone is a general-purpose single-zone NFS storage class rather than an HPC file system, and Amazon EBS is block storage for a single instance.",
-    reference: {
-      label: "Amazon FSx for Lustre",
-      url: "https://aws.amazon.com/fsx/lustre/",
-    },
-    lastVerified: "2026-06-23",
-    services: ["FSx", "S3"],
   },
   {
     id: "d3-db-06",
@@ -142,7 +125,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx for NetApp ONTAP",
       url: "https://aws.amazon.com/fsx/netapp-ontap/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["FSx"],
   },
   {
@@ -171,7 +154,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx",
       url: "https://aws.amazon.com/fsx/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["FSx"],
   },
   {
@@ -199,7 +182,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EFS", "FSx"],
   },
   {
@@ -222,54 +205,8 @@ export const domain3FileDatabases: Question[] = [
       label: "AWS Storage Gateway",
       url: "https://aws.amazon.com/storagegateway/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Storage Gateway"],
-  },
-  {
-    id: "d3-db-10",
-    domain: 3,
-    type: "single",
-    topic: "AWS Snow Family",
-    difficulty: "medium",
-    stem: "A company must move petabytes of data into AWS from a site with limited network bandwidth, where transferring the data over the internet would be too slow and costly. Which service uses physical devices shipped to and from AWS to perform this transfer?",
-    options: [
-      { id: "a", text: "The AWS Snow Family, using a Snowball Edge device" },
-      { id: "b", text: "AWS Storage Gateway File Gateway" },
-      { id: "c", text: "Amazon S3 Transfer Acceleration over the public internet" },
-      { id: "d", text: "Amazon EFS" },
-    ],
-    correct: ["a"],
-    explanation:
-      "The AWS Snow Family uses physical devices such as Snowball Edge that AWS ships to you; you load the data and ship the device back, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway and Transfer Acceleration still move data over the network, and Amazon EFS is a file system, not a data-transfer device.",
-    reference: {
-      label: "What is AWS Snowball Edge?",
-      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Snow Family"],
-  },
-  {
-    id: "d3-db-11",
-    domain: 3,
-    type: "single",
-    topic: "AWS Snow Family",
-    difficulty: "hard",
-    stem: "A remote site with little or no network connectivity needs to collect sensor data and run some local processing on it before shipping the data to AWS. Which capability of an AWS Snowball Edge device supports running compute at the edge?",
-    options: [
-      { id: "a", text: "Snowball Edge can run local compute, including Amazon EC2 instances and AWS Lambda functions, on the device before the data reaches AWS." },
-      { id: "b", text: "Snowball Edge can only store data and cannot run any processing." },
-      { id: "c", text: "Snowball Edge requires a constant high-speed internet connection to function." },
-      { id: "d", text: "Snowball Edge is a managed relational database that runs in the cloud." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Snowball Edge devices support local compute so you can run EC2 instances and Lambda functions on the device to process data at the edge, which is useful in disconnected or remote locations. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity, and it is a physical edge and transfer device rather than a cloud database.",
-    reference: {
-      label: "What is AWS Snowball Edge?",
-      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Snow Family"],
   },
   {
     id: "d3-db-12",
@@ -291,7 +228,7 @@ export const domain3FileDatabases: Question[] = [
       label: "AWS Storage Gateway",
       url: "https://aws.amazon.com/storagegateway/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Storage Gateway", "Snow Family"],
   },
   {
@@ -314,7 +251,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -338,7 +275,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -361,7 +298,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "EC2"],
   },
   {
@@ -382,10 +319,10 @@ export const domain3FileDatabases: Question[] = [
     explanation:
       "A Multi-AZ deployment keeps a standby DB instance in a different Availability Zone and provides automatic failover support if the primary fails, which delivers high availability. A standard Multi-AZ standby does not serve read traffic, Multi-AZ does not remove the need for backups, and the standby is in a separate Availability Zone, not the same one.",
     reference: {
-      label: "Configuring and managing a Multi-AZ deployment for Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+      label: "Multi-AZ DB instance deployments",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -408,7 +345,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Working with DB instance read replicas",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -421,7 +358,7 @@ export const domain3FileDatabases: Question[] = [
     options: [
       { id: "a", text: "Multi-AZ deployments are primarily for high availability and automatic failover." },
       { id: "b", text: "Read replicas are primarily for scaling read-heavy workloads." },
-      { id: "c", text: "A Multi-AZ standby instance serves read traffic to reduce load on the primary." },
+      { id: "c", text: "A standard Multi-AZ standby instance serves read traffic to reduce load on the primary." },
       { id: "d", text: "Read replicas guarantee automatic failover for the primary database." },
       { id: "e", text: "Both features exist only to reduce the storage cost of the database." },
     ],
@@ -432,7 +369,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Configuring and managing a Multi-AZ deployment for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -455,7 +392,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -478,7 +415,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Aurora",
       url: "https://aws.amazon.com/rds/aurora/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Aurora"],
   },
   {
@@ -501,7 +438,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Aurora",
       url: "https://aws.amazon.com/rds/aurora/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Aurora"],
   },
   {
@@ -525,7 +462,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB"],
   },
   {
@@ -548,7 +485,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB"],
   },
   {
@@ -566,12 +503,12 @@ export const domain3FileDatabases: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "DynamoDB delivers consistent single-digit millisecond performance at any scale with a serverless model, which suits player data and leaderboards that must scale without managing servers. Amazon RDS for PostgreSQL and Amazon Aurora PostgreSQL are relational databases the team would still operate as instances, and Redshift is an analytics data warehouse rather than a low-latency operational store.",
+      "DynamoDB delivers consistent single-digit millisecond performance at any scale with a serverless model, which suits player data and leaderboards that must scale without managing servers. Amazon RDS for PostgreSQL and Amazon Aurora PostgreSQL are relational engines; neither carries DynamoDB's documented single-digit millisecond performance at any scale for key-based access, and Redshift is an analytics data warehouse rather than a low-latency operational store.",
     reference: {
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB"],
   },
   {
@@ -594,7 +531,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ElastiCache"],
   },
   {
@@ -618,7 +555,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ElastiCache"],
   },
   {
@@ -642,7 +579,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ElastiCache", "RDS"],
   },
   {
@@ -665,7 +602,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Neptune",
       url: "https://aws.amazon.com/neptune/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Neptune"],
   },
   {
@@ -688,7 +625,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon DocumentDB",
       url: "https://aws.amazon.com/documentdb/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DocumentDB"],
   },
   {
@@ -712,7 +649,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Neptune",
       url: "https://aws.amazon.com/neptune/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Neptune", "DocumentDB", "DynamoDB", "ElastiCache", "RDS"],
   },
   {
@@ -741,7 +678,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "DynamoDB"],
   },
   {
@@ -764,7 +701,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB"],
   },
   {
@@ -787,7 +724,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB", "EFS"],
   },
   {
@@ -811,7 +748,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "DynamoDB"],
   },
   {
@@ -834,31 +771,8 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Redshift"],
-  },
-  {
-    id: "d3-db-36",
-    domain: 3,
-    type: "single",
-    topic: "File service selection",
-    difficulty: "hard",
-    stem: "An animation studio needs a high-performance shared file system for a rendering pipeline that processes large media datasets and integrates with data already in Amazon S3. Which service is the best fit?",
-    options: [
-      { id: "a", text: "Amazon FSx for Lustre" },
-      { id: "b", text: "Amazon FSx for Windows File Server" },
-      { id: "c", text: "Amazon DynamoDB" },
-      { id: "d", text: "AWS Storage Gateway Tape Gateway" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon FSx for Lustre is a high-performance file system suited to compute-intensive media processing and can link to Amazon S3 data, which fits a rendering pipeline. FSx for Windows targets Windows file shares, DynamoDB is a NoSQL database, and Tape Gateway is for backup to virtual tape.",
-    reference: {
-      label: "Amazon FSx for Lustre",
-      url: "https://aws.amazon.com/fsx/lustre/",
-    },
-    lastVerified: "2026-06-23",
-    services: ["FSx", "S3"],
   },
   {
     id: "d3-db-37",
@@ -881,7 +795,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EFS", "ElastiCache", "RDS", "Neptune", "Snow Family"],
   },
   {
@@ -904,7 +818,128 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["DynamoDB", "RDS"],
+  },
+  {
+    id: "d1-resil-16",
+    domain: 3,
+    type: "single",
+    topic: "Multi-AZ databases",
+    difficulty: "medium",
+    stem: "A team needs its Amazon RDS database to stay available if the primary instance or its Availability Zone has a problem. Which RDS feature is designed for that?",
+    options: [
+      { id: "a", text: "A Multi-AZ deployment, which keeps a standby in a different Availability Zone for failover." },
+      { id: "b", text: "A larger instance class in a single Availability Zone." },
+      { id: "c", text: "Turning off automated backups to reduce load." },
+      { id: "d", text: "Storing the database files on a single EBS volume only." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Amazon RDS Multi-AZ deployments provide high availability and failover support by maintaining a standby replica in a different Availability Zone, helping protect against DB instance failure and Availability Zone disruption. A bigger single-zone instance, disabling backups, or relying on one volume does not provide cross-zone failover.",
+    reference: {
+      label: "Multi-AZ DB instance deployments for Amazon RDS",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["RDS"],
+  },
+  {
+    id: "d1-resil-17",
+    domain: 3,
+    type: "single",
+    topic: "Multi-AZ databases",
+    difficulty: "hard",
+    stem: "In an Amazon RDS Multi-AZ DB instance deployment, how is data kept on the standby, and what is the standby used for during normal operation?",
+    options: [
+      { id: "a", text: "The primary is synchronously replicated to the standby, and the standby is for failover, not for serving read traffic." },
+      { id: "b", text: "The standby is updated once a day and serves all read queries." },
+      { id: "c", text: "The standby holds no data until a failure occurs." },
+      { id: "d", text: "The standby serves write traffic in parallel with the primary." },
+    ],
+    correct: ["a"],
+    explanation:
+      "In a Multi-AZ DB instance deployment, RDS synchronously replicates the primary to a standby in another Availability Zone, and that standby provides failover support but does not serve read traffic. It is not a once-a-day copy, it is not empty until failure, and it does not accept writes alongside the primary.",
+    reference: {
+      label: "Multi-AZ DB instance deployments for Amazon RDS",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["RDS"],
+  },
+  {
+    id: "d1-resil-35",
+    domain: 3,
+    type: "multi",
+    topic: "Multi-AZ databases",
+    difficulty: "hard",
+    stem: "Which TWO statements about an Amazon RDS Multi-AZ DB instance deployment are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "It provides high availability and failover support with a standby in a different Availability Zone." },
+      { id: "b", text: "It helps protect the database against DB instance failure and Availability Zone disruption." },
+      { id: "c", text: "The standby replica serves read traffic to scale read-heavy workloads." },
+      { id: "d", text: "It removes the need to ever back up the database." },
+      { id: "e", text: "It places the primary and standby in the same Availability Zone." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "An RDS Multi-AZ DB instance deployment keeps a synchronous standby in a different Availability Zone for failover, providing high availability and protecting against DB instance failure and Availability Zone disruption. The single standby does not serve read traffic, Multi-AZ does not replace backups, and the standby is by design in a different zone from the primary.",
+    reference: {
+      label: "Multi-AZ DB instance deployments for Amazon RDS",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["RDS"],
+  },
+  {
+    id: "d3-db-39",
+    domain: 3,
+    type: "single",
+    topic: "Storage types",
+    difficulty: "medium",
+    stem: "A workload has two storage needs. One EC2 instance needs a volume it can format and use the way it would use a hard drive attached to the computer, and a fleet of Linux instances needs one file system that all of them mount at the same time. Which pairing meets both needs?",
+    options: [
+      { id: "a", text: "Amazon EBS for the single instance's volume, and Amazon EFS for the shared file system" },
+      { id: "b", text: "Amazon EFS for the single instance's volume, and Amazon EBS for the shared file system" },
+      { id: "c", text: "Amazon S3 for both needs" },
+      { id: "d", text: "Amazon FSx for Windows File Server for both needs" },
+    ],
+    correct: ["a"],
+    explanation:
+      "An Amazon EBS volume attaches to an EC2 instance, and once attached you use it in the same way you would use a local hard drive attached to a computer, which is what the single instance needs. Amazon EFS is an elastic NFS file system that many Linux compute instances share at once, which is what the fleet needs. Handing EFS the single formatted volume and EBS the shared file system reverses their roles; Amazon S3 is object storage reached through a web services interface rather than a mountable drive or a POSIX file system; and Amazon FSx for Windows File Server serves Windows file shares over SMB, which does not cover either half of this pairing.",
+    reference: {
+      label: "What is Amazon Elastic Block Store?",
+      url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EBS", "EFS"],
+  },
+  {
+    id: "d3-db-40",
+    domain: 3,
+    type: "single",
+    topic: "Amazon FSx file systems",
+    difficulty: "hard",
+    stem: "An enterprise depends on the specific features and administrative tooling of the file system its applications already run against, and it wants AWS to run that same file system as a managed service instead of rebuilding on a different one. Which service is designed for that requirement?",
+    options: [
+      { id: "a", text: "Amazon FSx, which runs fully managed versions of widely used file systems with like-for-like capabilities and performance" },
+      { id: "b", text: "Amazon S3, which stores the same content as objects addressed by key" },
+      { id: "c", text: "Amazon EBS, which attaches a block volume to a single EC2 instance" },
+      { id: "d", text: "AWS Storage Gateway, which connects an existing on-premises appliance to AWS storage" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Amazon S3 stores content as objects addressed by key. That is object storage, not the file system the applications already speak.",
+      c: "Amazon EBS attaches a block volume to a single EC2 instance, so it is not a shared, feature-rich file system.",
+      d: "AWS Storage Gateway bridges an on-premises environment to AWS storage. It does not run the customer's chosen file system as a managed service in AWS.",
+    },
+    explanation:
+      "Amazon FSx lets you choose among four widely used file systems, NetApp ONTAP, OpenZFS, Windows File Server, and Lustre, and runs them as fully managed services with like-for-like capabilities and performance, so existing tools and the way the team already manages its data carry over. Amazon S3 stores content as objects addressed by key rather than as a file system, Amazon EBS attaches a block volume to a single EC2 instance rather than serving a shared file system, and AWS Storage Gateway connects an existing on-premises appliance to AWS storage rather than running the file system itself as a managed AWS service.",
+    reference: {
+      label: "Amazon FSx",
+      url: "https://aws.amazon.com/fsx/",
+    },
+    lastVerified: "2026-07-29",
+    services: ["FSx"],
   },
 ];

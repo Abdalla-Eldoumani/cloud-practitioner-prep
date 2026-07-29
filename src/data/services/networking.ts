@@ -21,7 +21,7 @@ export const networking: ServiceEntry[] = [
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "API Gateway",
       "API management",
@@ -44,7 +44,7 @@ export const networking: ServiceEntry[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CloudFront",
       "CDN",
@@ -67,7 +67,7 @@ export const networking: ServiceEntry[] = [
       label: "What is AWS Direct Connect?",
       url: "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Direct Connect",
       "dedicated connection",
@@ -90,7 +90,7 @@ export const networking: ServiceEntry[] = [
       label: "What is AWS Global Accelerator?",
       url: "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Global Accelerator",
       "traffic acceleration",
@@ -113,7 +113,7 @@ export const networking: ServiceEntry[] = [
       label: "What is AWS PrivateLink?",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "PrivateLink",
       "private connectivity",
@@ -137,7 +137,7 @@ export const networking: ServiceEntry[] = [
       label: "What is Amazon Route 53?",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Route 53",
       "DNS",
@@ -160,7 +160,7 @@ export const networking: ServiceEntry[] = [
       label: "What is AWS Transit Gateway?",
       url: "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Transit Gateway",
       "network hub",
@@ -184,7 +184,7 @@ export const networking: ServiceEntry[] = [
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "VPC",
       "Virtual Private Cloud",
@@ -207,7 +207,7 @@ export const networking: ServiceEntry[] = [
       label: "AWS VPN overview",
       url: "https://docs.aws.amazon.com/vpn/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "VPN",
       "Site-to-Site VPN",

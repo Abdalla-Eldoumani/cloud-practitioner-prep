@@ -14,7 +14,7 @@ services:
   - AWS Security Hub
   - Amazon Macie
   - Amazon Detective
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -32,8 +32,13 @@ AWS CloudTrail records the actions taken in your account as events. When a user,
 a role, or an AWS service makes a call through the console, the CLI, or an SDK,
 CloudTrail captures who did it, what they did, and when. It exists for auditing,
 governance, and compliance: the question CloudTrail answers is "who made this
-API call?" Its event history gives you a searchable record of recent management
-activity automatically.
+API call?"
+
+CloudTrail is on from the start: Event history is available automatically when
+you create an account, and it gives you a viewable, searchable, downloadable
+record of the past 90 days of management events in a Region. It is not a
+permanent archive. When activity has to be kept and analyzed beyond that window,
+create a trail that delivers events to an Amazon S3 bucket.
 
 ## Config records how resources are set up
 
@@ -89,6 +94,10 @@ collecting and prioritizing findings from services like GuardDuty, Inspector, an
 Macie, along with supported partner products. It also runs automated checks
 against security standards and best practices. Security Hub is the single pane of
 glass that answers "what is my overall security posture?"
+
+AWS documentation now writes this capability as AWS Security Hub CSPM, short for
+Cloud Security Posture Management. The exam uses the shorter name, AWS Security
+Hub. Both point at the same service and the same job.
 
 ## Detective investigates the root cause
 

@@ -19,10 +19,10 @@ export const domain4: Question[] = [
     explanation:
       "The AWS Pricing Calculator produces cost estimates for planned workloads before deployment. Cost Explorer and the Cost and Usage Report analyze spend that has already happened, and Budgets sends alerts against thresholds.",
     reference: {
-      label: "AWS Pricing Calculator",
-      url: "https://calculator.aws/",
+      label: "What is AWS Pricing Calculator?",
+      url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-spot-01",
@@ -44,7 +44,7 @@ export const domain4: Question[] = [
       label: "Amazon EC2 Spot Instances",
       url: "https://aws.amazon.com/ec2/spot/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -64,9 +64,9 @@ export const domain4: Question[] = [
     explanation:
       "Business Support is the lowest tier that includes 24/7 phone, chat, and email access to engineers and the full set of Trusted Advisor checks. Basic and Developer lack 24/7 engineer access and the full checks, and Enterprise adds more (such as a TAM) at higher cost than required here.",
     reference: {
-      label: "AWS Support plans",
-      url: "https://aws.amazon.com/premiumsupport/plans/",
+      label: "AWS Business Support",
+      url: "https://aws.amazon.com/premiumsupport/plans/business/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
 ];

@@ -12,7 +12,7 @@ services:
   - Amazon EventBridge
   - AWS Step Functions
   - Amazon API Gateway
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -33,6 +33,16 @@ is what decouples them: if the consumer is busy or briefly down, messages sit
 safely in the queue until it catches up. Picture a banking app that confirms a
 bill payment to the user immediately, then processes the payment from a queue in
 the background.
+
+### Standard and FIFO queues
+
+SQS has two queue types. Standard queues accept a nearly unlimited number of API
+calls per second and make a best-effort attempt at ordering with at-least-once
+delivery, so a message can arrive out of order or more than once and the consumer
+has to tolerate duplicates. FIFO queues strictly preserve the order messages were
+sent within a message group and provide exactly-once processing, but they are
+limited to a smaller number of transactions per second. Throughput first means
+standard; order with no duplicates means FIFO.
 
 ## Amazon SNS
 

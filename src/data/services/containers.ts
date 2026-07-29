@@ -18,7 +18,7 @@ export const containers: ServiceEntry[] = [
       label: "What is Amazon Elastic Container Registry?",
       url: "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "ECR",
       "Elastic Container Registry",
@@ -41,7 +41,7 @@ export const containers: ServiceEntry[] = [
       label: "What is Amazon Elastic Container Service?",
       url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "ECS",
       "Elastic Container Service",
@@ -64,7 +64,7 @@ export const containers: ServiceEntry[] = [
       label: "What is Amazon EKS?",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "EKS",
       "Elastic Kubernetes Service",

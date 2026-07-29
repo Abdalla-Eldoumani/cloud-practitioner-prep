@@ -24,13 +24,13 @@ export function resolveGlob(relative: string): string {
 }
 
 // The only hosts a reference URL may use. Mirrors the content-accuracy rule:
-// official AWS documentation, the AWS marketing/site host, the AWS re:Post
-// community host, and the pricing calculator. Enforced before any network call
-// so live mode never reaches a non-AWS host.
+// official AWS documentation, the AWS marketing/site host, and the pricing
+// calculator. Community-authored hosts are deliberately absent — a re:Post
+// thread is not official documentation, so it can never back a fact. Enforced
+// before any network call so live mode never reaches a non-AWS host.
 export const AWS_HOSTS = new Set<string>([
   "docs.aws.amazon.com",
   "aws.amazon.com",
-  "repost.aws",
   "calculator.aws",
 ]);
 
@@ -45,19 +45,27 @@ export const HISTORICAL_MARKERS: RegExp[] = [
   /\/archive(?:d)?\//i,
   /\/previous(?:-version)?\//i,
   /for-historical-reference/i,
+  // The "How AWS Pricing Works" whitepaper was archived in place: the path never
+  // changed, so only naming it catches the citation. Its pricing-principles pages
+  // now carry the historical-reference banner, and pricing facts must come from
+  // the current pricing pages instead.
+  /\/how-aws-pricing-works\//i,
 ];
 
 // Option-letter / ordinal references to answer positions are banned in
-// explanations: options shuffle at render time, so "option b" or "the second
-// option" desyncs. This pattern is tighter than the loose skill pattern
-// (/option [a-f]|first option|second option|third option|last option/i):
-// it requires word boundaries around the letter ("\boption [a-f]\b") and
-// around the ordinal phrase, so legitimate noun uses ("On-Demand option",
-// "the cheaper option", "purchase option") do not match. The bank is also
-// reworded so even the loose skill pattern runs clean (done in a later content
-// pass), but this strict pattern is the one the lint enforces.
+// explanations and per-distractor rationales: options shuffle at render time, so
+// "option b", "choice c", or "the second answer" desyncs. Three clauses, each
+// requiring the option/choice/answer noun next to the reference so ordinary
+// prose survives:
+//   1. a letter after "option" ("option a", "option (c)")
+//   2. a letter after "choice"/"answer", b-f only — "a" there is almost always
+//      the article ("answers a different need", "answer a question"), and
+//      b-f carry no such ambiguity
+//   3. an ordinal directly before one of the three nouns ("the first option")
+// Word boundaries keep legitimate noun uses ("On-Demand option", "the cheaper
+// option", "purchase option") and a bare ordinal ("the first Region") clean.
 export const OPTION_LETTER_RE =
-  /\boption [a-f]\b|\b(first|second|third|fourth|fifth|last) option\b/i;
+  /\boption\s+\(?[a-f]\)?\b|\b(?:choice|answer)s?\s+\(?[b-f]\)?\b|\b(?:first|second|third|fourth|fifth|last)\s+(?:option|choice|answer)\b/i;
 
 // Load the typed question bank. A thin wrapper so callers do not each import the
 // data path, and so a future loader change touches one spot.

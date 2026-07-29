@@ -22,7 +22,7 @@ export const domain2: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -42,10 +42,10 @@ export const domain2: Question[] = [
     explanation:
       "GuardDuty continuously analyzes those exact data sources for threats. Inspector assesses workloads for software vulnerabilities, Trusted Advisor checks best practices, and Config records and evaluates resource configurations.",
     reference: {
-      label: "Amazon GuardDuty",
-      url: "https://aws.amazon.com/guardduty/",
+      label: "What is Amazon GuardDuty?",
+      url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["GuardDuty"],
   },
   {
@@ -69,7 +69,7 @@ export const domain2: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
 ];

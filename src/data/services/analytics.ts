@@ -26,7 +26,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is Amazon Athena?",
       url: "https://docs.aws.amazon.com/athena/latest/ug/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Athena",
       "query S3 with SQL",
@@ -49,7 +49,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is Amazon EMR?",
       url: "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "EMR",
       "big data",
@@ -73,7 +73,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is AWS Glue?",
       url: "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Glue",
       "ETL",
@@ -97,7 +97,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is Amazon Kinesis Data Streams?",
       url: "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Kinesis",
       "streaming data",
@@ -120,7 +120,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is Amazon OpenSearch Service?",
       url: "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "OpenSearch",
       "search and log analytics",
@@ -136,18 +136,19 @@ export const analytics: ServiceEntry[] = [
     domain: 3,
     category: "Analytics",
     purpose:
-      "A cloud-scale business intelligence service for building interactive dashboards and visualizations from your data.",
+      "A business intelligence service, now delivered as Amazon Quick Sight within Amazon Quick, for building interactive dashboards, visualizations, and reports from your data.",
     whenToUse:
       "Reach for it when you want to turn your data into dashboards and reports that people across an organization can explore.",
     reference: {
-      label: "What is Amazon QuickSight?",
-      url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
+      label: "Amazon Quick Sight (formerly Amazon QuickSight)",
+      url: "https://docs.aws.amazon.com/quick/latest/userguide/quick-bi.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "QuickSight",
+      "Amazon Quick Sight",
+      "Quick Sight",
       "Amazon Quick",
-      "Amazon Quick Suite",
       "BI dashboards",
       "business intelligence",
       "dashboards",
@@ -174,7 +175,7 @@ export const analytics: ServiceEntry[] = [
       label: "What is Amazon Redshift?",
       url: "https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Redshift",
       "data warehouse",

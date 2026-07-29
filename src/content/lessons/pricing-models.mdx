@@ -1,6 +1,6 @@
 ---
 title: "AWS Pricing Models and the Free Tier"
-description: "The pricing principles AWS tests, the four EC2 purchase options, how the AWS Free Tier works today, and why data transfer out is the charge to watch."
+description: "The pricing principles AWS tests, the EC2 purchase options, how the AWS Free Tier works today, and why data transfer out is the charge to watch."
 domain: 4
 module: 11
 order: 0
@@ -9,7 +9,8 @@ estimatedMinutes: 14
 services:
   - Amazon EC2
   - AWS Savings Plans
-updated: 2026-06-23
+  - Amazon S3
+updated: 2026-07-29
 draft: false
 ---
 
@@ -44,11 +45,12 @@ unpredictable or temporary load points to On-Demand.
 
 ## EC2 purchase options
 
-Amazon EC2 has four purchase options you should be able to tell apart.
+The exam guide names seven ways to buy EC2 capacity. Start with these four,
+which carry almost every scenario you will be asked about.
 
 - On-Demand. You pay by the second for the instances you launch, with no
-  commitment. Use it for short-term, spiky, or unpredictable workloads, and for
-  anything you are still testing.
+  commitment. Use it for short-term, irregular workloads that cannot be
+  interrupted.
 - Savings Plans. You commit to a consistent amount of usage measured in dollars
   per hour for a one-year or three-year term, in exchange for a lower rate than
   On-Demand. Use it when you can commit to a spend level but want flexibility
@@ -58,23 +60,70 @@ Amazon EC2 has four purchase options you should be able to tell apart.
   lower rate. Use it for steady-state workloads with a known configuration.
 - Spot Instances. You request spare EC2 capacity at a steep discount, and AWS can
   reclaim it when it needs the capacity back. Use it for fault-tolerant or
-  flexible work that can be interrupted, such as batch jobs and testing.
+  flexible work that can be interrupted, such as batch jobs and testing. When AWS
+  reclaims the capacity it sends a Spot Instance interruption notice two minutes
+  before it stops or terminates the instance, and that window is all your
+  application gets to checkpoint or drain its work.
+
+### The two compute Savings Plans
+
+A Compute Savings Plan is the flexible one. It applies to your EC2 usage
+whatever the instance family, instance size, Region, operating system, or
+tenancy, and it also covers AWS Fargate and AWS Lambda usage, for savings of up
+to 66 percent off On-Demand rates. An EC2 Instance Savings Plan gives the deeper
+discount, up to 72 percent, but you commit to one instance family in one Region.
+Inside that family and Region it still follows changes in instance size,
+operating system, and tenancy.
+
+### Reserved Instance detail
+
+A Reserved Instance is not a separate instance you launch. It is a billing
+discount applied to matching On-Demand usage in your account, which is why the
+running instance has to match attributes such as instance type and Region for
+the discount to land. You also pick how to pay: All Upfront, Partial Upfront, or
+No Upfront, and the larger the upfront payment, the more you generally save.
+
+The offering class is the other choice. Standard Reserved Instances give the
+larger discount but cannot be exchanged. Convertible Reserved Instances give a
+smaller discount and can be exchanged during the term for another Convertible
+Reserved Instance with different attributes, such as a different instance family
+or tenancy.
+
+### Dedicated hardware and reserved capacity
+
+Three more options round out the list the exam guide names.
+
+- Dedicated Instances run on hardware dedicated to a single AWS account, so they
+  are physically isolated from instances belonging to other accounts. They bill
+  per instance and give you no visibility into or control over instance
+  placement.
+- Dedicated Hosts give you a whole physical server dedicated to your use. They
+  bill per host, show you the number of sockets and physical cores, and let you
+  keep instances on the same host over time. That is what makes them the option
+  for bringing your own per-socket, per-core, or per-VM licenses.
+- Capacity Reservations reserve capacity for your instances in a specific
+  Availability Zone for any duration. They buy capacity assurance, not a lower
+  price: a Capacity Reservation carries no billing discount of its own, though
+  you can combine one with a Savings Plan or a Regional Reserved Instance.
 
 <Callout type="tip" title="Pick the option from the workload">
 Interruptible and flexible on timing is Spot. Steady and predictable, and you
 want the lowest committed rate, is a Savings Plan or a Reserved Instance.
-Anything short-lived, new, or unpredictable is On-Demand.
+Short-lived or unpredictable work that cannot be interrupted is On-Demand.
+Dedicated hardware for licensing or isolation is a Dedicated Host or a
+Dedicated Instance, and guaranteed capacity in one Availability Zone is a
+Capacity Reservation.
 </Callout>
 
 ## The AWS Free Tier
 
 AWS recently restructured how new accounts start, so verify this rather than
-trusting older summaries. A new account begins on a free plan that includes up to
-200 US dollars in AWS credits: 100 US dollars when you sign up, and up to 100
-more as you use a set of foundational services. The free plan lasts up to six
-months, or until you use up the credits, whichever comes first. When you are
-ready for production, you move to the paid plan, where pay-as-you-go pricing
-applies.
+trusting older summaries. At sign-up you choose between two plans, free and paid.
+New customers get up to 200 US dollars in AWS credits on either one: 100 US
+dollars when you sign up, and up to 100 more as you use a set of foundational
+services. The free plan lasts up to six months, or until you use up the credits,
+whichever comes first. When you are ready for production, you move to the paid
+plan, where the full range of services is available at pay-as-you-go pricing.
 
 Two other free categories matter. Always free offers cover more than 30 services
 that stay free up to a monthly usage limit for as long as you are a customer, on
@@ -105,9 +154,10 @@ storage holding the data, looks cheap while the egress to move it out adds up.
 ## What to take away
 
 AWS pricing comes down to pay as you go, save when you commit, and pay less by
-using more. The four EC2 purchase options are On-Demand for flexibility, Savings
-Plans and Reserved Instances for committed discounts, and Spot for interruptible
-work at the lowest price. The Free Tier now gives new accounts credits and a
-six-month free plan alongside always free offers and short-term trials. And
-remember that data transfer in is generally free while data transfer out is
-charged after the monthly free allowance.
+using more. Among the EC2 purchase options, On-Demand buys flexibility, Savings
+Plans and Reserved Instances buy committed discounts, Spot buys the lowest price
+for interruptible work, and Dedicated Hosts, Dedicated Instances, and Capacity
+Reservations cover dedicated hardware and capacity assurance. The Free Tier now
+gives new accounts credits and a six-month free plan alongside always free
+offers and short-term trials. And remember that data transfer in is generally
+free while data transfer out is charged after the monthly free allowance.

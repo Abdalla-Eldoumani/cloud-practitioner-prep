@@ -2,7 +2,7 @@
 # switch, keyboard shortcuts, service-worker registration, framework hydration);
 # a single static header cannot carry the per-page hashes the generated scripts
 # need, and nothing renders untrusted input as HTML, so there is no sink to
-# exploit. Full rationale in SECURITY.md. Keep this policy in sync with vercel.json.
+# exploit. Full rationale in docs/SECURITY.md. Keep this policy in sync with vercel.json.
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff

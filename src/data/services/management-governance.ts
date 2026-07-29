@@ -37,7 +37,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Auto Scaling?",
       url: "https://aws.amazon.com/autoscaling/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Auto Scaling",
       "automatic scaling",
@@ -60,7 +60,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CloudFormation",
       "infrastructure as code",
@@ -89,7 +89,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CloudTrail",
       "API audit log",
@@ -107,14 +107,14 @@ export const managementGovernance: ServiceEntry[] = [
     domain: 3,
     category: "Management and Governance",
     purpose:
-      "A monitoring and observability service that collects metrics, logs, and events from your AWS resources and applications, and can alarm on them.",
+      "A monitoring and observability service that collects metrics, logs, and traces from your AWS resources and applications, and can alarm on them.",
     whenToUse:
       "Reach for it when you want to watch performance metrics, gather logs, set alarms, and build dashboards to keep an eye on the health of your systems.",
     reference: {
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CloudWatch",
       "monitoring",
@@ -139,7 +139,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Compute Optimizer?",
       url: "https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Compute Optimizer",
       "right-sizing",
@@ -163,7 +163,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Config",
       "resource configuration history",
@@ -193,7 +193,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Control Tower",
       "landing zone",
@@ -218,7 +218,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "Getting started with your AWS Health Dashboard",
       url: "https://docs.aws.amazon.com/health/latest/ug/getting-started-health-dashboard.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Health Dashboard",
       "service health",
@@ -242,7 +242,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS License Manager?",
       url: "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "License Manager",
       "software licenses",
@@ -265,7 +265,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "AWS Management Console",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Management Console",
       "console",
@@ -288,7 +288,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Organizations",
       "multi-account management",
@@ -318,7 +318,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is Service Catalog?",
       url: "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Service Catalog",
       "approved products",
@@ -341,7 +341,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is Service Quotas?",
       url: "https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Service Quotas",
       "service limits",
@@ -357,14 +357,14 @@ export const managementGovernance: ServiceEntry[] = [
     domain: 3,
     category: "Management and Governance",
     purpose:
-      "A service that gives you a unified interface to view operational data and automate operational tasks across your AWS resources.",
+      "A service that gives you a unified interface to view and manage your nodes at scale and to automate operational tasks across AWS, on-premises, and multicloud environments.",
     whenToUse:
       "Reach for it when you want to manage and automate operations on your fleet, such as running commands, applying patches, or storing configuration, from one place.",
     reference: {
       label: "What is AWS Systems Manager?",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Systems Manager",
       "SSM",
@@ -381,14 +381,14 @@ export const managementGovernance: ServiceEntry[] = [
     domain: 4,
     category: "Management and Governance",
     purpose:
-      "A service that inspects your AWS environment and provides real-time recommendations following AWS best practices for cost, performance, security, fault tolerance, and service limits.",
+      "A service that inspects your AWS environment and makes recommendations that follow AWS best practices for cost optimization, performance, security, fault tolerance, service limits, and operational excellence.",
     whenToUse:
-      "Reach for it when you want automated best-practice checks across your account that flag savings, security gaps, and reliability risks.",
+      "Reach for it when you want automated best-practice checks across your account that flag savings, security gaps, and reliability risks. AWS now gates the full check set on a Business Support+, Enterprise Support, or Unified Operations plan; Basic Support sees a limited set, and its Security checks have to be refreshed by hand.",
     reference: {
       label: "AWS Trusted Advisor",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Trusted Advisor",
       "best-practice checks",
@@ -417,7 +417,7 @@ export const managementGovernance: ServiceEntry[] = [
       label: "What is AWS Well-Architected Tool?",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Well-Architected Tool",
       "architecture review",

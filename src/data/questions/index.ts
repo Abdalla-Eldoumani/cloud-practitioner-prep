@@ -3,7 +3,7 @@ import { domain1 } from "./domain-1-cloud-concepts";
 import { domain1Concepts } from "./domain-1-concepts";
 import { domain1Economics } from "./domain-1-economics";
 import { domain1Elasticity } from "./domain-1-elasticity";
-import { domain1Global } from "./domain-1-global";
+import { domain1MigrationCaf } from "./domain-1-migration-caf";
 import { domain1Resilience } from "./domain-1-resilience";
 import { domain1WellArchitected } from "./domain-1-well-architected";
 import { domain2 } from "./domain-2-security-compliance";
@@ -14,8 +14,10 @@ import { domain2Encryption } from "./domain-2-encryption";
 import { domain2NetworkProtection } from "./domain-2-network-protection";
 import { domain2ThreatDetection } from "./domain-2-threat-detection";
 import { domain2GovernanceCompliance } from "./domain-2-governance-compliance";
+import { domain2MonitoringAudit } from "./domain-2-monitoring-audit";
 import { domain3 } from "./domain-3-technology-services";
 import { domain3Ec2 } from "./domain-3-ec2";
+import { domain3Global } from "./domain-3-global";
 import { domain3ScalingElb } from "./domain-3-scaling-elb";
 import { domain3ServerlessContainers } from "./domain-3-serverless-containers";
 import { domain3Networking } from "./domain-3-networking";
@@ -34,7 +36,7 @@ export const ALL_QUESTIONS: Question[] = [
   ...domain1Concepts,
   ...domain1Economics,
   ...domain1Elasticity,
-  ...domain1Global,
+  ...domain1MigrationCaf,
   ...domain1Resilience,
   ...domain1WellArchitected,
   ...domain2,
@@ -45,8 +47,10 @@ export const ALL_QUESTIONS: Question[] = [
   ...domain2NetworkProtection,
   ...domain2ThreatDetection,
   ...domain2GovernanceCompliance,
+  ...domain2MonitoringAudit,
   ...domain3,
   ...domain3Ec2,
+  ...domain3Global,
   ...domain3ScalingElb,
   ...domain3ServerlessContainers,
   ...domain3Networking,

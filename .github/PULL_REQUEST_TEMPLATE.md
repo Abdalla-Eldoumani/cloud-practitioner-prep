@@ -15,4 +15,4 @@ A short description of the change and why.
 - [ ] The change is focused and does not bundle unrelated edits.
 - [ ] Commit messages are brief, lowercase, and imperative.
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full rules.
+See [CONTRIBUTING.md](../docs/CONTRIBUTING.md) for the full rules.

@@ -52,6 +52,22 @@ const byDomain = DOMAINS.map((meta) => ({
 }));
 
 const totalStatements = TASK_STATEMENTS.length;
+
+// The footer figure counts what this page actually maps, not the size of the
+// bank: distinct questions that resolve to at least one task statement, matched
+// exactly as the per-statement counts above (same domain, topic through
+// normalizeTopic). Deduplicated by question id, so a question that answers to
+// two statements is counted once and the number cannot overstate the join.
+const mappedQuestionIds = new Set<string>();
+for (const ts of TASK_STATEMENTS) {
+  const topicSet = new Set(ts.topics.map(normalizeTopic));
+  for (const q of ALL_QUESTIONS) {
+    if (q.domain === ts.domain && topicSet.has(normalizeTopic(q.topic))) {
+      mappedQuestionIds.add(q.id);
+    }
+  }
+}
+const mappedQuestions = mappedQuestionIds.size;
 ---
 
 <BaseLayout
@@ -189,7 +205,7 @@ const totalStatements = TASK_STATEMENTS.length;
       TASK STATEMENTS COVERED — {totalStatements} OF {totalStatements}
     </span>
     <span class="t-mono-sm ml-auto uppercase text-ink-3">
-      {ALL_QUESTIONS.length} questions mapped
+      {mappedQuestions} questions mapped
     </span>
   </div>
 </BaseLayout>

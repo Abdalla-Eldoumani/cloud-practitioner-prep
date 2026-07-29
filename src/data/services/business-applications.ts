@@ -15,12 +15,14 @@ export const businessApplications: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you need to run a customer contact center in the cloud and want to add agents and phone or chat support without on-premises hardware.",
     reference: {
-      label: "What is Amazon Connect?",
+      label: "What is Connect Customer?",
       url: "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Connect",
+      "Amazon Connect Customer",
+      "Connect Customer",
       "contact center",
       "call center",
       "customer support",
@@ -41,7 +43,7 @@ export const businessApplications: ServiceEntry[] = [
       label: "What is Amazon SES?",
       url: "https://docs.aws.amazon.com/ses/latest/dg/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "SES",
       "Simple Email Service",

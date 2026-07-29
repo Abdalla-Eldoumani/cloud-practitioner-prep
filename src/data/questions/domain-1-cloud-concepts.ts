@@ -20,10 +20,10 @@ export const domain1: Question[] = [
     explanation:
       "Elasticity is the ability to add and remove resources to match demand, so the store scales out for the holidays and scales back in afterward. Durability and fault tolerance describe resilience, not matching spend to demand; data residency is about where data is stored.",
     reference: {
-      label: "AWS EC2 Auto Scaling",
-      url: "https://aws.amazon.com/ec2/autoscaling/",
+      label: "Cloud computing benefits - elasticity",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -46,7 +46,7 @@ export const domain1: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-benefits-multi-01",
@@ -69,6 +69,6 @@ export const domain1: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
 ];

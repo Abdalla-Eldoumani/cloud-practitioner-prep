@@ -21,7 +21,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Comprehend?",
       url: "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Comprehend",
       "natural language processing",
@@ -45,12 +45,12 @@ export const machineLearning: ServiceEntry[] = [
     purpose:
       "An intelligent enterprise search service that uses machine learning to find answers across an organization's content.",
     whenToUse:
-      "Reach for it when you want users to ask natural-language questions and get precise answers from your internal documents and data sources.",
+      "Reach for it when you want users to ask natural-language questions and get precise answers from your internal documents and data sources. AWS closes Amazon Kendra to new customers starting July 30, 2026 and points new users to Amazon Bedrock Knowledge Bases, but it is still on the exam guide's in-scope list.",
     reference: {
       label: "What is Amazon Kendra?",
       url: "https://docs.aws.amazon.com/kendra/latest/dg/what-is-kendra.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Kendra",
       "enterprise search",
@@ -78,7 +78,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Lex?",
       url: "https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Lex",
       "chatbot",
@@ -102,7 +102,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Polly?",
       url: "https://docs.aws.amazon.com/polly/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Polly",
       "text to speech",
@@ -120,12 +120,12 @@ export const machineLearning: ServiceEntry[] = [
     purpose:
       "A generative AI-powered assistant that answers questions and helps with tasks using your business data and AWS expertise.",
     whenToUse:
-      "Reach for it when you want a generative AI assistant that can answer questions, summarize, and help build using your own content and AWS knowledge.",
+      "Reach for it when you want a generative AI assistant that can answer questions, summarize, and help build using your own content and AWS knowledge. It ships as two products, Amazon Q Business and Amazon Q Developer; AWS closes Amazon Q Business to new customers starting July 31, 2026 and points new users to Amazon Quick, while Amazon Q is still on the exam guide's in-scope list.",
     reference: {
-      label: "What is Amazon Q?",
-      url: "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+      label: "Amazon Q",
+      url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Q",
       "generative AI assistant",
@@ -153,7 +153,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Rekognition?",
       url: "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Rekognition",
       "image analysis",
@@ -177,7 +177,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "SageMaker",
       "SageMaker AI",
@@ -206,7 +206,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Textract?",
       url: "https://docs.aws.amazon.com/textract/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Textract",
       "extract text from documents",
@@ -229,7 +229,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Transcribe?",
       url: "https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Transcribe",
       "speech to text",
@@ -252,7 +252,7 @@ export const machineLearning: ServiceEntry[] = [
       label: "What is Amazon Translate?",
       url: "https://docs.aws.amazon.com/translate/latest/dg/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Translate",
       "language translation",

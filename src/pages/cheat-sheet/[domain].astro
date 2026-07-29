@@ -41,7 +41,7 @@ interface DomainSheet {
 // AWS-host allowlist. Links each sheet back to the blueprint it summarizes.
 const EXAM_GUIDE: DocReference = {
   label: "AWS Certified Cloud Practitioner (CLF-C02) Exam Guide",
-  url: "https://docs.aws.amazon.com/aws-certification/latest/examguides/cloud-practitioner-02.html",
+  url: "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html",
 };
 
 const SHEETS: Record<Domain, DomainSheet> = {
@@ -320,11 +320,6 @@ const SHEETS: Record<Domain, DomainSheet> = {
             detail:
               "DDoS protection. Standard is automatic and free; Advanced is a paid subscription with expanded, application-layer coverage and a response team.",
           },
-          {
-            term: "AWS Network Firewall",
-            detail:
-              "Managed stateful firewall with intrusion detection and prevention at the VPC perimeter.",
-          },
         ],
       },
       {
@@ -576,7 +571,7 @@ const SHEETS: Record<Domain, DomainSheet> = {
         heading: "AI/ML and analytics",
         facts: [
           {
-            term: "Amazon SageMaker",
+            term: "Amazon SageMaker AI",
             detail: "Build, train, and deploy your own machine learning models.",
           },
           {
@@ -644,7 +639,7 @@ const SHEETS: Record<Domain, DomainSheet> = {
       {
         title: "Direct Connect vs Site-to-Site VPN",
         detail:
-          "Direct Connect is a dedicated private line, consistent but provisioned over weeks; VPN is a quick encrypted tunnel over the internet.",
+          "Direct Connect is a dedicated private connection into AWS that bypasses internet service providers in your network path; Site-to-Site VPN is an encrypted IPsec tunnel over the public internet.",
       },
     ],
   },
@@ -783,7 +778,7 @@ const SHEETS: Record<Domain, DomainSheet> = {
           {
             term: "Enterprise On-Ramp",
             detail:
-              "Adds a faster critical-case response target (under 30 minutes) and access to a pool of Technical Account Managers.",
+              "Adds a faster critical-case response target (under 30 minutes) and access to Technical Account Managers, rather than one designated TAM.",
           },
           {
             term: "Enterprise",

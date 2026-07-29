@@ -1,11 +1,16 @@
 import type { Question } from "../../lib/types";
 
-// Domain 2: Security and Compliance, encryption cluster. Original practice
-// questions covering encryption at rest and in transit, AWS KMS, AWS
-// Certificate Manager, AWS Secrets Manager and Systems Manager Parameter
-// Store, and AWS CloudHSM. These are not real exam items. Every fact is
-// verified against current AWS documentation; each question cites the page
-// that backs its answer.
+// Domain 2: Security and Compliance, encryption and data-protection cluster.
+// Original practice questions covering encryption at rest and in transit, AWS
+// KMS, AWS Certificate Manager, AWS Secrets Manager and Systems Manager
+// Parameter Store, AWS CloudHSM, and Amazon S3 security (default private
+// access, S3 Block Public Access, bucket policies, versioning and Object Lock).
+// These are not real exam items. Every fact is verified against current AWS
+// documentation; each question cites the page that backs its answer.
+//
+// Ids keep their historical d3-storage- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files and
+// stays put when a question is retagged to another domain.
 export const domain2Encryption: Question[] = [
   {
     id: "d2-enc-01",
@@ -32,7 +37,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-enc-02",
@@ -51,10 +56,10 @@ export const domain2Encryption: Question[] = [
     explanation:
       "Transport Layer Security encrypts data in transit so its confidentiality and integrity are protected as it travels between systems. At-rest disk encryption protects stored data, not data on the wire; RAID is for storage redundancy; and DNS resolution maps names to addresses and does not encrypt the payload.",
     reference: {
-      label: "AWS Well-Architected: Protecting data in transit",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
+      label: "AWS Well-Architected: SEC09-BP02 Enforce encryption in transit",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/sec_protect_data_transit_encrypt.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-enc-03",
@@ -76,7 +81,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -99,7 +104,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -123,7 +128,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -146,7 +151,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -170,7 +175,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -193,7 +198,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -216,7 +221,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS (envelope encryption)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS", "S3"],
   },
   {
@@ -239,7 +244,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -262,7 +267,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon S3 server-side encryption with AWS KMS keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3", "KMS"],
   },
   {
@@ -285,7 +290,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS", "KMS"],
   },
   {
@@ -309,7 +314,7 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS", "KMS"],
   },
   {
@@ -332,7 +337,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "KMS"],
   },
   {
@@ -356,7 +361,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "KMS"],
   },
   {
@@ -379,7 +384,7 @@ export const domain2Encryption: Question[] = [
       label: "Encrypting Amazon RDS resources",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS", "KMS"],
   },
   {
@@ -402,7 +407,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM"],
   },
   {
@@ -426,7 +431,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM"],
   },
   {
@@ -450,7 +455,7 @@ export const domain2Encryption: Question[] = [
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM", "ELB", "CloudFront"],
   },
   {
@@ -459,21 +464,21 @@ export const domain2Encryption: Question[] = [
     type: "single",
     topic: "AWS Certificate Manager",
     difficulty: "hard",
-    stem: "A team plans to run a standalone web server on a single Amazon EC2 instance that is not connected to a Nitro Enclave, and wants to associate an ACM-issued public certificate directly with that instance. What does AWS say about this?",
+    stem: "A team runs a web server on a single Amazon EC2 instance that they manage themselves. They want AWS Certificate Manager to place a public certificate on that instance the same way it does for a load balancer. What does AWS documentation say?",
     options: [
-      { id: "a", text: "ACM is not intended for a standalone EC2 web server; you cannot associate an ACM certificate with an EC2 instance that is not connected to a Nitro Enclave." },
+      { id: "a", text: "ACM deploys its managed certificates to integrated services such as Elastic Load Balancing and Amazon CloudFront; it does not attach a managed certificate to an EC2 instance you run yourself." },
       { id: "b", text: "ACM automatically installs the certificate onto any EC2 instance you choose." },
       { id: "c", text: "ACM certificates are only valid on EC2 instances and nowhere else." },
       { id: "d", text: "You must delete the EC2 instance before ACM will issue any certificate." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that ACM is not intended for use with a standalone web server, and you cannot associate an ACM certificate with an EC2 instance that is not connected to a Nitro Enclave; ACM instead deploys certificates to integrated services such as load balancers and CloudFront. ACM does not automatically install a certificate onto any EC2 instance you choose, its certificates are not limited to EC2, and you do not delete the EC2 instance before ACM will issue a certificate.",
+      "ACM is integrated with services such as Elastic Load Balancing and Amazon CloudFront and deploys the certificate onto the load balancer or the distribution; associating an ACM-managed certificate directly with an EC2 instance requires an AWS Nitro Enclave, and for a plain host AWS points to ACME-based issuance instead. ACM does not automatically install a certificate onto any EC2 instance you choose, its certificates are not valid only on EC2 instances (the integrated services above use them), and you do not delete the instance before ACM will issue a certificate.",
     reference: {
       label: "ACM: managed automation with integrated services",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM", "EC2"],
   },
   {
@@ -496,7 +501,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Secrets Manager?",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Secrets Manager"],
   },
   {
@@ -519,7 +524,7 @@ export const domain2Encryption: Question[] = [
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Secrets Manager"],
   },
   {
@@ -542,7 +547,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Secrets Manager", "Systems Manager"],
   },
   {
@@ -565,7 +570,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Systems Manager Parameter Store",
       url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Systems Manager", "KMS"],
   },
   {
@@ -589,7 +594,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudHSM"],
   },
   {
@@ -612,7 +617,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS", "CloudHSM"],
   },
   {
@@ -640,7 +645,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM", "Secrets Manager", "KMS"],
   },
   {
@@ -664,7 +669,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS KMS keys (concepts)",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS", "S3", "EBS"],
   },
   {
@@ -692,7 +697,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Well-Architected: Protecting data in transit",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-in-transit.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["ACM", "S3", "KMS"],
   },
   {
@@ -716,7 +721,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS"],
   },
   {
@@ -736,10 +741,10 @@ export const domain2Encryption: Question[] = [
     explanation:
       "Amazon RDS supports SSL/TLS connections, which encrypt data in transit between the application and the DB instance. Storage encryption protects data at rest rather than the connection, rotating a password does not encrypt traffic, and placing a database in a public subnet does not provide transit encryption.",
     reference: {
-      label: "Encrypting Amazon RDS resources (encryption in transit)",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
+      label: "Using SSL/TLS to encrypt a connection to an RDS DB instance",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["RDS"],
   },
   {
@@ -762,7 +767,7 @@ export const domain2Encryption: Question[] = [
       label: "Rotate AWS Secrets Manager secrets",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Secrets Manager"],
   },
   {
@@ -785,7 +790,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS Secrets Manager? (pricing and encryption)",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Secrets Manager", "KMS"],
   },
   {
@@ -808,7 +813,7 @@ export const domain2Encryption: Question[] = [
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudHSM"],
   },
   {
@@ -832,7 +837,7 @@ export const domain2Encryption: Question[] = [
       label: "AWS Key Management Service overview",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["KMS", "ACM", "Secrets Manager", "Systems Manager"],
   },
   {
@@ -856,7 +861,100 @@ export const domain2Encryption: Question[] = [
       label: "Amazon EBS encryption",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3", "EBS"],
+  },
+  {
+    id: "d3-storage-22",
+    domain: 2,
+    type: "single",
+    topic: "Amazon S3 security",
+    difficulty: "easy",
+    stem: "By default, who can access a newly created Amazon S3 bucket and the objects in it?",
+    options: [
+      { id: "a", text: "Anyone on the internet, until you turn on a private setting." },
+      { id: "b", text: "No one but the owner; buckets and objects are private unless you explicitly grant access." },
+      { id: "c", text: "Every user in the same AWS Region." },
+      { id: "d", text: "Any AWS customer worldwide." },
+    ],
+    correct: ["b"],
+    explanation:
+      "By default S3 buckets and the objects in them are private, and you have access only to the resources you create unless you explicitly grant access. They are not open to anyone on the internet until you turn on a private setting, not open to everyone in a Region, and not open to all AWS customers.",
+    reference: {
+      label: "What is Amazon S3? Access management and security",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["S3"],
+  },
+  {
+    id: "d3-storage-23",
+    domain: 2,
+    type: "single",
+    topic: "Amazon S3 security",
+    difficulty: "medium",
+    stem: "A security team wants a single setting that prevents an S3 bucket and its objects from being made public, as a guardrail against accidental exposure. Which S3 feature does this?",
+    options: [
+      { id: "a", text: "S3 Versioning" },
+      { id: "b", text: "S3 Lifecycle configuration" },
+      { id: "c", text: "S3 Transfer Acceleration" },
+      { id: "d", text: "S3 Block Public Access" },
+    ],
+    correct: ["d"],
+    explanation:
+      "S3 Block Public Access blocks public access to buckets and objects and is turned on at the bucket level by default, acting as a guardrail against accidental exposure. Versioning preserves object versions, Lifecycle manages storage classes and expiration, and Transfer Acceleration speeds uploads over long distances.",
+    reference: {
+      label: "What is Amazon S3? S3 Block Public Access",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["S3"],
+  },
+  {
+    id: "d3-storage-24",
+    domain: 2,
+    type: "single",
+    topic: "Amazon S3 security",
+    difficulty: "medium",
+    stem: "An administrator wants to attach a JSON policy directly to an S3 bucket to grant or deny access to the bucket and its objects, including granting cross-account access. Which mechanism is this?",
+    options: [
+      { id: "a", text: "A security group attached to the bucket" },
+      { id: "b", text: "A bucket policy, a resource-based IAM policy attached to the bucket" },
+      { id: "c", text: "A network ACL on the bucket's subnet" },
+      { id: "d", text: "An EBS volume permission" },
+    ],
+    correct: ["b"],
+    explanation:
+      "A bucket policy is a resource-based IAM policy written in JSON that the bucket owner attaches to the bucket to grant or deny access, including cross-account access. Security groups and network ACLs are VPC networking controls that do not attach to buckets, and EBS permissions apply to block volumes, not S3.",
+    reference: {
+      label: "What is Amazon S3? Bucket policy",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["S3"],
+  },
+  {
+    id: "d3-storage-25",
+    domain: 2,
+    type: "multi",
+    topic: "Amazon S3 security",
+    difficulty: "hard",
+    stem: "A team wants to protect important objects in a bucket from accidental or malicious deletion and overwrites. Which TWO S3 features help with this goal? (Choose two.)",
+    options: [
+      { id: "a", text: "S3 Versioning, which keeps multiple variants of an object so you can restore an earlier one." },
+      { id: "b", text: "S3 Object Lock, which can prevent objects from being deleted or overwritten for a set time using a write-once-read-many model." },
+      { id: "c", text: "S3 Intelligent-Tiering, which automatically moves objects between access tiers." },
+      { id: "d", text: "S3 Transfer Acceleration, which speeds uploads over long distances." },
+      { id: "e", text: "S3 Storage Lens, which provides usage and activity metrics." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "S3 Versioning preserves multiple variants of an object so you can recover from accidental overwrites or deletes, and S3 Object Lock can prevent objects from being deleted or overwritten for a fixed period using a write-once-read-many model. Intelligent-Tiering optimizes cost, Transfer Acceleration speeds uploads, and Storage Lens reports metrics; none of these protect against deletion.",
+    reference: {
+      label: "What is Amazon S3? Storage management (S3 Object Lock) and S3 Versioning",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["S3"],
   },
 ];

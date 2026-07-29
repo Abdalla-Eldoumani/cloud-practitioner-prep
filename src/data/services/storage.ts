@@ -20,7 +20,7 @@ export const storage: ServiceEntry[] = [
       label: "What is AWS Backup?",
       url: "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: ["Backup", "centralized backup", "backup policy"],
     relatedTerms: ["backup", "restore", "data protection", "retention"],
   },
@@ -31,14 +31,14 @@ export const storage: ServiceEntry[] = [
     domain: 3,
     category: "Storage",
     purpose:
-      "Block storage volumes you attach to EC2 instances, behaving like a disk for a single instance.",
+      "Block storage volumes you attach to EC2 instances, behaving like a disk for one instance at a time (Multi-Attach io1 and io2 volumes are the exception).",
     whenToUse:
       "Reach for it when an EC2 instance needs persistent disk storage for a boot volume, a database, or any application that expects a block device.",
     reference: {
       label: "What is Amazon EBS?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "EBS",
       "Elastic Block Store",
@@ -63,7 +63,7 @@ export const storage: ServiceEntry[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "EFS",
       "Elastic File System",
@@ -88,7 +88,7 @@ export const storage: ServiceEntry[] = [
       label: "What is AWS Elastic Disaster Recovery?",
       url: "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Elastic Disaster Recovery",
       "AWS DRS",
@@ -109,10 +109,10 @@ export const storage: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you need a managed file system with the features and compatibility of a specific third-party file system.",
     reference: {
-      label: "What is Amazon FSx?",
-      url: "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html",
+      label: "Amazon FSx",
+      url: "https://aws.amazon.com/fsx/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "FSx",
       "managed file system",
@@ -136,7 +136,7 @@ export const storage: ServiceEntry[] = [
       label: "What is Amazon S3?",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "S3",
       "Simple Storage Service",
@@ -158,10 +158,10 @@ export const storage: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you need to keep data for the long term at the lowest storage cost and can accept slower retrieval.",
     reference: {
-      label: "What is S3 Glacier?",
-      url: "https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html",
+      label: "Understanding S3 Glacier storage classes for long-term data storage",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "S3 Glacier",
       "Glacier",
@@ -185,7 +185,7 @@ export const storage: ServiceEntry[] = [
       label: "What is AWS Storage Gateway?",
       url: "https://aws.amazon.com/storagegateway/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Storage Gateway",
       "hybrid storage",

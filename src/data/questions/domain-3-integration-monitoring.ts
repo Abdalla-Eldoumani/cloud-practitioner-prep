@@ -2,12 +2,17 @@ import type { Question } from "../../lib/types";
 
 // Domain 3: Cloud Technology and Services, application integration and
 // observability cluster. Covers messaging and decoupling (Amazon SQS, Amazon
-// SNS, Amazon EventBridge, AWS Step Functions, Amazon API Gateway) and
-// monitoring, logging, and auditing (Amazon CloudWatch, AWS CloudTrail, AWS
-// Health Dashboard, AWS X-Ray). These are original practice questions written
-// to test exam-guide concepts, not real exam items. Every fact is verified
-// against current AWS documentation; each question cites the page that backs
-// its answer.
+// SNS, Amazon EventBridge, AWS Step Functions, Amazon API Gateway) and AWS
+// X-Ray. The CloudWatch and CloudTrail questions the exam guide files under
+// governance and compliance live in domain-2-monitoring-audit.ts; the AWS
+// Health Dashboard questions live in domain-4-support-migration.ts. These are
+// original practice questions written to test exam-guide concepts, not real
+// exam items. Every fact is verified against current AWS documentation; each
+// question cites the page that backs its answer.
+//
+// Ids keep their historical d3-integ- and d1-resil- prefixes deliberately: an
+// id is a stable key in a learner's saved progress, so it survives a move
+// between files and stays put when a question is retagged to another domain.
 export const domain3IntegrationMonitoring: Question[] = [
   {
     id: "d3-integ-01",
@@ -29,7 +34,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS"],
   },
   {
@@ -52,7 +57,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS"],
   },
   {
@@ -75,7 +80,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SNS"],
   },
   {
@@ -99,7 +104,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SNS"],
   },
   {
@@ -122,7 +127,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS", "SNS"],
   },
   {
@@ -145,7 +150,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Application integration: the Fanout scenario in Amazon SNS",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SNS", "SQS"],
   },
   {
@@ -169,7 +174,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS", "SNS"],
   },
   {
@@ -192,7 +197,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Amazon SQS queue types",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-types.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS"],
   },
   {
@@ -215,7 +220,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "Amazon SQS queue types",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-types.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS"],
   },
   {
@@ -238,7 +243,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS", "SNS"],
   },
   {
@@ -261,7 +266,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EventBridge"],
   },
   {
@@ -284,7 +289,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EventBridge"],
   },
   {
@@ -307,7 +312,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Step Functions"],
   },
   {
@@ -331,7 +336,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Step Functions"],
   },
   {
@@ -354,7 +359,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["API Gateway", "Lambda"],
   },
   {
@@ -378,264 +383,8 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon API Gateway?",
       url: "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["API Gateway"],
-  },
-  {
-    id: "d3-integ-17",
-    domain: 3,
-    type: "single",
-    topic: "Amazon CloudWatch",
-    difficulty: "easy",
-    stem: "An operations team wants to collect metrics such as CPU utilization, set alarms that trigger when a threshold is crossed, and view it all on dashboards in near real time. Which AWS service provides this monitoring?",
-    options: [
-      { id: "a", text: "Amazon CloudWatch" },
-      { id: "b", text: "AWS CloudTrail" },
-      { id: "c", text: "AWS Config" },
-      { id: "d", text: "AWS Organizations" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon CloudWatch monitors AWS resources and applications in real time, collecting metrics, raising alarms against thresholds, aggregating logs, and presenting dashboards. CloudTrail records API activity for audit, AWS Config tracks resource configuration and compliance, and AWS Organizations manages multiple accounts.",
-    reference: {
-      label: "What is Amazon CloudWatch?",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch"],
-  },
-  {
-    id: "d3-integ-18",
-    domain: 3,
-    type: "single",
-    topic: "Amazon CloudWatch",
-    difficulty: "medium",
-    stem: "A CloudWatch alarm is configured on a metric. What does the alarm do when the metric stays above the configured threshold?",
-    options: [
-      { id: "a", text: "It performs one or more actions, such as sending a notification to an Amazon SNS topic or triggering an Auto Scaling action." },
-      { id: "b", text: "It deletes the resource that produced the metric." },
-      { id: "c", text: "It rewrites the application code to fix the problem automatically." },
-      { id: "d", text: "It blocks all network traffic to the account until cleared." },
-    ],
-    correct: ["a"],
-    explanation:
-      "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. It does not delete resources, edit code, or cut off account-wide traffic.",
-    reference: {
-      label: "Using Amazon CloudWatch alarms",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch", "SNS"],
-  },
-  {
-    id: "d3-integ-19",
-    domain: 3,
-    type: "multi",
-    topic: "Amazon CloudWatch",
-    difficulty: "medium",
-    stem: "A team wants to centralize, store, and search log data from AWS services and from their own application running on Amazon EC2. Which TWO statements about Amazon CloudWatch Logs are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "It can ingest and store logs from AWS services and from applications and servers." },
-      { id: "b", text: "It organizes log data into log groups and log streams that you can search." },
-      { id: "c", text: "It is the service that records which IAM user made each API call for audit." },
-      { id: "d", text: "It provisions the EC2 instances that generate the logs." },
-      { id: "e", text: "It replaces the need for any metrics or alarms in CloudWatch." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "CloudWatch Logs ingests and stores logs from AWS services and from applications and servers, and it organizes them into searchable log groups and streams. Recording who made each API call is AWS CloudTrail, provisioning instances is Amazon EC2, and CloudWatch Logs works alongside metrics and alarms rather than replacing them.",
-    reference: {
-      label: "What is Amazon CloudWatch? Collect, store, and query logs",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch"],
-  },
-  {
-    id: "d3-integ-20",
-    domain: 3,
-    type: "single",
-    topic: "AWS CloudTrail",
-    difficulty: "easy",
-    stem: "A security team needs a record of every action taken in the account, including who made each API call, what action was taken, and when it happened, for governance and audit. Which AWS service provides this?",
-    options: [
-      { id: "a", text: "AWS CloudTrail" },
-      { id: "b", text: "Amazon CloudWatch" },
-      { id: "c", text: "Amazon Inspector" },
-      { id: "d", text: "Amazon QuickSight" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS CloudTrail records actions taken by a user, role, or AWS service as events, letting you identify who or what took which action, on which resources, and when, for auditing, governance, and compliance. CloudWatch is for performance and operational monitoring, Inspector assesses workloads for vulnerabilities, and QuickSight is a business intelligence service.",
-    reference: {
-      label: "What Is AWS CloudTrail?",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudTrail"],
-  },
-  {
-    id: "d3-integ-21",
-    domain: 3,
-    type: "single",
-    topic: "CloudWatch vs CloudTrail",
-    difficulty: "medium",
-    stem: "Which statement best distinguishes Amazon CloudWatch from AWS CloudTrail?",
-    options: [
-      { id: "a", text: "CloudWatch monitors performance and operational health through metrics, alarms, and logs, while CloudTrail records API activity for auditing who did what and when." },
-      { id: "b", text: "CloudWatch records who made each API call, while CloudTrail collects CPU and memory metrics." },
-      { id: "c", text: "Both services do exactly the same thing and are interchangeable." },
-      { id: "d", text: "CloudWatch stores objects, while CloudTrail runs containers." },
-    ],
-    correct: ["a"],
-    explanation:
-      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither one stores objects nor runs containers.",
-    reference: {
-      label: "What Is AWS CloudTrail?",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch", "CloudTrail"],
-  },
-  {
-    id: "d3-integ-22",
-    domain: 3,
-    type: "single",
-    topic: "CloudWatch vs CloudTrail",
-    difficulty: "hard",
-    stem: "An auditor asks, \"Which IAM user terminated this EC2 instance last Tuesday, and from what source IP address?\" Which AWS service answers that question?",
-    options: [
-      { id: "a", text: "AWS CloudTrail, because it records the API calls and the identity behind each action." },
-      { id: "b", text: "Amazon CloudWatch, because it stores CPU metrics for the instance." },
-      { id: "c", text: "AWS Budgets, because it tracks spending thresholds." },
-      { id: "d", text: "Amazon SNS, because it sends notifications." },
-    ],
-    correct: ["a"],
-    explanation:
-      "CloudTrail records the TerminateInstances API call along with the identity, time, and source IP, so it can identify who took the action and from where. CloudWatch tracks performance metrics rather than who issued an API call, Budgets is for cost thresholds, and SNS only sends notifications.",
-    reference: {
-      label: "What Is AWS CloudTrail?",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudTrail"],
-  },
-  {
-    id: "d3-integ-23",
-    domain: 3,
-    type: "single",
-    topic: "CloudWatch vs CloudTrail",
-    difficulty: "hard",
-    stem: "A team wants to be paged when average CPU utilization on a fleet of EC2 instances stays above 80 percent for ten minutes. Which AWS service should they use to detect the condition and trigger the alert?",
-    options: [
-      { id: "a", text: "Amazon CloudWatch, using a metric alarm that notifies an Amazon SNS topic." },
-      { id: "b", text: "AWS CloudTrail, using its API event history." },
-      { id: "c", text: "AWS Artifact, using its compliance reports." },
-      { id: "d", text: "AWS CloudTrail, because it monitors CPU utilization." },
-    ],
-    correct: ["a"],
-    explanation:
-      "CloudWatch collects the CPU metric and can raise a metric alarm when the threshold is breached over the specified period, notifying an SNS topic to page the team. CloudTrail records API activity, not resource performance metrics, and AWS Artifact provides compliance documents, so neither detects a CPU threshold.",
-    reference: {
-      label: "What is Amazon CloudWatch?",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch", "SNS"],
-  },
-  {
-    id: "d3-integ-24",
-    domain: 3,
-    type: "multi",
-    topic: "CloudWatch vs CloudTrail",
-    difficulty: "hard",
-    stem: "A company is sorting tasks between Amazon CloudWatch and AWS CloudTrail. Which TWO are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "Use Amazon CloudWatch to graph metrics and alarm on resource performance and operational health." },
-      { id: "b", text: "Use AWS CloudTrail to audit which user or role made a given API call and when." },
-      { id: "c", text: "Use AWS CloudTrail to set CPU-utilization alarms that trigger Auto Scaling." },
-      { id: "d", text: "Use Amazon CloudWatch as the primary record of who deleted an S3 bucket for a compliance audit." },
-      { id: "e", text: "Both services exist only to send marketing emails." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "CloudWatch graphs metrics and alarms on performance, while CloudTrail audits API activity and the identity behind it. CloudTrail does not set performance alarms or drive Auto Scaling, CloudWatch is not the audit record of who deleted a resource, and neither service sends marketing email.",
-    reference: {
-      label: "What Is AWS CloudTrail?",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch", "CloudTrail"],
-  },
-  {
-    id: "d3-integ-25",
-    domain: 3,
-    type: "multi",
-    topic: "AWS CloudTrail",
-    difficulty: "medium",
-    stem: "Which TWO statements about AWS CloudTrail Event history are accurate for a new AWS account? (Choose two.)",
-    options: [
-      { id: "a", text: "It is available automatically when you create the account, with no setup required." },
-      { id: "b", text: "It provides a viewable, searchable record of the past 90 days of management events." },
-      { id: "c", text: "It must be purchased separately before any events are recorded." },
-      { id: "d", text: "It stores real-time CPU and memory metrics for your instances." },
-      { id: "e", text: "It begins recording only after you launch your first EC2 instance." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "CloudTrail Event history is available automatically when you create an account and provides a viewable, searchable, downloadable record of the past 90 days of management events. It does not have to be purchased separately before events are recorded, it records API activity rather than performance metrics, and it does not depend on first launching EC2.",
-    reference: {
-      label: "What Is AWS CloudTrail? Event history",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudTrail"],
-  },
-  {
-    id: "d3-integ-26",
-    domain: 3,
-    type: "single",
-    topic: "AWS Health Dashboard",
-    difficulty: "medium",
-    stem: "A customer wants a personalized view of AWS events that affect their own resources and accounts, including scheduled changes and ongoing issues, with alerts and guidance. Which AWS service provides this?",
-    options: [
-      { id: "a", text: "The AWS Health Dashboard" },
-      { id: "b", text: "Amazon CloudWatch Logs" },
-      { id: "c", text: "AWS CloudTrail" },
-      { id: "d", text: "Amazon Inspector" },
-    ],
-    correct: ["a"],
-    explanation:
-      "The AWS Health Dashboard, powered by AWS Health, gives ongoing visibility into the health of AWS services and your accounts, with personalized alerts and guidance about events and scheduled changes that affect your resources, and it requires no setup. CloudWatch Logs stores log data, CloudTrail records API activity, and Inspector assesses workloads for vulnerabilities.",
-    reference: {
-      label: "What is AWS Health?",
-      url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["AWS Health"],
-  },
-  {
-    id: "d3-integ-27",
-    domain: 3,
-    type: "single",
-    topic: "AWS Health Dashboard",
-    difficulty: "hard",
-    stem: "An AWS service is reporting elevated error rates, and an operations engineer needs to know whether the disruption affects their specific account and resources, not just the general service status. Which view answers that?",
-    options: [
-      { id: "a", text: "The account-specific (\"Your account health\") view of the AWS Health Dashboard, which shows events affecting your resources." },
-      { id: "b", text: "A CloudWatch dashboard of the application's request latency." },
-      { id: "c", text: "The CloudTrail Event history of recent API calls." },
-      { id: "d", text: "The AWS Pricing Calculator estimate for the service." },
-    ],
-    correct: ["a"],
-    explanation:
-      "The AWS Health Dashboard provides personalized, account-specific event information so you can see whether an issue affects your own resources, in addition to general service status. A CloudWatch latency dashboard shows performance but not AWS-side event impact, CloudTrail shows API activity, and the Pricing Calculator estimates cost.",
-    reference: {
-      label: "What is AWS Health?",
-      url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["AWS Health"],
   },
   {
     id: "d3-integ-28",
@@ -657,7 +406,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["X-Ray"],
   },
   {
@@ -681,7 +430,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["X-Ray"],
   },
   {
@@ -704,7 +453,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Step Functions"],
   },
   {
@@ -727,36 +476,8 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EventBridge"],
-  },
-  {
-    id: "d3-integ-32",
-    domain: 3,
-    type: "single",
-    topic: "Choosing a monitoring service",
-    difficulty: "medium",
-    stem: "A compliance review needs the answer to \"what changed in our account and who changed it\" over the last month, while a separate operations review needs CPU and latency graphs with alarms. Which pairing of services is correct?",
-    options: [
-      { id: "a", text: "AWS CloudTrail for the account-activity audit, and Amazon CloudWatch for the metrics and alarms." },
-      { id: "b", text: "Amazon CloudWatch for the account-activity audit, and AWS CloudTrail for the metrics and alarms." },
-      { id: "c", text: "AWS Config for both the metrics graphs and the API alarms." },
-      { id: "d", text: "Amazon SNS for the audit trail, and Amazon SQS for the metrics." },
-    ],
-    correct: ["a"],
-    distractorRationales: {
-      b: "This reverses the roles; CloudTrail records account activity and CloudWatch provides metrics and alarms, not the other way around.",
-      c: "AWS Config tracks configuration state; it does not serve performance metric graphs or CPU and latency alarms.",
-      d: "Amazon SNS and SQS are messaging services, not the audit-trail and metrics tools this needs.",
-    },
-    explanation:
-      "CloudTrail answers who changed what and when through its record of API activity, while CloudWatch provides the metrics, graphs, and alarms for operational health. The roles are not reversed, AWS Config tracks configuration state rather than serving performance graphs and API alarms, and SNS and SQS are messaging services, not monitoring or audit tools.",
-    reference: {
-      label: "What Is AWS CloudTrail?",
-      url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudTrail", "CloudWatch"],
   },
   {
     id: "d3-integ-33",
@@ -778,7 +499,7 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SNS"],
   },
   {
@@ -802,32 +523,8 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Step Functions", "API Gateway", "SQS", "SNS", "EventBridge"],
-  },
-  {
-    id: "d3-integ-35",
-    domain: 3,
-    type: "multi",
-    topic: "Amazon CloudWatch",
-    difficulty: "medium",
-    stem: "Which TWO of the following are capabilities of Amazon CloudWatch? (Choose two.)",
-    options: [
-      { id: "a", text: "Collecting and tracking metrics from AWS resources and applications." },
-      { id: "b", text: "Setting alarms that trigger actions when a metric crosses a threshold." },
-      { id: "c", text: "Recording every API call with the identity of the caller for audit." },
-      { id: "d", text: "Encrypting data at rest with customer managed keys as its primary function." },
-      { id: "e", text: "Provisioning and running virtual servers." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "CloudWatch collects and tracks metrics and lets you set alarms that act when a threshold is breached. Recording API calls with caller identity is CloudTrail's job, encrypting data at rest with customer managed keys as a primary function is AWS KMS, and provisioning virtual servers is Amazon EC2, so those are not CloudWatch capabilities.",
-    reference: {
-      label: "What is Amazon CloudWatch?",
-      url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudWatch"],
   },
   {
     id: "d3-integ-36",
@@ -850,7 +547,30 @@ export const domain3IntegrationMonitoring: Question[] = [
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS", "SNS"],
+  },
+  {
+    id: "d1-resil-31",
+    domain: 3,
+    type: "single",
+    topic: "Decoupling for resilience",
+    difficulty: "medium",
+    stem: "A team wants two services to communicate without one failing because the other is temporarily slow or down. Which AWS service provides a managed queue that decouples the producer from the consumer?",
+    options: [
+      { id: "a", text: "Amazon Simple Queue Service (Amazon SQS)" },
+      { id: "b", text: "Amazon EC2 Auto Scaling" },
+      { id: "c", text: "AWS Identity and Access Management (IAM)" },
+      { id: "d", text: "Amazon CloudFront" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS recommends Amazon SQS to integrate and decouple distributed systems: the queue sits between producer and consumer so a slowdown or failure in one does not directly break the other. Auto Scaling manages instance capacity, IAM manages access, and CloudFront is a content delivery network, none of which is a decoupling queue.",
+    reference: {
+      label: "Reliability Pillar: implement loosely coupled dependencies",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["SQS"],
   },
 ];

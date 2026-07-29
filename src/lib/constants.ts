@@ -65,6 +65,7 @@ export const EXAM = {
   // is proprietary and is not a raw percentage, so the site reports raw percent
   // and a readiness band instead, and says so plainly.
   passingScaledScore: 700,
-  retakeWaitDays: 30,
+  // AWS requires 14 calendar days between attempts after a failed exam.
+  retakeWaitDays: 14,
   validityYears: 3,
 } as const;
