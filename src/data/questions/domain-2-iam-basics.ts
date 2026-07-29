@@ -26,7 +26,7 @@ export const domain2IamBasics: Question[] = [
       label: "AWS account root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -49,7 +49,7 @@ export const domain2IamBasics: Question[] = [
       label: "AWS account root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -72,7 +72,7 @@ export const domain2IamBasics: Question[] = [
       label: "Root user best practices for your AWS account",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -95,7 +95,7 @@ export const domain2IamBasics: Question[] = [
       label: "Root user best practices: Don't create access keys for the root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -118,7 +118,7 @@ export const domain2IamBasics: Question[] = [
       label: "Tasks that require root user credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -142,7 +142,7 @@ export const domain2IamBasics: Question[] = [
       label: "Tasks that require root user credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM", "EC2", "S3"],
   },
   {
@@ -165,7 +165,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -188,7 +188,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -211,7 +211,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users and permissions",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -234,7 +234,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -258,7 +258,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users and credentials",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -281,7 +281,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM users and accounts",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -304,7 +304,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -327,7 +327,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -350,7 +350,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -373,7 +373,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups: important characteristics",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -396,7 +396,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -420,7 +420,7 @@ export const domain2IamBasics: Question[] = [
       label: "IAM user groups: important characteristics",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -443,7 +443,7 @@ export const domain2IamBasics: Question[] = [
       label: "Overview of JSON policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -466,7 +466,7 @@ export const domain2IamBasics: Question[] = [
       label: "JSON policy document structure",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -490,7 +490,7 @@ export const domain2IamBasics: Question[] = [
       label: "JSON policy document structure",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -513,7 +513,7 @@ export const domain2IamBasics: Question[] = [
       label: "JSON policy document structure: Principal",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -536,7 +536,7 @@ export const domain2IamBasics: Question[] = [
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -559,7 +559,7 @@ export const domain2IamBasics: Question[] = [
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM", "S3"],
   },
   {
@@ -582,7 +582,7 @@ export const domain2IamBasics: Question[] = [
       label: "How AWS evaluates requests to allow or deny access",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic_policy-eval-denyallow.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -605,7 +605,7 @@ export const domain2IamBasics: Question[] = [
       label: "Evaluating identity-based policies with resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -633,7 +633,7 @@ export const domain2IamBasics: Question[] = [
       label: "Apply least-privilege permissions",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -656,7 +656,7 @@ export const domain2IamBasics: Question[] = [
       label: "Grant least privilege",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -684,7 +684,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -707,7 +707,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM", "S3"],
   },
   {
@@ -727,10 +727,10 @@ export const domain2IamBasics: Question[] = [
     explanation:
       "Resource-based policies specify who has access by naming a Principal, which is required there and cannot appear in an identity-based policy on a user. Version, Effect, and Statement appear in both kinds of policy, so they do not distinguish them.",
     reference: {
-      label: "Identity-based policies and resource-based policies",
-      url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
+      label: "JSON policy document structure: Principal",
+      url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies-introduction",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -754,7 +754,7 @@ export const domain2IamBasics: Question[] = [
       label: "Identity-based policies and resource-based policies",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -772,12 +772,12 @@ export const domain2IamBasics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Using groups to assign permissions and managing group membership scales cleanly as people change roles, which is why AWS recommends attaching policies to groups. Per-user inline policies are hard to maintain at scale, sharing root credentials is strongly discouraged, and a single shared IAM user defeats individual accountability.",
+      "Using groups to assign permissions and managing group membership scales cleanly as people change roles, which is why AWS describes user groups as making permissions easier to manage for multiple users at once. Per-user inline policies are hard to maintain at scale, sharing root credentials is strongly discouraged, and a single shared IAM user defeats individual accountability.",
     reference: {
       label: "IAM user groups",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -800,7 +800,7 @@ export const domain2IamBasics: Question[] = [
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -828,7 +828,7 @@ export const domain2IamBasics: Question[] = [
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
   {
@@ -851,7 +851,7 @@ export const domain2IamBasics: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["IAM"],
   },
 ];
