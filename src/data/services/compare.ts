@@ -21,7 +21,7 @@ import type { CompareGroup } from "../../lib/types";
 // three ids are linked: the content files authored amazon-rds/amazon-dynamodb
 // (one batch) and amazon-redshift (another) with no cross-batch relatedServices,
 // so this card is where the relational/NoSQL/warehouse set is wired together.
-const VERIFIED = "2026-06-24";
+const VERIFIED = "2026-07-29";
 
 export const COMPARE_GROUPS: CompareGroup[] = [
   {
@@ -113,7 +113,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
           "amazon-macie":
             "Which S3 buckets to scan and the data-type rules; it does the classification.",
           "amazon-detective":
-            "Nothing to scan — you explore the linked event graph it builds from your findings.",
+            "Nothing to scan: you explore the behavior graph it builds from your CloudTrail and VPC flow logs plus GuardDuty findings.",
         },
       },
       {
@@ -156,7 +156,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
         axis: "What it is",
         cells: {
           "amazon-sqs":
-            "A managed message queue: one sender, one consumer that pulls each message when ready.",
+            "A managed message queue: many producers can send, and each message is processed by one consumer that pulls it when ready.",
           "amazon-sns":
             "A managed pub/sub topic: one message pushed (fanned out) to many subscribers at once.",
           "amazon-eventbridge":
@@ -237,7 +237,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
         axis: "Watch out for",
         cells: {
           "aws-shield":
-            "It defends against floods; it does not inspect request content for application-layer attacks.",
+            "It answers DDoS, not request content: its layer-7 protection works by managing AWS WAF rules for you, not by rules you write.",
           "aws-waf":
             "It filters requests by rule; it does not by itself absorb a large-scale DDoS flood.",
         },
@@ -274,7 +274,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
         axis: "Best for",
         cells: {
           "aws-organizations":
-            "Grouping accounts and setting permission boundaries when you want full manual control.",
+            "Grouping accounts and capping what each one can do with service control policies, when you want full manual control.",
           "aws-control-tower":
             "Standing up a well-architected multi-account environment quickly with best practices baked in.",
         },
@@ -404,7 +404,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
           "amazon-s3":
             "Object storage for files (objects) retrieved over the web by key, at massive scale.",
           "amazon-ebs":
-            "Block storage volumes you attach to a single EC2 instance, like a virtual hard drive.",
+            "Block storage volumes you attach to an EC2 instance, like a virtual hard drive.",
           "amazon-efs":
             "A shared file system many Linux instances can mount and read or write at the same time.",
         },
@@ -437,7 +437,7 @@ export const COMPARE_GROUPS: CompareGroup[] = [
           "amazon-s3":
             "It is object storage over an API; you do not mount it as a regular disk.",
           "amazon-ebs":
-            "A volume attaches to one instance in one Availability Zone — it is not shared storage.",
+            "A volume lives in one Availability Zone and normally attaches to one instance; sharing it needs Multi-Attach on io1/io2 volumes.",
           "amazon-efs":
             "Shared file access is its purpose; it is not for object retrieval or single-instance block disks.",
         },
