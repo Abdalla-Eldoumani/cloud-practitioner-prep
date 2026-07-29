@@ -9,8 +9,8 @@
 //   lesson updated   every lesson frontmatter has an `updated` date        (ACC-01)
 //   duplicate stems  no two questions share a normalized stem              (ACC-06)
 //   option-letter    no explanation names an option by letter or ordinal   (ACC-06)
-//   domain tag       domain in {1..4}, and the id prefix AND the source    (ACC-06)
-//                    file name both agree with the question's domain
+//   domain tag       domain in {1..4} and the source file name agrees      (ACC-06)
+//                    with the question's domain
 //   coverage         every incorrect option is named in the explanation    (ACC-04)
 //                    (token-overlap heuristic), with an enumerated allowlist
 //   rationale map    a populated distractorRationales covers every wrong    (ACC-04)
@@ -107,13 +107,6 @@ function normalizeStem(stem: string): string {
   return stem.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-// The id prefix grouping, e.g. "d2-iam-basics-05" -> domain 2. Ids are
-// "dN-<topic>-NN", so the domain is the digit after the leading "d".
-function domainFromId(id: string): number | null {
-  const m = id.match(/^d(\d)-/);
-  return m ? Number(m[1]) : null;
-}
-
 // Map every question id to the domain its source file name encodes. Globs the
 // per-domain files, imports each (each exports exactly one Question[]), and
 // records id -> fileDomain. This validates the third domain-tag clause (the
@@ -178,16 +171,12 @@ async function main(): Promise<void> {
       report.fail("option-letter", `${q.id}: explanation names an option by letter/ordinal`);
     }
 
-    // ACC-06: domain tag agrees three ways — range, id prefix, source file name.
+    // ACC-06: domain tag agrees two ways — range, source file name. An id prefix
+    // is deliberately NOT checked: an id is the permanent key a learner's saved
+    // progress is stored under, so it keeps its original prefix through a retag
+    // and names the domain the question was first written for, not its current one.
     if (!VALID_DOMAINS.has(q.domain)) {
       report.fail("domain-tag", `${q.id}: domain ${q.domain} not in {1,2,3,4}`);
-    }
-    const idDomain = domainFromId(q.id);
-    if (idDomain !== null && idDomain !== q.domain) {
-      report.fail(
-        "domain-tag",
-        `${q.id}: id prefix domain ${idDomain} != domain field ${q.domain}`,
-      );
     }
     const srcDomain = fileDomain.get(q.id);
     if (srcDomain !== undefined && srcDomain !== q.domain) {
