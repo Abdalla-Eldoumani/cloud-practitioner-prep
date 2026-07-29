@@ -1,55 +1,17 @@
 import type { Question } from "../../lib/types";
 
 // Domain 1: Cloud Concepts, resilience cluster. Original practice questions that
-// test high availability, fault tolerance, disaster recovery basics, multi-AZ
-// design, designing for failure, and decoupling for resilience, at the CLF-C02
-// concepts level. These are not real exam items. Every fact is verified against
-// current AWS documentation; each question cites the page backing its answer.
+// test high availability, fault tolerance, disaster recovery basics, and
+// designing for failure, at the CLF-C02 concepts level. The Multi-AZ database,
+// durability, and decoupling questions the exam guide files under Domain 3 live
+// with their services in the Domain 3 files. These are not real exam items.
+// Every fact is verified against current AWS documentation; each question cites
+// the page backing its answer.
+//
+// Ids keep their historical d1-resil- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files and
+// stays put when a question is retagged to another domain.
 export const domain1Resilience: Question[] = [
-  {
-    id: "d1-resil-01",
-    domain: 1,
-    type: "single",
-    topic: "High availability",
-    difficulty: "easy",
-    stem: "A team wants its web application to keep serving users even if one data center has a problem, so that downtime stays as low as possible. Which approach reflects how AWS recommends achieving high availability within a Region?",
-    options: [
-      { id: "a", text: "Run the application across multiple Availability Zones in the Region." },
-      { id: "b", text: "Run the application on one large instance in a single Availability Zone." },
-      { id: "c", text: "Store everything on a single server and back it up once a year." },
-      { id: "d", text: "Disable health checks so the application is never marked unhealthy." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Launching resources in multiple Availability Zones protects an application from the failure of a single location in the Region, which is how you raise availability and reduce downtime. A single instance in one zone is a single point of failure, an annual backup does nothing for uptime, and turning off health checks hides failures rather than recovering from them.",
-    reference: {
-      label: "Amazon EC2 Regions and Availability Zones",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-02",
-    domain: 1,
-    type: "single",
-    topic: "Availability Zones",
-    difficulty: "easy",
-    stem: "An Availability Zone in an AWS Region is best described as which of the following?",
-    options: [
-      { id: "a", text: "One or more discrete data centers with redundant power, networking, and connectivity, housed in separate facilities." },
-      { id: "b", text: "A single physical server inside one building." },
-      { id: "c", text: "A billing account used to group resources." },
-      { id: "d", text: "A copy of an entire AWS Region kept in another country." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS defines an Availability Zone as one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities. It is not a single server, an account construct, or a duplicate Region; those descriptions miss the redundancy and physical separation that make zones useful for resilience.",
-    reference: {
-      label: "AWS global infrastructure overview",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
-    },
-    lastVerified: "2026-06-23",
-  },
   {
     id: "d1-resil-03",
     domain: 1,
@@ -67,32 +29,10 @@ export const domain1Resilience: Question[] = [
     explanation:
       "Fault tolerance is the ability to keep operating through the failure of a component, which AWS enables by spreading work across redundant resources such as multiple Availability Zones. It does not mean faults are impossible, and a design that depends on a single component or on every component being healthy is the opposite of fault tolerant.",
     reference: {
-      label: "AWS global infrastructure overview",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
+      label: "Reliability Pillar: deploy the workload to multiple locations",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-04",
-    domain: 1,
-    type: "single",
-    topic: "Redundancy",
-    difficulty: "easy",
-    stem: "Why does AWS say that operating across multiple Availability Zones lets you run applications that are more highly available and fault tolerant than you could from a single data center?",
-    options: [
-      { id: "a", text: "Because the zones are physically separate facilities, so a problem in one is unlikely to take down the others." },
-      { id: "b", text: "Because all the zones share the same power and network, so they fail together predictably." },
-      { id: "c", text: "Because using more zones lowers the price of every service to zero." },
-      { id: "d", text: "Because a single zone automatically replicates to every AWS Region." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Availability Zones are discrete facilities with their own redundant power, networking, and connectivity, so a fault in one zone is isolated and the others can keep serving traffic. Shared power and networking would defeat the purpose, multi-zone design is about resilience rather than zero cost, and a zone does not replicate itself across Regions on its own.",
-    reference: {
-      label: "AWS global infrastructure overview",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-05",
@@ -114,7 +54,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: resiliency and the components of reliability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-06",
@@ -136,7 +76,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS Well-Architected Framework: Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-07",
@@ -158,7 +98,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-08",
@@ -180,7 +120,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-09",
@@ -202,7 +142,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-10",
@@ -225,466 +165,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-11",
-    domain: 1,
-    type: "multi",
-    topic: "Elastic Load Balancing",
-    difficulty: "easy",
-    stem: "A company puts a load balancer in front of a group of identical servers. According to AWS, which TWO things does distributing traffic across multiple resources this way do for the application? (Choose two.)",
-    options: [
-      { id: "a", text: "It increases the availability of the application." },
-      { id: "b", text: "It increases the fault tolerance of the application." },
-      { id: "c", text: "It guarantees the application can never receive too much traffic." },
-      { id: "d", text: "It removes the need to run more than one server." },
-      { id: "e", text: "It makes every request slower on purpose for safety." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS states that using a load balancer to distribute workloads across multiple compute resources increases the availability and fault tolerance of your applications. It does not guarantee the application can never receive too much traffic, it does not remove the need to run more than one server since it balances across several, and it is not designed to slow requests down.",
-    reference: {
-      label: "What is Elastic Load Balancing?",
-      url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Elastic Load Balancing"],
-  },
-  {
-    id: "d1-resil-12",
-    domain: 1,
-    type: "single",
-    topic: "Elastic Load Balancing",
-    difficulty: "medium",
-    stem: "One server behind an Elastic Load Balancer stops responding to its health check. What does the load balancer do, and how does that support resilience?",
-    options: [
-      { id: "a", text: "It stops sending requests to the unhealthy target and routes traffic only to healthy targets." },
-      { id: "b", text: "It keeps sending an equal share of requests to the failed server to be fair." },
-      { id: "c", text: "It shuts down the entire application until the server is fixed." },
-      { id: "d", text: "It permanently deletes the unhealthy server and its data." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Elastic Load Balancing monitors the health of its registered targets and routes traffic only to the healthy ones, so a single failing instance does not break the service. It does not keep sending an equal share to the failed server, shut down the entire application, or permanently delete the unhealthy server and its data.",
-    reference: {
-      label: "What is Elastic Load Balancing?",
-      url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Elastic Load Balancing"],
-  },
-  {
-    id: "d1-resil-13",
-    domain: 1,
-    type: "single",
-    topic: "Auto Scaling and fault tolerance",
-    difficulty: "medium",
-    stem: "A web tier runs on Amazon EC2 instances in an Auto Scaling group. One instance becomes unhealthy. What does Amazon EC2 Auto Scaling do that improves fault tolerance?",
-    options: [
-      { id: "a", text: "It detects the unhealthy instance, terminates it, and launches a replacement." },
-      { id: "b", text: "It leaves the unhealthy instance in service and notifies no one." },
-      { id: "c", text: "It permanently reduces the group to zero instances." },
-      { id: "d", text: "It converts the instance to a Reserved Instance to fix it." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS lists better fault tolerance as a benefit of EC2 Auto Scaling: it can detect when an instance is unhealthy, terminate it, and launch a replacement, which keeps capacity healthy without manual intervention. An option that leaves the unhealthy instance in service and notifies no one, scaling the group to zero, or converting the instance to a Reserved Instance would not restore the failed capacity, since a Reserved Instance is a billing commitment rather than a repair.",
-    reference: {
-      label: "Amazon EC2 Auto Scaling benefits",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-resil-34",
-    domain: 1,
-    type: "multi",
-    topic: "Auto Scaling benefits",
-    difficulty: "medium",
-    stem: "Beyond cost management, which TWO resilience benefits does AWS attribute to adding Amazon EC2 Auto Scaling to an application? (Choose two.)",
-    options: [
-      { id: "a", text: "Better fault tolerance, by replacing unhealthy instances automatically." },
-      { id: "b", text: "Better availability, by helping ensure the application always has the right amount of capacity." },
-      { id: "c", text: "A guarantee that no instance will ever fail." },
-      { id: "d", text: "Automatic encryption of all data stored on the instances." },
-      { id: "e", text: "Elimination of the need to use more than one Availability Zone." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS lists better fault tolerance and better availability among the benefits of EC2 Auto Scaling: it replaces unhealthy instances and helps keep the right amount of capacity for current demand. It does not guarantee that no instance will ever fail, provide automatic encryption of all data stored on the instances, or remove the value of spanning multiple Availability Zones.",
-    reference: {
-      label: "Amazon EC2 Auto Scaling benefits",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-resil-14",
-    domain: 1,
-    type: "single",
-    topic: "Auto Scaling across zones",
-    difficulty: "medium",
-    stem: "An Auto Scaling group spans several Availability Zones. According to AWS, what happens if one of those Availability Zones becomes unavailable?",
-    options: [
-      { id: "a", text: "Amazon EC2 Auto Scaling can launch instances in another Availability Zone to compensate." },
-      { id: "b", text: "All instances in every zone are terminated immediately." },
-      { id: "c", text: "The group waits for the failed zone to return before doing anything." },
-      { id: "d", text: "The application must be moved to a different AWS account." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS states that if you configure EC2 Auto Scaling to use multiple Availability Zones and one becomes unavailable, it can launch instances in another zone to compensate, which preserves capacity through a zone failure. It does not terminate all instances in every zone immediately, leave the group waiting for the failed zone to return before doing anything, or require moving to a different AWS account.",
-    reference: {
-      label: "Amazon EC2 Auto Scaling benefits",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-resil-15",
-    domain: 1,
-    type: "multi",
-    topic: "High availability building blocks",
-    difficulty: "hard",
-    stem: "An architect wants higher availability for a stateless web application within one Region. Which TWO measures align with AWS guidance for availability and fault tolerance? (Choose two.)",
-    options: [
-      { id: "a", text: "Distribute incoming requests across targets with Elastic Load Balancing." },
-      { id: "b", text: "Run the EC2 instances in an Auto Scaling group across multiple Availability Zones." },
-      { id: "c", text: "Place all instances in one Availability Zone to simplify networking." },
-      { id: "d", text: "Run exactly one instance and rely on restarting it by hand after a crash." },
-      { id: "e", text: "Turn off instance health checks to avoid restarts." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Elastic Load Balancing increases availability and fault tolerance by routing only to healthy targets, and an Auto Scaling group across multiple Availability Zones keeps capacity healthy through instance or zone failures. Concentrating in one zone, relying on a single hand-restarted instance, and disabling health checks each remove a layer of resilience.",
-    reference: {
-      label: "Amazon EC2 Auto Scaling benefits",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-resil-16",
-    domain: 1,
-    type: "single",
-    topic: "Multi-AZ databases",
-    difficulty: "medium",
-    stem: "A team needs its Amazon RDS database to stay available if the primary instance or its Availability Zone has a problem. Which RDS feature is designed for that?",
-    options: [
-      { id: "a", text: "A Multi-AZ deployment, which keeps a standby in a different Availability Zone for failover." },
-      { id: "b", text: "A larger instance class in a single Availability Zone." },
-      { id: "c", text: "Turning off automated backups to reduce load." },
-      { id: "d", text: "Storing the database files on a single EBS volume only." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon RDS Multi-AZ deployments provide high availability and failover support by maintaining a standby replica in a different Availability Zone, helping protect against DB instance failure and Availability Zone disruption. A bigger single-zone instance, disabling backups, or relying on one volume does not provide cross-zone failover.",
-    reference: {
-      label: "Multi-AZ DB instance deployments for Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["RDS"],
-  },
-  {
-    id: "d1-resil-17",
-    domain: 1,
-    type: "single",
-    topic: "Multi-AZ databases",
-    difficulty: "hard",
-    stem: "In an Amazon RDS Multi-AZ DB instance deployment, how is data kept on the standby, and what is the standby used for during normal operation?",
-    options: [
-      { id: "a", text: "The primary is synchronously replicated to the standby, and the standby is for failover, not for serving read traffic." },
-      { id: "b", text: "The standby is updated once a day and serves all read queries." },
-      { id: "c", text: "The standby holds no data until a failure occurs." },
-      { id: "d", text: "The standby serves write traffic in parallel with the primary." },
-    ],
-    correct: ["a"],
-    explanation:
-      "In a Multi-AZ DB instance deployment, RDS synchronously replicates the primary to a standby in another Availability Zone, and that standby provides failover support but does not serve read traffic. It is not a once-a-day copy, it is not empty until failure, and it does not accept writes alongside the primary.",
-    reference: {
-      label: "Multi-AZ DB instance deployments for Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["RDS"],
-  },
-  {
-    id: "d1-resil-18",
-    domain: 1,
-    type: "single",
-    topic: "Multi-AZ design",
-    difficulty: "medium",
-    stem: "A regulated workload runs in a single AWS Region. AWS notes that a disaster recovery strategy across multiple Availability Zones within one Region can mitigate which kinds of events?",
-    options: [
-      { id: "a", text: "Localized disasters such as fires, floods, and major power outages." },
-      { id: "b", text: "A change in the company's billing currency." },
-      { id: "c", text: "A user forgetting their console password." },
-      { id: "d", text: "An increase in the price of a service." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS states that a DR strategy across multiple Availability Zones in a single Region can mitigate disaster events like fires, floods, and major power outages, because the zones are physically separate. Billing currency, a forgotten password, and price changes are not infrastructure disasters that multi-AZ design addresses.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-19",
-    domain: 1,
-    type: "single",
-    topic: "Region isolation",
-    difficulty: "easy",
-    stem: "Why does AWS design each Region to be isolated from the other Regions?",
-    options: [
-      { id: "a", text: "To achieve the greatest possible fault tolerance and stability." },
-      { id: "b", text: "To force all customers to use only one Region." },
-      { id: "c", text: "To make every service the same price in every Region." },
-      { id: "d", text: "To automatically copy all data between Regions for you." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS designs each Region to be isolated from the others to achieve the greatest possible fault tolerance and stability, so a problem in one Region does not spread to another. Region isolation does not limit you to one Region, equalize pricing, or replicate your data across Regions automatically.",
-    reference: {
-      label: "Amazon EC2 Regions and Availability Zones",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-20",
-    domain: 1,
-    type: "single",
-    topic: "Single point of failure",
-    difficulty: "easy",
-    stem: "An application runs all of its instances in one Availability Zone. AWS notes that although rare, a failure can affect availability in a single location. What is the risk here?",
-    options: [
-      { id: "a", text: "If that one location is affected by a failure, none of the instances would be available." },
-      { id: "b", text: "The instances would automatically move to another Region with no design effort." },
-      { id: "c", text: "The application would become more fault tolerant by concentrating in one place." },
-      { id: "d", text: "AWS would refund the cost of the outage as account credit by default." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS warns that if you host all of your instances in a single location affected by a failure, none of your instances would be available, which is why spreading across zones matters. Instances do not relocate across Regions on their own, concentration reduces rather than improves fault tolerance, and outages are not refunded by default.",
-    reference: {
-      label: "Amazon EC2 Regions and Availability Zones",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-21",
-    domain: 1,
-    type: "single",
-    topic: "Recovery objectives",
-    difficulty: "medium",
-    stem: "A business is planning disaster recovery and needs to define how long the application can be down before the impact is unacceptable. Which objective expresses this?",
-    options: [
-      { id: "a", text: "Recovery Time Objective (RTO), the maximum acceptable delay between interruption and restoration of service." },
-      { id: "b", text: "Recovery Point Objective (RPO), the maximum acceptable amount of data loss measured in time." },
-      { id: "c", text: "Service level agreement credit, the refund for missed uptime." },
-      { id: "d", text: "Time to first byte, the latency of the first response." },
-    ],
-    correct: ["a"],
-    explanation:
-      "RTO is the maximum acceptable delay between the interruption of service and restoration of service, so it captures tolerable downtime. RPO is about acceptable data loss rather than downtime, an SLA credit is a billing remedy, and time to first byte is a performance metric.",
-    reference: {
-      label: "Reliability Pillar: define recovery objectives",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-22",
-    domain: 1,
-    type: "single",
-    topic: "Recovery objectives",
-    difficulty: "medium",
-    stem: "During DR planning, a team asks how much recent data they can afford to lose if they have to recover from a backup. Which objective answers that question?",
-    options: [
-      { id: "a", text: "Recovery Point Objective (RPO), the maximum acceptable time after the last data recovery point." },
-      { id: "b", text: "Recovery Time Objective (RTO), the maximum acceptable time to restore service." },
-      { id: "c", text: "Mean time between failures, the average gap between outages." },
-      { id: "d", text: "Throughput, the number of requests handled per second." },
-    ],
-    correct: ["a"],
-    explanation:
-      "RPO is the maximum acceptable time after the last data recovery point, which translates to how much recent data could be lost. The Recovery Time Objective instead measures the acceptable time to restore service rather than data loss, while mean time between failures and throughput are not recovery objectives.",
-    reference: {
-      label: "Reliability Pillar: define recovery objectives",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_objective_defined_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-23",
-    domain: 1,
-    type: "multi",
-    topic: "Recovery objectives",
-    difficulty: "hard",
-    stem: "A team is reasoning about RTO and RPO for a workload. Which TWO statements are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "RTO describes acceptable downtime, while RPO describes acceptable data loss." },
-      { id: "b", text: "Choosing a DR strategy is a trade-off between reducing downtime and data loss and the cost and complexity of the strategy." },
-      { id: "c", text: "A smaller RTO and RPO are always free to achieve." },
-      { id: "d", text: "RTO and RPO mean the same thing and can be used interchangeably." },
-      { id: "e", text: "RPO measures how fast the application responds to each request." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "RTO is about acceptable downtime and RPO is about acceptable data loss, and AWS frames the choice of DR strategy as a trade-off between tighter RTO and RPO and higher cost and complexity. More stringent objectives are not always free, RTO and RPO do not mean the same thing and cannot be used interchangeably, and RPO is not a per-request latency measure.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-24",
-    domain: 1,
-    type: "single",
-    topic: "Backup and restore",
-    difficulty: "easy",
-    stem: "Which disaster recovery approach does AWS describe as the lowest cost and lowest complexity, suitable when a longer recovery time is acceptable?",
-    options: [
-      { id: "a", text: "Backup and restore" },
-      { id: "b", text: "Multi-site active-active" },
-      { id: "c", text: "Warm standby" },
-      { id: "d", text: "Pilot light" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS lists backup and restore as the lowest cost and lowest complexity DR strategy, where you back up data and redeploy when needed, accepting a longer RTO and RPO. Multi-site active-active, warm standby, and pilot light each add cost and complexity to shorten recovery time.",
-    reference: {
-      label: "Disaster recovery options in the cloud",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-25",
-    domain: 1,
-    type: "single",
-    topic: "Disaster recovery strategies",
-    difficulty: "hard",
-    stem: "Which ordering of AWS disaster recovery strategies goes from the longest recovery time and lowest cost to the shortest recovery time and highest cost?",
-    options: [
-      { id: "a", text: "Backup and restore, pilot light, warm standby, multi-site active-active" },
-      { id: "b", text: "Multi-site active-active, warm standby, pilot light, backup and restore" },
-      { id: "c", text: "Warm standby, backup and restore, multi-site active-active, pilot light" },
-      { id: "d", text: "Pilot light, multi-site active-active, backup and restore, warm standby" },
-    ],
-    correct: ["a"],
-    distractorRationales: {
-      b: "This is the reverse progression, leading with the costliest near-zero-recovery strategy instead of the longest-recovery one.",
-      c: "This scrambles the sequence, placing warm standby and pilot light out of their cost-and-recovery order.",
-      d: "This scrambles the sequence, putting the highest-cost strategy second rather than last.",
-    },
-    explanation:
-      "AWS lists the four strategies in increasing order of cost and complexity and decreasing order of RTO and RPO: backup and restore, pilot light, warm standby, then multi-site active-active. The other orderings scramble that progression.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-26",
-    domain: 1,
-    type: "single",
-    topic: "Disaster recovery strategies",
-    difficulty: "hard",
-    stem: "A workload must keep recovery time close to zero by running in more than one AWS Region and serving users from all of them at once. Which DR strategy does AWS describe for this, and what is the trade-off?",
-    options: [
-      { id: "a", text: "Multi-site active-active, which can reduce recovery time to near zero but is the most complex and costly approach." },
-      { id: "b", text: "Backup and restore, which is the cheapest way to get near-zero recovery time." },
-      { id: "c", text: "Pilot light, in which all Regions actively serve production traffic at full scale." },
-      { id: "d", text: "A single-instance deployment, which gives the best recovery time of all." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Multi-site active-active runs the workload in multiple Regions serving traffic from all of them, which can bring recovery time near zero, and AWS notes it is the most complex and costly DR approach. Backup and restore has the longest recovery time, pilot light keeps non-core resources switched off rather than serving traffic, and a single instance is a single point of failure.",
-    reference: {
-      label: "Disaster recovery options in the cloud",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-27",
-    domain: 1,
-    type: "single",
-    topic: "Pilot light vs warm standby",
-    difficulty: "hard",
-    stem: "AWS distinguishes pilot light from warm standby. Which statement describes the difference correctly?",
-    options: [
-      { id: "a", text: "Pilot light cannot process requests until additional action is taken, while warm standby can handle traffic at reduced capacity immediately." },
-      { id: "b", text: "Pilot light serves full production traffic, while warm standby keeps everything switched off." },
-      { id: "c", text: "Warm standby requires no resources in the recovery Region, while pilot light runs a full copy." },
-      { id: "d", text: "There is no difference; the two terms are identical." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS explains that both keep copies of primary assets in the recovery Region, but pilot light cannot process requests without first turning on and scaling resources, whereas warm standby is already running at reduced capacity and can take traffic immediately. The claim that pilot light serves full production traffic while warm standby keeps everything switched off inverts the two, the claim that warm standby needs no resources in the recovery Region is wrong, and the claim that there is no difference and the terms are identical denies the distinction.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-28",
-    domain: 1,
-    type: "single",
-    topic: "Backup and restore",
-    difficulty: "medium",
-    stem: "AWS recommends defining infrastructure as code for a backup and restore strategy. How does that help meet recovery objectives?",
-    options: [
-      { id: "a", text: "It lets you redeploy infrastructure quickly and consistently, reducing recovery time and the risk of errors." },
-      { id: "b", text: "It removes the need to back up any data at all." },
-      { id: "c", text: "It guarantees zero data loss without any backups." },
-      { id: "d", text: "It makes the recovery Region serve production traffic at all times." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS notes that infrastructure as code, using services such as AWS CloudFormation, lets you redeploy infrastructure quickly and without errors, which lowers recovery time; without it, restoring a workload can be slow and exceed your RTO. It does not remove the need to back up data, guarantee zero data loss without backups, or make the recovery Region serve production traffic at all times.",
-    reference: {
-      label: "Disaster recovery options in the cloud",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["CloudFormation"],
-  },
-  {
-    id: "d1-resil-29",
-    domain: 1,
-    type: "single",
-    topic: "Durability vs availability",
-    difficulty: "hard",
-    stem: "Amazon S3 Standard is described as designed for 99.999999999 percent durability, storing objects redundantly across at least three Availability Zones. In resilience terms, what does this durability figure refer to?",
-    options: [
-      { id: "a", text: "Protection against losing the stored objects, so that data survives even the loss of an entire Availability Zone." },
-      { id: "b", text: "A promise that every request to retrieve an object will always succeed instantly." },
-      { id: "c", text: "The percentage of the year the service can accept new uploads." },
-      { id: "d", text: "The discount applied to storage as you store more data." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about every retrieval request succeeding instantly; it is not the percentage of the year the service can accept new uploads, and it has nothing to do with volume discounts.",
-    reference: {
-      label: "Data protection in Amazon S3",
-      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["S3"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-30",
@@ -706,30 +187,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-31",
-    domain: 1,
-    type: "single",
-    topic: "Decoupling for resilience",
-    difficulty: "medium",
-    stem: "A team wants two services to communicate without one failing because the other is temporarily slow or down. Which AWS service provides a managed queue that decouples the producer from the consumer?",
-    options: [
-      { id: "a", text: "Amazon Simple Queue Service (Amazon SQS)" },
-      { id: "b", text: "Amazon EC2 Auto Scaling" },
-      { id: "c", text: "AWS Identity and Access Management (IAM)" },
-      { id: "d", text: "Amazon CloudFront" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS recommends Amazon SQS to integrate and decouple distributed systems: the queue sits between producer and consumer so a slowdown or failure in one does not directly break the other. Auto Scaling manages instance capacity, IAM manages access, and CloudFront is a content delivery network, none of which is a decoupling queue.",
-    reference: {
-      label: "Reliability Pillar: implement loosely coupled dependencies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["SQS"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-resil-32",
@@ -752,122 +210,34 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SQS"],
   },
   {
-    id: "d1-resil-33",
+    id: "d1-resil-39",
     domain: 1,
     type: "single",
-    topic: "Availability Zone networking",
-    difficulty: "medium",
-    stem: "A team worries that spreading a workload across multiple Availability Zones will add too much network delay between components. What does AWS say about connectivity between Availability Zones in a Region?",
+    topic: "Reliability design principles",
+    difficulty: "hard",
+    stem: "A team stops editing infrastructure by hand and applies every change through automation instead, treating edits to the automation itself as changes to be tracked and reviewed. Which Reliability design principle does this follow?",
     options: [
-      { id: "a", text: "Availability Zones are connected with low-latency network connectivity, so multi-AZ designs remain practical." },
-      { id: "b", text: "Availability Zones have no network connection to each other at all." },
-      { id: "c", text: "Traffic between Availability Zones must travel over the public internet." },
-      { id: "d", text: "Availability Zones are thousands of kilometers apart, making communication impractical." },
+      { id: "a", text: "Manage change through automation" },
+      { id: "b", text: "Test recovery procedures" },
+      { id: "c", text: "Scale horizontally to increase aggregate workload availability" },
+      { id: "d", text: "Automatically recover from failure" },
     ],
     correct: ["a"],
-    explanation:
-      "AWS engineers low-latency network connectivity between Availability Zones, which is why a synchronous Multi-AZ database standby and other multi-AZ designs are workable. It is not true that the zones have no network connection to each other, traffic between them stays on the AWS network rather than the public internet, and they sit within about 100 km of each other rather than thousands of kilometers apart.",
-    reference: {
-      label: "Multi-AZ DB instance deployments for Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+    distractorRationales: {
+      b: "That principle is about simulating failures to validate the recovery path, not about how changes reach the infrastructure.",
+      c: "That principle is about replacing one large resource with several small ones so a single failure has less impact.",
+      d: "That principle is about monitoring key indicators and starting automation when a threshold is breached.",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-35",
-    domain: 1,
-    type: "multi",
-    topic: "Multi-AZ databases",
-    difficulty: "hard",
-    stem: "Which TWO statements about an Amazon RDS Multi-AZ DB instance deployment are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "It provides high availability and failover support with a standby in a different Availability Zone." },
-      { id: "b", text: "It helps protect the database against DB instance failure and Availability Zone disruption." },
-      { id: "c", text: "The standby replica serves read traffic to scale read-heavy workloads." },
-      { id: "d", text: "It removes the need to ever back up the database." },
-      { id: "e", text: "It places the primary and standby in the same Availability Zone." },
-    ],
-    correct: ["a", "b"],
     explanation:
-      "An RDS Multi-AZ DB instance deployment keeps a synchronous standby in a different Availability Zone for failover, providing high availability and protecting against DB instance failure and Availability Zone disruption. The single standby does not serve read traffic, Multi-AZ does not replace backups, and the standby is by design in a different zone from the primary.",
+      "AWS states the reliability design principle manage change through automation as: changes to your infrastructure should be made using automation, and the changes that must be managed include changes to the automation, which can then be tracked and reviewed. Test recovery procedures is about simulating failures in the cloud to validate the recovery path before a real event. Scale horizontally replaces one large resource with multiple small resources so a single failure affects less of the workload. Automatically recover from failure is about monitoring key performance indicators and starting automation when a threshold is breached.",
     reference: {
-      label: "Multi-AZ DB instance deployments for Amazon RDS",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+      label: "Reliability Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-06-23",
-    services: ["RDS"],
-  },
-  {
-    id: "d1-resil-36",
-    domain: 1,
-    type: "multi",
-    topic: "Global infrastructure and resilience",
-    difficulty: "medium",
-    stem: "An architect is explaining how the AWS global infrastructure supports resilient designs. Which TWO statements are accurate? (Choose two.)",
-    options: [
-      { id: "a", text: "Each AWS Region is designed to be isolated from other Regions for the greatest possible fault tolerance and stability." },
-      { id: "b", text: "Launching instances in multiple Availability Zones protects applications from the failure of a single location in the Region." },
-      { id: "c", text: "All Availability Zones in a Region share a single set of power and network feeds." },
-      { id: "d", text: "A single Availability Zone automatically replicates your resources to every other Region." },
-      { id: "e", text: "Hosting everything in one Availability Zone is the AWS-recommended way to maximize availability." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS designs each Region to be isolated for fault tolerance and stability, and it recommends launching across multiple Availability Zones to survive the failure of a single location. Zones have their own redundant power and networking rather than sharing one set, resources are not auto-replicated across Regions, and concentrating in one zone lowers availability.",
-    reference: {
-      label: "Amazon EC2 Regions and Availability Zones",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-37",
-    domain: 1,
-    type: "multi",
-    topic: "Disaster recovery strategies",
-    difficulty: "medium",
-    stem: "A team is comparing the four AWS disaster recovery strategies. Which TWO statements are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "Backup and restore generally has the longest recovery time of the four strategies." },
-      { id: "b", text: "Multi-site active-active can achieve near-zero recovery time but is the most complex and costly." },
-      { id: "c", text: "Warm standby keeps no resources running in the recovery Region until a disaster occurs." },
-      { id: "d", text: "Pilot light serves full production traffic from every Region at all times." },
-      { id: "e", text: "All four strategies cost the same and differ only in name." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Backup and restore is the least complex with the longest recovery time, while multi-site active-active reaches near-zero recovery time at the highest cost and complexity. Warm standby keeps a scaled-down copy always running, pilot light keeps non-core resources switched off rather than serving traffic, and the strategies differ markedly in cost.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-resil-38",
-    domain: 1,
-    type: "multi",
-    topic: "Backup and restore",
-    difficulty: "medium",
-    stem: "A team is implementing a backup and restore disaster recovery strategy for a workload in one Region. Which TWO practices align with AWS guidance? (Choose two.)",
-    options: [
-      { id: "a", text: "Copy backups to another AWS Region as an additional layer of protection." },
-      { id: "b", text: "Define the infrastructure as code so it can be redeployed quickly during recovery." },
-      { id: "c", text: "Skip backing up configuration and application code, since only data matters." },
-      { id: "d", text: "Avoid ever testing the backups to save time." },
-      { id: "e", text: "Keep the only copy of every backup in the same Availability Zone as the source." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS advises copying backups to another Region for protection and using infrastructure as code so recovery is fast and consistent. You must also back up configuration and application code, not just data; you should not avoid ever testing the backups to save time, since untested backups may fail when needed; and keeping the only copy in the same Availability Zone as the source offers no protection if that location is lost.",
-    reference: {
-      label: "Reliability Pillar: use defined recovery strategies",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
 ];
