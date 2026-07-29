@@ -9,8 +9,9 @@ estimatedMinutes: 16
 services:
   - AWS Identity and Access Management
   - AWS IAM Identity Center
-  - AWS STS
-updated: 2026-06-13
+  - AWS Security Token Service
+  - Amazon Cognito
+updated: 2026-07-29
 draft: false
 ---
 
@@ -37,6 +38,14 @@ The standard practice is to lock the root user down: secure its credentials, tur
 on multi-factor authentication for it, and then stop using it. Create separate
 identities for everyday tasks and reserve the root user for the few account-level
 actions that genuinely require it.
+
+Those actions are a short list. On a standalone account that is not part of AWS
+Organizations, only the root user can change the account email address, the root
+user password, and root user access keys, and only the root user can close the
+account. The root user also restores IAM user permissions when the only IAM
+administrator accidentally revokes their own access, and it activates IAM access
+to the Billing and Cost Management console. Everything else belongs to an IAM
+identity.
 
 <Callout type="warning" title="Treat the root user as a break-glass account">
 Protect root credentials like your most sensitive personal information, enable MFA
@@ -70,17 +79,59 @@ anyone trusted to use it and hands out temporary credentials instead. Prefer rol
 and temporary credentials for both people and workloads wherever you can.
 </Callout>
 
+## IAM user credentials
+
+### Access keys
+
+An access key is the long-term credential for programmatic access. It has two
+parts, an access key ID and a secret access key, used together to sign AWS CLI,
+SDK, and API requests. The secret half is shown only when you create the key. An
+IAM user can hold at most two access keys at a time, which is what makes a clean
+cutover possible: create the second key, move applications onto it, then
+deactivate the first and delete it once nothing breaks. AWS recommends updating
+keys when needed, such as when someone leaves, and using the last-used
+information to find keys that nothing is calling. Where a workload can use a role
+instead, prefer the role and its temporary credentials.
+
+### Password policy
+
+An account password policy sets the rules for IAM user console passwords: a
+minimum length, which character types are required, an expiration period, and
+prevention of reuse of a number of previous passwords. It applies to IAM users
+created after you set it, and to existing users the next time they change their
+password. Two limits are worth remembering. You cannot configure a lockout after
+a number of failed sign-in attempts, which is part of why AWS pairs a strong
+password policy with MFA. And the policy governs neither the root user password
+nor any access key, so an expired console password still leaves that user's keys
+working.
+
 ## Policies and least privilege
 
 Permissions are defined by policies, which are JSON documents that state what
 actions are allowed or denied on which resources, and under what conditions. You
 attach policies to a user, a group, or a role to grant access.
 
+Policies live in two places. An identity-based policy attaches to an IAM user,
+group, or role and says what that identity may do, so it never names a principal;
+the principal is implied by whatever it is attached to. A resource-based policy
+attaches to the resource instead and says who may reach it, so it has to name the
+Principal it allows. The everyday example is an Amazon S3 bucket policy: JSON
+attached to the bucket by its owner that grants or denies access to the bucket
+and the objects in it, including access from another AWS account.
+
 The rule for writing them is least privilege: grant only the permissions required
 to perform a task, and nothing more. You might start broad while you learn what a
 workload needs, then tighten down to the minimum. Least privilege limits the
 damage from a mistake or a stolen credential, because the identity could never do
 much in the first place.
+
+How a request is decided follows a small set of rules. Every request starts
+implicitly denied, the account root user excepted, since it has full access. To
+proceed, a request needs an explicit allow from a policy that applies to it. An
+explicit deny in any applicable policy overrides every allow. If nothing denies
+the request but nothing allows it either, that missing allow is itself an implicit
+deny. Inside one account, identity-based and resource-based policies are evaluated
+together, so an explicit deny in either one settles the outcome.
 
 ## MFA and the case for temporary credentials
 
@@ -101,6 +152,12 @@ Many organizations already manage their people in an existing identity provider
 and do not want a separate IAM user for everyone. Federation creates a trust
 between that external provider and AWS, so users sign in with their existing
 identity and are given a role with temporary credentials.
+
+Customer-facing apps have their own service. Amazon Cognito adds sign-up and
+sign-in to web and mobile apps, authenticating people against its own user pools
+or an external SAML, OIDC, or social identity provider. Its identity pools then
+hand the app temporary AWS credentials, so the app can reach AWS resources on the
+signed-in user's behalf.
 
 For managing this centrally, AWS recommends AWS IAM Identity Center. It connects
 your workforce to multiple AWS accounts and to applications from one place, and you
