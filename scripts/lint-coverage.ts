@@ -17,6 +17,9 @@
 //   questions-nonempty resolved questions (domain + normalized topic) > 0
 //   lesson-resolves   every authored lessonSlug is a real lesson slug
 //   topic-resolves    every authored topic resolves to >=1 question IN its domain
+//   topic-covered     the reverse: every question's topic joins >=1 statement in
+//                     the question's OWN domain, so no question is unreachable
+//                     from the coverage map
 //
 // The 19 ids are fixed exam facts authored in one pass, so a missing id is ALWAYS
 // a hard failure: there is no CATALOG_COMPLETE-style escape hatch here (the
@@ -223,6 +226,40 @@ async function main(): Promise<void> {
         );
       }
     }
+  }
+
+  // topic-covered: the reverse join. A question whose normalized topic matches no
+  // statement in its own domain is unreachable from the coverage map — it is in
+  // the bank and in a domain quiz, but the map claims no statement teaches it. The
+  // join is domain-constrained on both sides, so the same topic string under
+  // another domain's statement does not rescue it. Reported once per distinct
+  // domain+topic (with a count and an example id) so a retag is one line to read.
+  const authoredKeysInDomain = new Map<number, Set<string>>([
+    [1, new Set()],
+    [2, new Set()],
+    [3, new Set()],
+    [4, new Set()],
+  ]);
+  for (const ts of TASK_STATEMENTS) {
+    const keys = authoredKeysInDomain.get(ts.domain);
+    if (!keys) continue;
+    for (const topic of ts.topics) keys.add(normalizeTopic(topic));
+  }
+
+  const orphanTopics = new Map<string, { label: string; domain: number; ids: string[] }>();
+  for (const q of ALL_QUESTIONS) {
+    const key = normalizeTopic(q.topic);
+    if (authoredKeysInDomain.get(q.domain)?.has(key)) continue;
+    const groupKey = `${q.domain}:${key}`;
+    const group = orphanTopics.get(groupKey);
+    if (group) group.ids.push(q.id);
+    else orphanTopics.set(groupKey, { label: q.topic, domain: q.domain, ids: [q.id] });
+  }
+  for (const { label, domain, ids } of orphanTopics.values()) {
+    report.fail(
+      "topic-covered",
+      `topic "${label}" (domain ${domain}) matches no task statement in domain ${domain}: ${ids.length} question(s), e.g. ${ids[0]}`,
+    );
   }
 
   // Summary header before the detail report.
