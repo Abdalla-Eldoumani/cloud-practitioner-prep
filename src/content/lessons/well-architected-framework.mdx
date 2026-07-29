@@ -8,7 +8,7 @@ day: 1
 estimatedMinutes: 14
 services:
   - AWS Well-Architected Tool
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -17,8 +17,11 @@ import Callout from "@/components/Callout.astro";
 The AWS Well-Architected Framework is a set of guidance for designing and
 running systems in the cloud. It organizes design principles and best practices
 into pillars, each covering one area of concern, so you can evaluate an
-architecture and find where it falls short. The exam expects you to name the
-pillars and recognize which one a scenario is about.
+architecture and find where it falls short. Reviewing an architecture this way
+is a constructive conversation about the decisions behind it, not an audit
+mechanism: a review produces areas to improve, not a pass-or-fail grade. The
+exam expects you to name the pillars and recognize which one a scenario is
+about.
 
 <Callout type="key" title="The six pillars">
 Operational Excellence, Security, Reliability, Performance Efficiency, Cost
@@ -47,6 +50,21 @@ function correctly and consistently when expected, and to recover from failures.
 A reliable design plans for things to break and keeps working anyway, for
 example by spreading across Availability Zones and recovering automatically.
 
+AWS lists five design principles for reliability.
+
+- Automatically recover from failure: monitor key indicators and run automation
+  when a threshold is breached, so failures are repaired without waiting for a
+  person.
+- Test recovery procedures: simulate failures in the cloud and validate the
+  recovery path, exposing problems before a real event.
+- Scale horizontally to increase aggregate workload availability: replace one
+  large resource with several small ones and spread requests across them so
+  they do not share a common point of failure.
+- Stop guessing capacity: monitor demand and add or remove resources
+  automatically instead of over-provisioning or under-provisioning.
+- Manage change through automation: change infrastructure through automation so
+  every change can be tracked and reviewed.
+
 <Callout type="note" title="Reliability versus Performance Efficiency">
 Reliability asks whether the workload keeps doing its job when something fails.
 Performance Efficiency asks whether it uses resources well to meet its
@@ -69,12 +87,53 @@ value at the lowest price point. It covers paying only for what you need,
 choosing the right pricing models, and stopping spend on resources that are idle
 or oversized.
 
+AWS lists five design principles for cost optimization.
+
+- Implement cloud financial management: build cost management as a capability,
+  with the people and processes to match.
+- Adopt a consumption model: pay only for the resources you consume, for example
+  by stopping development environments outside work hours.
+- Measure overall efficiency: weigh the business output of a workload against
+  the cost of delivering it.
+- Stop spending money on undifferentiated heavy lifting: let AWS run the data
+  centers and managed services so your people work on customers and products.
+- Analyze and attribute expenditure: identify what each workload costs and
+  attribute it to revenue streams and individual workload owners.
+
 ## Sustainability
 
 The Sustainability pillar focuses on reducing the environmental impact of running
 cloud workloads, especially energy consumption and efficiency. It encourages
 choices that get more useful work from the resources you provision, such as
 right-sizing and using managed services that run efficiently at scale.
+
+## General design principles
+
+Beyond the pillars, the framework lists six general design principles.
+
+- Stop guessing your capacity needs: use as much or as little capacity as you
+  need and scale automatically.
+- Test systems at production scale: create a production-scale test environment
+  on demand and shut it down when the testing is over.
+- Automate with architectural experimentation in mind: automation makes
+  workloads cheap to create and replicate, and changes easy to track and undo.
+- Consider evolutionary architectures: let a design keep changing instead of
+  freezing it at launch.
+- Drive architectures using data: collect data on how your choices affect the
+  workload and decide from that.
+- Improve through game days: regularly schedule simulations of events in
+  production to find weak spots and build the team's experience of them.
+
+## The AWS Well-Architected Tool
+
+The AWS Well-Architected Tool is a service you open in the AWS Management
+Console with any AWS account. You define a workload, answer the framework's
+questions across each pillar, and the tool records those decisions and returns
+an improvement plan: a prioritized list of issues, with recommendations for
+making the workload more reliable, secure, efficient, and cost-effective. AWS
+offers it at no charge, and you pay only for the underlying AWS resources you
+use. It measures and guides: the output is a plan to improve, not a compliance
+result, and the design work still belongs to you.
 
 ## What to take away
 
@@ -83,4 +142,5 @@ Operational Excellence is about running and improving operations, Security about
 protecting data and systems, Reliability about working and recovering through
 failures, Performance Efficiency about using resources well, Cost Optimization
 about the lowest price point, and Sustainability about reducing environmental
-impact.
+impact. Know the six general design principles by name, and know that the
+Well-Architected Tool is the free console review.
