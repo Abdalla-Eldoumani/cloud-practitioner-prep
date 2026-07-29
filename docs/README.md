@@ -6,8 +6,9 @@ understand how the site works, contribute, or fork it for another exam.
 ## In this folder
 
 - [ARCHITECTURE.md](./ARCHITECTURE.md) how the site is built: the stack, the
-  directory map, the data-as-source-of-truth model, the quiz engine, structured
-  data, the PWA, the security posture, and how to make your own version.
+  directory map, the data-as-source-of-truth model, how questions are filed and
+  tagged, the quiz engine, structured data, the PWA, the security posture, the
+  verification gate, and how to make your own version.
 - [CONTRIBUTING.md](./CONTRIBUTING.md) local setup, the content-integrity rules,
   and how to add a lesson or a question.
 - [SECURITY.md](./SECURITY.md) the security posture and how to report a
