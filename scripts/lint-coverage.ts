@@ -62,7 +62,14 @@ function resolveGlob(relative: string): string {
   return fileURLToPath(new URL(relative, import.meta.url)).replace(/\\/g, "/");
 }
 
-const LESSONS_GLOB = resolveGlob("../src/content/lessons/**/*.{md,mdx}");
+// Mirrors the loader pattern in src/content.config.ts (["**/*.{md,mdx}",
+// "!**/[A-Z]*"]): a lesson file is a lowercase kebab-case slug, so an
+// uppercase-named file next to the lessons is notes, not a lesson. Counting one
+// would inflate the slug set and let a blueprint slug "resolve" to a non-lesson.
+const LESSONS_GLOB = [
+  resolveGlob("../src/content/lessons/**/*.{md,mdx}"),
+  `!${resolveGlob("../src/content/lessons/**/[A-Z]*")}`,
+];
 
 // Collects hard failures (set the exit code) and soft notes (informational).
 // Mirrors lint-catalog.ts's Reporter so the report shape is identical.
