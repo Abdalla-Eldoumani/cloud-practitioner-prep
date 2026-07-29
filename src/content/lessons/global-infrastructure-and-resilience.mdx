@@ -1,15 +1,17 @@
 ---
 title: "Global Infrastructure and Resilience"
 description: "How AWS organizes the world into Regions and Availability Zones, what edge locations add, and the four factors that decide which Region to pick."
-domain: 1
+domain: 3
 module: 2
 order: 2
 day: 1
 estimatedMinutes: 14
 services:
   - Amazon CloudFront
-  - Amazon EC2
-updated: 2026-06-13
+  - AWS Global Accelerator
+  - Amazon S3
+  - AWS CloudFormation
+updated: 2026-07-29
 draft: false
 ---
 
@@ -71,6 +73,29 @@ The benefit is distance. Holding copies of files at edge locations around the
 world means a user's request travels a shorter path, which lowers latency and
 speeds up delivery.
 
+## AWS Global Accelerator
+
+AWS Global Accelerator also works from the edge, but it solves a different
+problem. It gives you static IP addresses, anycast from the AWS edge network,
+that act as one fixed entry point for your application, then routes traffic over
+the AWS global network to the optimal regional endpoint based on endpoint health
+and where the client is. That suits applications running over TCP or UDP, such
+as online gaming and voice over IP, and any case that needs a fixed address or
+fast failover between Regions. The difference from CloudFront is what happens at
+the edge: CloudFront caches HTTP content there, while Global Accelerator proxies
+packets on to your endpoints in a Region.
+
+## AWS Local Zones
+
+An AWS Local Zone is an extension of an AWS Region in geographic proximity to
+your users. It places compute, storage, database, and other select AWS resources
+close to large population and industry centers, so nearby users get low-latency
+access. AWS gives two reasons to use one: running low-latency applications at the
+edge, such as real-time gaming, live streaming, and virtual workstations, and
+meeting stringent state and local data residency requirements in sectors such as
+healthcare, financial services, and government. A Local Zone belongs to a parent
+Region rather than replacing it.
+
 ## Choosing a Region
 
 Four factors usually decide which Region to deploy in:
@@ -81,8 +106,8 @@ Four factors usually decide which Region to deploy in:
   country or area. Because resources stay in the Region you choose, you select a
   Region that meets those rules.
 - Service availability. Not every AWS service or feature is available in every
-  Region, and newer services roll out to more Regions over time. Confirm the
-  services you need exist in the Region you want.
+  Region, and the services-by-Region list changes over time. Check the AWS
+  Regional Services List for the Region you want.
 - Pricing. Prices vary by Region, so the same resource can cost more in one
   Region than another. Cost can be the deciding factor when the others are equal.
 
@@ -92,10 +117,41 @@ need or cost more, while a compliant Region might add latency. Weigh the four
 factors against what the workload actually requires.
 </Callout>
 
+## Disaster recovery
+
+Multiple Availability Zones in one Region already mitigate events like fires,
+floods, and major power outages. Planning past that starts with two numbers. The
+recovery time objective, or RTO, is the maximum acceptable delay between the
+interruption of service and restoration of service. The recovery point objective,
+or RPO, is the maximum acceptable time after the last data recovery point, which
+is how much recent data you can afford to lose. Choosing a strategy trades
+reduced downtime and data loss against cost and complexity.
+
+AWS lists four strategies in increasing order of cost and complexity and
+decreasing order of RTO and RPO:
+
+- Backup and restore. Back data up to a recovery Region and redeploy when
+  needed. Least complex, lowest cost, longest recovery time. Define the
+  infrastructure as code with AWS CloudFormation so it redeploys quickly and
+  without errors, back up configuration and application code as well as data,
+  and test the restores.
+- Pilot light. A copy of the core infrastructure and replicated data sit in the
+  recovery Region, with the rest switched off.
+- Warm standby. A scaled-down but fully functional copy runs all the time in the
+  recovery Region.
+- Multi-site active-active. The workload runs in several Regions and serves
+  traffic from all of them, which can bring recovery time near zero at the
+  highest cost and complexity.
+
+Pilot light cannot process requests until you act first, while warm standby takes
+traffic at reduced capacity immediately. That is the line between the two.
+
 ## What to take away
 
 Know the hierarchy: Regions are geographic areas, each with at least three
 isolated Availability Zones, and edge locations form a separate global layer for
 caching through CloudFront. Resilience comes from spreading a workload across
 AZs. Region selection comes down to latency, compliance and data residency,
-service availability, and price.
+service availability, and price. Global Accelerator adds a static edge entry
+point, Local Zones push a Region closer to users, and the four disaster recovery
+strategies trade cost and complexity against recovery time.
