@@ -51,10 +51,18 @@ src/
                  nanostores store, navigation index, and the review scheduler
   styles/        global.css: the Tailwind import and the design tokens
 scripts/         the verification gate (one tsx check per concern)
+docs/            this guide plus contributing, security, code of conduct, changelog
 public/          static assets served as-is: favicon, robots.txt, _headers, og.png
 astro.config.mjs the site origin and the integrations (React, MDX, sitemap, PWA)
 vercel.json      the production security and caching headers
 ```
+
+The project documentation lives in `docs/`, not at the repository root, so the
+root holds only `README.md` and `LICENSE`. GitHub looks for the community health
+files in `.github/`, then the root, then `docs/`, and uses the first copy it
+finds, so a single copy in `docs/` still backs the issue, pull request, and
+security surfaces. Keep exactly one copy of each: a file re-added at the root
+silently shadows the one here.
 
 ## Routes
 
