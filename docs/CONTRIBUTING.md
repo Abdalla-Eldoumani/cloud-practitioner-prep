@@ -102,8 +102,13 @@ Lessons are MDX in `src/content/lessons/`.
    slug.
 2. Fill the frontmatter to match the schema in `src/content.config.ts`: tag it
    to a domain and a study-plan day, and set `updated` to the date you verified
-   its facts against AWS docs.
-3. Run `npm run sync` so the content types regenerate, then `npm run check`.
+   its facts against AWS docs. The `domain` is the exam domain of the material
+   the lesson teaches, and the coverage lint checks it against the task
+   statements the lesson is credited to.
+3. Add the slug to the statements it covers in `src/data/blueprint.ts`. A lesson
+   nothing points at is a lesson the coverage map cannot show.
+4. Run `npm run sync` so the content types regenerate, then `npm run check` and
+   `npm run lint:coverage`.
 
 When you change a lesson's facts, update its `updated` date in the same change.
 
