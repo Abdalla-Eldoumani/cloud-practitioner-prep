@@ -1,6 +1,6 @@
 ---
 title: "Protecting the Network and Web Applications"
-description: "Security groups versus network ACLs, and how AWS WAF, Shield, and Network Firewall defend traffic at different layers."
+description: "Security groups versus network ACLs, and how AWS WAF, Shield, and Firewall Manager defend traffic at different layers."
 domain: 2
 module: 4
 order: 3
@@ -10,8 +10,8 @@ services:
   - Amazon VPC
   - AWS WAF
   - AWS Shield
-  - AWS Network Firewall
-updated: 2026-06-13
+  - AWS Firewall Manager
+updated: 2026-07-29
 draft: false
 ---
 
@@ -56,6 +56,11 @@ IP address, the country of origin, header values, and strings in the request. It
 includes protections against common web attacks such as SQL injection and
 cross-site scripting.
 
+You do not have to write every rule yourself. The rules a resource uses live in
+a web ACL, and you can add AWS Managed Rules rule groups to it: curated,
+ready-to-use rule sets that AWS writes and maintains, with more available from
+AWS Marketplace sellers.
+
 WAF attaches to the services that front your applications, including Amazon
 CloudFront, Application Load Balancer, and Amazon API Gateway. Reach for WAF when
 the threat is malicious or unwanted web requests rather than raw network floods.
@@ -69,7 +74,10 @@ common network and transport layer attacks for all AWS customers. Shield Advance
 is a paid subscription that adds expanded protection, including at the application
 layer, for resources such as EC2 instances, Elastic Load Balancing, CloudFront,
 and Route 53, plus richer attack visibility and access to a dedicated response
-team.
+team. It also includes DDoS cost protection: if an attack drives a usage spike
+that scales up protected EC2, Elastic Load Balancing, CloudFront, Global
+Accelerator, or Route 53 resources, you can request service credits for the
+charges that spike caused.
 
 <Callout type="note" title="Standard is free, Advanced is paid">
 Every AWS account already has Shield Standard at no charge. You pay only when you
@@ -77,14 +85,14 @@ subscribe to Shield Advanced for its expanded coverage and support. A question
 naming automatic, no-cost DDoS protection is describing Shield Standard.
 </Callout>
 
-## AWS Network Firewall protects the VPC perimeter
+## AWS Firewall Manager applies protections across accounts
 
-AWS Network Firewall is a managed, stateful network firewall with intrusion
-detection and prevention for your VPC. It filters traffic at the edge of the VPC,
-such as traffic to and from an internet gateway or a VPN connection, and it can
-inspect packets deeply and match them against rules. Where a security group
-guards a single instance and WAF inspects web requests, Network Firewall sits at
-the VPC boundary and filters the network traffic crossing it.
+AWS Firewall Manager centrally configures and maintains protections across the
+accounts and resources in an AWS Organizations organization, among them AWS WAF
+rules, Shield Advanced protections, and VPC security groups and network ACLs.
+You set a policy up once and Firewall Manager applies it automatically as new
+accounts and resources appear. Reach for it when the problem is consistency
+across many accounts rather than protecting one application.
 
 ## What to take away
 
@@ -92,5 +100,6 @@ The core comparison is security groups, stateful and instance level with allow
 rules only, against network ACLs, stateless and subnet level with allow and deny
 rules in number order. On top of that, WAF filters web requests at layer 7 for
 services like CloudFront and load balancers, Shield defends against DDoS with a
-free Standard tier and a paid Advanced tier, and Network Firewall filters traffic
-at the VPC perimeter. Knowing which tool acts at which layer is the goal here.
+free Standard tier and a paid Advanced tier, and Firewall Manager rolls those
+protections out consistently across every account in an organization. Knowing
+which tool acts at which layer, and which one spans accounts, is the goal here.
