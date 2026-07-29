@@ -1,9 +1,14 @@
 import type { Question } from "../../lib/types";
 
 // Domain 1: Cloud Concepts, AWS Well-Architected Framework cluster. Original
-// practice questions written to test the exam-guide concepts. These are not
-// real exam items. Every fact is verified against current AWS documentation;
+// practice questions written to test the exam-guide concepts, covering the
+// pillars, the design principles, and the AWS Well-Architected Tool. These are
+// not real exam items. Every fact is verified against current AWS documentation;
 // each question cites the page that backs its answer.
+//
+// Ids keep their historical d4-supportmig- prefixes deliberately: an id is a
+// stable key in a learner's saved progress, so it survives a move between files
+// and stays put when a question is retagged to another domain.
 export const domain1WellArchitected: Question[] = [
   {
     id: "d1-warch-01",
@@ -25,7 +30,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-02",
@@ -47,7 +52,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-03",
@@ -69,7 +74,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-04",
@@ -92,7 +97,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-05",
@@ -115,7 +120,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-06",
@@ -138,7 +143,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Operational excellence pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-07",
@@ -160,7 +165,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Security pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-08",
@@ -182,7 +187,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-09",
@@ -204,7 +209,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-10",
@@ -226,7 +231,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Cost optimization pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-11",
@@ -248,7 +253,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Sustainability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sustainability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-12",
@@ -270,7 +275,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-13",
@@ -293,7 +298,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Security pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-14",
@@ -315,7 +320,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Cost optimization pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-15",
@@ -337,7 +342,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-16",
@@ -359,7 +364,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Operational excellence pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-16b",
@@ -382,7 +387,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-17",
@@ -404,7 +409,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Sustainability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sustainability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-18",
@@ -427,7 +432,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-19",
@@ -449,7 +454,7 @@ export const domain1WellArchitected: Question[] = [
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-20",
@@ -471,7 +476,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-21",
@@ -493,7 +498,7 @@ export const domain1WellArchitected: Question[] = [
       label: "What is AWS Well-Architected Tool?",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-22",
@@ -515,7 +520,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-23",
@@ -537,7 +542,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-24",
@@ -559,7 +564,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-25",
@@ -581,7 +586,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-26",
@@ -603,7 +608,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-27",
@@ -625,7 +630,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-28",
@@ -647,7 +652,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-29",
@@ -666,10 +671,10 @@ export const domain1WellArchitected: Question[] = [
     explanation:
       "Decoupling components, for example with a queue or load balancer between tiers, lets parts of a system scale and fail independently so a failure in one does not break the others. Tightly coupling all logic, statically provisioning peak capacity, and nursing individual servers run counter to cloud design guidance.",
     reference: {
-      label: "Reliability pillar design principles",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
+      label: "REL04-BP02 Implement loosely coupled dependencies",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-30",
@@ -691,7 +696,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-31",
@@ -713,7 +718,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-32",
@@ -732,10 +737,10 @@ export const domain1WellArchitected: Question[] = [
     explanation:
       "Implementing elasticity means scaling resources out and in automatically with demand rather than statically provisioning for peak, which both controls cost and meets load. Provisioning for peak, buying capacity manually, and avoiding automation are the opposite of the elastic, automated approach AWS recommends.",
     reference: {
-      label: "General design principles",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
+      label: "Cloud computing benefits: elasticity",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -755,10 +760,10 @@ export const domain1WellArchitected: Question[] = [
     explanation:
       "Thinking parallel means breaking work into pieces that run concurrently across many resources to increase throughput, which the cloud makes easy to provision on demand. Forcing single-threaded processing or relying only on a faster CPU does not use the cloud's ability to run work in parallel.",
     reference: {
-      label: "General design principles",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
+      label: "AWS Batch array jobs",
+      url: "https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-34",
@@ -781,7 +786,7 @@ export const domain1WellArchitected: Question[] = [
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-35",
@@ -803,7 +808,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-36",
@@ -826,7 +831,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-37",
@@ -846,10 +851,10 @@ export const domain1WellArchitected: Question[] = [
     explanation:
       "Decoupling components removes single points of failure and lets parts scale independently, and implementing elasticity scales resources automatically so you stop guessing capacity. Concentrating everything on one server creates a single point of failure, and static peak provisioning or buying a year of hardware ahead is the on-premises pattern the cloud replaces.",
     reference: {
-      label: "General design principles",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
+      label: "REL04-BP02 Implement loosely coupled dependencies",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-warch-38",
@@ -872,6 +877,164 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d4-supportmig-18",
+    domain: 1,
+    type: "single",
+    topic: "AWS Well-Architected Tool",
+    difficulty: "medium",
+    stem: "A team wants to review a workload against AWS architectural best practices in the AWS Management Console at no cost and get a plan to improve it. Which service should they use?",
+    options: [
+      { id: "a", text: "AWS Well-Architected Tool" },
+      { id: "b", text: "AWS Trusted Advisor" },
+      { id: "c", text: "AWS Compute Optimizer" },
+      { id: "d", text: "AWS Service Catalog" },
+    ],
+    correct: ["a"],
+    explanation:
+      "The AWS Well-Architected Tool is a free console service that helps you review a workload against the Well-Architected Framework and produces an improvement plan. Trusted Advisor gives account-wide best-practice checks rather than a guided workload review, Compute Optimizer recommends resource sizing, and Service Catalog manages approved products for deployment.",
+    reference: {
+      label: "AWS Well-Architected Tool",
+      url: "https://aws.amazon.com/well-architected-tool/",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-warch-39",
+    domain: 1,
+    type: "multi",
+    topic: "Sustainability pillar",
+    difficulty: "hard",
+    stem: "Which TWO practices does the Sustainability pillar of the AWS Well-Architected Framework name as ways to reduce the environmental impact of a workload? (Choose two.)",
+    options: [
+      { id: "a", text: "Maximize utilization by reducing idle resources, processing, and storage, so the hardware behind the workload does more useful work for the energy it draws." },
+      { id: "b", text: "Use managed services, where sharing across a broad customer base raises utilization and cuts the total infrastructure needed." },
+      { id: "c", text: "Encrypt every stored object with a customer managed key." },
+      { id: "d", text: "Purchase three-year Reserved Instances to lower the hourly rate." },
+      { id: "e", text: "Deploy a copy of the workload into every AWS Region." },
+    ],
+    correct: ["a", "b"],
+    distractorRationales: {
+      c: "Protecting stored objects belongs to the Security pillar. It changes who can read the data, not how much hardware the workload keeps busy.",
+      d: "A reservation lowers the price of the same capacity. The workload consumes exactly what it consumed before.",
+      e: "Running more copies in more places raises the resources a workload uses, which is the opposite of the pillar's goal.",
+    },
+    explanation:
+      "The Sustainability pillar's design principles include maximizing utilization, which means right-sizing and reducing or minimizing idle resources, processing, and storage, because two hosts running at 30 percent utilization are less efficient than one running at 60 percent. They also include using managed services, where sharing services across a broad customer base maximizes resource utilization and reduces the amount of infrastructure needed. Encrypting objects with a customer managed key is a security control, buying Reserved Instances lowers the rate you pay without changing what the workload consumes, and deploying a copy into every Region increases resource use rather than reducing it.",
+    reference: {
+      label: "Sustainability Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-warch-40",
+    domain: 1,
+    type: "single",
+    topic: "Pillar discrimination",
+    difficulty: "hard",
+    stem: "An architecture review raises two findings: several IAM users hold far broader permissions than their work requires, and the on-call runbook has not been updated since the last incident. Which pillars own these findings, in that order?",
+    options: [
+      { id: "a", text: "Security, then Operational Excellence" },
+      { id: "b", text: "Operational Excellence, then Security" },
+      { id: "c", text: "Security, then Reliability" },
+      { id: "d", text: "Reliability, then Performance Efficiency" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "This reverses the two. Permissions are a data-and-systems protection concern; a stale runbook is an operating-practice concern.",
+      c: "Reliability is about the workload doing its job and recovering from failure, not about keeping runbooks current.",
+      d: "Neither finding is about recovering from failure or about using resources efficiently.",
+    },
+    explanation:
+      "The Security pillar covers the ability to protect data, systems, and assets and to use cloud technologies to improve security, which is where over-broad permissions belong. Operational Excellence is a commitment to build software correctly while delivering a great customer experience, with best practices for organizing the team, operating the workload, and evolving it over time, so an out-of-date runbook belongs there. Reversing the pair misplaces both. Reliability concerns a workload performing its intended function and recovering from failure, and Performance Efficiency concerns using computing resources efficiently, so neither owns a permissions finding or a runbook.",
+    reference: {
+      label: "AWS Well-Architected Framework: Security pillar",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/security.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-warch-41",
+    domain: 1,
+    type: "single",
+    topic: "Operational Excellence pillar",
+    difficulty: "medium",
+    stem: "Which description matches the Operational Excellence pillar of the AWS Well-Architected Framework?",
+    options: [
+      { id: "a", text: "A commitment to build software correctly while consistently delivering a great customer experience, with best practices for organizing the team, operating the workload at scale, and evolving it over time." },
+      { id: "b", text: "The ability to run systems that deliver business value at the lowest price point." },
+      { id: "c", text: "The ability of a workload to perform its intended function correctly and consistently and to recover from failures." },
+      { id: "d", text: "A focus on environmental impacts, especially energy consumption and efficiency." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "That is the Cost Optimization pillar.",
+      c: "That is the Reliability pillar.",
+      d: "That is the Sustainability pillar.",
+    },
+    explanation:
+      "AWS defines operational excellence as a commitment to build software correctly while consistently delivering a great customer experience, and says the pillar holds best practices for organizing your team, designing your workload, operating it at scale, and evolving it over time. Running systems that deliver business value at the lowest price point is Cost Optimization, performing an intended function and recovering from failures is Reliability, and environmental impacts and energy consumption are the concern of Sustainability.",
+    reference: {
+      label: "AWS Well-Architected Framework: Operational excellence",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-warch-42",
+    domain: 1,
+    type: "single",
+    topic: "Six pillars",
+    difficulty: "easy",
+    stem: "A study sheet lists the Well-Architected pillars as operational excellence, security, reliability, performance efficiency, and cost optimization. Which pillar has been left off the list?",
+    options: [
+      { id: "a", text: "Sustainability" },
+      { id: "b", text: "Scalability" },
+      { id: "c", text: "Compliance" },
+      { id: "d", text: "Automation" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Scalability is an architectural property, not one of the framework's pillars.",
+      c: "Compliance is an outcome the Security pillar supports; the framework has no pillar by that name.",
+      d: "Automation runs through several pillars as a practice, but it is not a pillar itself.",
+    },
+    explanation:
+      "AWS names six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Sustainability is the one missing from the list, and it is the pillar people most often forget. Scalability, compliance, and automation all matter in cloud architecture, but none of them is a pillar of the framework.",
+    reference: {
+      label: "AWS Well-Architected Framework: the pillars of the framework",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-warch-43",
+    domain: 1,
+    type: "single",
+    topic: "Pillar discrimination",
+    difficulty: "hard",
+    stem: "A team right-sizes a fleet of over-provisioned instances. The finance lead calls the change a Cost Optimization win and the sustainability lead calls it a Sustainability win. Which statement is correct?",
+    options: [
+      { id: "a", text: "Both are right, because the two pillars judge the same change against different goals: delivering business value at the lowest price point, and reducing the environmental impact of what the workload consumes." },
+      { id: "b", text: "Only Cost Optimization applies, because Sustainability covers renewable energy purchasing rather than architecture." },
+      { id: "c", text: "Only Sustainability applies, because Cost Optimization covers billing tools rather than resource choices." },
+      { id: "d", text: "Neither applies, because sizing decisions belong to the Performance Efficiency pillar alone." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Sustainability is architectural guidance whose design principles name utilization and idle resources directly.",
+      c: "Cost Optimization is about the price paid for business value, which is exactly what shrinking an oversized fleet changes.",
+      d: "Performance Efficiency also cares about resource choices, but that does not make it the only pillar a sizing change touches.",
+    },
+    explanation:
+      "Cost Optimization is the ability to run systems that deliver business value at the lowest price point, while Sustainability focuses on environmental impacts, especially energy consumption and efficiency, and its design principles call for maximizing utilization and cutting idle resources. One change can therefore serve both pillars at once. Sustainability is architectural guidance rather than renewable energy purchasing, Cost Optimization is about price for value rather than billing tools, and although Performance Efficiency also weighs resource choices, sizing does not belong to it alone.",
+    reference: {
+      label: "AWS Well-Architected Framework: Cost optimization",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
+    },
+    lastVerified: "2026-07-29",
   },
 ];
