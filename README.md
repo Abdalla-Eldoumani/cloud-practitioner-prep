@@ -126,15 +126,15 @@ repository and accepting the defaults does this.
 
 - [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) explains how the site is built, the stack, the
   data-as-source-of-truth model, the quiz engine, and how to fork it for a different exam.
-- [CONTRIBUTING.md](./CONTRIBUTING.md), [SECURITY.md](./SECURITY.md), and
-  [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) cover local setup, the content-integrity rules, the
-  security posture, and how we work together.
-- [CHANGELOG.md](./CHANGELOG.md) is the release history.
+- [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md), [docs/SECURITY.md](./docs/SECURITY.md), and
+  [docs/CODE_OF_CONDUCT.md](./docs/CODE_OF_CONDUCT.md) cover local setup, the content-integrity
+  rules, the security posture, and how we work together.
+- [docs/CHANGELOG.md](./docs/CHANGELOG.md) is the release history.
 
 ## Contributing
 
 Contributions are welcome, especially new lessons, more practice questions, and corrections. See
-[CONTRIBUTING.md](./CONTRIBUTING.md) for setup and the full rules; the essentials:
+[docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) for setup and the full rules; the essentials:
 
 - Practice questions must be original and must test a concept. Do not submit leaked or memorized
   exam items.
