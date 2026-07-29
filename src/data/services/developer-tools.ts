@@ -20,7 +20,7 @@ export const developerTools: ServiceEntry[] = [
       label: "What is the AWS Command Line Interface?",
       url: "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CLI",
       "command line interface",
@@ -43,7 +43,7 @@ export const developerTools: ServiceEntry[] = [
       label: "What is AWS CodeBuild?",
       url: "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CodeBuild",
       "build service",
@@ -66,7 +66,7 @@ export const developerTools: ServiceEntry[] = [
       label: "What is AWS CodePipeline?",
       url: "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CodePipeline",
       "release pipeline",
@@ -89,7 +89,7 @@ export const developerTools: ServiceEntry[] = [
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "X-Ray",
       "tracing",
