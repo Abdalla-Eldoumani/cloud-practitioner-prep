@@ -28,13 +28,26 @@ Useful scripts:
 
 ```bash
 npm run dev       # start the dev server
-npm run build     # type-check, validate content, and build to dist/
+npm run build     # type-check and build to dist/
 npm run preview   # preview the production build
-npm run check     # type-check and validate content only
+npm run check     # type-check only
 npm run sync      # regenerate content types after a schema change
 ```
 
-Run `npm run check` before opening a pull request and fix anything it reports.
+Content is validated separately, by one check per concern:
+
+```bash
+npm run lint:content    # the question bank: floors, duplicate stems, option wording
+npm run lint:coverage   # the exam blueprint join, in both directions
+npm run lint:catalog    # the service catalog
+npm run lint:links      # every AWS reference URL (add --live to fetch each one)
+npm run lint:shuffle    # answer-option position fairness
+```
+
+Run `npm run check` and the lint that covers what you touched before opening a
+pull request, and fix anything they report. Continuous integration runs the full
+set, including the diagram, navigation, engine, and built-PWA checks, on every
+push, so a check skipped locally surfaces there instead.
 
 ## Content integrity rules
 
