@@ -97,6 +97,40 @@ limit, passing scaled score, domain weights, live once in `src/lib/constants`
 number. Change a fact there and it updates everywhere, including the structured
 data.
 
+## How questions are filed and tagged
+
+A question's `domain` is the domain the official CLF-C02 exam guide places its
+task statement in. The bank does not depart from the guide anywhere: the guide
+files global infrastructure under Domain 3 and migration under Domain 1, so that
+is how those questions are tagged, and nothing downstream is written to
+compensate for a question sitting in the wrong domain.
+
+The file a question lives in follows from its domain. Every question sits in a
+`domain-N-*.ts` file whose `N` equals its `domain` field, split by subject within
+the domain (`domain-3-ec2.ts`, `domain-3-storage.ts`, `domain-4-pricing.ts`), and
+a new subject just gets a new file wired through `index.ts`. Retagging a question
+and relocating it are therefore the same change, and the content lint fails on any
+mismatch between a file name and the domains inside it. That rule is why
+`domain-1-global.ts` became `domain-3-global.ts`, and why the migration and
+monitoring clusters moved into `domain-1-migration-caf.ts` and
+`domain-2-monitoring-audit.ts`.
+
+Question ids do not follow. An id is the key a learner's saved progress, review
+queue, and attempt history are stored under, so it never changes, not on a retag
+and not on a move. `domain-3-global.ts` holds `d1-global-` ids and
+`domain-1-migration-caf.ts` holds `d4-supportmig-` ids: a prefix records where a
+question was first written, each such file says so in its header, and the lint
+deliberately does not read prefixes. Never renumber ids to tidy this up.
+
+`topic` is the join key to the exam blueprint. `src/data/blueprint.ts` lists, for
+each of the 19 task statements, the lesson slugs and question topics that cover
+it. The coverage page resolves that join at build time, matching questions on
+domain plus normalized topic and lessons on slug. The join is total in both
+directions: every statement resolves to at least one lesson and one question, and
+every question resolves to at least one statement. The count in the page footer
+is derived from the join rather than from the size of the bank, so it reports
+what the page actually maps.
+
 ## The islands and shared state
 
 Islands take plain props and hydrate with the lightest correct strategy:
