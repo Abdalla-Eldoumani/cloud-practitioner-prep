@@ -93,8 +93,14 @@ Open the URL the dev server prints. Useful scripts:
 npm run dev       # start the dev server
 npm run build     # build the static site to dist/
 npm run preview   # preview the production build
-npm run check     # type-check and validate content
+npm run check     # type-check the project
 ```
+
+Content is validated by its own checks, each behind an npm script: `lint:content` and
+`lint:coverage` over the question bank and the exam blueprint, `lint:catalog` over the service
+catalog, `lint:links` over every AWS reference, `lint:shuffle` over answer-option fairness, and the
+`check:*` scripts over the quiz engine, diagrams, navigation, and the built PWA. Continuous
+integration runs all of them on every push.
 
 ## Deploy
 
