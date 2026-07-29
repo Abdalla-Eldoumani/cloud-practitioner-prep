@@ -95,8 +95,8 @@ The constants that describe the exam itself, question count, scored split, time
 limit, passing scaled score, retake wait, domain weights, live once in
 `src/lib/constants` (`EXAM`, `DOMAINS`), alongside `DOMAIN_QUESTION_FLOORS`, the
 minimum bank size per domain. Pages and the exam builder read them; no page
-re-hardcodes a number. Change a fact there and it updates everywhere, including the structured
-data.
+re-hardcodes a number. Change a fact there and it updates everywhere, including
+the structured data.
 
 ## How questions are filed and tagged
 
