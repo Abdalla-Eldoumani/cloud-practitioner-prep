@@ -5,6 +5,9 @@ import type { Question } from "../../lib/types";
 // and high availability, and how AWS Auto Scaling and elastic managed services
 // embody them. These are not real exam items. Every fact is verified against
 // current AWS documentation; each question cites the page that backs its answer.
+//
+// Ids keep their historical d1-elast- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files.
 export const domain1Elasticity: Question[] = [
   {
     id: "d1-elast-01",
@@ -26,7 +29,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-02",
@@ -48,7 +51,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-03",
@@ -70,7 +73,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-04",
@@ -92,7 +95,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -120,54 +123,8 @@ export const domain1Elasticity: Question[] = [
       label: "Amazon EC2 instance type changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
-  },
-  {
-    id: "d1-elast-06",
-    domain: 1,
-    type: "single",
-    topic: "AWS Auto Scaling",
-    difficulty: "easy",
-    stem: "Which AWS service automatically adds and removes EC2 capacity by launching instances as demand on an application rises and terminating them as demand falls?",
-    options: [
-      { id: "a", text: "Amazon EC2 Auto Scaling" },
-      { id: "b", text: "Amazon Route 53" },
-      { id: "c", text: "AWS Identity and Access Management" },
-      { id: "d", text: "Amazon CloudFront" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, keeping the right number of instances available. Route 53 is DNS, IAM controls access, and CloudFront is a content delivery network; none of them scale EC2 capacity.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2", "EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-elast-07",
-    domain: 1,
-    type: "single",
-    topic: "EC2 Auto Scaling capacity settings",
-    difficulty: "medium",
-    stem: "When configuring an Auto Scaling group, a team sets a number that the group is kept at under normal conditions, while never dropping below a floor or rising above a ceiling. What is the value the group is kept at called?",
-    options: [
-      { id: "a", text: "The desired capacity" },
-      { id: "b", text: "The maximum capacity" },
-      { id: "c", text: "The minimum capacity" },
-      { id: "d", text: "The reserved capacity" },
-    ],
-    correct: ["a"],
-    explanation:
-      "An Auto Scaling group keeps the number of instances at the desired capacity, between the minimum it never goes below and the maximum it never goes above. The minimum is the floor and the maximum is the ceiling, and reserved capacity is not an Auto Scaling group setting.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
   },
   {
     id: "d1-elast-08",
@@ -189,7 +146,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-09",
@@ -212,97 +169,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-10",
-    domain: 1,
-    type: "single",
-    topic: "High availability",
-    difficulty: "medium",
-    stem: "A team wants an application to keep serving requests even if one data center location inside a Region has a problem. Which design approach most directly supports this goal?",
-    options: [
-      { id: "a", text: "Run the application across multiple Availability Zones so a failure in one zone does not take the application down." },
-      { id: "b", text: "Run a single large server in one Availability Zone." },
-      { id: "c", text: "Store one copy of everything on one disk in one location." },
-      { id: "d", text: "Turn the application off during maintenance windows." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Availability Zones are isolated locations within a Region, so spreading an application across multiple zones means a failure in one zone does not bring the application down, which raises availability. A single server in one zone, a single copy on one disk, and turning the application off during maintenance windows all reduce availability rather than improve it.",
-    reference: {
-      label: "Auto Scaling benefits: distribute instances across Availability Zones",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-11",
-    domain: 1,
-    type: "single",
-    topic: "EC2 Auto Scaling health",
-    difficulty: "medium",
-    stem: "An Auto Scaling group is configured for a web tier. One instance stops responding to health checks. What does Amazon EC2 Auto Scaling do to keep the group at its desired capacity?",
-    options: [
-      { id: "a", text: "It detects the unhealthy instance, terminates it, and launches a replacement instance." },
-      { id: "b", text: "It sends an email and waits for an administrator to fix the instance by hand." },
-      { id: "c", text: "It permanently reduces the desired capacity by one." },
-      { id: "d", text: "It does nothing, because health is not part of Auto Scaling." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Amazon EC2 Auto Scaling monitors instance health and, when an instance is unhealthy, terminates it and launches a replacement to maintain the desired capacity. It does not just send an email and wait for an administrator to fix the instance by hand, does not permanently reduce the desired capacity, and health monitoring is a built-in feature rather than something outside its scope.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-elast-12",
-    domain: 1,
-    type: "single",
-    topic: "Scaling direction",
-    difficulty: "easy",
-    stem: "In Auto Scaling terminology, what does it mean to scale in?",
-    options: [
-      { id: "a", text: "Removing capacity, such as terminating instances, when demand decreases." },
-      { id: "b", text: "Adding capacity by launching more instances." },
-      { id: "c", text: "Moving an application to a larger Region." },
-      { id: "d", text: "Increasing the size of a single instance." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Scaling in removes capacity, such as terminating instances, when demand decreases, which is the half of elasticity that controls cost. Adding instances is scaling out, moving an application to a larger Region is not a scaling action at all, and increasing a single instance size is vertical scaling, not scaling in.",
-    reference: {
-      label: "Auto Scaling benefits for application architecture",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-elast-13",
-    domain: 1,
-    type: "single",
-    topic: "AWS Auto Scaling service",
-    difficulty: "medium",
-    stem: "A company wants to set up scaling for several different resource types, including EC2 capacity and other scalable resources, from one place, aiming for steady performance at the lowest possible cost. Which AWS service is designed to monitor applications and adjust capacity across multiple services for this purpose?",
-    options: [
-      { id: "a", text: "AWS Auto Scaling" },
-      { id: "b", text: "AWS Trusted Advisor" },
-      { id: "c", text: "AWS Config" },
-      { id: "d", text: "Amazon Inspector" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost, letting you set up scaling for multiple resources across multiple services. Trusted Advisor gives recommendations, Config tracks configuration, and Inspector assesses security; none of them perform application scaling.",
-    reference: {
-      label: "AWS Auto Scaling",
-      url: "https://aws.amazon.com/autoscaling/",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-14",
@@ -324,7 +191,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: better cost management",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -347,7 +214,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -370,7 +237,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-17",
@@ -392,7 +259,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-18",
@@ -411,34 +278,11 @@ export const domain1Elasticity: Question[] = [
     explanation:
       "Amazon S3 is an elastic, fully managed object store, so capacity scales with the data and the customer does not provision or manage storage servers. Pre-purchasing a fixed number of disks before storing data, a capped capacity that cannot grow, and manually adding storage nodes all describe the manual, capacity-planned model that elastic managed services are designed to remove.",
     reference: {
-      label: "Six advantages of cloud computing: stop guessing capacity",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+      label: "What is Amazon S3?",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
-  },
-  {
-    id: "d1-elast-19",
-    domain: 1,
-    type: "single",
-    topic: "EC2 Auto Scaling and Availability Zones",
-    difficulty: "hard",
-    stem: "An Auto Scaling group spans multiple Availability Zones. One Availability Zone becomes unavailable. According to AWS, what does EC2 Auto Scaling do to compensate?",
-    options: [
-      { id: "a", text: "It can launch instances in another Availability Zone to make up for the one that is unavailable." },
-      { id: "b", text: "It shuts the whole group down until the zone returns." },
-      { id: "c", text: "It moves every instance into the single unavailable zone." },
-      { id: "d", text: "It ignores the failure because zones never affect Auto Scaling." },
-    ],
-    correct: ["a"],
-    explanation:
-      "If you configure multiple Availability Zones and one becomes unavailable, Amazon EC2 Auto Scaling can launch instances in another zone to compensate, which improves fault tolerance. Shutting the group down, piling into the failed zone, or ignoring the failure would all reduce availability.",
-    reference: {
-      label: "Auto Scaling benefits: better fault tolerance",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
   },
   {
     id: "d1-elast-20",
@@ -461,7 +305,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-21",
@@ -483,30 +327,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-22",
-    domain: 1,
-    type: "single",
-    topic: "EC2 Auto Scaling cost",
-    difficulty: "easy",
-    stem: "How much extra does AWS charge to use the Amazon EC2 Auto Scaling feature itself?",
-    options: [
-      { id: "a", text: "There is no additional fee; you pay only for the AWS resources you use, such as the EC2 instances." },
-      { id: "b", text: "A fixed monthly subscription per Auto Scaling group." },
-      { id: "c", text: "A percentage of your total monthly bill." },
-      { id: "d", text: "A one-time activation charge per account." },
-    ],
-    correct: ["a"],
-    explanation:
-      "There are no additional fees for Amazon EC2 Auto Scaling; you pay only for the resources you use, such as EC2 instances, EBS volumes, and CloudWatch alarms. AWS does not charge a per-group subscription, a percentage of the bill, or an activation fee for the feature.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling? Pricing",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-23",
@@ -533,7 +354,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-24",
@@ -555,54 +376,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-25",
-    domain: 1,
-    type: "single",
-    topic: "Dynamic scaling",
-    difficulty: "medium",
-    stem: "A team wants their Auto Scaling group to add instances automatically when average CPU climbs and remove them when it drops, based on a CloudWatch metric. Which capability of EC2 Auto Scaling provides this?",
-    options: [
-      { id: "a", text: "Scaling policies that launch or terminate instances as demand on the application increases or decreases" },
-      { id: "b", text: "A requirement to resize the group only by hand" },
-      { id: "c", text: "A fixed instance count that never changes" },
-      { id: "d", text: "Region failover triggered by billing alerts" },
-    ],
-    correct: ["a"],
-    explanation:
-      "When you specify scaling policies, EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, which is how it follows a metric like CPU. A requirement to resize the group only by hand and a fixed count that never changes are the opposite of automatic scaling, and Region failover triggered by billing alerts is unrelated to this metric-driven behavior.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling", "CloudWatch"],
-  },
-  {
-    id: "d1-elast-26",
-    domain: 1,
-    type: "multi",
-    topic: "EC2 Auto Scaling benefits",
-    difficulty: "hard",
-    stem: "AWS lists several benefits of adding Amazon EC2 Auto Scaling to an application architecture. Which TWO of the following are among them? (Choose two.)",
-    options: [
-      { id: "a", text: "Better fault tolerance, by replacing unhealthy instances and using multiple Availability Zones" },
-      { id: "b", text: "Better cost management, by adding capacity when needed and removing it when it is not" },
-      { id: "c", text: "A guaranteed fixed monthly bill regardless of usage" },
-      { id: "d", text: "Elimination of all need to monitor the application" },
-      { id: "e", text: "Automatic conversion of every instance to a Reserved Instance" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS lists better fault tolerance, better availability, and better cost management as benefits of EC2 Auto Scaling. It does not promise a fixed bill, remove the need for monitoring, or convert instances into Reserved Instances.",
-    reference: {
-      label: "Auto Scaling benefits for application architecture",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-27",
@@ -624,7 +398,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-28",
@@ -646,7 +420,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: go global in minutes",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-29",
@@ -668,29 +442,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: stop guessing capacity",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-30",
-    domain: 1,
-    type: "single",
-    topic: "AWS Auto Scaling goal",
-    difficulty: "medium",
-    stem: "What does AWS state as the goal of AWS Auto Scaling when it adjusts capacity for your applications?",
-    options: [
-      { id: "a", text: "To maintain steady, predictable performance at the lowest possible cost." },
-      { id: "b", text: "To always run the maximum number of instances allowed." },
-      { id: "c", text: "To minimize performance in order to save money." },
-      { id: "d", text: "To keep capacity fixed no matter what the load is." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. It does not aim to always run the maximum number of instances, to minimize performance in order to save money, or to keep capacity fixed regardless of load.",
-    reference: {
-      label: "AWS Auto Scaling",
-      url: "https://aws.amazon.com/autoscaling/",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-31",
@@ -712,30 +464,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-32",
-    domain: 1,
-    type: "single",
-    topic: "Availability through redundancy",
-    difficulty: "medium",
-    stem: "A managed database service keeps synchronized copies of data across multiple Availability Zones in a Region. At a concepts level, what does this redundancy primarily provide?",
-    options: [
-      { id: "a", text: "Higher availability and data durability, since the loss of one Availability Zone does not take the data down." },
-      { id: "b", text: "Lower availability, because more copies create more ways to fail." },
-      { id: "c", text: "A guarantee that performance is identical everywhere on earth." },
-      { id: "d", text: "A way to avoid paying for any storage." },
-    ],
-    correct: ["a"],
-    explanation:
-      "Storing synchronized copies across multiple Availability Zones provides data redundancy so a single zone failure does not cause data loss or an outage, which raises availability and durability. Redundancy across isolated zones increases availability rather than lowering it, does not guarantee identical performance everywhere on earth, and does not make storage free.",
-    reference: {
-      label: "High availability for Amazon Aurora",
-      url: "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Aurora", "RDS"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-33",
@@ -758,7 +487,7 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-34",
@@ -781,79 +510,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-elast-35",
-    domain: 1,
-    type: "multi",
-    topic: "EC2 Auto Scaling capacity settings",
-    difficulty: "medium",
-    stem: "Which TWO values do you set on an Auto Scaling group to bound how many instances it may run? (Choose two.)",
-    options: [
-      { id: "a", text: "Minimum capacity, which the group never goes below" },
-      { id: "b", text: "Maximum capacity, which the group never goes above" },
-      { id: "c", text: "Reserved capacity, which prepays for instances" },
-      { id: "d", text: "Spot capacity, which sets the interruption rate" },
-      { id: "e", text: "Region capacity, which caps instances per Region" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "An Auto Scaling group is bounded by a minimum size it never goes below and a maximum size it never goes above, with the desired capacity kept between them. Reserved, Spot, and Region capacity are not Auto Scaling group size settings.",
-    reference: {
-      label: "What is Amazon EC2 Auto Scaling?",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
-  },
-  {
-    id: "d1-elast-36",
-    domain: 1,
-    type: "multi",
-    topic: "AWS Auto Scaling service",
-    difficulty: "hard",
-    stem: "AWS Auto Scaling can manage scaling for resources beyond EC2 instances. Which TWO of the following are resources AWS Auto Scaling can scale? (Choose two.)",
-    options: [
-      { id: "a", text: "Amazon ECS tasks" },
-      { id: "b", text: "Amazon DynamoDB tables and indexes" },
-      { id: "c", text: "Amazon S3 bucket names" },
-      { id: "d", text: "AWS Identity and Access Management users" },
-      { id: "e", text: "Amazon Route 53 hosted zones" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS Auto Scaling can scale resources such as Amazon ECS tasks, DynamoDB tables and indexes, Aurora Replicas, EC2 instances, and Spot Fleets. S3 bucket names, IAM users, and Route 53 hosted zones are not scalable targets it manages.",
-    reference: {
-      label: "AWS Auto Scaling",
-      url: "https://aws.amazon.com/autoscaling/",
-    },
-    lastVerified: "2026-06-23",
-    services: ["ECS", "DynamoDB"],
-  },
-  {
-    id: "d1-elast-37",
-    domain: 1,
-    type: "multi",
-    topic: "High availability",
-    difficulty: "medium",
-    stem: "Which TWO practices help raise the availability of an application running on AWS, at a concepts level? (Choose two.)",
-    options: [
-      { id: "a", text: "Distributing the application across multiple Availability Zones" },
-      { id: "b", text: "Automatically replacing instances that fail their health checks" },
-      { id: "c", text: "Running a single instance in one Availability Zone with no replacement" },
-      { id: "d", text: "Keeping only one copy of the data in one location" },
-      { id: "e", text: "Disabling health checks to reduce overhead" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Spreading across multiple Availability Zones and automatically replacing unhealthy instances both raise availability, as AWS describes for EC2 Auto Scaling. A single instance in one zone, a single copy of data, and disabling health checks to reduce overhead each create a single point of failure or hide failures, lowering availability.",
-    reference: {
-      label: "Auto Scaling benefits for application architecture",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["EC2 Auto Scaling"],
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-38",
@@ -876,7 +533,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -900,7 +557,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-40",
@@ -923,7 +580,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-elast-41",
@@ -946,6 +603,6 @@ export const domain1Elasticity: Question[] = [
       label: "AWS Cloud Computing: elasticity",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
 ];
