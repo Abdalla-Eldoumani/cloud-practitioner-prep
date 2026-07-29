@@ -86,8 +86,8 @@ per-domain topic files (for example `domain-3-storage.ts`).
    length of `correct` must match: 1 for single, 2 or more for multi.
 5. Set `topic` to a string listed under a task statement in
    `src/data/blueprint.ts` in the same domain. Reuse an existing string where one
-   fits; a new one is only finished once it is listed there, or the question is
-   unreachable from the coverage map and the coverage lint fails.
+   fits. A new one is only finished once it is listed there; until then the
+   question is unreachable from the coverage map and the coverage lint fails.
 6. Write the `explanation` and at least one `reference` URL into current AWS
    docs, and set `lastVerified` to the day you checked. Name options by their
    content, never by letter or position: options shuffle on every sitting, so
