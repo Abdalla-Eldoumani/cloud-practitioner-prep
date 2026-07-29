@@ -45,6 +45,11 @@ export const HISTORICAL_MARKERS: RegExp[] = [
   /\/archive(?:d)?\//i,
   /\/previous(?:-version)?\//i,
   /for-historical-reference/i,
+  // The "How AWS Pricing Works" whitepaper was archived in place: the path never
+  // changed, so only naming it catches the citation. Its pricing-principles pages
+  // now carry the historical-reference banner, and pricing facts must come from
+  // the current pricing pages instead.
+  /\/how-aws-pricing-works\//i,
 ];
 
 // Option-letter / ordinal references to answer positions are banned in
