@@ -20,7 +20,7 @@ export const applicationIntegration: ServiceEntry[] = [
       label: "What is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "EventBridge",
       "event bus",
@@ -44,7 +44,7 @@ export const applicationIntegration: ServiceEntry[] = [
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "SNS",
       "Simple Notification Service",
@@ -69,7 +69,7 @@ export const applicationIntegration: ServiceEntry[] = [
       label: "What is Amazon SQS?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "SQS",
       "Simple Queue Service",
@@ -93,7 +93,7 @@ export const applicationIntegration: ServiceEntry[] = [
       label: "What is AWS Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Step Functions",
       "workflow",
