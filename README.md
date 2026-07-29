@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml/badge.svg)](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml)
 
-A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 22
-lessons, drill 886 original practice questions by domain, take full timed mock exams, and track your
+A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 23
+lessons, drill 911 original practice questions by domain, take full timed mock exams, and track your
 readiness, all in the browser with nothing to sign up for.
 
 The goal is simple: give someone with no prior cloud background a clear one-week path to
@@ -19,10 +19,10 @@ answer so you can read further.
 
 ## What it does
 
-- **22 lessons** grouped by the four exam domains, written as focused reading with the must-know
+- **23 lessons** grouped by the four exam domains, written as focused reading with the must-know
   points and common traps called out. Each lesson shows when its facts were last verified against AWS
   docs.
-- **886 practice questions**, drilled by domain with immediate feedback, an explanation, and a
+- **911 practice questions**, drilled by domain with immediate feedback, an explanation, and a
   documentation link on every question.
 - **Timed mock exams**: 65 questions weighted to match the real domain split, a 90-minute timer that
   survives a page reload, a question grid for jumping around, and flagging for review. Sit it more
