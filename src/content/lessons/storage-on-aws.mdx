@@ -12,7 +12,7 @@ services:
   - Amazon EFS
   - Amazon FSx
   - AWS Storage Gateway
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -46,7 +46,9 @@ shape fits.
 Amazon Simple Storage Service is an object storage service. You store data as
 objects inside containers called buckets, where each object carries its data, a
 key, and metadata. S3 is designed for 99.999999999 percent (eleven nines) of
-durability, which is why it anchors backups, data lakes, and static assets.
+durability, which is why it anchors backups, data lakes, and static assets. A
+bucket holds an unlimited number of objects, and you pay only for the storage you
+actually use, so there is no capacity to buy in advance and no minimum charge.
 
 Every object has a storage class, and the class trades cost against how you expect
 to access the data. The current classes include:
@@ -74,6 +76,32 @@ tolerate single-zone risk for a lower price. Archived and rarely touched is a
 Glacier class, with Deep Archive the cheapest and slowest.
 </Callout>
 
+### S3 Lifecycle
+
+Moving objects between classes by hand does not scale. An S3 Lifecycle
+configuration is a set of rules that define actions Amazon S3 applies to a group
+of objects, and there are two kinds of action. A transition action defines when
+objects move to another storage class, for example to S3 Standard-IA 30 days after
+they are created. An expiration action defines when objects expire, and Amazon S3
+deletes them for you. One rule can chain both: transition to an infrequent-access
+class after 30 days, transition again to a Glacier class for archiving later, then
+expire the objects at the end of the retention period.
+
+### Securing S3 data
+
+Buckets and objects are private by default. The account that created a bucket has
+access to it, and nobody else does until the owner grants it. On top of that, S3
+Block Public Access is the guardrail against accidental exposure: all four of its
+settings are enabled by default on a new bucket, and they override any bucket
+policy or ACL that would otherwise open the bucket to the public.
+
+Two further features protect objects from being lost rather than exposed. S3
+Versioning keeps multiple variants of an object in the same bucket, so an
+accidental delete or overwrite can be undone by restoring an earlier version. S3
+Object Lock can prevent objects from being deleted or overwritten for a fixed
+period or indefinitely, using a write-once-read-many model that suits regulatory
+retention.
+
 ## Amazon EBS
 
 Amazon Elastic Block Store provides block storage volumes for use with EC2
@@ -81,6 +109,34 @@ instances. You attach a volume to an instance and use it like a local hard drive
 to store files or install applications. A volume lives in one Availability Zone
 and is automatically replicated within that zone to guard against component
 failure. EBS is the disk behind an EC2 instance, distinct from S3's object model.
+
+Volume types fall into two categories. SSD-backed volumes are for transactional
+work with frequent small reads and writes, where IOPS is the dominant attribute.
+HDD-backed volumes are for large streaming work, where throughput is the dominant
+attribute.
+
+### EBS snapshots
+
+A snapshot is a point-in-time backup of a volume. Snapshots are stored in Amazon
+S3, in buckets AWS manages that you cannot reach through the S3 console or API.
+Only the first snapshot copies everything; each later one is incremental and saves
+only the blocks that changed since the most recent snapshot. Snapshot data is
+replicated across every Availability Zone in the Region, so you can create a new
+volume from a snapshot in any zone in that Region. That is how you move a volume's
+contents from one Availability Zone to another.
+
+### EC2 instance store
+
+Not every disk on an EC2 instance is an EBS volume. An instance store is temporary
+block-level storage on disks physically attached to the host computer, and it
+suits information that changes frequently, such as buffers, caches, and scratch
+data. Instance store volumes are attached only at launch, and you cannot detach
+one and move it to another instance. The data survives a reboot, but it does not
+survive a stop, a hibernate, or a terminate.
+
+That contrast is the one to remember. EBS persists independently of the instance
+lifecycle and supports snapshots; instance store does neither. When data has to
+outlive the instance, put it on an EBS volume.
 
 ## Amazon EFS
 
