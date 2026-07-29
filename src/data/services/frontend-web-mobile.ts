@@ -15,10 +15,10 @@ export const frontendWebMobile: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you want to build and ship a web or mobile front end with backend features like auth and data, and host it, without assembling each piece separately.",
     reference: {
-      label: "What is AWS Amplify?",
+      label: "Welcome to AWS Amplify Hosting",
       url: "https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Amplify",
       "full-stack",
@@ -36,12 +36,12 @@ export const frontendWebMobile: ServiceEntry[] = [
     purpose:
       "A managed service that creates serverless GraphQL and real-time APIs to connect applications to data and events.",
     whenToUse:
-      "Reach for it when your app needs a single GraphQL API over several data sources, with real-time updates and offline support handled for you.",
+      "Reach for it when your app needs a single GraphQL API over several data sources and real-time updates pushed to clients over a WebSocket connection the service manages for you.",
     reference: {
       label: "What is AWS AppSync?",
       url: "https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "AppSync",
       "GraphQL",

@@ -15,10 +15,10 @@ export const serverless: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you want to run containers on ECS or EKS but would rather not manage the EC2 instances behind them.",
     reference: {
-      label: "What is AWS Fargate?",
-      url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+      label: "AWS Fargate",
+      url: "https://aws.amazon.com/fargate/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Fargate",
       "serverless containers",
@@ -41,7 +41,7 @@ export const serverless: ServiceEntry[] = [
       label: "What is AWS Lambda?",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: ["Lambda", "functions", "serverless functions", "function as a service"],
     relatedTerms: ["serverless", "event-driven", "function", "trigger"],
     relatedServices: ["amazon-ec2", "aws-fargate"],

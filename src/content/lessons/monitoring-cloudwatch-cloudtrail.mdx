@@ -1,7 +1,7 @@
 ---
 title: "Monitoring with CloudWatch and CloudTrail"
 description: "The exam's classic split: CloudWatch watches how resources perform, CloudTrail records who did what. Plus the Health Dashboard and X-Ray."
-domain: 3
+domain: 2
 module: 10
 order: 8
 day: 5
@@ -11,7 +11,7 @@ services:
   - AWS CloudTrail
   - AWS Health Dashboard
   - AWS X-Ray
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -40,6 +40,12 @@ actions taken, capturing who did what and when, and keeps that as an event
 history. This supports governance, compliance, and auditing: if you need to know
 which user launched an instance or changed a setting, CloudTrail is the record.
 It is not watching performance; it is keeping the audit trail of actions.
+
+That is the Event history, and you have it from the moment the account is
+created: a viewable, searchable, downloadable record of the past 90 days of
+management events in a Region, at no CloudTrail charge. To keep activity beyond
+those 90 days, or to feed it to other tools, you create a trail, which delivers
+and stores those events in an Amazon S3 bucket you own.
 
 <Callout type="key" title="CloudWatch versus CloudTrail, the line to memorize">
 CloudWatch monitors how resources perform: metrics, logs, alarms, dashboards.

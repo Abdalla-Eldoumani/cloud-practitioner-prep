@@ -10,7 +10,7 @@ services:
   - Amazon EC2 Auto Scaling
   - Elastic Load Balancing
   - Amazon EC2
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -29,7 +29,9 @@ and availability as a unit.
 You group EC2 instances into an Auto Scaling group and treat that group as one
 logical unit. You set a minimum size the group never drops below, a maximum size
 it never exceeds, and a desired capacity it tries to hold. Auto Scaling launches
-or terminates instances to keep the group at the size you asked for.
+or terminates instances to keep the group at the size you asked for. The group
+launches its instances from a launch template, the configuration template that
+records the AMI ID, the instance type, a key pair, and security groups.
 
 Adding instances to handle more load is scaling out. Removing them when load
 falls is scaling in. This is the elasticity the cloud is known for: you pay for
@@ -63,6 +65,12 @@ Auto Scaling offers several methods, and you can combine them:
 There is no extra charge for Auto Scaling itself. You pay only for the underlying
 resources, such as the EC2 instances it launches.
 
+Amazon EC2 Auto Scaling is not the same service as AWS Auto Scaling. AWS Auto
+Scaling is the plan that sits above it and covers several services at once: it
+monitors your applications and adjusts capacity to maintain steady, predictable
+performance at the lowest possible cost, scaling EC2 instances and Spot Fleets,
+Amazon ECS tasks, DynamoDB tables and indexes, and Aurora Replicas.
+
 ## Elastic Load Balancing
 
 A load balancer is the single point of contact for clients. It distributes
@@ -88,7 +96,10 @@ different kind of traffic:
 - Application Load Balancer operates at the application layer, layer 7 of the OSI
   model. It handles HTTP and HTTPS and can route requests by their content, for
   example to different target groups based on the URL path or the host header.
-  Reach for it when routing decisions depend on the details of a web request.
+  Its targets are not only EC2 instances: you can register targets by IP address,
+  including targets outside the load balancer's VPC, and register AWS Lambda
+  functions as targets. Reach for it when routing decisions depend on the details
+  of a web request.
 - Network Load Balancer operates at the fourth layer of the OSI model. It handles
   TCP, UDP, and TLS traffic and can sustain millions of requests per second at
   very low latency. Reach for it for extreme performance or non-HTTP protocols.

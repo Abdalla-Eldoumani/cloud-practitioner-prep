@@ -18,9 +18,9 @@ export const STUDY_PLAN: StudyDay[] = [
   {
     day: 1,
     title: "Cloud foundations",
-    focus: [1],
+    focus: [1, 3],
     summary:
-      "What the cloud is, the six benefits, the global infrastructure, and the shared responsibility split at a high level.",
+      "What the cloud is, the six benefits, the global infrastructure, and the Well-Architected Framework.",
     lessonSlugs: [
       "what-is-cloud-computing",
       "six-benefits-of-the-cloud",
@@ -48,8 +48,9 @@ export const STUDY_PLAN: StudyDay[] = [
       "data-protection-kms-acm",
       "network-and-app-protection",
       "detect-investigate-respond",
+      "governance-and-compliance",
     ],
-    targetMinutes: 85,
+    targetMinutes: 95,
   },
   {
     day: 4,
@@ -69,7 +70,7 @@ export const STUDY_PLAN: StudyDay[] = [
   {
     day: 5,
     title: "Databases, integration, and the catalog",
-    focus: [3],
+    focus: [2, 3],
     summary:
       "Relational and NoSQL databases, caching, messaging, the AI and analytics services, and monitoring. Finish with your first full mock.",
     lessonSlugs: [
@@ -78,13 +79,13 @@ export const STUDY_PLAN: StudyDay[] = [
       "ai-ml-and-analytics",
       "monitoring-cloudwatch-cloudtrail",
     ],
-    targetMinutes: 100,
+    targetMinutes: 145,
     milestone: "Take your first full 65-question timed mock exam.",
   },
   {
     day: 6,
     title: "Billing, pricing, support, and migration",
-    focus: [4],
+    focus: [1, 4],
     summary:
       "Pricing models, cost management tools, support plans, the Cloud Adoption Framework, and migration tooling.",
     lessonSlugs: [
@@ -102,7 +103,7 @@ export const STUDY_PLAN: StudyDay[] = [
     summary:
       "Clear your flagged and missed questions, then run two timed mocks. Aim for a steady exam-ready band before you book.",
     lessonSlugs: [],
-    targetMinutes: 120,
+    targetMinutes: 180,
     milestone: "Score in the exam-ready band on two consecutive full mocks.",
   },
 ];

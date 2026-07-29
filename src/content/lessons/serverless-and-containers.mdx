@@ -11,7 +11,12 @@ services:
   - Amazon ECS
   - Amazon EKS
   - AWS Fargate
-updated: 2026-06-13
+  - Amazon ECR
+  - AWS Elastic Beanstalk
+  - AWS Batch
+  - Amazon Lightsail
+  - AWS Outposts
+updated: 2026-07-29
 draft: false
 ---
 
@@ -20,7 +25,8 @@ import Callout from "@/components/Callout.astro";
 EC2 hands you a whole virtual server to manage. Two other models hand back more of
 that work. Serverless lets you run code with no servers to provision, and
 containers package an application so it runs the same everywhere. The exam expects
-you to know AWS Lambda, the serverless idea, and the three container services.
+you to know AWS Lambda, the serverless idea, the container services, and a
+handful of other compute options.
 
 ## AWS Lambda
 
@@ -37,6 +43,12 @@ and nothing is billed for compute.
 Pricing follows that model. You pay per use: for the number of requests your
 functions handle and for the compute time they consume while running, rather than
 for a server reserved by the hour.
+
+Two limits shape what belongs in a function. A single invocation runs for at most
+15 minutes, so work that takes longer belongs on containers, on EC2, or in a Step
+Functions workflow. Memory is a setting you choose, from 128 MB to 10,240 MB, and
+Lambda allocates CPU in proportion, so raising memory also raises processing
+power.
 
 <Callout type="key" title="The serverless trade">
 Serverless does not mean there are no servers. It means AWS manages them and you
@@ -60,6 +72,11 @@ consistently from a developer laptop to production. Running containers at scale
 means orchestrating them: placing them on hosts, restarting failed ones, and
 scaling them with load. AWS offers two orchestrators and one compute engine that
 runs containers without servers.
+
+The images have to live somewhere first. Amazon Elastic Container Registry is the
+AWS managed registry for container images. You push an image to a private
+repository there, and ECS and EKS pull it from Amazon ECR when they run your
+containers.
 
 ### Amazon ECS
 
@@ -93,6 +110,41 @@ alternative is running them on EC2 instances you manage yourself. Match the
 service to whether the question is about orchestration or about managing the
 servers.
 </Callout>
+
+## Other compute services
+
+Four more compute services sit on the exam's service list. Recognize what each
+one is for.
+
+### AWS Elastic Beanstalk
+
+You upload application code and Elastic Beanstalk deploys it as a running web
+application. It provisions the EC2 instances, configures load balancing, sets up
+health monitoring, and scales the environment for you. You keep full control of
+the AWS resources it creates and can work with them directly. There is no
+additional charge for Elastic Beanstalk itself. You pay only for the underlying
+resources your application uses.
+
+### AWS Batch
+
+AWS Batch runs batch computing workloads. You submit jobs, and Batch provisions
+the compute resources they need and distributes the work across them. There is no
+batch computing software to install or manage, and the jobs run on Amazon ECS,
+Amazon EKS, Fargate, and EC2 capacity underneath.
+
+### Amazon Lightsail
+
+Amazon Lightsail is the simplest way to get a virtual private server running on
+AWS, aimed at websites and small applications. A plan bundles the instance with
+SSD storage, a data transfer allowance, DNS management, and a static IP address
+for a low, predictable monthly price.
+
+### AWS Outposts
+
+AWS Outposts is fully managed AWS infrastructure that AWS installs and operates
+in your own data center. It extends AWS services, APIs, and tools to your site,
+so you build on premises with the same interfaces you use in a Region. This is
+the hybrid model in physical form.
 
 ## Choosing among the models
 

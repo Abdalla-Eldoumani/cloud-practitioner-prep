@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml/badge.svg)](https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/actions/workflows/ci.yml)
 
-A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 22
-lessons, drill 886 original practice questions by domain, take full timed mock exams, and track your
+A free, open-source study site for the AWS Certified Cloud Practitioner exam (CLF-C02). Read 23
+lessons, drill 911 original practice questions by domain, take full timed mock exams, and track your
 readiness, all in the browser with nothing to sign up for.
 
 The goal is simple: give someone with no prior cloud background a clear one-week path to
@@ -19,10 +19,10 @@ answer so you can read further.
 
 ## What it does
 
-- **22 lessons** grouped by the four exam domains, written as focused reading with the must-know
+- **23 lessons** grouped by the four exam domains, written as focused reading with the must-know
   points and common traps called out. Each lesson shows when its facts were last verified against AWS
   docs.
-- **886 practice questions**, drilled by domain with immediate feedback, an explanation, and a
+- **911 practice questions**, drilled by domain with immediate feedback, an explanation, and a
   documentation link on every question.
 - **Timed mock exams**: 65 questions weighted to match the real domain split, a 90-minute timer that
   survives a page reload, a question grid for jumping around, and flagging for review. Sit it more
@@ -93,8 +93,14 @@ Open the URL the dev server prints. Useful scripts:
 npm run dev       # start the dev server
 npm run build     # build the static site to dist/
 npm run preview   # preview the production build
-npm run check     # type-check and validate content
+npm run check     # type-check the project
 ```
+
+Content is validated by its own checks, each behind an npm script: `lint:content` and
+`lint:coverage` over the question bank and the exam blueprint, `lint:catalog` over the service
+catalog, `lint:links` over every AWS reference, `lint:shuffle` over answer-option fairness, and the
+`check:*` scripts over the quiz engine, diagrams, navigation, and the built PWA. Continuous
+integration runs all of them on every push.
 
 ## Deploy
 
@@ -126,15 +132,15 @@ repository and accepting the defaults does this.
 
 - [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) explains how the site is built, the stack, the
   data-as-source-of-truth model, the quiz engine, and how to fork it for a different exam.
-- [CONTRIBUTING.md](./CONTRIBUTING.md), [SECURITY.md](./SECURITY.md), and
-  [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) cover local setup, the content-integrity rules, the
-  security posture, and how we work together.
-- [CHANGELOG.md](./CHANGELOG.md) is the release history.
+- [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md), [docs/SECURITY.md](./docs/SECURITY.md), and
+  [docs/CODE_OF_CONDUCT.md](./docs/CODE_OF_CONDUCT.md) cover local setup, the content-integrity
+  rules, the security posture, and how we work together.
+- [docs/CHANGELOG.md](./docs/CHANGELOG.md) is the release history.
 
 ## Contributing
 
 Contributions are welcome, especially new lessons, more practice questions, and corrections. See
-[CONTRIBUTING.md](./CONTRIBUTING.md) for setup and the full rules; the essentials:
+[docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) for setup and the full rules; the essentials:
 
 - Practice questions must be original and must test a concept. Do not submit leaked or memorized
   exam items.

@@ -51,10 +51,18 @@ src/
                  nanostores store, navigation index, and the review scheduler
   styles/        global.css: the Tailwind import and the design tokens
 scripts/         the verification gate (one tsx check per concern)
+docs/            this guide plus contributing, security, code of conduct, changelog
 public/          static assets served as-is: favicon, robots.txt, _headers, og.png
 astro.config.mjs the site origin and the integrations (React, MDX, sitemap, PWA)
 vercel.json      the production security and caching headers
 ```
+
+The project documentation lives in `docs/`, not at the repository root, so the
+root holds only `README.md` and `LICENSE`. GitHub looks for the community health
+files in `.github/`, then the root, then `docs/`, and uses the first copy it
+finds, so a single copy in `docs/` still backs the issue, pull request, and
+security surfaces. Keep exactly one copy of each: a file re-added at the root
+silently shadows the one here.
 
 ## Routes
 
@@ -84,10 +92,45 @@ JSON-serializable props, so an island never imports the whole catalog or questio
 bank into the browser bundle.
 
 The constants that describe the exam itself, question count, scored split, time
-limit, passing scaled score, domain weights, live once in `src/lib/constants`
-(`EXAM`, `DOMAINS`). Pages and the exam builder read them; no page re-hardcodes a
-number. Change a fact there and it updates everywhere, including the structured
-data.
+limit, passing scaled score, retake wait, domain weights, live once in
+`src/lib/constants` (`EXAM`, `DOMAINS`), alongside `DOMAIN_QUESTION_FLOORS`, the
+minimum bank size per domain. Pages and the exam builder read them; no page
+re-hardcodes a number. Change a fact there and it updates everywhere, including
+the structured data.
+
+## How questions are filed and tagged
+
+A question's `domain` is the domain the official CLF-C02 exam guide places its
+task statement in. The bank does not depart from the guide anywhere: the guide
+files global infrastructure under Domain 3 and migration under Domain 1, so that
+is how those questions are tagged, and nothing downstream is written to
+compensate for a question sitting in the wrong domain.
+
+The file a question lives in follows from its domain. Every question sits in a
+`domain-N-*.ts` file whose `N` equals its `domain` field, split by subject within
+the domain (`domain-3-ec2.ts`, `domain-3-storage.ts`, `domain-4-pricing.ts`), and
+a new subject just gets a new file wired through `index.ts`. Retagging a question
+and relocating it are therefore the same change, and the content lint fails on any
+mismatch between a file name and the domains inside it. That rule is why
+`domain-1-global.ts` became `domain-3-global.ts`, and why the migration and
+monitoring clusters moved into `domain-1-migration-caf.ts` and
+`domain-2-monitoring-audit.ts`.
+
+Question ids do not follow. An id is the key a learner's saved progress, review
+queue, and attempt history are stored under, so it never changes, not on a retag
+and not on a move. `domain-3-global.ts` holds `d1-global-` ids and
+`domain-1-migration-caf.ts` holds `d4-supportmig-` ids: a prefix records where a
+question was first written, each such file says so in its header, and the lint
+deliberately does not read prefixes. Never renumber ids to tidy this up.
+
+`topic` is the join key to the exam blueprint. `src/data/blueprint.ts` lists, for
+each of the 19 task statements, the lesson slugs and question topics that cover
+it. The coverage page resolves that join at build time, matching questions on
+domain plus normalized topic and lessons on slug. The join is total in both
+directions: every statement resolves to at least one lesson and one question, and
+every question resolves to at least one statement. The count in the page footer
+is derived from the join rather than from the size of the bank, so it reports
+what the page actually maps.
 
 ## The islands and shared state
 
@@ -155,17 +198,38 @@ query, an imported progress file, renders as text and is never evaluated as HTML
 Production responses carry a strict Content-Security-Policy, HSTS, `nosniff`,
 `frame-ancestors 'none'`, a cross-origin opener policy, and a restrictive
 permissions policy (in `vercel.json`, mirrored in `public/_headers` for other
-hosts). See [SECURITY.md](../SECURITY.md).
+hosts). See [SECURITY.md](./SECURITY.md).
 
 ## The verification gate
 
 `scripts/` holds a focused check per concern, wired as npm scripts and run in CI:
-content and catalog lints, the diagram and navigation contracts, the PWA head
-check, the question shuffle uniformity check, and behavioral checks for the
-drill, mock, deck, review schedule, readiness, progress migration, and progress
-import/export. `npm run build` runs the type check and a full build; the link
-checker validates the documentation references. Run these before sending a change;
-see [CONTRIBUTING.md](../CONTRIBUTING.md).
+content, catalog, and coverage lints, the reference link checker, the diagram and
+navigation contracts, the PWA build check, the answer-shuffle uniformity check,
+and behavioral checks for the drill, mock, deck, review schedule, readiness,
+progress migration, and progress import/export.
+
+Several of these exist to catch a specific way content goes wrong:
+
+- `lint:coverage` fails in both directions. A task statement with no covering
+  lesson or no covering question fails, and so does a question whose topic joins
+  no statement in its own domain, so the map cannot read green by leaving
+  something out of it.
+- The same lint fails a lesson credited to a statement in another domain, unless
+  the pair is on a short allowlist named in the script for the few lessons that
+  genuinely teach across the domain line.
+- `lint:content` rejects an explanation or a distractor rationale that names an
+  option by letter or position. Options shuffle on every sitting, so "option B"
+  is wrong on screen as often as not.
+- `lint:content` also enforces `DOMAIN_QUESTION_FLOORS`, so no domain can quietly
+  thin out below its share of the exam.
+- `lint:links` accepts only the AWS documentation, AWS site, and pricing
+  calculator hosts. Community forums are not official documentation, so they are
+  not a valid reference. It also rejects known archived paths, and in live mode
+  it fetches each distinct URL and fails a removed page, a soft-404 redirect, or
+  a page carrying AWS's "for historical reference" banner.
+
+`npm run build` runs the type check and a full build. Run the checks before
+sending a change; see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Making your own version
 
@@ -177,7 +241,8 @@ into a study site for a different exam is mostly a content exercise:
 2. Replace the questions in `src/data/questions/`, the services in
    `src/data/services/`, the blueprint in `src/data/blueprint`, and the lessons
    in `src/content/lessons/`.
-3. Update the exam facts in `src/lib/constants` (`EXAM`, `DOMAINS`).
+3. Update the exam facts in `src/lib/constants` (`EXAM`, `DOMAINS`, and
+   `DOMAIN_QUESTION_FLOORS`).
 4. Keep the content-integrity rules: original questions, every fact sourced, and
    run the gate.
 

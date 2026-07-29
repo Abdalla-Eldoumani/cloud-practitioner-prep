@@ -22,7 +22,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "IAM",
       "Identity and Access Management",
@@ -53,7 +53,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is IAM Identity Center?",
       url: "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "IAM Identity Center",
       "single sign-on",
@@ -83,7 +83,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is Amazon Cognito?",
       url: "https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Cognito",
       "user sign-in",
@@ -112,7 +112,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS KMS?",
       url: "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "KMS",
       "Key Management Service",
@@ -136,12 +136,12 @@ export const securityIdentityCompliance: ServiceEntry[] = [
     purpose:
       "A service that provides dedicated, single-tenant hardware security modules in the cloud so you can generate and use your own encryption keys with sole control.",
     whenToUse:
-      "Reach for it when compliance or contractual requirements demand a dedicated FIPS-validated hardware security module that only you can access, rather than the shared managed keys of KMS.",
+      "Reach for it when a compliance or contractual requirement calls for single-tenant HSMs that you alone control, including your own HSM user management, instead of the fully managed keys and AWS-controlled HSMs of KMS.",
     reference: {
       label: "What is AWS CloudHSM?",
       url: "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CloudHSM",
       "hardware security module",
@@ -170,7 +170,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS Secrets Manager?",
       url: "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Secrets Manager",
       "secrets",
@@ -198,7 +198,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS Certificate Manager?",
       url: "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "ACM",
       "Certificate Manager",
@@ -227,7 +227,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS Directory Service?",
       url: "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Directory Service",
       "Managed Microsoft AD",
@@ -255,7 +255,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS RAM?",
       url: "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "RAM",
       "Resource Access Manager",
@@ -283,7 +283,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "GuardDuty",
       "threat detection",
@@ -312,7 +312,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Inspector",
       "vulnerability scanning",
@@ -341,7 +341,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Macie",
       "data discovery",
@@ -370,7 +370,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Detective",
       "investigation",
@@ -396,10 +396,10 @@ export const securityIdentityCompliance: ServiceEntry[] = [
     whenToUse:
       "Reach for it to defend an internet-facing application from DDoS attacks, with always-on standard protection for everyone and an advanced tier for higher-risk workloads.",
     reference: {
-      label: "What is AWS Shield?",
+      label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Shield",
       "DDoS protection",
@@ -423,12 +423,12 @@ export const securityIdentityCompliance: ServiceEntry[] = [
     purpose:
       "A web application firewall that filters and monitors HTTP and HTTPS requests to your web applications, blocking common exploits with rules you define.",
     whenToUse:
-      "Reach for it to protect a web application or API from request-based threats such as SQL injection and cross-site scripting, by allowing, blocking, or rate-limiting traffic at the edge.",
+      "Reach for it to protect a web application or API from request-based threats such as SQL injection and cross-site scripting, by allowing, blocking, counting, or rate-limiting requests on a CloudFront distribution, Application Load Balancer, or API Gateway REST API.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "WAF",
       "web application firewall",
@@ -457,7 +457,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Firewall Manager",
       "central firewall management",
@@ -478,16 +478,17 @@ export const securityIdentityCompliance: ServiceEntry[] = [
     domain: 2,
     category: "Security, Identity, and Compliance",
     purpose:
-      "A service that gives you a comprehensive view of your security posture by aggregating, organizing, and prioritizing security findings from across AWS services and partner tools.",
+      "A service that gives you a comprehensive view of your security posture by aggregating, organizing, and prioritizing security findings from across AWS services and partner tools. AWS now splits it in two: Security Hub CSPM runs the standards and best-practice checks, and Security Hub correlates and prioritizes the findings.",
     whenToUse:
       "Reach for it when you want one place to see and prioritize security alerts and automated best-practice checks gathered from services like GuardDuty, Inspector, and Macie.",
     reference: {
-      label: "What is AWS Security Hub?",
-      url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
+      label: "What are Security Hub and Security Hub CSPM?",
+      url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-are-securityhub-services.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Security Hub",
+      "Security Hub CSPM",
       "security posture",
       "findings aggregation",
       "security dashboard",
@@ -513,7 +514,7 @@ export const securityIdentityCompliance: ServiceEntry[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Artifact",
       "compliance reports",
@@ -536,12 +537,12 @@ export const securityIdentityCompliance: ServiceEntry[] = [
     purpose:
       "A service that helps you continually audit your AWS usage by automating the collection of evidence to assess your controls against frameworks and regulations.",
     whenToUse:
-      "Reach for it when you need to prepare for an audit and want evidence gathered automatically and mapped to a framework, instead of collecting it by hand for each control.",
+      "Reach for it when you need to prepare for an audit and want evidence gathered automatically and mapped to a framework, instead of collecting it by hand for each control. AWS has moved it to maintenance mode: from April 30, 2026 it can no longer be set up in new accounts, and existing customers keep using it where it is already enabled.",
     reference: {
       label: "What is AWS Audit Manager?",
       url: "https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Audit Manager",
       "audit evidence",

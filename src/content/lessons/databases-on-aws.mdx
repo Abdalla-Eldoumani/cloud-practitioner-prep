@@ -1,6 +1,6 @@
 ---
 title: "Databases on AWS"
-description: "The managed database services the exam expects you to tell apart: RDS, Aurora, DynamoDB, ElastiCache, and Redshift, and when each one fits."
+description: "The managed database services the exam expects you to tell apart: RDS, Aurora, DynamoDB, ElastiCache, Redshift, Neptune, and DocumentDB, and when each one fits."
 domain: 3
 module: 8
 order: 5
@@ -12,7 +12,9 @@ services:
   - Amazon DynamoDB
   - Amazon ElastiCache
   - Amazon Redshift
-updated: 2026-06-13
+  - Amazon Neptune
+  - Amazon DocumentDB
+updated: 2026-07-29
 draft: false
 ---
 
@@ -49,6 +51,19 @@ backing up, and patching, so you spend your time on the application rather than
 the server. Reach for RDS when a scenario needs a standard relational database
 without the chore of running one.
 
+### Multi-AZ deployments and read replicas
+
+Two RDS features sound alike and answer different questions. A Multi-AZ
+deployment provisions a standby DB instance in a different Availability Zone and
+replicates the primary to it synchronously. If the primary fails, RDS fails over
+to the standby automatically, which protects the database against DB instance
+failure and Availability Zone disruption. That standby is for failover only; it
+does not serve read traffic. Read replicas do that job. A read replica is a
+read-only copy of a DB instance, and routing your application's read queries to
+one takes load off the primary and scales reads beyond the capacity of a single
+instance. Multi-AZ is availability, read replicas are read scaling, and a
+scenario usually tells you which it wants.
+
 ## Amazon Aurora
 
 Amazon Aurora is AWS's own relational database, available through RDS and
@@ -72,7 +87,10 @@ delivers single-digit millisecond performance and scales to very large request
 volumes with no servers for you to manage. Serverless here means you do not pick
 or run instances; capacity follows demand. Choose DynamoDB when a scenario
 describes massive scale, simple key-based access, and a flexible record shape
-rather than complex relational queries.
+rather than complex relational queries. For an application serving several parts
+of the world, DynamoDB global tables replicate a table across the AWS Regions you
+choose, so every Region reads and writes locally and traffic can shift to another
+Region if one is interrupted.
 
 ## Amazon ElastiCache
 
@@ -92,16 +110,30 @@ job from RDS: RDS handles the live transactional traffic of an application, whil
 Redshift answers analytical questions over data gathered for analysis. The exam
 leans on that contrast.
 
+## Purpose-built: Neptune and DocumentDB
+
+Two more managed databases exist for data models the services above do not fit.
+Amazon Neptune is a graph database for highly connected data: it stores billions
+of relationships and queries them in milliseconds, which is what fraud detection,
+recommendation engines, knowledge graphs, and network security work need. Amazon
+DocumentDB (with MongoDB compatibility) is a managed document database that runs
+the same application code, drivers, and tools you already use with MongoDB, so a
+MongoDB workload moves to it without an application rewrite.
+
 <Callout type="note" title="Match the data job to the service">
 Standard relational, choose RDS. MySQL or PostgreSQL compatible with more
 performance, choose Aurora. Serverless NoSQL key-value at scale, choose DynamoDB.
 An in-memory cache to speed reads, choose ElastiCache. Analytics over a large
-warehouse, choose Redshift.
+warehouse, choose Redshift. Highly connected data and the relationships between
+entities, choose Neptune. A MongoDB-compatible document store, choose DocumentDB.
 </Callout>
 
 ## What to take away
 
-Know that all five are managed, so AWS handles the operational work. Place each
-on the two splits: RDS and Aurora are relational, DynamoDB is NoSQL, ElastiCache
-is an in-memory cache, and Redshift is an analytics warehouse rather than a
-transactional store. Matching the scenario to the service is what the exam tests.
+Know that every service here is managed, so AWS handles the operational work.
+Place each one: RDS and Aurora are relational, DynamoDB is NoSQL, ElastiCache is
+an in-memory cache, Redshift is an analytics warehouse rather than a
+transactional store, Neptune is a graph database, and DocumentDB is a document
+database compatible with MongoDB. Keep the two RDS resilience features apart as
+well: Multi-AZ for failover, read replicas for read scaling. Matching the
+scenario to the service is what the exam tests.

@@ -11,7 +11,7 @@ services:
   - Amazon S3
   - AWS Lambda
   - Amazon RDS
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -20,9 +20,10 @@ import SharedResponsibilityDiagram, { meta as sharedResponsibilityMeta } from "@
 import KnowledgeCheck from "@/components/diagrams/KnowledgeCheck";
 
 Security in AWS is a partnership. AWS secures the parts you cannot touch, and you
-secure the parts you control. This split is the Shared Responsibility Model, and
-it shows up in the exam constantly because almost every security question turns on
-one judgment: was this AWS's job or the customer's job?
+secure the parts you control. This split is the Shared Responsibility Model. It is
+its own task statement inside Security and Compliance, the largest scored domain
+after Cloud Technology and Services, and it always asks for the same judgment: was
+this AWS's job or the customer's job?
 
 The two halves have names worth memorizing. AWS is responsible for security OF the
 cloud. You, the customer, are responsible for security IN the cloud.
@@ -49,7 +50,7 @@ networking, and the physical facilities. Concretely, AWS handles:
 - The software that operates AWS managed services.
 
 You never patch an AWS data center or replace a failed drive in a host. You cannot,
-and you are not billed to. That work is AWS's side of the line.
+and you do not need to. That work is AWS's side of the line.
 
 ## What the customer is responsible for
 
@@ -64,11 +65,32 @@ to secure. That includes:
 - Network and firewall configuration, such as the rules in a security group.
 - Application-level security for the software you install.
 
-<Callout type="note" title="A simple test">
-Ask who can change the setting. If only AWS can, it is AWS's responsibility. If
-you can change it in the console, the CLI, or an API, it is yours. A misconfigured
-permission or an unpatched server you manage is on the customer.
+<Callout type="note" title="Ask which layer, not who can click it">
+Responsibility follows the service you select and the layer the task sits in. AWS
+operates, manages, and controls everything from the host operating system and the
+virtualization layer down to the physical security of the facilities. What runs
+above that line is yours, so a misconfigured permission or an unpatched server you
+manage is on the customer. Being able to trigger something from the console does
+not make it yours: on Amazon RDS you choose when operating system and engine
+patches are applied, but AWS is the one applying them.
 </Callout>
+
+## Three kinds of control
+
+The model also sorts controls into three categories, and the exam uses their names.
+
+- Inherited controls are ones you fully inherit from AWS, such as the physical and
+  environmental controls of the data centers. You get their benefit without
+  operating them.
+- Shared controls apply to the infrastructure layer and to your layer, in separate
+  contexts. AWS names three. Patch management: AWS fixes flaws in the
+  infrastructure, you patch your guest OS and applications. Configuration
+  management: AWS maintains the configuration of its infrastructure devices, you
+  configure your own guest operating systems, databases, and applications.
+  Awareness and training: AWS trains its employees, you train yours.
+- Customer specific controls are solely yours and depend on the application you
+  deploy, such as service and communications protection or zone security, which may
+  require routing or zoning data within specific security environments.
 
 ## The line moves with the service
 

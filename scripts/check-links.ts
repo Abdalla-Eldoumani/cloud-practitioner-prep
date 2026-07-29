@@ -8,8 +8,11 @@
 // host.
 //
 // Live mode (--live): additionally fetches each distinct URL and flags a
-// removed-page status (404/410) or a redirect to a different path (a soft-404
-// signal). A known AWS host often gatekeeps an automated request (403/405) or
+// removed-page status (404/410), a redirect to a different path (a soft-404
+// signal), or a body carrying AWS's "for historical reference" banner (a page
+// archived in place, where the URL alone gives nothing away). The banner scan
+// reads only bodies this run already fetched, so it costs no extra request.
+// A known AWS host often gatekeeps an automated request (403/405) or
 // rate-limits a burst (429), and a 5xx is a transient blip — those are retried
 // and then treated as reachable, never reported as a dead reference. Live HTTPS to
 // the AWS docs host is unreliable behind an HTTPS-inspecting proxy, so run live
@@ -117,9 +120,29 @@ async function main(): Promise<void> {
             reason: `redirect to a different path (${location ?? "no location"}) — review for a moved page`,
           });
         }
+        continue;
       }
-      // Anything else (2xx, a gated 403/405, or a transient status that never
-      // settled) means the page is there for our purposes — not a failure.
+      // AWS archives a page in place: the URL keeps resolving 200 and the body
+      // gains a "for historical reference only" banner, so no path check can see
+      // it. This GET already downloaded the body, so reading it adds no request.
+      // A body that cannot be read is not evidence of anything and is skipped.
+      if (res.ok) {
+        let body = "";
+        try {
+          body = await res.text();
+        } catch {
+          body = "";
+        }
+        if (/for historical reference/i.test(body)) {
+          failures.push({
+            url: url.href,
+            reason: "page body carries the AWS historical-reference banner",
+          });
+        }
+      }
+      // Anything else (an unbannered 2xx, a gated 403/405, or a transient status
+      // that never settled) means the page is there for our purposes — not a
+      // failure.
     }
   }
 

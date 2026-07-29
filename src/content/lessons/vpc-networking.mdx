@@ -11,7 +11,7 @@ services:
   - Amazon Route 53
   - AWS Direct Connect
   - AWS Site-to-Site VPN
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -32,6 +32,11 @@ virtual network that you define. It resembles a traditional network you would ru
 in your own data center, but on the scalable infrastructure of AWS. Isolation is
 the point: your VPC is yours, separate from other customers, and you control its
 address range and routing.
+
+You set that address range when you create the VPC, as an IPv4 CIDR block. The
+allowed block size runs from a /16 netmask, which is 65,536 addresses, down to a
+/28 netmask, which is 16. AWS recommends choosing that block from the private
+address ranges in RFC 1918, for example 10.0.0.0/16.
 
 ## Subnets
 
@@ -69,6 +74,12 @@ such as the internet, while preventing the outside from starting a connection ba
 to them. This is how a private database can download updates without being exposed
 to inbound traffic from the internet.
 
+Placement matters. You create a public NAT gateway in a public subnet and
+associate an Elastic IP address with it. The private subnet's route table sends
+internet-bound traffic to the NAT gateway, and traffic from the NAT gateway routes
+on to the internet gateway. A NAT gateway supplements the internet gateway rather
+than replacing it.
+
 <Callout type="note" title="Internet gateway versus NAT gateway">
 An internet gateway allows two-way communication for resources with public
 addresses. A NAT gateway allows outbound-only access for private resources. A
@@ -80,6 +91,22 @@ from outside is describing a NAT gateway.
 
 <KnowledgeCheck client:visible {...vpcMeta.check} />
 
+## VPC endpoints and AWS PrivateLink
+
+Sometimes you want a resource in a private subnet to call an AWS service with no
+internet path at all. A VPC endpoint connects your VPC privately to a supported
+service without an internet gateway, a NAT device, or a public IP address, and
+traffic between the endpoint and the service stays on the AWS network instead of
+crossing the public internet.
+
+There are two types to know. A gateway endpoint reaches Amazon S3 and DynamoDB
+through a route the endpoint adds to your route table; it does not use AWS
+PrivateLink and carries no additional charge. An interface endpoint is an endpoint
+network interface in your subnet with a private IP address, powered by AWS
+PrivateLink, and it is how you reach the AWS services that integrate with
+PrivateLink. Interface endpoints are billed per hour in each Availability Zone and
+per gigabyte processed.
+
 ## Amazon Route 53
 
 Amazon Route 53 is a highly available and scalable Domain Name System web service.
@@ -88,6 +115,19 @@ IP address that computers use to connect. Route 53 performs three main functions
 registering domain names, routing internet traffic to the resources for your
 domain, and checking the health of those resources so it can route traffic away
 from unhealthy ones.
+
+When you create a record you choose a routing policy, which decides how Route 53
+answers queries for it:
+
+- Simple: a single resource that performs a given function for your domain.
+- Weighted: multiple resources in proportions that you specify.
+- Latency: resources in multiple Regions, routing to the Region that provides the
+  best latency.
+- Failover: active-passive failover.
+- Geolocation: routing based on the location of your users.
+- Geoproximity: routing based on the location of your resources, optionally
+  shifting traffic from one location to another.
+- Multivalue answer: up to eight healthy records selected at random.
 
 ## Connecting a VPC to your own data center
 
@@ -98,7 +138,10 @@ AWS Direct Connect links your internal network to a Direct Connect location over
 standard Ethernet fiber-optic cable. It establishes a dedicated, private
 connection to AWS that bypasses your internet service provider. Because it does
 not ride the public internet, it can offer more consistent network performance
-than an internet-based connection.
+than an internet-based connection. Private is not the same as encrypted, though:
+Direct Connect does not encrypt traffic in transit by default, so when a policy
+requires encryption in transit you run an IPsec Site-to-Site VPN over the Direct
+Connect connection.
 
 AWS Site-to-Site VPN creates a secure connection between your on-premises network
 and your VPC over the internet, using IPsec encrypted tunnels. Each connection
@@ -106,12 +149,21 @@ includes two tunnels for high availability. On the AWS side a virtual private
 gateway or transit gateway terminates the connection, and on your side a customer
 gateway does.
 
+AWS Client VPN answers a different need. It is a managed client-based VPN that
+lets individual remote users securely reach resources in your VPC and in your
+on-premises network from any location, through an OpenVPN-based client.
+Site-to-Site VPN joins two whole networks; Client VPN connects one person's
+device.
+
 <Callout type="tip" title="Dedicated line versus encrypted tunnel">
 Direct Connect is a physical, dedicated connection that skips the public internet
-for consistency and is provisioned over weeks. Site-to-Site VPN is an encrypted
-tunnel over the existing internet that you can stand up quickly. A scenario asking
-for a private, consistent, high-bandwidth link points to Direct Connect; one
-asking for a quick, encrypted connection over the internet points to VPN.
+for consistency, and it needs a circuit: AWS takes up to 72 business hours to
+review the request and provision the port, and your network provider still has to
+order the cross connect at the Direct Connect location. Site-to-Site VPN is an
+encrypted tunnel over the existing internet that reuses the internet connection
+and VPN equipment you already have. A scenario asking for a private, consistent,
+high-bandwidth link points to Direct Connect; one asking for an encrypted
+connection over an existing internet connection points to VPN.
 </Callout>
 
 ## What to take away

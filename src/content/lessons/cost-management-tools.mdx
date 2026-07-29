@@ -9,10 +9,10 @@ estimatedMinutes: 14
 services:
   - AWS Cost Explorer
   - AWS Budgets
-  - AWS Cost and Usage Report
+  - AWS Cost and Usage Reports
   - AWS Pricing Calculator
   - AWS Organizations
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -47,7 +47,8 @@ time. It shows up to the last 13 months of data, forecasts likely spend for the
 months ahead, and surfaces trends you can drill into with filters and groupings.
 You can also get recommendations, such as which Reserved Instances to purchase.
 Reach for Cost Explorer when you need to understand where money has gone and
-where it is heading.
+where it is heading. You enable it once per account by opening it in the
+console, and once enabled it cannot be disabled again.
 
 ## Set alerts and limits: AWS Budgets
 
@@ -64,14 +65,16 @@ spend with thresholds and alerts. A scenario about being notified before going
 over a limit points to AWS Budgets.
 </Callout>
 
-## The detailed source of truth: AWS Cost and Usage Report
+## The detailed source of truth: AWS Cost and Usage Reports
 
-The AWS Cost and Usage Report (AWS CUR) contains the most comprehensive set of
+AWS Cost and Usage Reports (AWS CUR) contains the most comprehensive set of
 cost and usage data AWS publishes. It writes line-item detail to an Amazon S3
 bucket you own, broken down by hour, day, or month, by product or resource, and
 by tags you define. The files are CSV and can grow large, so teams query them
 with tools such as Amazon Athena or load them into Amazon Redshift. Use the CUR
 when you need the finest-grained billing data for deep analysis or chargeback.
+AWS writes the name both ways, so a reference to the Cost and Usage Report in
+the singular means this same report.
 
 ## The Billing console
 
@@ -115,7 +118,7 @@ how organizations split a shared bill across teams.
 
 Match the tool to the question. The Pricing Calculator estimates a design before
 you build it. Cost Explorer analyzes and forecasts actual spend. Budgets alerts
-you before you cross a threshold. The Cost and Usage Report is the most detailed
+you before you cross a threshold. Cost and Usage Reports are the most detailed
 billing data, delivered to S3. The Billing console is the dashboard.
 Consolidated billing under AWS Organizations gives one bill and combined-usage
 volume discounts at no extra fee, and cost allocation tags let you attribute

@@ -2,10 +2,11 @@ import type { Question } from "../../lib/types";
 
 // Domain 2: Security and Compliance, network protection cluster. Original
 // practice questions covering security groups versus network ACLs, AWS WAF,
-// AWS Shield Standard and Advanced, AWS Network Firewall, and AWS Firewall
-// Manager. These are not real exam items. Every fact is verified against
-// current AWS documentation; each question cites the page that backs its
-// answer.
+// AWS Shield Standard and Advanced, and AWS Firewall Manager. These are not
+// real exam items. Every fact is verified against current AWS documentation;
+// each question cites the page that backs its answer.
+//
+// A retired id is burned and never reused, so the sequence has gaps.
 export const domain2NetworkProtection: Question[] = [
   {
     id: "d2-netsec-01",
@@ -27,7 +28,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC", "EC2"],
   },
   {
@@ -50,7 +51,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC", "EC2"],
   },
   {
@@ -73,7 +74,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -97,7 +98,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -120,7 +121,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -149,7 +150,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -172,7 +173,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -195,7 +196,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -223,7 +224,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -246,7 +247,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -270,7 +271,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -293,7 +294,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Infrastructure security in Amazon VPC",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -316,7 +317,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
   },
   {
@@ -339,7 +340,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
   },
   {
@@ -363,7 +364,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF", "CloudFront"],
   },
   {
@@ -387,7 +388,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
   },
   {
@@ -410,7 +411,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
   },
   {
@@ -433,7 +434,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -457,7 +458,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -477,10 +478,10 @@ export const domain2NetworkProtection: Question[] = [
     explanation:
       "AWS Shield Advanced is the paid subscription that provides expanded DDoS protection and access to the Shield Response Team, which suits high-visibility or frequently attacked applications. Shield Standard does not include the response team, AWS Config evaluates configurations rather than absorbing attacks, and Spot Instances are a pricing choice unrelated to DDoS defense.",
     reference: {
-      label: "AWS Shield Advanced overview",
-      url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html",
+      label: "AWS Shield Advanced capabilities and options",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary-capabilities.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -503,7 +504,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -527,7 +528,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -550,7 +551,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield"],
   },
   {
@@ -573,7 +574,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Shield", "WAF"],
   },
   {
@@ -596,31 +597,8 @@ export const domain2NetworkProtection: Question[] = [
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF", "Shield"],
-  },
-  {
-    id: "d2-netsec-26",
-    domain: 2,
-    type: "single",
-    topic: "AWS Network Firewall",
-    difficulty: "medium",
-    stem: "A team wants a managed, stateful network firewall with intrusion detection and prevention to filter traffic at the perimeter of their VPC, including traffic to and from the internet gateway and NAT gateway. Which service fits?",
-    options: [
-      { id: "a", text: "AWS Network Firewall" },
-      { id: "b", text: "AWS WAF" },
-      { id: "c", text: "Amazon Inspector" },
-      { id: "d", text: "AWS Trusted Advisor" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Network Firewall is a stateful, managed network firewall and intrusion detection and prevention service for a VPC that filters traffic at the VPC perimeter, including traffic over the internet gateway, NAT gateway, VPN, or Direct Connect. AWS WAF filters web requests for applications, Inspector assesses workloads for vulnerabilities, and Trusted Advisor gives best-practice checks.",
-    reference: {
-      label: "What is AWS Network Firewall?",
-      url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Network Firewall", "VPC"],
   },
   {
     id: "d2-netsec-27",
@@ -643,55 +621,8 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
-  },
-  {
-    id: "d2-netsec-28",
-    domain: 2,
-    type: "multi",
-    topic: "AWS Network Firewall",
-    difficulty: "hard",
-    stem: "Which TWO capabilities does AWS Network Firewall provide for protecting VPC traffic? (Choose two.)",
-    options: [
-      { id: "a", text: "Limiting the domain names that applications in the VPC can reach, using lists of allowed or known bad domains." },
-      { id: "b", text: "Performing deep packet inspection on traffic entering or leaving the VPC." },
-      { id: "c", text: "Reimbursing scaling charges that result from a DDoS attack." },
-      { id: "d", text: "Issuing and rotating TLS certificates for application load balancers." },
-      { id: "e", text: "Centrally managing firewall policies across every account in an organization on its own." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS Network Firewall can limit the domains applications reach and perform deep packet inspection on traffic entering or leaving the VPC. DDoS cost protection is a Shield Advanced benefit, certificate issuance is AWS Certificate Manager's role, and cross-account central management is provided by AWS Firewall Manager rather than Network Firewall by itself.",
-    reference: {
-      label: "What is AWS Network Firewall?",
-      url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Network Firewall", "VPC"],
-  },
-  {
-    id: "d2-netsec-29",
-    domain: 2,
-    type: "single",
-    topic: "Network Firewall vs WAF",
-    difficulty: "hard",
-    stem: "A practitioner is distinguishing AWS Network Firewall from AWS WAF. Which statement draws the line correctly?",
-    options: [
-      { id: "a", text: "AWS Network Firewall filters traffic at the VPC network level, while AWS WAF filters HTTP and HTTPS requests to web applications." },
-      { id: "b", text: "AWS Network Firewall filters HTTP requests to applications, while AWS WAF protects an entire VPC's network traffic." },
-      { id: "c", text: "Both services do exactly the same thing and are interchangeable." },
-      { id: "d", text: "AWS Network Firewall is a DDoS service, while AWS WAF is a DNS service." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Network Firewall protects VPC network traffic as a managed network firewall and IDS/IPS, while AWS WAF inspects HTTP and HTTPS requests to web applications. Saying Network Firewall filters HTTP requests while WAF protects the whole VPC reverses their roles, the services are not interchangeable, and neither is a DDoS or DNS service.",
-    reference: {
-      label: "What is AWS Network Firewall?",
-      url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Network Firewall", "WAF"],
   },
   {
     id: "d2-netsec-30",
@@ -713,7 +644,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Firewall Manager", "Organizations"],
   },
   {
@@ -737,14 +668,14 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Firewall Manager", "WAF", "Shield"],
   },
   {
     id: "d2-netsec-32",
     domain: 2,
     type: "single",
-    topic: "Service selection",
+    topic: "AWS WAF",
     difficulty: "medium",
     stem: "An application sits behind an Application Load Balancer and is receiving requests that try to inject malicious scripts into form fields, a cross-site scripting attempt. Which service should the team configure to block these requests?",
     options: [
@@ -760,14 +691,14 @@ export const domain2NetworkProtection: Question[] = [
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF"],
   },
   {
     id: "d2-netsec-33",
     domain: 2,
     type: "single",
-    topic: "Service selection",
+    topic: "Security groups",
     difficulty: "easy",
     stem: "Which AWS service is designed to control inbound and outbound traffic for an individual EC2 instance using allow rules?",
     options: [
@@ -783,7 +714,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC", "EC2"],
   },
   {
@@ -806,7 +737,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -830,42 +761,14 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC", "EC2"],
-  },
-  {
-    id: "d2-netsec-36",
-    domain: 2,
-    type: "single",
-    topic: "AWS Network Firewall",
-    difficulty: "medium",
-    stem: "AWS Network Firewall uses which types of rules to inspect and filter VPC traffic?",
-    options: [
-      { id: "a", text: "Both stateless rules and stateful rules" },
-      { id: "b", text: "Only stateless rules" },
-      { id: "c", text: "Only IAM identity-based rules" },
-      { id: "d", text: "Only Amazon S3 bucket policies" },
-    ],
-    correct: ["a"],
-    distractorRationales: {
-      b: "Network Firewall uses stateful rules as well as stateless ones, so limiting it to stateless rules is wrong.",
-      c: "Network Firewall filters network traffic; it does not use IAM identity-based rules, which govern API permissions.",
-      d: "Network Firewall does not filter traffic with Amazon S3 bucket policies, which control access to S3 objects.",
-    },
-    explanation:
-      "AWS Network Firewall uses stateless rule groups and stateful rule groups to inspect and filter VPC traffic, with stateful inspection powered by the open source Suricata IPS. It is not limited to stateless rules, and it does not filter traffic with only IAM identity-based rules or with Amazon S3 bucket policies.",
-    reference: {
-      label: "What is AWS Network Firewall?",
-      url: "https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Network Firewall", "VPC"],
   },
   {
     id: "d2-netsec-37",
     domain: 2,
     type: "single",
-    topic: "Service selection",
+    topic: "AWS Firewall Manager",
     difficulty: "hard",
     stem: "A company wants protections that span layers: filtering malicious web requests to its applications, defending against DDoS attacks, and applying these consistently across dozens of accounts. Which set of services maps to these three goals in order?",
     options: [
@@ -881,7 +784,110 @@ export const domain2NetworkProtection: Question[] = [
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["WAF", "Shield", "Firewall Manager"],
+  },
+  {
+    id: "d2-netsec-38",
+    domain: 2,
+    type: "single",
+    topic: "AWS Shield Advanced",
+    difficulty: "medium",
+    stem: "A company is subscribing to AWS Shield Advanced for its public workload and wants to know which of its resources the subscription can cover. Which set does AWS name as receiving Shield Advanced's expanded DDoS protection?",
+    options: [
+      { id: "a", text: "Amazon EC2 instances, Elastic Load Balancing load balancers, CloudFront distributions, Route 53 hosted zones, and AWS Global Accelerator standard accelerators" },
+      { id: "b", text: "Amazon S3 buckets, Amazon RDS databases, and AWS Lambda functions" },
+      { id: "c", text: "IAM users, IAM roles, and IAM policies" },
+      { id: "d", text: "Amazon VPC subnets and route tables" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS documents Shield Advanced as providing expanded DDoS attack protection for Amazon EC2 instances, Elastic Load Balancing load balancers, CloudFront distributions, Route 53 hosted zones, and AWS Global Accelerator standard accelerators, which are the internet-facing entry points an attack would aim at. Amazon S3 buckets, Amazon RDS databases, and AWS Lambda functions are not on that list; IAM users, roles, and policies are identity objects rather than traffic entry points; and Amazon VPC subnets and route tables are network plumbing rather than protected resources in their own right.",
+    reference: {
+      label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["Shield", "CloudFront", "EC2"],
+  },
+  {
+    id: "d2-netsec-39",
+    domain: 2,
+    type: "multi",
+    topic: "AWS Shield",
+    difficulty: "hard",
+    stem: "A practitioner is mapping the two AWS Shield tiers to the attack layers each one addresses. Which TWO statements match how AWS describes them? (Choose two.)",
+    options: [
+      { id: "a", text: "Shield Standard defends against the most common, frequently occurring network and transport layer DDoS events." },
+      { id: "b", text: "Shield Advanced adds detection and mitigation for larger, more sophisticated attacks and integrates with AWS WAF to mitigate application layer events." },
+      { id: "c", text: "Shield Standard on its own inspects the body of an HTTP request and blocks SQL injection." },
+      { id: "d", text: "Shield Advanced replaces AWS WAF, so a subscriber no longer writes web ACL rules." },
+      { id: "e", text: "Shield Standard has to be enabled per resource from the console before it takes effect." },
+    ],
+    correct: ["a", "b"],
+    distractorRationales: {
+      c: "Blocking SQL injection by reading an HTTP request body is AWS WAF's job. Shield works on the flood of traffic, not the contents of one request.",
+      d: "Shield Advanced integrates with AWS WAF rather than replacing it, and a subscriber still writes the web ACL rules that filter requests.",
+      e: "Shield Standard is not enabled per resource from the console. Every AWS customer already benefits from it automatically.",
+    },
+    explanation:
+      "AWS describes Shield Standard as defending against the most common, frequently occurring network and transport layer DDoS events aimed at a website or application, which is the layer 3 and layer 4 band. Shield Advanced adds detection and mitigation for larger and more sophisticated attacks and integrates with AWS WAF so that web ACL rules mitigate events at the application layer. Blocking SQL injection by reading an HTTP request body is AWS WAF's own job rather than something Shield Standard does; Shield Advanced does not stand in for AWS WAF, and a subscriber still writes the web ACL rules; and Shield Standard is not enabled per resource from the console, because every AWS customer gets it automatically.",
+    reference: {
+      label: "AWS Shield features",
+      url: "https://aws.amazon.com/shield/features/",
+    },
+    lastVerified: "2026-07-29",
+    services: ["Shield", "WAF"],
+  },
+  {
+    id: "d2-netsec-40",
+    domain: 2,
+    type: "single",
+    topic: "AWS WAF",
+    difficulty: "hard",
+    stem: "A team must block requests that carry SQL code likely to be malicious in the request itself, rather than filtering by source address, port, and protocol. Which control inspects the content of a web request?",
+    options: [
+      { id: "a", text: "AWS WAF" },
+      { id: "b", text: "A security group attached to the load balancer" },
+      { id: "c", text: "A network ACL on the subnet" },
+      { id: "d", text: "AWS Shield Advanced" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS WAF is a web application firewall that monitors the HTTP and HTTPS requests forwarded to a protected resource, and its match criteria include the presence of SQL code that is likely to be malicious, along with header values, strings, regex patterns, and request length. A security group attached to the load balancer and a network ACL on the subnet both decide by source or destination, port range, and protocol, so neither reads what a request contains, and AWS Shield Advanced defends against distributed denial of service attacks rather than inspecting an individual request body.",
+    reference: {
+      label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
+      url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["WAF", "Shield", "VPC"],
+  },
+  {
+    id: "d2-netsec-41",
+    domain: 2,
+    type: "single",
+    topic: "Security groups",
+    difficulty: "medium",
+    stem: "An EC2 instance sends a request out to an external API and the response arrives back even though no inbound security group rule matches it. Which property of security groups explains that?",
+    options: [
+      { id: "a", text: "Security groups are stateful, so the response to a request the instance sent is allowed back in regardless of the inbound rules" },
+      { id: "b", text: "Security groups are stateless, so the response was matched by an inbound rule that allows all traffic" },
+      { id: "c", text: "An outbound rule allowed the request out, and outbound rules also govern what comes back in" },
+      { id: "d", text: "The subnet's network ACL allowed the response, which overrides the security group" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Security groups are stateful, not stateless, and no blanket inbound allow rule is involved. Stateless evaluation, where the return traffic needs its own rule, is how a network ACL behaves.",
+      c: "An outbound rule governs traffic leaving the instance. It does not by itself admit the return traffic; the connection tracking does.",
+      d: "A network ACL is a separate subnet-level layer rather than an override. Traffic has to be allowed by the security group as well.",
+    },
+    explanation:
+      "Security groups are stateful. If you send a request from an instance, the response traffic for that request is allowed to reach the instance regardless of the inbound security group rules, and responses to allowed inbound traffic are likewise allowed to leave regardless of the outbound rules. Security groups are not stateless and no inbound rule allowing all traffic is at work here; an outbound rule governs traffic leaving the instance rather than what comes back in; and a network ACL is a separate subnet-level layer of security rather than something that overrides a security group.",
+    reference: {
+      label: "Control traffic to your AWS resources using security groups",
+      url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["VPC", "EC2"],
   },
 ];

@@ -1,10 +1,16 @@
 import type { Question } from "../../lib/types";
 
-// Domain 3: Cloud Technology and Services, storage cluster. Original practice
-// questions covering block vs object vs file storage, Amazon EBS, EC2 instance
-// store, Amazon S3 fundamentals, S3 storage classes, and S3 Lifecycle. These
-// are not real exam items. Every fact is verified against current AWS
-// documentation; each question cites the page that backs its answer.
+// Storage cluster. Original practice questions covering block vs object vs
+// file storage, Amazon EBS, EC2 instance store, Amazon S3 fundamentals, S3
+// storage classes, S3 Lifecycle, and object durability. Domain 3, Cloud
+// Technology and Services; the S3 security questions belong to the security
+// domain and live in domain-2-encryption.ts. These are not real exam items.
+// Every fact is verified against current AWS documentation; each question cites
+// the page that backs its answer.
+//
+// Ids keep their historical d1-resil- prefixes deliberately: an id is a stable
+// key in a learner's saved progress, so it survives a move between files and
+// stays put when a question is retagged to another domain.
 export const domain3Storage: Question[] = [
   {
     id: "d3-storage-01",
@@ -26,7 +32,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -49,7 +55,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? How Amazon S3 works",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -69,10 +75,10 @@ export const domain3Storage: Question[] = [
     explanation:
       "File storage presents a shared file system that multiple clients mount and access concurrently over a file protocol. Object storage is reached through an API by key rather than mounted as a file system, a single block volume is generally attached to one instance, and instance store is temporary local disk.",
     reference: {
-      label: "AWS Storage services overview (Cloud Storage on AWS)",
-      url: "https://aws.amazon.com/products/storage/",
+      label: "What is Amazon Elastic File System?",
+      url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d3-storage-04",
@@ -95,7 +101,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? How Amazon S3 works",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3", "EBS"],
   },
   {
@@ -118,7 +124,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS", "EC2"],
   },
   {
@@ -141,7 +147,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store? Features of Amazon EBS",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -164,7 +170,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS", "S3"],
   },
   {
@@ -187,7 +193,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -210,7 +216,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -234,7 +240,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -257,7 +263,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types: Hard disk drive (HDD) volumes",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS"],
   },
   {
@@ -278,10 +284,10 @@ export const domain3Storage: Question[] = [
     explanation:
       "An EBS volume lives in one Availability Zone and attaches to an instance in that zone, and EBS snapshots are incremental backups stored in Amazon S3. EBS data persists across an instance stop rather than being erased, Throughput Optimized HDD (st1) does not support boot volumes, and volumes are replicated within one Availability Zone, not across all Regions.",
     reference: {
-      label: "Amazon EBS volume types",
-      url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
+      label: "Amazon EBS volumes",
+      url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EBS", "S3"],
   },
   {
@@ -304,7 +310,7 @@ export const domain3Storage: Question[] = [
       label: "Instance store temporary block storage for EC2 instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -327,7 +333,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -351,7 +357,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -375,7 +381,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2", "EBS"],
   },
   {
@@ -398,7 +404,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Buckets",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -421,7 +427,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -445,7 +451,7 @@ export const domain3Storage: Question[] = [
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -468,7 +474,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Regions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -492,100 +498,7 @@ export const domain3Storage: Question[] = [
       label: "Uploading objects (unlimited number of objects in a bucket)",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html",
     },
-    lastVerified: "2026-06-23",
-    services: ["S3"],
-  },
-  {
-    id: "d3-storage-22",
-    domain: 3,
-    type: "single",
-    topic: "Amazon S3 security",
-    difficulty: "easy",
-    stem: "By default, who can access a newly created Amazon S3 bucket and the objects in it?",
-    options: [
-      { id: "a", text: "Anyone on the internet, until you turn on a private setting." },
-      { id: "b", text: "No one but the owner; buckets and objects are private unless you explicitly grant access." },
-      { id: "c", text: "Every user in the same AWS Region." },
-      { id: "d", text: "Any AWS customer worldwide." },
-    ],
-    correct: ["b"],
-    explanation:
-      "By default S3 buckets and the objects in them are private, and you have access only to the resources you create unless you explicitly grant access. They are not open to anyone on the internet until you turn on a private setting, not open to everyone in a Region, and not open to all AWS customers.",
-    reference: {
-      label: "What is Amazon S3? Access management and security",
-      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["S3"],
-  },
-  {
-    id: "d3-storage-23",
-    domain: 3,
-    type: "single",
-    topic: "Amazon S3 security",
-    difficulty: "medium",
-    stem: "A security team wants a single setting that prevents an S3 bucket and its objects from being made public, as a guardrail against accidental exposure. Which S3 feature does this?",
-    options: [
-      { id: "a", text: "S3 Versioning" },
-      { id: "b", text: "S3 Lifecycle configuration" },
-      { id: "c", text: "S3 Transfer Acceleration" },
-      { id: "d", text: "S3 Block Public Access" },
-    ],
-    correct: ["d"],
-    explanation:
-      "S3 Block Public Access blocks public access to buckets and objects and is turned on at the bucket level by default, acting as a guardrail against accidental exposure. Versioning preserves object versions, Lifecycle manages storage classes and expiration, and Transfer Acceleration speeds uploads over long distances.",
-    reference: {
-      label: "What is Amazon S3? S3 Block Public Access",
-      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["S3"],
-  },
-  {
-    id: "d3-storage-24",
-    domain: 3,
-    type: "single",
-    topic: "Amazon S3 security",
-    difficulty: "medium",
-    stem: "An administrator wants to attach a JSON policy directly to an S3 bucket to grant or deny access to the bucket and its objects, including granting cross-account access. Which mechanism is this?",
-    options: [
-      { id: "a", text: "A security group attached to the bucket" },
-      { id: "b", text: "A bucket policy, a resource-based IAM policy attached to the bucket" },
-      { id: "c", text: "A network ACL on the bucket's subnet" },
-      { id: "d", text: "An EBS volume permission" },
-    ],
-    correct: ["b"],
-    explanation:
-      "A bucket policy is a resource-based IAM policy written in JSON that the bucket owner attaches to the bucket to grant or deny access, including cross-account access. Security groups and network ACLs are VPC networking controls that do not attach to buckets, and EBS permissions apply to block volumes, not S3.",
-    reference: {
-      label: "What is Amazon S3? Bucket policy",
-      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["S3"],
-  },
-  {
-    id: "d3-storage-25",
-    domain: 3,
-    type: "multi",
-    topic: "Amazon S3 security",
-    difficulty: "hard",
-    stem: "A team wants to protect important objects in a bucket from accidental or malicious deletion and overwrites. Which TWO S3 features help with this goal? (Choose two.)",
-    options: [
-      { id: "a", text: "S3 Versioning, which keeps multiple variants of an object so you can restore an earlier one." },
-      { id: "b", text: "S3 Object Lock, which can prevent objects from being deleted or overwritten for a set time using a write-once-read-many model." },
-      { id: "c", text: "S3 Intelligent-Tiering, which automatically moves objects between access tiers." },
-      { id: "d", text: "S3 Transfer Acceleration, which speeds uploads over long distances." },
-      { id: "e", text: "S3 Storage Lens, which provides usage and activity metrics." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "S3 Versioning preserves multiple variants of an object so you can recover from accidental overwrites or deletes, and S3 Object Lock can prevent objects from being deleted or overwritten for a fixed period using a write-once-read-many model. Intelligent-Tiering optimizes cost, Transfer Acceleration speeds uploads, and Storage Lens reports metrics; none of these protect against deletion.",
-    reference: {
-      label: "What is Amazon S3? Storage management (S3 Object Lock) and S3 Versioning",
-      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -608,7 +521,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -632,7 +545,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -655,7 +568,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -678,7 +591,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -701,7 +614,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -724,7 +637,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -747,7 +660,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -759,19 +672,19 @@ export const domain3Storage: Question[] = [
     stem: "Which TWO statements about Amazon S3 storage classes are correct? (Choose two.)",
     options: [
       { id: "a", text: "S3 One Zone-IA stores data in a single Availability Zone, so it is not resilient to the loss of that zone." },
-      { id: "b", text: "All S3 storage classes are designed for the same 99.999999999 percent durability." },
+      { id: "b", text: "S3 Standard, S3 Standard-IA, S3 One Zone-IA, and the S3 Glacier storage classes are all designed for 99.999999999 percent durability." },
       { id: "c", text: "S3 Glacier Deep Archive returns objects in milliseconds, the same as S3 Standard." },
       { id: "d", text: "S3 Standard-IA stores data in only one Availability Zone." },
       { id: "e", text: "S3 Intelligent-Tiering charges a per-gigabyte retrieval fee on every access." },
     ],
     correct: ["a", "b"],
     explanation:
-      "S3 One Zone-IA keeps data in a single Availability Zone and is not resilient to that zone's loss, and all the S3 storage classes are designed for the same 99.999999999 percent durability. Glacier Deep Archive retrieval takes hours, Standard-IA stores across at least three Availability Zones, and Intelligent-Tiering has no retrieval fees.",
+      "S3 One Zone-IA keeps data in a single Availability Zone and is not resilient to that zone's loss, and S3 Standard, Standard-IA, One Zone-IA and the S3 Glacier classes are all designed for 99.999999999 percent durability. Glacier Deep Archive retrieval takes hours, Standard-IA stores across at least three Availability Zones, and Intelligent-Tiering has no retrieval fees.",
     reference: {
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -794,7 +707,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -818,7 +731,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: Transition and Expiration actions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -841,7 +754,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: Expiration actions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
   {
@@ -864,7 +777,30 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: complete lifecycle",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
+    services: ["S3"],
+  },
+  {
+    id: "d1-resil-29",
+    domain: 3,
+    type: "single",
+    topic: "Durability vs availability",
+    difficulty: "hard",
+    stem: "Amazon S3 Standard is described as designed for 99.999999999 percent durability, storing objects redundantly across at least three Availability Zones. In resilience terms, what does this durability figure refer to?",
+    options: [
+      { id: "a", text: "Protection against losing the stored objects, so that data survives even the loss of an entire Availability Zone." },
+      { id: "b", text: "A promise that every request to retrieve an object will always succeed instantly." },
+      { id: "c", text: "The percentage of the year the service can accept new uploads." },
+      { id: "d", text: "The discount applied to storage as you store more data." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about every retrieval request succeeding instantly; it is not the percentage of the year the service can accept new uploads, and it has nothing to do with volume discounts.",
+    reference: {
+      label: "Data protection in Amazon S3",
+      url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
+    },
+    lastVerified: "2026-07-29",
     services: ["S3"],
   },
 ];

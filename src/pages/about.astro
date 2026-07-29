@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { EXAM } from "@/lib/constants";
 
 const examGuide =
-  "https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf";
+  "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html";
 const certPage =
   "https://aws.amazon.com/certification/certified-cloud-practitioner/";
 const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
@@ -95,7 +95,7 @@ const repo = "https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep";
           rel="noopener noreferrer"
           class="underline underline-offset-2 transition-colors hover:text-ink-1" style="color: var(--kicker-ink)"
         >
-          official exam guide
+          official {EXAM.code} exam guide
         </a>{" "}
         and the{" "}
         <a

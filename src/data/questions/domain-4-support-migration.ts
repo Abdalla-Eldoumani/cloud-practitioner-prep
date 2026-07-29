@@ -1,7 +1,9 @@
 import type { Question } from "../../lib/types";
 
-// Domain 4: Billing, Pricing, and Support. Support plans, AWS resources and
-// help, the AWS Cloud Adoption Framework, and migration strategies and tooling.
+// Domain 4: Billing, Pricing, and Support. Support plans, support case
+// severity, AWS Trusted Advisor, the AWS Health Dashboard, and the AWS
+// resources and help the exam names. Migration and the Cloud Adoption Framework
+// live in domain-1-migration-caf.ts.
 // Original practice questions. Every fact verified against current AWS docs.
 //
 // Support-plan note: AWS has announced a consolidation. Developer Support,
@@ -11,6 +13,10 @@ import type { Question } from "../../lib/types";
 // still frames the classic five tiers (Basic, Developer, Business, Enterprise
 // On-Ramp, Enterprise), so the questions teach those tiers and the verified
 // severity response times, with a question acknowledging the change.
+//
+// Ids keep their historical d4-supportmig- and d3-integ- prefixes deliberately:
+// an id is a stable key in a learner's saved progress, so it survives a move
+// between files and stays put when a question is retagged to another domain.
 export const domain4SupportMigration: Question[] = [
   {
     id: "d4-supportmig-01",
@@ -32,7 +38,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-02",
@@ -54,7 +60,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-03",
@@ -62,7 +68,7 @@ export const domain4SupportMigration: Question[] = [
     type: "single",
     topic: "AWS Support plans",
     difficulty: "medium",
-    stem: "A company runs production workloads on AWS and needs 24/7 access to Cloud Support Engineers by phone, chat, and email, plus the full set of AWS Trusted Advisor checks, at the lowest cost. Which plan meets these needs?",
+    stem: "A company runs production workloads on AWS and needs 24/7 access to Cloud Support Engineers by phone, chat, and the web, plus the full set of AWS Trusted Advisor checks, at the lowest cost. Which plan meets these needs?",
     options: [
       { id: "a", text: "Basic Support" },
       { id: "b", text: "Developer Support" },
@@ -71,12 +77,12 @@ export const domain4SupportMigration: Question[] = [
     ],
     correct: ["c"],
     explanation:
-      "Business Support is the lowest classic tier that provides 24/7 phone, chat, and email access to Cloud Support Engineers along with the full set of Trusted Advisor checks, which is why AWS recommends it as a minimum for production workloads. Basic and Developer lack 24/7 engineer access and the full checks. Enterprise adds a designated Technical Account Manager and faster critical response, but at higher cost than required here. AWS is consolidating its lineup, with Business Support reaching end of support on January 1, 2027 and customers moving to Business Support+, but the exam still frames the classic tier.",
+      "Business Support is the lowest classic tier that provides 24/7 phone, chat, and web access to Cloud Support Engineers along with the full set of Trusted Advisor checks. Basic and Developer lack 24/7 engineer access and the full checks. Enterprise adds a designated Technical Account Manager and faster critical response, but at higher cost than required here. AWS is consolidating its lineup, with Business Support reaching end of support on January 1, 2027 and customers moving to Business Support+, but the exam still frames the classic tier.",
     reference: {
-      label: "AWS Support plan end of support",
-      url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
+      label: "AWS Business Support",
+      url: "https://aws.amazon.com/premiumsupport/plans/business/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-04",
@@ -84,7 +90,7 @@ export const domain4SupportMigration: Question[] = [
     type: "single",
     topic: "AWS Support plans",
     difficulty: "medium",
-    stem: "A solo developer is experimenting with AWS in a non-production environment and wants the cheapest paid plan that still lets them open technical support cases for guidance during business hours. Which plan fits best?",
+    stem: "Under the classic AWS Support tiers the CLF-C02 exam covers, which plan is the cheapest paid tier that lets a developer open technical support cases?",
     options: [
       { id: "a", text: "Basic Support" },
       { id: "b", text: "Developer Support" },
@@ -93,12 +99,12 @@ export const domain4SupportMigration: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "Developer Support is the entry paid plan aimed at testing and early development. It allows technical support cases with guidance during business hours, which is enough for a non-production experiment. Basic cannot open technical cases, while Business and Enterprise are built for production workloads and cost more than this use needs. AWS is consolidating its lineup, with Developer Support reaching end of support on January 1, 2027 and customers moving to Business Support+, but the exam still frames the classic tier.",
+      "Developer Support is the entry paid plan aimed at testing and early development, and it is the cheapest tier that can open technical support cases. Basic cannot open technical cases at all, while Business and Enterprise are built for production workloads and cost more than a non-production experiment needs. AWS is consolidating its lineup: Developer Support and Business Support closed to new subscriptions on December 2, 2025, and Developer Support reaches end of support on January 1, 2027 with customers moving to Business Support+, but the exam still frames the classic tier.",
     reference: {
-      label: "AWS Support plan end of support",
-      url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
+      label: "AWS Support FAQs",
+      url: "https://aws.amazon.com/premiumsupport/faqs/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-05",
@@ -120,7 +126,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Features of AWS Support Plans",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-06",
@@ -142,7 +148,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-07",
@@ -164,7 +170,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Understanding AWS Support response times",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-08",
@@ -187,7 +193,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-09",
@@ -209,7 +215,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Developer, Business, and Enterprise On-Ramp end of support",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-10",
@@ -231,7 +237,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-11",
@@ -254,7 +260,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-12",
@@ -276,7 +282,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-13",
@@ -298,7 +304,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-14",
@@ -318,9 +324,9 @@ export const domain4SupportMigration: Question[] = [
       "AWS re:Post is a community-driven question-and-answer service that replaced the original AWS Forums. It offers crowd-sourced, expert-reviewed answers and is integrated with AWS Support. Marketplace is a software catalog, Trusted Advisor gives account recommendations, and Cost Explorer analyzes spend.",
     reference: {
       label: "AWS re:Post",
-      url: "https://repost.aws/",
+      url: "https://aws.amazon.com/blogs/aws/aws-repost-a-reimagined-qa-experience-for-the-aws-community/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-15",
@@ -342,7 +348,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Marketplace",
       url: "https://aws.amazon.com/marketplace/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-16",
@@ -364,7 +370,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Partner Network",
       url: "https://aws.amazon.com/partners/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-17",
@@ -377,7 +383,7 @@ export const domain4SupportMigration: Question[] = [
       { id: "a", text: "AWS Whitepapers and Guides" },
       { id: "b", text: "AWS Marketplace listings" },
       { id: "c", text: "AWS Cost and Usage Report" },
-      { id: "d", text: "AWS Personal Health Dashboard" },
+      { id: "d", text: "AWS Health Dashboard" },
     ],
     correct: ["a"],
     explanation:
@@ -386,29 +392,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Whitepapers & Guides",
       url: "https://aws.amazon.com/whitepapers/",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-18",
-    domain: 4,
-    type: "single",
-    topic: "AWS Well-Architected Tool",
-    difficulty: "medium",
-    stem: "A team wants to review a workload against AWS architectural best practices in the AWS Management Console at no cost and get a plan to improve it. Which service should they use?",
-    options: [
-      { id: "a", text: "AWS Well-Architected Tool" },
-      { id: "b", text: "AWS Trusted Advisor" },
-      { id: "c", text: "AWS Compute Optimizer" },
-      { id: "d", text: "AWS Service Catalog" },
-    ],
-    correct: ["a"],
-    explanation:
-      "The AWS Well-Architected Tool is a free console service that helps you review a workload against the Well-Architected Framework and produces an improvement plan. Trusted Advisor gives account-wide best-practice checks rather than a guided workload review, Compute Optimizer recommends resource sizing, and Service Catalog manages approved products for deployment.",
-    reference: {
-      label: "AWS Well-Architected Tool",
-      url: "https://aws.amazon.com/well-architected-tool/",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-19",
@@ -429,301 +413,9 @@ export const domain4SupportMigration: Question[] = [
       "AWS re:Post (community Q&A) and AWS Whitepapers and Guides (technical content) are learning and help resources. AWS Marketplace is for buying third-party software, while GuardDuty (threat detection) and Shield (DDoS protection) are security services, not knowledge resources.",
     reference: {
       label: "AWS re:Post",
-      url: "https://repost.aws/",
+      url: "https://aws.amazon.com/blogs/aws/aws-repost-a-reimagined-qa-experience-for-the-aws-community/",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-20",
-    domain: 4,
-    type: "single",
-    topic: "AWS Cloud Adoption Framework",
-    difficulty: "easy",
-    stem: "The AWS Cloud Adoption Framework (AWS CAF) organizes guidance into six perspectives. Which of the following is one of those perspectives?",
-    options: [
-      { id: "a", text: "Governance" },
-      { id: "b", text: "Networking" },
-      { id: "c", text: "Billing" },
-      { id: "d", text: "Migration" },
-    ],
-    correct: ["a"],
-    explanation:
-      "The six AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. Governance is one of them. Networking, Billing, and Migration are not CAF perspectives, though they are addressed within the perspectives where relevant.",
-    reference: {
-      label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-21",
-    domain: 4,
-    type: "multi",
-    topic: "AWS Cloud Adoption Framework",
-    difficulty: "medium",
-    stem: "Which TWO of the following are perspectives of the AWS Cloud Adoption Framework? (Choose two.)",
-    options: [
-      { id: "a", text: "People" },
-      { id: "b", text: "Platform" },
-      { id: "c", text: "Pricing" },
-      { id: "d", text: "Procurement" },
-      { id: "e", text: "Partners" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "The AWS CAF perspectives are Business, People, Governance, Platform, Security, and Operations. People and Platform are two of them. Pricing, Procurement, and Partners are not CAF perspectives.",
-    reference: {
-      label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-22",
-    domain: 4,
-    type: "single",
-    topic: "AWS Cloud Adoption Framework",
-    difficulty: "hard",
-    stem: "A company adopting the cloud needs to retrain staff, evolve roles, and manage the cultural change that comes with new ways of working. Which AWS Cloud Adoption Framework perspective most directly addresses these concerns?",
-    options: [
-      { id: "a", text: "Platform perspective" },
-      { id: "b", text: "People perspective" },
-      { id: "c", text: "Security perspective" },
-      { id: "d", text: "Operations perspective" },
-    ],
-    correct: ["b"],
-    explanation:
-      "The People perspective addresses culture, organizational structure, roles, and the skills and training needed for cloud adoption. The Platform perspective covers building and modernizing the technology platform, Security covers protecting data and workloads, and Operations covers running and managing services to meet business needs.",
-    reference: {
-      label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-23",
-    domain: 4,
-    type: "single",
-    topic: "Migration strategies (7 Rs)",
-    difficulty: "easy",
-    stem: "A team plans to move an application to AWS by lifting and shifting it to Amazon EC2 with little to no change to its code. Which of the 7 Rs migration strategies is this?",
-    options: [
-      { id: "a", text: "Refactor" },
-      { id: "b", text: "Repurchase" },
-      { id: "c", text: "Rehost" },
-      { id: "d", text: "Retire" },
-    ],
-    correct: ["c"],
-    explanation:
-      "Rehosting, often called lift and shift, moves an application to AWS with little or no change to its code, typically onto Amazon EC2. A refactor re-architects the application using cloud-native features, a repurchase replaces it with a different product such as a SaaS offering, and a retire decommissions an application that is no longer needed.",
-    reference: {
-      label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
-    },
-    lastVerified: "2026-07-17",
-  },
-  {
-    id: "d4-supportmig-24",
-    domain: 4,
-    type: "single",
-    topic: "Migration strategies (7 Rs)",
-    difficulty: "medium",
-    stem: "During a migration assessment, a team finds an internal application that no one uses anymore and that provides no business value. Which of the 7 Rs strategies applies?",
-    options: [
-      { id: "a", text: "Retain" },
-      { id: "b", text: "Retire" },
-      { id: "c", text: "Replatform" },
-      { id: "d", text: "Relocate" },
-    ],
-    correct: ["b"],
-    explanation:
-      "Retire means decommissioning an application that is no longer needed, which removes cost and effort from the migration. Retain keeps an application in its current environment for now, replatform makes a few cloud optimizations without re-architecting, and relocate moves infrastructure such as VMware workloads to AWS without changing the applications.",
-    reference: {
-      label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
-    },
-    lastVerified: "2026-07-17",
-  },
-  {
-    id: "d4-supportmig-25",
-    domain: 4,
-    type: "single",
-    topic: "Migration strategies (7 Rs)",
-    difficulty: "medium",
-    stem: "A company decides to drop its self-managed email server and adopt a software-as-a-service email product instead, rather than moving the existing server. Which of the 7 Rs strategies is this?",
-    options: [
-      { id: "a", text: "Rehost" },
-      { id: "b", text: "Replatform" },
-      { id: "c", text: "Repurchase" },
-      { id: "d", text: "Refactor" },
-    ],
-    correct: ["c"],
-    explanation:
-      "Repurchasing, sometimes called drop and shop, replaces an existing application with a different product, commonly a SaaS offering. Rehosting would move the existing server as is, replatforming would make small cloud optimizations to it, and refactoring would re-architect it using cloud-native services.",
-    reference: {
-      label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
-    },
-    lastVerified: "2026-07-17",
-  },
-  {
-    id: "d4-supportmig-26",
-    domain: 4,
-    type: "multi",
-    topic: "Migration strategies (7 Rs)",
-    difficulty: "hard",
-    stem: "Which TWO of the following are among the 7 Rs migration strategies? (Choose two.)",
-    options: [
-      { id: "a", text: "Replatform" },
-      { id: "b", text: "Relocate" },
-      { id: "c", text: "Resell" },
-      { id: "d", text: "Replicate" },
-      { id: "e", text: "Restore" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "The 7 Rs are retire, retain, rehost, relocate, repurchase, replatform, and refactor (re-architect). Replatform and relocate are two of them. Resell, replicate, and restore are not migration strategies in this framework.",
-    reference: {
-      label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
-    },
-    lastVerified: "2026-07-17",
-  },
-  {
-    id: "d4-supportmig-27",
-    domain: 4,
-    type: "single",
-    topic: "Migration tooling",
-    difficulty: "medium",
-    stem: "A company wants a single place to discover its existing servers, plan a migration, and track the status of each application as it moves to AWS, across whichever migration tools it uses. Which service provides this?",
-    options: [
-      { id: "a", text: "AWS Migration Hub" },
-      { id: "b", text: "AWS Config" },
-      { id: "c", text: "AWS Systems Manager" },
-      { id: "d", text: "Amazon CloudWatch" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Migration Hub provides a single place to discover existing servers, plan migrations, and track the status of each application migration, with visibility across multiple AWS and partner migration tools. Config records resource configurations, Systems Manager operates and manages resources, and CloudWatch monitors metrics and logs.",
-    reference: {
-      label: "What Is AWS Migration Hub?",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-28",
-    domain: 4,
-    type: "single",
-    topic: "Migration tooling",
-    difficulty: "medium",
-    stem: "A company wants to rehost (lift and shift) hundreds of physical and virtual servers to run as native Amazon EC2 instances, using continuous replication and an automated cutover. Which service is the primary one AWS recommends for this?",
-    options: [
-      { id: "a", text: "AWS Database Migration Service (AWS DMS)" },
-      { id: "b", text: "AWS Application Migration Service" },
-      { id: "c", text: "AWS DataSync" },
-      { id: "d", text: "AWS Snowball" },
-    ],
-    correct: ["b"],
-    explanation:
-      "AWS Application Migration Service is the primary service AWS recommends for lift-and-shift (rehost) migrations. It replicates source servers and converts them to run natively as Amazon EC2 instances with an automated cutover. DMS migrates databases, DataSync moves file and object data over the network, and Snowball is a physical device for offline data transfer.",
-    reference: {
-      label: "What Is AWS Migration Hub? (Application Migration Service)",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["Application Migration Service", "EC2"],
-  },
-  {
-    id: "d4-supportmig-29",
-    domain: 4,
-    type: "single",
-    topic: "Migration tooling",
-    difficulty: "medium",
-    stem: "A team needs to migrate an on-premises database to AWS while keeping the source database fully operational during the migration to minimize downtime. Which service is purpose-built for this?",
-    options: [
-      { id: "a", text: "AWS Database Migration Service (AWS DMS)" },
-      { id: "b", text: "AWS Application Migration Service" },
-      { id: "c", text: "Amazon S3 Transfer Acceleration" },
-      { id: "d", text: "AWS Migration Hub" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and AWS Migration Hub tracks migration status rather than performing the database move.",
-    reference: {
-      label: "AWS Database Migration Service",
-      url: "https://aws.amazon.com/dms/",
-    },
-    lastVerified: "2026-06-23",
-    services: ["DMS"],
-  },
-  {
-    id: "d4-supportmig-30",
-    domain: 4,
-    type: "single",
-    topic: "Migration tooling",
-    difficulty: "medium",
-    stem: "A research site has petabytes of data to move to AWS, but its internet connection is too slow to transfer the data in a reasonable time. Which AWS option is designed to move large data sets using physical devices shipped to and from AWS?",
-    options: [
-      { id: "a", text: "AWS DataSync" },
-      { id: "b", text: "The AWS Snow Family" },
-      { id: "c", text: "AWS Direct Connect" },
-      { id: "d", text: "Amazon S3 Multipart Upload" },
-    ],
-    correct: ["b"],
-    explanation:
-      "The AWS Snow Family provides physical devices you order, load with data, and ship back so AWS imports the data, which suits large transfers where the network is too slow or costly. DataSync moves data over the network, Direct Connect is a dedicated network connection rather than a shipped device, and S3 Multipart Upload still relies on the existing internet connection.",
-    reference: {
-      label: "AWS Snow Family",
-      url: "https://aws.amazon.com/snowball/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-31",
-    domain: 4,
-    type: "single",
-    topic: "Migration tooling",
-    difficulty: "hard",
-    stem: "A company wants to move large amounts of data from an on-premises NFS file share to Amazon S3 over its network connection on an automated, scheduled basis, with encryption in transit and integrity checks. Which service fits best?",
-    options: [
-      { id: "a", text: "AWS DataSync" },
-      { id: "b", text: "The AWS Snow Family" },
-      { id: "c", text: "AWS Database Migration Service (AWS DMS)" },
-      { id: "d", text: "AWS Application Migration Service" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS DataSync is an online data transfer service that moves data between on-premises storage and AWS storage services over the network, with scheduling, encryption in transit, and data integrity validation. The Snow Family is for offline physical transfer, DMS migrates databases, and Application Migration Service rehosts whole servers rather than moving file data.",
-    reference: {
-      label: "AWS DataSync",
-      url: "https://aws.amazon.com/datasync/",
-    },
-    lastVerified: "2026-06-23",
-    services: ["DataSync", "S3"],
-  },
-  {
-    id: "d4-supportmig-32",
-    domain: 4,
-    type: "multi",
-    topic: "Migration tooling",
-    difficulty: "hard",
-    stem: "A migration team is selecting tools. Which TWO statements correctly match an AWS service to its primary migration purpose? (Choose two.)",
-    options: [
-      { id: "a", text: "AWS Application Migration Service is the primary service for rehosting (lift and shift) servers to Amazon EC2." },
-      { id: "b", text: "AWS Database Migration Service migrates databases while keeping the source operational." },
-      { id: "c", text: "AWS Migration Hub physically ships disks to transfer petabytes of data." },
-      { id: "d", text: "AWS DataSync replaces an application with a SaaS product." },
-      { id: "e", text: "The AWS Snow Family records and evaluates resource configurations." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Application Migration Service is the primary rehosting service, and Database Migration Service migrates databases while the source stays operational. Migration Hub tracks migrations rather than shipping disks (that is the Snow Family), DataSync moves data over the network rather than buying a SaaS product (that is the repurchase strategy), and the Snow Family transfers data rather than evaluating configurations (that is AWS Config).",
-    reference: {
-      label: "What Is AWS Migration Hub?",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d4-supportmig-33",
@@ -746,74 +438,52 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
-    id: "d4-supportmig-34",
+    id: "d3-integ-26",
     domain: 4,
     type: "single",
-    topic: "AWS Cloud Adoption Framework",
-    difficulty: "hard",
-    stem: "An organization is defining how it will identify, measure, and manage IT risk during cloud adoption, and how it will maintain compliance and decision-making oversight. Which AWS Cloud Adoption Framework perspective focuses on this?",
-    options: [
-      { id: "a", text: "Operations perspective" },
-      { id: "b", text: "Governance perspective" },
-      { id: "c", text: "Business perspective" },
-      { id: "d", text: "Platform perspective" },
-    ],
-    correct: ["b"],
-    explanation:
-      "The Governance perspective focuses on orchestrating cloud initiatives while maximizing benefits and managing risk, which covers risk management, compliance, and decision oversight. The Business perspective aligns cloud investment with business outcomes, the Platform perspective builds the technology environment, and the Operations perspective runs and supports cloud services.",
-    reference: {
-      label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-35",
-    domain: 4,
-    type: "multi",
-    topic: "AWS Cloud Adoption Framework",
-    difficulty: "hard",
-    stem: "An organization is sorting its cloud-adoption concerns into AWS Cloud Adoption Framework perspectives. Which TWO concerns map to the Operations perspective? (Choose two.)",
-    options: [
-      { id: "a", text: "Running, monitoring, and supporting cloud workloads to meet agreed service levels" },
-      { id: "b", text: "Managing events and incidents and recovering from disruptions" },
-      { id: "c", text: "Building the business case and measuring return on cloud investment" },
-      { id: "d", text: "Retraining staff and evolving team roles for the cloud" },
-      { id: "e", text: "Protecting data confidentiality and controlling access" },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "The Operations perspective covers running and supporting cloud services to the levels the business needs, including event, incident, and problem management. Building the business case sits in the Business perspective, retraining staff sits in the People perspective, and protecting data and access sits in the Security perspective.",
-    reference: {
-      label: "AWS Cloud Adoption Framework",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d4-supportmig-36",
-    domain: 4,
-    type: "multi",
-    topic: "Migration strategies (7 Rs)",
+    topic: "AWS Health Dashboard",
     difficulty: "medium",
-    stem: "A team is classifying applications by migration strategy. Which TWO descriptions correctly match a strategy in the 7 Rs? (Choose two.)",
+    stem: "A customer wants a personalized view of AWS events that affect their own resources and accounts, including scheduled changes and ongoing issues, with alerts and guidance. Which AWS service provides this?",
     options: [
-      { id: "a", text: "Rehost moves an application to AWS with little or no code change (lift and shift)." },
-      { id: "b", text: "Replatform makes a few cloud optimizations without changing the core architecture." },
-      { id: "c", text: "Retire keeps an application in its current environment for now." },
-      { id: "d", text: "Refactor replaces an application with a third-party SaaS product." },
-      { id: "e", text: "Relocate decommissions an application that is no longer needed." },
+      { id: "a", text: "The AWS Health Dashboard" },
+      { id: "b", text: "Amazon CloudWatch Logs" },
+      { id: "c", text: "AWS CloudTrail" },
+      { id: "d", text: "Amazon Inspector" },
     ],
-    correct: ["a", "b"],
+    correct: ["a"],
     explanation:
-      "Rehost is lift and shift with little or no code change, and replatform makes a few cloud optimizations (lift, tinker, and shift) without re-architecting. Retire decommissions an unneeded application (not keep it), refactor re-architects with cloud-native services (repurchase is the SaaS swap), and relocate moves infrastructure such as VMware workloads to AWS (not decommission).",
+      "The AWS Health Dashboard, powered by AWS Health, gives ongoing visibility into the health of AWS services and your accounts, with personalized alerts and guidance about events and scheduled changes that affect your resources, and it requires no setup. CloudWatch Logs stores log data, CloudTrail records API activity, and Inspector assesses workloads for vulnerabilities.",
     reference: {
-      label: "Migration strategies (the 7 Rs)",
-      url: "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
+      label: "What is AWS Health?",
+      url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
-    lastVerified: "2026-07-17",
+    lastVerified: "2026-07-29",
+    services: ["AWS Health"],
+  },
+  {
+    id: "d3-integ-27",
+    domain: 4,
+    type: "single",
+    topic: "AWS Health Dashboard",
+    difficulty: "hard",
+    stem: "An AWS service is reporting elevated error rates, and an operations engineer needs to know whether the disruption affects their specific account and resources, not just the general service status. Which view answers that?",
+    options: [
+      { id: "a", text: "The account-specific (\"Your account health\") view of the AWS Health Dashboard, which shows events affecting your resources." },
+      { id: "b", text: "A CloudWatch dashboard of the application's request latency." },
+      { id: "c", text: "The CloudTrail Event history of recent API calls." },
+      { id: "d", text: "The AWS Pricing Calculator estimate for the service." },
+    ],
+    correct: ["a"],
+    explanation:
+      "The AWS Health Dashboard provides personalized, account-specific event information so you can see whether an issue affects your own resources, in addition to general service status. A CloudWatch latency dashboard shows performance but not AWS-side event impact, CloudTrail shows API activity, and the Pricing Calculator estimates cost.",
+    reference: {
+      label: "What is AWS Health?",
+      url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["AWS Health"],
   },
 ];

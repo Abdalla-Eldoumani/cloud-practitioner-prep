@@ -19,7 +19,7 @@ export const database: ServiceEntry[] = [
       label: "What is Amazon Aurora?",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Aurora",
       "relational database",
@@ -42,7 +42,7 @@ export const database: ServiceEntry[] = [
       label: "What is Amazon DocumentDB?",
       url: "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "DocumentDB",
       "document database",
@@ -65,7 +65,7 @@ export const database: ServiceEntry[] = [
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "DynamoDB",
       "NoSQL",
@@ -83,22 +83,31 @@ export const database: ServiceEntry[] = [
     domain: 3,
     category: "Database",
     purpose:
-      "A fully managed in-memory caching service compatible with Redis and Memcached for fast data access.",
+      "A fully managed in-memory caching service that works with the Valkey, Memcached, and Redis OSS engines for fast data access.",
     whenToUse:
       "Reach for it when you want to cache frequently accessed data in memory to speed up an application and reduce load on a database.",
     reference: {
       label: "What is Amazon ElastiCache?",
       url: "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "ElastiCache",
       "in-memory cache",
       "caching",
-      "Redis",
+      "Valkey",
       "Memcached",
+      "Redis OSS",
+      "Redis",
     ],
-    relatedTerms: ["cache", "in-memory", "Redis", "Memcached", "low latency"],
+    relatedTerms: [
+      "cache",
+      "in-memory",
+      "Valkey",
+      "Redis OSS",
+      "Memcached",
+      "low latency",
+    ],
   },
   {
     id: "amazon-neptune",
@@ -114,7 +123,7 @@ export const database: ServiceEntry[] = [
       label: "What is Amazon Neptune?",
       url: "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: ["Neptune", "graph database", "connected data"],
     relatedTerms: ["graph database", "relationships", "graph", "connected data"],
   },
@@ -132,7 +141,7 @@ export const database: ServiceEntry[] = [
       label: "What is Amazon RDS?",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "RDS",
       "Relational Database Service",

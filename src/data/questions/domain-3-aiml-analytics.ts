@@ -15,19 +15,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "A data science team wants a single managed service where they can prepare data, train a custom machine learning model, and then deploy it to a hosted endpoint for predictions, without standing up and patching their own training servers. Which AWS service is purpose-built for this end-to-end machine learning workflow?",
     options: [
-      { id: "a", text: "Amazon SageMaker" },
+      { id: "a", text: "Amazon SageMaker AI" },
       { id: "b", text: "Amazon Rekognition" },
       { id: "c", text: "Amazon Athena" },
       { id: "d", text: "Amazon QuickSight" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SageMaker is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
+      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
     reference: {
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["SageMaker"],
   },
   {
@@ -51,7 +51,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Rekognition",
       url: "https://aws.amazon.com/rekognition/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Rekognition"],
   },
   {
@@ -74,7 +74,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Comprehend",
       url: "https://aws.amazon.com/comprehend/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Comprehend"],
   },
   {
@@ -97,7 +97,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Polly",
       url: "https://aws.amazon.com/polly/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Polly"],
   },
   {
@@ -120,7 +120,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Transcribe",
       url: "https://aws.amazon.com/transcribe/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Transcribe"],
   },
   {
@@ -143,7 +143,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Translate",
       url: "https://aws.amazon.com/translate/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Translate"],
   },
   {
@@ -166,7 +166,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Lex",
       url: "https://aws.amazon.com/lex/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Lex"],
   },
   {
@@ -189,7 +189,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Textract",
       url: "https://aws.amazon.com/textract/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Textract"],
   },
   {
@@ -212,7 +212,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Bedrock"],
   },
   {
@@ -235,7 +235,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon Q"],
   },
   {
@@ -258,7 +258,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon Q"],
   },
   {
@@ -282,7 +282,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Amazon Q"],
   },
   {
@@ -305,7 +305,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Athena", "S3"],
   },
   {
@@ -329,7 +329,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS Glue",
       url: "https://aws.amazon.com/glue/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Glue"],
   },
   {
@@ -352,7 +352,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Redshift"],
   },
   {
@@ -375,7 +375,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Kinesis"],
   },
   {
@@ -399,7 +399,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Kinesis"],
   },
   {
@@ -422,7 +422,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon QuickSight",
       url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["QuickSight"],
   },
   {
@@ -446,7 +446,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon EMR",
       url: "https://aws.amazon.com/emr/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EMR"],
   },
   {
@@ -469,7 +469,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFormation"],
   },
   {
@@ -492,7 +492,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFormation"],
   },
   {
@@ -515,7 +515,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CDK", "CloudFormation"],
   },
   {
@@ -538,7 +538,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS Management Console?",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d3-aiml-22",
@@ -551,7 +551,7 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "The AWS Command Line Interface (AWS CLI)" },
       { id: "b", text: "The AWS Management Console" },
       { id: "c", text: "Amazon QuickSight" },
-      { id: "d", text: "The AWS Personal Health Dashboard" },
+      { id: "d", text: "The AWS Health Dashboard" },
     ],
     correct: ["a"],
     explanation:
@@ -560,7 +560,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS Command Line Interface (AWS CLI)",
       url: "https://aws.amazon.com/cli/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d3-aiml-23",
@@ -588,7 +588,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "AWS SDKs and Tools Reference Guide overview",
       url: "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d3-aiml-24",
@@ -610,7 +610,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Rekognition",
       url: "https://aws.amazon.com/rekognition/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Rekognition"],
   },
   {
@@ -638,7 +638,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Transcribe",
       url: "https://aws.amazon.com/transcribe/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Transcribe", "Translate"],
   },
   {
@@ -656,12 +656,12 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift and Amazon EMR require provisioned clusters that run and bill continuously, and Amazon RDS is a managed database that needs data loaded into it, so each adds infrastructure Athena avoids.",
+      "Amazon Athena is serverless and queries data in place in S3 with SQL, billing only for queries run, which suits occasional ad hoc analysis. Redshift is a data warehouse you load data into and Amazon EMR runs big data clusters you size, and Amazon RDS is a managed database that needs data loaded into it, so each adds setup and cost Athena avoids.",
     reference: {
       label: "Amazon Athena",
       url: "https://aws.amazon.com/athena/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Athena", "S3"],
   },
   {
@@ -684,7 +684,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Bedrock"],
   },
   {
@@ -707,7 +707,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Redshift",
       url: "https://aws.amazon.com/redshift/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Redshift", "Athena"],
   },
   {
@@ -731,7 +731,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Polly",
       url: "https://aws.amazon.com/polly/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Polly", "Rekognition", "Translate", "Comprehend", "Textract"],
   },
   {
@@ -755,7 +755,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Kinesis", "Glue", "QuickSight", "Athena", "EMR"],
   },
   {
@@ -779,7 +779,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS Management Console?",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d3-aiml-32",
@@ -802,7 +802,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "CloudFormation template format",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFormation"],
   },
   {
@@ -825,7 +825,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Bedrock"],
   },
   {
@@ -848,7 +848,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "Amazon Textract",
       url: "https://aws.amazon.com/textract/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Textract"],
   },
   {
@@ -871,7 +871,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFormation", "CDK"],
   },
 ];

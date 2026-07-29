@@ -25,7 +25,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -53,7 +53,7 @@ export const domain3Networking: Question[] = [
       label: "VPC CIDR blocks",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -76,7 +76,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -104,7 +104,7 @@ export const domain3Networking: Question[] = [
       label: "Enable internet access for a VPC using an internet gateway",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -127,7 +127,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -155,7 +155,7 @@ export const domain3Networking: Question[] = [
       label: "Enable internet access for a VPC using an internet gateway",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -178,7 +178,7 @@ export const domain3Networking: Question[] = [
       label: "NAT gateways",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -202,7 +202,7 @@ export const domain3Networking: Question[] = [
       label: "NAT gateways",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -226,7 +226,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -249,7 +249,7 @@ export const domain3Networking: Question[] = [
       label: "VPC CIDR blocks",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC"],
   },
   {
@@ -272,7 +272,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Direct Connect"],
   },
   {
@@ -295,7 +295,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Direct Connect"],
   },
   {
@@ -318,7 +318,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS Site-to-Site VPN?",
       url: "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Site-to-Site VPN"],
   },
   {
@@ -342,7 +342,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS Site-to-Site VPN?",
       url: "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Site-to-Site VPN"],
   },
   {
@@ -365,7 +365,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS Client VPN?",
       url: "https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Client VPN"],
   },
   {
@@ -388,7 +388,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Direct Connect", "Site-to-Site VPN"],
   },
   {
@@ -412,7 +412,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Direct Connect", "Site-to-Site VPN"],
   },
   {
@@ -435,7 +435,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS PrivateLink?",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["PrivateLink", "VPC"],
   },
   {
@@ -458,7 +458,7 @@ export const domain3Networking: Question[] = [
       label: "AWS PrivateLink concepts",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["VPC", "S3", "DynamoDB"],
   },
   {
@@ -482,7 +482,7 @@ export const domain3Networking: Question[] = [
       label: "AWS PrivateLink concepts",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["PrivateLink", "VPC"],
   },
   {
@@ -505,7 +505,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon Route 53?",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -529,7 +529,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon Route 53?",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -552,7 +552,7 @@ export const domain3Networking: Question[] = [
       label: "Choosing a routing policy",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -575,7 +575,7 @@ export const domain3Networking: Question[] = [
       label: "Choosing a routing policy",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -598,7 +598,7 @@ export const domain3Networking: Question[] = [
       label: "Choosing a routing policy",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -621,7 +621,7 @@ export const domain3Networking: Question[] = [
       label: "Choosing a routing policy",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -645,7 +645,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon Route 53?",
       url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Route 53"],
   },
   {
@@ -668,7 +668,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFront"],
   },
   {
@@ -691,7 +691,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFront"],
   },
   {
@@ -715,7 +715,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFront"],
   },
   {
@@ -738,7 +738,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS Global Accelerator?",
       url: "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Global Accelerator"],
   },
   {
@@ -762,7 +762,7 @@ export const domain3Networking: Question[] = [
       label: "What is AWS Global Accelerator?",
       url: "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Global Accelerator"],
   },
   {
@@ -785,7 +785,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Global Accelerator FAQs",
       url: "https://aws.amazon.com/global-accelerator/faqs/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Global Accelerator", "CloudFront"],
   },
   {
@@ -809,7 +809,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFront", "Direct Connect", "Route 53"],
   },
   {
@@ -833,7 +833,7 @@ export const domain3Networking: Question[] = [
       label: "AWS PrivateLink concepts",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["PrivateLink", "VPC", "S3", "DynamoDB"],
   },
   {
@@ -856,7 +856,7 @@ export const domain3Networking: Question[] = [
       label: "What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["CloudFront"],
   },
 ];

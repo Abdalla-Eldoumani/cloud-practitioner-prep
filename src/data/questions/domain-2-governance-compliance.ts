@@ -3,10 +3,11 @@ import type { Question } from "../../lib/types";
 // Domain 2: Security and Compliance, governance and compliance cluster.
 // Covers AWS Artifact, AWS compliance programs, AWS Config, AWS CloudTrail,
 // AWS Organizations and service control policies, AWS Control Tower, and
-// account isolation as a security boundary. Original practice questions written
-// to test exam-guide concepts; these are not real exam items. Every fact is
-// verified against current AWS documentation, and each question cites the page
-// that backs its answer.
+// account isolation as a security boundary. The consolidated-billing questions
+// the exam guide files under Domain 4 live in domain-4-cost-tools.ts. Original
+// practice questions written to test exam-guide concepts; these are not real
+// exam items. Every fact is verified against current AWS documentation, and
+// each question cites the page that backs its answer.
 export const domain2GovernanceCompliance: Question[] = [
   {
     id: "d2-gov-01",
@@ -28,7 +29,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact"],
   },
   {
@@ -52,7 +53,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact"],
   },
   {
@@ -75,7 +76,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact"],
   },
   {
@@ -98,7 +99,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-gov-05",
@@ -121,7 +122,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Compliance Programs",
       url: "https://aws.amazon.com/compliance/programs/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-gov-06",
@@ -143,7 +144,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Cloud Compliance",
       url: "https://aws.amazon.com/compliance/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d2-gov-07",
@@ -165,7 +166,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact"],
   },
   {
@@ -188,7 +189,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Config"],
   },
   {
@@ -211,7 +212,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Config"],
   },
   {
@@ -239,7 +240,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -262,7 +263,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS CloudTrail"],
   },
   {
@@ -286,7 +287,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS CloudTrail"],
   },
   {
@@ -309,7 +310,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS CloudTrail", "Amazon S3"],
   },
   {
@@ -333,7 +334,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -356,54 +357,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-23",
-    services: ["AWS Organizations"],
-  },
-  {
-    id: "d2-gov-16",
-    domain: 2,
-    type: "single",
-    topic: "Consolidated billing",
-    difficulty: "easy",
-    stem: "A finance department wants a single bill for all of the company's AWS accounts and one payment method instead of paying each account separately. Which AWS Organizations feature provides this?",
-    options: [
-      { id: "a", text: "Consolidated billing" },
-      { id: "b", text: "Service control policies" },
-      { id: "c", text: "AWS Config aggregators" },
-      { id: "d", text: "CloudTrail trails" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Consolidated billing in AWS Organizations gives you one bill for multiple accounts, with the management account paying the charges of all member accounts. Service control policies are permission guardrails, Config aggregators centralize configuration data, and trails store API activity, so none of those consolidate billing.",
-    reference: {
-      label: "Consolidating billing for AWS Organizations",
-      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["AWS Organizations"],
-  },
-  {
-    id: "d2-gov-17",
-    domain: 2,
-    type: "multi",
-    topic: "Consolidated billing",
-    difficulty: "medium",
-    stem: "A company is weighing the benefits of consolidated billing in AWS Organizations. Which TWO statements are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "Usage can be combined across accounts so the organization shares volume pricing, Reserved Instance, and Savings Plans discounts." },
-      { id: "b", text: "Consolidated billing is offered at no additional cost." },
-      { id: "c", text: "Consolidated billing charges a percentage fee on every member account's bill." },
-      { id: "d", text: "Each account must still pay its own bill with a separate payment method." },
-      { id: "e", text: "Combining accounts removes all per-service charges." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Consolidated billing combines usage across accounts so the organization can share volume, Reserved Instance, and Savings Plans discounts, and it is offered at no additional cost. It does not add a percentage fee, the management account pays a single combined bill rather than each account paying separately, and per-service charges still apply.",
-    reference: {
-      label: "Consolidating billing for AWS Organizations",
-      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -426,7 +380,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -449,7 +403,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -472,7 +426,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -496,7 +450,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -519,7 +473,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -542,7 +496,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
   {
@@ -565,7 +519,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Control Tower"],
   },
   {
@@ -588,7 +542,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Control Tower"],
   },
   {
@@ -611,7 +565,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Control Tower"],
   },
   {
@@ -634,7 +588,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Control Tower", "AWS Organizations"],
   },
   {
@@ -657,7 +611,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
@@ -681,14 +635,14 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations"],
   },
   {
     id: "d2-gov-30",
     domain: 2,
     type: "single",
-    topic: "Service selection",
+    topic: "AWS Artifact",
     difficulty: "medium",
     stem: "A regulator asks a company to prove three things: that AWS holds current PCI DSS attestation, that the company can show who changed a resource and when, and that resource configurations are continuously checked against rules. Which service primarily satisfies the first request?",
     options: [
@@ -704,7 +658,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact"],
   },
   {
@@ -727,7 +681,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Config"],
   },
   {
@@ -750,31 +704,8 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS CloudTrail"],
-  },
-  {
-    id: "d2-gov-33",
-    domain: 2,
-    type: "single",
-    topic: "AWS Organizations",
-    difficulty: "medium",
-    stem: "In an AWS Organizations setup, which account pays the charges for all of the member accounts under consolidated billing?",
-    options: [
-      { id: "a", text: "The management account" },
-      { id: "b", text: "Each member account pays its own charges" },
-      { id: "c", text: "A randomly selected member account each month" },
-      { id: "d", text: "AWS Support on the customer's behalf" },
-    ],
-    correct: ["a"],
-    explanation:
-      "Every organization has a management account that pays the charges of all the member accounts under consolidated billing. Member accounts do not each pay separately under this model, the payer is not chosen at random, and AWS Support does not pay customer charges.",
-    reference: {
-      label: "Consolidating billing for AWS Organizations",
-      url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
-    },
-    lastVerified: "2026-06-23",
-    services: ["AWS Organizations"],
   },
   {
     id: "d2-gov-34",
@@ -796,7 +727,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Artifact", "AWS Organizations"],
   },
   {
@@ -820,7 +751,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS CloudTrail", "AWS Config"],
   },
   {
@@ -843,7 +774,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
 ];

@@ -180,7 +180,9 @@ interface ShapedLesson {
 }
 
 async function loadLessons(): Promise<ShapedLesson[]> {
-  const files = await globby(LESSONS_GLOB);
+  // Exclude uppercase-named files, mirroring src/content.config.ts, so a stray
+  // doc file in the lessons directory never counts as a lesson.
+  const files = await globby([LESSONS_GLOB, "!" + resolveGlob("../src/content/lessons/**/[A-Z]*")]);
   const lessons: ShapedLesson[] = [];
   for (const file of files) {
     const raw = readFileSync(file, "utf8");
