@@ -7,7 +7,7 @@ order: 7
 day: 5
 estimatedMinutes: 14
 services:
-  - Amazon SageMaker
+  - Amazon SageMaker AI
   - Amazon Bedrock
   - Amazon Q
   - Amazon Rekognition
@@ -16,12 +16,13 @@ services:
   - Amazon Transcribe
   - Amazon Translate
   - Amazon Lex
+  - Amazon Textract
   - Amazon Athena
   - AWS Glue
   - Amazon QuickSight
   - Amazon Kinesis
   - Amazon EMR
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -33,14 +34,15 @@ models, the ready-made AI services you call without ML expertise, the generative
 AI services, and the analytics tools that turn raw data into insight. Learn the
 group a service belongs to and its one-line purpose.
 
-## Building models with SageMaker
+## Building models with SageMaker AI
 
-Amazon SageMaker is the service for building, training, and deploying machine
+Amazon SageMaker AI is the service for building, training, and deploying machine
 learning models on managed infrastructure. It is for teams doing the machine
-learning work themselves rather than calling a finished model. AWS has expanded
-SageMaker into a broader platform for data, analytics, and AI, and the model
-building tools now carry the name SageMaker AI, but for the exam the core idea
-holds: SageMaker is where you build, train, and deploy your own models.
+learning work themselves rather than calling a finished model. On December 3,
+2024, AWS renamed Amazon SageMaker to Amazon SageMaker AI and made Amazon
+SageMaker the name of a broader platform for data, analytics, and AI, so older
+material says SageMaker for the model building tools. For the exam the core idea
+holds: SageMaker AI is where you build, train, and deploy your own models.
 
 ## Ready-made AI services
 
@@ -59,11 +61,15 @@ own AWS page:
 - Amazon Translate is neural machine translation between languages.
 - Amazon Lex builds conversational interfaces, the voice and chat bots, using the
   same technology as Alexa.
+- Amazon Textract extracts printed text, handwriting, layout elements, and form
+  and table data from scanned documents, going beyond simple optical character
+  recognition.
 
 <Callout type="tip" title="A way to remember the AI services">
 Group them by sense: Rekognition sees, Polly speaks, Transcribe listens,
-Translate converts languages, Comprehend reads meaning from text, and Lex holds a
-conversation. Match the verb in the scenario to the service.
+Translate converts languages, Comprehend reads meaning from text, Textract reads
+documents, and Lex holds a conversation. Match the verb in the scenario to the
+service.
 </Callout>
 
 ## Generative AI services
@@ -72,15 +78,17 @@ Generative AI builds on foundation models, large models that produce text, code,
 and more. AWS exposes this two ways. Amazon Bedrock is a managed service for
 building generative AI applications and agents using foundation models from
 several providers through one interface, with tools to customize them with your
-data. Amazon Q is a generative AI assistant: Amazon Q Business makes that
-assistant available across an organization's own content and systems, and Amazon
-Q Developer helps with building and operating software.
+data. Amazon Bedrock Guardrails are the safety control on top of that: they apply
+configurable safeguards to a generative AI application, filtering harmful content
+and undesirable model responses. Amazon Q is a generative AI assistant: Amazon Q
+Business makes that assistant available across an organization's own content and
+systems, and Amazon Q Developer helps with building and operating software.
 
-<Callout type="key" title="The current generative AI names">
+<Callout type="key" title="The generative AI names to know">
 Amazon Bedrock is the platform for building generative AI applications on
-foundation models. Amazon Q is the AWS generative AI assistant, split into Amazon
-Q Business and Amazon Q Developer. These are the current names verified against
-AWS at this lesson's date.
+foundation models, with Bedrock Guardrails as its content safeguards. Amazon Q is
+the AWS generative AI assistant, split into Amazon Q Business and Amazon Q
+Developer.
 </Callout>
 
 ## Analytics services
@@ -93,8 +101,9 @@ Analytics turns stored data into answers. The exam expects the purpose of each:
 - AWS Glue is a serverless data integration service for extract, transform, and
   load work, discovering and preparing data and moving it into data lakes and
   warehouses.
-- Amazon QuickSight is a managed business intelligence service for building
-  dashboards and visualizations from your data.
+- Amazon QuickSight, now Amazon Quick Sight within Amazon Quick, is the managed
+  business intelligence service for building dashboards and visualizations from
+  your data.
 - Amazon Kinesis collects, processes, and analyzes real-time streaming data, such
   as logs, clickstreams, and video.
 - Amazon EMR is a managed big data platform for running open-source frameworks
@@ -106,9 +115,20 @@ dashboards, use QuickSight. Process data as it streams in, use Kinesis. Run
 big-data frameworks like Spark, use EMR.
 </Callout>
 
+<Callout type="note" title="What AWS has changed since the exam guide was written">
+Two names in this lesson are moving. Amazon QuickSight has become Amazon Quick
+Sight, a feature inside Amazon Quick, and existing QuickSight APIs, SDKs, and
+integrations keep working unchanged. Amazon Q Business closes to new customers on
+July 31, 2026; it stays fully supported for existing customers, and AWS points
+new generative AI work at Amazon Quick. Both Amazon QuickSight and Amazon Q are
+still named on the exam's in-scope service list, so learn them as written here
+and treat the changes as context rather than as answers.
+</Callout>
+
 ## What to take away
 
-Sort each service into its group. SageMaker is for building your own models. The
-ready-made AI services apply ML to one task through an API. Bedrock and Amazon Q
-are the generative AI offerings. Athena, Glue, QuickSight, Kinesis, and EMR are
-the analytics tools. The exam asks for the purpose, not the implementation.
+Sort each service into its group. SageMaker AI is for building your own models.
+The ready-made AI services apply ML to one task through an API. Bedrock and
+Amazon Q are the generative AI offerings. Athena, Glue, QuickSight, Kinesis, and
+EMR are the analytics tools. The exam asks for the purpose, not the
+implementation.
