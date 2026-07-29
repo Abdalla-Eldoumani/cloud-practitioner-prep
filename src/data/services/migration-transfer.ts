@@ -19,12 +19,12 @@ export const migrationTransfer: ServiceEntry[] = [
     purpose:
       "A service that gathers information about your on-premises servers and applications to help you plan a migration to AWS.",
     whenToUse:
-      "Reach for it at the start of a migration when you need to inventory your existing data center and understand server usage and dependencies before moving.",
+      "Reach for it at the start of a migration when you need to inventory your existing data center and understand server usage and dependencies before moving. AWS closed the service to new customers on November 7, 2025 and points new users to AWS Transform, but it is still on the exam guide's in-scope list.",
     reference: {
       label: "What is AWS Application Discovery Service?",
       url: "https://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Application Discovery Service",
       "discovery",
@@ -44,13 +44,14 @@ export const migrationTransfer: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you want to move existing applications to AWS with minimal changes by lifting and shifting whole servers rather than rebuilding them.",
     reference: {
-      label: "What is AWS Application Migration Service?",
+      label: "What Is AWS Transform MGN?",
       url: "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Application Migration Service",
       "MGN",
+      "AWS Transform MGN",
       "lift and shift",
       "rehost",
       "server migration",
@@ -64,14 +65,14 @@ export const migrationTransfer: ServiceEntry[] = [
     domain: 3,
     category: "Migration and Transfer",
     purpose:
-      "A service that helps you migrate databases to AWS, keeping the source database operational during the migration to minimize downtime.",
+      "A service that migrates relational databases, data warehouses, NoSQL databases, and other data stores to AWS, either as a one-time move or by replicating ongoing changes to keep source and target in sync.",
     whenToUse:
       "Reach for it when you need to move a database to AWS, whether to the same engine or a different one, while keeping the application running through the move.",
     reference: {
       label: "What is AWS Database Migration Service?",
       url: "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "DMS",
       "Database Migration Service",
@@ -94,7 +95,7 @@ export const migrationTransfer: ServiceEntry[] = [
       label: "Migration Evaluator",
       url: "https://aws.amazon.com/migration-evaluator/",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Migration Evaluator",
       "business case",
@@ -112,12 +113,12 @@ export const migrationTransfer: ServiceEntry[] = [
     purpose:
       "A service that gives you a single place to discover, plan, and track the progress of application migrations across multiple AWS migration tools.",
     whenToUse:
-      "Reach for it when a migration spans several tools and you want one dashboard to follow the status of each application as it moves to AWS.",
+      "Reach for it when a migration spans several tools and you want one dashboard to follow the status of each application as it moves to AWS. AWS closed Migration Hub to new customers on November 7, 2025 and points new users to AWS Transform, but it is still on the exam guide's in-scope list.",
     reference: {
       label: "What is AWS Migration Hub?",
       url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Migration Hub",
       "migration tracking",
@@ -140,7 +141,7 @@ export const migrationTransfer: ServiceEntry[] = [
       label: "What is the AWS Schema Conversion Tool?",
       url: "https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "SCT",
       "Schema Conversion Tool",
@@ -158,12 +159,12 @@ export const migrationTransfer: ServiceEntry[] = [
     purpose:
       "A family of physical devices you can use to move large amounts of data into and out of AWS offline, when transferring over a network would be too slow or impractical.",
     whenToUse:
-      "Reach for it when you have so much data, or such limited bandwidth, that shipping it on a physical device is faster and cheaper than sending it over the internet.",
+      "Reach for it when you have so much data, or such limited bandwidth, that shipping it on a physical device is faster and cheaper than sending it over the internet. AWS closed Snowball Edge to new customers on November 7, 2025 and will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, but the exam guide still lists the Snow Family in scope.",
     reference: {
-      label: "What is the AWS Snow Family?",
+      label: "What is Snowball Edge?",
       url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Snow Family",
       "Snowball",
