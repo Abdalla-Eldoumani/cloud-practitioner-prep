@@ -5,6 +5,10 @@ import type { Question } from "../../lib/types";
 // Balancing, written to test the exam-guide concepts. These are not real exam
 // items. Every fact is verified against current AWS documentation; each
 // question cites the page that backs its answer.
+//
+// Ids keep their historical d3-scale-, d1-elast-, and d1-resil- prefixes
+// deliberately: an id is a stable key in a learner's saved progress, so it
+// survives a move between files.
 export const domain3ScalingElb: Question[] = [
   {
     id: "d3-scale-01",
@@ -26,7 +30,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -49,7 +53,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -72,7 +76,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -95,7 +99,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -118,7 +122,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling", "EC2"],
   },
   {
@@ -141,7 +145,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -165,7 +169,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Balancing capacity across Availability Zones)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -188,7 +192,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Pricing)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -212,7 +216,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Scalability)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -232,10 +236,10 @@ export const domain3ScalingElb: Question[] = [
     explanation:
       "Scheduled scaling changes capacity based on predictable time-based patterns, which suits load that shifts at known times of day or week. Manual scaling requires a person to act each time, while target tracking and step scaling react to metrics rather than the clock.",
     reference: {
-      label: "Increase or decrease compute capacity with scaling",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
+      label: "Choose your scaling method",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scaling-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -258,7 +262,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling", "CloudWatch"],
   },
   {
@@ -282,7 +286,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Dynamic scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -305,7 +309,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -328,7 +332,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Predictive scaling for Amazon EC2 Auto Scaling",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -348,10 +352,10 @@ export const domain3ScalingElb: Question[] = [
     explanation:
       "Manual scaling lets you change the size of the Auto Scaling group as needed by adjusting the desired capacity yourself. Predictive and target tracking scaling respond to forecasts or metrics automatically, and scheduled scaling acts at preset times rather than on demand.",
     reference: {
-      label: "Increase or decrease compute capacity with scaling",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
+      label: "Choose your scaling method",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scaling-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -375,7 +379,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling", "Elastic Load Balancing"],
   },
   {
@@ -398,7 +402,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Related services)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
   {
@@ -422,7 +426,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -446,7 +450,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -469,7 +473,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer"],
   },
   {
@@ -492,7 +496,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Path conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer"],
   },
   {
@@ -515,7 +519,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Host conditions)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer"],
   },
   {
@@ -538,7 +542,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Network Load Balancer"],
   },
   {
@@ -561,7 +565,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Network Load Balancer"],
   },
   {
@@ -585,7 +589,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Network Load Balancer"],
   },
   {
@@ -608,7 +612,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -631,7 +635,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Gateway Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Gateway Load Balancer"],
   },
   {
@@ -654,7 +658,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer"],
   },
   {
@@ -678,7 +682,7 @@ export const domain3ScalingElb: Question[] = [
       label: "Elastic Load Balancing features",
       url: "https://aws.amazon.com/elasticloadbalancing/features/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer", "Network Load Balancer", "Gateway Load Balancer"],
   },
   {
@@ -701,7 +705,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer?",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Elastic Load Balancing"],
   },
   {
@@ -725,7 +729,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer", "Lambda"],
   },
   {
@@ -748,7 +752,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling? (Custom health checks)",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -769,10 +773,10 @@ export const domain3ScalingElb: Question[] = [
     explanation:
       "EC2 Auto Scaling is useful for maintaining a steady number of servers, and when an instance fails the group launches a replacement to return to the desired capacity. It does not run short permanently, double the fleet, or stop the other instances when one fails.",
     reference: {
-      label: "Increase or decrease compute capacity with scaling",
-      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html",
+      label: "Choose your scaling method",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/scaling-overview.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -795,7 +799,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is a Network Load Balancer? (Overview)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Network Load Balancer"],
   },
   {
@@ -819,7 +823,7 @@ export const domain3ScalingElb: Question[] = [
       label: "What is Amazon EC2 Auto Scaling?",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -842,7 +846,425 @@ export const domain3ScalingElb: Question[] = [
       label: "What is an Application Load Balancer? (Benefits)",
       url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["Application Load Balancer", "EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-06",
+    domain: 3,
+    type: "single",
+    topic: "AWS Auto Scaling",
+    difficulty: "easy",
+    stem: "Which AWS service automatically adds and removes EC2 capacity by launching instances as demand on an application rises and terminating them as demand falls?",
+    options: [
+      { id: "a", text: "Amazon EC2 Auto Scaling" },
+      { id: "b", text: "Amazon Route 53" },
+      { id: "c", text: "AWS Identity and Access Management" },
+      { id: "d", text: "Amazon CloudFront" },
+    ],
+    correct: ["a"],
+    explanation:
+      "Amazon EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, keeping the right number of instances available. Route 53 is DNS, IAM controls access, and CloudFront is a content delivery network; none of them scale EC2 capacity.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling?",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2", "EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-07",
+    domain: 3,
+    type: "single",
+    topic: "EC2 Auto Scaling capacity settings",
+    difficulty: "medium",
+    stem: "When configuring an Auto Scaling group, a team sets a number that the group is kept at under normal conditions, while never dropping below a floor or rising above a ceiling. What is the value the group is kept at called?",
+    options: [
+      { id: "a", text: "The desired capacity" },
+      { id: "b", text: "The maximum capacity" },
+      { id: "c", text: "The minimum capacity" },
+      { id: "d", text: "The reserved capacity" },
+    ],
+    correct: ["a"],
+    explanation:
+      "An Auto Scaling group keeps the number of instances at the desired capacity, between the minimum it never goes below and the maximum it never goes above. The minimum is the floor and the maximum is the ceiling, and reserved capacity is not an Auto Scaling group setting.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling?",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-11",
+    domain: 3,
+    type: "single",
+    topic: "EC2 Auto Scaling health",
+    difficulty: "medium",
+    stem: "An Auto Scaling group is configured for a web tier. One instance stops responding to health checks. What does Amazon EC2 Auto Scaling do to keep the group at its desired capacity?",
+    options: [
+      { id: "a", text: "It detects the unhealthy instance, terminates it, and launches a replacement instance." },
+      { id: "b", text: "It sends an email and waits for an administrator to fix the instance by hand." },
+      { id: "c", text: "It permanently reduces the desired capacity by one." },
+      { id: "d", text: "It does nothing, because health is not part of Auto Scaling." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Amazon EC2 Auto Scaling monitors instance health and, when an instance is unhealthy, terminates it and launches a replacement to maintain the desired capacity. It does not just send an email and wait for an administrator to fix the instance by hand, does not permanently reduce the desired capacity, and health monitoring is a built-in feature rather than something outside its scope.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling?",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-12",
+    domain: 3,
+    type: "single",
+    topic: "Scaling direction",
+    difficulty: "easy",
+    stem: "In Auto Scaling terminology, what does it mean to scale in?",
+    options: [
+      { id: "a", text: "Removing capacity, such as terminating instances, when demand decreases." },
+      { id: "b", text: "Adding capacity by launching more instances." },
+      { id: "c", text: "Moving an application to a larger Region." },
+      { id: "d", text: "Increasing the size of a single instance." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Scaling in removes capacity, such as terminating instances, when demand decreases, which is the half of elasticity that controls cost. Adding instances is scaling out, moving an application to a larger Region is not a scaling action at all, and increasing a single instance size is vertical scaling, not scaling in.",
+    reference: {
+      label: "Auto Scaling benefits for application architecture",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-13",
+    domain: 3,
+    type: "single",
+    topic: "AWS Auto Scaling service",
+    difficulty: "medium",
+    stem: "A company wants to set up scaling for several different resource types, including EC2 capacity and other scalable resources, from one place, aiming for steady performance at the lowest possible cost. Which AWS service is designed to monitor applications and adjust capacity across multiple services for this purpose?",
+    options: [
+      { id: "a", text: "AWS Auto Scaling" },
+      { id: "b", text: "AWS Trusted Advisor" },
+      { id: "c", text: "AWS Config" },
+      { id: "d", text: "Amazon Inspector" },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost, letting you set up scaling for multiple resources across multiple services. Trusted Advisor gives recommendations, Config tracks configuration, and Inspector assesses security; none of them perform application scaling.",
+    reference: {
+      label: "AWS Auto Scaling",
+      url: "https://aws.amazon.com/autoscaling/",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-elast-19",
+    domain: 3,
+    type: "single",
+    topic: "EC2 Auto Scaling and Availability Zones",
+    difficulty: "hard",
+    stem: "An Auto Scaling group spans multiple Availability Zones. One Availability Zone becomes unavailable. According to AWS, what does EC2 Auto Scaling do to compensate?",
+    options: [
+      { id: "a", text: "It can launch instances in another Availability Zone to make up for the one that is unavailable." },
+      { id: "b", text: "It shuts the whole group down until the zone returns." },
+      { id: "c", text: "It moves every instance into the single unavailable zone." },
+      { id: "d", text: "It ignores the failure because zones never affect Auto Scaling." },
+    ],
+    correct: ["a"],
+    explanation:
+      "If you configure multiple Availability Zones and one becomes unavailable, Amazon EC2 Auto Scaling can launch instances in another zone to compensate, which improves fault tolerance. Shutting the group down, piling into the failed zone, or ignoring the failure would all reduce availability.",
+    reference: {
+      label: "Auto Scaling benefits: better fault tolerance",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-22",
+    domain: 3,
+    type: "single",
+    topic: "EC2 Auto Scaling cost",
+    difficulty: "easy",
+    stem: "How much extra does AWS charge to use the Amazon EC2 Auto Scaling feature itself?",
+    options: [
+      { id: "a", text: "There is no additional fee; you pay only for the AWS resources you use, such as the EC2 instances." },
+      { id: "b", text: "A fixed monthly subscription per Auto Scaling group." },
+      { id: "c", text: "A percentage of your total monthly bill." },
+      { id: "d", text: "A one-time activation charge per account." },
+    ],
+    correct: ["a"],
+    explanation:
+      "There are no additional fees for Amazon EC2 Auto Scaling; you pay only for the resources you use, such as EC2 instances, EBS volumes, and CloudWatch alarms. AWS does not charge a per-group subscription, a percentage of the bill, or an activation fee for the feature.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling? Pricing",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-25",
+    domain: 3,
+    type: "single",
+    topic: "Dynamic scaling",
+    difficulty: "medium",
+    stem: "A team wants their Auto Scaling group to add instances automatically when average CPU climbs and remove them when it drops, based on a CloudWatch metric. Which capability of EC2 Auto Scaling provides this?",
+    options: [
+      { id: "a", text: "Scaling policies that launch or terminate instances as demand on the application increases or decreases" },
+      { id: "b", text: "A requirement to resize the group only by hand" },
+      { id: "c", text: "A fixed instance count that never changes" },
+      { id: "d", text: "Region failover triggered by billing alerts" },
+    ],
+    correct: ["a"],
+    explanation:
+      "When you specify scaling policies, EC2 Auto Scaling launches or terminates instances as demand on the application increases or decreases, which is how it follows a metric like CPU. A requirement to resize the group only by hand and a fixed count that never changes are the opposite of automatic scaling, and Region failover triggered by billing alerts is unrelated to this metric-driven behavior.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling?",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling", "CloudWatch"],
+  },
+  {
+    id: "d1-elast-26",
+    domain: 3,
+    type: "multi",
+    topic: "EC2 Auto Scaling benefits",
+    difficulty: "hard",
+    stem: "AWS lists several benefits of adding Amazon EC2 Auto Scaling to an application architecture. Which TWO of the following are among them? (Choose two.)",
+    options: [
+      { id: "a", text: "Better fault tolerance, by replacing unhealthy instances and using multiple Availability Zones" },
+      { id: "b", text: "Better cost management, by adding capacity when needed and removing it when it is not" },
+      { id: "c", text: "A guaranteed fixed monthly bill regardless of usage" },
+      { id: "d", text: "Elimination of all need to monitor the application" },
+      { id: "e", text: "Automatic conversion of every instance to a Reserved Instance" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS lists better fault tolerance, better availability, and better cost management as benefits of EC2 Auto Scaling. It does not promise a fixed bill, remove the need for monitoring, or convert instances into Reserved Instances.",
+    reference: {
+      label: "Auto Scaling benefits for application architecture",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-30",
+    domain: 3,
+    type: "single",
+    topic: "AWS Auto Scaling goal",
+    difficulty: "medium",
+    stem: "What does AWS state as the goal of AWS Auto Scaling when it adjusts capacity for your applications?",
+    options: [
+      { id: "a", text: "To maintain steady, predictable performance at the lowest possible cost." },
+      { id: "b", text: "To always run the maximum number of instances allowed." },
+      { id: "c", text: "To minimize performance in order to save money." },
+      { id: "d", text: "To keep capacity fixed no matter what the load is." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. It does not aim to always run the maximum number of instances, to minimize performance in order to save money, or to keep capacity fixed regardless of load.",
+    reference: {
+      label: "AWS Auto Scaling",
+      url: "https://aws.amazon.com/autoscaling/",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-elast-35",
+    domain: 3,
+    type: "multi",
+    topic: "EC2 Auto Scaling capacity settings",
+    difficulty: "medium",
+    stem: "Which TWO values do you set on an Auto Scaling group to bound how many instances it may run? (Choose two.)",
+    options: [
+      { id: "a", text: "Minimum capacity, which the group never goes below" },
+      { id: "b", text: "Maximum capacity, which the group never goes above" },
+      { id: "c", text: "Reserved capacity, which prepays for instances" },
+      { id: "d", text: "Spot capacity, which sets the interruption rate" },
+      { id: "e", text: "Region capacity, which caps instances per Region" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "An Auto Scaling group is bounded by a minimum size it never goes below and a maximum size it never goes above, with the desired capacity kept between them. Reserved, Spot, and Region capacity are not Auto Scaling group size settings.",
+    reference: {
+      label: "What is Amazon EC2 Auto Scaling?",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-elast-36",
+    domain: 3,
+    type: "multi",
+    topic: "AWS Auto Scaling service",
+    difficulty: "hard",
+    stem: "AWS Auto Scaling can manage scaling for resources beyond EC2 instances. Which TWO of the following are resources AWS Auto Scaling can scale? (Choose two.)",
+    options: [
+      { id: "a", text: "Amazon ECS tasks" },
+      { id: "b", text: "Amazon DynamoDB tables and indexes" },
+      { id: "c", text: "Amazon S3 bucket names" },
+      { id: "d", text: "AWS Identity and Access Management users" },
+      { id: "e", text: "Amazon Route 53 hosted zones" },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS Auto Scaling can scale resources such as Amazon ECS tasks, DynamoDB tables and indexes, Aurora Replicas, EC2 instances, and Spot Fleets. S3 bucket names, IAM users, and Route 53 hosted zones are not scalable targets it manages.",
+    reference: {
+      label: "AWS Auto Scaling",
+      url: "https://aws.amazon.com/autoscaling/",
+    },
+    lastVerified: "2026-07-29",
+    services: ["ECS", "DynamoDB"],
+  },
+  {
+    id: "d1-resil-11",
+    domain: 3,
+    type: "multi",
+    topic: "Elastic Load Balancing",
+    difficulty: "easy",
+    stem: "A company puts a load balancer in front of a group of identical servers. According to AWS, which TWO things does distributing traffic across multiple resources this way do for the application? (Choose two.)",
+    options: [
+      { id: "a", text: "It increases the availability of the application." },
+      { id: "b", text: "It increases the fault tolerance of the application." },
+      { id: "c", text: "It guarantees the application can never receive too much traffic." },
+      { id: "d", text: "It removes the need to run more than one server." },
+      { id: "e", text: "It makes every request slower on purpose for safety." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS states that using a load balancer to distribute workloads across multiple compute resources increases the availability and fault tolerance of your applications. It does not guarantee the application can never receive too much traffic, it does not remove the need to run more than one server since it balances across several, and it is not designed to slow requests down.",
+    reference: {
+      label: "What is Elastic Load Balancing?",
+      url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["Elastic Load Balancing"],
+  },
+  {
+    id: "d1-resil-12",
+    domain: 3,
+    type: "single",
+    topic: "Elastic Load Balancing",
+    difficulty: "medium",
+    stem: "One server behind an Elastic Load Balancer stops responding to its health check. What does the load balancer do, and how does that support resilience?",
+    options: [
+      { id: "a", text: "It stops sending requests to the unhealthy target and routes traffic only to healthy targets." },
+      { id: "b", text: "It keeps sending an equal share of requests to the failed server to be fair." },
+      { id: "c", text: "It shuts down the entire application until the server is fixed." },
+      { id: "d", text: "It permanently deletes the unhealthy server and its data." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Elastic Load Balancing monitors the health of its registered targets and routes traffic only to the healthy ones, so a single failing instance does not break the service. It does not keep sending an equal share to the failed server, shut down the entire application, or permanently delete the unhealthy server and its data.",
+    reference: {
+      label: "What is Elastic Load Balancing?",
+      url: "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["Elastic Load Balancing"],
+  },
+  {
+    id: "d1-resil-13",
+    domain: 3,
+    type: "single",
+    topic: "Auto Scaling and fault tolerance",
+    difficulty: "medium",
+    stem: "A web tier runs on Amazon EC2 instances in an Auto Scaling group. One instance becomes unhealthy. What does Amazon EC2 Auto Scaling do that improves fault tolerance?",
+    options: [
+      { id: "a", text: "It detects the unhealthy instance, terminates it, and launches a replacement." },
+      { id: "b", text: "It leaves the unhealthy instance in service and notifies no one." },
+      { id: "c", text: "It permanently reduces the group to zero instances." },
+      { id: "d", text: "It converts the instance to a Reserved Instance to fix it." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS lists better fault tolerance as a benefit of EC2 Auto Scaling: it can detect when an instance is unhealthy, terminate it, and launch a replacement, which keeps capacity healthy without manual intervention. An option that leaves the unhealthy instance in service and notifies no one, scaling the group to zero, or converting the instance to a Reserved Instance would not restore the failed capacity, since a Reserved Instance is a billing commitment rather than a repair.",
+    reference: {
+      label: "Amazon EC2 Auto Scaling benefits",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-resil-34",
+    domain: 3,
+    type: "multi",
+    topic: "Auto Scaling benefits",
+    difficulty: "medium",
+    stem: "Beyond cost management, which TWO resilience benefits does AWS attribute to adding Amazon EC2 Auto Scaling to an application? (Choose two.)",
+    options: [
+      { id: "a", text: "Better fault tolerance, by replacing unhealthy instances automatically." },
+      { id: "b", text: "Better availability, by helping ensure the application always has the right amount of capacity." },
+      { id: "c", text: "A guarantee that no instance will ever fail." },
+      { id: "d", text: "Automatic encryption of all data stored on the instances." },
+      { id: "e", text: "Elimination of the need to use more than one Availability Zone." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "AWS lists better fault tolerance and better availability among the benefits of EC2 Auto Scaling: it replaces unhealthy instances and helps keep the right amount of capacity for current demand. It does not guarantee that no instance will ever fail, provide automatic encryption of all data stored on the instances, or remove the value of spanning multiple Availability Zones.",
+    reference: {
+      label: "Amazon EC2 Auto Scaling benefits",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-resil-14",
+    domain: 3,
+    type: "single",
+    topic: "Auto Scaling across zones",
+    difficulty: "medium",
+    stem: "An Auto Scaling group spans several Availability Zones. According to AWS, what happens if one of those Availability Zones becomes unavailable?",
+    options: [
+      { id: "a", text: "Amazon EC2 Auto Scaling can launch instances in another Availability Zone to compensate." },
+      { id: "b", text: "All instances in every zone are terminated immediately." },
+      { id: "c", text: "The group waits for the failed zone to return before doing anything." },
+      { id: "d", text: "The application must be moved to a different AWS account." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS states that if you configure EC2 Auto Scaling to use multiple Availability Zones and one becomes unavailable, it can launch instances in another zone to compensate, which preserves capacity through a zone failure. It does not terminate all instances in every zone immediately, leave the group waiting for the failed zone to return before doing anything, or require moving to a different AWS account.",
+    reference: {
+      label: "Amazon EC2 Auto Scaling benefits",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2 Auto Scaling"],
+  },
+  {
+    id: "d1-resil-15",
+    domain: 3,
+    type: "multi",
+    topic: "High availability building blocks",
+    difficulty: "hard",
+    stem: "An architect wants higher availability for a stateless web application within one Region. Which TWO measures align with AWS guidance for availability and fault tolerance? (Choose two.)",
+    options: [
+      { id: "a", text: "Distribute incoming requests across targets with Elastic Load Balancing." },
+      { id: "b", text: "Run the EC2 instances in an Auto Scaling group across multiple Availability Zones." },
+      { id: "c", text: "Place all instances in one Availability Zone to simplify networking." },
+      { id: "d", text: "Run exactly one instance and rely on restarting it by hand after a crash." },
+      { id: "e", text: "Turn off instance health checks to avoid restarts." },
+    ],
+    correct: ["a", "b"],
+    explanation:
+      "Elastic Load Balancing increases availability and fault tolerance by routing only to healthy targets, and an Auto Scaling group across multiple Availability Zones keeps capacity healthy through instance or zone failures. Concentrating in one zone, relying on a single hand-restarted instance, and disabling health checks each remove a layer of resilience.",
+    reference: {
+      label: "Amazon EC2 Auto Scaling benefits",
+      url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["Elastic Load Balancing", "EC2 Auto Scaling"],
   },
 ];
