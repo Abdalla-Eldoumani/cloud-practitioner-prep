@@ -18,7 +18,9 @@ const { day, lessons } = Astro.props;
 const bySlug = new Set(lessons.map((l) => l.slug));
 const available = day.lessonSlugs.filter((s) => bySlug.has(s));
 const pendingCount = day.lessonSlugs.length - available.length;
-const href = available.length > 0 ? `/learn/${available[0]}` : "/learn";
+// A day with no lesson of its own is a practice day (day 7 is review and mocks),
+// so the title goes to the practice hub rather than back to the lesson library.
+const href = available.length > 0 ? `/learn/${available[0]}` : "/practice";
 const isMock = !!day.milestone;
 const mockLabel = day.day === 7 ? "MOCK 2·3" : "MOCK 1";
 const domainLabel = day.focus.length > 1 ? "ALL" : `D${day.focus[0]}`;
