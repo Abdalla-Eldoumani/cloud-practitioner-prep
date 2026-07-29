@@ -155,7 +155,7 @@ query, an imported progress file, renders as text and is never evaluated as HTML
 Production responses carry a strict Content-Security-Policy, HSTS, `nosniff`,
 `frame-ancestors 'none'`, a cross-origin opener policy, and a restrictive
 permissions policy (in `vercel.json`, mirrored in `public/_headers` for other
-hosts). See [SECURITY.md](../SECURITY.md).
+hosts). See [SECURITY.md](./SECURITY.md).
 
 ## The verification gate
 
@@ -165,7 +165,7 @@ check, the question shuffle uniformity check, and behavioral checks for the
 drill, mock, deck, review schedule, readiness, progress migration, and progress
 import/export. `npm run build` runs the type check and a full build; the link
 checker validates the documentation references. Run these before sending a change;
-see [CONTRIBUTING.md](../CONTRIBUTING.md).
+see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Making your own version
 
