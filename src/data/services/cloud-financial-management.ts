@@ -17,10 +17,10 @@ export const cloudFinancialManagement: ServiceEntry[] = [
     whenToUse:
       "Reach for it when you want to be notified before a bill grows beyond a threshold, so a runaway cost is caught early instead of at the end of the month.",
     reference: {
-      label: "What is AWS Budgets?",
+      label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Budgets",
       "cost alerts",
@@ -43,7 +43,7 @@ export const cloudFinancialManagement: ServiceEntry[] = [
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "CUR",
       "Cost and Usage Report",
@@ -66,7 +66,7 @@ export const cloudFinancialManagement: ServiceEntry[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Cost Explorer",
       "cost analysis",
@@ -89,7 +89,7 @@ export const cloudFinancialManagement: ServiceEntry[] = [
       label: "What is AWS Marketplace?",
       url: "https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html",
     },
-    lastVerified: "2026-06-24",
+    lastVerified: "2026-07-29",
     aliases: [
       "Marketplace",
       "third-party software",
