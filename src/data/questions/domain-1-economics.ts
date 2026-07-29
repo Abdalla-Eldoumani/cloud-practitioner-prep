@@ -3,10 +3,15 @@ import type { Question } from "../../lib/types";
 // Domain 1: Cloud Concepts, cloud economics cluster. Original practice
 // questions covering the six advantages of cloud computing as AWS states them,
 // capital versus operational expenditure, total cost of ownership, economies of
-// scale, consumption-based pricing, and reducing undifferentiated heavy
-// lifting. These are not real exam items. Every fact is verified against
+// scale, consumption-based pricing, reducing undifferentiated heavy lifting,
+// and the cost habits that follow from them: right-sizing and shutting down
+// idle capacity. These are not real exam items. Every fact is verified against
 // current AWS documentation; each question cites the page that backs its
 // answer.
+//
+// Ids keep their historical d3-ec2- and d4-pricing- prefixes deliberately: an
+// id is a stable key in a learner's saved progress, so it survives a move
+// between files and stays put when a question is retagged to another domain.
 export const domain1Economics: Question[] = [
   {
     id: "d1-econ-01",
@@ -28,7 +33,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-02",
@@ -50,7 +55,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-03",
@@ -72,7 +77,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-04",
@@ -94,7 +99,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-05",
@@ -116,7 +121,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-06",
@@ -138,7 +143,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-07",
@@ -165,7 +170,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-08",
@@ -188,7 +193,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-09",
@@ -210,7 +215,7 @@ export const domain1Economics: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-10",
@@ -232,7 +237,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-11",
@@ -254,7 +259,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-12",
@@ -276,7 +281,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-13",
@@ -298,7 +303,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-14",
@@ -321,7 +326,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-15",
@@ -344,7 +349,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-16",
@@ -352,7 +357,7 @@ export const domain1Economics: Question[] = [
     type: "single",
     topic: "Consumption-based pricing",
     difficulty: "medium",
-    stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. According to AWS guidance on flexibility, why is this claim incorrect?",
+    stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. Why is this claim incorrect?",
     options: [
       { id: "a", text: "You do not pay for compute instances when they are not running, so turning them off reduces cost" },
       { id: "b", text: "Stopped instances are billed at a higher rate than running ones" },
@@ -361,12 +366,12 @@ export const domain1Economics: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a key advantage of cloud resources is that you do not pay for them when they are not running, and turning off unused instances can reduce costs by 70 percent or more compared to running them 24/7. Stopped instances are not billed at a higher rate, compute is not a flat monthly fee, and you are not charged forever for instances that are no longer running.",
+      "AWS does not bill instance usage while an EC2 instance is in the stopped state, so stopping it overnight ends its compute charges (storage for any attached EBS volumes still accrues). Stopped instances are not billed at a higher rate than running ones, compute is not a flat monthly fee, and you are not charged for instances that are no longer running.",
     reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      label: "Amazon EC2 instance state changes: billing by instance state",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -389,29 +394,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-econ-18",
-    domain: 1,
-    type: "single",
-    topic: "Cost drivers",
-    difficulty: "easy",
-    stem: "AWS names three fundamental drivers of cost that apply broadly across services. A new cloud practitioner is asked to identify one of them. Which option is one of the three?",
-    options: [
-      { id: "a", text: "Storage" },
-      { id: "b", text: "The number of IAM users you create" },
-      { id: "c", text: "The number of AWS Regions that exist" },
-      { id: "d", text: "The number of support cases you open" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS lists compute, storage, and outbound data transfer as the three fundamental drivers of cost, so storage is correct. The count of IAM users you create does not drive cost, the number of Regions AWS operates is not a cost driver, and opening support cases is governed by your support plan rather than the three fundamental drivers.",
-    reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-19",
@@ -433,7 +416,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-20",
@@ -456,7 +439,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-21",
@@ -478,7 +461,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-22",
@@ -501,7 +484,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-23",
@@ -523,29 +506,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-econ-24",
-    domain: 1,
-    type: "single",
-    topic: "Cost drivers",
-    difficulty: "medium",
-    stem: "A practitioner notices that uploading data into AWS shows no transfer charge on the bill, while sending data out to the internet does. Which statement reflects the general AWS rule?",
-    options: [
-      { id: "a", text: "In most cases there is no charge for inbound data transfer, while outbound data transfer is charged" },
-      { id: "b", text: "Inbound data transfer is charged, while outbound is free" },
-      { id: "c", text: "Both inbound and outbound transfer are always free" },
-      { id: "d", text: "Both inbound and outbound transfer are billed at the same fixed rate" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS states that in most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the outbound data transfer rate. The other options invert the rule, make all transfer free, or flatten inbound and outbound to one rate, none of which match AWS billing.",
-    reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-25",
@@ -567,7 +528,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-26",
@@ -590,7 +551,7 @@ export const domain1Economics: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-27",
@@ -613,7 +574,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-28",
@@ -635,7 +596,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-29",
@@ -657,7 +618,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-30",
@@ -679,7 +640,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-31",
@@ -701,30 +662,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-econ-32",
-    domain: 1,
-    type: "multi",
-    topic: "Cost drivers",
-    difficulty: "medium",
-    stem: "AWS names three fundamental drivers of cost that apply broadly across services. Which THREE are they? (Choose three.)",
-    options: [
-      { id: "a", text: "Compute" },
-      { id: "b", text: "Storage" },
-      { id: "c", text: "Outbound data transfer" },
-      { id: "d", text: "The number of users in your identity provider" },
-      { id: "e", text: "Inbound data transfer from the internet" },
-    ],
-    correct: ["a", "b", "c"],
-    explanation:
-      "AWS lists compute, storage, and outbound data transfer as the three fundamental drivers of cost. The number of users in an identity provider is not a fundamental driver, and inbound data transfer is in most cases not charged, so it is not one of the three.",
-    reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-econ-33",
@@ -746,6 +684,297 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d3-ec2-17",
+    domain: 1,
+    type: "single",
+    topic: "Right-sizing",
+    difficulty: "medium",
+    stem: "A monitoring review shows an EC2 instance that runs at five percent CPU and uses a fraction of its memory all month, yet it was provisioned as a very large instance. Following AWS cost guidance, what is the recommended action?",
+    options: [
+      { id: "a", text: "Right-size the instance by moving to a smaller or more appropriate instance type that matches actual usage." },
+      { id: "b", text: "Leave it as is, because a larger instance is always safer." },
+      { id: "c", text: "Buy a three-year Reserved Instance for the oversized type to lock in the price." },
+      { id: "d", text: "Switch it to a Dedicated Host to lower the per-hour rate." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Right-sizing means selecting the instance type that matches the workload's actual compute, memory, and storage needs, so an underused large instance should move to a smaller, fitting type to cut cost. Choosing to leave it because a larger instance is always safer just keeps paying for idle capacity, committing to a long term locks in the waste, and a Dedicated Host raises cost rather than addressing the size mismatch.",
+    reference: {
+      label: "Select the correct resource type, size, and number",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/select-the-correct-resource-type-size-and-number.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d4-pricing-23",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics",
+    difficulty: "easy",
+    stem: "Which statement best captures the cost shift a company makes when it moves workloads from its own data center to AWS?",
+    options: [
+      { id: "a", text: "It trades fixed expenses such as data centers and physical servers for variable expenses, paying for IT as it is consumed." },
+      { id: "b", text: "It converts all variable expenses into a single large fixed expense." },
+      { id: "c", text: "It eliminates every cost because cloud computing is free." },
+      { id: "d", text: "It locks in a flat monthly fee that never changes with usage." },
+    ],
+    correct: ["a"],
+    explanation:
+      "AWS describes the cloud as letting you trade fixed expenses such as data centers and servers for variable expenses, paying only for IT as you consume it. The cloud is not free, the shift moves away from fixed expense rather than toward it, and pay-as-you-go bills vary with usage.",
+    reference: {
+      label: "What is cloud computing: fixed to variable expense",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d4-pricing-24",
+    domain: 1,
+    type: "single",
+    topic: "Cost optimization",
+    difficulty: "medium",
+    stem: "A team runs development EC2 instances that sit idle overnight and on weekends. What is the most direct way to reduce their cost?",
+    options: [
+      { id: "a", text: "Turn off the instances when they are not in use, since you do not pay for compute that is not running." },
+      { id: "b", text: "Leave them running continuously to avoid any startup delay." },
+      { id: "c", text: "Convert them to Dedicated Hosts to lower the hourly rate." },
+      { id: "d", text: "Buy three-year Reserved Instances for the idle time." },
+    ],
+    correct: ["a"],
+    explanation:
+      "Amazon EC2 does not bill instance usage while an instance is stopped, so shutting development instances down outside working hours removes their compute charge; attached EBS volumes still bill for storage. Choosing to leave them running continuously to avoid a startup delay keeps paying for idle compute, converting them to Dedicated Hosts raises cost for this case, and a long reservation for idle time is the opposite of saving.",
+    reference: {
+      label: "Amazon EC2 billing by instance state",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-34",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics",
+    difficulty: "medium",
+    stem: "A company owns per-socket and per-core software licenses it wants to keep using on Amazon EC2, and its license terms require it to see the number of sockets and physical cores the software runs on. Which EC2 option supports that?",
+    options: [
+      { id: "a", text: "Dedicated Hosts" },
+      { id: "b", text: "Dedicated Instances" },
+      { id: "c", text: "Spot Instances" },
+      { id: "d", text: "On-Demand instances on shared tenancy" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Dedicated Instances give dedicated hardware but no visibility of sockets and cores, and only partial bring-your-own-license support.",
+      c: "Spot Instances are discounted spare capacity AWS can reclaim; they are a pricing choice, not a licensing one.",
+      d: "Shared tenancy places the instance on hardware used by other accounts, which per-socket licensing cannot account for.",
+    },
+    explanation:
+      "An Amazon EC2 Dedicated Host is a physical server fully dedicated to your use that provides visibility of the number of sockets and physical cores, and AWS documents comprehensive Bring Your Own License support on Dedicated Hosts for existing per-socket, per-core, or per-VM licenses. Dedicated Instances run on hardware dedicated to a single account but give no visibility of sockets and cores and carry only partial license support, Spot Instances are spare capacity AWS can reclaim rather than a licensing option, and shared tenancy puts the workload on hardware other accounts also use.",
+    reference: {
+      label: "Amazon EC2 Dedicated Hosts",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-35",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud economics",
+    difficulty: "hard",
+    stem: "Two teams each need their instances on hardware that no other AWS account uses. Which TWO statements about the difference between Dedicated Hosts and Dedicated Instances are correct? (Choose two.)",
+    options: [
+      { id: "a", text: "Dedicated Hosts bill per host and show the number of sockets and physical cores, which is what makes them suitable for per-socket and per-core licenses." },
+      { id: "b", text: "Dedicated Instances bill per instance and give no visibility into or control over instance placement." },
+      { id: "c", text: "Dedicated Instances let you keep launching onto the same physical server over time, so a license can follow the hardware." },
+      { id: "d", text: "Dedicated Hosts remove the need to hold a license for the software you run." },
+      { id: "e", text: "Spot Instances are the option AWS documents for bringing your own per-core licenses." },
+    ],
+    correct: ["a", "b"],
+    distractorRationales: {
+      c: "Host affinity, which keeps launching onto the same physical server over time, is a Dedicated Host capability that Dedicated Instances do not support.",
+      d: "A Dedicated Host lets you use licenses you already hold, subject to your license terms. It does not supply them.",
+      e: "Spot Instances are discounted spare capacity AWS can reclaim, and AWS does not document them as a licensing option.",
+    },
+    explanation:
+      "AWS documents per-host billing and visibility of the number of sockets and physical cores as Dedicated Host capabilities, which is why Dedicated Hosts carry comprehensive Bring Your Own License support, and it documents per-instance billing with no visibility or control over placement for Dedicated Instances. Keeping instances launching onto the same physical server over time is host affinity, a Dedicated Host capability that Dedicated Instances do not support. A Dedicated Host does not remove the need to hold a license; it lets you use the licenses you already own, subject to your license terms. Spot Instances are spare capacity offered at a discount that AWS can reclaim, not a licensing option.",
+    reference: {
+      label: "Amazon EC2 Dedicated Hosts: differences from Dedicated Instances",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-36",
+    domain: 1,
+    type: "single",
+    topic: "Right-sizing",
+    difficulty: "medium",
+    stem: "A cost review recommends right sizing the company's compute. What does right sizing mean, as AWS defines it?",
+    options: [
+      { id: "a", text: "Matching instance types and sizes to the workload's performance and capacity requirements at the lowest possible cost, and revisiting that choice as needs change." },
+      { id: "b", text: "Buying the largest instance type available so the workload never runs short." },
+      { id: "c", text: "Committing to a three-year Reserved Instance for every instance in the fleet." },
+      { id: "d", text: "Spreading the same instances across more Availability Zones." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Over-provisioning is the habit right sizing corrects; it leaves capacity paid for and unused.",
+      c: "A commitment changes the price of capacity, not whether the capacity fits the work.",
+      d: "Spreading across zones changes where the workload runs, not how well the resource fits the workload.",
+    },
+    explanation:
+      "AWS defines right sizing as the process of matching instance types and sizes to your workload performance and capacity requirements at the lowest possible cost, and describes it as an ongoing process of analyzing deployed instances to find opportunities to eliminate or downsize them without compromising performance. Buying the largest instance type available is over-provisioning, a three-year Reserved Instance commitment is a pricing decision that leaves the size of what you run unchanged, and spreading instances across more Availability Zones improves availability rather than fitting the resource to the work.",
+    reference: {
+      label: "AWS Cost Optimization: right sizing",
+      url: "https://aws.amazon.com/aws-cost-management/aws-cost-optimization/right-sizing/",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-37",
+    domain: 1,
+    type: "single",
+    topic: "Right-sizing",
+    difficulty: "medium",
+    stem: "A team hesitates to launch instances because it believes the size it picks now is permanent. What does AWS documentation say about changing an instance's size later?",
+    options: [
+      { id: "a", text: "If the instance turns out to be too small or too large, you can resize it by changing its instance type, and you then pay the rate of the new type." },
+      { id: "b", text: "An instance's type is fixed for the life of the instance and can never be changed." },
+      { id: "c", text: "Resizing is possible only after you purchase a Reserved Instance." },
+      { id: "d", text: "Only instances running on Dedicated Hosts can have their size adjusted." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "AWS documents changing the instance type as a normal response to an over-utilized or under-utilized instance.",
+      c: "A reservation is a billing commitment. It is not a prerequisite for changing an instance type.",
+      d: "Tenancy does not gate resizing; the instructions depend on the root volume and instance type compatibility.",
+    },
+    explanation:
+      "AWS states that as your needs change you might find an instance over-utilized because the type is too small, or under-utilized because it is too large, and that you can resize it by changing its instance type, after which you start paying the rate of the new instance type. The type is therefore not fixed for the life of the instance, no Reserved Instance purchase is required first, and resizing is not limited to instances on Dedicated Hosts: which procedure you follow depends on the root volume and on whether the new type is compatible with the instance's configuration.",
+    reference: {
+      label: "Amazon EC2 instance type changes",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["EC2"],
+  },
+  {
+    id: "d1-econ-38",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics",
+    difficulty: "medium",
+    stem: "A team describes its whole test environment, the Auto Scaling group, the load balancer, and the database, in one AWS CloudFormation template. What does that give the team, as AWS describes CloudFormation?",
+    options: [
+      { id: "a", text: "CloudFormation provisions and configures the described resources and works out the dependencies, and the resulting stack lets the team manage the collection as a single unit, including deleting all of it together." },
+      { id: "b", text: "CloudFormation removes the charges for the resources the template creates." },
+      { id: "c", text: "CloudFormation converts the company's capital expenditure into a fixed annual license fee." },
+      { id: "d", text: "CloudFormation takes over the customer's responsibility for the data held in those resources." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "The resources a template creates are billed exactly as they would be if you created them by hand.",
+      c: "CloudFormation is a provisioning service, not a licensing arrangement, and AWS does not charge an annual fee for it.",
+      d: "Automating provisioning does not move any customer responsibility to AWS.",
+    },
+    explanation:
+      "With CloudFormation you write a template describing the resources you want, CloudFormation provisions and configures them and figures out what depends on what, and the resulting stack lets you manage that collection of resources as a single unit, so deleting the stack deletes everything in it. Automating provisioning does not take away the charges for the resources that get created, it is not a licensing arrangement that turns capital expenditure into an annual fee, and it does not shift responsibility for your data, which stays with the customer.",
+    reference: {
+      label: "What is CloudFormation?",
+      url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+    },
+    lastVerified: "2026-07-29",
+    services: ["CloudFormation"],
+  },
+  {
+    id: "d1-econ-39",
+    domain: 1,
+    type: "multi",
+    topic: "Cloud economics",
+    difficulty: "hard",
+    stem: "A team is making the financial case for automating how it provisions infrastructure. Which TWO benefits does AWS attribute to automating in the cloud? (Choose two.)",
+    options: [
+      { id: "a", text: "You can create and replicate your workloads at low cost and avoid the expense of manual effort." },
+      { id: "b", text: "You can track changes to your automation, audit the impact, and revert to earlier parameters when necessary." },
+      { id: "c", text: "Automated workloads are billed at a lower hourly rate than manually created ones." },
+      { id: "d", text: "Automation removes the need to test a workload before release." },
+      { id: "e", text: "Automation transfers responsibility for patching guest operating systems to AWS." },
+    ],
+    correct: ["a", "b"],
+    distractorRationales: {
+      c: "AWS prices a resource the same however it was created. The saving comes from less manual effort and cheaper replication.",
+      d: "A separate design principle tells you to test systems at production scale, which automation makes cheaper rather than unnecessary.",
+      e: "Guest operating system patching stays with the customer regardless of how the resource was provisioned.",
+    },
+    explanation:
+      "AWS states that automation permits you to create and replicate your workloads at low cost and avoid the expense of manual effort, and that you can track changes to your automation, audit the impact, and revert to previous parameters when necessary. AWS does not bill an automated workload at a lower hourly rate than a manually created one, automation does not remove the need to test a workload before release, and it does not transfer patching of guest operating systems to AWS.",
+    reference: {
+      label: "AWS Well-Architected Framework: general design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-econ-40",
+    domain: 1,
+    type: "single",
+    topic: "Cloud economics principles",
+    difficulty: "medium",
+    stem: "A company decides to build a dedicated capability for managing cloud cost and usage, with knowledge building, programs, resources, and processes behind it, the same way it built its security capability. Which AWS cost optimization design principle is this?",
+    options: [
+      { id: "a", text: "Implement Cloud Financial Management" },
+      { id: "b", text: "Adopt a consumption model" },
+      { id: "c", text: "Measure overall efficiency" },
+      { id: "d", text: "Analyze and attribute expenditure" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "That principle is about paying only for the resources you require and adjusting usage with demand.",
+      c: "That principle compares the business output of a workload with the cost of delivering it.",
+      d: "That principle identifies usage and cost so they can be attributed to individual workload owners.",
+    },
+    explanation:
+      "The AWS cost optimization design principle implement Cloud Financial Management says your organization should dedicate time and resources to build capability in this domain through knowledge building, programs, resources, and processes, in the same way you build a security or operational excellence capability. Adopt a consumption model is about paying only for the computing resources you require and adjusting usage with business need, measure overall efficiency weighs the business output of a workload against what it costs to deliver, and analyze and attribute expenditure identifies usage and cost so they can be assigned transparently to individual workload owners.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-econ-41",
+    domain: 1,
+    type: "single",
+    topic: "Capital vs operational expenditure",
+    difficulty: "medium",
+    stem: "An older study guide states the first of the six advantages of cloud computing as trading capital expense for operating expense. How does AWS word that advantage today?",
+    options: [
+      { id: "a", text: "Trade fixed expense for variable expense" },
+      { id: "b", text: "Trade variable expense for fixed expense" },
+      { id: "c", text: "Trade operating expense for capital expense" },
+      { id: "d", text: "Trade licensing costs for subscription costs" },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "This is the phrase backwards; it describes committing money before you know your usage.",
+      c: "This is also backwards, and it describes going from cloud spending to buying hardware.",
+      d: "AWS does not frame the advantage in licensing terms at all.",
+    },
+    explanation:
+      "AWS words the first advantage as trade fixed expense for variable expense: instead of investing heavily in data centers and servers before you know how you are going to use them, you pay only when you consume computing resources and only for how much you consume. Stating it as trading variable expense for fixed expense, or as trading operating expense for capital expense, reverses the direction and describes the on-premises model. AWS does not describe the advantage as trading licensing costs for subscription costs.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+    lastVerified: "2026-07-29",
   },
 ];
