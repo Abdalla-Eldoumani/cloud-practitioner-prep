@@ -15,14 +15,14 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "A data science team wants a single managed service where they can prepare data, train a custom machine learning model, and then deploy it to a hosted endpoint for predictions, without standing up and patching their own training servers. Which AWS service is purpose-built for this end-to-end machine learning workflow?",
     options: [
-      { id: "a", text: "Amazon SageMaker" },
+      { id: "a", text: "Amazon SageMaker AI" },
       { id: "b", text: "Amazon Rekognition" },
       { id: "c", text: "Amazon Athena" },
       { id: "d", text: "Amazon QuickSight" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SageMaker is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
+      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
     reference: {
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
