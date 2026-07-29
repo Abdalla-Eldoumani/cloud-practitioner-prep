@@ -8,7 +8,8 @@
 //   lastVerified     every question has a non-empty lastVerified           (ACC-01)
 //   lesson updated   every lesson frontmatter has an `updated` date        (ACC-01)
 //   duplicate stems  no two questions share a normalized stem              (ACC-06)
-//   option-letter    no explanation names an option by letter or ordinal   (ACC-06)
+//   option-letter    no explanation or distractor rationale names an       (ACC-06)
+//                    option by letter or ordinal
 //   domain tag       domain in {1..4} and the source file name agrees      (ACC-06)
 //                    with the question's domain
 //   coverage         every incorrect option is named in the explanation    (ACC-04)
@@ -166,9 +167,19 @@ async function main(): Promise<void> {
       seenStems.set(key, q.id);
     }
 
-    // ACC-06: no option-letter or ordinal reference in the explanation.
+    // ACC-06: no option-letter or ordinal reference in the explanation or in any
+    // per-distractor rationale. Both are read next to shuffled options, so a
+    // positional phrase there points at whatever landed in that slot.
     if (OPTION_LETTER_RE.test(q.explanation)) {
       report.fail("option-letter", `${q.id}: explanation names an option by letter/ordinal`);
+    }
+    for (const [optionId, reason] of Object.entries(q.distractorRationales ?? {})) {
+      if (OPTION_LETTER_RE.test(reason)) {
+        report.fail(
+          "option-letter",
+          `${q.id}: distractorRationales["${optionId}"] names an option by letter/ordinal`,
+        );
+      }
     }
 
     // ACC-06: domain tag agrees two ways — range, source file name. An id prefix
