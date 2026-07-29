@@ -2,8 +2,9 @@ import type { Question } from "../../lib/types";
 
 // Domain 1: Cloud Concepts, the core-concepts cluster. Original practice
 // questions written to test the exam-guide concepts: the definition of cloud
-// computing, the three deployment models, the client-server model, and the
-// tradeoffs between the cloud and traditional on-premises infrastructure.
+// computing, the client-server model, and the tradeoffs between the cloud and
+// traditional on-premises infrastructure. The deployment-model questions the
+// exam guide files under Domain 3 live in domain-3-technology-services.ts.
 // These are not real exam items. Every fact is verified against current AWS
 // documentation; each question cites the page that backs its answer.
 export const domain1Concepts: Question[] = [
@@ -27,7 +28,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-02",
@@ -49,7 +50,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-03",
@@ -71,7 +72,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-04",
@@ -91,10 +92,10 @@ export const domain1Concepts: Question[] = [
     explanation:
       "With pay-as-you-go pricing you pay only for the resources you consume, and you stop paying for compute when it is not running, so both of those are correct. AWS does not force a full month or a committed year of billing for a short job, and compute is a paid resource rather than free.",
     reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-05",
@@ -117,190 +118,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-06",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "easy",
-    stem: "A startup builds its entire application on AWS, with every component running on cloud services and nothing in a company data center. Which deployment model does this describe?",
-    options: [
-      { id: "a", text: "Cloud (fully deployed in the cloud)" },
-      { id: "b", text: "Hybrid" },
-      { id: "c", text: "On-premises (private cloud)" },
-      { id: "d", text: "Colocation only" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS describes a cloud-based application as one that is fully deployed in the cloud, with all parts of the application running in the cloud. Hybrid connects cloud and non-cloud resources, on-premises runs in your own data center, and colocation is not one of the AWS deployment models.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-07",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "medium",
-    stem: "A bank keeps a legacy mainframe application in its own data center for regulatory reasons but connects it to new analytics services running on AWS. Which deployment model describes this arrangement?",
-    options: [
-      { id: "a", text: "Hybrid" },
-      { id: "b", text: "Cloud (fully deployed in the cloud)" },
-      { id: "c", text: "On-premises (private cloud)" },
-      { id: "d", text: "Public-only" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS describes a hybrid deployment as connecting infrastructure and applications between cloud-based resources and existing resources that are not in the cloud, most commonly between the cloud and on-premises infrastructure. A fully-cloud or fully-on-premises model would not span both, and public-only is not an AWS deployment model.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-08",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "medium",
-    stem: "An organization runs all of its workloads in its own data center, using virtualization and resource management tools to raise utilization, with no public cloud involved. AWS sometimes calls this model by which name?",
-    options: [
-      { id: "a", text: "On-premises, sometimes called the private cloud" },
-      { id: "b", text: "Hybrid cloud" },
-      { id: "c", text: "Fully cloud-based deployment" },
-      { id: "d", text: "Serverless deployment" },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS calls the deployment of resources on-premises using virtualization and resource management tools the private cloud, and notes it is in most cases the same as legacy IT infrastructure. Hybrid spans cloud and non-cloud, a cloud-based deployment runs in the cloud, and serverless is an operating model rather than a deployment location.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-09",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "hard",
-    stem: "A company is migrating to AWS over two years. During the transition it must keep some applications running in its existing data center while moving others to the cloud, with the two environments connected. Which deployment model best supports this migration period?",
-    options: [
-      { id: "a", text: "Hybrid, which extends the existing infrastructure into the cloud while keeping it connected to internal systems." },
-      { id: "b", text: "On-premises only, keeping everything in the data center until the very end." },
-      { id: "c", text: "Cloud only, requiring every workload to move on day one." },
-      { id: "d", text: "Spot, which schedules workloads on spare capacity." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises until the end, or a cloud-only model requiring every workload to move on day one, does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-10",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "medium",
-    stem: "According to AWS, which statement about the on-premises (private cloud) deployment model is accurate?",
-    options: [
-      { id: "a", text: "It does not provide many of the benefits of cloud computing but is sometimes chosen for its ability to provide dedicated resources." },
-      { id: "b", text: "It delivers every benefit of cloud computing automatically with no tradeoffs." },
-      { id: "c", text: "It runs entirely on AWS-managed hardware with no equipment in your data center." },
-      { id: "d", text: "It is the only model AWS supports for new applications." },
-    ],
-    correct: ["a"],
-    explanation:
-      "AWS states that on-premises deployment does not provide many of the benefits of cloud computing but is sometimes sought for its ability to provide dedicated resources. It does not automatically deliver all cloud benefits, it runs on your own infrastructure rather than AWS-managed hardware, and it is not the only model AWS supports.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-11",
-    domain: 1,
-    type: "multi",
-    topic: "Cloud deployment models",
-    difficulty: "medium",
-    stem: "AWS describes several cloud computing deployment models. Which TWO of the following are AWS deployment models? (Choose two.)",
-    options: [
-      { id: "a", text: "Cloud" },
-      { id: "b", text: "Hybrid" },
-      { id: "c", text: "Pay-as-you-go" },
-      { id: "d", text: "Reserved" },
-      { id: "e", text: "Elastic" },
-    ],
-    correct: ["a", "b"],
-    distractorRationales: {
-      c: "Pay-as-you-go is how AWS bills for consumption, not one of the cloud, hybrid, or on-premises deployment models.",
-      d: "Reserved is an EC2 purchase option for committed capacity, not a deployment model.",
-      e: "Elastic describes scaling capacity with demand, not where an application is deployed.",
-    },
-    explanation:
-      "AWS names cloud, hybrid, and on-premises (private cloud) as deployment models, so cloud and hybrid are both correct. Pay-as-you-go is a pricing approach, reserved is a purchase option, and elastic describes scaling, none of which is a deployment model.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-12",
-    domain: 1,
-    type: "multi",
-    topic: "Cloud deployment models",
-    difficulty: "hard",
-    stem: "A retailer is deciding how to deploy. Which TWO scenarios are the strongest fit for a hybrid deployment? (Choose two.)",
-    options: [
-      { id: "a", text: "A workload that must keep sensitive data on existing on-premises servers while running new processing in the cloud." },
-      { id: "b", text: "An organization mid-migration that needs its data center and the cloud connected while it gradually moves workloads." },
-      { id: "c", text: "A brand-new application with no existing infrastructure that the team wants to build entirely on cloud services." },
-      { id: "d", text: "A workload that must run completely offline with no connection to any external network." },
-      { id: "e", text: "A static marketing site with no servers of any kind." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "Hybrid connects cloud resources with existing non-cloud resources, so keeping sensitive data on-premises while processing in the cloud, and bridging a data center and the cloud during a migration, both fit. A greenfield app with no existing infrastructure suits a fully cloud deployment, a fully offline workload connects to nothing, and a serverless static site needs no hybrid link.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-13",
-    domain: 1,
-    type: "single",
-    topic: "Cloud deployment models",
-    difficulty: "easy",
-    stem: "A team with no existing servers wants the fastest path to launch a new product and plans to use only managed cloud services. Which deployment model fits this greenfield project best?",
-    options: [
-      { id: "a", text: "Cloud (fully deployed in the cloud)" },
-      { id: "b", text: "On-premises (private cloud)" },
-      { id: "c", text: "Hybrid" },
-      { id: "d", text: "A mix of on-premises tape backup and mainframe" },
-    ],
-    correct: ["a"],
-    explanation:
-      "A cloud-based deployment runs all parts of the application in the cloud and suits a new project with no existing infrastructure that wants to use managed services. On-premises and the mainframe option require owning hardware, and hybrid is for connecting the cloud to existing non-cloud resources, which this team does not have.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-14",
@@ -319,10 +137,10 @@ export const domain1Concepts: Question[] = [
     explanation:
       "In the client-server model the client makes a request and the server receives that request and returns a response, so the remote machine that answers is the server. The browser is the client, and a server is more than a forwarding router, so the other roles do not match.",
     reference: {
-      label: "What is Amazon EC2?",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+      label: "What is an API?",
+      url: "https://aws.amazon.com/what-is/api/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-15",
@@ -344,7 +162,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -364,10 +182,10 @@ export const domain1Concepts: Question[] = [
     explanation:
       "The mobile app initiates the request, which makes it the client, while the EC2 instance running the application is the server that processes the request and responds. A device that originates a request is not acting as the server, and a single request has a clear client and server rather than both roles at once.",
     reference: {
-      label: "What is Amazon EC2?",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+      label: "What is an API?",
+      url: "https://aws.amazon.com/what-is/api/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -388,10 +206,10 @@ export const domain1Concepts: Question[] = [
     explanation:
       "AWS interfaces such as the SDKs and the Query API submit requests over HTTP or HTTPS and receive responses, which is the client-server model with the caller as client and AWS as server, so both of those are correct. It is not peer-to-peer, it does not use mailed media, and a directed request-response is not a broadcast.",
     reference: {
-      label: "What is Amazon EC2?",
-      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+      label: "What is an API?",
+      url: "https://aws.amazon.com/what-is/api/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-18",
@@ -413,7 +231,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-19",
@@ -435,7 +253,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-20",
@@ -457,7 +275,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-21",
@@ -479,7 +297,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-22",
@@ -501,7 +319,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-23",
@@ -523,7 +341,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-24",
@@ -546,7 +364,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-25",
@@ -568,7 +386,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-26",
@@ -591,7 +409,7 @@ export const domain1Concepts: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-27",
@@ -610,10 +428,10 @@ export const domain1Concepts: Question[] = [
     explanation:
       "AWS states that a key advantage of cloud-based resources is that you do not pay for them when they are not running, so turning off unused instances can reduce cost substantially. You are not billed the same when stopped, instances can be stopped, and stopping does not raise the rate.",
     reference: {
-      label: "How AWS Pricing Works: key principles",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/key-principles.html",
+      label: "Amazon EC2 instance state changes: billing by instance state",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -637,7 +455,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-29",
@@ -659,30 +477,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
-  },
-  {
-    id: "d1-concepts-30",
-    domain: 1,
-    type: "multi",
-    topic: "Cloud deployment models",
-    difficulty: "hard",
-    stem: "A hospital is choosing between deployment models. Which TWO statements about the on-premises (private cloud) model, in AWS terms, are correct? (Choose two.)",
-    options: [
-      { id: "a", text: "It deploys resources on-premises using virtualization and resource management tools." },
-      { id: "b", text: "It can provide dedicated resources but does not deliver many of the benefits of cloud computing." },
-      { id: "c", text: "It runs every part of the application on AWS-managed services in the cloud." },
-      { id: "d", text: "It is the same as a hybrid deployment connecting the cloud with non-cloud resources." },
-      { id: "e", text: "It is a per-second compute billing model rather than a deployment location." },
-    ],
-    correct: ["a", "b"],
-    explanation:
-      "AWS describes the on-premises (private cloud) model as deploying resources on-premises with virtualization and resource management tools, providing dedicated resources but not many of the benefits of cloud computing, so both of those are correct. A cloud deployment runs in the cloud, hybrid spans both environments, and per-second billing is a pricing model rather than a deployment model.",
-    reference: {
-      label: "Types of cloud computing: deployment models",
-      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
-    },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-31",
@@ -705,7 +500,7 @@ export const domain1Concepts: Question[] = [
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
   },
   {
     id: "d1-concepts-32",
@@ -727,7 +522,7 @@ export const domain1Concepts: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
     services: ["EC2"],
   },
   {
@@ -750,6 +545,169 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-06-23",
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-34",
+    domain: 1,
+    type: "single",
+    topic: "Global reach",
+    difficulty: "medium",
+    stem: "AWS lists going global in minutes among the six advantages of cloud computing. According to AWS, what does deploying an application in multiple Regions around the world give a customer?",
+    options: [
+      { id: "a", text: "Lower latency and a better experience for its customers, at minimal cost." },
+      { id: "b", text: "A guarantee that the application will never suffer an outage." },
+      { id: "c", text: "Free data transfer between every AWS Region." },
+      { id: "d", text: "Automatic copies of all its resources in every Region AWS operates." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Deploying nearer to users shortens the network path; it does not remove the possibility of an outage, and AWS makes no such promise.",
+      c: "Reaching customers with lower latency is the stated benefit. Data transfer between Regions is still billed.",
+      d: "You choose the Regions your resources run in. AWS does not copy them into every Region for you.",
+    },
+    explanation:
+      "AWS states that you can deploy your application in multiple Regions around the world with just a few clicks, which means you can provide lower latency and a better experience for your customers at minimal cost. AWS does not guarantee that an application will never suffer an outage, deploying more widely does not make data transfer free between Regions, and AWS does not create automatic copies of your resources in every Region: you decide where they run.",
+    reference: {
+      label: "Six advantages of cloud computing",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-35",
+    domain: 1,
+    type: "multi",
+    topic: "Benefits of the AWS Cloud",
+    difficulty: "hard",
+    stem: "A team is writing an internal note on why the company moved to AWS. Which TWO statements match how AWS describes the cloud benefits of agility and elasticity? (Choose two.)",
+    options: [
+      { id: "a", text: "Agility: the cloud gives easy access to a broad range of technologies, so the team can deploy services in a matter of minutes and get from idea to implementation far faster than before." },
+      { id: "b", text: "Elasticity: rather than over-provisioning for a future peak, the team provisions only the resources it currently requires and scales them up or down as its business needs change." },
+      { id: "c", text: "Agility: AWS moves the workload to whichever Region is cheapest each month." },
+      { id: "d", text: "Elasticity: AWS guarantees the workload will keep serving traffic through the loss of an Availability Zone." },
+      { id: "e", text: "Agility: the team signs a multi-year capacity commitment so its prices are locked in." },
+    ],
+    correct: ["a", "b"],
+    distractorRationales: {
+      c: "No AWS mechanism relocates a workload between Regions on price. You choose the Region, and agility is about how quickly you can get resources.",
+      d: "Continuing to serve through the loss of a zone comes from redundancy across Availability Zones, not from scaling capacity with demand.",
+      e: "A multi-year capacity commitment is the buying pattern the cloud removes; agility comes from provisioning in minutes without one.",
+    },
+    explanation:
+      "AWS describes agility as easy access to a broad range of technologies so you can innovate faster, deploying technology services in a matter of minutes and getting from idea to implementation orders of magnitude faster than before. It describes elasticity as provisioning only the resources you currently require instead of over-provisioning for future peak demand, then scaling those resources up or down to grow and shrink capacity as your business needs change. Nothing moves a workload to the cheapest Region on its own, surviving the loss of an Availability Zone comes from redundancy rather than elasticity, and a multi-year capacity commitment is the on-premises purchasing pattern the cloud replaces.",
+    reference: {
+      label: "What is cloud computing? Benefits of cloud computing",
+      url: "https://aws.amazon.com/what-is-cloud-computing/",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-36",
+    domain: 1,
+    type: "single",
+    topic: "Fault tolerance",
+    difficulty: "medium",
+    stem: "An operations lead asks why AWS recommends running the same application in more than one Availability Zone inside a Region. Which statement gives the reason AWS states?",
+    options: [
+      { id: "a", text: "Each Region has multiple isolated Availability Zones, so instances spread across them are protected from the failure of a single location in the Region." },
+      { id: "b", text: "Availability Zones share one power supply, so spreading across them balances electricity use." },
+      { id: "c", text: "Only one Availability Zone per Region can run instances, and the rest serve as archives." },
+      { id: "d", text: "Spreading across Availability Zones removes the need to choose a Region for the workload." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Availability Zones are isolated locations with their own infrastructure; the point is fault isolation, not balancing electricity use.",
+      c: "Every Availability Zone in a Region can host instances. None of them is a passive archive tier.",
+      d: "You still pick the Region. Spreading across zones protects against a failure inside the Region you chose.",
+    },
+    explanation:
+      "AWS states that each Region has multiple, isolated locations known as Availability Zones, and that by launching instances in multiple Availability Zones you protect your applications from the failure of a single location in the Region. Availability Zones do not share one power supply, so the claim that spreading across them balances electricity use is wrong; every zone in a Region can run instances rather than serving as archives; and you still choose the Region the workload runs in.",
+    reference: {
+      label: "Amazon EC2: Regions and Zones",
+      url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-37",
+    domain: 1,
+    type: "single",
+    topic: "Client-server model",
+    difficulty: "easy",
+    stem: "A caller sends a request to AWS through the console, the AWS CLI, or the API. What does AWS do with that request before the requested action is carried out?",
+    options: [
+      { id: "a", text: "It authenticates the caller's identity, then authorizes the request against the policies that apply to it." },
+      { id: "b", text: "It performs the action first and checks permissions afterward." },
+      { id: "c", text: "It forwards the request to the caller's internet provider for approval." },
+      { id: "d", text: "It runs whatever it receives, without checking identity or permissions." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "Permissions are evaluated before the action runs. AWS does not act first and check later.",
+      c: "An internet provider carries the traffic; it plays no part in deciding whether a request is allowed.",
+      d: "Requests are denied by default, so an unchecked request would not run at all.",
+    },
+    explanation:
+      "AWS authenticates the principal from its sign-in credentials, then gathers the request into a request context and evaluates the policies that apply to decide whether to allow or deny it. Only after both steps does the principal perform the action on the resource. AWS does not perform the action first and check permissions afterward, it does not forward requests to an internet provider for approval, and requests are denied by default rather than run without any check of identity or permissions.",
+    reference: {
+      label: "How IAM works: authentication and authorization",
+      url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-38",
+    domain: 1,
+    type: "single",
+    topic: "Elasticity",
+    difficulty: "hard",
+    stem: "A team turns on automatic scaling so capacity grows during traffic spikes and shrinks afterward. A colleague concludes that the workload is therefore highly available too. Which statement corrects that conclusion?",
+    options: [
+      { id: "a", text: "Matching capacity to demand is elasticity; high availability also needs redundancy, such as running the workload in more than one Availability Zone so it survives an incident in one of them." },
+      { id: "b", text: "Elasticity and high availability are two names for the same property." },
+      { id: "c", text: "High availability is achieved as soon as a workload runs on more than one instance size." },
+      { id: "d", text: "Elasticity guarantees the workload keeps serving traffic during an Availability Zone impairment." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "They answer different questions: one is about how much capacity you have, the other about whether the workload keeps working when something breaks.",
+      c: "Instance size has nothing to do with redundancy. One instance of any size is still one point of failure.",
+      d: "Scaling adds capacity in response to demand, not a second location to fail over to.",
+    },
+    explanation:
+      "AWS reliability guidance is to distribute a workload's resources across multiple Availability Zones so that an incident affecting one zone leaves the copies in the other zones available; that redundancy is what produces high availability. Scaling capacity with demand is elasticity, a different property, so elasticity and high availability are not two names for the same thing. Running on more than one instance size is not redundancy either, and elasticity on its own guarantees nothing during an Availability Zone impairment.",
+    reference: {
+      label: "Reliability Pillar: deploy the workload to multiple locations",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html",
+    },
+    lastVerified: "2026-07-29",
+  },
+  {
+    id: "d1-concepts-39",
+    domain: 1,
+    type: "single",
+    topic: "Undifferentiated heavy lifting",
+    difficulty: "medium",
+    stem: "AWS advises customers to stop spending money on undifferentiated heavy lifting. Which work does AWS mean by that phrase?",
+    options: [
+      { id: "a", text: "Data center operations such as racking, stacking, and powering servers, plus the operational burden of managing operating systems and applications." },
+      { id: "b", text: "Writing the application code that makes the company's product different from a competitor's." },
+      { id: "c", text: "Deciding which AWS Region a workload should run in." },
+      { id: "d", text: "Negotiating the company's annual software support contracts." },
+    ],
+    correct: ["a"],
+    distractorRationales: {
+      b: "That is the differentiating work AWS wants you to keep and spend more time on.",
+      c: "Choosing where a workload runs is a design decision you still make; it is not infrastructure toil AWS takes over.",
+      d: "Commercial negotiation is a business activity, not the data center and platform work the phrase names.",
+    },
+    explanation:
+      "AWS describes undifferentiated heavy lifting as the work it takes on for you: the data center operations of racking, stacking, and powering servers, and, through managed services, the operational burden of managing operating systems and applications, which frees you to focus on customers and business projects. Writing the application code that differentiates your product is the work AWS wants you to keep, choosing a Region is a design decision rather than infrastructure toil, and negotiating support contracts is a commercial task AWS does not take over.",
+    reference: {
+      label: "Cost Optimization Pillar: design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html",
+    },
+    lastVerified: "2026-07-29",
   },
 ];
