@@ -1,9 +1,9 @@
 ---
 title: "Cloud Adoption Framework and Migration"
 description: "The six perspectives of the AWS Cloud Adoption Framework, the seven migration strategies known as the 7 Rs, and the AWS tools that move data and workloads."
-domain: 4
+domain: 1
 module: 13
-order: 3
+order: 4
 day: 6
 estimatedMinutes: 14
 services:
@@ -12,7 +12,7 @@ services:
   - AWS Database Migration Service
   - AWS Snow Family
   - AWS DataSync
-updated: 2026-06-13
+updated: 2026-07-29
 draft: false
 ---
 
@@ -28,8 +28,7 @@ data-movement tool to a job. This lesson covers all three.
 
 The AWS Cloud Adoption Framework (AWS CAF) organizes the work of moving to the
 cloud into six perspectives, each covering one area an organization has to get
-right. The first three address business capabilities and the last three address
-technical capabilities.
+right. AWS presents the six as peers, not as ranked stages or as two tiers.
 
 - Business: aligns cloud investments with business outcomes so the move serves
   real goals rather than technology for its own sake.
@@ -44,24 +43,28 @@ technical capabilities.
 - Operations: runs and supports cloud services so they meet the performance and
   availability the business needs.
 
-<Callout type="key" title="Six perspectives, two halves">
-Business, People, and Governance cover the business side. Platform, Security, and
-Operations cover the technical side. If you can split them into those two groups
-of three, the full set is easy to recall under exam pressure.
+<Callout type="key" title="A memory aid, not AWS's own grouping">
+Six flat names are hard to hold under exam pressure, so give yourself a hook.
+Business, People, and Governance read as the money, staffing, and oversight
+questions, while Platform, Security, and Operations read as building it,
+protecting it, and running it. Use the split to recall all six. Do not expect
+AWS to describe them that way, because it does not.
 </Callout>
 
 ## The migration strategies: the 7 Rs
 
 When you move an application, you choose a strategy. AWS describes seven, commonly
-called the 7 Rs.
+called the 7 Rs, and lists them in this order.
 
 - Retire: decommission applications you no longer need instead of moving them.
 - Retain: leave an application where it is for now, often because moving it is not
   yet justified.
 - Rehost: lift and shift, moving an application to the cloud without changing it.
-- Relocate: move infrastructure to the cloud at the hypervisor level without
-  buying new hardware or rewriting applications, for example moving VMware
-  workloads as they are.
+- Relocate: transfer many servers at once from an on-premises platform to a cloud
+  version of that platform, or move instances and objects to a different VPC,
+  Region, or AWS account, without buying new hardware, rewriting applications, or
+  changing how you operate them. AWS's own example is moving an Amazon RDS DB
+  instance to another VPC or account.
 - Repurchase: drop the current product and switch to a different one, often moving
   from a traditional license to a software-as-a-service product.
 - Replatform: lift and reshape, moving to the cloud while making a few
@@ -83,8 +86,9 @@ AWS offers distinct tools for distinct migration jobs.
 - AWS Migration Hub gives a single place to discover servers, plan migrations, and
   track the status of each application migration across the tools you use. It is
   the dashboard that ties a migration together.
-- AWS Application Migration Service is the recommended lift-and-shift tool. It
-  replicates your source servers into your AWS account and then converts and
+- AWS Application Migration Service, now named AWS Transform MGN in the console
+  and the documentation, is the recommended lift-and-shift tool. It replicates
+  your source servers block by block into your AWS account and then converts and
   launches them on AWS with minimal downtime, which makes it the rehosting
   workhorse.
 - AWS Database Migration Service (AWS DMS) migrates databases and other data
@@ -106,12 +110,24 @@ online transfer practical. The deciding factor is the network, not the data size
 alone.
 </Callout>
 
+<Callout type="note" title="What AWS has changed since the exam guide was written">
+Two of these tools are closed to new customers. AWS Migration Hub stopped
+accepting new customers on November 7, 2025, and AWS now points them to AWS
+Transform for similar capabilities. AWS Snowball Edge is closed to new customers
+as well, AWS will discontinue support for AWS Snowball devices in all commercial
+Regions on December 31, 2026, and new customers are directed to AWS DataSync for
+online transfers, AWS Data Transfer Terminal for secure physical transfers, and
+AWS Outposts for edge computing. Both services are still named on the exam's
+in-scope service list, so learn them as written here and treat the closures as
+context rather than as answers.
+</Callout>
+
 ## What to take away
 
-The AWS Cloud Adoption Framework has six perspectives: Business, People, and
-Governance on the business side, and Platform, Security, and Operations on the
-technical side. The 7 Rs are the migration strategies, ordered roughly by how
-much the application changes, from Retire and Retain through Rehost, Relocate,
-Repurchase, and Replatform to Refactor. For tools, Migration Hub tracks a
-migration, Application Migration Service rehosts servers, DMS migrates databases,
-the Snow Family ships data offline, and DataSync transfers data online.
+The AWS Cloud Adoption Framework has six perspectives, which AWS lists as peers:
+Business, People, Governance, Platform, Security, and Operations. The 7 Rs are
+the migration strategies, listed by AWS as Retire, Retain, Rehost, Relocate,
+Repurchase, Replatform, and Refactor, with Refactor the most complex and costly
+of the seven. For tools, Migration Hub tracks a migration, Application Migration
+Service rehosts servers, DMS migrates databases, the Snow Family ships data
+offline, and DataSync transfers data online.
