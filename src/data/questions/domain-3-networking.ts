@@ -216,17 +216,17 @@ export const domain3Networking: Question[] = [
       { id: "a", text: "A VPC is a logically isolated virtual network that you define within AWS." },
       { id: "b", text: "A subnet must reside within a single Availability Zone." },
       { id: "c", text: "A single subnet automatically spans every Availability Zone in a Region." },
-      { id: "d", text: "A VPC can exist only in the us-east-1 Region." },
-      { id: "e", text: "Creating a VPC requires a paid support plan." },
+      { id: "d", text: "Subnets in the same VPC cannot reach each other by default." },
+      { id: "e", text: "A VPC's IPv4 CIDR block can be any size you choose." },
     ],
     correct: ["a", "b"],
     explanation:
-      "A VPC is a logically isolated virtual network you define, and each subnet resides in a single Availability Zone. A subnet does not span multiple Availability Zones, a VPC can be created in any Region, and there is no additional charge for a VPC itself or a support-plan requirement.",
+      "A VPC is a logically isolated virtual network you define, and each subnet resides in a single Availability Zone. No subnet spans multiple Availability Zones, every route table has a local route so subnets in the same VPC can reach each other by default, and a VPC's IPv4 CIDR block must be between a /16 and a /28 netmask rather than any size.",
     reference: {
       label: "What is Amazon VPC?",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -377,13 +377,13 @@ export const domain3Networking: Question[] = [
     stem: "A company already runs a Direct Connect link to AWS but its security policy requires that all on-premises-to-AWS traffic be encrypted in transit. Which approach lets it keep the dedicated link while adding encryption?",
     options: [
       { id: "a", text: "Run an AWS Site-to-Site VPN (IPsec) connection over the Direct Connect connection." },
-      { id: "b", text: "Switch entirely to Amazon CloudFront for the traffic." },
-      { id: "c", text: "Replace Direct Connect with Amazon Route 53 health checks." },
+      { id: "b", text: "Send the traffic through a NAT gateway, which encrypts it in transit." },
+      { id: "c", text: "Move the AWS resources into a private subnet to encrypt the traffic." },
       { id: "d", text: "Rely on Direct Connect alone, since it encrypts all traffic by default." },
     ],
     correct: ["a"],
     explanation:
-      "Direct Connect is not encrypted by default, so AWS supports running a Site-to-Site VPN (IPsec) over the Direct Connect connection to add encryption while keeping the dedicated link. CloudFront and Route 53 serve different purposes, and assuming Direct Connect encrypts by default is incorrect.",
+      "Direct Connect is not encrypted by default, so AWS supports running a Site-to-Site VPN (IPsec) over the Direct Connect connection to add encryption while keeping the dedicated link. A NAT gateway translates addresses rather than encrypting traffic, a private subnet changes routing rather than adding encryption, and assuming Direct Connect encrypts by default is incorrect.",
     reference: {
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
@@ -424,18 +424,18 @@ export const domain3Networking: Question[] = [
     stem: "An application in a private subnet must call an AWS service API, but the security team forbids any path to the public internet, so no internet gateway or NAT gateway is allowed. Which approach lets the application reach the service privately?",
     options: [
       { id: "a", text: "Create a VPC endpoint (AWS PrivateLink) for the service." },
-      { id: "b", text: "Attach an internet gateway and route 0.0.0.0/0 to it." },
-      { id: "c", text: "Add a NAT gateway in a public subnet." },
+      { id: "b", text: "Create a VPC peering connection to the service." },
+      { id: "c", text: "Attach a virtual private gateway to the VPC." },
       { id: "d", text: "Register the service in Amazon Route 53 and use a public record." },
     ],
     correct: ["a"],
     explanation:
-      "AWS PrivateLink lets you connect your VPC to services privately using a VPC endpoint, with no internet gateway, NAT device, or public IP address required, and traffic stays on the AWS network. An internet gateway or NAT gateway would create the internet path the policy forbids, and a public DNS record does not provide a private connection.",
+      "AWS PrivateLink lets you connect your VPC to services privately using a VPC endpoint, with no internet gateway, NAT device, or public IP address required, and traffic stays on the AWS network. A VPC peering connection links two VPCs rather than reaching an AWS service API, a virtual private gateway is the Amazon side of a Site-to-Site VPN to an on-premises network, and a public DNS record does not provide a private connection.",
     reference: {
       label: "What is AWS PrivateLink?",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["PrivateLink", "VPC"],
   },
   {
@@ -775,17 +775,17 @@ export const domain3Networking: Question[] = [
     options: [
       { id: "a", text: "CloudFront caches at the edge; Global Accelerator proxies TCP and UDP without caching." },
       { id: "b", text: "CloudFront proxies UDP gaming traffic, while Global Accelerator caches images and videos." },
-      { id: "c", text: "Both services cache static content identically and are interchangeable." },
+      { id: "c", text: "CloudFront serves only static files; Global Accelerator serves only dynamic APIs." },
       { id: "d", text: "Global Accelerator registers domain names, while CloudFront provides static IP addresses." },
     ],
     correct: ["a"],
     explanation:
-      "CloudFront is a content delivery network that caches content at edge locations for HTTP and HTTPS, while Global Accelerator improves performance for TCP or UDP applications by proxying packets at the edge over the AWS global network and does not cache content. It is wrong to say CloudFront proxies UDP gaming traffic while Global Accelerator caches images and videos, because that swaps their roles; and registering domain names is Route 53, not Global Accelerator, while the static anycast IP addresses are provided by Global Accelerator, not CloudFront.",
+      "CloudFront is a content delivery network that caches content at edge locations for HTTP and HTTPS, while Global Accelerator improves performance for TCP or UDP applications by proxying packets at the edge over the AWS global network and does not cache content. It is wrong to say CloudFront proxies UDP gaming traffic while Global Accelerator caches images and videos, because that swaps their roles. CloudFront also delivers dynamic content such as API acceleration, so it does not serve only static files. Registering domain names is Route 53, not Global Accelerator, and the static anycast IP addresses come from Global Accelerator, not CloudFront.",
     reference: {
       label: "AWS Global Accelerator FAQs",
       url: "https://aws.amazon.com/global-accelerator/faqs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Global Accelerator", "CloudFront"],
   },
   {
@@ -822,18 +822,18 @@ export const domain3Networking: Question[] = [
     options: [
       { id: "a", text: "Endpoint traffic stays on the AWS network, not the public internet." },
       { id: "b", text: "Gateway endpoints reach Amazon S3 and DynamoDB via a route table entry." },
-      { id: "c", text: "An interface endpoint requires attaching an internet gateway to function." },
+      { id: "c", text: "Gateway endpoints are powered by AWS PrivateLink." },
       { id: "d", text: "PrivateLink requires a Direct Connect connection before it can be used." },
       { id: "e", text: "VPC endpoints are a content delivery network for caching web assets." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Traffic between a VPC endpoint and the service stays within the AWS network without traversing the internet, and gateway endpoints reach Amazon S3 and DynamoDB through a route table entry. An interface endpoint does not require attaching an internet gateway to function, PrivateLink does not require a Direct Connect connection, and VPC endpoints are not a content delivery network.",
+      "Traffic between a VPC endpoint and the service stays within the AWS network without traversing the internet, and gateway endpoints reach Amazon S3 and DynamoDB through a route table entry. Gateway endpoints do not use AWS PrivateLink, unlike the other endpoint types, PrivateLink does not require a Direct Connect connection, and VPC endpoints are not a content delivery network.",
     reference: {
       label: "AWS PrivateLink concepts",
       url: "https://docs.aws.amazon.com/vpc/latest/privatelink/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["PrivateLink", "VPC", "S3", "DynamoDB"],
   },
   {
