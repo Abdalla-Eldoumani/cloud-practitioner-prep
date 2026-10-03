@@ -441,12 +441,12 @@ export const domain4Pricing: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Under the restructured Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more, up to 200 total. Two separate windows apply: the Free Plan itself lasts up to six months, ending at the earlier of six months after sign-up or the credits being used up, while the sign-up credits expire twelve months after the account is created. The Free Tier is not unlimited use of everything, not a permanent discount, and requires no setup fee.",
+      "Under the current Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more by completing activities, up to 200 total. On the Free plan, which ends at the earlier of six months after sign-up or the credits being used up, the sign-up credits expire six months after the account is created, while credits earned from activities expire twelve months after it is created. Upgrading to the Paid plan lets any remaining credits apply to bills until twelve months after account creation. The Free Tier is not unlimited use of everything, not a permanent discount, and requires no setup fee.",
     reference: {
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-20",
