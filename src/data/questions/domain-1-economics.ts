@@ -538,20 +538,20 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements correctly describe the pay-as-you-go pricing model that AWS uses? (Choose two.)",
     options: [
-      { id: "a", text: "You pay only for the individual resources you use, for as long as you use them" },
+      { id: "a", text: "You pay only for the IT resources you actually use" },
       { id: "b", text: "No large upfront purchase of hardware is required to start" },
-      { id: "c", text: "You pay one fixed price for unlimited use of all AWS services" },
-      { id: "d", text: "You must buy and install hardware before any workload runs" },
-      { id: "e", text: "Every service requires a mandatory multi-year commitment" },
+      { id: "c", text: "You pay one fixed monthly price for unlimited use of every service" },
+      { id: "d", text: "You are billed for the peak capacity you reserved, even when idle" },
+      { id: "e", text: "Every service requires a one- or three-year commitment to start" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, having to buy and install hardware before any workload runs, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
+      "With cloud computing you pay only for what you use, and you do not need to make large upfront investments in hardware before you start. A fixed monthly price for unlimited use of every service, being billed for reserved peak capacity while it sits idle, and a mandatory one- or three-year commitment for every service all contradict that pay-as-you-go model.",
     reference: {
-      label: "What is cloud computing?",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Overview of Amazon Web Services: What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-27",
