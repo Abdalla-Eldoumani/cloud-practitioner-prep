@@ -728,19 +728,19 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "medium",
     stem: "A team adds Auto Scaling so the number of EC2 instances grows during busy hours and shrinks when traffic falls, instead of running a fixed fleet sized for peak. Which cloud design principle does this implement?",
     options: [
-      { id: "a", text: "Implement elasticity" },
+      { id: "a", text: "Stop guessing your capacity needs" },
       { id: "b", text: "Provision for peak and leave it running" },
       { id: "c", text: "Manage capacity by manual purchase orders" },
       { id: "d", text: "Avoid automation to keep behavior predictable" },
     ],
     correct: ["a"],
     explanation:
-      "Implementing elasticity means scaling resources out and in automatically with demand rather than statically provisioning for peak, which both controls cost and meets load. Provisioning for peak, buying capacity manually, and avoiding automation are the opposite of the elastic, automated approach AWS recommends.",
+      "The Well-Architected general design principle Stop guessing your capacity needs says that in the cloud you can use as much or as little capacity as you need and scale in and out automatically, instead of sitting on expensive idle resources or living with limited capacity. Provisioning for peak, buying capacity by manual purchase orders, and avoiding automation are the capacity guessing this principle replaces.",
     reference: {
-      label: "Cloud computing benefits: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "AWS Well-Architected Framework: general design principles",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {

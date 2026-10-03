@@ -90,11 +90,11 @@ export const domain2MonitoringAudit: Question[] = [
       { id: "a", text: "AWS CloudTrail" },
       { id: "b", text: "Amazon CloudWatch" },
       { id: "c", text: "Amazon Inspector" },
-      { id: "d", text: "Amazon QuickSight" },
+      { id: "d", text: "Amazon Quick Sight" },
     ],
     correct: ["a"],
     explanation:
-      "AWS CloudTrail records actions taken by a user, role, or AWS service as events, letting you identify who or what took which action, on which resources, and when, for auditing, governance, and compliance. CloudWatch is for performance and operational monitoring, Inspector assesses workloads for vulnerabilities, and QuickSight is a business intelligence service.",
+      "AWS CloudTrail records actions taken by a user, role, or AWS service as events, letting you identify who or what took which action, on which resources, and when, for auditing, governance, and compliance. CloudWatch is for performance and operational monitoring, Inspector assesses workloads for vulnerabilities, and Quick Sight is a business intelligence service.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
