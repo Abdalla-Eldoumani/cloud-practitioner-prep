@@ -133,7 +133,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "medium",
     stem: "One instance in an Auto Scaling group becomes impaired and stops passing its health check. With a desired capacity of three, what does EC2 Auto Scaling do?",
     options: [
-      { id: "a", text: "It replaces the unhealthy instance to maintain the desired capacity." },
+      { id: "a", text: "It replaces the unhealthy instance with a new one to maintain the desired capacity." },
       { id: "b", text: "It pages an administrator and waits for a manual fix before doing anything." },
       { id: "c", text: "It permanently reduces the desired capacity to two." },
       { id: "d", text: "It leaves the unhealthy instance in service and keeps sending it traffic." },
@@ -530,7 +530,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "medium",
     stem: "At which OSI layer does a Network Load Balancer operate, and which protocols does it handle?",
     options: [
-      { id: "a", text: "Layer 4, the transport layer, handling TCP, UDP, and TLS" },
+      { id: "a", text: "Layer 4, the transport layer, for TCP, UDP, and TLS" },
       { id: "b", text: "Layer 7, the application layer, handling only HTTP and HTTPS" },
       { id: "c", text: "Layer 3, the network layer, handling all IP packets for virtual appliances" },
       { id: "d", text: "Layer 2, the data link layer, handling MAC addresses" },
@@ -903,7 +903,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "medium",
     stem: "An Auto Scaling group is configured for a web tier. One instance stops responding to health checks. What does Amazon EC2 Auto Scaling do to keep the group at its desired capacity?",
     options: [
-      { id: "a", text: "It terminates the unhealthy instance and launches a replacement." },
+      { id: "a", text: "It detects the unhealthy instance, terminates it, and launches a replacement instance." },
       { id: "b", text: "It sends an email and waits for an administrator to fix the instance by hand." },
       { id: "c", text: "It permanently reduces the desired capacity by one." },
       { id: "d", text: "It does nothing, because health is not part of Auto Scaling." },
@@ -926,7 +926,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "easy",
     stem: "In Auto Scaling terminology, what does it mean to scale in?",
     options: [
-      { id: "a", text: "Terminating instances when demand decreases." },
+      { id: "a", text: "Removing instances as demand drops." },
       { id: "b", text: "Adding capacity by launching more instances." },
       { id: "c", text: "Moving an application to a larger Region." },
       { id: "d", text: "Increasing the size of a single instance." },
@@ -971,7 +971,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "hard",
     stem: "An Auto Scaling group spans multiple Availability Zones. One Availability Zone becomes unavailable. According to AWS, what does EC2 Auto Scaling do to compensate?",
     options: [
-      { id: "a", text: "It can launch instances in another zone to compensate." },
+      { id: "a", text: "It can launch replacement instances in another zone." },
       { id: "b", text: "It shuts the whole group down until the zone returns." },
       { id: "c", text: "It moves every instance into the single unavailable zone." },
       { id: "d", text: "It ignores the failure because zones never affect Auto Scaling." },
@@ -1064,7 +1064,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "medium",
     stem: "What does AWS state as the goal of AWS Auto Scaling when it adjusts capacity for your applications?",
     options: [
-      { id: "a", text: "To maintain steady performance at the lowest cost." },
+      { id: "a", text: "To keep performance steady at the lowest cost." },
       { id: "b", text: "To always run the maximum number of instances allowed." },
       { id: "c", text: "To minimize performance in order to save money." },
       { id: "d", text: "To keep capacity fixed no matter what the load is." },
@@ -1158,7 +1158,7 @@ export const domain3ScalingElb: Question[] = [
     difficulty: "medium",
     stem: "One server behind an Elastic Load Balancer stops responding to its health check. What does the load balancer do, and how does that support resilience?",
     options: [
-      { id: "a", text: "It stops sending requests to it and uses only healthy targets." },
+      { id: "a", text: "It stops sending requests to the unhealthy target and routes traffic only to healthy targets." },
       { id: "b", text: "It keeps sending an equal share of requests to the failed server to be fair." },
       { id: "c", text: "It shuts down the entire application until the server is fixed." },
       { id: "d", text: "It permanently deletes the unhealthy server and its data." },
