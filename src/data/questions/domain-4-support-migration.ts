@@ -49,7 +49,7 @@ export const domain4SupportMigration: Question[] = [
     stem: "A startup on the Basic Support plan hits an error in its application running on AWS and wants to open a technical support case with an AWS engineer. What must it do first?",
     options: [
       { id: "a", text: "Nothing; Basic Support already includes technical support cases." },
-      { id: "b", text: "Upgrade to a paid support plan such as Developer, Business, or Enterprise." },
+      { id: "b", text: "Upgrade to a paid plan such as Developer or Business." },
       { id: "c", text: "Buy a separate Trusted Advisor subscription." },
       { id: "d", text: "Open the case through AWS Marketplace." },
     ],
@@ -60,7 +60,7 @@ export const domain4SupportMigration: Question[] = [
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-03",
@@ -136,7 +136,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "On a plan that supports it, a customer opens a case at the highest severity, business-critical system down, with Enterprise Support. What is the first-response time AWS targets for this severity on Enterprise Support?",
     options: [
-      { id: "a", text: "Less than 15 minutes" },
+      { id: "a", text: "15 minutes" },
       { id: "b", text: "1 hour" },
       { id: "c", text: "4 hours" },
       { id: "d", text: "24 hours" },
@@ -148,7 +148,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-07",
@@ -203,7 +203,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "hard",
     stem: "AWS has announced changes to its support plan lineup. Which statement reflects the announced consolidation?",
     options: [
-      { id: "a", text: "Developer Support and Business Support reach end of support, and those customers move to Business Support+." },
+      { id: "a", text: "Developer and Business Support end; customers move to Business Support+." },
       { id: "b", text: "Basic Support is being discontinued and replaced by a paid entry plan." },
       { id: "c", text: "Enterprise Support is being discontinued with no successor." },
       { id: "d", text: "All support plans are being merged into a single Trusted Advisor subscription." },
@@ -215,7 +215,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Developer, Business, and Enterprise On-Ramp end of support",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-10",
@@ -358,7 +358,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "A business wants to engage an outside firm that has proven AWS expertise to help design and build its cloud solution. Which AWS program is the global community of such partners?",
     options: [
-      { id: "a", text: "AWS Partner Network (APN)" },
+      { id: "a", text: "AWS Partner Network" },
       { id: "b", text: "AWS Trusted Advisor" },
       { id: "c", text: "AWS Activate" },
       { id: "d", text: "AWS re:Post" },
@@ -448,7 +448,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "A customer wants a personalized view of AWS events that affect their own resources and accounts, including scheduled changes and ongoing issues, with alerts and guidance. Which AWS service provides this?",
     options: [
-      { id: "a", text: "The AWS Health Dashboard" },
+      { id: "a", text: "AWS Health Dashboard" },
       { id: "b", text: "Amazon CloudWatch Logs" },
       { id: "c", text: "AWS CloudTrail" },
       { id: "d", text: "Amazon Inspector" },
@@ -460,7 +460,7 @@ export const domain4SupportMigration: Question[] = [
       label: "What is AWS Health?",
       url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Health"],
   },
   {
@@ -471,7 +471,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "hard",
     stem: "An AWS service is reporting elevated error rates, and an operations engineer needs to know whether the disruption affects their specific account and resources, not just the general service status. Which view answers that?",
     options: [
-      { id: "a", text: "The account-specific (\"Your account health\") view of the AWS Health Dashboard, which shows events affecting your resources." },
+      { id: "a", text: "The \"Your account health\" view of the AWS Health Dashboard" },
       { id: "b", text: "A CloudWatch dashboard of the application's request latency." },
       { id: "c", text: "The CloudTrail Event history of recent API calls." },
       { id: "d", text: "The AWS Pricing Calculator estimate for the service." },
@@ -483,7 +483,7 @@ export const domain4SupportMigration: Question[] = [
       label: "What is AWS Health?",
       url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Health"],
   },
 ];
