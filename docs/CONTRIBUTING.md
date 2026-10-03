@@ -38,6 +38,7 @@ Content is validated separately, by one check per concern:
 
 ```bash
 npm run lint:content    # the question bank: floors, duplicate stems, option wording
+npm run lint:distractors  # answer length: no option stands out as the right one
 npm run lint:coverage   # the exam blueprint join, in both directions
 npm run lint:catalog    # the service catalog
 npm run lint:links      # every AWS reference URL (lint:links:live fetches each one)
@@ -62,6 +63,11 @@ These rules are not optional. They are what makes this resource trustworthy.
 - Every question needs an explanation that says why the correct answer is right
   and why the distractors are wrong, plus at least one reference link to the AWS
   doc that supports it.
+- Answer length must not give the answer away. The correct option should be the
+  longest about as often as chance, and the shortest about as often too. Trim
+  extra justification from a correct option rather than padding the distractors,
+  and replace an obviously absurd distractor with a plausible wrong answer from
+  the same area. `npm run lint:distractors` holds the bank to these limits.
 - Keep scoring honest. Results are a raw percent, a per-domain breakdown, and a
   readiness band. Do not present anything as the AWS scaled score.
 - Use AWS trademarks only to describe the exam this material prepares for. Do not
@@ -92,7 +98,8 @@ per-domain topic files (for example `domain-3-storage.ts`).
    docs, and set `lastVerified` to the day you checked. Name options by their
    content, never by letter or position: options shuffle on every sitting, so
    "option B" means nothing on screen, and the content lint rejects it.
-7. Run `npm run check`, `npm run lint:content`, and `npm run lint:coverage`.
+7. Run `npm run check`, `npm run lint:content`, `npm run lint:distractors`, and
+   `npm run lint:coverage`.
 
 ## Adding a lesson
 
