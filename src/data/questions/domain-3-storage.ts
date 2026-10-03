@@ -113,7 +113,7 @@ export const domain3Storage: Question[] = [
     stem: "A workload running on an EC2 instance needs a storage volume whose data survives when the instance is stopped and started again. Which AWS service provides persistent block volumes for EC2?",
     options: [
       { id: "a", text: "EC2 instance store" },
-      { id: "b", text: "Amazon Elastic Block Store (Amazon EBS)" },
+      { id: "b", text: "Amazon Elastic Block Store" },
       { id: "c", text: "Amazon S3 Glacier Deep Archive" },
       { id: "d", text: "Amazon CloudFront" },
     ],
@@ -124,7 +124,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon Elastic Block Store?",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EBS", "EC2"],
   },
   {
@@ -161,7 +161,7 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "EBS snapshots, which are stored on the same volume they back up." },
       { id: "b", text: "Instance store volumes, which keep a copy of the data." },
       { id: "c", text: "CloudFront edge caches, which retain the volume data." },
-      { id: "d", text: "EBS snapshots, which are stored in Amazon S3 in buckets you cannot access directly." },
+      { id: "d", text: "EBS snapshots, which are stored in S3 buckets that AWS manages." },
     ],
     correct: ["d"],
     explanation:
@@ -170,7 +170,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EBS", "S3"],
   },
   {
@@ -182,7 +182,7 @@ export const domain3Storage: Question[] = [
     stem: "An operations engineer takes a snapshot of an EBS volume every night. After the first snapshot, what does each later snapshot save?",
     options: [
       { id: "a", text: "A full copy of every block on the volume each time, with no deduplication." },
-      { id: "b", text: "Only the blocks that have changed since the most recent snapshot, because snapshots are incremental." },
+      { id: "b", text: "Only the blocks that changed since the most recent snapshot." },
       { id: "c", text: "Only the volume's metadata, not any block data." },
       { id: "d", text: "Nothing, because a volume can have only one snapshot." },
     ],
@@ -193,7 +193,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EBS"],
   },
   {
@@ -227,8 +227,8 @@ export const domain3Storage: Question[] = [
     difficulty: "medium",
     stem: "Amazon EBS groups its volume types into two broad categories by performance profile. Which TWO statements correctly describe these categories? (Choose two.)",
     options: [
-      { id: "a", text: "SSD-backed volumes are optimized for transactional workloads with frequent small read and write operations where IOPS is the dominant attribute." },
-      { id: "b", text: "HDD-backed volumes are optimized for large streaming workloads where throughput is the dominant attribute." },
+      { id: "a", text: "SSD-backed volumes suit transactional workloads where IOPS is the dominant attribute." },
+      { id: "b", text: "HDD-backed volumes suit large streaming workloads where throughput is key." },
       { id: "c", text: "HDD-backed volumes are optimized for small random I/O bound by IOPS." },
       { id: "d", text: "SSD-backed volumes can only be used for archival data, not active workloads." },
       { id: "e", text: "Both categories store data only in Amazon S3 rather than as block volumes." },
@@ -240,7 +240,7 @@ export const domain3Storage: Question[] = [
       label: "Amazon EBS volume types",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EBS"],
   },
   {
@@ -324,7 +324,7 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "The data is automatically copied to Amazon S3 before the instance stops." },
       { id: "b", text: "The data persists indefinitely, the same as an EBS volume." },
       { id: "c", text: "The data is moved to another Availability Zone for safekeeping." },
-      { id: "d", text: "The data does not persist; it is lost when the instance stops, hibernates, or terminates." },
+      { id: "d", text: "The data is lost when the instance stops, hibernates, or terminates." },
     ],
     correct: ["d"],
     explanation:
@@ -333,7 +333,7 @@ export const domain3Storage: Question[] = [
       label: "Data persistence for Amazon EC2 instance store volumes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-store-lifetime.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -416,18 +416,18 @@ export const domain3Storage: Question[] = [
     stem: "Within an Amazon S3 bucket, what uniquely identifies an individual object?",
     options: [
       { id: "a", text: "Its Availability Zone number" },
-      { id: "b", text: "Its EBS volume ID" },
-      { id: "c", text: "Its key, the unique identifier for the object within the bucket" },
-      { id: "d", text: "Its IP address" },
+      { id: "b", text: "Its storage class, such as S3 Standard-IA" },
+      { id: "c", text: "Its key, which is unique within the bucket" },
+      { id: "d", text: "Its Content-Type metadata, such as image/jpeg" },
     ],
     correct: ["c"],
     explanation:
-      "Every object in a bucket has exactly one key, which is the unique identifier for that object within the bucket. Objects are not identified by an Availability Zone number, an EBS volume ID, or an IP address.",
+      "Every object in a bucket has exactly one key, which is the unique identifier for that object within the bucket. Objects are not identified by an Availability Zone number, and the storage class and Content-Type are system metadata that many objects can share, so neither identifies an object.",
     reference: {
       label: "What is Amazon S3? Keys",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -438,7 +438,7 @@ export const domain3Storage: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements about Amazon S3 durability and data residency are correct? (Choose two.)",
     options: [
-      { id: "a", text: "S3 Standard is designed for 99.999999999 percent (eleven 9s) durability of objects over a year." },
+      { id: "a", text: "S3 Standard is designed for 99.999999999 percent durability over a year." },
       { id: "b", text: "S3 Standard redundantly stores objects across a minimum of three Availability Zones in a Region." },
       { id: "c", text: "S3 automatically replicates every object across all AWS Regions for durability." },
       { id: "d", text: "S3 guarantees that no object is ever lost." },
@@ -451,7 +451,7 @@ export const domain3Storage: Question[] = [
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -464,7 +464,7 @@ export const domain3Storage: Question[] = [
     options: [
       { id: "a", text: "S3 automatically spreads every object across all AWS Regions for durability." },
       { id: "b", text: "Objects always move to whichever Region is closest to each requester." },
-      { id: "c", text: "You choose the AWS Region for a bucket, and objects stored there never leave that Region unless you explicitly transfer or replicate them." },
+      { id: "c", text: "Objects stay in the Region you choose unless you transfer or replicate them." },
       { id: "d", text: "Bucket location is random and cannot be controlled." },
     ],
     correct: ["c"],
@@ -474,7 +474,7 @@ export const domain3Storage: Question[] = [
       label: "What is Amazon S3? Regions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -671,7 +671,7 @@ export const domain3Storage: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about Amazon S3 storage classes are correct? (Choose two.)",
     options: [
-      { id: "a", text: "S3 One Zone-IA stores data in a single Availability Zone, so it is not resilient to the loss of that zone." },
+      { id: "a", text: "S3 One Zone-IA is not resilient to the loss of its single Availability Zone." },
       { id: "b", text: "S3 Standard, S3 Standard-IA, S3 One Zone-IA, and the S3 Glacier storage classes are all designed for 99.999999999 percent durability." },
       { id: "c", text: "S3 Glacier Deep Archive returns objects in milliseconds, the same as S3 Standard." },
       { id: "d", text: "S3 Standard-IA stores data in only one Availability Zone." },
@@ -684,7 +684,7 @@ export const domain3Storage: Question[] = [
       label: "Understanding and managing Amazon S3 storage classes",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -766,7 +766,7 @@ export const domain3Storage: Question[] = [
     stem: "Objects in a bucket are read often for the first 30 days, infrequently for the next 60 days, and almost never after that, when slow retrieval is fine. Which single S3 Lifecycle approach manages this most cost-effectively?",
     options: [
       { id: "a", text: "Keep every object in S3 Standard forever to avoid any retrieval delay." },
-      { id: "b", text: "One Lifecycle rule that transitions objects to an infrequent-access class after 30 days, then to an S3 Glacier class for archiving later." },
+      { id: "b", text: "Move to S3 Standard-IA after 30 days, then to an S3 Glacier class." },
       { id: "c", text: "Immediately store all objects in S3 Glacier Deep Archive on upload." },
       { id: "d", text: "Delete objects after 30 days and re-upload them when needed." },
     ],
@@ -777,7 +777,7 @@ export const domain3Storage: Question[] = [
       label: "Managing the lifecycle of objects: complete lifecycle",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -788,7 +788,7 @@ export const domain3Storage: Question[] = [
     difficulty: "hard",
     stem: "Amazon S3 Standard is described as designed for 99.999999999 percent durability, storing objects redundantly across at least three Availability Zones. In resilience terms, what does this durability figure refer to?",
     options: [
-      { id: "a", text: "Protection against losing the stored objects, so that data survives even the loss of an entire Availability Zone." },
+      { id: "a", text: "Not losing stored objects, even if a whole Availability Zone is lost." },
       { id: "b", text: "A promise that every request to retrieve an object will always succeed instantly." },
       { id: "c", text: "The percentage of the year the service can accept new uploads." },
       { id: "d", text: "The discount applied to storage as you store more data." },
@@ -800,7 +800,7 @@ export const domain3Storage: Question[] = [
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
 ];
