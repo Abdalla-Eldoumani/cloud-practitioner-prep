@@ -415,9 +415,9 @@ export const managementGovernance: ServiceEntry[] = [
       "Reach for it when you want a structured review of a workload against the Well-Architected Framework to find and address architectural risks.",
     reference: {
       label: "What is AWS Well-Architected Tool?",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     aliases: [
       "Well-Architected Tool",
       "architecture review",

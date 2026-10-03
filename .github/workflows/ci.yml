@@ -36,6 +36,9 @@ jobs:
       - name: Content lints
         run: npm run lint:content
 
+      - name: Distractor length lint
+        run: npm run lint:distractors
+
       - name: Catalog lint
         run: npm run lint:catalog
         env:

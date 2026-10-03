@@ -153,7 +153,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A finance director explains that one key benefit of moving to AWS is replacing large upfront purchases of servers with costs that rise and fall with usage. In accounting terms, what shift is the director describing?",
     options: [
-      { id: "a", text: "Replacing capital expenditure with variable operational expenditure" },
+      { id: "a", text: "Replacing capital expenditure with operational expenditure" },
       { id: "b", text: "Replacing operational expenditure with capital expenditure" },
       { id: "c", text: "Eliminating all expenditure because cloud is free" },
       { id: "d", text: "Converting variable costs into a single fixed upfront purchase" },
@@ -170,7 +170,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-08",
@@ -225,7 +225,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A development and test environment is only needed about eight hours a day on weekdays. Following the AWS cost optimization design principle of adopting a consumption model, what should the team do to save money?",
     options: [
-      { id: "a", text: "Stop the resources when they are not in use and pay only for what they consume" },
+      { id: "a", text: "Stop the resources when not in use and pay only for what they consume" },
       { id: "b", text: "Leave the environment running continuously so it is always available" },
       { id: "c", text: "Buy three-year reservations to cover the idle nights and weekends" },
       { id: "d", text: "Move the environment to dedicated physical hardware to lower the rate" },
@@ -237,7 +237,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-11",
@@ -269,7 +269,7 @@ export const domain1Economics: Question[] = [
     difficulty: "easy",
     stem: "Why can AWS generally offer lower per-unit prices than an individual company could achieve by building and running the same infrastructure itself?",
     options: [
-      { id: "a", text: "Aggregated usage from hundreds of thousands of customers gives AWS economies of scale that lower pay-as-you-go prices" },
+      { id: "a", text: "Aggregated usage across many customers gives AWS economies of scale" },
       { id: "b", text: "AWS charges a higher per-unit rate the more capacity you use" },
       { id: "c", text: "AWS provides every service at no cost to all customers" },
       { id: "d", text: "Each customer must commit to a fixed multi-year contract to get any price" },
@@ -281,7 +281,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-13",
@@ -291,7 +291,7 @@ export const domain1Economics: Question[] = [
     difficulty: "hard",
     stem: "When comparing the total cost of ownership of running a workload on premises versus on AWS, which on-premises cost is most likely to be reduced or removed by moving to the cloud?",
     options: [
-      { id: "a", text: "The cost of purchasing, powering, cooling, and physically maintaining your own servers" },
+      { id: "a", text: "Buying, powering, cooling, and maintaining your own servers" },
       { id: "b", text: "The cost of the application code your developers write" },
       { id: "c", text: "The cost of training users on the business process the application supports" },
       { id: "d", text: "The cost of the data your business generates" },
@@ -303,7 +303,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-14",
@@ -359,7 +359,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. Why is this claim incorrect?",
     options: [
-      { id: "a", text: "You do not pay for compute instances when they are not running, so turning them off reduces cost" },
+      { id: "a", text: "You are not billed for instance usage while an instance is stopped" },
       { id: "b", text: "Stopped instances are billed at a higher rate than running ones" },
       { id: "c", text: "Compute is billed as a flat monthly fee regardless of whether instances run" },
       { id: "d", text: "You are charged the full on-demand rate for every instance you ever launched" },
@@ -371,7 +371,7 @@ export const domain1Economics: Question[] = [
       label: "Amazon EC2 instance state changes: billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -382,7 +382,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "In a traditional on-premises model, a company must predict capacity and buy hardware well in advance. AWS removes that need. Which phrase best describes the financial change this brings?",
     options: [
-      { id: "a", text: "Upfront capital infrastructure expenses are replaced by low variable costs that scale with the business" },
+      { id: "a", text: "Upfront capital expenses become low variable costs that track usage" },
       { id: "b", text: "Variable costs are replaced by a single large capital purchase made once" },
       { id: "c", text: "All infrastructure costs are removed and never appear on a bill" },
       { id: "d", text: "Costs become fixed and unrelated to how much the business uses" },
@@ -394,7 +394,7 @@ export const domain1Economics: Question[] = [
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-19",
@@ -404,7 +404,7 @@ export const domain1Economics: Question[] = [
     difficulty: "easy",
     stem: "A team is comparing pricing models. Which characteristic is central to the consumption model that AWS recommends for cost optimization?",
     options: [
-      { id: "a", text: "Pay only for the computing resources you consume, and increase or decrease usage with business need" },
+      { id: "a", text: "Pay only for what you consume and scale usage with need" },
       { id: "b", text: "Pay a fixed annual fee that does not change with usage" },
       { id: "c", text: "Pay for peak capacity at all times to avoid ever scaling" },
       { id: "d", text: "Pay an upfront lump sum that covers all future usage" },
@@ -416,7 +416,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-20",
@@ -426,8 +426,8 @@ export const domain1Economics: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements correctly describe AWS cost optimization design principles in the Well-Architected Framework? (Choose two.)",
     options: [
-      { id: "a", text: "Adopt a consumption model: pay only for the computing resources you consume and adjust usage with business need" },
-      { id: "b", text: "Analyze and attribute expenditure so IT costs can be transparently assigned to workloads and owners" },
+      { id: "a", text: "Adopt a consumption model: pay only for the resources you consume" },
+      { id: "b", text: "Analyze and attribute expenditure so IT costs can be assigned to workload owners" },
       { id: "c", text: "Always buy three-year reservations for every workload regardless of how predictable it is" },
       { id: "d", text: "Provision for peak load at all times to remove the need to scale" },
       { id: "e", text: "Take on the undifferentiated heavy lifting of running your own data centers to cut cost" },
@@ -439,7 +439,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-21",
@@ -471,7 +471,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "Which TWO of the following are examples of the undifferentiated heavy lifting that AWS handles so customers can focus on their own business? (Choose two.)",
     options: [
-      { id: "a", text: "Racking, stacking, and powering physical servers in a data center" },
+      { id: "a", text: "Racking, stacking, and powering data center servers" },
       { id: "b", text: "Operating the underlying infrastructure that managed services run on" },
       { id: "c", text: "Designing the company's product features" },
       { id: "d", text: "Deciding the company's pricing strategy" },
@@ -484,7 +484,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-23",
@@ -494,7 +494,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A practitioner reads that AWS achieves \"higher economies of scale.\" What is the direct result of these economies of scale for AWS customers?",
     options: [
-      { id: "a", text: "Lower pay-as-you-go prices than a customer could achieve on its own" },
+      { id: "a", text: "Lower pay-as-you-go prices than a customer could get alone" },
       { id: "b", text: "A requirement to pay upfront for all future usage" },
       { id: "c", text: "Higher prices that rise as more customers join" },
       { id: "d", text: "A flat fee that is the same for every customer regardless of usage" },
@@ -506,7 +506,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-25",
@@ -584,7 +584,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A company is building a total cost of ownership comparison between an on-premises data center and AWS. Which on-premises cost categories does moving to AWS most directly reduce?",
     options: [
-      { id: "a", text: "Buying servers and the power, cooling, and physical maintenance to keep them running" },
+      { id: "a", text: "Buying servers and powering, cooling, and maintaining them" },
       { id: "b", text: "The salaries of the company's sales staff" },
       { id: "c", text: "The marketing budget for the company's products" },
       { id: "d", text: "The cost of office furniture for non-technical departments" },
@@ -596,7 +596,7 @@ export const domain1Economics: Question[] = [
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-29",
@@ -628,19 +628,19 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "Which statement is NOT one of the six advantages of cloud computing as AWS states them?",
     options: [
-      { id: "a", text: "Guarantee that every workload passes a compliance audit automatically" },
+      { id: "a", text: "Guarantee that every workload passes compliance audits" },
       { id: "b", text: "Trade fixed expense for variable expense" },
       { id: "c", text: "Stop guessing capacity" },
-      { id: "d", text: "Go global in minutes" },
+      { id: "d", text: "Stop spending money running and maintaining data centers" },
     ],
     correct: ["a"],
     explanation:
-      "The six advantages AWS lists are trading fixed expense for variable expense, massive economies of scale, stop guessing capacity, increase speed and agility, stop spending money running and maintaining data centers, and go global in minutes. A guarantee that every workload automatically passes a compliance audit is not among them; the cloud supports compliance but does not promise automatic audit passes.",
+      "The six advantages AWS lists are trading fixed expense for variable expense, massive economies of scale, stop guessing capacity, increase speed and agility, stop spending money running and maintaining data centers, and go global in minutes. A guarantee that every workload passes compliance audits is not among them; the cloud supports compliance but does not promise automatic audit passes.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-31",
@@ -672,7 +672,7 @@ export const domain1Economics: Question[] = [
     difficulty: "hard",
     stem: "An on-premises team always provisions for the highest traffic it might ever see, leaving most capacity idle most of the time. How does the cloud consumption model change the economics of this situation?",
     options: [
-      { id: "a", text: "Capacity can scale up and down with demand, so the company pays for what it uses instead of for idle peak capacity" },
+      { id: "a", text: "The company scales with demand and pays for what it uses, not idle peaks" },
       { id: "b", text: "The company must still pay for peak capacity continuously, just billed by AWS" },
       { id: "c", text: "The cloud forces the company to under-provision and accept outages" },
       { id: "d", text: "The company pays a fixed fee that ignores how much capacity it actually uses" },
@@ -684,7 +684,7 @@ export const domain1Economics: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-ec2-17",
@@ -694,7 +694,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A monitoring review shows an EC2 instance that runs at five percent CPU and uses a fraction of its memory all month, yet it was provisioned as a very large instance. Following AWS cost guidance, what is the recommended action?",
     options: [
-      { id: "a", text: "Right-size the instance by moving to a smaller or more appropriate instance type that matches actual usage." },
+      { id: "a", text: "Right-size it by moving to a smaller instance type that matches actual usage." },
       { id: "b", text: "Leave it as is, because a larger instance is always safer." },
       { id: "c", text: "Buy a three-year Reserved Instance for the oversized type to lock in the price." },
       { id: "d", text: "Switch it to a Dedicated Host to lower the per-hour rate." },
@@ -706,7 +706,7 @@ export const domain1Economics: Question[] = [
       label: "Select the correct resource type, size, and number",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/select-the-correct-resource-type-size-and-number.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -717,7 +717,7 @@ export const domain1Economics: Question[] = [
     difficulty: "easy",
     stem: "Which statement best captures the cost shift a company makes when it moves workloads from its own data center to AWS?",
     options: [
-      { id: "a", text: "It trades fixed expenses such as data centers and physical servers for variable expenses, paying for IT as it is consumed." },
+      { id: "a", text: "It trades fixed expenses for variable expenses tied to consumption." },
       { id: "b", text: "It converts all variable expenses into a single large fixed expense." },
       { id: "c", text: "It eliminates every cost because cloud computing is free." },
       { id: "d", text: "It locks in a flat monthly fee that never changes with usage." },
@@ -729,7 +729,7 @@ export const domain1Economics: Question[] = [
       label: "What is cloud computing: fixed to variable expense",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-24",
@@ -739,7 +739,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A team runs development EC2 instances that sit idle overnight and on weekends. What is the most direct way to reduce their cost?",
     options: [
-      { id: "a", text: "Turn off the instances when they are not in use, since you do not pay for compute that is not running." },
+      { id: "a", text: "Stop the instances on nights and weekends when idle." },
       { id: "b", text: "Leave them running continuously to avoid any startup delay." },
       { id: "c", text: "Convert them to Dedicated Hosts to lower the hourly rate." },
       { id: "d", text: "Buy three-year Reserved Instances for the idle time." },
@@ -751,7 +751,7 @@ export const domain1Economics: Question[] = [
       label: "Amazon EC2 billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -819,7 +819,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A cost review recommends right sizing the company's compute. What does right sizing mean, as AWS defines it?",
     options: [
-      { id: "a", text: "Matching instance types and sizes to the workload's performance and capacity requirements at the lowest possible cost, and revisiting that choice as needs change." },
+      { id: "a", text: "Matching instance types and sizes to workload needs at the lowest cost." },
       { id: "b", text: "Buying the largest instance type available so the workload never runs short." },
       { id: "c", text: "Committing to a three-year Reserved Instance for every instance in the fleet." },
       { id: "d", text: "Spreading the same instances across more Availability Zones." },
@@ -836,7 +836,7 @@ export const domain1Economics: Question[] = [
       label: "AWS Cost Optimization: right sizing",
       url: "https://aws.amazon.com/aws-cost-management/aws-cost-optimization/right-sizing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -847,7 +847,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A team hesitates to launch instances because it believes the size it picks now is permanent. What does AWS documentation say about changing an instance's size later?",
     options: [
-      { id: "a", text: "If the instance turns out to be too small or too large, you can resize it by changing its instance type, and you then pay the rate of the new type." },
+      { id: "a", text: "You can change its instance type later and then pay the new type's rate." },
       { id: "b", text: "An instance's type is fixed for the life of the instance and can never be changed." },
       { id: "c", text: "Resizing is possible only after you purchase a Reserved Instance." },
       { id: "d", text: "Only instances running on Dedicated Hosts can have their size adjusted." },
@@ -864,7 +864,7 @@ export const domain1Economics: Question[] = [
       label: "Amazon EC2 instance type changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -875,7 +875,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A team describes its whole test environment, the Auto Scaling group, the load balancer, and the database, in one AWS CloudFormation template. What does that give the team, as AWS describes CloudFormation?",
     options: [
-      { id: "a", text: "CloudFormation provisions and configures the described resources and works out the dependencies, and the resulting stack lets the team manage the collection as a single unit, including deleting all of it together." },
+      { id: "a", text: "CloudFormation provisions them as one stack the team can manage and delete as a unit." },
       { id: "b", text: "CloudFormation removes the charges for the resources the template creates." },
       { id: "c", text: "CloudFormation converts the company's capital expenditure into a fixed annual license fee." },
       { id: "d", text: "CloudFormation takes over the customer's responsibility for the data held in those resources." },
@@ -892,7 +892,7 @@ export const domain1Economics: Question[] = [
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFormation"],
   },
   {
@@ -903,8 +903,8 @@ export const domain1Economics: Question[] = [
     difficulty: "hard",
     stem: "A team is making the financial case for automating how it provisions infrastructure. Which TWO benefits does AWS attribute to automating in the cloud? (Choose two.)",
     options: [
-      { id: "a", text: "You can create and replicate your workloads at low cost and avoid the expense of manual effort." },
-      { id: "b", text: "You can track changes to your automation, audit the impact, and revert to earlier parameters when necessary." },
+      { id: "a", text: "You can create and replicate workloads at low cost and avoid manual effort." },
+      { id: "b", text: "You can track automation changes, audit the impact, and revert to earlier parameters." },
       { id: "c", text: "Automated workloads are billed at a lower hourly rate than manually created ones." },
       { id: "d", text: "Automation removes the need to test a workload before release." },
       { id: "e", text: "Automation transfers responsibility for patching guest operating systems to AWS." },
@@ -921,7 +921,7 @@ export const domain1Economics: Question[] = [
       label: "AWS Well-Architected Framework: general design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-40",

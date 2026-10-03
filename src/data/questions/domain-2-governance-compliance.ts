@@ -40,8 +40,8 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "medium",
     stem: "A compliance team is learning what AWS Artifact can do for them. Which TWO capabilities does AWS Artifact provide? (Choose two.)",
     options: [
-      { id: "a", text: "On-demand access to AWS compliance reports such as ISO, PCI, and SOC documents" },
-      { id: "b", text: "Reviewing, accepting, and tracking the status of agreements such as a Business Associate Addendum with AWS" },
+      { id: "a", text: "On-demand downloads of AWS compliance reports such as SOC and PCI" },
+      { id: "b", text: "Reviewing, accepting, and tracking agreements such as a Business Associate Addendum" },
       { id: "c", text: "Recording every API call made in the account for later audit" },
       { id: "d", text: "Continuously evaluating whether resource configurations follow defined rules" },
       { id: "e", text: "Scanning EC2 instances for missing operating system patches" },
@@ -53,7 +53,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Artifact?",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Artifact"],
   },
   {
@@ -132,7 +132,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "medium",
     stem: "Under the AWS Shared Responsibility Model, how is compliance shared between AWS and a customer?",
     options: [
-      { id: "a", text: "AWS is responsible for the compliance of the cloud infrastructure, and the customer is responsible for compliance of what they build in the cloud." },
+      { id: "a", text: "AWS covers compliance of the cloud; customers cover what they build in it." },
       { id: "b", text: "AWS is fully responsible for all of the customer's compliance obligations." },
       { id: "c", text: "The customer is responsible for the security and compliance of AWS data centers." },
       { id: "d", text: "Neither party has compliance obligations once data is in the cloud." },
@@ -144,7 +144,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "AWS Cloud Compliance",
       url: "https://aws.amazon.com/compliance/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-gov-07",
@@ -298,7 +298,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "medium",
     stem: "A compliance requirement says API activity logs must be retained well beyond 90 days and delivered to durable storage for long-term archival and analysis. In CloudTrail, what should the team configure?",
     options: [
-      { id: "a", text: "A trail that delivers events to an Amazon S3 bucket for ongoing storage" },
+      { id: "a", text: "A trail that delivers events to an Amazon S3 bucket" },
       { id: "b", text: "Nothing, because Event history already keeps events forever" },
       { id: "c", text: "An AWS Config rule that exports the logs" },
       { id: "d", text: "A service control policy that stores the logs" },
@@ -310,7 +310,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS CloudTrail", "Amazon S3"],
   },
   {
@@ -321,7 +321,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A study group is sorting facts into the right service. Which TWO statements correctly distinguish AWS Config from AWS CloudTrail? (Choose two.)",
     options: [
-      { id: "a", text: "AWS Config focuses on the configuration state of resources and whether it complies with rules over time." },
+      { id: "a", text: "AWS Config tracks resource configuration state and whether it complies with rules." },
       { id: "b", text: "AWS CloudTrail focuses on a record of API calls and account activity for auditing who did what and when." },
       { id: "c", text: "AWS Config records who signed in to the console and from which IP address." },
       { id: "d", text: "AWS CloudTrail evaluates resource settings against desired configurations and flags noncompliance." },
@@ -334,7 +334,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Config", "AWS CloudTrail"],
   },
   {
@@ -347,17 +347,17 @@ export const domain2GovernanceCompliance: Question[] = [
     options: [
       { id: "a", text: "AWS Organizations" },
       { id: "b", text: "AWS IAM" },
-      { id: "c", text: "Amazon VPC" },
+      { id: "c", text: "AWS Trusted Advisor" },
       { id: "d", text: "AWS Config" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Organizations helps you centrally manage and govern your environment as you scale, letting you create accounts, group them into organizational units, apply policies, and consolidate billing. AWS IAM manages identities within a single account, Amazon VPC is networking, and Config records configuration, so none of those centrally govern multiple accounts.",
+      "AWS Organizations helps you centrally manage and govern your environment as you scale, letting you create accounts, group them into organizational units, apply policies, and consolidate billing. AWS IAM manages identities within a single account, Trusted Advisor inspects your environment and recommends improvements, and Config records configuration, so none of those centrally govern multiple accounts.",
     reference: {
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
   {
@@ -414,7 +414,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A team attaches an SCP that allows a broad set of services to an OU, but a user in a member account still cannot perform any actions. What is the most likely explanation?",
     options: [
-      { id: "a", text: "An SCP never grants permissions; the user still needs an IAM permission policy that allows the actions." },
+      { id: "a", text: "SCPs grant nothing; the user still needs an IAM policy allowing the actions." },
       { id: "b", text: "SCPs always override and replace IAM policies, so the IAM policy is ignored." },
       { id: "c", text: "SCPs grant permissions directly, so the IAM policy is unnecessary." },
       { id: "d", text: "SCPs only apply to the management account, so the member account is unaffected." },
@@ -426,7 +426,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
   {
@@ -461,7 +461,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A company wants to prevent every member account in a particular OU from using any AWS Region outside its approved list, even if an account administrator grants broad permissions. Which approach enforces this organization-wide restriction?",
     options: [
-      { id: "a", text: "Attach a service control policy to the OU that denies actions outside the approved Regions." },
+      { id: "a", text: "Attach an SCP to the OU that denies unapproved Regions." },
       { id: "b", text: "Add a deny rule to each account's security groups." },
       { id: "c", text: "Create an AWS Config rule that grants Region access." },
       { id: "d", text: "Ask each account owner to voluntarily avoid other Regions." },
@@ -473,7 +473,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
   {
@@ -484,7 +484,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A security team wants a single CloudTrail log of activity across every account in the organization that member accounts cannot turn off or modify. Which capability enables this?",
     options: [
-      { id: "a", text: "Activating CloudTrail across accounts through AWS Organizations, creating an organization-wide log members cannot disable" },
+      { id: "a", text: "Activating CloudTrail across accounts through AWS Organizations" },
       { id: "b", text: "Enabling consolidated billing, which automatically logs all API calls" },
       { id: "c", text: "Attaching an SCP that records every API call into the management account" },
       { id: "d", text: "Turning on AWS Artifact for the organization" },
@@ -496,7 +496,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What is AWS Organizations?",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
   {
@@ -553,7 +553,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "medium",
     stem: "In AWS Control Tower, what is a control (sometimes called a guardrail)?",
     options: [
-      { id: "a", text: "A high-level rule, expressed in plain language, that provides ongoing governance for the AWS environment" },
+      { id: "a", text: "A high-level rule that provides ongoing governance" },
       { id: "b", text: "A network firewall rule attached to an EC2 instance" },
       { id: "c", text: "A billing alarm that stops spending at a threshold" },
       { id: "d", text: "A downloadable ISO certification from AWS" },
@@ -565,7 +565,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Control Tower?",
       url: "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Control Tower"],
   },
   {
@@ -669,7 +669,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "medium",
     stem: "An auditor needs the historical configurations of resources to demonstrate compliance with internal policies during an audit. Which AWS Config use case does this match?",
     options: [
-      { id: "a", text: "Auditing and compliance, which relies on access to historical resource configurations" },
+      { id: "a", text: "Auditing and compliance via past configurations" },
       { id: "b", text: "Blocking noncompliant API calls before they run" },
       { id: "c", text: "Downloading AWS third-party audit reports" },
       { id: "d", text: "Consolidating billing across accounts" },
@@ -681,7 +681,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS Config?",
       url: "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Config"],
   },
   {
@@ -692,7 +692,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A security analyst describes CloudTrail's core purpose to a colleague. Which description is most accurate?",
     options: [
-      { id: "a", text: "It enables operational and risk auditing, governance, and compliance by recording account activity as events." },
+      { id: "a", text: "It records account activity as events for auditing." },
       { id: "b", text: "It enforces encryption on every S3 bucket in the account." },
       { id: "c", text: "It provisions new AWS accounts with preset guardrails." },
       { id: "d", text: "It estimates the monthly cost of a planned architecture." },
@@ -704,7 +704,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS CloudTrail"],
   },
   {
@@ -715,7 +715,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A multi-account company subject to HIPAA wants a single BAA with AWS to cover all current and future accounts in its organization rather than accepting one per account. How does AWS Artifact support this?",
     options: [
-      { id: "a", text: "With AWS Organizations, you can accept the BAA on behalf of all accounts in the organization, and existing and future member accounts are automatically covered." },
+      { id: "a", text: "With AWS Organizations, it accepts the BAA for all accounts, including future members." },
       { id: "b", text: "AWS Artifact requires every account to accept its own BAA separately, with no organization option." },
       { id: "c", text: "AWS Artifact accepts the BAA only for the management account, leaving members uncovered." },
       { id: "d", text: "AWS Artifact cannot manage a BAA; that is handled only through a support case." },
@@ -727,7 +727,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Managing agreements in AWS Artifact",
       url: "https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Artifact", "AWS Organizations"],
   },
   {
@@ -762,7 +762,7 @@ export const domain2GovernanceCompliance: Question[] = [
     difficulty: "hard",
     stem: "A platform team enforces a policy: no member account may disable CloudTrail logging, even an account administrator. Which AWS Organizations capability is the right tool to enforce that restriction across accounts?",
     options: [
-      { id: "a", text: "A service control policy that denies the actions used to stop or delete CloudTrail logging" },
+      { id: "a", text: "An SCP that denies the actions that disable CloudTrail" },
       { id: "b", text: "Consolidated billing applied to the offending accounts" },
       { id: "c", text: "An AWS Config rule that grants the accounts permission to log" },
       { id: "d", text: "An AWS Artifact agreement accepted by each account" },
@@ -774,7 +774,7 @@ export const domain2GovernanceCompliance: Question[] = [
       label: "Service control policies (SCPs)",
       url: "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations", "AWS CloudTrail"],
   },
 ];

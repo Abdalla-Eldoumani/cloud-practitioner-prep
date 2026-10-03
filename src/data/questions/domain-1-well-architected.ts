@@ -40,7 +40,7 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "medium",
     stem: "A team lead describes a Well-Architected review as an audit that produces a pass-or-fail grade for a workload. How does AWS characterize the review?",
     options: [
-      { id: "a", text: "As a constructive conversation about architectural decisions, not an audit mechanism." },
+      { id: "a", text: "As a constructive conversation about architectural decisions." },
       { id: "b", text: "As a formal compliance audit that issues a pass or fail result." },
       { id: "c", text: "As a billing review that recalculates the monthly invoice." },
       { id: "d", text: "As a penetration test of the workload's security." },
@@ -52,7 +52,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-03",
@@ -88,16 +88,16 @@ export const domain1WellArchitected: Question[] = [
       { id: "b", text: "Performance Efficiency" },
       { id: "c", text: "Sustainability" },
       { id: "d", text: "Globalization" },
-      { id: "e", text: "Elasticity" },
+      { id: "e", text: "Cost Efficiency" },
     ],
     correct: ["a", "b", "c"],
     explanation:
-      "Operational Excellence, Performance Efficiency, and Sustainability are three of the six pillars, along with Security, Reliability, and Cost Optimization. Globalization and Elasticity are not pillars; elasticity is a cloud benefit and a design principle rather than a pillar name.",
+      "Operational Excellence, Performance Efficiency, and Sustainability are three of the six pillars, along with Security, Reliability, and Cost Optimization. Globalization and Cost Efficiency are not pillars; the pillar that covers spend is named Cost Optimization.",
     reference: {
       label: "The pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-05",
@@ -198,18 +198,18 @@ export const domain1WellArchitected: Question[] = [
     stem: "A platform team wants to use computing resources efficiently to meet requirements and to keep that efficiency as demand changes and newer technologies become available, for example by adopting a managed or serverless option when it fits. Which pillar is this?",
     options: [
       { id: "a", text: "Performance Efficiency" },
-      { id: "b", text: "Security" },
+      { id: "b", text: "Operational Excellence" },
       { id: "c", text: "Reliability" },
       { id: "d", text: "Sustainability" },
     ],
     correct: ["a"],
     explanation:
-      "The Performance Efficiency pillar is the ability to use cloud resources efficiently to meet performance requirements and to maintain that efficiency as demand changes and technologies evolve. Security, Reliability, and Sustainability address protection, consistent function, and environmental impact respectively.",
+      "The Performance Efficiency pillar is the ability to use cloud resources efficiently to meet performance requirements and to maintain that efficiency as demand changes and technologies evolve. Operational Excellence, Reliability, and Sustainability address running and improving workloads, consistent function, and environmental impact respectively.",
     reference: {
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-10",
@@ -333,16 +333,16 @@ export const domain1WellArchitected: Question[] = [
       { id: "a", text: "Performance Efficiency" },
       { id: "b", text: "Cost Optimization" },
       { id: "c", text: "Reliability" },
-      { id: "d", text: "Security" },
+      { id: "d", text: "Operational Excellence" },
     ],
     correct: ["a"],
     explanation:
-      "Selecting the right resource types, adding caching, and keeping resources efficient as demand changes is the Performance Efficiency pillar. While some changes may also lower cost, the pillar defined by using resources efficiently to meet performance requirements is Performance Efficiency, not Cost Optimization, Reliability, or Security.",
+      "Selecting the right resource types, adding caching, and keeping resources efficient as demand changes is the Performance Efficiency pillar. While some changes may also lower cost, the pillar defined by using resources efficiently to meet performance requirements is Performance Efficiency, not Cost Optimization, Reliability, or Operational Excellence, which covers running and improving workloads.",
     reference: {
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-16",
@@ -387,7 +387,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Performance efficiency pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/performance-efficiency.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-17",
@@ -486,7 +486,7 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "medium",
     stem: "A team plans to use the AWS Well-Architected Tool. What does the tool actually do?",
     options: [
-      { id: "a", text: "It provides a consistent process to measure your architecture against AWS best practices, document decisions, and get recommendations for improvement." },
+      { id: "a", text: "It measures your architecture against best practices and recommends improvements." },
       { id: "b", text: "It automatically rearchitects and redeploys your workload to fix every issue it finds." },
       { id: "c", text: "It is a paid managed service that runs your production workloads for you." },
       { id: "d", text: "It issues an official AWS compliance certificate for the workload." },
@@ -496,9 +496,9 @@ export const domain1WellArchitected: Question[] = [
       "The AWS Well-Architected Tool gives a consistent process to measure your architecture against best practices, document your decisions, and get recommendations to make workloads more reliable, secure, efficient, and cost-effective. It does not rearchitect or run your workloads for you, and it does not issue a compliance certificate.",
     reference: {
       label: "What is AWS Well-Architected Tool?",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-22",
@@ -520,7 +520,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-23",
@@ -598,17 +598,17 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "Automate with architectural experimentation in mind" },
       { id: "b", text: "Drive architectures using data" },
-      { id: "c", text: "Improve through game days" },
+      { id: "c", text: "Scale horizontally to increase aggregate workload availability" },
       { id: "d", text: "Test systems at production scale" },
     ],
     correct: ["a"],
     explanation:
-      "Automate with architectural experimentation in mind is the principle of using automation to create and replicate workloads at low cost while tracking, auditing, and reverting changes. Driving architectures using data, game days, and production-scale testing are different principles.",
+      "Automate with architectural experimentation in mind is the principle of using automation to create and replicate workloads at low cost while tracking, auditing, and reverting changes. Driving architectures using data and production-scale testing are different principles, and scaling horizontally is a Reliability pillar principle about replacing one large resource with several small ones, not about tracking and reverting changes.",
     reference: {
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-27",
@@ -909,8 +909,8 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "hard",
     stem: "Which TWO practices does the Sustainability pillar of the AWS Well-Architected Framework name as ways to reduce the environmental impact of a workload? (Choose two.)",
     options: [
-      { id: "a", text: "Maximize utilization by reducing idle resources, processing, and storage, so the hardware behind the workload does more useful work for the energy it draws." },
-      { id: "b", text: "Use managed services, where sharing across a broad customer base raises utilization and cuts the total infrastructure needed." },
+      { id: "a", text: "Maximize utilization by reducing idle resources." },
+      { id: "b", text: "Use managed services that share infrastructure across customers." },
       { id: "c", text: "Encrypt every stored object with a customer managed key." },
       { id: "d", text: "Purchase three-year Reserved Instances to lower the hourly rate." },
       { id: "e", text: "Deploy a copy of the workload into every AWS Region." },
@@ -927,7 +927,7 @@ export const domain1WellArchitected: Question[] = [
       label: "Sustainability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-40",
@@ -964,7 +964,7 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "medium",
     stem: "Which description matches the Operational Excellence pillar of the AWS Well-Architected Framework?",
     options: [
-      { id: "a", text: "A commitment to build software correctly while consistently delivering a great customer experience, with best practices for organizing the team, operating the workload at scale, and evolving it over time." },
+      { id: "a", text: "A commitment to build software correctly while consistently delivering a great customer experience." },
       { id: "b", text: "The ability to run systems that deliver business value at the lowest price point." },
       { id: "c", text: "The ability of a workload to perform its intended function correctly and consistently and to recover from failures." },
       { id: "d", text: "A focus on environmental impacts, especially energy consumption and efficiency." },
@@ -981,7 +981,7 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: Operational excellence",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/operational-excellence.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-42",
@@ -994,21 +994,21 @@ export const domain1WellArchitected: Question[] = [
       { id: "a", text: "Sustainability" },
       { id: "b", text: "Scalability" },
       { id: "c", text: "Compliance" },
-      { id: "d", text: "Automation" },
+      { id: "d", text: "High Availability" },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "Scalability is an architectural property, not one of the framework's pillars.",
       c: "Compliance is an outcome the Security pillar supports; the framework has no pillar by that name.",
-      d: "Automation runs through several pillars as a practice, but it is not a pillar itself.",
+      d: "High availability is an outcome the Reliability pillar supports, not a pillar of its own.",
     },
     explanation:
-      "AWS names six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Sustainability is the one missing from the list, and it is the pillar people most often forget. Scalability, compliance, and automation all matter in cloud architecture, but none of them is a pillar of the framework.",
+      "AWS names six pillars: operational excellence, security, reliability, performance efficiency, cost optimization, and sustainability. Sustainability is the one missing from the list, and it is the pillar people most often forget. Scalability, compliance, and high availability all matter in cloud architecture, but none of them is a pillar of the framework.",
     reference: {
       label: "AWS Well-Architected Framework: the pillars of the framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-43",
@@ -1018,7 +1018,7 @@ export const domain1WellArchitected: Question[] = [
     difficulty: "hard",
     stem: "A team right-sizes a fleet of over-provisioned instances. The finance lead calls the change a Cost Optimization win and the sustainability lead calls it a Sustainability win. Which statement is correct?",
     options: [
-      { id: "a", text: "Both are right, because the two pillars judge the same change against different goals: delivering business value at the lowest price point, and reducing the environmental impact of what the workload consumes." },
+      { id: "a", text: "Both are right, because the change lowers both the cost of the workload and the resources it consumes." },
       { id: "b", text: "Only Cost Optimization applies, because Sustainability covers renewable energy purchasing rather than architecture." },
       { id: "c", text: "Only Sustainability applies, because Cost Optimization covers billing tools rather than resource choices." },
       { id: "d", text: "Neither applies, because sizing decisions belong to the Performance Efficiency pillar alone." },
@@ -1035,6 +1035,6 @@ export const domain1WellArchitected: Question[] = [
       label: "AWS Well-Architected Framework: Cost optimization",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
 ];

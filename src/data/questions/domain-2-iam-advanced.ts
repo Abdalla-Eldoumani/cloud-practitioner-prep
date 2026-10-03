@@ -14,7 +14,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "A solutions architect is explaining IAM roles to a new team. Which statement best describes how a role differs from an IAM user with respect to credentials?",
     options: [
-      { id: "a", text: "A role does not have standard long-term credentials such as a password or access keys; when assumed, it provides temporary security credentials." },
+      { id: "a", text: "A role has no long-term credentials; assuming it provides temporary ones." },
       { id: "b", text: "A role always has a permanent password and a permanent pair of access keys." },
       { id: "c", text: "A role can only be used by the account root user." },
       { id: "d", text: "A role stores its access keys in plaintext on the instance that uses it." },
@@ -26,7 +26,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -37,7 +37,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "An application running on an Amazon EC2 instance needs to read objects from an Amazon S3 bucket. Following AWS best practices, how should the application obtain AWS credentials?",
     options: [
-      { id: "a", text: "Assign an IAM role to the instance so the application receives temporary credentials automatically." },
+      { id: "a", text: "Attach an IAM role that supplies temporary credentials to the instance." },
       { id: "b", text: "Store the developer's long-term access keys in a file on the instance." },
       { id: "c", text: "Hard-code an access key ID and secret access key into the application source." },
       { id: "d", text: "Sign in with the root user access keys at runtime." },
@@ -60,7 +60,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A developer creates an IAM role and wants applications on an EC2 instance to use it. What is the purpose of an instance profile in this setup?",
     options: [
-      { id: "a", text: "It is a container for an IAM role that passes the role to the EC2 instance so applications can use the role's temporary credentials." },
+      { id: "a", text: "It is a container that passes an IAM role to the EC2 instance." },
       { id: "b", text: "It is a long-term access key pair generated for the instance." },
       { id: "c", text: "It is a billing construct that tracks the cost of the instance." },
       { id: "d", text: "It is a firewall that controls inbound traffic to the instance." },
@@ -83,7 +83,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A team running applications on EC2 with an attached IAM role asks how often they must rotate the credentials those applications use. What is the correct answer?",
     options: [
-      { id: "a", text: "They do not rotate them manually; the role's temporary credentials on the instance are updated automatically before they expire." },
+      { id: "a", text: "Never by hand; the role's temporary credentials are updated automatically." },
       { id: "b", text: "They must rotate them by hand every 24 hours." },
       { id: "c", text: "They must generate a new access key pair each week and redeploy the application." },
       { id: "d", text: "The credentials never expire, so rotation is unnecessary." },
@@ -106,7 +106,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A company maintains separate AWS accounts for development and production. An administrator wants developers in the development account to access specific resources in the production account without creating new users there. What is the primary mechanism AWS recommends?",
     options: [
-      { id: "a", text: "Create an IAM role in the production account that the development account principals can assume." },
+      { id: "a", text: "Create a production account role that development principals can assume." },
       { id: "b", text: "Create duplicate IAM users with the same passwords in both accounts." },
       { id: "c", text: "Share the production account root user credentials with the developers." },
       { id: "d", text: "Email long-term access keys from the production account to each developer." },
@@ -152,7 +152,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "An auditor asks how temporary security credentials from AWS STS differ from long-term access keys in terms of lifetime. Which statement is accurate?",
     options: [
-      { id: "a", text: "Temporary credentials are short-term, can be configured to last from minutes to several hours, and cannot be reused after they expire." },
+      { id: "a", text: "They last from minutes to hours and cannot be reused after they expire." },
       { id: "b", text: "Temporary credentials last indefinitely until an administrator deletes them." },
       { id: "c", text: "Temporary credentials expire only when the AWS account is closed." },
       { id: "d", text: "Temporary credentials have no expiration and behave exactly like access keys." },
@@ -164,7 +164,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM", "STS"],
   },
   {
@@ -175,20 +175,20 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "Which TWO entities can assume an IAM role? (Choose two.)",
     options: [
-      { id: "a", text: "An IAM user in the same account or in another AWS account" },
-      { id: "b", text: "An AWS service principal, such as Amazon EC2 or AWS Lambda, for service-linked or service roles" },
-      { id: "c", text: "An Amazon S3 bucket policy" },
+      { id: "a", text: "An IAM user in the same or another AWS account" },
+      { id: "b", text: "An AWS service, such as Amazon EC2 or AWS Lambda" },
+      { id: "c", text: "An IAM user group, so every member inherits the role" },
       { id: "d", text: "A security group attached to a subnet" },
       { id: "e", text: "An Amazon CloudWatch metric" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists IAM users (in the same or another account), IAM roles, AWS service principals, and external federated users among the entities that can assume a role. An S3 bucket policy, a security group, and a CloudWatch metric are not principals that assume roles.",
+      "AWS lists IAM users (in the same or another account), IAM roles, AWS service principals, and external federated users among the entities that can assume a role. An IAM user group cannot be named as a principal, because groups relate to permissions rather than authentication, and a security group and a CloudWatch metric are not principals either.",
     reference: {
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -199,7 +199,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A workforce of employees needs day-to-day access to several AWS accounts, and the company already runs a corporate identity provider. According to AWS best practices, what should the company use for these human users instead of creating individual IAM users?",
     options: [
-      { id: "a", text: "Federation with an identity provider so users assume roles and receive temporary credentials, managed centrally through AWS IAM Identity Center." },
+      { id: "a", text: "Federation via IAM Identity Center with temporary role credentials." },
       { id: "b", text: "One shared IAM user with a long-term password that the whole team uses." },
       { id: "c", text: "A separate set of long-term access keys handed to each employee." },
       { id: "d", text: "The account root user, shared among the administrators." },
@@ -222,7 +222,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "AWS IAM Identity Center was previously known by another name. What was it called before it was renamed?",
     options: [
-      { id: "a", text: "AWS Single Sign-On (AWS SSO)" },
+      { id: "a", text: "AWS Single Sign-On" },
       { id: "b", text: "AWS Directory Service" },
       { id: "c", text: "Amazon Cognito" },
       { id: "d", text: "AWS Organizations" },
@@ -268,7 +268,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A company adopting IAM Identity Center asks where its user identities can come from. Which option correctly describes the supported identity sources?",
     options: [
-      { id: "a", text: "You can connect an existing external identity provider or Active Directory, or create and manage users directly in the Identity Center directory." },
+      { id: "a", text: "External IdPs, Active Directory, or its own Identity Center directory." },
       { id: "b", text: "You must re-create every user as an IAM user in each account first." },
       { id: "c", text: "Only the AWS account root user can be used as an identity." },
       { id: "d", text: "Identities can only come from social logins such as Facebook or Google." },
@@ -360,7 +360,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "When an external user is authenticated through a SAML or OIDC identity provider and granted access to AWS resources, what does AWS assign to that federated user to determine their permissions?",
     options: [
-      { id: "a", text: "An IAM role, which provides the user with temporary credentials" },
+      { id: "a", text: "An IAM role that provides temporary credentials" },
       { id: "b", text: "A permanent IAM user with a console password" },
       { id: "c", text: "A long-term access key pair stored in the identity provider" },
       { id: "d", text: "The permissions of the account root user" },
@@ -372,7 +372,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -406,7 +406,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "What does enabling multi-factor authentication (MFA) add to the sign-in process for an AWS identity?",
     options: [
-      { id: "a", text: "It requires a second authentication factor from a supported MFA device in addition to the sign-in credentials." },
+      { id: "a", text: "It requires a second factor from an MFA device at sign-in." },
       { id: "b", text: "It replaces the password so no password is needed at all." },
       { id: "c", text: "It grants the user administrator permissions automatically." },
       { id: "d", text: "It encrypts all data stored in Amazon S3 by default." },
@@ -499,7 +499,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "A developer needs to make programmatic requests with the AWS CLI using long-term IAM user credentials. What does an access key consist of?",
     options: [
-      { id: "a", text: "An access key ID and a secret access key, used together to sign requests." },
+      { id: "a", text: "An access key ID and a secret access key." },
       { id: "b", text: "A username and a console password." },
       { id: "c", text: "An email address and a one-time PIN." },
       { id: "d", text: "A public TLS certificate only." },
@@ -522,7 +522,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "When a workload can use an IAM role, what does AWS recommend regarding long-term access keys?",
     options: [
-      { id: "a", text: "Rely on temporary credentials from a role instead of creating long-term access keys where possible." },
+      { id: "a", text: "Prefer temporary role credentials over creating long-term access keys." },
       { id: "b", text: "Always create long-term access keys and never use roles." },
       { id: "c", text: "Embed long-term access keys in the application binary for convenience." },
       { id: "d", text: "Share one set of long-term access keys across all workloads." },
@@ -545,7 +545,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "A use case genuinely requires long-term access keys for an IAM user. What does AWS recommend to keep these credentials safe over time?",
     options: [
-      { id: "a", text: "Update (rotate) the access keys when needed, such as when an employee leaves, and remove unused keys." },
+      { id: "a", text: "Rotate them when needed and remove keys that are no longer used." },
       { id: "b", text: "Never change the keys once created so applications do not break." },
       { id: "c", text: "Post the keys in a shared wiki so the team can find them." },
       { id: "d", text: "Reuse the same keys for the root user and the IAM user." },
@@ -666,7 +666,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "Which TWO of the following are AWS IAM security best practices? (Choose two.)",
     options: [
-      { id: "a", text: "Require workloads to use temporary credentials with IAM roles to access AWS." },
+      { id: "a", text: "Require workloads to use temporary credentials through IAM roles." },
       { id: "b", text: "Apply least-privilege permissions, granting only what a task requires." },
       { id: "c", text: "Use the account root user for daily administrative work." },
       { id: "d", text: "Embed long-term access keys directly in application source code." },
@@ -713,7 +713,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "A team has a legacy on-premises plugin that cannot retrieve temporary credentials through an IAM role and must authenticate to AWS programmatically. According to AWS guidance, what is an appropriate option for this specific case?",
     options: [
-      { id: "a", text: "Use IAM user long-term access keys for that workload, since it cannot use a role." },
+      { id: "a", text: "Use long-term IAM user access keys for that workload." },
       { id: "b", text: "Use the account root user access keys for the plugin." },
       { id: "c", text: "Disable authentication entirely for the plugin." },
       { id: "d", text: "Refuse to integrate the plugin under any circumstances." },
@@ -725,7 +725,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -736,7 +736,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "Why are temporary security credentials generally considered more secure than embedding long-term access keys in an application?",
     options: [
-      { id: "a", text: "They have a limited lifetime and expire automatically, so they do not need to be distributed, updated, or explicitly revoked when no longer needed." },
+      { id: "a", text: "They expire on their own, so they need no manual rotation or revocation." },
       { id: "b", text: "They give the application unlimited permissions, which simplifies access." },
       { id: "c", text: "They are stored permanently on disk so they are always available." },
       { id: "d", text: "They can never be intercepted because AWS hides all network traffic." },
@@ -748,7 +748,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM", "STS"],
   },
   {
@@ -782,7 +782,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about identity federation with AWS are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Federation lets you manage user identities outside AWS and grant those external identities access to AWS resources." },
+      { id: "a", text: "Federation lets identities managed outside AWS access AWS resources." },
       { id: "b", text: "Federated users assume an IAM role and receive temporary credentials rather than long-term keys." },
       { id: "c", text: "Federation requires creating a separate long-term IAM user for each external identity." },
       { id: "d", text: "Federation only works with the AWS account root user." },
@@ -795,7 +795,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "Identity providers and federation into AWS",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -806,7 +806,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "A company is choosing how to manage workforce access. It runs many accounts under AWS Organizations and wants centralized sign-in, while a separate single standalone account just needs to connect one external SAML provider directly. Which pairing matches AWS guidance?",
     options: [
-      { id: "a", text: "Use IAM Identity Center for the multi-account workforce, and IAM federation with a SAML identity provider for the single standalone account." },
+      { id: "a", text: "Identity Center for the multi-account workforce; SAML federation for the standalone account." },
       { id: "b", text: "Use the root user for the multi-account workforce, and shared access keys for the standalone account." },
       { id: "c", text: "Use one IAM user shared across all accounts for both cases." },
       { id: "d", text: "Use Amazon Inspector to manage sign-in for both cases." },
@@ -829,7 +829,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "easy",
     stem: "A new administrator asks when to use an IAM role instead of an IAM user. Which description best captures the difference?",
     options: [
-      { id: "a", text: "A role is an identity meant to be assumed temporarily by anyone who needs it and provides temporary credentials, while a user is tied to one person and has long-term credentials." },
+      { id: "a", text: "A role is assumed temporarily by whoever needs it; a user belongs to one person." },
       { id: "b", text: "A role and a user are identical, and the names can be used interchangeably." },
       { id: "c", text: "A role can only be created by AWS Support, while a user is created by the customer." },
       { id: "d", text: "A user provides temporary credentials, while a role always uses long-term access keys." },
@@ -841,7 +841,7 @@ export const domain2IamAdvanced: Question[] = [
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -852,20 +852,20 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "Which TWO scenarios are good reasons to use an IAM role rather than long-term IAM user access keys? (Choose two.)",
     options: [
-      { id: "a", text: "Granting an application on an EC2 instance access to AWS resources without storing keys on the instance." },
-      { id: "b", text: "Allowing principals in one AWS account to access resources in another account." },
+      { id: "a", text: "Letting an app on EC2 access AWS without storing keys on the instance." },
+      { id: "b", text: "Letting principals in one account access resources in another." },
       { id: "c", text: "Recording the monthly cost of each AWS Region." },
       { id: "d", text: "Encrypting objects at rest in an Amazon S3 bucket." },
-      { id: "e", text: "Defining inbound firewall rules for a subnet." },
+      { id: "e", text: "Giving one employee a permanent console password for daily sign-in." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Roles suit giving an application on EC2 access without storing long-term keys, and granting cross-account access by letting principals in one account assume a role in another. Tracking Region costs, encrypting S3 objects, and defining firewall rules are unrelated to roles.",
+      "Roles suit giving an application on EC2 access without storing long-term keys, and granting cross-account access by letting principals in one account assume a role in another. Tracking Region costs and encrypting S3 objects are unrelated to roles, and a permanent console password is a long-term credential of an IAM user, which a role does not have.",
     reference: {
       label: "IAM roles",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -876,7 +876,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "Which TWO capabilities does AWS IAM Identity Center provide? (Choose two.)",
     options: [
-      { id: "a", text: "A single place to assign workforce users access to multiple AWS accounts." },
+      { id: "a", text: "One place to assign workforce users access to many AWS accounts." },
       { id: "b", text: "Single sign-on access to assigned applications through a user portal." },
       { id: "c", text: "Automatic patching of the guest operating system on EC2 instances." },
       { id: "d", text: "Block-level storage volumes for EC2." },
@@ -900,7 +900,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about MFA in AWS are correct? (Choose two.)",
     options: [
-      { id: "a", text: "MFA requires a second factor in addition to the user's sign-in credentials." },
+      { id: "a", text: "MFA requires a second factor on top of sign-in credentials." },
       { id: "b", text: "AWS recommends phishing-resistant MFA such as passkeys and security keys." },
       { id: "c", text: "Enabling MFA removes the need for any password." },
       { id: "d", text: "AWS still recommends SMS text messages as the preferred MFA method." },
@@ -949,19 +949,19 @@ export const domain2IamAdvanced: Question[] = [
     stem: "Which TWO are advantages of temporary security credentials over long-term credentials, according to AWS? (Choose two.)",
     options: [
       { id: "a", text: "You do not have to distribute or embed long-term AWS credentials in an application." },
-      { id: "b", text: "They have a limited lifetime, so you do not have to update or explicitly revoke them when they are no longer needed." },
+      { id: "b", text: "They expire on their own, so they need no update or revocation." },
       { id: "c", text: "They grant unlimited permissions to whoever holds them." },
-      { id: "d", text: "They are stored permanently with the user for reuse." },
+      { id: "d", text: "They never expire, so applications never need to request new ones." },
       { id: "e", text: "They eliminate the need for any permissions policy." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists not having to distribute or embed long-term credentials, and the limited lifetime that removes the need to update or revoke them, as advantages of temporary credentials. They do not grant unlimited permissions, are generated dynamically rather than stored permanently, and still rely on permissions policies.",
+      "AWS lists not having to distribute or embed long-term credentials, and the limited lifetime that removes the need to update or revoke them, as advantages of temporary credentials. They do not grant unlimited permissions, stop working once they expire so a new set must be requested, and still rely on permissions policies.",
     reference: {
       label: "Temporary security credentials in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM", "STS"],
   },
   {
@@ -972,8 +972,8 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "A company is hardening a new AWS account. Which TWO actions align with AWS IAM best practices? (Choose two.)",
     options: [
-      { id: "a", text: "Require human users to access AWS through federation with an identity provider using temporary credentials." },
-      { id: "b", text: "Regularly review and remove unused users, roles, permissions, policies, and credentials." },
+      { id: "a", text: "Require human users to sign in through federation with temporary credentials." },
+      { id: "b", text: "Regularly remove unused users, roles, permissions, and credentials." },
       { id: "c", text: "Create one set of long-term access keys and share it across the whole team." },
       { id: "d", text: "Use the account root user for all routine administrative tasks." },
       { id: "e", text: "Turn off MFA to make sign-in faster for administrators." },

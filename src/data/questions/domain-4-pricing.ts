@@ -64,7 +64,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "An engineer reviewing a bill notices that uploading data into Amazon S3 from the internet shows no transfer charge, while sending data out to users does. Which statement explains the general AWS rule?",
     options: [
-      { id: "a", text: "Inbound data transfer is generally free, and outbound data transfer to the internet is charged." },
+      { id: "a", text: "Inbound is generally free; outbound to the internet is charged." },
       { id: "b", text: "Outbound data transfer is free, and inbound data transfer is charged." },
       { id: "c", text: "All data transfer, in and out, is always free." },
       { id: "d", text: "All data transfer, in and out, is charged at the same flat rate." },
@@ -81,7 +81,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Pricing: pay less by using more",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-04",
@@ -204,7 +204,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "An operations lead asks how much warning a Spot Instance receives before AWS reclaims it for capacity. What does AWS provide?",
     options: [
-      { id: "a", text: "A Spot Instance interruption notice two minutes before the instance is stopped or terminated." },
+      { id: "a", text: "A two-minute Spot Instance interruption notice." },
       { id: "b", text: "A 24-hour email warning before reclamation." },
       { id: "c", text: "No warning at all; the instance simply stops." },
       { id: "d", text: "A guarantee that the instance is never reclaimed once running." },
@@ -216,7 +216,7 @@ export const domain4Pricing: Question[] = [
       label: "Spot Instance interruption notices",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-instance-termination-notices.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -273,8 +273,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about EC2 Reserved Instances are correct? (Choose two.)",
     options: [
-      { id: "a", text: "They are a billing discount applied to matching On-Demand usage, not a separate physical instance." },
-      { id: "b", text: "They are available for one-year or three-year terms, with the three-year term offering a bigger discount." },
+      { id: "a", text: "They are a billing discount on matching On-Demand usage, not physical instances." },
+      { id: "b", text: "They come in one-year or three-year terms; three years discounts more." },
       { id: "c", text: "They can be interrupted by AWS with a two-minute notice when capacity is needed." },
       { id: "d", text: "They require you to pay the full amount upfront with no other payment options." },
       { id: "e", text: "They are billed per second with no commitment." },
@@ -286,7 +286,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -367,7 +367,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A workload runs a predictable baseline 24/7 plus short, unpredictable spikes. The team wants to minimize cost while keeping the spikes reliable, not interruptible. Which combination fits best?",
     options: [
-      { id: "a", text: "A Savings Plan or Reserved Instances for the steady baseline, and On-Demand for the unpredictable spikes." },
+      { id: "a", text: "A Savings Plan for the baseline and On-Demand for the spikes." },
       { id: "b", text: "Spot Instances for both the baseline and the spikes." },
       { id: "c", text: "On-Demand for the baseline and Reserved Instances for the short spikes." },
       { id: "d", text: "Dedicated Hosts for the baseline and Spot for the spikes." },
@@ -379,7 +379,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -424,7 +424,7 @@ export const domain4Pricing: Question[] = [
       label: "Getting started with AWS Pricing Calculator",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/getting-started.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-19",
@@ -434,7 +434,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A developer creates a brand-new AWS account today to explore services. Under the current AWS Free Tier, what does the new account receive to start with?",
     options: [
-      { id: "a", text: "AWS credits, up to 200 US dollars, to spend exploring services for up to six months." },
+      { id: "a", text: "Up to 200 US dollars in AWS credits for exploring services." },
       { id: "b", text: "Unlimited free use of every AWS service for the first year." },
       { id: "c", text: "A flat 50 percent discount on all bills forever." },
       { id: "d", text: "Free access only after paying a one-time setup fee." },
@@ -456,7 +456,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "On the current AWS Free Tier, a new account's Free Plan period ends at a specific point. Which describes when it ends?",
     options: [
-      { id: "a", text: "At the earlier of six months after the account was opened or when the Free Tier credits are used up." },
+      { id: "a", text: "At six months or when credits run out, whichever comes first." },
       { id: "b", text: "Exactly twelve months after sign-up, regardless of credit usage." },
       { id: "c", text: "Only when the customer manually closes the account." },
       { id: "d", text: "After a fixed thirty-day trial with no credits." },
@@ -468,7 +468,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-21",
@@ -512,7 +512,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Free Tier update: up to $200 in credits",
       url: "https://aws.amazon.com/blogs/aws/aws-free-tier-update-new-customers-can-get-started-and-explore-aws-with-up-to-200-in-credits/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-25",
@@ -522,7 +522,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A team stores objects in Amazon S3 and wants to understand how the bill is calculated. Which description matches how AWS charges for storage of this kind?",
     options: [
-      { id: "a", text: "You typically pay per gigabyte stored, with no charge for inbound data transfer in most cases." },
+      { id: "a", text: "You pay per gigabyte stored, and inbound transfer is usually free." },
       { id: "b", text: "You pay a fixed monthly fee regardless of how much data you store." },
       { id: "c", text: "You are charged the same amount to upload data as to store it." },
       { id: "d", text: "Storage is always free; only compute is billed." },
@@ -534,7 +534,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon S3 pricing",
       url: "https://aws.amazon.com/s3/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -557,7 +557,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Pricing models",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-27",
@@ -591,7 +591,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "How does a customer make the commitment for a Savings Plan?",
     options: [
-      { id: "a", text: "By committing to a consistent amount of usage measured in dollars per hour for a one-year or three-year term." },
+      { id: "a", text: "By committing to dollars per hour of usage for one or three years." },
       { id: "b", text: "By committing to a fixed number of gigabytes of storage per month." },
       { id: "c", text: "By committing to a maximum monthly bill that AWS will never exceed." },
       { id: "d", text: "By paying a one-time fee that covers all compute for five years." },
@@ -603,7 +603,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -614,7 +614,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "easy",
     stem: "By default, on what kind of hardware do EC2 instances run with respect to other AWS customers?",
     options: [
-      { id: "a", text: "Shared tenancy hardware, where multiple AWS accounts might share the same physical host." },
+      { id: "a", text: "Shared tenancy hardware that other accounts may use." },
       { id: "b", text: "Hardware physically dedicated to your account only." },
       { id: "c", text: "Hardware you must purchase outright before launching." },
       { id: "d", text: "A single host shared with no other instances at all." },
@@ -626,7 +626,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -776,7 +776,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "An engineer asks how much warning EC2 gives before reclaiming a Spot Instance when it needs the capacity back. What does AWS provide?",
     options: [
-      { id: "a", text: "A Spot Instance interruption notice that gives a two-minute warning before the instance is interrupted." },
+      { id: "a", text: "A Spot Instance interruption notice two minutes ahead." },
       { id: "b", text: "A full 24-hour notice by email before reclamation." },
       { id: "c", text: "No warning of any kind." },
       { id: "d", text: "A guarantee that a running Spot Instance is never reclaimed." },
@@ -788,7 +788,7 @@ export const domain4Pricing: Question[] = [
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -845,8 +845,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about Standard versus Convertible Reserved Instances are correct? (Choose two.)",
     options: [
-      { id: "a", text: "A Standard Reserved Instance provides a more significant discount than a Convertible Reserved Instance." },
-      { id: "b", text: "A Convertible Reserved Instance can be exchanged during the term for another Convertible Reserved Instance with new attributes." },
+      { id: "a", text: "Standard Reserved Instances discount more than Convertible ones." },
+      { id: "b", text: "A Convertible Reserved Instance can be exchanged for another with new attributes." },
       { id: "c", text: "A Standard Reserved Instance can be exchanged for a Convertible Reserved Instance at any time." },
       { id: "d", text: "Convertible Reserved Instances offer no discount over On-Demand." },
       { id: "e", text: "Reserved Instances are interrupted by AWS with a two-minute notice when capacity is needed." },
@@ -858,7 +858,7 @@ export const domain4Pricing: Question[] = [
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -927,7 +927,7 @@ export const domain4Pricing: Question[] = [
       label: "Understanding how Savings Plans apply to your usage",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-applying.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -938,7 +938,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A workload has a predictable baseline that runs 24/7 plus short, unpredictable spikes that must stay reliable and cannot be interrupted. The team wants to minimize cost. Which combination fits best?",
     options: [
-      { id: "a", text: "A Savings Plan or Reserved Instances for the steady baseline, and On-Demand Instances for the unpredictable spikes." },
+      { id: "a", text: "A Savings Plan or Reserved Instances for the baseline, On-Demand for the spikes." },
       { id: "b", text: "Spot Instances for both the baseline and the spikes." },
       { id: "c", text: "On-Demand for the baseline and a three-year Reserved Instance for each short spike." },
       { id: "d", text: "Dedicated Hosts for the baseline and Spot for the spikes." },
@@ -950,7 +950,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -961,8 +961,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A company is matching EC2 purchase options to workloads. Which TWO pairings are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Spot Instances for fault-tolerant, interruptible batch processing that needs the deepest discount" },
-      { id: "b", text: "Dedicated Hosts for bringing existing per-socket or per-core software licenses to dedicated hardware" },
+      { id: "a", text: "Spot Instances for fault-tolerant batch jobs that can be interrupted" },
+      { id: "b", text: "Dedicated Hosts for existing per-socket or per-core software licenses" },
       { id: "c", text: "On-Demand Instances for a steady 24/7 workload that needs the lowest possible long-term price" },
       { id: "d", text: "Reserved Instances for a one-time task that runs for two hours and never again" },
       { id: "e", text: "Spot Instances for a payment system that must never be interrupted" },
@@ -974,7 +974,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -997,7 +997,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -1008,20 +1008,20 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about Compute Savings Plans and EC2 Instance Savings Plans are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Compute Savings Plans apply to EC2 usage regardless of instance family, size, Region, operating system, or tenancy, and also to Fargate and Lambda." },
-      { id: "b", text: "EC2 Instance Savings Plans require a commitment to a specific instance family in a chosen Region." },
+      { id: "a", text: "Compute Savings Plans cover EC2 in any family or Region, plus Fargate and Lambda." },
+      { id: "b", text: "EC2 Instance Savings Plans commit to one instance family in a chosen Region." },
       { id: "c", text: "Compute Savings Plans require you to commit to a single instance family in one Region." },
       { id: "d", text: "EC2 Instance Savings Plans automatically extend to Fargate and Lambda usage." },
       { id: "e", text: "Both plan types are commitments to a number of gigabytes stored per month." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans are not tied to one family, EC2 Instance plans do not automatically extend to Fargate and Lambda, and Savings Plans commit to dollars-per-hour compute usage, not storage.",
+      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans do not require a single instance family, EC2 Instance plans do not automatically extend to Fargate and Lambda, and Savings Plans commit to dollars-per-hour compute usage, not storage.",
     reference: {
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -1045,7 +1045,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -1126,7 +1126,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A practitioner notices that uploading data into AWS shows no transfer charge on the bill, while sending data out to the internet does. Which statement reflects the general AWS rule?",
     options: [
-      { id: "a", text: "In most cases there is no charge for inbound data transfer, while outbound data transfer is charged" },
+      { id: "a", text: "Inbound transfer is generally free, while outbound is charged" },
       { id: "b", text: "Inbound data transfer is charged, while outbound is free" },
       { id: "c", text: "Both inbound and outbound transfer are always free" },
       { id: "d", text: "Both inbound and outbound transfer are billed at the same fixed rate" },
@@ -1138,7 +1138,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Pricing overview",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-32",

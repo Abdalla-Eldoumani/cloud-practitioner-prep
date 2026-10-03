@@ -288,7 +288,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "hard",
     stem: "A migration team is selecting tools. Which TWO statements correctly match an AWS service to its primary migration purpose? (Choose two.)",
     options: [
-      { id: "a", text: "AWS Application Migration Service is the primary service for rehosting (lift and shift) servers to Amazon EC2." },
+      { id: "a", text: "AWS Application Migration Service rehosts servers to Amazon EC2." },
       { id: "b", text: "AWS Database Migration Service migrates databases while keeping the source operational." },
       { id: "c", text: "AWS Migration Hub physically ships disks to transfer petabytes of data." },
       { id: "d", text: "AWS DataSync replaces an application with a SaaS product." },
@@ -356,7 +356,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "medium",
     stem: "A team is classifying applications by migration strategy. Which TWO descriptions correctly match a strategy in the 7 Rs? (Choose two.)",
     options: [
-      { id: "a", text: "Rehost moves an application to AWS with little or no code change (lift and shift)." },
+      { id: "a", text: "Rehost is lift and shift with little or no code change." },
       { id: "b", text: "Replatform makes a few cloud optimizations without changing the core architecture." },
       { id: "c", text: "Retire keeps an application in its current environment for now." },
       { id: "d", text: "Refactor replaces an application with a third-party SaaS product." },
@@ -402,7 +402,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "hard",
     stem: "A remote site with little or no network connectivity needs to collect sensor data and run some local processing on it before shipping the data to AWS. Which capability of an AWS Snowball Edge device supports running compute at the edge?",
     options: [
-      { id: "a", text: "Snowball Edge can run local compute, including Amazon EC2 instances and AWS Lambda functions, on the device before the data reaches AWS." },
+      { id: "a", text: "Snowball Edge can run EC2 instances and Lambda functions on the device." },
       { id: "b", text: "Snowball Edge can only store data and cannot run any processing." },
       { id: "c", text: "Snowball Edge requires a constant high-speed internet connection to function." },
       { id: "d", text: "Snowball Edge is a managed relational database that runs in the cloud." },
@@ -414,7 +414,7 @@ export const domain1MigrationCaf: Question[] = [
       label: "AWS Snow Family",
       url: "https://aws.amazon.com/snowball/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Snow Family"],
   },
   {
@@ -534,7 +534,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "medium",
     stem: "A team must move an on-premises Oracle database to Amazon Aurora PostgreSQL, a different database engine. Which statement describes what AWS Database Migration Service offers for this migration?",
     options: [
-      { id: "a", text: "It supports moving between different engines: schema conversion assesses and converts the source schema for the target engine, and AWS DMS then moves the data and can replicate ongoing changes to keep source and target in sync." },
+      { id: "a", text: "It works across engines: schema conversion adapts the schema, then DMS moves the data." },
       { id: "b", text: "It supports migrations only where the source and target run an identical database engine." },
       { id: "c", text: "It ships the stored data to AWS on a physical device that AWS loads on arrival." },
       { id: "d", text: "It replaces the database with a software-as-a-service product bought from a vendor." },
@@ -551,7 +551,7 @@ export const domain1MigrationCaf: Question[] = [
       label: "What is AWS Database Migration Service?",
       url: "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DMS"],
   },
 ];

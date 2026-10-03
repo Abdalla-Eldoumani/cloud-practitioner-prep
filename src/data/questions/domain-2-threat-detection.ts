@@ -306,7 +306,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty", "Inspector", "Macie", "Detective", "Security Hub"],
   },
   {
@@ -317,7 +317,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which statement best describes how Amazon GuardDuty decides that activity is suspicious?",
     options: [
-      { id: "a", text: "It uses threat intelligence feeds, such as lists of malicious IP addresses and domains, along with machine learning models." },
+      { id: "a", text: "It uses threat intelligence feeds, such as malicious IP addresses and domains, and machine learning." },
       { id: "b", text: "It requires you to write and maintain your own detection rules for every threat." },
       { id: "c", text: "It installs an agent on each EC2 instance to scan files for malware signatures only." },
       { id: "d", text: "It compares your S3 object contents against a list of known sensitive data patterns." },
@@ -329,7 +329,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty"],
   },
   {
@@ -340,7 +340,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "What does Amazon Inspector check your resources for? Select the TWO things it detects. (Choose two.)",
     options: [
-      { id: "a", text: "Software vulnerabilities, such as an unpatched CVE in an installed package." },
+      { id: "a", text: "Software vulnerabilities, such as an unpatched CVE." },
       { id: "b", text: "Unintended network exposure, such as an open network path that should not be reachable." },
       { id: "c", text: "Sensitive data such as PII inside Amazon S3 objects." },
       { id: "d", text: "Anomalous sign-in patterns to the AWS Management Console." },
@@ -353,7 +353,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -387,7 +387,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "Which statement most accurately describes the relationship between Amazon GuardDuty and Amazon Detective?",
     options: [
-      { id: "a", text: "GuardDuty detects threats and generates findings; Detective helps you investigate those findings and identify the root cause." },
+      { id: "a", text: "GuardDuty detects threats; Detective helps investigate their root cause." },
       { id: "b", text: "Detective detects threats and generates findings; GuardDuty investigates them." },
       { id: "c", text: "Both services scan EC2 instances for software vulnerabilities." },
       { id: "d", text: "Both services discover sensitive data in Amazon S3." },
@@ -399,7 +399,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty", "Detective"],
   },
   {
@@ -410,7 +410,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "What does AWS Security Hub do to make findings from many different sources easier to work with?",
     options: [
-      { id: "a", text: "It normalizes findings into a standard format (the AWS Security Finding Format) and prioritizes them." },
+      { id: "a", text: "It normalizes findings into the AWS Security Finding Format and prioritizes them." },
       { id: "b", text: "It deletes all duplicate findings and keeps only one finding per account." },
       { id: "c", text: "It rewrites each finding into a real-time chat message for responders." },
       { id: "d", text: "It converts findings into AWS bills so security issues appear as line items." },
@@ -422,7 +422,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: reduced effort to collect and prioritize findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -504,7 +504,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "A compliance officer asks how often Amazon Inspector checks resources for new vulnerabilities. Which description is accurate?",
     options: [
-      { id: "a", text: "It scans automatically and continually, rescanning resources when changes occur or a new relevant CVE is published." },
+      { id: "a", text: "It scans continually, rescanning on changes or new CVEs." },
       { id: "b", text: "It scans only once, when you first enable it, and never again." },
       { id: "c", text: "It scans only when you manually start an assessment each time." },
       { id: "d", text: "It scans only on the first day of each calendar year." },
@@ -516,7 +516,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -551,8 +551,8 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements correctly describe how Amazon Detective supports an investigation? (Choose two.)",
     options: [
-      { id: "a", text: "It automatically organizes collected log data into a behavior graph that links activity across resources and time." },
-      { id: "b", text: "It uses machine learning, statistical analysis, and graph theory to generate visualizations." },
+      { id: "a", text: "It builds a behavior graph that links activity across resources and time." },
+      { id: "b", text: "It uses machine learning and graph theory to generate visualizations." },
       { id: "c", text: "It scans EC2 instances and container images for software vulnerabilities." },
       { id: "d", text: "It discovers personally identifiable information stored in Amazon S3." },
       { id: "e", text: "It automatically remediates findings by deleting the affected resources." },
@@ -564,7 +564,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective? How does Detective work?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Detective"],
   },
   {
@@ -599,7 +599,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A retailer must comply with a requirement to locate and protect cardholder data wherever it is stored in Amazon S3. Which service directly addresses locating that data, and why are the alternatives wrong?",
     options: [
-      { id: "a", text: "Amazon Macie, because it discovers sensitive data such as financial information in S3; GuardDuty, Inspector, and Detective do not classify S3 object contents as sensitive data." },
+      { id: "a", text: "Amazon Macie, because it discovers sensitive data in S3, which the others do not classify." },
       { id: "b", text: "Amazon GuardDuty, because it scans S3 objects for cardholder data, while Macie only watches logs." },
       { id: "c", text: "Amazon Inspector, because it scans S3 buckets for sensitive data and assigns a risk score." },
       { id: "d", text: "AWS Security Hub, because it discovers cardholder data and aggregates the results." },
@@ -611,7 +611,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Macie", "S3"],
   },
   {
@@ -692,7 +692,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "Amazon Inspector assigns a severity score tailored to your environment when it reports a vulnerability. What is this score called and what is it based on?",
     options: [
-      { id: "a", text: "The Amazon Inspector risk score, which adjusts the National Vulnerability Database base score to your compute environment." },
+      { id: "a", text: "The Amazon Inspector risk score, which adjusts the NVD base score to your environment." },
       { id: "b", text: "The AWS scaled score, the same 100 to 1000 scale used to grade certification exams." },
       { id: "c", text: "A sensitivity score based on how much PII the resource stores." },
       { id: "d", text: "A billing score based on how much the affected resource costs per hour." },
@@ -704,7 +704,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector? Amazon Inspector Risk score",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -762,7 +762,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A reviewer needs the single best statement that separates Amazon Inspector from Amazon GuardDuty. Which is it?",
     options: [
-      { id: "a", text: "Inspector finds vulnerabilities (weaknesses that could be exploited); GuardDuty detects active threats (signs that something malicious is happening)." },
+      { id: "a", text: "Inspector finds weaknesses that could be exploited; GuardDuty detects active threats." },
       { id: "b", text: "Inspector detects active threats from logs; GuardDuty scans for software vulnerabilities." },
       { id: "c", text: "Both find sensitive data in Amazon S3, but Inspector is faster." },
       { id: "d", text: "Both aggregate findings from other services, but GuardDuty also runs standard checks." },
@@ -774,7 +774,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector", "GuardDuty"],
   },
   {
@@ -785,7 +785,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which statement correctly describes how AWS Security Hub relates to GuardDuty, Inspector, and Macie?",
     options: [
-      { id: "a", text: "Security Hub consumes the findings those services generate; it does not replace their detection, scanning, or discovery functions." },
+      { id: "a", text: "Security Hub consumes the findings those services generate; it does not replace their detection or scanning." },
       { id: "b", text: "Security Hub replaces GuardDuty, Inspector, and Macie, so you no longer need to enable them." },
       { id: "c", text: "GuardDuty, Inspector, and Macie consume findings from Security Hub rather than the other way around." },
       { id: "d", text: "Security Hub and those three services all perform identical detection and produce duplicate findings." },
@@ -797,7 +797,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "AWS Security Hub User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -808,7 +808,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "A team wants threat detection but does not want to deploy or manage any sensors, software, or infrastructure to collect the data GuardDuty analyzes. Which statement is accurate?",
     options: [
-      { id: "a", text: "GuardDuty is a managed service that analyzes existing AWS data sources and logs, so there is no sensor or software for the team to deploy for its foundational detection." },
+      { id: "a", text: "GuardDuty analyzes existing AWS logs, so its foundational detection needs no sensors to deploy." },
       { id: "b", text: "GuardDuty requires installing a monitoring agent on every EC2 instance before it can detect any threat." },
       { id: "c", text: "GuardDuty requires the team to stand up and maintain a log collection cluster." },
       { id: "d", text: "GuardDuty only works after you export all logs to an on-premises SIEM." },
@@ -820,7 +820,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty"],
   },
   {

@@ -17,17 +17,17 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Amazon SageMaker AI" },
       { id: "b", text: "Amazon Rekognition" },
-      { id: "c", text: "Amazon Athena" },
+      { id: "c", text: "AWS Deep Learning AMIs" },
       { id: "d", text: "Amazon QuickSight" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
+      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, AWS Deep Learning AMIs are machine images for EC2 instances the team would still launch and manage itself, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
     reference: {
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SageMaker"],
   },
   {
@@ -269,20 +269,20 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "hard",
     stem: "A company is comparing the two main forms of Amazon Q, a generative AI assistant. Which TWO statements correctly match an Amazon Q offering to its focus? (Choose two.)",
     options: [
-      { id: "a", text: "Amazon Q Developer assists with building, operating, and transforming software, including coding help." },
+      { id: "a", text: "Amazon Q Developer helps build and operate software, including coding." },
       { id: "b", text: "Amazon Q Business answers questions using a company's own content, data, and systems." },
       { id: "c", text: "Amazon Q Developer is a managed relational database engine." },
       { id: "d", text: "Amazon Q Business is a service for running Apache Spark clusters." },
-      { id: "e", text: "Amazon Q is a physical networking appliance shipped to your data center." },
+      { id: "e", text: "Amazon Q Business is the assistant for writing and debugging application code." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Q Developer assists with building, operating, and transforming software, and Amazon Q Business answers questions over a company's own content and systems, so both pairings are correct. Amazon Q is a generative AI assistant, not a relational database (that is Amazon RDS), not a Spark cluster service (that is Amazon EMR), and not a physical appliance.",
+      "Amazon Q Developer assists with building, operating, and transforming software, and Amazon Q Business answers questions over a company's own content and systems, so both pairings are correct. Amazon Q is a generative AI assistant, not a relational database (that is Amazon RDS) and not a Spark cluster service (that is Amazon EMR), while help writing and debugging application code comes from Amazon Q Developer rather than Amazon Q Business.",
     reference: {
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Amazon Q"],
   },
   {
@@ -435,18 +435,18 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Apache Spark" },
       { id: "b", text: "Apache Hive" },
-      { id: "c", text: "Microsoft Excel" },
-      { id: "d", text: "Adobe Photoshop" },
+      { id: "c", text: "Amazon Redshift" },
+      { id: "d", text: "Amazon Athena" },
       { id: "e", text: "The AWS Management Console" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon EMR provides performance-optimized runtimes for open-source big data frameworks including Apache Spark and Apache Hive. Microsoft Excel and Adobe Photoshop are desktop applications, not big data frameworks, and the AWS Management Console is a web interface, so none of those are EMR frameworks.",
+      "Amazon EMR provides performance-optimized runtimes for open-source big data frameworks including Apache Spark and Apache Hive. Amazon Redshift is an AWS data warehouse and Amazon Athena is an AWS serverless query service, not open-source frameworks that EMR runs, and the AWS Management Console is a web interface, so none of those are EMR frameworks.",
     reference: {
       label: "Amazon EMR",
       url: "https://aws.amazon.com/emr/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EMR"],
   },
   {
@@ -504,18 +504,18 @@ export const domain3AimlAnalytics: Question[] = [
     stem: "A developer prefers to define cloud infrastructure using a general-purpose programming language such as TypeScript or Python, with loops and reusable components, and then have it provisioned through AWS CloudFormation. Which AWS tool enables this approach?",
     options: [
       { id: "a", text: "AWS Cloud Development Kit (AWS CDK)" },
-      { id: "b", text: "AWS CloudFormation Designer" },
+      { id: "b", text: "AWS Infrastructure Composer" },
       { id: "c", text: "AWS CodeDeploy" },
-      { id: "d", text: "AWS CodeCommit" },
+      { id: "d", text: "AWS Serverless Application Model (AWS SAM)" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. CloudFormation Designer is a visual template editor, CodeDeploy automates deployments, and CodeCommit is source control, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
+      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. Infrastructure Composer is a visual designer that drags and connects resources to generate CloudFormation templates, CodeDeploy automates deployments, and AWS SAM declares resources in templates that extend CloudFormation, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
     reference: {
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CDK", "CloudFormation"],
   },
   {
@@ -548,19 +548,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "An administrator wants to manage many AWS services from one downloadable tool that runs in a terminal, so the commands can be automated through shell scripts. Which way of accessing AWS is this?",
     options: [
-      { id: "a", text: "The AWS Command Line Interface (AWS CLI)" },
+      { id: "a", text: "The AWS Command Line Interface" },
       { id: "b", text: "The AWS Management Console" },
-      { id: "c", text: "Amazon QuickSight" },
+      { id: "c", text: "An AWS SDK inside application code" },
       { id: "d", text: "The AWS Health Dashboard" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS CLI is a unified tool that controls multiple AWS services from the command line and can be automated through scripts. The Management Console is a browser GUI, QuickSight is a BI service, and the Health Dashboard reports on service health, so none are the scriptable command-line tool.",
+      "The AWS CLI is a unified tool that controls multiple AWS services from the command line and can be automated through scripts. The Management Console is a browser GUI, an AWS SDK is a library that application code calls rather than a terminal tool, and the Health Dashboard reports on service health, so none are the scriptable command-line tool.",
     reference: {
       label: "AWS Command Line Interface (AWS CLI)",
       url: "https://aws.amazon.com/cli/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-aiml-23",
@@ -573,22 +573,22 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "Python" },
       { id: "b", text: "Java" },
       { id: "c", text: "HTML" },
-      { id: "d", text: "CSS" },
+      { id: "d", text: "Markdown" },
       { id: "e", text: "YAML" },
     ],
     correct: ["a", "b"],
     distractorRationales: {
       c: "HTML is a markup language for web page structure, not a programming language with an AWS SDK.",
-      d: "CSS is a styling language for web pages, not a programming language with an AWS SDK.",
+      d: "Markdown is a lightweight markup language for formatting text, not a programming language with an AWS SDK.",
       e: "YAML is a data format used for templates, not a programming language with an AWS SDK.",
     },
     explanation:
-      "AWS provides SDKs, which are language-specific libraries for calling AWS service APIs from code, for languages including Python and Java. HTML and CSS are markup and styling languages for web pages, not programming languages with an AWS SDK, and YAML is a data format used for templates rather than an SDK language.",
+      "AWS provides SDKs, which are language-specific libraries for calling AWS service APIs from code, for languages including Python and Java. HTML and Markdown are markup languages for formatting content, not programming languages with an AWS SDK, and YAML is a data format used for templates rather than an SDK language.",
     reference: {
       label: "AWS SDKs and Tools Reference Guide overview",
       url: "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-aiml-24",
@@ -792,12 +792,12 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "Templates can be authored in JSON or YAML." },
       { id: "b", text: "It manages a collection of related resources together as a stack." },
       { id: "c", text: "It only works with Amazon EC2 and cannot provision other services." },
-      { id: "d", text: "Templates must be written in Python source code." },
+      { id: "d", text: "Templates must be written in XML." },
       { id: "e", text: "It is a real-time data streaming service." },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudFormation templates can be authored in JSON or YAML, and CloudFormation provisions and manages the related resources together as a stack. It provisions many AWS resource types, not only EC2, templates are declarative JSON or YAML rather than Python source, and it is an infrastructure as code service, not a streaming service.",
+      "CloudFormation templates can be authored in JSON or YAML, and CloudFormation provisions and manages the related resources together as a stack. It provisions many AWS resource types, not only EC2, templates are written in JSON or YAML rather than XML, and it is an infrastructure as code service, not a streaming service.",
     reference: {
       label: "CloudFormation template format",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html",
@@ -859,7 +859,7 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "easy",
     stem: "Which statement best describes infrastructure as code on AWS?",
     options: [
-      { id: "a", text: "Defining and provisioning AWS resources from declarative template or code files rather than configuring each resource by hand." },
+      { id: "a", text: "Defining and provisioning AWS resources from template or code files." },
       { id: "b", text: "Writing application business logic that runs inside AWS Lambda functions." },
       { id: "c", text: "Manually clicking through the AWS Management Console to create each resource one at a time." },
       { id: "d", text: "Storing source code in a Git repository hosted on AWS." },
@@ -871,7 +871,7 @@ export const domain3AimlAnalytics: Question[] = [
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFormation", "CDK"],
   },
 ];

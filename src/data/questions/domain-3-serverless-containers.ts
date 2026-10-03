@@ -36,7 +36,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "easy",
     stem: "When you run a workload on AWS Lambda, who is responsible for the underlying server and operating system maintenance, capacity provisioning, and scaling?",
     options: [
-      { id: "a", text: "AWS manages the servers, operating system, capacity provisioning, and scaling; you are responsible only for your code." },
+      { id: "a", text: "AWS handles all of it; you are responsible only for your code." },
       { id: "b", text: "You provision and patch the servers, and AWS only stores your code." },
       { id: "c", text: "You manage the operating system, and AWS handles only billing." },
       { id: "d", text: "A third-party vendor manages the servers outside of AWS." },
@@ -59,7 +59,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "An application's traffic is unpredictable and can jump from a few requests per minute to thousands per second during a campaign. How does AWS Lambda handle this change in load?",
     options: [
-      { id: "a", text: "It scales automatically, running more instances of the function as events arrive and fewer as traffic falls." },
+      { id: "a", text: "It scales up and down automatically as event traffic rises and falls." },
       { id: "b", text: "It keeps a fixed number of servers running that you size in advance." },
       { id: "c", text: "It queues all requests and processes them one at a time on a single server." },
       { id: "d", text: "It requires you to manually launch additional capacity before each spike." },
@@ -106,7 +106,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "A team is moving a job that sometimes takes about 25 minutes to finish onto a single standard AWS Lambda function. What is the concern they must account for?",
     options: [
-      { id: "a", text: "A Lambda function can run for up to 15 minutes per invocation, so a 25-minute job would exceed the limit." },
+      { id: "a", text: "A Lambda function can run for up to 15 minutes, so 25 minutes exceeds the limit." },
       { id: "b", text: "A Lambda function has no time limit, so the 25-minute job runs without issue." },
       { id: "c", text: "A Lambda function can run for up to 60 minutes, so 25 minutes is well within range." },
       { id: "d", text: "A Lambda function can run only for 1 minute, so almost no job fits." },
@@ -129,7 +129,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A company wants a Lambda function to run automatically every time a new object is uploaded to an Amazon S3 bucket. Is this possible, and how?",
     options: [
-      { id: "a", text: "Yes. Amazon S3 can trigger the Lambda function on an object event, passing the event to the function." },
+      { id: "a", text: "Yes. Amazon S3 can trigger the function when an object is uploaded." },
       { id: "b", text: "No. Lambda can only be started manually from the console." },
       { id: "c", text: "Yes, but only if an administrator runs the function by hand after each upload." },
       { id: "d", text: "No. Lambda cannot integrate with Amazon S3." },
@@ -176,7 +176,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "A developer wants to control how much memory a Lambda function gets, knowing it affects performance. What happens to CPU and other resources when you raise the memory setting?",
     options: [
-      { id: "a", text: "You choose the memory, and Lambda allocates proportional CPU power and other resources." },
+      { id: "a", text: "Lambda allocates CPU power and other resources in proportion to memory." },
       { id: "b", text: "Memory and CPU are set independently, with no relationship between them." },
       { id: "c", text: "Raising memory has no effect on CPU; CPU is fixed for every function." },
       { id: "d", text: "You must request a separate CPU quota increase from AWS Support." },
@@ -223,7 +223,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "easy",
     stem: "A manager asks what people mean by a serverless service on AWS. Which description fits best?",
     options: [
-      { id: "a", text: "You run code or applications without provisioning or managing the underlying servers; AWS handles that for you." },
+      { id: "a", text: "You run code without provisioning or managing servers yourself." },
       { id: "b", text: "There are literally no servers involved anywhere in the service." },
       { id: "c", text: "You must buy and rack your own servers before using the service." },
       { id: "d", text: "It is a service that can only store data and cannot run code." },
@@ -235,7 +235,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda"],
   },
   {
@@ -246,7 +246,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A team is weighing a serverless approach with AWS Lambda against running their own EC2 instances. Which TWO are advantages of the serverless approach? (Choose two.)",
     options: [
-      { id: "a", text: "No servers to provision, patch, or manage; AWS handles the underlying infrastructure." },
+      { id: "a", text: "No servers to provision, patch, or manage." },
       { id: "b", text: "Scaling and high availability are built in and handled by the service." },
       { id: "c", text: "You get full operating-system-level control of the host." },
       { id: "d", text: "You pay a fixed monthly fee regardless of how much the code runs." },
@@ -270,7 +270,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A team needs deep, operating-system-level control of the host running their application, including custom kernel settings. Why is a fully serverless service such as AWS Lambda a poor fit for that specific need?",
     options: [
-      { id: "a", text: "Serverless trades away host-level control: AWS manages the servers, so you do not configure the operating system or kernel." },
+      { id: "a", text: "AWS manages the servers, so you cannot change kernel settings." },
       { id: "b", text: "Serverless services cannot run application code at all." },
       { id: "c", text: "Serverless services are always more expensive than any alternative." },
       { id: "d", text: "Serverless services require you to manage the servers yourself." },
@@ -316,20 +316,20 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A team setting up Amazon ECS is choosing how to run their containers. Which TWO compute options can run ECS tasks? (Choose two.)",
     options: [
-      { id: "a", text: "AWS Fargate, a serverless option where you do not manage the instances" },
+      { id: "a", text: "AWS Fargate, with no instances to manage" },
       { id: "b", text: "Amazon EC2 instances that you manage" },
-      { id: "c", text: "Amazon S3 buckets" },
+      { id: "c", text: "Amazon ECR repositories that store the task images" },
       { id: "d", text: "Amazon Route 53 hosted zones" },
-      { id: "e", text: "AWS IAM roles" },
+      { id: "e", text: "AWS Lambda functions" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. Amazon S3 buckets hold objects, Route 53 is DNS, and AWS IAM roles grant permissions; none of them are ECS compute options.",
+      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. Amazon ECR repositories store container images rather than run tasks, Route 53 is DNS, and AWS Lambda runs functions and is not a capacity option for ECS tasks.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ECS", "Fargate", "EC2"],
   },
   {
@@ -340,19 +340,19 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Which statement best describes Amazon ECS to someone new to containers on AWS?",
     options: [
-      { id: "a", text: "It is a fully managed container orchestration service that runs and scales containerized applications." },
+      { id: "a", text: "It is a fully managed container orchestration service." },
       { id: "b", text: "It is a managed relational database engine." },
-      { id: "c", text: "It is a service for sending email at scale." },
-      { id: "d", text: "It is a long-term archival storage tier." },
+      { id: "c", text: "It is a managed registry for storing container images." },
+      { id: "d", text: "It is AWS's managed Kubernetes service." },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes Amazon ECS as a fully managed container orchestration service that makes it easier to deploy, manage, and scale containerized applications. The other options describe unrelated categories such as databases, email, and archival storage.",
+      "AWS describes Amazon ECS as a fully managed container orchestration service that makes it easier to deploy, manage, and scale containerized applications. A registry for storing container images is Amazon ECR, AWS's managed Kubernetes service is Amazon EKS, and a relational database engine is a different category entirely.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ECS"],
   },
   {
@@ -364,18 +364,18 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "A company already runs Kubernetes on-premises and wants a managed Kubernetes service on AWS so it can keep using Kubernetes tooling. Which service should it choose?",
     options: [
       { id: "a", text: "Amazon Elastic Kubernetes Service (Amazon EKS)" },
-      { id: "b", text: "Amazon EC2 Auto Scaling" },
-      { id: "c", text: "Amazon DynamoDB" },
+      { id: "b", text: "Amazon Elastic Container Registry (Amazon ECR)" },
+      { id: "c", text: "Amazon Elastic Container Service (Amazon ECS)" },
       { id: "d", text: "AWS Elastic Beanstalk" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon EKS is a managed Kubernetes service that runs Kubernetes clusters on AWS, so existing Kubernetes skills and tooling carry over. EC2 Auto Scaling adjusts instance counts, DynamoDB is a NoSQL database, and Elastic Beanstalk deploys applications without exposing Kubernetes.",
+      "Amazon EKS is a managed Kubernetes service that runs Kubernetes clusters on AWS, so existing Kubernetes skills and tooling carry over. Amazon ECS is AWS's own container orchestration service rather than Kubernetes, Amazon ECR is a registry that stores container images, and Elastic Beanstalk deploys applications without exposing Kubernetes.",
     reference: {
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EKS"],
   },
   {
@@ -386,7 +386,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A team is concerned that moving to Amazon EKS will force them to rewrite their Kubernetes applications and abandon community tools. What does AWS state about EKS and Kubernetes compatibility?",
     options: [
-      { id: "a", text: "EKS is certified Kubernetes-conformant, so Kubernetes-compatible applications run without refactoring and community tooling and plugins work." },
+      { id: "a", text: "EKS is certified Kubernetes-conformant, so apps and community tools work as is." },
       { id: "b", text: "EKS uses a proprietary fork of Kubernetes that requires rewriting applications." },
       { id: "c", text: "EKS supports only AWS-specific tools and rejects open-source Kubernetes plugins." },
       { id: "d", text: "EKS requires converting Kubernetes workloads into AWS Lambda functions first." },
@@ -398,7 +398,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "What is Amazon EKS: Kubernetes compatibility and support",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EKS"],
   },
   {
@@ -409,7 +409,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "An organization is standardized on Kubernetes and wants a managed control plane while keeping the Kubernetes API and ecosystem. A second team simply wants AWS's own container orchestration without committing to Kubernetes. Which pairing fits best?",
     options: [
-      { id: "a", text: "Amazon EKS for the Kubernetes-standardized organization, and Amazon ECS for the team that wants AWS-native orchestration." },
+      { id: "a", text: "Amazon EKS for the Kubernetes-standardized organization, and Amazon ECS for the AWS-native team." },
       { id: "b", text: "Amazon ECS for the Kubernetes-standardized organization, and Amazon EKS for the AWS-native team." },
       { id: "c", text: "Amazon EC2 for both, with no container orchestration service." },
       { id: "d", text: "AWS Lambda for both, since containers are not supported on AWS." },
@@ -507,7 +507,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "An architect compares the Fargate launch type and the EC2 launch type for Amazon ECS. Which TWO statements are correct? (Choose two.)",
     options: [
-      { id: "a", text: "With the Fargate launch type, you package the application, specify CPU and memory, and launch it without managing servers." },
+      { id: "a", text: "With the Fargate launch type, you specify CPU and memory and manage no servers." },
       { id: "b", text: "With the EC2 launch type, you are responsible for provisioning, patching, and scaling the cluster of servers." },
       { id: "c", text: "With the Fargate launch type, you must still choose and patch the underlying EC2 instances." },
       { id: "d", text: "With the EC2 launch type, AWS fully manages the servers and you never touch them." },
@@ -520,7 +520,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ECS", "EC2", "Fargate"],
   },
   {
@@ -531,7 +531,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Under AWS Fargate, how does billing for running containers work?",
     options: [
-      { id: "a", text: "You pay only for the compute resources your tasks use, with no upfront expense." },
+      { id: "a", text: "You pay only for the compute resources your tasks use." },
       { id: "b", text: "You pay a flat monthly fee no matter how many tasks run." },
       { id: "c", text: "You pay only for the number of container images stored." },
       { id: "d", text: "You pay nothing because Fargate is always free." },
@@ -577,7 +577,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Within a typical container workflow on AWS, what is the role of Amazon ECR?",
     options: [
-      { id: "a", text: "It is the registry that stores container images, which orchestrators such as ECS or EKS pull to run." },
+      { id: "a", text: "It stores container images that ECS or EKS pull to run." },
       { id: "b", text: "It schedules and places running containers across a cluster." },
       { id: "c", text: "It is the Kubernetes control plane that EKS exposes." },
       { id: "d", text: "It is a relational database for container metadata." },
@@ -601,18 +601,18 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "A developer wants to upload a web application and have AWS handle the deployment, capacity provisioning, load balancing, auto scaling, and health monitoring, without designing that infrastructure piece by piece. Which service is built for this?",
     options: [
       { id: "a", text: "AWS Elastic Beanstalk" },
-      { id: "b", text: "Amazon S3" },
-      { id: "c", text: "Amazon VPC" },
+      { id: "b", text: "AWS CloudFormation" },
+      { id: "c", text: "Amazon EC2 Auto Scaling" },
       { id: "d", text: "AWS Outposts" },
     ],
     correct: ["a"],
     explanation:
-      "With AWS Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring. Amazon S3 is object storage, Amazon VPC is networking, and Outposts is on-premises AWS hardware, none of which deploy and manage an application this way.",
+      "With AWS Elastic Beanstalk you upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring. AWS CloudFormation provisions resources from a template in which you describe each resource yourself, Amazon EC2 Auto Scaling adds or removes EC2 instances but does not deploy your application, and Outposts is on-premises AWS hardware.",
     reference: {
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -624,7 +624,7 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "Which TWO statements about AWS Elastic Beanstalk are correct? (Choose two.)",
     options: [
       { id: "a", text: "You upload your code and it automatically handles deployment, capacity provisioning, load balancing, auto scaling, and health monitoring." },
-      { id: "b", text: "You retain full control over the AWS resources powering the application and can access the underlying resources at any time." },
+      { id: "b", text: "You keep full control of and access to the underlying AWS resources." },
       { id: "c", text: "It permanently locks the underlying resources so you cannot view or change them." },
       { id: "d", text: "It runs your application in an AWS account that you do not own." },
       { id: "e", text: "It requires you to design and wire the load balancer and auto scaling yourself before deploying." },
@@ -636,7 +636,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Overview: AWS Elastic Beanstalk",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -647,7 +647,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "What is the cost model for using AWS Elastic Beanstalk itself?",
     options: [
-      { id: "a", text: "There is no additional charge for Elastic Beanstalk; you pay only for the underlying AWS resources your application uses." },
+      { id: "a", text: "There is no extra charge; you pay only for the resources your application uses." },
       { id: "b", text: "Elastic Beanstalk charges a fixed monthly platform fee on top of the resources." },
       { id: "c", text: "Elastic Beanstalk charges per deployment regardless of resources used." },
       { id: "d", text: "Elastic Beanstalk is billed per developer seat." },
@@ -659,7 +659,7 @@ export const domain3ServerlessContainers: Question[] = [
       label: "AWS Elastic Beanstalk",
       url: "https://aws.amazon.com/elasticbeanstalk/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Elastic Beanstalk"],
   },
   {
@@ -693,20 +693,20 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements describe AWS Batch? (Choose two.)",
     options: [
-      { id: "a", text: "It dynamically provisions the optimal quantity and type of compute resources based on the volume and resource requirements of the jobs." },
+      { id: "a", text: "It provisions the optimal quantity and type of compute based on the jobs." },
       { id: "b", text: "It removes the need to install and manage batch computing software or server clusters to run your jobs." },
       { id: "c", text: "It always launches one fixed instance type that you cannot change." },
       { id: "d", text: "It requires you to manually pick and launch every instance before each job." },
-      { id: "e", text: "It is a content delivery network for caching files at the edge." },
+      { id: "e", text: "It is a container image registry for storing job images." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Batch dynamically provisions the optimal quantity and type of compute resources based on the volume and requirements of the jobs, and it removes the need to install and manage batch computing software or server clusters. It is not limited to one fixed instance type, does not require manual launching per job, and is not a content delivery network.",
+      "AWS Batch dynamically provisions the optimal quantity and type of compute resources based on the volume and requirements of the jobs, and it removes the need to install and manage batch computing software or server clusters. It is not limited to one fixed instance type, does not require manual launching per job, and is not a container image registry, which is the role of Amazon ECR.",
     reference: {
       label: "AWS Overview: AWS Batch",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Batch"],
   },
   {
@@ -718,18 +718,18 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "A small business wants the easiest way to launch a virtual private server with a bundle of compute, SSD storage, data transfer, and a static IP for a low, predictable monthly price. Which service fits?",
     options: [
       { id: "a", text: "Amazon Lightsail" },
-      { id: "b", text: "AWS Batch" },
+      { id: "b", text: "AWS Elastic Beanstalk" },
       { id: "c", text: "Amazon EKS" },
       { id: "d", text: "AWS Outposts" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server, with plans that bundle a virtual machine, SSD storage, data transfer, DNS management, and a static IP for a low, predictable price. Batch runs batch jobs, Amazon EKS is managed Kubernetes, and Outposts is on-premises AWS hardware.",
+      "Amazon Lightsail is designed to be the easiest way to launch and manage a virtual private server, with plans that bundle a virtual machine, SSD storage, data transfer, DNS management, and a static IP for a low, predictable price. Elastic Beanstalk deploys application code and charges only for the underlying resources rather than a bundled plan, Amazon EKS is managed Kubernetes, and Outposts is on-premises AWS hardware.",
     reference: {
       label: "AWS Overview: Amazon Lightsail",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lightsail"],
   },
   {
@@ -740,7 +740,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Which phrase best captures how Amazon Lightsail prices its plans and who it targets?",
     options: [
-      { id: "a", text: "A low, predictable monthly price for simple workloads such as websites and small applications." },
+      { id: "a", text: "A low, predictable monthly price aimed at websites and small apps." },
       { id: "b", text: "A pay-per-request model aimed at event-driven serverless functions." },
       { id: "c", text: "A commitment-based reservation aimed at large steady enterprise fleets." },
       { id: "d", text: "A per-gigabyte storage charge aimed at long-term archival." },
@@ -763,20 +763,20 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A bank is evaluating AWS Outposts. Which TWO statements about AWS Outposts are correct? (Choose two.)",
     options: [
-      { id: "a", text: "It brings native AWS services, infrastructure, and operating models to on-premises facilities." },
+      { id: "a", text: "It runs native AWS services and infrastructure on premises." },
       { id: "b", text: "It lets you use the same APIs and tools on-premises that you use in the AWS Cloud, for a consistent hybrid experience." },
       { id: "c", text: "It is a serverless function service that runs only in AWS Regions." },
-      { id: "d", text: "It is a billing dashboard for tracking on-premises spending." },
+      { id: "d", text: "Your own staff must maintain and repair the Outposts hardware." },
       { id: "e", text: "It requires rewriting applications into a proprietary on-premises format." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Outposts brings native AWS services, infrastructure, and operating models to on-premises facilities and lets you use the same APIs and tools as in the cloud for a consistent hybrid experience. It is not a cloud-only function service, not a billing dashboard, and does not require rewriting applications into a proprietary format.",
+      "AWS Outposts brings native AWS services, infrastructure, and operating models to on-premises facilities and lets you use the same APIs and tools as in the cloud for a consistent hybrid experience. It is not a cloud-only function service, AWS rather than your own staff maintains the hardware, and it does not require rewriting applications into a proprietary format.",
     reference: {
       label: "AWS Overview: AWS Outposts",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Outposts"],
   },
   {
@@ -787,19 +787,19 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "Which statement about AWS Outposts is accurate?",
     options: [
-      { id: "a", text: "It is fully managed AWS infrastructure installed in your data center, letting you run AWS services on-premises for a consistent hybrid experience." },
+      { id: "a", text: "It is fully managed AWS infrastructure that runs AWS services in your data center." },
       { id: "b", text: "It is a region of AWS data centers that customers cannot place on their own premises." },
       { id: "c", text: "It is a serverless function service that runs only in the AWS Cloud." },
-      { id: "d", text: "It is a billing tool for tracking on-premises spending." },
+      { id: "d", text: "It is AWS hardware that your own staff must maintain and repair." },
     ],
     correct: ["a"],
     explanation:
-      "AWS Outposts is fully managed AWS infrastructure placed in your own data center or facility so you can run native AWS services on-premises with the same APIs and tools, for a consistent hybrid experience. It is not a cloud-only Region, not a serverless function service, and not a billing tool.",
+      "AWS Outposts is fully managed AWS infrastructure placed in your own data center or facility so you can run native AWS services on-premises with the same APIs and tools, for a consistent hybrid experience. It is not a cloud-only Region and not a serverless function service, and AWS rather than your own staff maintains the hardware.",
     reference: {
       label: "AWS Outposts",
       url: "https://aws.amazon.com/outposts/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Outposts"],
   },
   {
@@ -856,7 +856,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "An architect maps workloads to AWS compute services. Which TWO pairings correctly match a need to a fitting service? (Choose two.)",
     options: [
-      { id: "a", text: "Run event-driven code with no servers to manage and pay-per-use billing: AWS Lambda." },
+      { id: "a", text: "Run event-driven code with pay-per-use billing: AWS Lambda." },
       { id: "b", text: "Run containers without managing servers on ECS or EKS: AWS Fargate." },
       { id: "c", text: "Store and share container images: Amazon EKS." },
       { id: "d", text: "Run AWS infrastructure on-premises for data residency: AWS Lambda." },
