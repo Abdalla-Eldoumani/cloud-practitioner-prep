@@ -409,7 +409,7 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Snowball Edge devices can run Amazon EC2 instances from AMIs and AWS Lambda code on the device to process data at the edge, which is useful in disconnected or remote locations. AWS will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, so learn this as exam knowledge rather than as a service to adopt today. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity, and it is a physical edge and transfer device rather than a cloud database.",
+      "Snowball Edge devices can run Amazon EC2 instances from AMIs and AWS Lambda code on the device to process data at the edge, which is useful in disconnected or remote locations. AWS will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, so learn this as exam knowledge rather than as a service to adopt today. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity rather than requiring a constant internet connection, and it is a physical edge and transfer device rather than a cloud database.",
     reference: {
       label: "AWS Snow Family",
       url: "https://aws.amazon.com/snowball/",
