@@ -402,7 +402,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "hard",
     stem: "A remote site with little or no network connectivity needs to collect sensor data and run some local processing on it before shipping the data to AWS. Which capability of an AWS Snowball Edge device supports running compute at the edge?",
     options: [
-      { id: "a", text: "Snowball Edge can run EC2 instances and Lambda functions on the device." },
+      { id: "a", text: "Snowball Edge runs EC2 instances and Lambda code on the device." },
       { id: "b", text: "Snowball Edge can only store data and cannot run any processing." },
       { id: "c", text: "Snowball Edge requires a constant high-speed internet connection to function." },
       { id: "d", text: "Snowball Edge is a managed relational database that runs in the cloud." },
@@ -534,7 +534,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "medium",
     stem: "A team must move an on-premises Oracle database to Amazon Aurora PostgreSQL, a different database engine. Which statement describes what AWS Database Migration Service offers for this migration?",
     options: [
-      { id: "a", text: "It works across engines: schema conversion adapts the schema, then DMS moves the data." },
+      { id: "a", text: "It converts the schema to the new engine, then DMS moves the data." },
       { id: "b", text: "It supports migrations only where the source and target run an identical database engine." },
       { id: "c", text: "It ships the stored data to AWS on a physical device that AWS loads on arrival." },
       { id: "d", text: "It replaces the database with a software-as-a-service product bought from a vendor." },
