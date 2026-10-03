@@ -24,12 +24,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Elasticity is the ability to acquire resources as you need them and release them when you no longer need them, so capacity grows for the spike and shrinks afterward. Reserving peak capacity year-round wastes money on idle resources, manual procurement is slow, and a flat server count cannot follow demand.",
+      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so capacity grows for the spike and shrinks afterward. Reserving peak capacity year-round wastes money on idle resources, manual procurement is slow, and a flat server count cannot follow demand.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-02",
@@ -68,12 +68,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Scalability is the ability of a system to adapt to a larger level of demand, while elasticity adds acquiring and automatically releasing resources to match demand as it rises and falls. A system that can grow but not automatically shrink is scalable yet not fully elastic; the inverted claim that scalability is only about shrinking misstates scalability, so the terms are not synonyms.",
+      "In the AWS Well-Architected Framework, a scalable workload adapts to changes in demand, and elasticity is adding or removing resources automatically so they closely match the current demand. A system that can grow but not automatically shrink is scalable yet not fully elastic; the inverted claim that scalability is only about shrinking misstates scalability, so the terms are not synonyms.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-04",
@@ -164,12 +164,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Scalability is a system's ability to adapt to greater demand, and elasticity is acquiring resources when needed and releasing them when they are not, so capacity tracks demand in both directions. The terms are not interchangeable; the claim that scalability means automatically removing capacity the instant demand drops attributes the elastic behavior to scalability, and elasticity is not limited to resizing one server.",
+      "Scalability is a workload's ability to adapt to changes in demand, and elasticity is adding or removing resources automatically so they closely match the current demand, so capacity tracks demand in both directions. The terms are not interchangeable; the claim that scalability means automatically removing capacity the instant demand drops attributes the elastic behavior to scalability, and elasticity is not limited to resizing one server.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-14",
@@ -209,12 +209,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Elasticity is the automatic acquiring and releasing of resources to match demand as it rises and falls, exactly what an Auto Scaling group does during and after a surge. Manually resizing a server, buying ahead once a year, and merely being designed to grow show scalability or planning, not the automatic two-way response that defines elasticity.",
+      "Elasticity is adding or removing resources automatically so they closely match demand as it rises and falls, exactly what an Auto Scaling group does during and after a surge. Manually resizing a server, buying ahead once a year, and merely being designed to grow show scalability or planning, not the automatic two-way response that defines elasticity.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -393,12 +393,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Scalability is the ability to adapt to greater demand, while elasticity adds the automatic acquiring and releasing of resources to match demand, so a scalable system is not automatically elastic. Elasticity is not a default freebie every scalable system already has, the two are not unrelated terms that never appear together, and a scalable system certainly can also be elastic.",
+      "Scalability is the ability to adapt to changes in demand, while elasticity means adding or removing resources automatically so they closely match the current demand, so being able to grow does not by itself make a system elastic. Elasticity is not a default freebie every scalable system already has, the two are not unrelated terms that never appear together, and a scalable system certainly can also be elastic.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-28",
@@ -459,12 +459,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Frequent, unpredictable bursts need elasticity: the automatic acquiring of resources for each burst and release afterward, with no manual step. Scalability alone allows growth but not automatic contraction, a fixed large capacity wastes money during the quiet periods, and hand-resizing one instance per burst cannot keep up.",
+      "Frequent, unpredictable bursts need elasticity: adding resources automatically for each burst and removing them afterward so capacity closely matches the current demand, with no manual step. Scalability alone allows growth but not automatic contraction, a fixed large capacity wastes money during the quiet periods, and hand-resizing one instance per burst cannot keep up.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-33",
@@ -482,12 +482,12 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Elasticity is acquiring resources as you need them and releasing them when you no longer need them, so both automatic expansion on rising demand and automatic release on falling demand are required. Sizing once for peak and leaving it unchanged, requiring an administrator to add capacity by hand for every spike, and never being able to reduce resources all contradict elasticity.",
+      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so both automatic expansion on rising demand and automatic release on falling demand are required. Sizing once for peak and leaving it unchanged, requiring an administrator to add capacity by hand for every spike, and never being able to reduce resources all contradict elasticity.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-34",
@@ -598,11 +598,11 @@ export const domain1Elasticity: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Scalability is the ability to adapt to greater demand and can exist without automatic release, while elasticity matches capacity to demand by automatically acquiring and releasing resources. The terms are not identical, elasticity is not limited to vertical scaling, and automatic give-back on a drop is the elastic behavior rather than the definition of scalability.",
+      "Scalability is the ability to adapt to changes in demand and can exist without automatic release, while elasticity adds or removes resources automatically so capacity closely matches the current demand. The terms are not identical, elasticity is not limited to vertical scaling, and automatic give-back on a drop is the elastic behavior rather than the definition of scalability.",
     reference: {
-      label: "AWS Cloud Computing: elasticity",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
 ];
