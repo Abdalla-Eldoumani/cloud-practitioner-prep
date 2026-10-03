@@ -64,7 +64,7 @@ export const domain4CostTools: Question[] = [
     stem: "Several accounts in an organization each push moderate data transfer volumes that, individually, stay in a higher pricing tier. After joining consolidated billing, the combined data transfer reaches a tier with a lower per-unit rate. Why does the combined bill drop?",
     options: [
       { id: "a", text: "Consolidated billing applies a fixed enterprise discount to all usage" },
-      { id: "b", text: "Usage across all accounts is combined, so tiered volume pricing is reached sooner" },
+      { id: "b", text: "Combined usage across accounts reaches volume pricing tiers sooner" },
       { id: "c", text: "Member accounts stop being billed once they join an organization" },
       { id: "d", text: "AWS waives data transfer charges inside an organization" },
     ],
@@ -75,7 +75,7 @@ export const domain4CostTools: Question[] = [
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
   {
@@ -321,7 +321,7 @@ export const domain4CostTools: Question[] = [
     stem: "Besides showing historical spend, AWS Cost Explorer can project upcoming costs. What is this projection based on?",
     options: [
       { id: "a", text: "A flat year-over-year inflation rate AWS applies to all accounts" },
-      { id: "b", text: "The account's past usage, which Cost Explorer uses to forecast future spend" },
+      { id: "b", text: "The account's past usage, used to forecast future spend" },
       { id: "c", text: "Quotes the customer enters into the Pricing Calculator" },
       { id: "d", text: "The list price of every service the account has ever enabled" },
     ],
@@ -332,7 +332,7 @@ export const domain4CostTools: Question[] = [
       label: "Forecasting with Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-forecast.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-15",
@@ -342,7 +342,7 @@ export const domain4CostTools: Question[] = [
     difficulty: "easy",
     stem: "What does it cost to view your cost and usage data in the AWS Cost Explorer user interface?",
     options: [
-      { id: "a", text: "It is free of charge to view in the user interface" },
+      { id: "a", text: "It is free to view in the user interface" },
       { id: "b", text: "A flat monthly subscription per account" },
       { id: "c", text: "A charge for every chart rendered" },
       { id: "d", text: "A percentage of the costs being analyzed" },
@@ -354,7 +354,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-16",
@@ -531,7 +531,7 @@ export const domain4CostTools: Question[] = [
     difficulty: "medium",
     stem: "Which statement correctly distinguishes AWS Cost Explorer from the AWS Cost and Usage Report?",
     options: [
-      { id: "a", text: "Cost Explorer provides an interactive visual analysis of costs, while the Cost and Usage Report delivers the most detailed line-item data to Amazon S3" },
+      { id: "a", text: "Cost Explorer is an interactive visual tool; the Cost and Usage Report delivers detailed line items to Amazon S3" },
       { id: "b", text: "Cost Explorer delivers raw line items to Amazon S3, while the Cost and Usage Report is an interactive console chart" },
       { id: "c", text: "Both tools only estimate the cost of future workloads before deployment" },
       { id: "d", text: "Both tools exist solely to send threshold alerts by email" },
@@ -543,7 +543,7 @@ export const domain4CostTools: Question[] = [
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-24",
@@ -621,7 +621,7 @@ export const domain4CostTools: Question[] = [
     difficulty: "medium",
     stem: "A company tags resources by department so it can later break down its AWS bill by team. What must happen before those tags appear as columns in Cost Explorer and on the cost allocation report?",
     options: [
-      { id: "a", text: "The tags must be activated as cost allocation tags in the Billing and Cost Management console" },
+      { id: "a", text: "The tags must be activated as cost allocation tags" },
       { id: "b", text: "The resources must be moved into a single AWS account" },
       { id: "c", text: "The tags must be registered with AWS Support" },
       { id: "d", text: "Nothing; every resource tag automatically appears in cost reports" },
@@ -633,7 +633,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-27",
@@ -688,7 +688,7 @@ export const domain4CostTools: Question[] = [
     difficulty: "hard",
     stem: "An organization wants to attribute costs to business categories such as cost center and application owner. Which statements about cost allocation tags are correct? (Choose two)",
     options: [
-      { id: "a", text: "Both AWS-generated and user-defined tags must be activated separately before they appear in cost reports" },
+      { id: "a", text: "Both AWS-generated and user-defined tags must be activated" },
       { id: "b", text: "Activated cost allocation tags let you group and view costs by tag in Cost Explorer and on the cost allocation report" },
       { id: "c", text: "Cost allocation tags reduce the bill by applying a discount to tagged resources" },
       { id: "d", text: "A single tag key can have many different values applied to the same resource at once" },
@@ -701,7 +701,7 @@ export const domain4CostTools: Question[] = [
       label: "Organizing and tracking costs using AWS cost allocation tags",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-30",
@@ -711,7 +711,7 @@ export const domain4CostTools: Question[] = [
     difficulty: "easy",
     stem: "Which sentence best describes the core purpose of AWS Budgets?",
     options: [
-      { id: "a", text: "It sets custom cost and usage budgets and alerts you when thresholds are approached or exceeded" },
+      { id: "a", text: "It sets custom budgets and alerts you when thresholds are approached or exceeded" },
       { id: "b", text: "It estimates the price of a planned architecture before any resources are launched" },
       { id: "c", text: "It delivers the most granular line-item billing data to Amazon S3" },
       { id: "d", text: "It consolidates payment for multiple AWS accounts onto one bill" },
@@ -723,7 +723,7 @@ export const domain4CostTools: Question[] = [
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-gov-16",
