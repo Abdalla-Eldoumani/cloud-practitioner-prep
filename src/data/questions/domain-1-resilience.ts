@@ -20,7 +20,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "A workload is described as fault tolerant. Which statement captures what that means?",
     options: [
-      { id: "a", text: "The workload keeps operating, possibly at reduced capacity, even when one of its components fails." },
+      { id: "a", text: "The workload keeps working through the failure of one of its components." },
       { id: "b", text: "The workload can never experience any fault under any circumstances." },
       { id: "c", text: "The workload runs on a single component that is guaranteed never to break." },
       { id: "d", text: "The workload only works when every component is healthy at the same time." },
@@ -32,7 +32,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: deploy the workload to multiple locations",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-05",
@@ -42,7 +42,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "In the AWS Well-Architected Framework, resiliency is described as the ability of a workload to do which of the following?",
     options: [
-      { id: "a", text: "Recover from infrastructure or service disruptions and dynamically acquire resources to meet demand." },
+      { id: "a", text: "Recover from disruptions and dynamically acquire resources to meet demand." },
       { id: "b", text: "Run forever without ever needing any recovery, because failures are impossible." },
       { id: "c", text: "Guarantee the lowest possible cost regardless of design." },
       { id: "d", text: "Encrypt all data so that no outage can ever occur." },
@@ -54,7 +54,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: resiliency and the components of reliability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-06",
@@ -64,7 +64,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "The Reliability pillar of the AWS Well-Architected Framework is centered on which capability of a workload?",
     options: [
-      { id: "a", text: "Performing its intended function correctly and consistently when it is expected to." },
+      { id: "a", text: "Performing its intended function correctly and consistently." },
       { id: "b", text: "Producing the most visually appealing user interface." },
       { id: "c", text: "Using the fewest possible AWS services regardless of the requirement." },
       { id: "d", text: "Storing data in as many file formats as possible." },
@@ -76,7 +76,7 @@ export const domain1Resilience: Question[] = [
       label: "AWS Well-Architected Framework: Reliability pillar",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-07",
@@ -86,7 +86,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "An architecture review encourages teams to assume that any component can fail at some point. Which design principle from the Reliability pillar most directly reflects this mindset?",
     options: [
-      { id: "a", text: "Automatically recover from failure by monitoring the workload and triggering automated responses." },
+      { id: "a", text: "Automatically recover from failure using monitoring and automation." },
       { id: "b", text: "Manually restart servers only after a customer reports an outage." },
       { id: "c", text: "Buy a single very large server so that nothing ever needs to fail over." },
       { id: "d", text: "Avoid monitoring so that alerts do not create noise." },
@@ -98,7 +98,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-08",
@@ -108,7 +108,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "A team has a disaster recovery plan written down but has never tried it. Which Reliability pillar design principle tells them what to do, and why the cloud makes it practical?",
     options: [
-      { id: "a", text: "Test recovery procedures, because in the cloud you can simulate failures and validate how the workload recovers before a real event." },
+      { id: "a", text: "Test recovery procedures by simulating failures in the cloud." },
       { id: "b", text: "Never test recovery, because testing always causes outages." },
       { id: "c", text: "Assume the written plan is correct because it was reviewed once." },
       { id: "d", text: "Test only the parts that are cheapest to test and skip the rest." },
@@ -120,7 +120,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-09",
@@ -130,7 +130,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "hard",
     stem: "AWS advises replacing one large resource with multiple smaller resources and spreading requests across them. Which reliability design principle is this, and what is the benefit?",
     options: [
-      { id: "a", text: "Scale horizontally to increase aggregate workload availability, because no single resource becomes a shared point of failure." },
+      { id: "a", text: "Scale horizontally to increase aggregate availability, avoiding a shared point of failure." },
       { id: "b", text: "Scale vertically only, because one large resource is always more reliable than several small ones." },
       { id: "c", text: "Stop guessing capacity, which is about right-sizing rather than splitting resources." },
       { id: "d", text: "Manage change through automation, which is about deployment process rather than resource count." },
@@ -142,7 +142,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-10",
@@ -175,7 +175,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "AWS recommends loosely coupling the components of an application. From a resilience standpoint, what is the main benefit of loose coupling?",
     options: [
-      { id: "a", text: "A failure in one component is isolated so it does not cascade to the components that depend on it." },
+      { id: "a", text: "A failure in one component does not cascade to its dependents." },
       { id: "b", text: "Every component must run on the same server to stay in sync." },
       { id: "c", text: "Components share one database directly so they always fail together." },
       { id: "d", text: "All components must respond synchronously to every request." },
@@ -187,7 +187,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-32",
@@ -197,7 +197,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "hard",
     stem: "An architect is moving from a tightly coupled monolith toward loosely coupled components for better resilience. Which TWO patterns does AWS associate with loose coupling? (Choose two.)",
     options: [
-      { id: "a", text: "Use a queue such as Amazon SQS as an intermediate layer between components." },
+      { id: "a", text: "Use an Amazon SQS queue as an intermediate layer between components." },
       { id: "b", text: "Make interactions asynchronous where an immediate response is not required." },
       { id: "c", text: "Have components share a single database to stay tightly synchronized." },
       { id: "d", text: "Invoke APIs directly between tiers with no failover or buffering." },
@@ -210,7 +210,7 @@ export const domain1Resilience: Question[] = [
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SQS"],
   },
   {
