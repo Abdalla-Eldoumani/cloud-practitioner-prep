@@ -39,11 +39,11 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "AWS handles all of it; you are responsible only for your code." },
       { id: "b", text: "You provision and patch the servers, and AWS only stores your code." },
       { id: "c", text: "You manage the operating system, and AWS handles only billing." },
-      { id: "d", text: "A third-party vendor manages the servers outside of AWS." },
+      { id: "d", text: "AWS patches the servers, but you provision and scale capacity." },
     ],
     correct: ["a"],
     explanation:
-      "With Lambda you are responsible only for your code; Lambda runs it on high-availability compute infrastructure and manages the compute resources, including server and operating system maintenance, capacity provisioning, automatic scaling, and logging. AWS does not hand the servers, patching, or operating system back to you, and no third-party vendor runs the servers outside of AWS.",
+      "With Lambda you are responsible only for your code; Lambda runs it on high-availability compute infrastructure and manages the compute resources, including server and operating system maintenance, capacity provisioning, automatic scaling, and logging. AWS does not hand the servers, patching, or operating system back to you, and it does not patch the servers while leaving you to provision and scale capacity.",
     reference: {
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
@@ -61,17 +61,17 @@ export const domain3ServerlessContainers: Question[] = [
     options: [
       { id: "a", text: "It scales up and down automatically as event traffic rises and falls." },
       { id: "b", text: "It keeps a fixed number of servers running that you size in advance." },
-      { id: "c", text: "It queues all requests and processes them one at a time on a single server." },
+      { id: "c", text: "It raises the function's memory setting automatically to absorb the load." },
       { id: "d", text: "It requires you to manually launch additional capacity before each spike." },
     ],
     correct: ["a"],
     explanation:
-      "Lambda scales up and down automatically as the compute layer that processes events grows and shrinks with traffic, so it absorbs spikes without changes to your code. It does not run a fixed manually sized fleet, serialize work on one server, or require you to pre-provision capacity.",
+      "Lambda scales up and down automatically as the compute layer that processes events grows and shrinks with traffic, so it absorbs spikes without changes to your code. It does not run a fixed manually sized fleet, it scales horizontally rather than by raising the memory setting, which you choose yourself, and it does not require you to pre-provision capacity.",
     reference: {
       label: "What is AWS Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda"],
   },
   {
@@ -85,17 +85,17 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "The number of requests to your functions" },
       { id: "b", text: "The duration your code runs" },
       { id: "c", text: "A flat monthly platform fee per account" },
-      { id: "d", text: "The number of IAM users in the account" },
+      { id: "d", text: "The number of functions deployed in the account" },
       { id: "e", text: "A fixed hourly rate charged whether or not the function runs" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS bases Lambda charges on the number of requests for your functions and the duration it takes for your code to run, with duration billed by the configured memory. There is no flat monthly platform fee, the bill does not depend on the number of IAM users in the account, and no hourly rate applies when the function is idle.",
+      "AWS bases Lambda charges on the number of requests for your functions and the duration it takes for your code to run, with duration billed by the configured memory. There is no flat monthly platform fee, the bill does not depend on how many functions are deployed in the account, and no hourly rate applies when the function is idle.",
     reference: {
       label: "AWS Lambda Pricing",
       url: "https://aws.amazon.com/lambda/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda"],
   },
   {
@@ -131,17 +131,17 @@ export const domain3ServerlessContainers: Question[] = [
     options: [
       { id: "a", text: "Yes. Amazon S3 can trigger the Lambda function on an object event, passing the event to the function." },
       { id: "b", text: "No. Lambda can only be started manually from the console." },
-      { id: "c", text: "Yes, but only if an administrator runs the function by hand after each upload." },
+      { id: "c", text: "Yes, but only by routing the S3 event through an Amazon SQS queue first." },
       { id: "d", text: "No. Lambda cannot integrate with Amazon S3." },
     ],
     correct: ["a"],
     explanation:
-      "Lambda is event-driven, and Amazon S3 is a common event source that pushes an event to a function when an object is uploaded, so the function runs automatically. A function does not have to be started manually from the console, no administrator needs to run it by hand after each upload, and Lambda integrates with S3 directly.",
+      "Lambda is event-driven, and Amazon S3 is a common event source that pushes an event to a function when an object is uploaded, so the function runs automatically. A function does not have to be started manually from the console, S3 invokes it directly with no Amazon SQS queue required in between, and Lambda integrates with S3 directly.",
     reference: {
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda", "S3"],
   },
   {
@@ -155,17 +155,17 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "Amazon API Gateway, when it receives an HTTP request" },
       { id: "b", text: "Amazon EventBridge, on a schedule defined by a rule" },
       { id: "c", text: "Amazon Route 53, by resolving a DNS name" },
-      { id: "d", text: "AWS Identity and Access Management, when a policy is attached" },
-      { id: "e", text: "AWS Cost Explorer, when a report is generated" },
+      { id: "d", text: "Amazon EFS, when a new file is written to a file system" },
+      { id: "e", text: "Amazon EBS, when data is written to a volume" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS documents API Gateway HTTP requests and EventBridge scheduled rules among the events that trigger Lambda functions. Route 53 resolves DNS and does not invoke functions, attaching an AWS Identity and Access Management policy governs permissions rather than firing an event, and Cost Explorer is a cost-analysis tool, not a Lambda event source.",
+      "AWS documents API Gateway HTTP requests and EventBridge scheduled rules among the events that trigger Lambda functions. Route 53 resolves DNS and does not invoke functions. Amazon EFS is not a Lambda event source: a function can mount an EFS file system, but writing a file to it does not invoke the function. Amazon EBS is not on the list of services that invoke Lambda either, so writing data to a volume is not a trigger; Amazon S3, not EBS, is the storage service that invokes a function when a new object arrives.",
     reference: {
       label: "Creating event-driven architectures with Lambda",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/concepts-event-driven-architectures.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda", "API Gateway", "EventBridge"],
   },
   {
@@ -225,12 +225,12 @@ export const domain3ServerlessContainers: Question[] = [
     options: [
       { id: "a", text: "You run code without provisioning or managing servers yourself." },
       { id: "b", text: "There are literally no servers involved anywhere in the service." },
-      { id: "c", text: "You must buy and rack your own servers before using the service." },
+      { id: "c", text: "You rent servers by the hour, and AWS only applies the patches." },
       { id: "d", text: "It is a service that can only store data and cannot run code." },
     ],
     correct: ["a"],
     explanation:
-      "Serverless means you run code without provisioning or managing servers; the servers still exist, but AWS operates them so you focus on your application. It does not mean there are literally no servers involved anywhere, you never buy and rack your own servers before using it, and serverless services such as Lambda run code and cannot be reduced to a service that can only store data.",
+      "Serverless means you run code without provisioning or managing servers; the servers still exist, but AWS operates them so you focus on your application. It does not mean there are literally no servers involved anywhere, you do not rent servers by the hour and leave only the patches to AWS, and serverless services such as Lambda run code and cannot be reduced to a service that can only store data.",
     reference: {
       label: "AWS Overview: AWS Lambda",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
@@ -250,16 +250,16 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "b", text: "Scaling and high availability are built in and handled by the service." },
       { id: "c", text: "You get full operating-system-level control of the host." },
       { id: "d", text: "You pay a fixed monthly fee regardless of how much the code runs." },
-      { id: "e", text: "You must size and reserve capacity in advance for peak load." },
+      { id: "e", text: "Functions can run for as long as needed, with no execution timeout." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Serverless removes server management and provides built-in scaling and high availability handled by the service. The tradeoff is less control: you do not get operating-system-level access to the host. Lambda also bills per request and duration rather than a fixed fee, and it scales automatically rather than requiring pre-reserved capacity.",
+      "Serverless removes server management and provides built-in scaling and high availability handled by the service. The tradeoff is less control: you do not get operating-system-level access to the host. Lambda also bills per request and duration rather than a fixed fee, and each invocation has a 15-minute limit rather than running for as long as needed with no timeout.",
     reference: {
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda", "EC2"],
   },
   {
@@ -271,18 +271,18 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "A team needs deep, operating-system-level control of the host running their application, including custom kernel settings. Why is a fully serverless service such as AWS Lambda a poor fit for that specific need?",
     options: [
       { id: "a", text: "AWS manages the servers, so you cannot change kernel settings." },
-      { id: "b", text: "Serverless services cannot run application code at all." },
+      { id: "b", text: "Kernel changes need an AWS Support request per function." },
       { id: "c", text: "Serverless services are always more expensive than any alternative." },
-      { id: "d", text: "Serverless services require you to manage the servers yourself." },
+      { id: "d", text: "Lambda runs code only when invoked by Amazon API Gateway." },
     ],
     correct: ["a"],
     explanation:
-      "The tradeoff of serverless is reduced control: because AWS provisions and maintains the servers and operating system, you cannot tune host-level or kernel settings. Serverless does run application code, it is not always more expensive than every alternative since cost depends on usage, and the whole point is that you do not manage the servers.",
+      "The tradeoff of serverless is reduced control: because AWS provisions and maintains the servers and operating system, you cannot tune host-level or kernel settings, and no AWS Support request changes that. Lambda is not limited to API Gateway invocations, since services such as Amazon S3 and EventBridge also trigger it, and serverless is not always more expensive than every alternative since cost depends on usage.",
     reference: {
       label: "What is AWS Lambda: How Lambda works",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda"],
   },
   {
@@ -294,18 +294,18 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "A company has packaged its application into containers and wants an AWS service to schedule, run, and manage those containers across a cluster. Which service is AWS's container orchestration service?",
     options: [
       { id: "a", text: "Amazon Elastic Container Service (Amazon ECS)" },
-      { id: "b", text: "Amazon Simple Storage Service (Amazon S3)" },
-      { id: "c", text: "Amazon Relational Database Service (Amazon RDS)" },
+      { id: "b", text: "Amazon Elastic Container Registry (Amazon ECR)" },
+      { id: "c", text: "Amazon EC2 Auto Scaling" },
       { id: "d", text: "Amazon CloudFront" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon ECS is a fully managed container orchestration service that runs and scales containerized workloads. S3 is object storage, RDS is a managed relational database, and CloudFront is a content delivery network, none of which orchestrate containers.",
+      "Amazon ECS is a fully managed container orchestration service that runs and scales containerized workloads. Amazon ECR is a registry that stores container images, Amazon EC2 Auto Scaling keeps the right number of EC2 instances in a group, and CloudFront is a content delivery network, none of which orchestrate containers.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ECS"],
   },
   {
@@ -319,12 +319,12 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "AWS Fargate, with no instances to manage" },
       { id: "b", text: "Amazon EC2 instances that you manage" },
       { id: "c", text: "Amazon ECR repositories that store the task images" },
-      { id: "d", text: "Amazon Route 53 hosted zones" },
+      { id: "d", text: "Amazon EKS managed node groups" },
       { id: "e", text: "AWS Lambda functions" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. Amazon ECR repositories store container images rather than run tasks, Route 53 is DNS, and AWS Lambda runs functions and is not a capacity option for ECS tasks.",
+      "Amazon ECS can run tasks on AWS Fargate, where you do not manage the underlying servers, or on Amazon EC2 instances that you manage. Amazon ECR repositories store container images rather than run tasks, EKS managed node groups provide nodes for Amazon EKS Kubernetes clusters rather than ECS, and AWS Lambda runs functions and is not a capacity option for ECS tasks.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
@@ -341,13 +341,13 @@ export const domain3ServerlessContainers: Question[] = [
     stem: "Which statement best describes Amazon ECS to someone new to containers on AWS?",
     options: [
       { id: "a", text: "It is a fully managed container orchestration service." },
-      { id: "b", text: "It is a managed relational database engine." },
+      { id: "b", text: "It is a serverless compute engine for containers." },
       { id: "c", text: "It is a managed registry for storing container images." },
       { id: "d", text: "It is AWS's managed Kubernetes service." },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes Amazon ECS as a fully managed container orchestration service that makes it easier to deploy, manage, and scale containerized applications. A registry for storing container images is Amazon ECR, AWS's managed Kubernetes service is Amazon EKS, and a relational database engine is a different category entirely.",
+      "AWS describes Amazon ECS as a fully managed container orchestration service that makes it easier to deploy, manage, and scale containerized applications. A registry for storing container images is Amazon ECR, AWS's managed Kubernetes service is Amazon EKS, and the serverless compute engine for containers is AWS Fargate, which runs ECS tasks rather than orchestrating them.",
     reference: {
       label: "Amazon ECS",
       url: "https://aws.amazon.com/ecs/",
@@ -389,11 +389,11 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "EKS is certified Kubernetes-conformant, so apps and community tools work as is." },
       { id: "b", text: "EKS uses a proprietary fork of Kubernetes that requires rewriting applications." },
       { id: "c", text: "EKS supports only AWS-specific tools and rejects open-source Kubernetes plugins." },
-      { id: "d", text: "EKS requires converting Kubernetes workloads into AWS Lambda functions first." },
+      { id: "d", text: "EKS requires converting Kubernetes manifests into ECS task definitions first." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that Amazon EKS is certified Kubernetes-conformant, so you can deploy Kubernetes-compatible applications without refactoring and use Kubernetes community tooling and plugins. It is not a proprietary fork, it does not reject open-source plugins, and it does not require converting workloads to Lambda.",
+      "AWS states that Amazon EKS is certified Kubernetes-conformant, so you can deploy Kubernetes-compatible applications without refactoring and use Kubernetes community tooling and plugins. It is not a proprietary fork, it does not reject open-source plugins, and it does not require converting manifests into ECS task definitions, which are the application blueprints Amazon ECS uses.",
     reference: {
       label: "What is Amazon EKS: Kubernetes compatibility and support",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
@@ -411,22 +411,22 @@ export const domain3ServerlessContainers: Question[] = [
     options: [
       { id: "a", text: "Amazon EKS for the Kubernetes-standardized organization, and Amazon ECS for the team that wants AWS-native orchestration." },
       { id: "b", text: "Amazon ECS for the Kubernetes-standardized organization, and Amazon EKS for the AWS-native team." },
-      { id: "c", text: "Amazon EC2 for both, with no container orchestration service." },
-      { id: "d", text: "AWS Lambda for both, since containers are not supported on AWS." },
+      { id: "c", text: "Amazon EKS for both, since all AWS containers run on Kubernetes." },
+      { id: "d", text: "AWS Fargate for both, since it needs no container orchestrator." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This reverses the pairing; EKS is the managed Kubernetes option and ECS is the AWS-native one, not the other way around.",
-      c: "Plain Amazon EC2 provides compute but no container orchestration service for either team.",
-      d: "Containers are supported on AWS, so AWS Lambda is not the orchestration answer for either team.",
+      c: "Not all AWS containers run on Kubernetes; Amazon ECS is AWS's own orchestrator, so EKS does not suit the team avoiding Kubernetes.",
+      d: "AWS Fargate is a serverless compute engine that runs ECS tasks and EKS pods; it works with an orchestrator rather than replacing one.",
     },
     explanation:
-      "Amazon EKS gives a managed Kubernetes control plane and the Kubernetes API and ecosystem, which suits a Kubernetes-standardized organization, while Amazon ECS is AWS's own orchestration for teams that do not need Kubernetes. The reversed pairing is wrong, plain EC2 provides no orchestration service, and containers are supported on AWS.",
+      "Amazon EKS gives a managed Kubernetes control plane and the Kubernetes API and ecosystem, which suits a Kubernetes-standardized organization, while Amazon ECS is AWS's own orchestration for teams that do not need Kubernetes. The reversed pairing is wrong, not all AWS containers run on Kubernetes because ECS does not use it, and AWS Fargate is a compute engine that works with ECS or EKS rather than a replacement for an orchestrator.",
     reference: {
       label: "What is Amazon EKS",
       url: "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EKS", "ECS"],
   },
   {
@@ -463,17 +463,17 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "Amazon Elastic Container Service (Amazon ECS)" },
       { id: "b", text: "Amazon Elastic Kubernetes Service (Amazon EKS)" },
       { id: "c", text: "Amazon Elastic Container Registry (Amazon ECR)" },
-      { id: "d", text: "Amazon Elastic Block Store (Amazon EBS)" },
-      { id: "e", text: "Amazon Simple Storage Service (Amazon S3)" },
+      { id: "d", text: "Amazon EC2 Auto Scaling" },
+      { id: "e", text: "AWS Lambda" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS states you can use AWS Fargate with Amazon ECS or Amazon EKS to run and scale containerized workloads without managing servers. ECR is a container image registry, EBS is block storage, and S3 is object storage, none of which orchestrate containers on Fargate.",
+      "AWS states you can use AWS Fargate with Amazon ECS or Amazon EKS to run and scale containerized workloads without managing servers. ECR is a container image registry, Amazon EC2 Auto Scaling keeps the right number of EC2 instances in a group, and AWS Lambda runs event-driven functions, so none of them orchestrate containers on Fargate.",
     reference: {
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Fargate", "ECS", "EKS"],
   },
   {
@@ -511,11 +511,11 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "b", text: "With the EC2 launch type, you are responsible for provisioning, patching, and scaling the cluster of servers." },
       { id: "c", text: "With the Fargate launch type, you must still choose and patch the underlying EC2 instances." },
       { id: "d", text: "With the EC2 launch type, AWS fully manages the servers and you never touch them." },
-      { id: "e", text: "Both launch types require you to run the containers outside of AWS." },
+      { id: "e", text: "Both launch types require Kubernetes to schedule the containers." },
     ],
     correct: ["a", "b"],
     explanation:
-      "With the Fargate launch type you package the application, specify CPU and memory, and launch it without managing servers, while with the EC2 launch type you provision, patch, and scale the cluster of servers yourself. Fargate does not require patching instances, the EC2 launch type is not fully AWS-managed, and both run containers on AWS.",
+      "With the Fargate launch type you package the application, specify CPU and memory, and launch it without managing servers, while with the EC2 launch type you provision, patch, and scale the cluster of servers yourself. Fargate does not require patching instances, the EC2 launch type is not fully AWS-managed, and neither launch type requires Kubernetes, because ECS is AWS's own container orchestrator.",
     reference: {
       label: "AWS Overview: AWS Fargate",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/compute-services.html",
@@ -534,16 +534,16 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "You pay only for the compute resources your tasks use." },
       { id: "b", text: "You pay a flat monthly fee no matter how many tasks run." },
       { id: "c", text: "You pay only for the number of container images stored." },
-      { id: "d", text: "You pay nothing because Fargate is always free." },
+      { id: "d", text: "You pay hourly for the EC2 hosts that run your tasks." },
     ],
     correct: ["a"],
     explanation:
-      "Fargate is pay-as-you-go: you pay only for the compute resources used by your tasks, with no upfront expense. It is not a flat fee, it does not bill by stored images, and it is not free.",
+      "Fargate is pay-as-you-go: you pay only for the compute resources used by your tasks, with no upfront expense. It is not a flat fee, it does not bill by stored images, and it does not charge for EC2 hosts, because you pay for the vCPU, memory, and storage your tasks consume.",
     reference: {
       label: "AWS Fargate",
       url: "https://aws.amazon.com/fargate/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Fargate"],
   },
   {
@@ -813,16 +813,16 @@ export const domain3ServerlessContainers: Question[] = [
       { id: "a", text: "Amazon ECS with the AWS Fargate launch type." },
       { id: "b", text: "Amazon EC2 instances with containers installed and managed by hand." },
       { id: "c", text: "AWS Lambda packaged as a 25-minute batch process." },
-      { id: "d", text: "Amazon Lightsail bundles sized for a database fleet." },
+      { id: "d", text: "Lightsail instances running Docker that you patch." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon ECS with the Fargate launch type runs containers without managing servers and does not require Kubernetes, which matches the requirement. Self-managed EC2 means managing servers, a 25-minute task exceeds Lambda's 15-minute limit, and Lightsail bundles are not the fit for serverless container orchestration here.",
+      "Amazon ECS with the Fargate launch type runs containers without managing servers and does not require Kubernetes, which matches the requirement. Self-managed EC2 means managing servers, a 25-minute task exceeds Lambda's 15-minute limit, and Lightsail instances are virtual private servers that you still patch and manage.",
     reference: {
       label: "AWS Lambda quotas",
       url: "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ECS", "Fargate"],
   },
   {
