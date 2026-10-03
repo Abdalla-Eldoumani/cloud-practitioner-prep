@@ -321,7 +321,7 @@ export const domain4CostTools: Question[] = [
     stem: "Besides showing historical spend, AWS Cost Explorer can project upcoming costs. What is this projection based on?",
     options: [
       { id: "a", text: "A flat year-over-year inflation rate AWS applies to all accounts" },
-      { id: "b", text: "The account's past usage, used to forecast future spend" },
+      { id: "b", text: "The account's past usage, to forecast future spend" },
       { id: "c", text: "Quotes the customer enters into the Pricing Calculator" },
       { id: "d", text: "The list price of every service the account has ever enabled" },
     ],
@@ -387,7 +387,7 @@ export const domain4CostTools: Question[] = [
     stem: "A team enabled Cost Explorer last quarter and now decides they no longer want it active. What should they expect when they try to turn it off?",
     options: [
       { id: "a", text: "Cost Explorer can be disabled at any time from the Billing console" },
-      { id: "b", text: "Cost Explorer cannot be disabled after it has been enabled" },
+      { id: "b", text: "Once enabled, Cost Explorer cannot be disabled" },
       { id: "c", text: "Disabling Cost Explorer also deletes all historical billing data" },
       { id: "d", text: "Only AWS Support can disable Cost Explorer on request" },
     ],
