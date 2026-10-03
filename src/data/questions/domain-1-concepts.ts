@@ -489,18 +489,18 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "Cloud computing delivers IT resources over the internet from a provider's platform." },
       { id: "b", text: "The provider owns and maintains the underlying hardware, while you provision what you need." },
-      { id: "c", text: "Cloud computing requires every customer to install servers in a shared building." },
-      { id: "d", text: "Cloud computing only works for storage, never for compute." },
-      { id: "e", text: "Cloud computing means the provider mails you servers to install yourself." },
+      { id: "c", text: "You still buy the servers, and the provider only houses them for you." },
+      { id: "d", text: "It is limited to storing files and cannot run applications." },
+      { id: "e", text: "You must sign a multi-year contract before using any resource." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS describes cloud computing as on-demand delivery of IT resources over the internet, where the provider owns and maintains the hardware and you provision what you need, so both of those are correct and buying and installing your own servers is the opposite of the model. It is not limited to storage and does not involve installing or receiving physical servers.",
+      "AWS describes cloud computing as the on-demand delivery of IT resources over the internet, where a cloud services platform such as AWS owns and maintains the network-connected hardware while you provision and use what you need, so buying and installing your own servers is the opposite of the model. You do not buy servers for the provider to house, cloud computing delivers compute power, databases, and applications as well as storage, and its pay-as-you-go pricing needs no multi-year contract before you start.",
     reference: {
-      label: "What is cloud computing?",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Overview of Amazon Web Services: What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-32",
