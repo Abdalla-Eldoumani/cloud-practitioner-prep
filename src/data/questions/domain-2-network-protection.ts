@@ -283,18 +283,18 @@ export const domain2NetworkProtection: Question[] = [
     stem: "A security review recommends layering subnet-level controls on top of instance-level controls so that a misconfigured instance launched without the right security group is still constrained. Which approach matches this defense-in-depth recommendation?",
     options: [
       { id: "a", text: "Use network ACLs as a secondary, subnet-wide control alongside security groups on the instances." },
-      { id: "b", text: "Replace all security groups with a single network ACL and remove instance-level controls." },
-      { id: "c", text: "Rely only on security groups and skip subnet-level controls entirely." },
+      { id: "b", text: "Attach a second security group to each instance to act as the subnet-wide layer." },
+      { id: "c", text: "Use subnet route tables to filter traffic at the subnet level." },
       { id: "d", text: "Use IAM policies on the subnet to filter network packets." },
     ],
     correct: ["a"],
     explanation:
-      "AWS suggests using network ACLs as a secondary control, because they apply to an entire subnet and can constrain an instance even if it was launched without the correct security group. Removing instance-level controls or relying on security groups alone reduces defense in depth, and IAM policies do not filter network packets.",
+      "AWS suggests using network ACLs as a secondary control, because they apply to an entire subnet and can constrain an instance even if it was launched without the correct security group. A second security group is still associated with individual instances, so it does nothing for an instance launched without it; route tables direct traffic to a destination rather than filtering it; and IAM policies do not filter network packets.",
     reference: {
       label: "Infrastructure security in Amazon VPC",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -329,18 +329,18 @@ export const domain2NetworkProtection: Question[] = [
     stem: "At which layer does AWS WAF inspect traffic to protect applications?",
     options: [
       { id: "a", text: "The application layer, by inspecting HTTP and HTTPS web requests." },
-      { id: "b", text: "The physical layer, by inspecting electrical signals on the wire." },
+      { id: "b", text: "The transport layer, by tracking the state of each TCP connection." },
       { id: "c", text: "The data link layer, by filtering MAC addresses." },
       { id: "d", text: "Only the network layer, by filtering IP packets without seeing request content." },
     ],
     correct: ["a"],
     explanation:
-      "AWS WAF inspects HTTP and HTTPS requests at the application layer, letting it act on request content such as strings, headers, and query strings. It does not work at the physical or data link layers, and unlike a pure packet filter it can see and act on web request content rather than only IP packets.",
+      "AWS WAF inspects HTTP and HTTPS requests at the application layer, letting it act on request content such as strings, headers, and query strings. It is not a transport-layer filter that tracks the state of each TCP connection, it does not filter MAC addresses at the data link layer, and unlike a pure packet filter it can see and act on web request content rather than only IP packets.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["WAF"],
   },
   {
@@ -377,18 +377,18 @@ export const domain2NetworkProtection: Question[] = [
     options: [
       { id: "a", text: "Allow all requests except the ones you specify." },
       { id: "b", text: "Block all requests except the ones you specify." },
-      { id: "c", text: "Encrypt all stored objects at rest." },
+      { id: "c", text: "Strip SQL injection code from a request and forward the rest." },
       { id: "d", text: "Reroute matching requests to a different AWS Region." },
-      { id: "e", text: "Provision additional EC2 capacity when traffic spikes." },
+      { id: "e", text: "Cache responses at edge locations to absorb traffic spikes." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS WAF lets you allow all requests except the ones you specify, or block all requests except the ones you specify (it can also count requests and run CAPTCHA or challenge checks). Encryption at rest, cross-Region rerouting, and provisioning compute are not AWS WAF request-handling behaviors.",
+      "AWS WAF lets you allow all requests except the ones you specify, or block all requests except the ones you specify (it can also count requests and run CAPTCHA or challenge checks). It does not strip SQL injection code out of a request and forward the rest, because its rule actions apply to the request as a whole; caching responses at edge locations is what Amazon CloudFront does; and rerouting requests to a different Region is not an AWS WAF request-handling behavior.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["WAF"],
   },
   {
@@ -400,18 +400,18 @@ export const domain2NetworkProtection: Question[] = [
     stem: "Rather than writing every rule from scratch, a team wants to apply a curated set of common protections maintained by AWS to their AWS WAF web ACL. Which AWS WAF capability provides this?",
     options: [
       { id: "a", text: "AWS Managed Rules rule groups" },
-      { id: "b", text: "Reserved Instances for AWS WAF" },
+      { id: "b", text: "AWS Config managed rules for compliance" },
       { id: "c", text: "Network ACL inheritance" },
       { id: "d", text: "Security group rule import" },
     ],
     correct: ["a"],
     explanation:
-      "AWS WAF offers managed rule groups from AWS and AWS Marketplace sellers, so teams can apply curated protections without authoring every rule. Reserved Instances are an EC2 pricing model, and network ACLs and security groups are VPC controls that do not feed rules into a WAF web ACL.",
+      "AWS WAF offers managed rule groups from AWS and AWS Marketplace sellers, so teams can apply curated protections without authoring every rule. AWS Config managed rules are also predefined by AWS, but they evaluate whether resources comply with best practices rather than filtering web requests, and network ACLs and security groups are VPC controls that do not feed rules into a WAF web ACL.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["WAF"],
   },
   {
@@ -471,17 +471,17 @@ export const domain2NetworkProtection: Question[] = [
     options: [
       { id: "a", text: "Subscribe to AWS Shield Advanced." },
       { id: "b", text: "Rely on AWS Shield Standard alone, since it includes the response team." },
-      { id: "c", text: "Use AWS Config rules to absorb the attack traffic." },
-      { id: "d", text: "Switch all instances to Spot Instances." },
+      { id: "c", text: "Enable Amazon GuardDuty to detect and block the attacks." },
+      { id: "d", text: "Deploy AWS WAF on its own, since it includes the response team." },
     ],
     correct: ["a"],
     explanation:
-      "AWS Shield Advanced is the paid subscription that provides expanded DDoS protection and access to the Shield Response Team, which suits high-visibility or frequently attacked applications. Shield Standard does not include the response team, AWS Config evaluates configurations rather than absorbing attacks, and Spot Instances are a pricing choice unrelated to DDoS defense.",
+      "AWS Shield Advanced is the paid subscription that provides expanded DDoS protection and access to the Shield Response Team, which suits high-visibility or frequently attacked applications. Shield Standard does not include the response team, Amazon GuardDuty is a threat detection service that analyzes logs and data sources rather than blocking attack traffic, and AWS WAF deployed on its own does not come with the Shield Response Team, which is a Shield Advanced capability.",
     reference: {
       label: "AWS Shield Advanced capabilities and options",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary-capabilities.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield"],
   },
   {
@@ -495,11 +495,11 @@ export const domain2NetworkProtection: Question[] = [
       { id: "a", text: "DDoS cost protection against scaling charges from DDoS-related usage spikes" },
       { id: "b", text: "Automatic caps that stop protected resources from scaling up during an attack." },
       { id: "c", text: "Automatic conversion of On-Demand Instances to Reserved Instances." },
-      { id: "d", text: "Free unlimited data transfer for the life of the account." },
+      { id: "d", text: "A refund of the monthly subscription fee for any month with an attack." },
     ],
     correct: ["a"],
     explanation:
-      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It does not put caps on scaling; when protected resources scale up in response to an attack, you request Shield Advanced service credits instead. It performs no automatic conversion of On-Demand Instances to Reserved Instances, and it does not grant unlimited free data transfer.",
+      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It does not put caps on scaling; when protected resources scale up in response to an attack, you request Shield Advanced service credits instead. It performs no automatic conversion of On-Demand Instances to Reserved Instances, and the cost protection arrives as service credits for those usage spikes rather than as a refund of the monthly subscription fee.",
     reference: {
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
@@ -564,17 +564,17 @@ export const domain2NetworkProtection: Question[] = [
     options: [
       { id: "a", text: "AWS Shield, which protects against DDoS" },
       { id: "b", text: "AWS WAF, which inspects individual web requests for exploits" },
-      { id: "c", text: "AWS Config, which records resource configuration history" },
-      { id: "d", text: "Amazon Macie, which discovers sensitive data" },
+      { id: "c", text: "Amazon GuardDuty, which detects threats in account activity" },
+      { id: "d", text: "Amazon CloudWatch, which alarms on spikes in incoming traffic" },
     ],
     correct: ["a"],
     explanation:
-      "A flood designed to overwhelm an application and deny service is a DDoS attack, which AWS Shield addresses. AWS WAF filters individual web requests for exploits such as SQL injection, Config records configuration history, and Macie discovers and protects sensitive data, none of which is the DDoS defense here.",
+      "A flood designed to overwhelm an application and deny service is a DDoS attack, which AWS Shield addresses. AWS WAF filters individual web requests for exploits such as SQL injection, Amazon GuardDuty detects suspicious activity by analyzing logs and data sources, and a CloudWatch alarm watches a metric and sends a notification or takes an action when a threshold is breached, none of which is the DDoS defense here.",
     reference: {
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield", "WAF"],
   },
   {
@@ -610,18 +610,18 @@ export const domain2NetworkProtection: Question[] = [
     options: [
       { id: "a", text: "The IP address a request originates from." },
       { id: "b", text: "The presence of SQL code that is likely to be malicious (SQL injection)." },
-      { id: "c", text: "The EC2 instance type running the application." },
-      { id: "d", text: "The Reserved Instance term purchased for the account." },
+      { id: "c", text: "The MAC address of the client's network adapter." },
+      { id: "d", text: "The IAM role the requesting user has assumed." },
       { id: "e", text: "The Availability Zone the request was physically routed through." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS WAF can match on web request attributes such as the originating IP address and the presence of likely SQL injection (it can also match country, header values, strings, regex patterns, request length, and cross-site scripting). The EC2 instance type, the Reserved Instance term, and the Availability Zone are not web request attributes WAF inspects.",
+      "AWS WAF can match on web request attributes such as the originating IP address and the presence of likely SQL injection (it can also match country, header values, strings, regex patterns, request length, and cross-site scripting). The request components it inspects are parts of the web request itself, such as the method, headers, cookies, URI path, query string, and body, so the client's MAC address, an IAM role the user has assumed, and the Availability Zone the request was routed through are not criteria WAF matches on.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["WAF"],
   },
   {
@@ -657,18 +657,18 @@ export const domain2NetworkProtection: Question[] = [
     options: [
       { id: "a", text: "AWS WAF rules" },
       { id: "b", text: "AWS Shield Advanced protections" },
-      { id: "c", text: "Amazon S3 bucket lifecycle policies" },
-      { id: "d", text: "EC2 instance purchase options" },
+      { id: "c", text: "Amazon GuardDuty threat detection" },
+      { id: "d", text: "AWS KMS key policies" },
       { id: "e", text: "IAM password policies" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Firewall Manager manages protections including AWS WAF, AWS Shield Advanced, VPC security groups and network ACLs, AWS Network Firewall, and Route 53 Resolver DNS Firewall across accounts. S3 lifecycle policies, EC2 purchase options, and IAM password policies are not protections Firewall Manager orchestrates.",
+      "AWS Firewall Manager manages protections including AWS WAF, AWS Shield Advanced, VPC security groups and network ACLs, AWS Network Firewall, and Route 53 Resolver DNS Firewall across accounts. Amazon GuardDuty threat detection, AWS KMS key policies, and IAM password policies are not among the protections Firewall Manager orchestrates.",
     reference: {
       label: "What is AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Firewall Manager", "WAF", "Shield"],
   },
   {
