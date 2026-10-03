@@ -426,7 +426,7 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A developer has an existing application written for PostgreSQL and wants to move it to Amazon Aurora with minimal changes while gaining cloud-built performance and availability. Which statement about Aurora is correct?",
     options: [
-      { id: "a", text: "Aurora is fully compatible with PostgreSQL and MySQL." },
+      { id: "a", text: "Aurora is compatible with PostgreSQL and MySQL." },
       { id: "b", text: "Aurora is a NoSQL key-value database with no SQL support." },
       { id: "c", text: "Aurora only supports the Oracle and SQL Server engines." },
       { id: "d", text: "Aurora is an in-memory cache rather than a database." },
