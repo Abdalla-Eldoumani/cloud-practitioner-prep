@@ -231,7 +231,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     difficulty: "medium",
     stem: "Two components currently call each other directly, so when the downstream component is unavailable the upstream component fails and work is lost. Following AWS guidance, what is a common way to make the system more resilient?",
     options: [
-      { id: "a", text: "Put a message queue or topic between the two components to decouple them." },
+      { id: "a", text: "Decouple them with a message queue or topic in between." },
       { id: "b", text: "Combine both components into a single larger instance so there is no network call." },
       { id: "c", text: "Move the downstream component onto one larger instance so it has more capacity." },
       { id: "d", text: "Run both components on the same physical server to avoid the network." },
