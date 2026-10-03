@@ -17,18 +17,18 @@ export const domain1Concepts: Question[] = [
     stem: "A new engineer asks for a one-sentence definition of cloud computing as AWS describes it. Which statement fits best?",
     options: [
       { id: "a", text: "The on-demand delivery of IT resources over the internet with pay-as-you-go pricing." },
-      { id: "b", text: "A way to buy physical servers in bulk and house them in your own building." },
-      { id: "c", text: "Software that runs only on a laptop with no network connection." },
+      { id: "b", text: "Running virtual machines on servers in your own data center." },
+      { id: "c", text: "Storing files on remote servers so they sync across your devices." },
       { id: "d", text: "A fixed annual contract for a set number of servers regardless of use." },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. Buying physical servers in bulk to house in your own building describes owning on-premises hardware, while offline laptop software and a fixed annual server contract are likewise the opposite of the on-demand, consumption-based model AWS describes.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. Running virtual machines on servers in your own data center is still owning on-premises hardware, syncing files across devices describes one consumer use of remote storage rather than the definition, and a fixed annual server contract is the opposite of the on-demand, consumption-based model AWS describes.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-02",
@@ -39,18 +39,18 @@ export const domain1Concepts: Question[] = [
     stem: "A team wants to spin up servers without buying hardware in advance and pay only for what it consumes. Which characteristic of cloud computing makes this possible?",
     options: [
       { id: "a", text: "On-demand access to resources that you pay for as you use them." },
-      { id: "b", text: "A requirement to purchase a three-year hardware lease before launching anything." },
-      { id: "c", text: "A flat monthly fee that is the same no matter how much you use." },
-      { id: "d", text: "Free unlimited use of every resource with no billing at all." },
+      { id: "b", text: "Committing to a one- or three-year term in exchange for lower prices." },
+      { id: "c", text: "Deploying to multiple Regions for lower latency worldwide." },
+      { id: "d", text: "Running across Availability Zones so one failure does not stop you." },
     ],
     correct: ["a"],
     explanation:
-      "Cloud computing provides on-demand access to resources you provision and pay for as you consume them, with no large upfront hardware purchase. A multi-year lease, a fixed flat fee, and unlimited free use all contradict the pay-as-you-go, on-demand model.",
+      "Cloud computing provides on-demand access to resources you provision and pay for as you consume them, with no large upfront hardware purchase. A one- or three-year term commitment, as with Savings Plans, trades flexibility for lower prices rather than paying only for what you consume, while deploying to multiple Regions and running across Availability Zones describe global reach and fault isolation, not paying as you go.",
     reference: {
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-03",
@@ -61,18 +61,18 @@ export const domain1Concepts: Question[] = [
     stem: "Which phrase in the AWS definition of cloud computing describes HOW customers reach the IT resources?",
     options: [
       { id: "a", text: "Over the internet" },
-      { id: "b", text: "Only through a direct fiber line you install yourself" },
-      { id: "c", text: "By shipping a hard drive to the provider" },
-      { id: "d", text: "Through a dedicated satellite each customer must own" },
+      { id: "b", text: "Only over a dedicated private network connection" },
+      { id: "c", text: "Through servers installed in your own data center" },
+      { id: "d", text: "With pay-as-you-go pricing" },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that cloud computing delivers IT resources over the internet. A self-installed fiber line, shipping a hard drive to the provider, or owning a dedicated satellite are not how AWS describes access to cloud resources.",
+      "AWS states that cloud computing delivers IT resources over the internet. A dedicated private network connection and servers installed in your own data center are not what the definition names, and pay-as-you-go pricing is part of the definition but describes how customers pay, not how they reach the resources.",
     reference: {
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-04",
@@ -86,16 +86,16 @@ export const domain1Concepts: Question[] = [
       { id: "b", text: "It stops paying for the compute once the resources are turned off." },
       { id: "c", text: "It is billed for a full month of usage no matter how long the job ran." },
       { id: "d", text: "It must commit to a year of capacity in advance to run the job." },
-      { id: "e", text: "It pays nothing, because all AWS compute is free of charge." },
+      { id: "e", text: "Its bill is fixed in advance, so running longer would not cost more." },
     ],
     correct: ["a", "b"],
     explanation:
-      "With pay-as-you-go pricing you pay only for the resources you consume, and you stop paying for compute when it is not running, so both of those are correct. AWS does not force a full month or a committed year of billing for a short job, and compute is a paid resource rather than free.",
+      "With pay-as-you-go pricing you pay only for the resources you consume, and you stop paying for compute when it is not running, so both of those are correct. AWS does not force a full month or a committed year of billing for a short job, and the bill is not fixed in advance, because under pay-as-you-go a longer run consumes more and costs more.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-05",
@@ -107,18 +107,18 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "On-demand delivery of IT resources" },
       { id: "b", text: "Pay-as-you-go pricing" },
-      { id: "c", text: "A mandatory upfront purchase of physical servers" },
-      { id: "d", text: "Access restricted to a single office building" },
+      { id: "c", text: "Delivery over a dedicated private network" },
+      { id: "d", text: "Guaranteed uptime for every resource" },
       { id: "e", text: "A permanent flat fee unrelated to usage" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing, so on-demand delivery and pay-as-you-go pricing are both part of it. A mandatory hardware purchase, single-building access, and a usage-independent flat fee all contradict that definition.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing, so on-demand delivery and pay-as-you-go pricing are both part of it. The definition names delivery over the internet rather than a dedicated private network, it makes no promise of guaranteed uptime, and a usage-independent flat fee contradicts pay-as-you-go pricing.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-14",
@@ -131,11 +131,11 @@ export const domain1Concepts: Question[] = [
       { id: "a", text: "The server, which receives requests and returns responses." },
       { id: "b", text: "The client, which originates the request." },
       { id: "c", text: "A router that only forwards packets and stores nothing." },
-      { id: "d", text: "A peer with no defined role in the exchange." },
+      { id: "d", text: "A peer that shares requests and responses equally." },
     ],
     correct: ["a"],
     explanation:
-      "In the client-server model the client makes a request and the server receives that request and returns a response, so the remote machine that answers is the server. The browser is the client, and a server is more than a forwarding router, so the other roles do not match.",
+      "In the client-server model the client makes a request and the server receives that request and returns a response, so the remote machine that answers is the server. The browser is the client, a server is more than a forwarding router, and the model gives the two sides distinct roles rather than making the remote machine a peer that shares requests and responses equally.",
     reference: {
       label: "What is an API?",
       url: "https://aws.amazon.com/what-is/api/",
@@ -151,18 +151,18 @@ export const domain1Concepts: Question[] = [
     stem: "On AWS, what is an Amazon EC2 instance, in the terms AWS uses?",
     options: [
       { id: "a", text: "A virtual server in the AWS Cloud." },
-      { id: "b", text: "A physical hard drive shipped to your office." },
-      { id: "c", text: "A billing report for past usage." },
+      { id: "b", text: "A preconfigured server template." },
+      { id: "c", text: "A storage volume for server data." },
       { id: "d", text: "A firewall rule that filters traffic." },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines an EC2 instance as a virtual server in the AWS Cloud, which acts as the server side of the client-server model. A hard drive, a billing report, and a firewall rule are different things; storage, cost reporting, and security groups are separate concepts.",
+      "AWS defines an EC2 instance as a virtual server in the AWS Cloud, which acts as the server side of the client-server model. A preconfigured server template is an Amazon Machine Image, a storage volume for data is an Amazon EBS volume, and a firewall rule that filters traffic belongs to a security group; each is used with an instance but is not the instance itself.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -199,12 +199,12 @@ export const domain1Concepts: Question[] = [
       { id: "a", text: "It is the client-server model: a client requests, a server responds." },
       { id: "b", text: "The developer's tool is the client, and AWS is the server." },
       { id: "c", text: "It is a peer-to-peer model with no central server." },
-      { id: "d", text: "Requests are mailed on physical media rather than sent over a network." },
+      { id: "d", text: "AWS acts as the client and the developer's tool acts as the server." },
       { id: "e", text: "It is a broadcast model where every machine receives every message." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS interfaces such as the SDKs and the Query API submit requests over HTTP or HTTPS and receive responses, which is the client-server model with the caller as client and AWS as server, so both of those are correct. It is not peer-to-peer, it does not use mailed media, and a directed request-response is not a broadcast.",
+      "AWS interfaces such as the SDKs and the Query API submit requests over HTTP or HTTPS and receive responses, which is the client-server model with the caller as client and AWS as server, so both of those are correct. It is not peer-to-peer, AWS never acts as the client with the developer's tool as the server, and a directed request-response is not a broadcast.",
     reference: {
       label: "What is an API?",
       url: "https://aws.amazon.com/what-is/api/",
@@ -353,18 +353,18 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "Stop guessing capacity" },
       { id: "b", text: "Benefit from massive economies of scale" },
-      { id: "c", text: "Guarantee zero cost for all services" },
-      { id: "d", text: "Eliminate the need for any software updates ever" },
-      { id: "e", text: "Remove the ability to scale down" },
+      { id: "c", text: "Trade variable expense for fixed expense" },
+      { id: "d", text: "Achieve high availability automatically" },
+      { id: "e", text: "Improve security and compliance" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Stop guessing capacity and benefit from massive economies of scale are two of the six advantages AWS names. A zero-cost guarantee, the end of all software updates, and removing the ability to scale down are not among them and contradict how AWS describes the cloud.",
+      "Stop guessing capacity and benefit from massive economies of scale are two of the six advantages AWS names. The expense advantage runs the other way, trading fixed expense for variable expense, and neither achieving high availability automatically nor improving security and compliance is one of the six names AWS lists.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-25",
@@ -376,17 +376,17 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "It replaces upfront capital expenses with low variable costs." },
       { id: "b", text: "It converts variable usage into one large fixed purchase made years in advance." },
-      { id: "c", text: "It removes all IT spending because the cloud is free." },
+      { id: "c", text: "It shifts spending from operating to capital expense." },
       { id: "d", text: "It locks spending to a flat fee that ignores how much you use." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a key benefit of cloud computing is replacing upfront capital infrastructure expenses with low variable costs that scale with your business. The cloud does not turn usage into a large fixed purchase, it is not free, and pay-as-you-go billing varies with usage rather than being a flat fee.",
+      "AWS states that a key benefit of cloud computing is replacing upfront capital infrastructure expenses with low variable costs that scale with your business. The cloud does not turn usage into a large fixed purchase, it shifts spending away from capital expense rather than toward it, and pay-as-you-go billing varies with usage rather than being a flat fee.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-26",
@@ -398,18 +398,18 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "Instantly spin up hundreds or thousands of servers in minutes." },
       { id: "b", text: "Deliver results faster without procuring infrastructure far in advance." },
-      { id: "c", text: "Keep waiting the same weeks or months, since procurement time is unchanged." },
-      { id: "d", text: "Buy a fixed block of servers once and never change the amount." },
+      { id: "c", text: "Let AWS pick and size every server for them automatically." },
+      { id: "d", text: "Run any number of servers at once, since AWS accounts have no quotas." },
       { id: "e", text: "Avoid using servers entirely for every workload." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS states that with the cloud, businesses no longer need to procure servers weeks or months in advance and can instead instantly spin up hundreds or thousands of servers in minutes and deliver results faster, so both of those are correct. Procurement time is not unchanged, capacity is not a one-time fixed block, and workloads still use servers, just provisioned on demand.",
+      "AWS states that with the cloud, businesses no longer need to procure servers weeks or months in advance and can instead instantly spin up hundreds or thousands of servers in minutes and deliver results faster, so both of those are correct. Customers still choose the type and size of the resources they provision rather than AWS picking every server, accounts do have service quotas that set maximum values for resources, and workloads still use servers, just provisioned on demand.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-27",
@@ -422,11 +422,11 @@ export const domain1Concepts: Question[] = [
       { id: "a", text: "You are not billed for instance usage while it is stopped." },
       { id: "b", text: "You pay the same whether cloud instances run or are stopped." },
       { id: "c", text: "Cloud instances cannot be stopped once launched." },
-      { id: "d", text: "Stopping an instance increases its hourly rate." },
+      { id: "d", text: "Stopping an instance also stops the charges for its EBS volumes." },
     ],
     correct: ["a"],
     explanation:
-      "AWS bills instance usage only while an instance is running: a stopped instance incurs no usage charges, though its EBS volumes are still billed, so turning off idle instances reduces cost. You are not billed the same when stopped, instances can be stopped, and stopping does not raise the rate.",
+      "AWS bills instance usage only while an instance is running: a stopped instance incurs no usage charges, though its EBS volumes are still billed, so turning off idle instances reduces cost. You are not billed the same when stopped, instances can be stopped, and stopping does not end the charges for EBS volume storage.",
     reference: {
       label: "Amazon EC2 instance state changes: billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
@@ -444,18 +444,18 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "The cloud lets you trade fixed expenses for variable expenses." },
       { id: "b", text: "The cloud lets you scale up and down instead of buying for a peak." },
-      { id: "c", text: "The cloud requires a larger upfront hardware purchase than an on-premises data center." },
-      { id: "d", text: "The cloud removes the option to pay only for what you use." },
-      { id: "e", text: "The cloud forces every workload to run in a single Region." },
+      { id: "c", text: "The cloud makes AWS fully responsible for securing the data you store." },
+      { id: "d", text: "The cloud makes every workload highly available by default." },
+      { id: "e", text: "The cloud automatically copies each workload into every Region." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. A larger upfront hardware purchase, the claim that the cloud removes the option to pay only for what you use, and a single-Region restriction all contradict how AWS describes cloud benefits.",
+      "AWS frames the cloud as trading fixed expenses for variable expenses and as letting you scale up and down instead of over-provisioning for a peak. Securing the data you store stays the customer's responsibility under the shared responsibility model, a workload becomes highly available through how it is spread across Availability Zones rather than by default, and AWS does not automatically copy workloads into every Region; you choose where they run.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-29",
@@ -467,17 +467,17 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "AWS owns and maintains it, and the customer provisions what it needs." },
       { id: "b", text: "The customer must own and maintain the hardware in its own facility." },
-      { id: "c", text: "No one maintains it, because cloud services run without physical hardware." },
+      { id: "c", text: "AWS owns the buildings, but each customer maintains the servers inside them." },
       { id: "d", text: "A third-party reseller owns it on the customer's behalf for a fee." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a cloud services platform such as AWS owns and maintains the network-connected hardware required for application services, while the customer provisions and uses what it needs through a web application. The customer does not own that hardware, cloud services do run on physical hardware, and AWS itself maintains it rather than a reseller.",
+      "AWS states that a cloud services platform such as AWS owns and maintains the network-connected hardware required for application services, while the customer provisions and uses what it needs through a web application. The customer does not own that hardware or maintain the servers inside AWS buildings, and AWS itself maintains it rather than a reseller.",
     reference: {
       label: "What is cloud computing?",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-31",
@@ -513,11 +513,11 @@ export const domain1Concepts: Question[] = [
       { id: "a", text: "The servers, since each instance is a virtual server." },
       { id: "b", text: "The clients, since instances originate the user requests." },
       { id: "c", text: "The virtual network that carries traffic to the servers." },
-      { id: "d", text: "The billing system that totals monthly charges." },
+      { id: "d", text: "The storage volumes that hold the application's data." },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines an EC2 instance as a virtual server, so instances hosting an application provide the server side that handles incoming requests. The users' devices are the clients, the virtual network that carries traffic is what Amazon VPC provides, and billing is unrelated to the request-response roles.",
+      "AWS defines an EC2 instance as a virtual server, so instances hosting an application provide the server side that handles incoming requests. The users' devices are the clients, the virtual network that carries traffic is what Amazon VPC provides, and storage volumes that hold data come from Amazon EBS rather than being the instances themselves.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
@@ -534,13 +534,13 @@ export const domain1Concepts: Question[] = [
     stem: "Compared with a traditional data center where you must invest in hardware before you know your needs, what does pay-as-you-go cloud pricing let a company do?",
     options: [
       { id: "a", text: "Pay only when it consumes computing resources, and only for how much it consumes." },
-      { id: "b", text: "Pay a large fixed sum up front and the same amount every month after." },
-      { id: "c", text: "Avoid all costs because cloud resources are provided for free." },
-      { id: "d", text: "Commit to a fixed amount of hardware for a minimum of five years." },
+      { id: "b", text: "Prepay for a year of usage and draw it down as it consumes resources." },
+      { id: "c", text: "Pay only for capacity it fully uses, never for idle running resources." },
+      { id: "d", text: "Pay for storage only, with compute time included at no charge." },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes trading fixed expense for variable expense as paying only when you consume computing resources and only for how much you consume, instead of investing in hardware up front. The cloud is not a fixed monthly sum, not free, and not a mandatory multi-year hardware commitment.",
+      "AWS describes trading fixed expense for variable expense as paying only when you consume computing resources and only for how much you consume, instead of investing in hardware up front. Pay-as-you-go needs no prepaid year of usage, a running instance is billed even while it sits idle, and compute time is a charged resource rather than included with storage.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -611,23 +611,23 @@ export const domain1Concepts: Question[] = [
     stem: "An operations lead asks why AWS recommends running the same application in more than one Availability Zone inside a Region. Which statement gives the reason AWS states?",
     options: [
       { id: "a", text: "Zones are isolated locations, so spreading instances protects against one location failing." },
-      { id: "b", text: "Availability Zones share one power supply, so spreading across them balances electricity use." },
-      { id: "c", text: "Only one Availability Zone per Region can run instances, and the rest serve as archives." },
+      { id: "b", text: "Spreading instances across zones lowers latency for customers who are located in other countries." },
+      { id: "c", text: "Each Availability Zone is a separate Region, so the workload runs in several Regions." },
       { id: "d", text: "Spreading across Availability Zones removes the need to choose a Region for the workload." },
     ],
     correct: ["a"],
     distractorRationales: {
-      b: "Availability Zones are isolated locations with their own infrastructure; the point is fault isolation, not balancing electricity use.",
-      c: "Every Availability Zone in a Region can host instances. None of them is a passive archive tier.",
+      b: "All the zones sit inside one Region. Reaching users in other countries is what selecting a Region close to them does.",
+      c: "Availability Zones are isolated locations within a single Region, not separate Regions.",
       d: "You still pick the Region. Spreading across zones protects against a failure inside the Region you chose.",
     },
     explanation:
-      "AWS states that each Region has multiple, isolated locations known as Availability Zones, and that by launching instances in multiple Availability Zones you protect your applications from the failure of a single location in the Region. Availability Zones do not share one power supply, so the claim that spreading across them balances electricity use is wrong; every zone in a Region can run instances rather than serving as archives; and you still choose the Region the workload runs in.",
+      "AWS states that each Region has multiple, isolated locations known as Availability Zones, and that by launching instances in multiple Availability Zones you protect your applications from the failure of a single location in the Region. Spreading across zones does not lower latency for users in other countries, since you select a Region close to specific customers for that; each zone is a location within one Region rather than a separate Region; and you still choose the Region the workload runs in.",
     reference: {
       label: "Amazon EC2: Regions and Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-37",
@@ -639,22 +639,22 @@ export const domain1Concepts: Question[] = [
     options: [
       { id: "a", text: "It authenticates the caller, then authorizes the request by policy." },
       { id: "b", text: "It performs the action first and checks permissions afterward." },
-      { id: "c", text: "It forwards the request to the caller's internet provider for approval." },
-      { id: "d", text: "It runs whatever it receives, without checking identity or permissions." },
+      { id: "c", text: "It authorizes the request first, then authenticates the caller." },
+      { id: "d", text: "It checks the caller's identity only, since any signed-in user may act." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "Permissions are evaluated before the action runs. AWS does not act first and check later.",
-      c: "An internet provider carries the traffic; it plays no part in deciding whether a request is allowed.",
-      d: "Requests are denied by default, so an unchecked request would not run at all.",
+      c: "IAM authenticates the principal first and only then evaluates policies to authorize the request.",
+      d: "Authentication alone is not enough. Policies must allow the request, and requests are denied by default.",
     },
     explanation:
-      "AWS authenticates the principal from its sign-in credentials, then gathers the request into a request context and evaluates the policies that apply to decide whether to allow or deny it. Only after both steps does the principal perform the action on the resource. AWS does not perform the action first and check permissions afterward, it does not forward requests to an internet provider for approval, and requests are denied by default rather than run without any check of identity or permissions.",
+      "AWS authenticates the principal from its sign-in credentials, then gathers the request into a request context and evaluates the policies that apply to decide whether to allow or deny it. Only after both steps does the principal perform the action on the resource. AWS does not perform the action first and check permissions afterward, it does not authorize the request before it authenticates the caller, and checking the caller's identity alone is not enough, because requests are denied by default unless a policy allows them.",
     reference: {
       label: "How IAM works: authentication and authorization",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-38",
