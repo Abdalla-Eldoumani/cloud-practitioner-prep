@@ -39,7 +39,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "An engineer adds an inbound rule to a security group to allow web traffic to an instance, but adds no matching outbound rule. The instance is still able to send replies back to clients. Which property of security groups explains this?",
     options: [
-      { id: "a", text: "Security groups are stateful, so responses to allowed inbound traffic are automatically permitted out regardless of the outbound rules." },
+      { id: "a", text: "Security groups are stateful, so replies to allowed inbound traffic leave automatically." },
       { id: "b", text: "Security groups are stateless, so each direction must be allowed separately." },
       { id: "c", text: "Security groups automatically copy every inbound rule into an outbound rule." },
       { id: "d", text: "Security groups ignore outbound rules entirely and allow all outbound traffic in every case." },
@@ -51,7 +51,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control traffic to your AWS resources using security groups",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC", "EC2"],
   },
   {
@@ -184,7 +184,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "hard",
     stem: "A junior engineer proposes adding a security group rule that explicitly denies a known malicious IP range from reaching an instance. What is the issue with this plan?",
     options: [
-      { id: "a", text: "Security groups support allow rules only and cannot express a deny, so a network ACL is needed to block the range." },
+      { id: "a", text: "Security groups have allow rules only, so a network ACL must block the range." },
       { id: "b", text: "Security groups can deny traffic, but only on outbound rules." },
       { id: "c", text: "Security groups can deny traffic, but the deny must be the lowest numbered rule." },
       { id: "d", text: "Security groups can deny traffic only when attached to a subnet." },
@@ -196,7 +196,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Compare security groups and network ACLs",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -258,8 +258,8 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements about network ACLs are accurate? (Choose two.)",
     options: [
-      { id: "a", text: "A network ACL has separate inbound and outbound rules, and each rule can allow or deny traffic." },
-      { id: "b", text: "Each subnet in a VPC must be associated with a network ACL, defaulting to the VPC's default network ACL if none is chosen." },
+      { id: "a", text: "A network ACL's inbound and outbound rules can each allow or deny traffic." },
+      { id: "b", text: "Each subnet must have a network ACL, or it uses the VPC's default one." },
       { id: "c", text: "A network ACL is stateful, so return traffic is allowed automatically." },
       { id: "d", text: "A network ACL can be associated only with a single subnet and never reused." },
       { id: "e", text: "A network ACL operates at the instance level rather than the subnet level." },
@@ -271,7 +271,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -355,16 +355,16 @@ export const domain2NetworkProtection: Question[] = [
       { id: "b", text: "An Application Load Balancer" },
       { id: "c", text: "An Amazon EBS volume" },
       { id: "d", text: "An Amazon S3 Glacier vault" },
-      { id: "e", text: "An EC2 instance's local disk" },
+      { id: "e", text: "An Amazon EC2 instance running a web server" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS WAF protects resources that handle web requests, including Amazon CloudFront distributions and Application Load Balancers (along with API Gateway REST APIs, AppSync, Cognito user pools, App Runner, Verified Access, and Amplify). EBS volumes, Glacier vaults, and local disks are storage, not web request entry points, so WAF does not attach to them.",
+      "AWS WAF protects resources that handle web requests, including Amazon CloudFront distributions and Application Load Balancers (along with API Gateway REST APIs, AppSync, Cognito user pools, App Runner, Verified Access, and Amplify). EBS volumes and Glacier vaults are storage, not web request entry points, and an EC2 instance is not one of the resource types WAF protects, even when it runs a web server.",
     reference: {
       label: "What is AWS WAF?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["WAF", "CloudFront"],
   },
   {
@@ -422,7 +422,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "easy",
     stem: "Which statement about AWS Shield Standard is correct?",
     options: [
-      { id: "a", text: "It is provided automatically to all AWS customers at no additional charge and defends against common DDoS attacks." },
+      { id: "a", text: "It protects all AWS customers from common DDoS attacks at no extra charge." },
       { id: "b", text: "It is a paid add-on that must be purchased before any DDoS protection applies." },
       { id: "c", text: "It is a web application firewall that blocks SQL injection." },
       { id: "d", text: "It encrypts data at rest in Amazon S3." },
@@ -434,7 +434,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield"],
   },
   {
@@ -445,7 +445,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements about AWS Shield are accurate? (Choose two.)",
     options: [
-      { id: "a", text: "AWS Shield is a managed service that protects against distributed denial of service (DDoS) attacks." },
+      { id: "a", text: "AWS Shield is a managed service that protects against DDoS attacks." },
       { id: "b", text: "AWS Shield Standard is provided automatically to all AWS customers at no additional charge." },
       { id: "c", text: "AWS Shield filters web requests to block SQL injection and cross-site scripting." },
       { id: "d", text: "AWS Shield Standard must be purchased before any DDoS protection applies." },
@@ -458,7 +458,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "How AWS Shield and Shield Advanced work",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield"],
   },
   {
@@ -492,19 +492,19 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "A finance team worries that a large DDoS attack could cause protected resources to scale up and produce a surprise bill. Which AWS Shield Advanced benefit addresses this concern?",
     options: [
-      { id: "a", text: "DDoS cost protection, which safeguards against scaling charges resulting from DDoS-related usage spikes on protected resources." },
-      { id: "b", text: "A flat 50 percent discount on all AWS services during an attack." },
+      { id: "a", text: "DDoS cost protection against scaling charges from DDoS-related usage spikes" },
+      { id: "b", text: "Automatic caps that stop protected resources from scaling up during an attack." },
       { id: "c", text: "Automatic conversion of On-Demand Instances to Reserved Instances." },
       { id: "d", text: "Free unlimited data transfer for the life of the account." },
     ],
     correct: ["a"],
     explanation:
-      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It is not a blanket service discount, it performs no automatic conversion of On-Demand Instances to Reserved Instances, and it does not grant unlimited free data transfer.",
+      "AWS Shield Advanced includes DDoS cost protection to safeguard against scaling charges that result from DDoS-related usage spikes on protected EC2, ELB, CloudFront, Global Accelerator, and Route 53 resources. It does not put caps on scaling; when protected resources scale up in response to an attack, you request Shield Advanced service credits instead. It performs no automatic conversion of On-Demand Instances to Reserved Instances, and it does not grant unlimited free data transfer.",
     reference: {
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield"],
   },
   {
@@ -725,7 +725,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "An engineer associates one custom network ACL with three different subnets in the same VPC. Is this allowed, and what is the constraint on the reverse relationship?",
     options: [
-      { id: "a", text: "Yes, one network ACL can be associated with multiple subnets, but each subnet can be associated with only one network ACL at a time." },
+      { id: "a", text: "Yes, but each subnet can be associated with only one network ACL at a time." },
       { id: "b", text: "No, a network ACL can be associated with only one subnet, and a subnet can have many network ACLs." },
       { id: "c", text: "Yes, and a subnet can also be associated with several network ACLs at once." },
       { id: "d", text: "No, network ACLs cannot be associated with subnets at all; they attach to instances." },
@@ -737,7 +737,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "Control subnet traffic with network access control lists",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -795,19 +795,19 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "A company is subscribing to AWS Shield Advanced for its public workload and wants to know which of its resources the subscription can cover. Which set does AWS name as receiving Shield Advanced's expanded DDoS protection?",
     options: [
-      { id: "a", text: "Amazon EC2 instances, Elastic Load Balancing load balancers, CloudFront distributions, Route 53 hosted zones, and AWS Global Accelerator standard accelerators" },
+      { id: "a", text: "EC2 instances, ELB load balancers, CloudFront, Route 53 hosted zones, and Global Accelerator" },
       { id: "b", text: "Amazon S3 buckets, Amazon RDS databases, and AWS Lambda functions" },
-      { id: "c", text: "IAM users, IAM roles, and IAM policies" },
+      { id: "c", text: "Amazon DynamoDB tables, Amazon EFS file systems, and Amazon EBS volumes" },
       { id: "d", text: "Amazon VPC subnets and route tables" },
     ],
     correct: ["a"],
     explanation:
-      "AWS documents Shield Advanced as providing expanded DDoS attack protection for Amazon EC2 instances, Elastic Load Balancing load balancers, CloudFront distributions, Route 53 hosted zones, and AWS Global Accelerator standard accelerators, which are the internet-facing entry points an attack would aim at. Amazon S3 buckets, Amazon RDS databases, and AWS Lambda functions are not on that list; IAM users, roles, and policies are identity objects rather than traffic entry points; and Amazon VPC subnets and route tables are network plumbing rather than protected resources in their own right.",
+      "AWS documents Shield Advanced as providing expanded DDoS attack protection for Amazon EC2 instances, Elastic Load Balancing load balancers, CloudFront distributions, Route 53 hosted zones, and AWS Global Accelerator standard accelerators, which are the internet-facing entry points an attack would aim at. Amazon S3 buckets, Amazon RDS databases, and AWS Lambda functions are not on that list, and neither are Amazon DynamoDB tables, Amazon EFS file systems, and Amazon EBS volumes, which are data stores rather than traffic entry points; and Amazon VPC subnets and route tables are network plumbing rather than protected resources in their own right.",
     reference: {
       label: "What are AWS WAF, AWS Shield Advanced, and AWS Firewall Manager?",
       url: "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield", "CloudFront", "EC2"],
   },
   {
@@ -818,7 +818,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "hard",
     stem: "A practitioner is mapping the two AWS Shield tiers to the attack layers each one addresses. Which TWO statements match how AWS describes them? (Choose two.)",
     options: [
-      { id: "a", text: "Shield Standard defends against the most common, frequently occurring network and transport layer DDoS events." },
+      { id: "a", text: "Shield Standard defends against common network and transport layer DDoS events." },
       { id: "b", text: "Shield Advanced adds detection and mitigation for larger, more sophisticated attacks and integrates with AWS WAF to mitigate application layer events." },
       { id: "c", text: "Shield Standard on its own inspects the body of an HTTP request and blocks SQL injection." },
       { id: "d", text: "Shield Advanced replaces AWS WAF, so a subscriber no longer writes web ACL rules." },
@@ -836,7 +836,7 @@ export const domain2NetworkProtection: Question[] = [
       label: "AWS Shield features",
       url: "https://aws.amazon.com/shield/features/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Shield", "WAF"],
   },
   {
