@@ -106,7 +106,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "A team is moving a job that sometimes takes about 25 minutes to finish onto a single standard AWS Lambda function. What is the concern they must account for?",
     options: [
-      { id: "a", text: "A Lambda function can run for up to 15 minutes, so 25 minutes exceeds the limit." },
+      { id: "a", text: "A Lambda function can run for up to 15 minutes per invocation, so a 25-minute job would exceed the limit." },
       { id: "b", text: "A Lambda function has no time limit, so the 25-minute job runs without issue." },
       { id: "c", text: "A Lambda function can run for up to 60 minutes, so 25 minutes is well within range." },
       { id: "d", text: "A Lambda function can run only for 1 minute, so almost no job fits." },
@@ -129,7 +129,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "A company wants a Lambda function to run automatically every time a new object is uploaded to an Amazon S3 bucket. Is this possible, and how?",
     options: [
-      { id: "a", text: "Yes. Amazon S3 can trigger the function when an object is uploaded." },
+      { id: "a", text: "Yes. Amazon S3 can trigger the Lambda function on an object event, passing the event to the function." },
       { id: "b", text: "No. Lambda can only be started manually from the console." },
       { id: "c", text: "Yes, but only if an administrator runs the function by hand after each upload." },
       { id: "d", text: "No. Lambda cannot integrate with Amazon S3." },
@@ -176,7 +176,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "A developer wants to control how much memory a Lambda function gets, knowing it affects performance. What happens to CPU and other resources when you raise the memory setting?",
     options: [
-      { id: "a", text: "Lambda allocates CPU power and other resources in proportion to memory." },
+      { id: "a", text: "You choose the memory, and Lambda allocates proportional CPU power and other resources." },
       { id: "b", text: "Memory and CPU are set independently, with no relationship between them." },
       { id: "c", text: "Raising memory has no effect on CPU; CPU is fixed for every function." },
       { id: "d", text: "You must request a separate CPU quota increase from AWS Support." },
@@ -409,7 +409,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "hard",
     stem: "An organization is standardized on Kubernetes and wants a managed control plane while keeping the Kubernetes API and ecosystem. A second team simply wants AWS's own container orchestration without committing to Kubernetes. Which pairing fits best?",
     options: [
-      { id: "a", text: "Amazon EKS for the Kubernetes-standardized organization, and Amazon ECS for the AWS-native team." },
+      { id: "a", text: "Amazon EKS for the Kubernetes-standardized organization, and Amazon ECS for the team that wants AWS-native orchestration." },
       { id: "b", text: "Amazon ECS for the Kubernetes-standardized organization, and Amazon EKS for the AWS-native team." },
       { id: "c", text: "Amazon EC2 for both, with no container orchestration service." },
       { id: "d", text: "AWS Lambda for both, since containers are not supported on AWS." },
@@ -740,7 +740,7 @@ export const domain3ServerlessContainers: Question[] = [
     difficulty: "medium",
     stem: "Which phrase best captures how Amazon Lightsail prices its plans and who it targets?",
     options: [
-      { id: "a", text: "A low, predictable monthly price aimed at websites and small apps." },
+      { id: "a", text: "A low, predictable monthly price for simple workloads such as websites and small applications." },
       { id: "b", text: "A pay-per-request model aimed at event-driven serverless functions." },
       { id: "c", text: "A commitment-based reservation aimed at large steady enterprise fleets." },
       { id: "d", text: "A per-gigabyte storage charge aimed at long-term archival." },
