@@ -6,6 +6,22 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [2.3.1] - 2026-10-03
+
+### Fixed
+
+- The header no longer overflows the page at tablet widths. Between 768 and
+  1023 pixels the full navigation did not fit and caused a sideways scroll; the
+  compact Index menu now covers every width below 1024 pixels.
+
+### Security
+
+- Upgraded to Astro 7 and refreshed the dependency tree, clearing every
+  published advisory that has a patched release, including a critical one in
+  Astro 6. Two advisories with no patched release yet remain, in packages that
+  run only at build time; the published site is static and does not use the
+  affected code paths.
+
 ## [2.3.0] - 2026-10-03
 
 ### Changed
@@ -141,7 +157,8 @@ tool, with a hardening and discoverability pass on top.
   questions with explanations and documentation links, a full timed mock exam, a
   review queue, progress tracking in the browser, and light and dark themes.
 
-[Unreleased]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/compare/v2.3.1...HEAD
+[2.3.1]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.3.1
 [2.3.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.3.0
 [2.2.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.2.0
 [2.1.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.1.0
