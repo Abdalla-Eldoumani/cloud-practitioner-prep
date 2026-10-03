@@ -36,6 +36,7 @@
     "sync": "astro sync",
     "check": "astro check",
     "lint:content": "tsx scripts/lint-content.ts",
+    "lint:distractors": "tsx scripts/lint-distractors.ts",
     "lint:catalog": "tsx scripts/lint-catalog.ts",
     "lint:shuffle": "tsx scripts/check-shuffle-uniformity.ts",
     "check:migration": "tsx scripts/check-migration.ts",
