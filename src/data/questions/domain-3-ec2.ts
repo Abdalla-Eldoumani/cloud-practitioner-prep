@@ -18,18 +18,18 @@ export const domain3Ec2: Question[] = [
     stem: "A team wants compute capacity in the AWS Cloud that behaves like a server they can launch in minutes, scale up for a heavy month-end job, and scale down afterward, paying for what they run. Which service provides this resizable virtual server capacity?",
     options: [
       { id: "a", text: "Amazon Elastic Compute Cloud (Amazon EC2)" },
-      { id: "b", text: "Amazon Simple Storage Service (Amazon S3)" },
+      { id: "b", text: "Amazon Elastic Container Service (Amazon ECS)" },
       { id: "c", text: "Amazon Route 53" },
-      { id: "d", text: "AWS Identity and Access Management (IAM)" },
+      { id: "d", text: "AWS Lambda" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon EC2 provides on-demand, scalable computing capacity as virtual servers, letting you launch as many or as few as you need and scale up or down with demand. S3 is object storage, Route 53 is DNS, and IAM controls access; none of them provides virtual server compute.",
+      "Amazon EC2 provides on-demand, scalable computing capacity as virtual servers, letting you launch as many or as few as you need and scale up or down with demand. Amazon ECS orchestrates containerized applications, AWS Lambda runs code without you provisioning or managing servers, and Route 53 is DNS; none of them provides resizable virtual server capacity.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -41,18 +41,18 @@ export const domain3Ec2: Question[] = [
     stem: "When you launch an EC2 instance, what determines the CPU, memory, storage, and networking capacity the virtual server gets?",
     options: [
       { id: "a", text: "The instance type you specify" },
-      { id: "b", text: "The name you give the instance" },
-      { id: "c", text: "The IAM user who launches it" },
-      { id: "d", text: "The number of tags applied to the instance" },
+      { id: "b", text: "The AMI you launch it from" },
+      { id: "c", text: "The Availability Zone you launch in" },
+      { id: "d", text: "The purchasing option you choose" },
     ],
     correct: ["a"],
     explanation:
-      "The instance type specified at launch determines the hardware of the host, so each type offers a different balance of compute, memory, network, and storage. The instance name, the launching user, and tags are metadata and do not change the hardware the instance receives.",
+      "The instance type specified at launch determines the hardware of the host, so each type offers a different balance of compute, memory, network, and storage. The AMI supplies the operating system and software rather than the hardware, the Availability Zone only sets where the instance runs, and the purchasing option, such as On-Demand or Spot, changes how you pay rather than the capacity the instance gets.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -158,11 +158,11 @@ export const domain3Ec2: Question[] = [
       { id: "a", text: "No instance usage charges, but attached EBS storage is still billed." },
       { id: "b", text: "You are charged the full instance rate the entire time it is stopped." },
       { id: "c", text: "All charges, including EBS storage, stop completely." },
-      { id: "d", text: "You are charged a higher rate while stopped than while running." },
+      { id: "d", text: "A reduced standby rate is billed until the instance starts again." },
     ],
     correct: ["a"],
     explanation:
-      "When an instance is stopped you are not charged for instance usage or data transfer, but charges continue for the storage of any attached EBS volumes. Charges do not continue at the running rate, EBS storage is not free while stopped, and the stopped rate is never higher than the running rate.",
+      "When an instance is stopped you are not charged for instance usage or data transfer, but charges continue for the storage of any attached EBS volumes. Charges do not continue at the running rate, EBS storage is not free while stopped, and there is no reduced standby rate for instance usage in the stopped state.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
@@ -436,17 +436,17 @@ export const domain3Ec2: Question[] = [
       { id: "a", text: "An instance in the running state is billed for instance usage." },
       { id: "b", text: "An instance in the stopped state is not billed for instance usage, though attached EBS storage is still charged." },
       { id: "c", text: "An instance in the stopped state is billed at the full running rate." },
-      { id: "d", text: "An instance in the pending state is billed at double the running rate." },
+      { id: "d", text: "An instance in the pending state is billed at the running rate." },
       { id: "e", text: "A terminated instance keeps incurring instance usage charges until it is deleted from the console." },
     ],
     correct: ["a", "b"],
     explanation:
-      "A running instance is billed for usage, and a stopped instance is not billed for usage although its EBS storage is still charged. A stopped instance is not billed at the running rate, the pending state is not billed, and a terminated instance stops incurring usage charges as soon as it begins shutting down.",
+      "A running instance is billed for usage, and a stopped instance is not billed for usage although its EBS storage is still charged. A stopped instance is not billed at the running rate, the pending state is not billed for instance usage at all, and a terminated instance stops incurring usage charges as soon as it begins shutting down.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
