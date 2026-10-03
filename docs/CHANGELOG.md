@@ -4,6 +4,27 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Answer length no longer hints at the correct option. In single-answer
+  questions the correct option was the longest 56 percent of the time; it is now
+  the longest about 20 percent of the time and the shortest about 20 percent,
+  close to chance at both ends. Multi-answer questions no longer tend to have the
+  longest options as the correct pair.
+- Implausible wrong answers, such as office software offered as Amazon EMR
+  frameworks, were replaced with realistic mistakes from the same topic.
+- Facts brought up to date with current AWS documentation: Free Tier sign-up
+  credit expiry, the closure of AWS Migration Hub and AWS Snowball Edge to new
+  customers and the Snowball end-of-support date, the current names AWS
+  Transform MGN, AWS Security Hub CSPM, and Amazon Quick Sight, the EventBridge
+  Custom Event Bus, and the Well-Architected wording for elasticity.
+- Every question and catalog reference now opens the page that states its fact
+  directly, with no redirect.
+- A new `lint:distractors` check runs in CI and holds every answer length rank
+  near chance.
+
 ## [2.2.0] - 2026-07-29
 
 A full content audit against current AWS documentation and the official CLF-C02
@@ -114,6 +135,7 @@ tool, with a hardening and discoverability pass on top.
   questions with explanations and documentation links, a full timed mock exam, a
   review queue, progress tracking in the browser, and light and dark themes.
 
+[Unreleased]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/compare/v2.2.0...HEAD
 [2.2.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.2.0
 [2.1.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.1.0
 [2.0.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.0.0
