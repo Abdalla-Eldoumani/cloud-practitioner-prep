@@ -275,7 +275,7 @@ export const domain3IntegrationMonitoring: Question[] = [
     type: "single",
     topic: "Amazon EventBridge",
     difficulty: "medium",
-    stem: "In Amazon EventBridge, what determines where an incoming event is delivered?",
+    stem: "On an Amazon EventBridge Custom Event Bus - Classic, what determines where an incoming event is delivered?",
     options: [
       { id: "a", text: "A rule that matches the event and routes it to targets." },
       { id: "b", text: "A security group attached to the event." },
@@ -284,12 +284,12 @@ export const domain3IntegrationMonitoring: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "EventBridge rules match incoming events against a pattern and route the matching events to the targets you specify, which is how the bus connects sources to consumers. Security groups and subnet route tables govern network traffic, and a schema only defines the structure of an event, so none of them decide event routing on the bus.",
+      "On a Custom Event Bus - Classic, rules that the bus owner writes match incoming events and route them to the targets you specify, which is how that bus connects sources to consumers. The newer Custom Event Bus, which AWS recommends for new applications, routes events to subscribers that consumers create instead, so rules are not the only routing model. Security groups and subnet route tables govern network traffic, and a schema only defines the structure of an event, so none of them decide event routing on the bus.",
     reference: {
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EventBridge"],
   },
   {
