@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-10-03
+
 ### Changed
 
 - Answer length no longer hints at the correct option. In single-answer
@@ -13,8 +15,12 @@ All notable changes to this project are documented here. The format follows
   the longest about 20 percent of the time and the shortest about 20 percent,
   close to chance at both ends. Multi-answer questions no longer tend to have the
   longest options as the correct pair.
-- Implausible wrong answers, such as office software offered as Amazon EMR
-  frameworks, were replaced with realistic mistakes from the same topic.
+- Every wrong answer that could be ruled out without any AWS knowledge was
+  replaced across the whole bank, about 700 options in all: non-AWS products,
+  physical objects, concepts from an unrelated area, and options that say to do
+  something obviously bad. Each replacement is a realistic mistake from the same
+  topic, such as a neighbouring AWS service, a real but wrong feature, or a
+  common misconception, and each explanation now says why it is wrong.
 - Facts brought up to date with current AWS documentation: Free Tier sign-up
   credit expiry, the closure of AWS Migration Hub and AWS Snowball Edge to new
   customers and the Snowball end-of-support date, the current names AWS
@@ -135,7 +141,8 @@ tool, with a hardening and discoverability pass on top.
   questions with explanations and documentation links, a full timed mock exam, a
   review queue, progress tracking in the browser, and light and dark themes.
 
-[Unreleased]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.3.0
 [2.2.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.2.0
 [2.1.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.1.0
 [2.0.0]: https://github.com/Abdalla-Eldoumani/cloud-practitioner-prep/releases/tag/v2.0.0
