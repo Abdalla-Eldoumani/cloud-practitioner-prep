@@ -20,17 +20,17 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "The AWS Well-Architected Framework" },
       { id: "b", text: "The AWS Pricing Calculator" },
-      { id: "c", text: "The AWS Acceptable Use Policy" },
+      { id: "c", text: "The AWS Cloud Adoption Framework" },
       { id: "d", text: "The AWS Service Health Dashboard" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Well-Architected Framework helps you understand the pros and cons of decisions you make while building on AWS and gives a consistent way to measure architectures against best practices. The Pricing Calculator estimates cost, the Acceptable Use Policy governs permitted use, and the Service Health Dashboard reports service status, so none of them assess architectural design.",
+      "The AWS Well-Architected Framework helps you understand the pros and cons of decisions you make while building on AWS and gives a consistent way to measure architectures against best practices. The Pricing Calculator estimates cost, the Cloud Adoption Framework helps an organization plan its digital transformation and assess its cloud readiness, and the Service Health Dashboard reports service status, so none of them assess a workload's architectural design.",
     reference: {
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-02",
@@ -42,12 +42,12 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "As a constructive conversation about architectural decisions." },
       { id: "b", text: "As a formal compliance audit that issues a pass or fail result." },
-      { id: "c", text: "As a billing review that recalculates the monthly invoice." },
+      { id: "c", text: "As a mandatory check AWS must approve before a workload can launch." },
       { id: "d", text: "As a penetration test of the workload's security." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that reviewing an architecture is a constructive conversation about architectural decisions and is not an audit mechanism. It does not grade pass or fail, recalculate bills, or perform penetration testing.",
+      "AWS states that reviewing an architecture is a constructive conversation about architectural decisions and is not an audit mechanism. It does not grade pass or fail, it is not a mandatory check AWS must approve before launch, and it does not perform penetration testing.",
     reference: {
       label: "AWS Well-Architected Framework",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
@@ -488,12 +488,12 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "It measures your architecture against best practices and recommends improvements." },
       { id: "b", text: "It automatically rearchitects and redeploys your workload to fix every issue it finds." },
-      { id: "c", text: "It is a paid managed service that runs your production workloads for you." },
+      { id: "c", text: "It estimates the monthly cost of a workload before you deploy it." },
       { id: "d", text: "It issues an official AWS compliance certificate for the workload." },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Well-Architected Tool gives a consistent process to measure your architecture against best practices, document your decisions, and get recommendations to make workloads more reliable, secure, efficient, and cost-effective. It does not rearchitect or run your workloads for you, and it does not issue a compliance certificate.",
+      "The AWS Well-Architected Tool gives a consistent process to measure your architecture against best practices, document your decisions, and get recommendations to make workloads more reliable, secure, efficient, and cost-effective. It does not rearchitect or redeploy your workloads for you, estimating monthly cost before you deploy is the job of the AWS Pricing Calculator, and it does not issue a compliance certificate.",
     reference: {
       label: "What is AWS Well-Architected Tool?",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html",
@@ -510,12 +510,12 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "AWS offers the Well-Architected Tool for reviewing workloads at no charge." },
       { id: "b", text: "It requires an Enterprise Support plan before it can be used." },
-      { id: "c", text: "It charges a per-question fee for each answer recorded in a review." },
+      { id: "c", text: "It charges a fee for each workload you define and review in the tool." },
       { id: "d", text: "It is billed as a fixed monthly subscription per AWS account." },
     ],
     correct: ["a"],
     explanation:
-      "AWS provides the Well-Architected Tool to review your workloads at no charge. It is not gated behind Enterprise Support, and it does not bill per question or as a fixed monthly subscription.",
+      "AWS provides the Well-Architected Tool to review your workloads at no charge. It is not gated behind Enterprise Support, it does not charge a fee per workload reviewed, and it is not billed as a fixed monthly subscription.",
     reference: {
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
@@ -663,18 +663,18 @@ export const domain1WellArchitected: Question[] = [
     stem: "An architect wants components to fail independently so that one part breaking does not cascade across the whole system, often by placing a queue or load balancer between tiers. Which cloud design principle does this follow?",
     options: [
       { id: "a", text: "Decouple your components" },
-      { id: "b", text: "Keep all logic in a single tightly coupled server" },
-      { id: "c", text: "Provision peak capacity at all times" },
-      { id: "d", text: "Treat servers as long-lived pets to be repaired in place" },
+      { id: "b", text: "Improve through game days" },
+      { id: "c", text: "Manage change through automation" },
+      { id: "d", text: "Stop guessing your capacity needs" },
     ],
     correct: ["a"],
     explanation:
-      "Decoupling components, for example with a queue or load balancer between tiers, lets parts of a system scale and fail independently so a failure in one does not break the others. Tightly coupling all logic, statically provisioning peak capacity, and nursing individual servers run counter to cloud design guidance.",
+      "Decoupling components, for example with a queue or load balancer between tiers, lets parts of a system scale and fail independently so a failure in one does not break the others. Improving through game days rehearses events to find weak spots, managing change through automation covers how infrastructure changes are made, and stopping guessing capacity covers scaling to demand; none of them isolates components so one failure cannot cascade.",
     reference: {
       label: "REL04-BP02 Implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-30",
@@ -686,17 +686,17 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "Scale horizontally to increase aggregate workload availability" },
       { id: "b", text: "Scale vertically by buying the largest possible single server" },
-      { id: "c", text: "Manage every change manually for tighter control" },
-      { id: "d", text: "Skip recovery testing to avoid disrupting production" },
+      { id: "c", text: "Manage change through automation" },
+      { id: "d", text: "Automatically recover from failure" },
     ],
     correct: ["a"],
     explanation:
-      "Scaling horizontally replaces one large resource with multiple small ones and distributes requests so no single failure takes down the workload, raising aggregate availability. Buying one giant server keeps a single point of failure, manual change and skipping recovery testing contradict the reliability principles of managing change through automation and testing recovery procedures.",
+      "Scaling horizontally replaces one large resource with multiple small ones and distributes requests so no single failure takes down the workload, raising aggregate availability. Buying one giant server keeps a single point of failure. Managing change through automation is about how infrastructure changes are made, and automatically recovering from failure is about monitoring business KPIs and triggering repair, so neither describes spreading the workload across smaller resources.",
     reference: {
       label: "Reliability pillar design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-31",
@@ -729,13 +729,13 @@ export const domain1WellArchitected: Question[] = [
     stem: "A team adds Auto Scaling so the number of EC2 instances grows during busy hours and shrinks when traffic falls, instead of running a fixed fleet sized for peak. Which cloud design principle does this implement?",
     options: [
       { id: "a", text: "Stop guessing your capacity needs" },
-      { id: "b", text: "Provision for peak and leave it running" },
-      { id: "c", text: "Manage capacity by manual purchase orders" },
-      { id: "d", text: "Avoid automation to keep behavior predictable" },
+      { id: "b", text: "Consider evolutionary architectures" },
+      { id: "c", text: "Implement Cloud Financial Management" },
+      { id: "d", text: "Stop spending money on undifferentiated heavy lifting" },
     ],
     correct: ["a"],
     explanation:
-      "The Well-Architected general design principle Stop guessing your capacity needs says that in the cloud you can use as much or as little capacity as you need and scale in and out automatically, instead of sitting on expensive idle resources or living with limited capacity. Provisioning for peak, buying capacity by manual purchase orders, and avoiding automation are the capacity guessing this principle replaces.",
+      "The Well-Architected general design principle Stop guessing your capacity needs says that in the cloud you can use as much or as little capacity as you need and scale in and out automatically, instead of sitting on expensive idle resources or living with limited capacity. Considering evolutionary architectures is about letting the design change as the business changes, implementing Cloud Financial Management is a Cost Optimization principle about building cost-management capability, and stopping spending money on undifferentiated heavy lifting is a Cost Optimization principle about letting AWS run data center operations, so none of them describes scaling capacity with demand.",
     reference: {
       label: "AWS Well-Architected Framework: general design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
@@ -752,18 +752,18 @@ export const domain1WellArchitected: Question[] = [
     stem: "A long-running job processes a large dataset sequentially on one worker. To finish faster, the team splits the dataset and runs many workers at once, then combines the results. Which cloud design principle does this apply?",
     options: [
       { id: "a", text: "Think parallel" },
-      { id: "b", text: "Process everything on a single thread for simplicity" },
-      { id: "c", text: "Scale only by buying a faster CPU" },
-      { id: "d", text: "Avoid distributing work to reduce complexity" },
+      { id: "b", text: "Scale vertically to a larger instance type" },
+      { id: "c", text: "Go global in minutes" },
+      { id: "d", text: "Stop guessing your capacity needs" },
     ],
     correct: ["a"],
     explanation:
-      "Thinking parallel means breaking work into pieces that run concurrently across many resources to increase throughput, which the cloud makes easy to provision on demand. Forcing single-threaded processing or relying only on a faster CPU does not use the cloud's ability to run work in parallel.",
+      "Thinking parallel means breaking work into pieces that run concurrently across many resources to increase throughput, which the cloud makes easy to provision on demand; AWS Batch array jobs, for example, run related child jobs across multiple hosts at the same time. Scaling vertically to a larger instance type still runs the job on one worker, going global in minutes is about deploying in multiple Regions for lower latency, and stopping guessing capacity is about matching capacity to demand, so none of them splits the work to run at once.",
     reference: {
       label: "AWS Batch array jobs",
       url: "https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-34",
@@ -775,18 +775,18 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "Stop guessing your capacity needs" },
       { id: "b", text: "Improve through game days" },
-      { id: "c", text: "Always pay the full amount upfront" },
-      { id: "d", text: "Keep architectures fixed for the life of the system" },
-      { id: "e", text: "Manage capacity by forecasting hardware purchases a year ahead" },
+      { id: "c", text: "Adopt a consumption model" },
+      { id: "d", text: "Implement a strong identity foundation" },
+      { id: "e", text: "Go global in minutes" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Stop guessing your capacity needs and improve through game days are two of the general design principles. Paying upfront is a billing choice, keeping architectures fixed contradicts considering evolutionary architectures, and forecasting hardware a year ahead is the on-premises guessing the cloud is meant to remove.",
+      "Stop guessing your capacity needs and improve through game days are two of the six general design principles. Adopt a consumption model is a Cost Optimization design principle, implement a strong identity foundation is a Security design principle, and go global in minutes is a Performance Efficiency design principle, so none of them appears on the general list.",
     reference: {
       label: "General design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-35",
@@ -843,18 +843,18 @@ export const domain1WellArchitected: Question[] = [
     options: [
       { id: "a", text: "Decouple components so each part can scale and fail independently" },
       { id: "b", text: "Implement elasticity so resources scale out and in automatically with demand" },
-      { id: "c", text: "Concentrate all functions on one large server to simplify operations" },
-      { id: "d", text: "Provision permanently for peak load so nothing ever needs to change" },
-      { id: "e", text: "Forecast and buy a year of hardware capacity in advance" },
+      { id: "c", text: "Scale vertically by moving the workload to a larger instance type" },
+      { id: "d", text: "Take nightly snapshots of the single server so it can be rebuilt later" },
+      { id: "e", text: "Run the database on the same instance as the web server to cut latency" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Decoupling components removes single points of failure and lets parts scale independently, and implementing elasticity scales resources automatically so you stop guessing capacity. Concentrating everything on one server creates a single point of failure, and static peak provisioning or buying a year of hardware ahead is the on-premises pattern the cloud replaces.",
+      "Decoupling components removes single points of failure and lets parts scale independently, and implementing elasticity scales resources automatically so you stop guessing capacity. Moving to a larger instance type still leaves one server as a single point of failure and needs a manual resize, nightly snapshots help rebuild after a failure but do not keep the workload running or add capacity, and putting the database on the web server ties the tiers together so one failure takes both down.",
     reference: {
       label: "REL04-BP02 Implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-warch-38",
@@ -868,16 +868,16 @@ export const domain1WellArchitected: Question[] = [
       { id: "b", text: "It measures a workload against the Well-Architected Framework and gives recommendations for improvement." },
       { id: "c", text: "It guarantees the workload will pass a formal AWS compliance audit." },
       { id: "d", text: "It is only available to customers on the Enterprise Support plan." },
-      { id: "e", text: "It replaces the need to design for any of the six pillars." },
+      { id: "e", text: "It continuously records every configuration change to your resources." },
     ],
     correct: ["a", "b"],
     explanation:
-      "The Well-Architected Tool is offered at no charge and measures your architecture against the framework while providing improvement recommendations. It does not guarantee passing a compliance audit, is not limited to Enterprise Support, and does not remove the need to design against the pillars; it helps you evaluate that design.",
+      "The Well-Architected Tool is offered at no charge and measures your architecture against the framework while providing improvement recommendations. It does not guarantee passing a compliance audit and is not limited to Enterprise Support. Recording how resource configurations change over time is what AWS Config does; the Well-Architected Tool works from your answers to review questions.",
     reference: {
       label: "AWS Well-Architected Framework: AWS WA Tool at no charge",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-18",
@@ -913,16 +913,16 @@ export const domain1WellArchitected: Question[] = [
       { id: "b", text: "Use managed services that share infrastructure across customers." },
       { id: "c", text: "Encrypt every stored object with a customer managed key." },
       { id: "d", text: "Purchase three-year Reserved Instances to lower the hourly rate." },
-      { id: "e", text: "Deploy a copy of the workload into every AWS Region." },
+      { id: "e", text: "Keep a standby copy of the workload in a second Region." },
     ],
     correct: ["a", "b"],
     distractorRationales: {
       c: "Protecting stored objects belongs to the Security pillar. It changes who can read the data, not how much hardware the workload keeps busy.",
       d: "A reservation lowers the price of the same capacity. The workload consumes exactly what it consumed before.",
-      e: "Running more copies in more places raises the resources a workload uses, which is the opposite of the pillar's goal.",
+      e: "A standby copy in another Region is a disaster recovery choice for the Reliability pillar, and it adds resources rather than reducing them.",
     },
     explanation:
-      "The Sustainability pillar's design principles include maximizing utilization, which means right-sizing and reducing or minimizing idle resources, processing, and storage, because two hosts running at 30 percent utilization are less efficient than one running at 60 percent. They also include using managed services, where sharing services across a broad customer base maximizes resource utilization and reduces the amount of infrastructure needed. Encrypting objects with a customer managed key is a security control, buying Reserved Instances lowers the rate you pay without changing what the workload consumes, and deploying a copy into every Region increases resource use rather than reducing it.",
+      "The Sustainability pillar's design principles include maximizing utilization, which means right-sizing and reducing or minimizing idle resources, processing, and storage, because two hosts running at 30 percent utilization are less efficient than one running at 60 percent. They also include using managed services, where sharing services across a broad customer base maximizes resource utilization and reduces the amount of infrastructure needed. Encrypting objects with a customer managed key is a security control, buying Reserved Instances lowers the rate you pay without changing what the workload consumes, and keeping a standby copy in a second Region is a disaster recovery choice that adds resources rather than reducing them.",
     reference: {
       label: "Sustainability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html",
