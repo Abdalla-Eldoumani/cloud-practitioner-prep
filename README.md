@@ -62,9 +62,9 @@ npm run dev
 ```
 
 `npm run build` writes the static site to `dist/`, `npm run preview` serves it, and
-`npm run check` type-checks. The content has its own gates: `lint:content`, `lint:coverage`,
-`lint:catalog`, `lint:links`, `lint:shuffle`, and the `check:*` engine scripts. CI runs all of
-them on every push.
+`npm run check` type-checks. The content has its own gates: `lint:content`,
+`lint:distractors`, `lint:coverage`, `lint:catalog`, `lint:links`, `lint:shuffle`, and the
+`check:*` engine scripts. CI runs all of them on every push.
 
 Built with [Astro](https://astro.build), [React](https://react.dev) islands,
 [Tailwind CSS](https://tailwindcss.com) v4, TypeScript, and MDX lessons.
