@@ -381,12 +381,12 @@ export const domain1MigrationCaf: Question[] = [
     options: [
       { id: "a", text: "The AWS Snow Family, using a Snowball Edge device" },
       { id: "b", text: "AWS Storage Gateway File Gateway" },
-      { id: "c", text: "Amazon S3 Transfer Acceleration over the public internet" },
+      { id: "c", text: "AWS DataSync, using an agent deployed in the on-premises environment" },
       { id: "d", text: "Amazon EFS" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Snow Family uses physical devices such as Snowball Edge that carry data by being shipped through a carrier rather than sent over the network, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway and Transfer Acceleration still move data over the network, and Amazon EFS is a file system, not a data-transfer device. Snowball Edge is no longer available to new customers, and AWS directs them to AWS DataSync for online transfers or AWS Data Transfer Terminal for physical transfers, but the exam guide still lists the Snow Family.",
+      "The AWS Snow Family uses physical devices such as Snowball Edge that carry data by being shipped through a carrier rather than sent over the network, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway still moves data over the network, AWS DataSync uses an agent that is a virtual machine deployed in your storage environment and still transfers the data online rather than shipping a device, and Amazon EFS is a file system, not a data-transfer device. Snowball Edge is no longer available to new customers, and AWS directs them to AWS DataSync for online transfers or AWS Data Transfer Terminal for physical transfers, but the exam guide still lists the Snow Family.",
     reference: {
       label: "What is Snowball Edge?",
       url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
@@ -403,13 +403,13 @@ export const domain1MigrationCaf: Question[] = [
     stem: "A remote site with little or no network connectivity needs to collect sensor data and run some local processing on it before shipping the data to AWS. Which capability of an AWS Snowball Edge device supports running compute at the edge?",
     options: [
       { id: "a", text: "Snowball Edge runs EC2 instances and Lambda code on the device." },
-      { id: "b", text: "Snowball Edge can only store data and cannot run any processing." },
-      { id: "c", text: "Snowball Edge requires a constant high-speed internet connection to function." },
-      { id: "d", text: "Snowball Edge is a managed relational database that runs in the cloud." },
+      { id: "b", text: "Snowball Edge runs managed Amazon RDS database instances on the device." },
+      { id: "c", text: "Snowball Edge forwards the data to an AWS Outposts rack that runs the compute." },
+      { id: "d", text: "Snowball Edge runs serverless AWS Fargate tasks on the device for processing." },
     ],
     correct: ["a"],
     explanation:
-      "Snowball Edge devices can run Amazon EC2 instances from AMIs and AWS Lambda code on the device to process data at the edge, which is useful in disconnected or remote locations. AWS will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, so learn this as exam knowledge rather than as a service to adopt today. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity rather than requiring a constant internet connection, and it is a physical edge and transfer device rather than a cloud database.",
+      "Snowball Edge devices can run Amazon EC2 instances from AMIs and AWS Lambda code on the device to process data at the edge, which is useful in disconnected or remote locations. AWS will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, so learn this as exam knowledge rather than as a service to adopt today. The compute AWS lists for the device is EC2-compatible instances, Amazon EKS Anywhere, and Lambda powered by AWS IoT Greengrass, so managed Amazon RDS database instances and serverless AWS Fargate tasks are not among them, and the device runs its own compute rather than forwarding data to an AWS Outposts rack, which AWS points to as a separate edge computing option.",
     reference: {
       label: "AWS Snow Family",
       url: "https://aws.amazon.com/snowball/",
@@ -537,16 +537,16 @@ export const domain1MigrationCaf: Question[] = [
       { id: "a", text: "It converts the schema to the new engine, then DMS moves the data." },
       { id: "b", text: "It supports migrations only where the source and target run an identical database engine." },
       { id: "c", text: "It ships the stored data to AWS on a physical device that AWS loads on arrival." },
-      { id: "d", text: "It replaces the database with a software-as-a-service product bought from a vendor." },
+      { id: "d", text: "It requires taking the source database offline for the entire migration." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "AWS states that DMS supports fully heterogeneous migrations between the supported engines, so an identical engine is not required.",
       c: "Shipping a physical device is the AWS Snow Family, not a database migration service.",
-      d: "Buying a replacement product is the repurchase migration strategy, not something a migration service performs.",
+      d: "AWS DMS can replicate ongoing changes to keep source and target in sync, so the source does not have to go offline for the whole migration.",
     },
     explanation:
-      "AWS DMS supports fully heterogeneous data migrations between supported engines. DMS Schema Conversion, or the downloadable AWS Schema Conversion Tool, automatically assesses and converts the source schema to the new target engine, and AWS DMS then migrates the data, either as a one-time migration or by replicating ongoing changes to keep source and target in sync. It is therefore not limited to an identical engine on both sides, it does not ship data on a physical device, and buying a software-as-a-service replacement is the repurchase migration strategy rather than anything AWS DMS does.",
+      "AWS DMS supports fully heterogeneous data migrations between supported engines. DMS Schema Conversion, or the downloadable AWS Schema Conversion Tool, automatically assesses and converts the source schema to the new target engine, and AWS DMS then migrates the data, either as a one-time migration or by replicating ongoing changes to keep source and target in sync. It is therefore not limited to an identical engine on both sides, it does not ship data on a physical device, and because it can replicate ongoing changes it does not require taking the source database offline for the entire migration.",
     reference: {
       label: "What is AWS Database Migration Service?",
       url: "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
