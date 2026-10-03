@@ -202,7 +202,7 @@ export const domain3Networking: Question[] = [
       label: "NAT gateways",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -237,7 +237,7 @@ export const domain3Networking: Question[] = [
     difficulty: "medium",
     stem: "While planning a VPC's address space, an engineer wants to follow the AWS recommendation for choosing the CIDR block. Which range should they pick from?",
     options: [
-      { id: "a", text: "A private IPv4 address range as specified in RFC 1918, such as 10.0.0.0/16" },
+      { id: "a", text: "A private RFC 1918 range, such as 10.0.0.0/16" },
       { id: "b", text: "The link-local range 169.254.0.0/16" },
       { id: "c", text: "The loopback range 127.0.0.0/8" },
       { id: "d", text: "A multicast range from 224.0.0.0/4" },
@@ -249,7 +249,7 @@ export const domain3Networking: Question[] = [
       label: "VPC CIDR blocks",
       url: "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["VPC"],
   },
   {
@@ -283,7 +283,7 @@ export const domain3Networking: Question[] = [
     difficulty: "hard",
     stem: "Which statement best describes how AWS Direct Connect carries traffic between a customer site and AWS?",
     options: [
-      { id: "a", text: "It uses a dedicated physical connection through a Direct Connect location, bypassing the public internet." },
+      { id: "a", text: "It uses a dedicated physical connection that bypasses the public internet." },
       { id: "b", text: "It encrypts traffic and sends it over the public internet using IPsec tunnels." },
       { id: "c", text: "It caches content at edge locations close to end users." },
       { id: "d", text: "It assigns anycast static IP addresses to route users to the nearest Region." },
@@ -295,7 +295,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Direct Connect"],
   },
   {
@@ -329,8 +329,8 @@ export const domain3Networking: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements about AWS Site-to-Site VPN are correct? (Choose two.)",
     options: [
-      { id: "a", text: "It supports Internet Protocol security (IPsec) connections between a customer network and a VPC." },
-      { id: "b", text: "It runs over the public internet rather than a dedicated physical link." },
+      { id: "a", text: "It supports IPsec connections between a customer network and a VPC." },
+      { id: "b", text: "It runs over the public internet, not a dedicated link." },
       { id: "c", text: "It is a dedicated unencrypted fiber cross-connect into AWS." },
       { id: "d", text: "It assigns anycast static IP addresses to accelerate traffic." },
       { id: "e", text: "It caches static content at edge locations near users." },
@@ -388,7 +388,7 @@ export const domain3Networking: Question[] = [
       label: "AWS Direct Connect",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Direct Connect", "Site-to-Site VPN"],
   },
   {
@@ -702,8 +702,8 @@ export const domain3Networking: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements describe how Amazon CloudFront serves a user request? (Choose two.)",
     options: [
-      { id: "a", text: "If the content is already cached in the lowest-latency edge location, CloudFront delivers it immediately from there." },
-      { id: "b", text: "If the content is not in that edge location, CloudFront retrieves it from the origin you defined, such as an S3 bucket or HTTP server." },
+      { id: "a", text: "If the edge location already has the content cached, CloudFront delivers it from there." },
+      { id: "b", text: "If it is not cached there, CloudFront retrieves it from the origin you defined." },
       { id: "c", text: "CloudFront always fetches a fresh copy from the origin on every request, even for cached files." },
       { id: "d", text: "CloudFront forwards each request to Route 53 to resolve before responding." },
       { id: "e", text: "CloudFront routes every request over a Direct Connect link to the origin." },
@@ -773,7 +773,7 @@ export const domain3Networking: Question[] = [
     difficulty: "hard",
     stem: "An architect is deciding between Amazon CloudFront and AWS Global Accelerator. Which statement correctly captures the difference AWS describes?",
     options: [
-      { id: "a", text: "CloudFront caches content at edge locations for HTTP delivery, while Global Accelerator proxies TCP and UDP traffic over the AWS global network without caching." },
+      { id: "a", text: "CloudFront caches at the edge; Global Accelerator proxies TCP and UDP without caching." },
       { id: "b", text: "CloudFront proxies UDP gaming traffic, while Global Accelerator caches images and videos." },
       { id: "c", text: "Both services cache static content identically and are interchangeable." },
       { id: "d", text: "Global Accelerator registers domain names, while CloudFront provides static IP addresses." },
@@ -820,8 +820,8 @@ export const domain3Networking: Question[] = [
     difficulty: "medium",
     stem: "A solutions team needs private, internet-free access from a VPC to AWS services. Which TWO statements about AWS PrivateLink and VPC endpoints are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Traffic between a VPC endpoint and the service stays within the AWS network and does not traverse the public internet." },
-      { id: "b", text: "Gateway endpoints are used to reach Amazon S3 and DynamoDB through a route in the route table." },
+      { id: "a", text: "Endpoint traffic stays on the AWS network, not the public internet." },
+      { id: "b", text: "Gateway endpoints reach Amazon S3 and DynamoDB via a route table entry." },
       { id: "c", text: "An interface endpoint requires attaching an internet gateway to function." },
       { id: "d", text: "PrivateLink requires a Direct Connect connection before it can be used." },
       { id: "e", text: "VPC endpoints are a content delivery network for caching web assets." },
