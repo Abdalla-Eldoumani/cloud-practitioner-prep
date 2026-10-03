@@ -40,14 +40,14 @@ export const migrationTransfer: ServiceEntry[] = [
     domain: 3,
     category: "Migration and Transfer",
     purpose:
-      "A service that automates the rehosting, or lift and shift, of your servers to AWS by replicating them and converting them to run natively on AWS.",
+      "A service that automates the rehosting, or lift and shift, of your servers to AWS by converting them into native Amazon EC2 instances. AWS now documents it as AWS Transform MGN; the exam guide uses the earlier name.",
     whenToUse:
       "Reach for it when you want to move existing applications to AWS with minimal changes by lifting and shifting whole servers rather than rebuilding them.",
     reference: {
-      label: "What Is AWS Transform MGN?",
-      url: "https://docs.aws.amazon.com/mgn/latest/ug/what-is-mgn.html",
+      label: "AWS Transform MGN (formerly AWS Application Migration Service)",
+      url: "https://aws.amazon.com/application-migration-service/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     aliases: [
       "Application Migration Service",
       "MGN",
