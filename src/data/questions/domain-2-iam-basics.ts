@@ -37,7 +37,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "easy",
     stem: "AWS strongly recommends a particular way to use the account root user. Which statement matches that guidance?",
     options: [
-      { id: "a", text: "Avoid using the root user for everyday tasks and reserve it for the few tasks that require it." },
+      { id: "a", text: "Avoid it for everyday tasks; use it only for tasks that require it." },
       { id: "b", text: "Use the root user for all daily administration so permissions stay simple." },
       { id: "c", text: "Share the root user credentials with the whole operations team for convenience." },
       { id: "d", text: "Delete the root user after creating the first IAM user." },
@@ -49,7 +49,7 @@ export const domain2IamBasics: Question[] = [
       label: "AWS account root user",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -83,7 +83,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A developer wants to run AWS CLI commands and asks whether they should create an access key for the account root user to do so. What is AWS guidance?",
     options: [
-      { id: "a", text: "Do not create access keys for the root user; use another identity with the needed permissions instead." },
+      { id: "a", text: "Do not create root access keys; use a less privileged identity instead." },
       { id: "b", text: "Create a root user access key, since only the root user can use the CLI." },
       { id: "c", text: "Create a root user access key and email it to the developer for reuse." },
       { id: "d", text: "Root users cannot use the CLI at all, so the question does not apply." },
@@ -106,7 +106,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An organization is closing one of its standalone AWS accounts that is not part of AWS Organizations. Which credentials are required to close the account?",
     options: [
-      { id: "a", text: "The root user credentials, because closing a standalone account is a task that requires the root user." },
+      { id: "a", text: "The sign-in credentials of the account root user." },
       { id: "b", text: "Any IAM user with the AdministratorAccess policy." },
       { id: "c", text: "A resource-based policy attached to the account." },
       { id: "d", text: "An IAM group that contains all administrators." },
@@ -129,7 +129,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "Which TWO of the following are tasks that AWS lists as requiring sign-in as the account root user? (Choose two.)",
     options: [
-      { id: "a", text: "Changing the AWS account email address or root user password on a standalone account" },
+      { id: "a", text: "Changing the root password of a standalone account" },
       { id: "b", text: "Restoring IAM user permissions if the only administrator accidentally revokes their own access" },
       { id: "c", text: "Launching an Amazon EC2 instance for a web application" },
       { id: "d", text: "Creating an Amazon S3 bucket for application data" },
@@ -176,7 +176,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A backend service that runs outside AWS needs to make programmatic API calls to AWS and cannot use a role. An IAM user is created for it. What does an IAM user represent in this case?",
     options: [
-      { id: "a", text: "An application or workload, since an IAM user can represent either a person or an application that uses its credentials to make AWS requests." },
+      { id: "a", text: "An application or workload that uses the user's credentials" },
       { id: "b", text: "Only a human being, since IAM users can never represent software." },
       { id: "c", text: "A physical server that AWS dedicates to the account." },
       { id: "d", text: "A billing account separate from the AWS account." },
@@ -199,7 +199,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "An administrator creates a fresh IAM user and then forgets to attach any policy. What can that new IAM user do in the account?",
     options: [
-      { id: "a", text: "Nothing, because by default a new IAM user has no permissions until permissions are granted." },
+      { id: "a", text: "Nothing, since a new IAM user has no permissions until granted." },
       { id: "b", text: "Everything, because new users inherit the root user's full access." },
       { id: "c", text: "Read-only access to every service by default." },
       { id: "d", text: "Only billing actions by default." },
@@ -222,7 +222,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "A reviewer points out that an IAM user with the AdministratorAccess policy is sometimes confused with the account root user. Which statement correctly distinguishes them?",
     options: [
-      { id: "a", text: "An IAM user with administrator permissions is not the same as the root user; the root user is a separate, special identity created with the account." },
+      { id: "a", text: "They differ: the root user is a separate identity created with the account." },
       { id: "b", text: "An IAM user with administrator permissions is exactly the root user under a different name." },
       { id: "c", text: "The root user is just an IAM user that happens to be in the Admins group." },
       { id: "d", text: "An administrator IAM user can perform every root-only task, so the distinction does not matter." },
@@ -246,7 +246,7 @@ export const domain2IamBasics: Question[] = [
     stem: "Which TWO types of credentials can an IAM user have to access AWS? (Choose two.)",
     options: [
       { id: "a", text: "A console password for signing in to the AWS Management Console" },
-      { id: "b", text: "Access keys for making programmatic calls to AWS" },
+      { id: "b", text: "Access keys for programmatic calls to AWS" },
       { id: "c", text: "A physical data center badge issued by AWS" },
       { id: "d", text: "The account root user email address" },
       { id: "e", text: "An AWS Region code" },
@@ -269,7 +269,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An IAM user named Diego is created in one AWS account. How many AWS accounts is that IAM user associated with, and who is billed for Diego's activity?",
     options: [
-      { id: "a", text: "Diego is associated with exactly one AWS account, and his activity is billed to that account." },
+      { id: "a", text: "Exactly one account, and his activity is billed to that account." },
       { id: "b", text: "Diego is shared across all of the company's AWS accounts and billed to each." },
       { id: "c", text: "Diego must have his own payment method on file with AWS." },
       { id: "d", text: "Diego is associated with no account until he signs in for the first time." },
@@ -315,7 +315,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A team grants administrator permissions to an IAM group called Admins. A new hire needs the same administrator access. What is the simplest way to grant it?",
     options: [
-      { id: "a", text: "Add the new user to the Admins group, and they automatically receive that group's permissions." },
+      { id: "a", text: "Add the new user to the Admins group so they inherit its permissions." },
       { id: "b", text: "Copy each policy from the group and attach the copies to the user individually." },
       { id: "c", text: "Promote the new user to the account root user." },
       { id: "d", text: "Create a resource-based policy that names the user as a group." },
@@ -338,7 +338,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "How do you grant a set of permissions to all members of an IAM user group at once?",
     options: [
-      { id: "a", text: "Attach an identity-based policy to the user group so all users in it receive the policy's permissions." },
+      { id: "a", text: "Attach an identity-based policy to the user group itself." },
       { id: "b", text: "Attach a resource-based policy naming the group as the principal." },
       { id: "c", text: "Add the group as a member of itself so the permissions propagate." },
       { id: "d", text: "Give the group its own access keys and password." },
@@ -361,7 +361,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An architect proposes nesting one IAM user group inside another to build a permission hierarchy. Is that possible in IAM?",
     options: [
-      { id: "a", text: "No. User groups cannot be nested; they can contain only users, not other groups." },
+      { id: "a", text: "No. User groups cannot be nested; they contain only users." },
       { id: "b", text: "Yes. Groups can be nested up to five levels deep." },
       { id: "c", text: "Yes, but only if every nested group has the same policy." },
       { id: "d", text: "Yes, and a nested group automatically becomes the parent group's administrator." },
@@ -384,7 +384,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A person changes roles within a company and now needs a different set of AWS permissions. Using IAM groups, what is the cleaner way to handle this than editing the user's permissions directly?",
     options: [
-      { id: "a", text: "Remove the user from their old groups and add them to the appropriate new groups." },
+      { id: "a", text: "Move the user from their old groups into the appropriate new ones." },
       { id: "b", text: "Delete the user and recreate them from scratch with new policies." },
       { id: "c", text: "Convert the user into the account root user for the new role." },
       { id: "d", text: "Attach the new permissions to an availability zone the user works in." },
@@ -454,7 +454,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "Within a single statement of a JSON IAM policy, which element specifies whether the statement allows or denies the listed actions?",
     options: [
-      { id: "a", text: "The Effect element, set to Allow or Deny" },
+      { id: "a", text: "The Effect element" },
       { id: "b", text: "The Version element" },
       { id: "c", text: "The Sid element" },
       { id: "d", text: "The Resource element" },
@@ -477,7 +477,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A statement in a JSON IAM policy describes a single permission. Which TWO of the following are valid elements of that statement? (Choose two.)",
     options: [
-      { id: "a", text: "Action, listing the operations the statement applies to" },
+      { id: "a", text: "Action, listing the operations to allow or deny" },
       { id: "b", text: "Resource, specifying the resources the actions apply to" },
       { id: "c", text: "Region, listing every AWS Region the policy covers" },
       { id: "d", text: "Password, holding the user's sign-in secret" },
@@ -501,7 +501,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An engineer writes an identity-based policy to attach to an IAM user and tries to add a Principal element naming that user. What does AWS say about including Principal here?",
     options: [
-      { id: "a", text: "You cannot include Principal in an identity-based permissions policy attached to a user or role; the principal is implied as that identity." },
+      { id: "a", text: "You cannot include it; the principal is implied as that user." },
       { id: "b", text: "Principal is required in every identity-based policy." },
       { id: "c", text: "Principal must list the account root user in identity-based policies." },
       { id: "d", text: "Principal in an identity-based policy sets the policy's Region scope." },
@@ -524,7 +524,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "easy",
     stem: "By default, before any policies are evaluated, how does AWS treat a request from an IAM user or role?",
     options: [
-      { id: "a", text: "The request is implicitly denied unless a policy explicitly allows it." },
+      { id: "a", text: "The request is implicitly denied unless a policy allows it." },
       { id: "b", text: "The request is allowed unless a policy explicitly denies it." },
       { id: "c", text: "The request is queued until an administrator approves it." },
       { id: "d", text: "The request is allowed only during business hours." },
@@ -570,7 +570,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A user has no policy that mentions a particular action at all, neither allowing nor denying it. What happens when the user attempts that action?",
     options: [
-      { id: "a", text: "The action is denied through an implicit deny, because nothing explicitly allows it." },
+      { id: "a", text: "It is implicitly denied, since nothing explicitly allows it." },
       { id: "b", text: "The action is allowed because nothing explicitly denies it." },
       { id: "c", text: "The action triggers an error that grants temporary access." },
       { id: "d", text: "The action is allowed only for read operations." },
@@ -593,7 +593,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An IAM user's identity-based policy allows an action, and a resource-based policy on the target resource explicitly denies it, within the same account. What is the final decision?",
     options: [
-      { id: "a", text: "Denied, because an explicit deny in either the identity-based or resource-based policy overrides the allow." },
+      { id: "a", text: "Denied, because an explicit deny in either policy overrides the allow." },
       { id: "b", text: "Allowed, because the identity-based policy takes priority over the resource-based policy." },
       { id: "c", text: "Allowed, because resource-based policies cannot deny actions." },
       { id: "d", text: "Undefined, because the two policy types are never evaluated together." },
@@ -765,7 +765,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A company wants to assign permissions to thirty developers in a way that is easy to maintain as people join and leave. Which approach aligns with AWS best practices?",
     options: [
-      { id: "a", text: "Use IAM user groups to assign permissions, then manage membership as people join or leave." },
+      { id: "a", text: "Use IAM user groups for permissions and manage their membership." },
       { id: "b", text: "Attach a separate set of inline policies to each developer one by one." },
       { id: "c", text: "Give all developers the account root user credentials." },
       { id: "d", text: "Create one shared IAM user that everyone signs in with." },
@@ -788,19 +788,19 @@ export const domain2IamBasics: Question[] = [
     difficulty: "easy",
     stem: "Which AWS service helps you securely control who is authenticated and authorized to use AWS resources, and is offered at no additional charge?",
     options: [
-      { id: "a", text: "AWS Identity and Access Management (IAM)" },
+      { id: "a", text: "AWS Identity and Access Management" },
       { id: "b", text: "Amazon CloudWatch" },
-      { id: "c", text: "Amazon S3" },
+      { id: "c", text: "AWS Key Management Service (AWS KMS)" },
       { id: "d", text: "AWS Cost Explorer" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Identity and Access Management (IAM) lets you control who is authenticated and authorized to use AWS resources, and it is a feature of your AWS account offered at no additional charge. CloudWatch is for monitoring, Amazon S3 is object storage, and Cost Explorer analyzes spending.",
+      "AWS Identity and Access Management (IAM) lets you control who is authenticated and authorized to use AWS resources, and it is a feature of your AWS account offered at no additional charge. CloudWatch is for monitoring, AWS KMS lets you create and control the keys used to encrypt and sign data, and Cost Explorer analyzes spending.",
     reference: {
       label: "What is IAM?",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -839,7 +839,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "AWS best practices recommend that human users access AWS with temporary credentials rather than long-term ones. Which approach reflects that recommendation?",
     options: [
-      { id: "a", text: "Have human users assume IAM roles, often through federation with an identity provider, to get temporary credentials." },
+      { id: "a", text: "Have them assume IAM roles to get temporary credentials." },
       { id: "b", text: "Create an IAM user with permanent access keys for every employee." },
       { id: "c", text: "Share one set of long-term access keys across the team." },
       { id: "d", text: "Use the account root user's access keys for daily work." },
