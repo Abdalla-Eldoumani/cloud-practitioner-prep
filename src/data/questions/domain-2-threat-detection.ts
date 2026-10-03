@@ -504,7 +504,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "A compliance officer asks how often Amazon Inspector checks resources for new vulnerabilities. Which description is accurate?",
     options: [
-      { id: "a", text: "It scans continually, rescanning on changes or new CVEs." },
+      { id: "a", text: "It scans continually and rescans for new CVEs." },
       { id: "b", text: "It scans only once, when you first enable it, and never again." },
       { id: "c", text: "It scans only when you manually start an assessment each time." },
       { id: "d", text: "It scans only on the first day of each calendar year." },
