@@ -138,7 +138,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A compliance officer asks whether a failure or change in one AWS Region can directly affect resources running in another Region. Based on how AWS designs Regions, what is the best answer?",
     options: [
-      { id: "a", text: "Each AWS Region is physically isolated and independent of the other Regions" },
+      { id: "a", text: "Each Region is physically isolated and independent of the other Regions" },
       { id: "b", text: "All Regions share the same data centers, so a failure in one affects all" },
       { id: "c", text: "Regions are linked so that resources automatically replicate to every other Region" },
       { id: "d", text: "A Region is just a label, and all resources actually run in one central location" },
@@ -297,7 +297,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A healthcare company is legally required to keep its patient data stored within its own country's borders. Which consideration should drive its choice of AWS Region?",
     options: [
-      { id: "a", text: "Compliance and data residency rules for stored data" },
+      { id: "a", text: "Data residency and compliance requirements" },
       { id: "b", text: "Choosing whichever Region has the most Availability Zones" },
       { id: "c", text: "Selecting the Region that was launched most recently" },
       { id: "d", text: "Picking the Region with the lowest service prices" },
@@ -386,7 +386,7 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "An application running in one Region needs to also serve users on another continent with lower latency. What is a typical first step within AWS global infrastructure to achieve this?",
     options: [
-      { id: "a", text: "Deploy it in an additional Region closer to those users" },
+      { id: "a", text: "Deploy the application in an additional AWS Region closer to those users" },
       { id: "b", text: "Move all of the company's data into a single Availability Zone" },
       { id: "c", text: "Delete the original Region to free up capacity" },
       { id: "d", text: "Rename the existing Region to match the new continent" },
@@ -454,7 +454,7 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "How does AWS describe the relationship between an AWS Local Zone and an AWS Region?",
     options: [
-      { id: "a", text: "A Local Zone extends a Region to place select services closer to users" },
+      { id: "a", text: "A Local Zone is an extension of an AWS Region that places select services closer to end users" },
       { id: "b", text: "A Local Zone is a completely separate cloud with no connection to any Region" },
       { id: "c", text: "A Local Zone replaces the need for Regions entirely" },
       { id: "d", text: "A Local Zone is another name for an edge location in the CloudFront network" },
@@ -776,7 +776,7 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "A team wants its web application to keep serving users even if one data center has a problem, so that downtime stays as low as possible. Which approach reflects how AWS recommends achieving high availability within a Region?",
     options: [
-      { id: "a", text: "Run the application across multiple Availability Zones in the Region." },
+      { id: "a", text: "Run it across multiple Availability Zones in the Region." },
       { id: "b", text: "Run the application on one large instance in a single Availability Zone." },
       { id: "c", text: "Store everything on a single server and back it up once a year." },
       { id: "d", text: "Disable health checks so the application is never marked unhealthy." },
@@ -820,7 +820,7 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "Why does AWS say that operating across multiple Availability Zones lets you run applications that are more highly available and fault tolerant than you could from a single data center?",
     options: [
-      { id: "a", text: "Because the zones are physically separate, so a fault in one rarely hits the others." },
+      { id: "a", text: "Because the zones are physically separate facilities, so a problem in one is unlikely to take down the others." },
       { id: "b", text: "Because all the zones share the same power and network, so they fail together predictably." },
       { id: "c", text: "Because using more zones lowers the price of every service to zero." },
       { id: "d", text: "Because a single zone automatically replicates to every AWS Region." },
@@ -864,7 +864,7 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "Why does AWS design each Region to be isolated from the other Regions?",
     options: [
-      { id: "a", text: "For the greatest fault tolerance and stability." },
+      { id: "a", text: "To achieve the greatest possible fault tolerance and stability." },
       { id: "b", text: "To force all customers to use only one Region." },
       { id: "c", text: "To make every service the same price in every Region." },
       { id: "d", text: "To automatically copy all data between Regions for you." },
@@ -886,7 +886,7 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "An application runs all of its instances in one Availability Zone. AWS notes that although rare, a failure can affect availability in a single location. What is the risk here?",
     options: [
-      { id: "a", text: "If that one location fails, none of the instances would be available." },
+      { id: "a", text: "If that one location is affected by a failure, none of the instances would be available." },
       { id: "b", text: "The instances would automatically move to another Region with no design effort." },
       { id: "c", text: "The application would become more fault tolerant by concentrating in one place." },
       { id: "d", text: "AWS would refund the cost of the outage as account credit by default." },
@@ -908,7 +908,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A business is planning disaster recovery and needs to define how long the application can be down before the impact is unacceptable. Which objective expresses this?",
     options: [
-      { id: "a", text: "Recovery Time Objective (RTO), the maximum acceptable time to restore service." },
+      { id: "a", text: "Recovery Time Objective (RTO), the maximum acceptable delay between interruption and restoration of service." },
       { id: "b", text: "Recovery Point Objective (RPO), the maximum acceptable amount of data loss measured in time." },
       { id: "c", text: "Service level agreement credit, the refund for missed uptime." },
       { id: "d", text: "Time to first byte, the latency of the first response." },
@@ -930,7 +930,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "During DR planning, a team asks how much recent data they can afford to lose if they have to recover from a backup. Which objective answers that question?",
     options: [
-      { id: "a", text: "Recovery Point Objective (RPO), the acceptable data loss measured in time." },
+      { id: "a", text: "Recovery Point Objective (RPO), the maximum acceptable time after the last data recovery point." },
       { id: "b", text: "Recovery Time Objective (RTO), the maximum acceptable time to restore service." },
       { id: "c", text: "Mean time between failures, the average gap between outages." },
       { id: "d", text: "Throughput, the number of requests handled per second." },
@@ -1024,7 +1024,7 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A workload must keep recovery time close to zero by running in more than one AWS Region and serving users from all of them at once. Which DR strategy does AWS describe for this, and what is the trade-off?",
     options: [
-      { id: "a", text: "Multi-site active-active: near-zero recovery time, highest cost and complexity." },
+      { id: "a", text: "Multi-site active-active: near-zero RTO, highest cost and complexity." },
       { id: "b", text: "Backup and restore, which is the cheapest way to get near-zero recovery time." },
       { id: "c", text: "Pilot light, in which all Regions actively serve production traffic at full scale." },
       { id: "d", text: "A single-instance deployment, which gives the best recovery time of all." },
@@ -1091,7 +1091,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team worries that spreading a workload across multiple Availability Zones will add too much network delay between components. What does AWS say about connectivity between Availability Zones in a Region?",
     options: [
-      { id: "a", text: "Availability Zones in a Region are connected with low-latency networking." },
+      { id: "a", text: "Availability Zones are linked by low-latency networking." },
       { id: "b", text: "Availability Zones have no network connection to each other at all." },
       { id: "c", text: "Traffic between Availability Zones must travel over the public internet." },
       { id: "d", text: "Availability Zones are thousands of kilometers apart, making communication impractical." },
@@ -1182,7 +1182,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team wants an application to keep serving requests even if one data center location inside a Region has a problem. Which design approach most directly supports this goal?",
     options: [
-      { id: "a", text: "Run the application across multiple Availability Zones." },
+      { id: "a", text: "Run it across multiple Availability Zones." },
       { id: "b", text: "Run a single large server in one Availability Zone." },
       { id: "c", text: "Store one copy of everything on one disk in one location." },
       { id: "d", text: "Turn the application off during maintenance windows." },
@@ -1251,7 +1251,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "An application runs on instances spread across three Availability Zones in one AWS Region. Why does AWS say a problem confined to one of those Availability Zones need not take the whole application down?",
     options: [
-      { id: "a", text: "Each Availability Zone has its own redundant power and networking and sits apart from the others" },
+      { id: "a", text: "Each Availability Zone has its own redundant power and networking, apart from the others" },
       { id: "b", text: "Every Availability Zone in a Region draws on one shared power feed, so capacity moves between them instantly" },
       { id: "c", text: "The Availability Zones in a Region are copies of a single virtual machine kept in lockstep" },
       { id: "d", text: "AWS holds a spare Availability Zone offline in every Region and switches it on when another one fails" },
