@@ -222,6 +222,13 @@ Several of these exist to catch a specific way content goes wrong:
   is wrong on screen as often as not.
 - `lint:content` also enforces `DOMAIN_QUESTION_FLOORS`, so no domain can quietly
   thin out below its share of the exam.
+- `lint:distractors` keeps answer length from being a tell. No correct option may
+  be more than 1.5 times its longest distractor. Across the four-option
+  single-answer questions, the correct option must be strictly the longest in 18
+  to 32 percent of them and strictly the shortest in 18 to 32 percent, near the
+  25 percent chance gives each end, so a learner cannot rule options in or out by
+  length. For multi-answer questions, the correct set may be the longest options
+  in 3 to 20 percent of them.
 - `lint:links` accepts only the AWS documentation, AWS site, and pricing
   calculator hosts. Community forums are not official documentation, so they are
   not a valid reference. It also rejects known archived paths, and in live mode
