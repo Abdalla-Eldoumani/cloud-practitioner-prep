@@ -15,6 +15,10 @@ export default defineConfig({
   // Static output: the whole site is prerendered. Quiz state lives in the browser,
   // so no server runtime is needed and the site hosts anywhere static.
   output: "static",
+  // Astro 7 defaults to JSX whitespace rules, which drop the space between
+  // adjacent inline elements. Keep HTML-aware compression so prose renders as
+  // written.
+  compressHTML: true,
   integrations: [
     react(),
     mdx(),
@@ -93,10 +97,7 @@ export default defineConfig({
   vite: {
     // Tailwind v4 is wired through its official Vite plugin. The deprecated
     // @astrojs/tailwind integration is intentionally not used.
-    // The cast bridges two Vite type trees: @tailwindcss/vite resolves Vite's
-    // Plugin from its own copy, while Astro 6 type-checks against its bundled
-    // rolldown-vite. The plugin is structurally compatible at runtime.
-    plugins: [/** @type {any} */ (tailwindcss())],
+    plugins: [tailwindcss()],
   },
   markdown: {
     shikiConfig: {
