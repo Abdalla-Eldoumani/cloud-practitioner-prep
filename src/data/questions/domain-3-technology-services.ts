@@ -87,7 +87,7 @@ export const domain3: Question[] = [
     difficulty: "easy",
     stem: "A startup builds its entire application on AWS, with every component running on cloud services and nothing in a company data center. Which deployment model does this describe?",
     options: [
-      { id: "a", text: "Cloud (fully deployed in the cloud)" },
+      { id: "a", text: "Cloud-based" },
       { id: "b", text: "Hybrid" },
       { id: "c", text: "On-premises (private cloud)" },
       { id: "d", text: "Colocation only" },
@@ -99,7 +99,7 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-07",
@@ -131,7 +131,7 @@ export const domain3: Question[] = [
     difficulty: "medium",
     stem: "An organization runs all of its workloads in its own data center, using virtualization and resource management tools to raise utilization, with no public cloud involved. AWS sometimes calls this model by which name?",
     options: [
-      { id: "a", text: "On-premises, sometimes called the private cloud" },
+      { id: "a", text: "Private cloud (on-premises)" },
       { id: "b", text: "Hybrid cloud" },
       { id: "c", text: "Fully cloud-based deployment" },
       { id: "d", text: "Serverless deployment" },
@@ -143,7 +143,7 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-09",
@@ -153,7 +153,7 @@ export const domain3: Question[] = [
     difficulty: "hard",
     stem: "A company is migrating to AWS over two years. During the transition it must keep some applications running in its existing data center while moving others to the cloud, with the two environments connected. Which deployment model best supports this migration period?",
     options: [
-      { id: "a", text: "Hybrid, which extends the existing infrastructure into the cloud while keeping it connected to internal systems." },
+      { id: "a", text: "Hybrid, which extends existing infrastructure into the cloud." },
       { id: "b", text: "On-premises only, keeping everything in the data center until the very end." },
       { id: "c", text: "Cloud only, requiring every workload to move on day one." },
       { id: "d", text: "Spot, which schedules workloads on spare capacity." },
@@ -165,7 +165,7 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-10",
@@ -175,7 +175,7 @@ export const domain3: Question[] = [
     difficulty: "medium",
     stem: "According to AWS, which statement about the on-premises (private cloud) deployment model is accurate?",
     options: [
-      { id: "a", text: "It does not provide many of the benefits of cloud computing but is sometimes chosen for its ability to provide dedicated resources." },
+      { id: "a", text: "It lacks many cloud benefits but is sometimes chosen for dedicated resources." },
       { id: "b", text: "It delivers every benefit of cloud computing automatically with no tradeoffs." },
       { id: "c", text: "It runs entirely on AWS-managed hardware with no equipment in your data center." },
       { id: "d", text: "It is the only model AWS supports for new applications." },
@@ -187,7 +187,7 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-11",
@@ -225,7 +225,7 @@ export const domain3: Question[] = [
     difficulty: "hard",
     stem: "A retailer is deciding how to deploy. Which TWO scenarios are the strongest fit for a hybrid deployment? (Choose two.)",
     options: [
-      { id: "a", text: "A workload that must keep sensitive data on existing on-premises servers while running new processing in the cloud." },
+      { id: "a", text: "A workload that keeps sensitive data on existing on-premises servers while processing in the cloud." },
       { id: "b", text: "An organization mid-migration that needs its data center and the cloud connected while it gradually moves workloads." },
       { id: "c", text: "A brand-new application with no existing infrastructure that the team wants to build entirely on cloud services." },
       { id: "d", text: "A workload that must run completely offline with no connection to any external network." },
@@ -238,7 +238,7 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-13",
@@ -270,7 +270,7 @@ export const domain3: Question[] = [
     difficulty: "hard",
     stem: "A hospital is choosing between deployment models. Which TWO statements about the on-premises (private cloud) model, in AWS terms, are correct? (Choose two.)",
     options: [
-      { id: "a", text: "It deploys resources on-premises using virtualization and resource management tools." },
+      { id: "a", text: "It deploys resources on-premises with virtualization and resource management tools." },
       { id: "b", text: "It can provide dedicated resources but does not deliver many of the benefits of cloud computing." },
       { id: "c", text: "It runs every part of the application on AWS-managed services in the cloud." },
       { id: "d", text: "It is the same as a hybrid deployment connecting the cloud with non-cloud resources." },
@@ -283,6 +283,6 @@ export const domain3: Question[] = [
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
 ];
