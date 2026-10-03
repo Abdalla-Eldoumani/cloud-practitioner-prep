@@ -18,11 +18,11 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "Amazon SageMaker AI" },
       { id: "b", text: "Amazon Rekognition" },
       { id: "c", text: "AWS Deep Learning AMIs" },
-      { id: "d", text: "Amazon QuickSight" },
+      { id: "d", text: "Amazon Quick Sight" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, AWS Deep Learning AMIs are machine images for EC2 instances the team would still launch and manage itself, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
+      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, AWS Deep Learning AMIs are machine images for EC2 instances the team would still launch and manage itself, and Quick Sight is a business intelligence service, so none of those build custom models end to end.",
     reference: {
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
@@ -324,7 +324,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Glue is a serverless service for extract, transform, and load work, and it includes the Glue Data Catalog as a central metadata repository. It does not require you to manage servers, building chatbots is Amazon Lex, and building dashboards is Amazon QuickSight, so those three are wrong.",
+      "AWS Glue is a serverless service for extract, transform, and load work, and it includes the Glue Data Catalog as a central metadata repository. It does not require you to manage servers, building chatbots is Amazon Lex, and building dashboards is Amazon Quick Sight, so those three are wrong.",
     reference: {
       label: "AWS Glue",
       url: "https://aws.amazon.com/glue/",
@@ -394,7 +394,7 @@ export const domain3AimlAnalytics: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Kinesis fits ingesting a website clickstream and processing continuous IoT telemetry in real time. Ad hoc SQL over stored S3 files is Amazon Athena, dashboards are Amazon QuickSight, and provisioning resources from a template is AWS CloudFormation, so those three are not Kinesis use cases.",
+      "Amazon Kinesis fits ingesting a website clickstream and processing continuous IoT telemetry in real time. Ad hoc SQL over stored S3 files is Amazon Athena, dashboards are Amazon Quick Sight, and provisioning resources from a template is AWS CloudFormation, so those three are not Kinesis use cases.",
     reference: {
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
@@ -410,19 +410,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "A business team wants to build interactive dashboards and visualizations from their data so non-technical staff can explore metrics and make decisions. Which AWS service is the managed business intelligence offering for this?",
     options: [
-      { id: "a", text: "Amazon QuickSight" },
+      { id: "a", text: "Amazon Quick Sight" },
       { id: "b", text: "Amazon Athena" },
       { id: "c", text: "AWS Glue" },
       { id: "d", text: "Amazon Kinesis" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon QuickSight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer.",
+      "Amazon Quick Sight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer. Amazon Quick Sight, formerly Amazon QuickSight, is now a feature within Amazon Quick.",
     reference: {
-      label: "Amazon QuickSight",
+      label: "What is Amazon Quick?",
       url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["QuickSight"],
   },
   {
@@ -744,13 +744,13 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Amazon Kinesis ingests and processes streaming data in real time" },
       { id: "b", text: "AWS Glue provides serverless ETL and a central data catalog" },
-      { id: "c", text: "Amazon QuickSight is a real-time message streaming service" },
+      { id: "c", text: "Amazon Quick Sight is a real-time message streaming service" },
       { id: "d", text: "Amazon Athena is a fully managed petabyte-scale data warehouse" },
       { id: "e", text: "Amazon EMR is a business intelligence dashboarding service" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Kinesis ingests and processes real-time streaming data, and Glue provides serverless ETL with the Glue Data Catalog, so both are correct. QuickSight is a business intelligence service, not a streaming service, Athena is a serverless query service over S3 rather than a warehouse (that is Redshift), and EMR runs big data frameworks rather than dashboards, so those are wrong.",
+      "Kinesis ingests and processes real-time streaming data, and Glue provides serverless ETL with the Glue Data Catalog, so both are correct. Quick Sight is a business intelligence service, not a streaming service, Athena is a serverless query service over S3 rather than a warehouse (that is Redshift), and EMR runs big data frameworks rather than dashboards, so those are wrong.",
     reference: {
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
