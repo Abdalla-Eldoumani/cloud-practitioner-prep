@@ -20,18 +20,18 @@ export const domain4Pricing: Question[] = [
     stem: "A startup is moving off its own servers and wants to stop paying for hardware it has to buy years ahead of need. Which AWS pricing characteristic lets it pay only for the compute it actually consumes, with no long-term contract?",
     options: [
       { id: "a", text: "Pay-as-you-go pricing" },
-      { id: "b", text: "A fixed annual license fee" },
-      { id: "c", text: "A mandatory three-year reservation" },
+      { id: "b", text: "Volume-based tiered pricing" },
+      { id: "c", text: "Reserved Instance pricing" },
       { id: "d", text: "Per-seat user licensing" },
     ],
     correct: ["a"],
     explanation:
-      "AWS prices services on demand, so you pay for what you use with no upfront cost or long-term commitment required. A reservation is optional, not mandatory, and AWS does not bill compute as an annual license or per seat.",
+      "AWS prices services on demand, so you pay for what you use with no upfront cost or long-term commitment required. Reserved Instance pricing trades a one-year or three-year commitment for a discount, volume-based tiered pricing lowers the per-unit rate as usage grows rather than removing the need for a contract, and AWS does not bill compute per seat.",
     reference: {
       label: "AWS Pricing: pay-as-you-go",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-02",
@@ -45,11 +45,11 @@ export const domain4Pricing: Question[] = [
       { id: "b", text: "Storage" },
       { id: "c", text: "Outbound data transfer" },
       { id: "d", text: "The number of IAM users in the account" },
-      { id: "e", text: "The number of AWS Regions that exist" },
+      { id: "e", text: "Inbound data transfer from the internet" },
     ],
     correct: ["a", "b", "c"],
     explanation:
-      "AWS bills compute for the time it runs, storage per gigabyte, and outbound data transfer to the internet, which is aggregated across services and tiered; inbound data transfer is free. Creating IAM users carries no additional charge, and the number of Regions AWS operates does not change your bill because you pay only for the resources you run.",
+      "AWS bills compute for the time it runs, storage per gigabyte, and outbound data transfer to the internet, which is aggregated across services and tiered. Inbound data transfer from the internet is free of charge, and creating IAM users carries no additional charge.",
     reference: {
       label: "AWS Pricing: what you pay for",
       url: "https://aws.amazon.com/pricing/",
@@ -64,24 +64,24 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "An engineer reviewing a bill notices that uploading data into Amazon S3 from the internet shows no transfer charge, while sending data out to users does. Which statement explains the general AWS rule?",
     options: [
-      { id: "a", text: "Inbound data transfer is generally free, and outbound data transfer to the internet is charged." },
-      { id: "b", text: "Outbound data transfer is free, and inbound data transfer is charged." },
-      { id: "c", text: "All data transfer, in and out, is always free." },
-      { id: "d", text: "All data transfer, in and out, is charged at the same flat rate." },
+      { id: "a", text: "Inbound is generally free; outbound to the internet is charged." },
+      { id: "b", text: "Inbound is free only for Amazon S3; other services charge for it." },
+      { id: "c", text: "Inbound is free only while the account is on the Free Tier." },
+      { id: "d", text: "Inbound is free because S3 bills the upload as storage instead." },
     ],
     correct: ["a"],
     distractorRationales: {
-      b: "This reverses the rule: inbound transfer from the internet is the free direction, not outbound.",
-      c: "Outbound data transfer to the internet is billed beyond the free allowance, so it is not all free.",
-      d: "Inbound is generally free and outbound is tiered, not a single flat rate for both directions.",
+      b: "AWS states that data transfer in is free of charge across services, not only for uploads into Amazon S3.",
+      c: "Inbound transfer is free whether or not the account is on the Free Tier; the rule does not end with the free period.",
+      d: "No transfer charge is folded into storage: inbound transfer is simply free, and storage is billed separately per gigabyte stored.",
     },
     explanation:
-      "In most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the data transfer out rate. Inbound and outbound are not always the same: claiming inbound is billed and outbound free inverts the rule, and a single flat rate for all transfer flattens the inbound-versus-outbound distinction.",
+      "In most cases there is no charge for inbound data transfer, while outbound data transfer is aggregated across services and billed at the data transfer out rate. The free inbound rule is not limited to Amazon S3, does not depend on the account being on the Free Tier, and is not a hidden charge that S3 bills as storage instead; storage is a separate per-gigabyte charge.",
     reference: {
       label: "AWS Pricing: pay less by using more",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-04",
@@ -92,13 +92,13 @@ export const domain4Pricing: Question[] = [
     stem: "Which pricing principle means that committing to a consistent amount of usage ahead of time earns a lower rate than paying on demand?",
     options: [
       { id: "a", text: "Save when you commit" },
-      { id: "b", text: "Pay more when you commit" },
+      { id: "b", text: "Pay less by using more" },
       { id: "c", text: "Flat-rate billing" },
       { id: "d", text: "Free for the first year only" },
     ],
     correct: ["a"],
     explanation:
-      "AWS names save when you commit as the principle behind Savings Plans: you commit to a consistent amount of usage measured in dollars per hour for a one-year or three-year term and pay less than On-Demand. Committing lowers the rate rather than raising it, an AWS flat-rate plan bundles several services into one price rather than discounting committed usage, and no AWS pricing principle limits savings to a first free year.",
+      "AWS names save when you commit as the principle behind Savings Plans: you commit to a consistent amount of usage measured in dollars per hour for a one-year or three-year term and pay less than On-Demand. Pay less by using more describes volume-based tiered discounts that need no commitment, an AWS flat-rate plan bundles several services into one price rather than discounting committed usage, and no AWS pricing principle limits savings to a first free year.",
     reference: {
       label: "AWS Pricing: save when you commit",
       url: "https://aws.amazon.com/pricing/",
@@ -116,16 +116,16 @@ export const domain4Pricing: Question[] = [
       { id: "a", text: "The per-unit price tends to decrease as you use more." },
       { id: "b", text: "The per-unit price tends to increase as you use more." },
       { id: "c", text: "The per-unit price is fixed and never changes with volume." },
-      { id: "d", text: "Usage above a threshold is always free." },
+      { id: "d", text: "Discounts apply only after you buy a Savings Plan." },
     ],
     correct: ["a"],
     explanation:
-      "AWS uses volume-based, tiered pricing where the more you use, the less you pay per unit, which AWS states directly for data transfer out and storage. The per-unit price does not increase with volume, it is not fixed and unchanging, and usage above a tier is not free; it is billed at the lower tier rate.",
+      "AWS uses volume-based, tiered pricing where the more you use, the less you pay per unit, which AWS states directly for data transfer out and storage. The per-unit price does not increase with volume and is not fixed and unchanging, and the tiered discount is part of standard pricing, so it does not require buying a Savings Plan.",
     reference: {
       label: "AWS Pricing: pay less by using more",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-06",
@@ -161,11 +161,11 @@ export const domain4Pricing: Question[] = [
       { id: "a", text: "Reserved Instances" },
       { id: "b", text: "On-Demand Instances" },
       { id: "c", text: "Spot Instances" },
-      { id: "d", text: "Per-second On-Demand billing with no plan" },
+      { id: "d", text: "On-Demand Capacity Reservations" },
     ],
     correct: ["a"],
     explanation:
-      "Reserved Instances apply a billing discount of up to 72 percent off On-Demand in exchange for a one or three year commitment to an instance configuration, which suits steady, predictable usage. On-Demand carries no discount, and Spot can be interrupted, so it does not fit an always-on database.",
+      "Reserved Instances apply a billing discount of up to 72 percent off On-Demand in exchange for a one or three year commitment to an instance configuration, which suits steady, predictable usage. On-Demand carries no discount, Spot can be interrupted, so it does not fit an always-on database, and On-Demand Capacity Reservations are charged at the equivalent On-Demand rate, so they reserve capacity without a discount of their own.",
     reference: {
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
@@ -204,19 +204,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "An operations lead asks how much warning a Spot Instance receives before AWS reclaims it for capacity. What does AWS provide?",
     options: [
-      { id: "a", text: "A Spot Instance interruption notice two minutes before the instance is stopped or terminated." },
+      { id: "a", text: "A two-minute Spot Instance interruption notice." },
       { id: "b", text: "A 24-hour email warning before reclamation." },
       { id: "c", text: "No warning at all; the instance simply stops." },
-      { id: "d", text: "A guarantee that the instance is never reclaimed once running." },
+      { id: "d", text: "A ten-minute interruption notice before the instance is stopped." },
     ],
     correct: ["a"],
     explanation:
-      "A Spot Instance interruption notice is issued two minutes before Amazon EC2 stops or terminates the instance, so applications can checkpoint or drain work. AWS does not promise 24 hours of notice, and Spot capacity can always be reclaimed, so a no-reclamation guarantee is false.",
+      "A Spot Instance interruption notice is issued two minutes before Amazon EC2 stops or terminates the instance, so applications can checkpoint or drain work. AWS does not promise 24 hours of notice or a ten-minute notice, and the warning does exist, so it is not true that the instance stops with none.",
     reference: {
       label: "Spot Instance interruption notices",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-instance-termination-notices.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -273,8 +273,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about EC2 Reserved Instances are correct? (Choose two.)",
     options: [
-      { id: "a", text: "They are a billing discount applied to matching On-Demand usage, not a separate physical instance." },
-      { id: "b", text: "They are available for one-year or three-year terms, with the three-year term offering a bigger discount." },
+      { id: "a", text: "They are a billing discount on matching On-Demand usage, not physical instances." },
+      { id: "b", text: "They come in one-year or three-year terms; three years discounts more." },
       { id: "c", text: "They can be interrupted by AWS with a two-minute notice when capacity is needed." },
       { id: "d", text: "They require you to pay the full amount upfront with no other payment options." },
       { id: "e", text: "They are billed per second with no commitment." },
@@ -286,7 +286,7 @@ export const domain4Pricing: Question[] = [
       label: "Reserved Instances for Amazon EC2 overview",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -367,7 +367,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A workload runs a predictable baseline 24/7 plus short, unpredictable spikes. The team wants to minimize cost while keeping the spikes reliable, not interruptible. Which combination fits best?",
     options: [
-      { id: "a", text: "A Savings Plan or Reserved Instances for the steady baseline, and On-Demand for the unpredictable spikes." },
+      { id: "a", text: "A Savings Plan for the baseline and On-Demand for the spikes." },
       { id: "b", text: "Spot Instances for both the baseline and the spikes." },
       { id: "c", text: "On-Demand for the baseline and Reserved Instances for the short spikes." },
       { id: "d", text: "Dedicated Hosts for the baseline and Spot for the spikes." },
@@ -379,7 +379,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -424,7 +424,7 @@ export const domain4Pricing: Question[] = [
       label: "Getting started with AWS Pricing Calculator",
       url: "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/getting-started.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-19",
@@ -434,19 +434,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A developer creates a brand-new AWS account today to explore services. Under the current AWS Free Tier, what does the new account receive to start with?",
     options: [
-      { id: "a", text: "AWS credits, up to 200 US dollars, to spend exploring services for up to six months." },
-      { id: "b", text: "Unlimited free use of every AWS service for the first year." },
-      { id: "c", text: "A flat 50 percent discount on all bills forever." },
-      { id: "d", text: "Free access only after paying a one-time setup fee." },
+      { id: "a", text: "Up to 200 US dollars in AWS credits for exploring services." },
+      { id: "b", text: "Twelve months of free usage on selected services from sign-up." },
+      { id: "c", text: "100 US dollars in credits that never expire." },
+      { id: "d", text: "Only the Always Free offers, with no account credits." },
     ],
     correct: ["a"],
     explanation:
-      "Under the restructured Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more, up to 200 total. Two separate windows apply: the Free Plan itself lasts up to six months, ending at the earlier of six months after sign-up or the credits being used up, while the sign-up credits expire twelve months after the account is created. The Free Tier is not unlimited use of everything, not a permanent discount, and requires no setup fee.",
+      "Under the current Free Tier, a new account receives 100 US dollars in credits on sign-up and can earn up to 100 more by completing activities, up to 200 total. On the Free plan, which ends at the earlier of six months after sign-up or the credits being used up, the sign-up credits expire six months after the account is created, while credits earned from activities expire twelve months after it is created. Upgrading to the Paid plan lets any remaining credits apply to bills until twelve months after account creation. Twelve months of free usage on selected services belongs to the legacy program for accounts created before July 15, 2025, the credits do expire, and a new account gets credits on top of the Always Free offers rather than those offers alone.",
     reference: {
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-20",
@@ -456,19 +456,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "On the current AWS Free Tier, a new account's Free Plan period ends at a specific point. Which describes when it ends?",
     options: [
-      { id: "a", text: "At the earlier of six months after the account was opened or when the Free Tier credits are used up." },
+      { id: "a", text: "At six months or when credits run out, whichever comes first." },
       { id: "b", text: "Exactly twelve months after sign-up, regardless of credit usage." },
-      { id: "c", text: "Only when the customer manually closes the account." },
+      { id: "c", text: "Only when the credits run out, however long that takes." },
       { id: "d", text: "After a fixed thirty-day trial with no credits." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states the Free Plan lasts until the earlier of six months from opening the account or exhausting the Free Tier credits. It is not a fixed twelve-month or thirty-day window, and it ends on those conditions rather than persisting until the customer manually closes the account.",
+      "AWS states the Free Plan lasts until the earlier of six months from opening the account or exhausting the Free Tier credits. It is not a fixed twelve-month or thirty-day window, and it cannot be extended beyond six months, so it does not wait for the credits to run out when that takes longer.",
     reference: {
       label: "AWS Free Tier FAQs",
       url: "https://aws.amazon.com/free/free-tier-faqs/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-21",
@@ -478,7 +478,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "Beyond the new-account credits, the AWS Free Tier includes a set of offers that do not expire as long as you have an account. What are these called?",
     options: [
-      { id: "a", text: "Always Free offers, available within monthly usage limits" },
+      { id: "a", text: "Always Free offers, within monthly usage limits" },
       { id: "b", text: "Reserved Free offers, requiring a one-year commitment" },
       { id: "c", text: "Spot Free offers, available only when capacity is idle" },
       { id: "d", text: "Enterprise Free offers, available only to Enterprise Support customers" },
@@ -502,17 +502,17 @@ export const domain4Pricing: Question[] = [
     options: [
       { id: "a", text: "That older model was replaced on July 15, 2025; a new account now starts on the credit-based Free Plan instead." },
       { id: "b", text: "A new account today still gets a full year of free usage on those selected services from sign-up." },
-      { id: "c", text: "A new account today receives unlimited free usage of every service with no limits." },
-      { id: "d", text: "A new account today must pay a one-time setup fee before any service is free." },
+      { id: "c", text: "A new account today receives the twelve-month offers plus up to 200 US dollars in credits." },
+      { id: "d", text: "A new account today must upgrade to a Paid plan before its credits can be used." },
     ],
     correct: ["a"],
     explanation:
-      "AWS restructured its sign-up offer on July 15, 2025. An account opened today starts on the credit-based Free Plan, which gives up to 200 US dollars in credits over up to six months plus the Always Free offers, rather than the older year-of-usage arrangement that newer accounts no longer receive. New accounts do not get unlimited free usage and pay no setup fee to begin.",
+      "AWS restructured its sign-up offer on July 15, 2025. An account opened today starts on the credit-based Free Plan, which gives up to 200 US dollars in credits over up to six months plus the Always Free offers, rather than the older year-of-usage arrangement that newer accounts no longer receive. The twelve-month offers stay with accounts created before that date rather than being added to the credits, and credits apply on the Free plan without first upgrading to a Paid plan.",
     reference: {
       label: "AWS Free Tier update: up to $200 in credits",
       url: "https://aws.amazon.com/blogs/aws/aws-free-tier-update-new-customers-can-get-started-and-explore-aws-with-up-to-200-in-credits/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-25",
@@ -522,19 +522,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A team stores objects in Amazon S3 and wants to understand how the bill is calculated. Which description matches how AWS charges for storage of this kind?",
     options: [
-      { id: "a", text: "You typically pay per gigabyte stored, with no charge for inbound data transfer in most cases." },
+      { id: "a", text: "You pay per gigabyte stored, and inbound transfer is usually free." },
       { id: "b", text: "You pay a fixed monthly fee regardless of how much data you store." },
       { id: "c", text: "You are charged the same amount to upload data as to store it." },
-      { id: "d", text: "Storage is always free; only compute is billed." },
+      { id: "d", text: "You pay for the bucket's provisioned size, even when it is not full." },
     ],
     correct: ["a"],
     explanation:
-      "AWS bills data storage and transfer per gigabyte, and in most cases there is no charge for inbound data transfer. It is not a fixed monthly fee charged regardless of how much you store, uploading is generally not charged the way storage is, and storage itself is a billed cost driver.",
+      "AWS bills data storage and transfer per gigabyte, and in most cases there is no charge for inbound data transfer. It is not a fixed monthly fee charged regardless of how much you store, uploading is generally not charged the way storage is, and S3 has no provisioned bucket size to pay for: the storage charge depends on the size of the objects you store, with no minimum charge.",
     reference: {
       label: "Amazon S3 pricing",
       url: "https://aws.amazon.com/s3/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -557,7 +557,7 @@ export const domain4Pricing: Question[] = [
       label: "AWS Pricing models",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-pricing-27",
@@ -591,19 +591,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "How does a customer make the commitment for a Savings Plan?",
     options: [
-      { id: "a", text: "By committing to a consistent amount of usage measured in dollars per hour for a one-year or three-year term." },
+      { id: "a", text: "By committing to dollars per hour for one or three years." },
       { id: "b", text: "By committing to a fixed number of gigabytes of storage per month." },
       { id: "c", text: "By committing to a maximum monthly bill that AWS will never exceed." },
-      { id: "d", text: "By paying a one-time fee that covers all compute for five years." },
+      { id: "d", text: "By committing to a set number of instances for one or three years." },
     ],
     correct: ["a"],
     explanation:
-      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for lower prices. It is not a commitment to a number of gigabytes of storage, it is not a maximum monthly bill that AWS will never let you exceed, and it is not a five-year one-time fee.",
+      "A Savings Plan is a commitment to a consistent amount of compute usage measured in dollars per hour over a one-year or three-year term, in exchange for lower prices. It is not a commitment to a number of gigabytes of storage or to a set number of instances, and it is not a maximum monthly bill that AWS will never let you exceed.",
     reference: {
       label: "AWS Savings Plans",
       url: "https://aws.amazon.com/savingsplans/compute-pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -614,19 +614,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "easy",
     stem: "By default, on what kind of hardware do EC2 instances run with respect to other AWS customers?",
     options: [
-      { id: "a", text: "Shared tenancy hardware, where multiple AWS accounts might share the same physical host." },
+      { id: "a", text: "Shared tenancy hardware other accounts may use." },
       { id: "b", text: "Hardware physically dedicated to your account only." },
-      { id: "c", text: "Hardware you must purchase outright before launching." },
+      { id: "c", text: "Hardware shared only with accounts in your AWS Organization." },
       { id: "d", text: "A single host shared with no other instances at all." },
     ],
     correct: ["a"],
     explanation:
-      "By default EC2 instances run on shared tenancy hardware, meaning multiple AWS accounts might share the same physical server. Dedicated tenancy on single-account hardware is an opt-in choice, you never purchase the hardware outright before launching, and the default host is not reserved solely for one instance.",
+      "By default EC2 instances run on shared tenancy hardware, meaning multiple AWS accounts might share the same physical server. Dedicated tenancy on single-account hardware is an opt-in choice, default sharing is not limited to accounts in your own AWS Organization, and the default host is not reserved solely for one instance.",
     reference: {
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -664,16 +664,16 @@ export const domain4Pricing: Question[] = [
       { id: "b", text: "A Dedicated Instance is billed per instance and gives no visibility into the host's sockets and cores." },
       { id: "c", text: "Dedicated Instances provide more comprehensive Bring Your Own License support than Dedicated Hosts." },
       { id: "d", text: "Only Dedicated Instances run on hardware dedicated to a single customer; Dedicated Hosts share hardware across accounts by default." },
-      { id: "e", text: "Dedicated Hosts cannot run EC2 instances at all." },
+      { id: "e", text: "Dedicated Instances support host affinity and targeted instance placement." },
     ],
     correct: ["a", "b"],
     explanation:
-      "A Dedicated Host is a physical server with per-host billing that exposes socket and core counts, while a Dedicated Instance is billed per instance with no socket or core visibility. Dedicated Hosts, not Dedicated Instances, provide comprehensive BYOL support; both run on dedicated physical servers; and Dedicated Hosts do run EC2 instances.",
+      "A Dedicated Host is a physical server with per-host billing that exposes socket and core counts, while a Dedicated Instance is billed per instance with no socket or core visibility. Dedicated Hosts, not Dedicated Instances, provide comprehensive BYOL support; both run on dedicated physical servers; and host affinity and targeted instance placement are Dedicated Host features that Dedicated Instances do not support.",
     reference: {
       label: "Amazon EC2 Dedicated Hosts",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -776,19 +776,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "An engineer asks how much warning EC2 gives before reclaiming a Spot Instance when it needs the capacity back. What does AWS provide?",
     options: [
-      { id: "a", text: "A Spot Instance interruption notice that gives a two-minute warning before the instance is interrupted." },
+      { id: "a", text: "A Spot Instance interruption notice two minutes ahead." },
       { id: "b", text: "A full 24-hour notice by email before reclamation." },
       { id: "c", text: "No warning of any kind." },
-      { id: "d", text: "A guarantee that a running Spot Instance is never reclaimed." },
+      { id: "d", text: "A ten-minute interruption notice before the instance stops." },
     ],
     correct: ["a"],
     explanation:
-      "When EC2 needs the capacity back it interrupts the Spot Instance and provides a Spot Instance interruption notice giving a two-minute warning. AWS does not promise a 24-hour notice, it is not true that no warning of any kind is given, and Spot capacity can always be reclaimed, so a no-reclamation guarantee is false.",
+      "When EC2 needs the capacity back it interrupts the Spot Instance and provides a Spot Instance interruption notice giving a two-minute warning. AWS does not promise a 24-hour or a ten-minute notice, and it is not true that no warning of any kind is given.",
     reference: {
       label: "Spot Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -845,8 +845,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about Standard versus Convertible Reserved Instances are correct? (Choose two.)",
     options: [
-      { id: "a", text: "A Standard Reserved Instance provides a more significant discount than a Convertible Reserved Instance." },
-      { id: "b", text: "A Convertible Reserved Instance can be exchanged during the term for another Convertible Reserved Instance with new attributes." },
+      { id: "a", text: "Standard Reserved Instances discount more than Convertible ones." },
+      { id: "b", text: "A Convertible Reserved Instance can be exchanged for another with new attributes." },
       { id: "c", text: "A Standard Reserved Instance can be exchanged for a Convertible Reserved Instance at any time." },
       { id: "d", text: "Convertible Reserved Instances offer no discount over On-Demand." },
       { id: "e", text: "Reserved Instances are interrupted by AWS with a two-minute notice when capacity is needed." },
@@ -858,7 +858,7 @@ export const domain4Pricing: Question[] = [
       label: "Types of Reserved Instances (offering classes)",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -918,16 +918,16 @@ export const domain4Pricing: Question[] = [
       { id: "a", text: "AWS applies it automatically to matching usage each hour, with no need to stop, modify, or relaunch instances." },
       { id: "b", text: "The team must manually tag each instance that should receive the discount before it applies." },
       { id: "c", text: "The team must terminate On-Demand instances and relaunch them as Savings Plan instances." },
-      { id: "d", text: "The discount applies only after the team opens a billing support case each month." },
+      { id: "d", text: "The discount applies only to usage above the committed hourly amount." },
     ],
     correct: ["a"],
     explanation:
-      "A Savings Plan lowers the rate AWS charges for usage that matches the plan, and AWS applies it automatically to that usage each hour up to the committed dollar-per-hour amount, so the team does not stop, tag, modify, or relaunch instances and does not open a case to receive it. There is no separate Savings Plan instance type to launch.",
+      "A Savings Plan lowers the rate AWS charges for usage that matches the plan, and AWS applies it automatically to that usage each hour up to the committed dollar-per-hour amount, so the team does not stop, tag, modify, or relaunch instances to receive it. Usage above the hourly commitment is charged at On-Demand rates, so the discount covers usage up to the commitment, not above it. There is no separate Savings Plan instance type to launch.",
     reference: {
       label: "Understanding how Savings Plans apply to your usage",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-applying.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -938,7 +938,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A workload has a predictable baseline that runs 24/7 plus short, unpredictable spikes that must stay reliable and cannot be interrupted. The team wants to minimize cost. Which combination fits best?",
     options: [
-      { id: "a", text: "A Savings Plan or Reserved Instances for the steady baseline, and On-Demand Instances for the unpredictable spikes." },
+      { id: "a", text: "A Savings Plan or Reserved Instances for the baseline, On-Demand for the spikes." },
       { id: "b", text: "Spot Instances for both the baseline and the spikes." },
       { id: "c", text: "On-Demand for the baseline and a three-year Reserved Instance for each short spike." },
       { id: "d", text: "Dedicated Hosts for the baseline and Spot for the spikes." },
@@ -950,7 +950,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -961,8 +961,8 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "A company is matching EC2 purchase options to workloads. Which TWO pairings are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Spot Instances for fault-tolerant, interruptible batch processing that needs the deepest discount" },
-      { id: "b", text: "Dedicated Hosts for bringing existing per-socket or per-core software licenses to dedicated hardware" },
+      { id: "a", text: "Spot Instances for fault-tolerant batch jobs that can be interrupted" },
+      { id: "b", text: "Dedicated Hosts for existing per-socket or per-core software licenses" },
       { id: "c", text: "On-Demand Instances for a steady 24/7 workload that needs the lowest possible long-term price" },
       { id: "d", text: "Reserved Instances for a one-time task that runs for two hours and never again" },
       { id: "e", text: "Spot Instances for a payment system that must never be interrupted" },
@@ -974,7 +974,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -987,17 +987,17 @@ export const domain4Pricing: Question[] = [
     options: [
       { id: "a", text: "You accept a one-year or three-year commitment in exchange for a lower price than On-Demand." },
       { id: "b", text: "You pay more per hour than On-Demand in exchange for the ability to stop anytime." },
-      { id: "c", text: "You give up the ability to run instances continuously." },
+      { id: "c", text: "AWS can interrupt your instances with a two-minute notice." },
       { id: "d", text: "You must pay the entire amount upfront with no other choice." },
     ],
     correct: ["a"],
     explanation:
-      "Both Reserved Instances and Savings Plans reduce cost below On-Demand in exchange for a one-year or three-year commitment. They do not cost more per hour than On-Demand in return for the ability to stop anytime; they do not prevent continuous running; and both offer All Upfront, Partial Upfront, and No Upfront payment options rather than requiring full prepayment.",
+      "Both Reserved Instances and Savings Plans reduce cost below On-Demand in exchange for a one-year or three-year commitment. They do not cost more per hour than On-Demand in return for the ability to stop anytime; they do not let AWS interrupt your instances with a two-minute notice, which is how Spot Instances behave; and both offer All Upfront, Partial Upfront, and No Upfront payment options rather than requiring full prepayment.",
     reference: {
       label: "Amazon EC2 billing and purchasing options",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -1008,20 +1008,20 @@ export const domain4Pricing: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about Compute Savings Plans and EC2 Instance Savings Plans are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Compute Savings Plans apply to EC2 usage regardless of instance family, size, Region, operating system, or tenancy, and also to Fargate and Lambda." },
-      { id: "b", text: "EC2 Instance Savings Plans require a commitment to a specific instance family in a chosen Region." },
+      { id: "a", text: "Compute Savings Plans cover EC2 in any family or Region, plus Fargate and Lambda." },
+      { id: "b", text: "EC2 Instance Savings Plans commit to one instance family in a chosen Region." },
       { id: "c", text: "Compute Savings Plans require you to commit to a single instance family in one Region." },
       { id: "d", text: "EC2 Instance Savings Plans automatically extend to Fargate and Lambda usage." },
-      { id: "e", text: "Both plan types are commitments to a number of gigabytes stored per month." },
+      { id: "e", text: "Both plan types must be paid in full upfront." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans are not tied to one family, EC2 Instance plans do not automatically extend to Fargate and Lambda, and Savings Plans commit to dollars-per-hour compute usage, not storage.",
+      "Compute Savings Plans apply across instance family, size, Region, OS, and tenancy and also to Fargate and Lambda, while EC2 Instance Savings Plans commit to a specific instance family in a Region. Compute plans do not require a single instance family, EC2 Instance plans do not automatically extend to Fargate and Lambda, and both plan types can be paid All upfront, Partial upfront, or No upfront rather than in full upfront.",
     reference: {
       label: "Savings Plans types",
       url: "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "Lambda", "Fargate"],
   },
   {
@@ -1045,7 +1045,7 @@ export const domain4Pricing: Question[] = [
       label: "Amazon EC2 Dedicated Instances",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -1106,12 +1106,12 @@ export const domain4Pricing: Question[] = [
     options: [
       { id: "a", text: "Storage" },
       { id: "b", text: "The number of IAM users you create" },
-      { id: "c", text: "The number of AWS Regions that exist" },
+      { id: "c", text: "Inbound data transfer from the internet" },
       { id: "d", text: "The number of support cases you open" },
     ],
     correct: ["a"],
     explanation:
-      "AWS bills for the resources you consume, and storage is one of them: Amazon S3 storage is priced per gigabyte with tiered rates. Creating IAM users carries no charge, the number of Regions AWS operates is not a billable dimension, and technical support is covered by your AWS Support plan rather than charged per case.",
+      "AWS bills for the resources you consume, and storage is one of them: Amazon S3 storage is priced per gigabyte with tiered rates. Creating IAM users carries no charge, inbound data transfer from the internet is free of charge, and technical support is covered by your AWS Support plan rather than charged per case.",
     reference: {
       label: "AWS Pricing overview",
       url: "https://aws.amazon.com/pricing/",
@@ -1126,19 +1126,19 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "A practitioner notices that uploading data into AWS shows no transfer charge on the bill, while sending data out to the internet does. Which statement reflects the general AWS rule?",
     options: [
-      { id: "a", text: "In most cases there is no charge for inbound data transfer, while outbound data transfer is charged" },
-      { id: "b", text: "Inbound data transfer is charged, while outbound is free" },
-      { id: "c", text: "Both inbound and outbound transfer are always free" },
-      { id: "d", text: "Both inbound and outbound transfer are billed at the same fixed rate" },
+      { id: "a", text: "Inbound transfer is generally free, while outbound is charged" },
+      { id: "b", text: "Inbound is free only for Amazon S3, not for other services" },
+      { id: "c", text: "Inbound is free only during the Free Tier credit period" },
+      { id: "d", text: "Inbound is free because the upload is billed as storage instead" },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that data transfer IN is always free of charge, while data transfer out is billed and priced in tiers, so the more you transfer out the less you pay per gigabyte. The other options invert the rule, make all transfer free, or flatten inbound and outbound to one rate, none of which match AWS billing.",
+      "AWS states that data transfer IN is always free of charge, while data transfer out is billed and priced in tiers, so the more you transfer out the less you pay per gigabyte. Free inbound transfer is not limited to Amazon S3, does not end with the Free Tier credit period, and is not a charge moved into storage instead; storage is billed separately.",
     reference: {
       label: "AWS Pricing overview",
       url: "https://aws.amazon.com/pricing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-32",

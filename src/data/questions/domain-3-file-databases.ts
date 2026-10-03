@@ -67,19 +67,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "A team running a fleet of Microsoft Windows EC2 instances wants a managed shared file system they can mount from those Windows servers. Why is Amazon EFS the wrong choice here?",
     options: [
-      { id: "a", text: "Amazon EFS does not support Windows-based Amazon EC2 instances; FSx for Windows File Server is the managed shared file system for Windows." },
+      { id: "a", text: "Amazon EFS is not supported on Windows-based Amazon EC2 instances." },
       { id: "b", text: "Amazon EFS only works with a single instance at a time, so a fleet cannot share it." },
-      { id: "c", text: "Amazon EFS requires the data to be stored on physical tape first." },
+      { id: "c", text: "Amazon EFS is object storage, so servers cannot mount it as a file system." },
       { id: "d", text: "Amazon EFS can only be used in a single Availability Zone." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that using Amazon EFS with Microsoft Windows-based Amazon EC2 instances is not supported, so Windows fleets use Amazon FSx for Windows File Server instead. EFS is designed for massively parallel access from many instances, a Regional EFS file system spans multiple Availability Zones, and it does not depend on tape.",
+      "AWS states that using Amazon EFS with Microsoft Windows-based Amazon EC2 instances is not supported, so Windows fleets use Amazon FSx for Windows File Server instead. EFS is designed for massively parallel access from many instances, a Regional EFS file system spans multiple Availability Zones, and it is file storage that instances mount rather than object storage.",
     reference: {
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EFS", "FSx"],
   },
   {
@@ -93,16 +93,16 @@ export const domain3FileDatabases: Question[] = [
       { id: "a", text: "Amazon FSx for Windows File Server" },
       { id: "b", text: "Amazon EFS" },
       { id: "c", text: "Amazon FSx for Lustre" },
-      { id: "d", text: "Amazon S3" },
+      { id: "d", text: "AWS Directory Service for Microsoft Active Directory" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon FSx for Windows File Server provides fully managed Windows file servers on a native Windows file system, with SMB access and Microsoft Active Directory integration for authentication. Amazon EFS does not support Windows instances, Amazon FSx for Lustre targets high-performance computing rather than Windows file shares, and Amazon S3 is object storage, not a Windows file share.",
+      "Amazon FSx for Windows File Server provides fully managed Windows file servers on a native Windows file system, with SMB access and Microsoft Active Directory integration for authentication. Amazon EFS does not support Windows instances, Amazon FSx for Lustre targets high-performance computing rather than Windows file shares, and AWS Directory Service for Microsoft Active Directory runs the directory that authenticates users, not the file shares themselves.",
     reference: {
       label: "What is FSx for Windows File Server?",
       url: "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["FSx"],
   },
   {
@@ -116,16 +116,16 @@ export const domain3FileDatabases: Question[] = [
       { id: "a", text: "Amazon FSx for NetApp ONTAP" },
       { id: "b", text: "Amazon FSx for OpenZFS" },
       { id: "c", text: "Amazon EFS" },
-      { id: "d", text: "Amazon S3 Glacier" },
+      { id: "d", text: "Amazon FSx for Windows File Server" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon FSx for NetApp ONTAP is fully managed shared storage built on NetApp's ONTAP file system, with access over NFS, SMB, and iSCSI, so customers can move NetApp workloads to AWS without changing application code. FSx for OpenZFS is built on OpenZFS rather than ONTAP, Amazon EFS is NFS-only, and Glacier is cold archival object storage.",
+      "Amazon FSx for NetApp ONTAP is fully managed shared storage built on NetApp's ONTAP file system, with access over NFS, SMB, and iSCSI, so customers can move NetApp workloads to AWS without changing application code. FSx for OpenZFS is built on OpenZFS rather than ONTAP, Amazon EFS is NFS-only, and FSx for Windows File Server is built on Windows Server and serves SMB shares rather than running ONTAP.",
     reference: {
       label: "Amazon FSx for NetApp ONTAP",
       url: "https://aws.amazon.com/fsx/netapp-ontap/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["FSx"],
   },
   {
@@ -165,24 +165,24 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A team needs to decide between Amazon EFS and Amazon FSx for Windows File Server for a shared file system. Which statement correctly distinguishes them?",
     options: [
-      { id: "a", text: "EFS is an elastic NFS file system for Linux workloads, while FSx for Windows File Server provides SMB-based Windows file shares." },
+      { id: "a", text: "EFS serves Linux over NFS; FSx for Windows File Server serves Windows over SMB." },
       { id: "b", text: "EFS is for Windows workloads and FSx for Windows File Server is for Linux workloads." },
       { id: "c", text: "Both are object storage services that store data as objects in buckets." },
-      { id: "d", text: "EFS is block storage attached to one instance, and FSx is a NoSQL database." },
+      { id: "d", text: "Both use NFS, but only EFS lets multiple instances share the same files." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This reverses the operating systems; EFS serves Linux over NFS and FSx for Windows File Server serves Windows over SMB.",
       c: "Neither is object storage; both are file systems, not services that store data as objects in buckets.",
-      d: "This mislabels them; EFS is a shared file system, not block storage, and FSx is a file system, not a NoSQL database.",
+      d: "FSx for Windows File Server is accessed over SMB, not NFS, and its file shares are shared by many compute instances, so sharing is not unique to EFS.",
     },
     explanation:
-      "EFS is a fully elastic NFS file system that Linux instances mount, while FSx for Windows File Server provides Windows file shares over SMB with Active Directory. The other options reverse the operating systems, call them object storage, or mislabel them as block storage and a database.",
+      "EFS is a fully elastic NFS file system that Linux instances mount, while FSx for Windows File Server provides Windows file shares over SMB with Active Directory. The wrong statements reverse the operating systems by pairing EFS with Windows workloads, call them object storage, or claim both use NFS, when FSx for Windows File Server serves shares that many instances access over SMB.",
     reference: {
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EFS", "FSx"],
   },
   {
@@ -228,7 +228,7 @@ export const domain3FileDatabases: Question[] = [
       label: "AWS Storage Gateway",
       url: "https://aws.amazon.com/storagegateway/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Storage Gateway", "Snow Family"],
   },
   {
@@ -275,7 +275,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -287,18 +287,18 @@ export const domain3FileDatabases: Question[] = [
     stem: "A company currently runs a MySQL database on a self-managed EC2 instance and handles its own patching, backups, and failover. It wants AWS to take over those undifferentiated tasks while it keeps using MySQL. Which service should it move to?",
     options: [
       { id: "a", text: "Amazon RDS for MySQL" },
-      { id: "b", text: "A larger self-managed EC2 instance running MySQL" },
+      { id: "b", text: "Amazon DocumentDB (with MongoDB compatibility)" },
       { id: "c", text: "Amazon DynamoDB" },
       { id: "d", text: "Amazon S3" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon RDS for MySQL is a managed relational service that automates undifferentiated tasks such as provisioning, patching, and backups while you keep using MySQL. A larger self-managed EC2 instance still leaves those tasks to the customer, DynamoDB is NoSQL rather than MySQL, and Amazon S3 is object storage.",
+      "Amazon RDS for MySQL is a managed relational service that automates undifferentiated tasks such as provisioning, patching, and backups while you keep using MySQL. Amazon DocumentDB is a managed document database compatible with MongoDB rather than MySQL, DynamoDB is NoSQL rather than MySQL, and Amazon S3 is object storage.",
     reference: {
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS", "EC2"],
   },
   {
@@ -313,16 +313,16 @@ export const domain3FileDatabases: Question[] = [
       { id: "b", text: "It provides automatic failover support if the primary instance fails." },
       { id: "c", text: "Its standard standby instance serves application read traffic to scale reads." },
       { id: "d", text: "It replaces the need to take any backups of the database." },
-      { id: "e", text: "It runs the primary and standby in the same Availability Zone." },
+      { id: "e", text: "It keeps the standby copy in a different AWS Region from the primary." },
     ],
     correct: ["a", "b"],
     explanation:
-      "A Multi-AZ deployment keeps a standby DB instance in a different Availability Zone and provides automatic failover support if the primary fails, which delivers high availability. A standard Multi-AZ standby does not serve read traffic, Multi-AZ does not remove the need for backups, and the standby is in a separate Availability Zone, not the same one.",
+      "A Multi-AZ deployment keeps a standby DB instance in a different Availability Zone and provides automatic failover support if the primary fails, which delivers high availability. A standard Multi-AZ standby does not serve read traffic, Multi-AZ does not remove the need for backups, and the standby sits in a different Availability Zone, not in a separate AWS Region.",
     reference: {
       label: "Multi-AZ DB instance deployments",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -335,17 +335,17 @@ export const domain3FileDatabases: Question[] = [
     options: [
       { id: "a", text: "Read replicas" },
       { id: "b", text: "A Multi-AZ standby instance" },
-      { id: "c", text: "Increasing the backup retention period" },
-      { id: "d", text: "Enabling encryption at rest" },
+      { id: "c", text: "Moving the primary to a larger DB instance class" },
+      { id: "d", text: "Turning on RDS storage autoscaling" },
     ],
     correct: ["a"],
     explanation:
-      "Read replicas are read-only copies that let you route read queries away from the primary and elastically scale out beyond a single DB instance for read-heavy workloads. A Multi-AZ standby is for failover and does not serve read traffic, backups and encryption do not address read scaling.",
+      "Read replicas are read-only copies that let you route read queries away from the primary and elastically scale out beyond a single DB instance for read-heavy workloads. A Multi-AZ standby is for failover and does not serve read traffic, a larger DB instance class still leaves every read on one instance, and storage autoscaling grows storage when free space runs low rather than spreading read traffic.",
     reference: {
       label: "Working with DB instance read replicas",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -360,16 +360,16 @@ export const domain3FileDatabases: Question[] = [
       { id: "b", text: "Read replicas are primarily for scaling read-heavy workloads." },
       { id: "c", text: "A standard Multi-AZ standby instance serves read traffic to reduce load on the primary." },
       { id: "d", text: "Read replicas guarantee automatic failover for the primary database." },
-      { id: "e", text: "Both features exist only to reduce the storage cost of the database." },
+      { id: "e", text: "Read replicas use synchronous replication, just like a Multi-AZ standby." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Multi-AZ deployments target high availability with automatic failover to a standby, while read replicas target read scaling by serving read-only traffic. A standard Multi-AZ standby does not serve read traffic, read replicas do not guarantee automatic failover for the primary database, and neither feature exists to cut storage cost.",
+      "Multi-AZ deployments target high availability with automatic failover to a standby, while read replicas target read scaling by serving read-only traffic. A standard Multi-AZ standby does not serve read traffic, read replicas do not guarantee automatic failover for the primary database, and RDS copies changes to read replicas asynchronously, unlike the synchronous replication to a Multi-AZ standby.",
     reference: {
       label: "Configuring and managing a Multi-AZ deployment for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -380,19 +380,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "easy",
     stem: "Which statement about Amazon RDS automated backups is accurate?",
     options: [
-      { id: "a", text: "Amazon RDS automates backups of your database as one of the management tasks it handles for you." },
-      { id: "b", text: "Amazon RDS never backs up data; you must build your own backup system." },
-      { id: "c", text: "Backups are only possible by manually copying files off the underlying server." },
-      { id: "d", text: "Backups require shutting the database down for the entire retention period." },
+      { id: "a", text: "Amazon RDS automates backups as one of the management tasks it handles for you." },
+      { id: "b", text: "Automated backups are kept forever, whatever retention period you set." },
+      { id: "c", text: "Automated backups are stored only on the DB instance's own storage volume." },
+      { id: "d", text: "You can restore only to the exact moment the most recent backup ran." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon RDS automates undifferentiated tasks such as provisioning, configuring, backing up, and patching, so backups are handled as part of the managed service. RDS does back up data, you do not have to copy files off a server yourself, and the database does not stay shut down through the retention period.",
+      "Amazon RDS creates and saves automated backups of your DB instance during its backup window, so backups are handled as part of the managed service. RDS keeps automated backups according to the backup retention period you specify rather than forever, stores backups in Amazon S3 rather than only on the instance's own volume, and lets you recover to any point in time during the retention period, not just the moment of the latest backup.",
     reference: {
-      label: "Amazon RDS",
-      url: "https://aws.amazon.com/rds/",
+      label: "Introduction to backups",
+      url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -426,7 +426,7 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A developer has an existing application written for PostgreSQL and wants to move it to Amazon Aurora with minimal changes while gaining cloud-built performance and availability. Which statement about Aurora is correct?",
     options: [
-      { id: "a", text: "Aurora is compatible with PostgreSQL and MySQL, so existing applications for those engines can use it." },
+      { id: "a", text: "Aurora is compatible with PostgreSQL and MySQL." },
       { id: "b", text: "Aurora is a NoSQL key-value database with no SQL support." },
       { id: "c", text: "Aurora only supports the Oracle and SQL Server engines." },
       { id: "d", text: "Aurora is an in-memory cache rather than a database." },
@@ -438,7 +438,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon Aurora",
       url: "https://aws.amazon.com/rds/aurora/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Aurora"],
   },
   {
@@ -473,19 +473,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "A developer migrating from a relational database to Amazon DynamoDB expects to keep using SQL JOIN operations across tables. What should the developer understand about DynamoDB?",
     options: [
-      { id: "a", text: "As a NoSQL database, DynamoDB does not support the JOIN operator, so data is modeled differently than in a relational database." },
+      { id: "a", text: "DynamoDB is NoSQL and does not support the JOIN operator, so data is modeled differently." },
       { id: "b", text: "DynamoDB supports JOINs exactly like a relational database and requires a fixed schema." },
       { id: "c", text: "DynamoDB is a relational database engine offered through Amazon RDS." },
-      { id: "d", text: "DynamoDB can only store a single attribute per item." },
+      { id: "d", text: "DynamoDB requires you to provision and patch its database servers." },
     ],
     correct: ["a"],
     explanation:
-      "DynamoDB is a NoSQL database that does not support the JOIN operator, so AWS recommends modeling data differently than in a relational schema. It is not relational, it is not an RDS engine, and DynamoDB items can hold many attributes, not just one.",
+      "DynamoDB is a NoSQL database that does not support the JOIN operator, so AWS recommends modeling data differently than in a relational schema. It is not relational, it is not an RDS engine, and DynamoDB is serverless, so there are no servers to provision or patch.",
     reference: {
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DynamoDB"],
   },
   {
@@ -520,18 +520,18 @@ export const domain3FileDatabases: Question[] = [
     stem: "A web application repeatedly reads the same data from its database and the team wants to cut latency by serving those reads from an in-memory cache instead of hitting the database every time. Which AWS service is a fully managed in-memory caching service?",
     options: [
       { id: "a", text: "Amazon ElastiCache" },
-      { id: "b", text: "Amazon RDS" },
+      { id: "b", text: "Amazon RDS read replicas" },
       { id: "c", text: "Amazon S3" },
       { id: "d", text: "Amazon Neptune" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon ElastiCache is a fully managed in-memory caching service that serves frequently accessed data with very low latency, reducing load on the backing database. Amazon RDS is the relational database itself, Amazon S3 is object storage, and Neptune is a graph database.",
+      "Amazon ElastiCache is a fully managed in-memory caching service that serves frequently accessed data with very low latency, reducing load on the backing database. Amazon RDS read replicas are read-only copies of the database rather than an in-memory cache, Amazon S3 is object storage, and Neptune is a graph database.",
     reference: {
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ElastiCache"],
   },
   {
@@ -566,20 +566,20 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "A team wants to reduce read latency on a busy application without replacing its primary database. Which TWO statements correctly describe how Amazon ElastiCache relates to a primary database such as Amazon RDS? (Choose two.)",
     options: [
-      { id: "a", text: "ElastiCache is an in-memory cache that can sit in front of a database to speed up repeated reads." },
+      { id: "a", text: "ElastiCache is an in-memory cache that speeds up repeated reads." },
       { id: "b", text: "ElastiCache complements the primary database rather than replacing it." },
-      { id: "c", text: "ElastiCache is a relational database that fully replaces Amazon RDS." },
-      { id: "d", text: "ElastiCache is an object storage service for storing large files." },
-      { id: "e", text: "ElastiCache is a hybrid on-premises storage gateway." },
+      { id: "c", text: "ElastiCache acts as the standby that RDS fails over to in an outage." },
+      { id: "d", text: "ElastiCache is a data warehouse that runs analytic queries on RDS data." },
+      { id: "e", text: "ElastiCache is a read replica that RDS creates from the source DB instance." },
     ],
     correct: ["a", "b"],
     explanation:
-      "ElastiCache is an in-memory caching layer that serves repeated reads quickly and complements the primary database rather than replacing it. It is not a relational database replacement, not object storage, and not a storage gateway.",
+      "ElastiCache is an in-memory caching layer that serves repeated reads quickly and complements the primary database rather than replacing it. It is not the standby that an RDS Multi-AZ deployment fails over to, it is not a data warehouse for analytic queries (that is Amazon Redshift), and it is not an RDS read replica, which is a read-only DB instance that RDS creates from the source.",
     reference: {
       label: "Amazon ElastiCache",
       url: "https://aws.amazon.com/elasticache/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["ElastiCache", "RDS"],
   },
   {
@@ -712,7 +712,7 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A team needs a shared file system that many Linux EC2 instances can mount concurrently. A teammate suggests using Amazon DynamoDB instead. Why is DynamoDB not the right fit for this requirement?",
     options: [
-      { id: "a", text: "DynamoDB is a NoSQL database, not a mountable file system; a shared file system for Linux is Amazon EFS." },
+      { id: "a", text: "DynamoDB is a NoSQL database, not a file system that instances can mount." },
       { id: "b", text: "DynamoDB can be mounted as an NFS file system but only on Windows." },
       { id: "c", text: "DynamoDB is a relational database, so it cannot store key-value data." },
       { id: "d", text: "DynamoDB is an in-memory cache that loses data on restart." },
@@ -724,7 +724,7 @@ export const domain3FileDatabases: Question[] = [
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DynamoDB", "EFS"],
   },
   {
@@ -737,18 +737,18 @@ export const domain3FileDatabases: Question[] = [
     options: [
       { id: "a", text: "AWS handles undifferentiated tasks such as provisioning and patching." },
       { id: "b", text: "AWS handles backups of the database as part of the service." },
-      { id: "c", text: "The database becomes free of any usage charges." },
-      { id: "d", text: "The team must manually patch the database operating system every week." },
-      { id: "e", text: "The database can no longer be backed up at all." },
+      { id: "c", text: "AWS tunes the team's SQL queries to improve their performance." },
+      { id: "d", text: "AWS optimizes the application code that calls the database." },
+      { id: "e", text: "AWS controls which users can log in to the team's databases." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Managed database services take over undifferentiated work such as provisioning and patching and handle backups, letting the team focus on the application. They still incur usage charges, they remove rather than add manual patching, and the database can still be backed up, so the claim that it can no longer be backed up is wrong.",
+      "Managed database services take over undifferentiated work such as provisioning and patching and handle backups, letting the team focus on the application. AWS documents that query tuning and application optimization remain the customer's job, and the customer uses the database engine's security features to control who can log in to its databases.",
     reference: {
       label: "Amazon RDS",
       url: "https://aws.amazon.com/rds/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS", "DynamoDB"],
   },
   {
@@ -786,16 +786,16 @@ export const domain3FileDatabases: Question[] = [
       { id: "b", text: "A managed in-memory cache to speed up repeated reads: Amazon ElastiCache" },
       { id: "c", text: "A managed relational database for an existing MySQL app: Amazon DynamoDB" },
       { id: "d", text: "A graph database for connected data: Amazon RDS" },
-      { id: "e", text: "Continuous offline-only data ingestion with no devices: AWS Snowball Edge" },
+      { id: "e", text: "Ongoing online access from on-premises apps to cloud storage: AWS Snowball Edge" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon EFS provides a shared NFS file system for many Linux instances, and Amazon ElastiCache is a managed in-memory cache for repeated reads. A managed relational MySQL app belongs on Amazon RDS rather than NoSQL DynamoDB, a graph database is Amazon Neptune rather than RDS, and Snowball Edge is a physical device for data transfer rather than continuous deviceless ingestion.",
+      "Amazon EFS provides a shared NFS file system for many Linux instances, and Amazon ElastiCache is a managed in-memory cache for repeated reads. A managed relational MySQL app belongs on Amazon RDS rather than NoSQL DynamoDB, a graph database is Amazon Neptune rather than RDS, and ongoing online access from on-premises applications to cloud storage is AWS Storage Gateway, while Snowball Edge is a physical device for moving data.",
     reference: {
       label: "What is Amazon Elastic File System?",
       url: "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EFS", "ElastiCache", "RDS", "Neptune", "Snow Family"],
   },
   {
@@ -806,19 +806,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A startup is choosing between Amazon RDS and Amazon DynamoDB for a new application that has a flexible, evolving data structure, expects very high request rates, and wants no servers to manage. Which choice and reason are correct?",
     options: [
-      { id: "a", text: "Amazon DynamoDB, because it is a serverless NoSQL database suited to flexible data and very high request rates." },
+      { id: "a", text: "Amazon DynamoDB, a serverless NoSQL database for flexible data and high request rates." },
       { id: "b", text: "Amazon RDS, because NoSQL databases cannot scale to high request rates." },
-      { id: "c", text: "Amazon DynamoDB, because it enforces a rigid relational schema with SQL joins." },
+      { id: "c", text: "Amazon RDS, because its Multi-AZ standby serves the extra request traffic." },
       { id: "d", text: "Amazon RDS, because it is a serverless cache that requires no management." },
     ],
     correct: ["a"],
     explanation:
-      "DynamoDB is a serverless NoSQL database that suits a flexible, evolving data model and very high request rates with no servers to manage. The claim that NoSQL databases cannot scale to high request rates is false, so choosing Amazon RDS for that reason is wrong; DynamoDB does not enforce a relational schema or joins, and Amazon RDS is a managed relational database rather than a serverless cache.",
+      "DynamoDB is a serverless NoSQL database that suits a flexible, evolving data model and very high request rates with no servers to manage. The claim that NoSQL databases cannot scale to high request rates is false, so choosing Amazon RDS for that reason is wrong; a Multi-AZ standby cannot serve traffic, because it is a failover target rather than a scaling solution; and Amazon RDS is a managed relational database rather than a serverless cache.",
     reference: {
       label: "What is Amazon DynamoDB?",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DynamoDB", "RDS"],
   },
   {
@@ -829,19 +829,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "medium",
     stem: "A team needs its Amazon RDS database to stay available if the primary instance or its Availability Zone has a problem. Which RDS feature is designed for that?",
     options: [
-      { id: "a", text: "A Multi-AZ deployment, which keeps a standby in a different Availability Zone for failover." },
+      { id: "a", text: "A Multi-AZ deployment with a standby in another zone." },
       { id: "b", text: "A larger instance class in a single Availability Zone." },
-      { id: "c", text: "Turning off automated backups to reduce load." },
-      { id: "d", text: "Storing the database files on a single EBS volume only." },
+      { id: "c", text: "Adding read replicas to spread queries across more instances." },
+      { id: "d", text: "Increasing the automated backup retention period." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon RDS Multi-AZ deployments provide high availability and failover support by maintaining a standby replica in a different Availability Zone, helping protect against DB instance failure and Availability Zone disruption. A bigger single-zone instance, disabling backups, or relying on one volume does not provide cross-zone failover.",
+      "Amazon RDS Multi-AZ deployments provide high availability and failover support by maintaining a standby replica in a different Availability Zone, helping protect against DB instance failure and Availability Zone disruption. A bigger single-zone instance, read replicas that spread queries for read scaling, or a longer backup retention period does not provide automatic cross-zone failover.",
     reference: {
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -852,19 +852,19 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "In an Amazon RDS Multi-AZ DB instance deployment, how is data kept on the standby, and what is the standby used for during normal operation?",
     options: [
-      { id: "a", text: "The primary is synchronously replicated to the standby, and the standby is for failover, not for serving read traffic." },
+      { id: "a", text: "Synchronously replicated; used for failover, not for reads." },
       { id: "b", text: "The standby is updated once a day and serves all read queries." },
-      { id: "c", text: "The standby holds no data until a failure occurs." },
+      { id: "c", text: "Asynchronously replicated; it serves read-only queries." },
       { id: "d", text: "The standby serves write traffic in parallel with the primary." },
     ],
     correct: ["a"],
     explanation:
-      "In a Multi-AZ DB instance deployment, RDS synchronously replicates the primary to a standby in another Availability Zone, and that standby provides failover support but does not serve read traffic. It is not a once-a-day copy, it is not empty until failure, and it does not accept writes alongside the primary.",
+      "In a Multi-AZ DB instance deployment, RDS synchronously replicates the primary to a standby in another Availability Zone, and that standby provides failover support but does not serve read traffic. It is not a once-a-day copy, it is not an asynchronous copy serving read-only queries (that describes a read replica), and it does not accept writes alongside the primary.",
     reference: {
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -875,20 +875,20 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements about an Amazon RDS Multi-AZ DB instance deployment are correct? (Choose two.)",
     options: [
-      { id: "a", text: "It provides high availability and failover support with a standby in a different Availability Zone." },
+      { id: "a", text: "It keeps a standby in a different Availability Zone for failover." },
       { id: "b", text: "It helps protect the database against DB instance failure and Availability Zone disruption." },
       { id: "c", text: "The standby replica serves read traffic to scale read-heavy workloads." },
       { id: "d", text: "It removes the need to ever back up the database." },
-      { id: "e", text: "It places the primary and standby in the same Availability Zone." },
+      { id: "e", text: "It places the standby in a different AWS Region from the primary." },
     ],
     correct: ["a", "b"],
     explanation:
-      "An RDS Multi-AZ DB instance deployment keeps a synchronous standby in a different Availability Zone for failover, providing high availability and protecting against DB instance failure and Availability Zone disruption. The single standby does not serve read traffic, Multi-AZ does not replace backups, and the standby is by design in a different zone from the primary.",
+      "An RDS Multi-AZ DB instance deployment keeps a synchronous standby in a different Availability Zone for failover, providing high availability and protecting against DB instance failure and Availability Zone disruption. The single standby does not serve read traffic, Multi-AZ does not replace backups, and the standby sits in a different Availability Zone rather than a separate AWS Region.",
     reference: {
       label: "Multi-AZ DB instance deployments for Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -922,7 +922,7 @@ export const domain3FileDatabases: Question[] = [
     difficulty: "hard",
     stem: "An enterprise depends on the specific features and administrative tooling of the file system its applications already run against, and it wants AWS to run that same file system as a managed service instead of rebuilding on a different one. Which service is designed for that requirement?",
     options: [
-      { id: "a", text: "Amazon FSx, which runs fully managed versions of widely used file systems with like-for-like capabilities and performance" },
+      { id: "a", text: "Amazon FSx, which runs fully managed versions of widely used file systems" },
       { id: "b", text: "Amazon S3, which stores the same content as objects addressed by key" },
       { id: "c", text: "Amazon EBS, which attaches a block volume to a single EC2 instance" },
       { id: "d", text: "AWS Storage Gateway, which connects an existing on-premises appliance to AWS storage" },
@@ -939,7 +939,7 @@ export const domain3FileDatabases: Question[] = [
       label: "Amazon FSx",
       url: "https://aws.amazon.com/fsx/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["FSx"],
   },
 ];

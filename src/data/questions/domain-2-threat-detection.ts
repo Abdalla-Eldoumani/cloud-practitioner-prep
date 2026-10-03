@@ -132,19 +132,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "easy",
     stem: "A security team uses GuardDuty, Inspector, and Macie and is tired of logging into each console separately. They want a single place that collects and prioritizes findings from all of them and checks the account against security best practices. Which service provides this?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon Detective" },
       { id: "c", text: "Amazon CloudWatch" },
       { id: "d", text: "AWS Config" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub gives a comprehensive view of security state and aggregates, organizes, and prioritizes findings from services such as GuardDuty, Inspector, and Macie, while running automated checks against security standards and best practices. Detective investigates the root cause of findings, CloudWatch handles metrics and logs broadly, and AWS Config tracks resource configuration, not finding aggregation.",
+      "AWS Security Hub CSPM gives a comprehensive view of security state and aggregates, organizes, and prioritizes findings from services such as GuardDuty, Inspector, and Macie, while running automated checks against security standards and best practices. Detective investigates the root cause of findings, CloudWatch handles metrics and logs broadly, and AWS Config tracks resource configuration, not finding aggregation. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: introduction",
+      label: "AWS Security Hub CSPM User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -227,11 +227,11 @@ export const domain2ThreatDetection: Question[] = [
       { id: "a", text: "Amazon GuardDuty" },
       { id: "b", text: "Amazon Inspector" },
       { id: "c", text: "Amazon Macie" },
-      { id: "d", text: "AWS Pricing Calculator" },
+      { id: "d", text: "AWS Trusted Advisor" },
     ],
     correct: ["a"],
     explanation:
-      "GuardDuty analyzes data sources such as CloudTrail, VPC Flow Logs, and DNS logs and uses threat intelligence and machine learning to flag malicious or unauthorized activity like anomalous API calls and suspicious traffic. Inspector handles vulnerabilities, Macie handles sensitive data, and the Pricing Calculator estimates cost and has no security role.",
+      "GuardDuty analyzes data sources such as CloudTrail, VPC Flow Logs, and DNS logs and uses threat intelligence and machine learning to flag malicious or unauthorized activity like anomalous API calls and suspicious traffic. Inspector handles vulnerabilities, Macie handles sensitive data, and Trusted Advisor gives best-practice recommendations rather than detecting malicious activity in logs.",
     reference: {
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
@@ -270,19 +270,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A security lead wants one dashboard that pulls together findings from GuardDuty, Inspector, and Macie and also runs continuous checks against the AWS Foundational Security Best Practices standard. Which service meets both needs?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon Detective" },
       { id: "c", text: "Amazon GuardDuty" },
       { id: "d", text: "Amazon Inspector" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub both aggregates findings from services such as GuardDuty, Inspector, and Macie and runs automated security checks against standards like the AWS Foundational Security Best Practices. Detective investigates findings, while GuardDuty and Inspector each produce one kind of finding rather than aggregating across services or running standard checks.",
+      "AWS Security Hub CSPM both aggregates findings from services such as GuardDuty, Inspector, and Macie and runs automated security checks against standards like the AWS Foundational Security Best Practices. Detective investigates findings, while GuardDuty and Inspector each produce one kind of finding rather than aggregating across services or running standard checks. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: security standards",
+      label: "AWS Security Hub CSPM User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -306,7 +306,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "Amazon Detective User Guide: related services",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty", "Inspector", "Macie", "Detective", "Security Hub"],
   },
   {
@@ -317,7 +317,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which statement best describes how Amazon GuardDuty decides that activity is suspicious?",
     options: [
-      { id: "a", text: "It uses threat intelligence feeds, such as lists of malicious IP addresses and domains, along with machine learning models." },
+      { id: "a", text: "It uses threat intelligence feeds, such as malicious IP addresses and domains, and machine learning." },
       { id: "b", text: "It requires you to write and maintain your own detection rules for every threat." },
       { id: "c", text: "It installs an agent on each EC2 instance to scan files for malware signatures only." },
       { id: "d", text: "It compares your S3 object contents against a list of known sensitive data patterns." },
@@ -329,7 +329,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty"],
   },
   {
@@ -340,20 +340,20 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "What does Amazon Inspector check your resources for? Select the TWO things it detects. (Choose two.)",
     options: [
-      { id: "a", text: "Software vulnerabilities, such as an unpatched CVE in an installed package." },
+      { id: "a", text: "Software vulnerabilities, such as an unpatched CVE." },
       { id: "b", text: "Unintended network exposure, such as an open network path that should not be reachable." },
       { id: "c", text: "Sensitive data such as PII inside Amazon S3 objects." },
       { id: "d", text: "Anomalous sign-in patterns to the AWS Management Console." },
-      { id: "e", text: "Whether your monthly spend is approaching a budget threshold." },
+      { id: "e", text: "Unauthorized cryptomining activity on an EC2 instance." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Inspector scans for software vulnerabilities and unintended network exposure, creating a finding when it detects either. Discovering sensitive data such as PII inside Amazon S3 objects is Macie, detecting anomalous sign-ins is closer to GuardDuty, and budget thresholds are handled by AWS Budgets, not Inspector.",
+      "Amazon Inspector scans for software vulnerabilities and unintended network exposure, creating a finding when it detects either. Discovering sensitive data such as PII inside Amazon S3 objects is Macie, while anomalous sign-ins and unauthorized cryptomining are active threats of the kind GuardDuty detects, not Inspector.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -387,7 +387,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "Which statement most accurately describes the relationship between Amazon GuardDuty and Amazon Detective?",
     options: [
-      { id: "a", text: "GuardDuty detects threats and generates findings; Detective helps you investigate those findings and identify the root cause." },
+      { id: "a", text: "GuardDuty detects threats; Detective helps investigate their root cause." },
       { id: "b", text: "Detective detects threats and generates findings; GuardDuty investigates them." },
       { id: "c", text: "Both services scan EC2 instances for software vulnerabilities." },
       { id: "d", text: "Both services discover sensitive data in Amazon S3." },
@@ -399,7 +399,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Detective?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty", "Detective"],
   },
   {
@@ -408,21 +408,21 @@ export const domain2ThreatDetection: Question[] = [
     type: "single",
     topic: "AWS Security Hub",
     difficulty: "medium",
-    stem: "What does AWS Security Hub do to make findings from many different sources easier to work with?",
+    stem: "What does AWS Security Hub CSPM do to make findings from many different sources easier to work with?",
     options: [
-      { id: "a", text: "It normalizes findings into a standard format (the AWS Security Finding Format) and prioritizes them." },
-      { id: "b", text: "It deletes all duplicate findings and keeps only one finding per account." },
-      { id: "c", text: "It rewrites each finding into a real-time chat message for responders." },
-      { id: "d", text: "It converts findings into AWS bills so security issues appear as line items." },
+      { id: "a", text: "It normalizes findings into the AWS Security Finding Format and prioritizes them." },
+      { id: "b", text: "It keeps each provider's own finding format and lists them side by side." },
+      { id: "c", text: "It converts every finding into a CloudTrail event so all share one log." },
+      { id: "d", text: "It forwards findings to Amazon Inspector, which assigns each a risk score." },
     ],
     correct: ["a"],
     explanation:
-      "Security Hub processes finding data using the AWS Security Finding Format (ASFF), a standard format, and correlates and prioritizes findings across providers so you do not have to manage many formats. It does not reduce coverage to one finding per account, turn findings into chat messages, or convert them into billing line items.",
+      "Security Hub CSPM processes finding data using the AWS Security Finding Format (ASFF), a standard format, and correlates findings across providers to help you prioritize them, so you do not have to manage many formats. It does not keep each provider's own format side by side, the shared format is ASFF rather than a CloudTrail event, and the Inspector risk score rates vulnerabilities Inspector itself finds, not findings forwarded from Security Hub CSPM.",
     reference: {
-      label: "AWS Security Hub User Guide: reduced effort to collect and prioritize findings",
+      label: "AWS Security Hub CSPM User Guide: reduced effort to collect and prioritize findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -433,19 +433,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A company already runs GuardDuty, Inspector, and Macie. Leadership asks for a single prioritized view of all the security issues these services find, across multiple accounts. Adding which service satisfies that request?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "A second GuardDuty detector" },
       { id: "c", text: "Amazon Inspector in another Region" },
       { id: "d", text: "Amazon Macie with more discovery jobs" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub consolidates and prioritizes findings across accounts and providers, including GuardDuty, Inspector, and Macie, giving the single view leadership wants. Adding more GuardDuty, Inspector, or Macie coverage produces more findings of the same kinds but does not aggregate them into one prioritized view.",
+      "AWS Security Hub CSPM consolidates and prioritizes findings across accounts and providers, including GuardDuty, Inspector, and Macie, giving the single view leadership wants. Adding more GuardDuty, Inspector, or Macie coverage produces more findings of the same kinds but does not aggregate them into one prioritized view. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: consolidated view of findings",
+      label: "AWS Security Hub CSPM User Guide: consolidated view of findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -484,16 +484,16 @@ export const domain2ThreatDetection: Question[] = [
       { id: "b", text: "It consolidates findings so you can review them and take remediation steps." },
       { id: "c", text: "It automatically applies a patch to the vulnerable software." },
       { id: "d", text: "It writes a new IAM policy that blocks the activity without any action from you." },
-      { id: "e", text: "It deletes the affected resource to stop the threat." },
+      { id: "e", text: "It scores the finding by adjusting the NVD base CVSS score." },
     ],
     correct: ["a", "b"],
     explanation:
-      "GuardDuty generates a security finding about the potentially compromised resource and consolidates findings so you can review them and decide on remediation. It does not patch software; it never writes an IAM policy that blocks the activity without action from you, and it never deletes the affected resource to stop the threat. Responding to a finding is a separate step you take.",
+      "GuardDuty generates a security finding about the potentially compromised resource and consolidates findings so you can review them and decide on remediation. It does not patch software, it never writes an IAM policy that blocks the activity without action from you, and adjusting an NVD base CVSS score is how Amazon Inspector rates vulnerabilities, while GuardDuty gives each finding its own severity level. Responding to a finding is a separate step you take.",
     reference: {
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty"],
   },
   {
@@ -504,19 +504,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "A compliance officer asks how often Amazon Inspector checks resources for new vulnerabilities. Which description is accurate?",
     options: [
-      { id: "a", text: "It scans automatically and continually, rescanning resources when changes occur or a new relevant CVE is published." },
-      { id: "b", text: "It scans only once, when you first enable it, and never again." },
+      { id: "a", text: "It scans continually and rescans for new CVEs." },
+      { id: "b", text: "It scans once a day on a fixed schedule, regardless of changes." },
       { id: "c", text: "It scans only when you manually start an assessment each time." },
-      { id: "d", text: "It scans only on the first day of each calendar year." },
+      { id: "d", text: "It scans only during a maintenance window that you schedule." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon Inspector automatically discovers eligible resources and continually scans them, rescanning in response to changes such as installing a package or when a new CVE that affects a resource is published. It does not scan only once when you first enable it and never again, you do not need to manually start each assessment, and it does not run only on the first day of each calendar year.",
+      "Amazon Inspector automatically discovers eligible resources and continually scans them, rescanning in response to changes such as installing a package or when a new CVE that affects a resource is published, so you do not manually schedule or configure assessment scans. It does not run once a day on a fixed schedule that ignores changes, you do not need to manually start each assessment, and it does not wait for a maintenance window that you schedule.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -551,20 +551,20 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements correctly describe how Amazon Detective supports an investigation? (Choose two.)",
     options: [
-      { id: "a", text: "It automatically organizes collected log data into a behavior graph that links activity across resources and time." },
-      { id: "b", text: "It uses machine learning, statistical analysis, and graph theory to generate visualizations." },
+      { id: "a", text: "It builds a behavior graph that links activity across resources and time." },
+      { id: "b", text: "It uses machine learning and graph theory to generate visualizations." },
       { id: "c", text: "It scans EC2 instances and container images for software vulnerabilities." },
       { id: "d", text: "It discovers personally identifiable information stored in Amazon S3." },
-      { id: "e", text: "It automatically remediates findings by deleting the affected resources." },
+      { id: "e", text: "It runs standards checks and calculates a security score." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Detective builds a behavior graph from collected log data and uses machine learning, statistical analysis, and graph theory to produce the visualizations that drive an investigation. Detective is not the service that scans EC2 instances and container images for software vulnerabilities, which is Inspector, nor the one that discovers personally identifiable information stored in Amazon S3, which is Macie, and it does not auto-remediate by deleting resources.",
+      "Detective builds a behavior graph from collected log data and uses machine learning, statistical analysis, and graph theory to produce the visualizations that drive an investigation. Detective is not the service that scans EC2 instances and container images for software vulnerabilities, which is Inspector, nor the one that discovers personally identifiable information stored in Amazon S3, which is Macie, and running standards checks to calculate a security score is Security Hub CSPM's job.",
     reference: {
       label: "What is Amazon Detective? How does Detective work?",
       url: "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Detective"],
   },
   {
@@ -573,22 +573,22 @@ export const domain2ThreatDetection: Question[] = [
     type: "multi",
     topic: "AWS Security Hub",
     difficulty: "medium",
-    stem: "AWS Security Hub runs automated checks against recognized security standards. Which TWO of the following are standards it supports? (Choose two.)",
+    stem: "AWS Security Hub CSPM runs automated checks against recognized security standards. Which TWO of the following are standards it supports? (Choose two.)",
     options: [
       { id: "a", text: "AWS Foundational Security Best Practices (FSBP)" },
       { id: "b", text: "Center for Internet Security (CIS) AWS Foundations Benchmark" },
-      { id: "c", text: "The AWS scaled certification scoring scale of 100 to 1000" },
-      { id: "d", text: "The AWS Free Tier usage limits" },
-      { id: "e", text: "The Amazon S3 storage class lifecycle policy format" },
+      { id: "c", text: "ISO/IEC 27001 information security management standard" },
+      { id: "d", text: "SOC 2 trust services criteria" },
+      { id: "e", text: "HIPAA Security Rule" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Security Hub supports security standards including the AWS Foundational Security Best Practices and the CIS AWS Foundations Benchmark, running checks against their controls and reporting control findings. The certification scoring scale, Free Tier limits, and S3 lifecycle format are not security standards Security Hub evaluates.",
+      "Security Hub CSPM supports security standards including the AWS Foundational Security Best Practices and the CIS AWS Foundations Benchmark, running checks against their controls and reporting control findings. ISO/IEC 27001, the SOC 2 trust services criteria, and the HIPAA Security Rule are real compliance frameworks, but none of them is on the list of standards Security Hub CSPM supports.",
     reference: {
-      label: "AWS Security Hub User Guide: security standards",
-      url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
+      label: "Standards reference for Security Hub CSPM",
+      url: "https://docs.aws.amazon.com/securityhub/latest/userguide/standards-reference.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -599,7 +599,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A retailer must comply with a requirement to locate and protect cardholder data wherever it is stored in Amazon S3. Which service directly addresses locating that data, and why are the alternatives wrong?",
     options: [
-      { id: "a", text: "Amazon Macie, because it discovers sensitive data such as financial information in S3; GuardDuty, Inspector, and Detective do not classify S3 object contents as sensitive data." },
+      { id: "a", text: "Amazon Macie, because it discovers sensitive data in S3, which the others do not classify." },
       { id: "b", text: "Amazon GuardDuty, because it scans S3 objects for cardholder data, while Macie only watches logs." },
       { id: "c", text: "Amazon Inspector, because it scans S3 buckets for sensitive data and assigns a risk score." },
       { id: "d", text: "AWS Security Hub, because it discovers cardholder data and aggregates the results." },
@@ -611,7 +611,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon Macie?",
       url: "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Macie", "S3"],
   },
   {
@@ -649,16 +649,16 @@ export const domain2ThreatDetection: Question[] = [
       { id: "b", text: "Compromised and exfiltrated AWS credentials" },
       { id: "c", text: "An EC2 instance running software with an unpatched CVE" },
       { id: "d", text: "An S3 bucket that contains unencrypted personally identifiable information" },
-      { id: "e", text: "A monthly bill that exceeds a configured budget" },
+      { id: "e", text: "A Lambda function that uses a vulnerable code library" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists unauthorized cryptomining and compromised, exfiltrated credentials among the threats GuardDuty detects by analyzing logs and data sources. Finding an unpatched CVE is Inspector, flagging an S3 bucket that contains unencrypted personally identifiable information is Macie, and budget alerting is AWS Budgets, not GuardDuty.",
+      "AWS lists unauthorized cryptomining and compromised, exfiltrated credentials among the threats GuardDuty detects by analyzing logs and data sources. Finding an unpatched CVE on an EC2 instance or a vulnerable library in a Lambda function is Inspector, and flagging an S3 bucket that contains unencrypted personally identifiable information is Macie, not GuardDuty.",
     reference: {
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty", "EC2"],
   },
   {
@@ -669,19 +669,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which service would a team use to get a prioritized, single-pane-of-glass summary of its overall security posture across many AWS accounts, rather than to detect, scan, or investigate a specific issue?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon GuardDuty" },
       { id: "c", text: "Amazon Inspector" },
       { id: "d", text: "Amazon Detective" },
     ],
     correct: ["a"],
     explanation:
-      "Security Hub provides a comprehensive, prioritized view of security state across accounts and providers, which is the single-pane-of-glass summary described. GuardDuty detects threats, Inspector scans for vulnerabilities, and Detective investigates individual findings, so none of those is the cross-account posture summary.",
+      "Security Hub CSPM provides a comprehensive, prioritized view of security state across accounts and providers, which is the single-pane-of-glass summary described. GuardDuty detects threats, Inspector scans for vulnerabilities, and Detective investigates individual findings, so none of those is the cross-account posture summary. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: introduction",
+      label: "AWS Security Hub CSPM User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -692,19 +692,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "Amazon Inspector assigns a severity score tailored to your environment when it reports a vulnerability. What is this score called and what is it based on?",
     options: [
-      { id: "a", text: "The Amazon Inspector risk score, which adjusts the National Vulnerability Database base score to your compute environment." },
-      { id: "b", text: "The AWS scaled score, the same 100 to 1000 scale used to grade certification exams." },
+      { id: "a", text: "The Amazon Inspector risk score, which adjusts the NVD base score to your environment." },
+      { id: "b", text: "The CVSS base score from the NVD, applied unchanged to every resource." },
       { id: "c", text: "A sensitivity score based on how much PII the resource stores." },
-      { id: "d", text: "A billing score based on how much the affected resource costs per hour." },
+      { id: "d", text: "The GuardDuty severity level, from Low up to Critical, for a threat." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon Inspector produces an Inspector risk score that takes the National Vulnerability Database base score and adjusts it for your environment, for example lowering it when there is no open network path to exploit a vulnerability. It is unrelated to the certification exam scale and to PII sensitivity, and it is not a billing score based on how much the affected resource costs per hour.",
+      "Amazon Inspector produces an Inspector risk score that examines the National Vulnerability Database base score and adjusts it for your environment, for example lowering it when there is no open network path to exploit a vulnerability. It is not the NVD base CVSS score applied unchanged, it is not a PII sensitivity score, and a GuardDuty severity level rates detected threats rather than vulnerabilities.",
     reference: {
       label: "What is Amazon Inspector? Amazon Inspector Risk score",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector"],
   },
   {
@@ -715,20 +715,20 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A team is wiring its AWS security services together. Which TWO of the following integrations are described by AWS? (Choose two.)",
     options: [
-      { id: "a", text: "GuardDuty, Inspector, and Macie can send their findings to AWS Security Hub." },
+      { id: "a", text: "GuardDuty, Inspector, and Macie can send their findings to AWS Security Hub CSPM." },
       { id: "b", text: "Amazon Detective can ingest GuardDuty findings to help investigate them." },
       { id: "c", text: "Amazon Macie sends its findings to Amazon Inspector for vulnerability scoring." },
-      { id: "d", text: "AWS Security Hub scans EC2 instances directly for software vulnerabilities." },
+      { id: "d", text: "AWS Security Hub CSPM scans EC2 instances directly for software vulnerabilities." },
       { id: "e", text: "Amazon Inspector investigates the root cause of GuardDuty findings." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Security Hub receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not send its findings to Inspector for vulnerability scoring, Security Hub aggregates findings rather than scanning EC2 instances directly for software vulnerabilities itself, and investigating root cause is Detective's role, not Inspector's.",
+      "Security Hub CSPM receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not send its findings to Inspector for vulnerability scoring, Security Hub CSPM aggregates findings rather than scanning EC2 instances directly for software vulnerabilities itself, and investigating root cause is Detective's role, not Inspector's.",
     reference: {
-      label: "AWS Security Hub User Guide: receives findings from other services",
+      label: "AWS Security Hub CSPM User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie", "Detective"],
   },
   {
@@ -762,19 +762,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A reviewer needs the single best statement that separates Amazon Inspector from Amazon GuardDuty. Which is it?",
     options: [
-      { id: "a", text: "Inspector finds vulnerabilities (weaknesses that could be exploited); GuardDuty detects active threats (signs that something malicious is happening)." },
+      { id: "a", text: "Inspector finds weaknesses that could be exploited; GuardDuty detects active threats." },
       { id: "b", text: "Inspector detects active threats from logs; GuardDuty scans for software vulnerabilities." },
       { id: "c", text: "Both find sensitive data in Amazon S3, but Inspector is faster." },
       { id: "d", text: "Both aggregate findings from other services, but GuardDuty also runs standard checks." },
     ],
     correct: ["a"],
     explanation:
-      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services, claim both find sensitive data in S3, or claim both aggregate findings from other services while GuardDuty also runs standard checks, which instead describes Security Hub.",
+      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services, claim both find sensitive data in S3, or claim both aggregate findings from other services while GuardDuty also runs standard checks, which instead describes Security Hub CSPM.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Inspector", "GuardDuty"],
   },
   {
@@ -783,21 +783,21 @@ export const domain2ThreatDetection: Question[] = [
     type: "single",
     topic: "Services working together",
     difficulty: "medium",
-    stem: "Which statement correctly describes how AWS Security Hub relates to GuardDuty, Inspector, and Macie?",
+    stem: "Which statement correctly describes how AWS Security Hub CSPM relates to GuardDuty, Inspector, and Macie?",
     options: [
-      { id: "a", text: "Security Hub consumes the findings those services generate; it does not replace their detection, scanning, or discovery functions." },
-      { id: "b", text: "Security Hub replaces GuardDuty, Inspector, and Macie, so you no longer need to enable them." },
-      { id: "c", text: "GuardDuty, Inspector, and Macie consume findings from Security Hub rather than the other way around." },
-      { id: "d", text: "Security Hub and those three services all perform identical detection and produce duplicate findings." },
+      { id: "a", text: "Security Hub CSPM consumes the findings those services generate; it does not replace their detection or scanning." },
+      { id: "b", text: "Security Hub CSPM replaces GuardDuty, Inspector, and Macie, so you no longer need to enable them." },
+      { id: "c", text: "GuardDuty, Inspector, and Macie consume findings from Security Hub CSPM rather than the other way around." },
+      { id: "d", text: "Security Hub CSPM accepts findings from GuardDuty only, not from Inspector or Macie." },
     ],
     correct: ["a"],
     explanation:
-      "Security Hub consumes and prioritizes the findings that GuardDuty, Inspector, and Macie generate, complementing them rather than replacing their distinct detection, scanning, and discovery jobs. The direction of integration is those services into Security Hub, and the four services do not perform identical work.",
+      "Security Hub CSPM consumes and prioritizes the findings that GuardDuty, Inspector, and Macie generate, complementing them rather than replacing their distinct detection, scanning, and discovery jobs. The direction of integration is those services into Security Hub CSPM, and it accepts findings from all three, not from GuardDuty only.",
     reference: {
-      label: "AWS Security Hub User Guide: receives findings from other services",
+      label: "AWS Security Hub CSPM User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -808,7 +808,7 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "A team wants threat detection but does not want to deploy or manage any sensors, software, or infrastructure to collect the data GuardDuty analyzes. Which statement is accurate?",
     options: [
-      { id: "a", text: "GuardDuty is a managed service that analyzes existing AWS data sources and logs, so there is no sensor or software for the team to deploy for its foundational detection." },
+      { id: "a", text: "GuardDuty analyzes existing AWS logs, so its foundational detection needs no sensors to deploy." },
       { id: "b", text: "GuardDuty requires installing a monitoring agent on every EC2 instance before it can detect any threat." },
       { id: "c", text: "GuardDuty requires the team to stand up and maintain a log collection cluster." },
       { id: "d", text: "GuardDuty only works after you export all logs to an on-premises SIEM." },
@@ -820,7 +820,7 @@ export const domain2ThreatDetection: Question[] = [
       label: "What is Amazon GuardDuty?",
       url: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["GuardDuty"],
   },
   {

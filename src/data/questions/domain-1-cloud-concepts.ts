@@ -35,18 +35,18 @@ export const domain1: Question[] = [
     stem: "Which statement best describes a financial benefit of moving from an on-premises data center to the AWS Cloud?",
     options: [
       { id: "a", text: "It replaces variable operating expense with a large fixed capital expense." },
-      { id: "b", text: "It trades large upfront capital expense for variable operating expense based on usage." },
-      { id: "c", text: "It removes all costs because the AWS Free Tier never expires." },
+      { id: "b", text: "It trades upfront capital expense for variable expense based on usage." },
+      { id: "c", text: "It lets you buy servers at a bulk discount and own them outright." },
       { id: "d", text: "It guarantees a flat monthly bill regardless of usage." },
     ],
     correct: ["b"],
     explanation:
-      "The cloud lets you stop buying hardware upfront (capital expense) and instead pay for what you consume (operating expense). The inverse claim, that the cloud replaces variable spend with a large fixed capital expense, reverses the actual shift. The Free Tier is limited, and pay-as-you-go bills vary with usage rather than staying flat.",
+      "The cloud lets you stop buying hardware upfront (capital expense) and instead pay for what you consume (operating expense). The inverse claim, that the cloud replaces variable spend with a large fixed capital expense, reverses the actual shift. You do not buy or own the servers at any discount, because you pay only for the resources you consume, and pay-as-you-go bills vary with usage rather than staying flat.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-benefits-multi-01",

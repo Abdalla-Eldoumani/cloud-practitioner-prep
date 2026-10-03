@@ -17,17 +17,17 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Amazon SageMaker AI" },
       { id: "b", text: "Amazon Rekognition" },
-      { id: "c", text: "Amazon Athena" },
-      { id: "d", text: "Amazon QuickSight" },
+      { id: "c", text: "AWS Deep Learning AMIs" },
+      { id: "d", text: "Amazon Quick Sight" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, Athena queries data in S3 with SQL, and QuickSight is a business intelligence service, so none of those build custom models end to end.",
+      "Amazon SageMaker AI is a fully managed service that lets data scientists and developers build, train, and deploy machine learning models into a production-ready hosted environment. Rekognition is a pre-trained image and video service, AWS Deep Learning AMIs are machine images for EC2 instances the team would still launch and manage itself, and Quick Sight is a business intelligence service, so none of those build custom models end to end.",
     reference: {
       label: "What is Amazon SageMaker AI?",
       url: "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SageMaker"],
   },
   {
@@ -42,16 +42,16 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "b", text: "Moderating images for unsafe or inappropriate content" },
       { id: "c", text: "Converting written text into spoken audio" },
       { id: "d", text: "Translating a paragraph from English into French" },
-      { id: "e", text: "Provisioning AWS infrastructure from a template" },
+      { id: "e", text: "Finding the sentiment of written customer reviews" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Rekognition provides pre-trained image and video analysis, including detecting objects and scenes and moderating content for unsafe material. Converting text to speech is Amazon Polly, translating text is Amazon Translate, and provisioning infrastructure from a template is AWS CloudFormation, so those three are not Rekognition.",
+      "Amazon Rekognition provides pre-trained image and video analysis, including detecting objects and scenes and moderating content for unsafe material. Converting text to speech is Amazon Polly, translating text is Amazon Translate, and finding the sentiment of written reviews is Amazon Comprehend, so those three are not Rekognition.",
     reference: {
       label: "Amazon Rekognition",
       url: "https://aws.amazon.com/rekognition/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Rekognition"],
   },
   {
@@ -269,20 +269,20 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "hard",
     stem: "A company is comparing the two main forms of Amazon Q, a generative AI assistant. Which TWO statements correctly match an Amazon Q offering to its focus? (Choose two.)",
     options: [
-      { id: "a", text: "Amazon Q Developer assists with building, operating, and transforming software, including coding help." },
+      { id: "a", text: "Amazon Q Developer helps build and operate software, including coding." },
       { id: "b", text: "Amazon Q Business answers questions using a company's own content, data, and systems." },
-      { id: "c", text: "Amazon Q Developer is a managed relational database engine." },
-      { id: "d", text: "Amazon Q Business is a service for running Apache Spark clusters." },
-      { id: "e", text: "Amazon Q is a physical networking appliance shipped to your data center." },
+      { id: "c", text: "Amazon Q Developer answers questions from a company's HR documents." },
+      { id: "d", text: "Amazon Q Business is the assistant for troubleshooting AWS resources." },
+      { id: "e", text: "Amazon Q Business is the assistant for writing and debugging application code." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Q Developer assists with building, operating, and transforming software, and Amazon Q Business answers questions over a company's own content and systems, so both pairings are correct. Amazon Q is a generative AI assistant, not a relational database (that is Amazon RDS), not a Spark cluster service (that is Amazon EMR), and not a physical appliance.",
+      "Amazon Q Developer assists with building, operating, and transforming software, and Amazon Q Business answers questions over a company's own content and systems, so both pairings are correct. Answering questions from a company's HR documents is Amazon Q Business work rather than Amazon Q Developer, while troubleshooting AWS resources and help writing and debugging application code both come from Amazon Q Developer rather than Amazon Q Business.",
     reference: {
       label: "Amazon Q",
       url: "https://aws.amazon.com/q/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Amazon Q"],
   },
   {
@@ -319,17 +319,17 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "It is a serverless data integration service for extract, transform, and load work." },
       { id: "b", text: "It includes a Data Catalog that acts as a central metadata repository." },
       { id: "c", text: "It requires you to provision and manage a fleet of EC2 servers for every job." },
-      { id: "d", text: "It is primarily a service for building voice and text chatbots." },
+      { id: "d", text: "It is a cloud data warehouse for running complex SQL reports." },
       { id: "e", text: "It is a business intelligence service for building dashboards." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Glue is a serverless service for extract, transform, and load work, and it includes the Glue Data Catalog as a central metadata repository. It does not require you to manage servers, building chatbots is Amazon Lex, and building dashboards is Amazon QuickSight, so those three are wrong.",
+      "AWS Glue is a serverless service for extract, transform, and load work, and it includes the Glue Data Catalog as a central metadata repository. It does not require you to manage servers, a cloud data warehouse for SQL reports is Amazon Redshift, and building dashboards is Amazon Quick Sight, so those three are wrong.",
     reference: {
       label: "AWS Glue",
       url: "https://aws.amazon.com/glue/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Glue"],
   },
   {
@@ -390,16 +390,16 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "b", text: "Processing real-time telemetry arriving continuously from IoT devices" },
       { id: "c", text: "Running occasional ad hoc SQL queries over log files already stored in Amazon S3" },
       { id: "d", text: "Building interactive business intelligence dashboards for executives" },
-      { id: "e", text: "Provisioning a stack of AWS resources from a YAML template" },
+      { id: "e", text: "Running nightly batch ETL jobs over files in a data lake" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon Kinesis fits ingesting a website clickstream and processing continuous IoT telemetry in real time. Ad hoc SQL over stored S3 files is Amazon Athena, dashboards are Amazon QuickSight, and provisioning resources from a template is AWS CloudFormation, so those three are not Kinesis use cases.",
+      "Amazon Kinesis fits ingesting a website clickstream and processing continuous IoT telemetry in real time. Ad hoc SQL over stored S3 files is Amazon Athena, dashboards are Amazon Quick Sight, and nightly batch ETL jobs are AWS Glue, so those three are not Kinesis use cases.",
     reference: {
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Kinesis"],
   },
   {
@@ -410,19 +410,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "A business team wants to build interactive dashboards and visualizations from their data so non-technical staff can explore metrics and make decisions. Which AWS service is the managed business intelligence offering for this?",
     options: [
-      { id: "a", text: "Amazon QuickSight" },
+      { id: "a", text: "Amazon Quick Sight" },
       { id: "b", text: "Amazon Athena" },
       { id: "c", text: "AWS Glue" },
       { id: "d", text: "Amazon Kinesis" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon QuickSight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer.",
+      "Amazon Quick Sight is the AWS business intelligence service for building and publishing interactive dashboards and visualizations. Athena queries data with SQL, Glue prepares and integrates data, and Kinesis streams data, so none are the dashboarding and BI layer. Amazon Quick Sight, formerly Amazon QuickSight, is now a feature within Amazon Quick.",
     reference: {
-      label: "Amazon QuickSight",
+      label: "What is Amazon Quick?",
       url: "https://docs.aws.amazon.com/quick/latest/userguide/what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["QuickSight"],
   },
   {
@@ -435,18 +435,18 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Apache Spark" },
       { id: "b", text: "Apache Hive" },
-      { id: "c", text: "Microsoft Excel" },
-      { id: "d", text: "Adobe Photoshop" },
-      { id: "e", text: "The AWS Management Console" },
+      { id: "c", text: "Amazon Redshift" },
+      { id: "d", text: "Amazon Athena" },
+      { id: "e", text: "Apache Kafka" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon EMR provides performance-optimized runtimes for open-source big data frameworks including Apache Spark and Apache Hive. Microsoft Excel and Adobe Photoshop are desktop applications, not big data frameworks, and the AWS Management Console is a web interface, so none of those are EMR frameworks.",
+      "Amazon EMR provides performance-optimized runtimes for open-source big data frameworks including Apache Spark and Apache Hive. Apache Kafka is an open-source streaming platform that AWS offers as a managed service through Amazon MSK rather than as an EMR runtime, while Amazon Redshift is an AWS data warehouse and Amazon Athena is an AWS serverless query service, not open-source frameworks that EMR runs.",
     reference: {
       label: "Amazon EMR",
       url: "https://aws.amazon.com/emr/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EMR"],
   },
   {
@@ -504,18 +504,18 @@ export const domain3AimlAnalytics: Question[] = [
     stem: "A developer prefers to define cloud infrastructure using a general-purpose programming language such as TypeScript or Python, with loops and reusable components, and then have it provisioned through AWS CloudFormation. Which AWS tool enables this approach?",
     options: [
       { id: "a", text: "AWS Cloud Development Kit (AWS CDK)" },
-      { id: "b", text: "AWS CloudFormation Designer" },
+      { id: "b", text: "AWS Infrastructure Composer" },
       { id: "c", text: "AWS CodeDeploy" },
-      { id: "d", text: "AWS CodeCommit" },
+      { id: "d", text: "AWS Serverless Application Model (AWS SAM)" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. CloudFormation Designer is a visual template editor, CodeDeploy automates deployments, and CodeCommit is source control, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
+      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. Infrastructure Composer is a visual designer that drags and connects resources to generate CloudFormation templates, CodeDeploy automates deployments, and AWS SAM declares resources in templates that extend CloudFormation, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
     reference: {
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CDK", "CloudFormation"],
   },
   {
@@ -548,19 +548,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "medium",
     stem: "An administrator wants to manage many AWS services from one downloadable tool that runs in a terminal, so the commands can be automated through shell scripts. Which way of accessing AWS is this?",
     options: [
-      { id: "a", text: "The AWS Command Line Interface (AWS CLI)" },
+      { id: "a", text: "The AWS Command Line Interface" },
       { id: "b", text: "The AWS Management Console" },
-      { id: "c", text: "Amazon QuickSight" },
-      { id: "d", text: "The AWS Health Dashboard" },
+      { id: "c", text: "An AWS SDK inside application code" },
+      { id: "d", text: "An AWS CloudFormation template" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS CLI is a unified tool that controls multiple AWS services from the command line and can be automated through scripts. The Management Console is a browser GUI, QuickSight is a BI service, and the Health Dashboard reports on service health, so none are the scriptable command-line tool.",
+      "The AWS CLI is a unified tool that controls multiple AWS services from the command line and can be automated through scripts. The Management Console is a browser GUI, an AWS SDK is a library that application code calls rather than a terminal tool, and a CloudFormation template is a declarative file describing resources rather than a tool you run commands in, so none are the scriptable command-line tool.",
     reference: {
       label: "AWS Command Line Interface (AWS CLI)",
       url: "https://aws.amazon.com/cli/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-aiml-23",
@@ -572,23 +572,23 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Python" },
       { id: "b", text: "Java" },
-      { id: "c", text: "HTML" },
-      { id: "d", text: "CSS" },
-      { id: "e", text: "YAML" },
+      { id: "c", text: "Perl" },
+      { id: "d", text: "Haskell" },
+      { id: "e", text: "Lua" },
     ],
     correct: ["a", "b"],
     distractorRationales: {
-      c: "HTML is a markup language for web page structure, not a programming language with an AWS SDK.",
-      d: "CSS is a styling language for web pages, not a programming language with an AWS SDK.",
-      e: "YAML is a data format used for templates, not a programming language with an AWS SDK.",
+      c: "Perl is a programming language, but AWS publishes no official SDK for it; the official SDKs cover languages such as Python, Java, JavaScript, Go, and .NET.",
+      d: "Haskell is a programming language, but it is not among the languages with an official AWS SDK.",
+      e: "Lua is a programming language, but it is not among the languages with an official AWS SDK.",
     },
     explanation:
-      "AWS provides SDKs, which are language-specific libraries for calling AWS service APIs from code, for languages including Python and Java. HTML and CSS are markup and styling languages for web pages, not programming languages with an AWS SDK, and YAML is a data format used for templates rather than an SDK language.",
+      "AWS provides SDKs, which are language-specific libraries for calling AWS service APIs from code, for languages including Python and Java. Perl, Haskell, and Lua are real programming languages, but none of them has an official AWS SDK.",
     reference: {
       label: "AWS SDKs and Tools Reference Guide overview",
       url: "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-aiml-24",
@@ -621,7 +621,7 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "hard",
     stem: "A multilingual support center records calls in several languages. The team wants to transcribe each recorded call to text, then translate the transcripts into English. Which pair of AWS services accomplishes this, in order?",
     options: [
-      { id: "a", text: "Amazon Transcribe to create the transcript, then Amazon Translate to translate it" },
+      { id: "a", text: "Amazon Transcribe to transcribe, then Amazon Translate to translate" },
       { id: "b", text: "Amazon Polly to create the transcript, then Amazon Comprehend to translate it" },
       { id: "c", text: "Amazon Translate to create the transcript, then Amazon Transcribe to translate it" },
       { id: "d", text: "Amazon Textract to create the transcript, then Amazon Lex to translate it" },
@@ -744,13 +744,13 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "Amazon Kinesis ingests and processes streaming data in real time" },
       { id: "b", text: "AWS Glue provides serverless ETL and a central data catalog" },
-      { id: "c", text: "Amazon QuickSight is a real-time message streaming service" },
+      { id: "c", text: "Amazon Quick Sight is a real-time message streaming service" },
       { id: "d", text: "Amazon Athena is a fully managed petabyte-scale data warehouse" },
       { id: "e", text: "Amazon EMR is a business intelligence dashboarding service" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Kinesis ingests and processes real-time streaming data, and Glue provides serverless ETL with the Glue Data Catalog, so both are correct. QuickSight is a business intelligence service, not a streaming service, Athena is a serverless query service over S3 rather than a warehouse (that is Redshift), and EMR runs big data frameworks rather than dashboards, so those are wrong.",
+      "Kinesis ingests and processes real-time streaming data, and Glue provides serverless ETL with the Glue Data Catalog, so both are correct. Quick Sight is a business intelligence service, not a streaming service, Athena is a serverless query service over S3 rather than a warehouse (that is Redshift), and EMR runs big data frameworks rather than dashboards, so those are wrong.",
     reference: {
       label: "Amazon Kinesis",
       url: "https://aws.amazon.com/kinesis/",
@@ -768,18 +768,18 @@ export const domain3AimlAnalytics: Question[] = [
     options: [
       { id: "a", text: "The AWS Management Console, a web-based interface" },
       { id: "b", text: "The AWS Command Line Interface (AWS CLI)" },
-      { id: "c", text: "Physically visiting an AWS data center to configure servers" },
-      { id: "d", text: "Mailing configuration forms to AWS for manual setup" },
-      { id: "e", text: "Calling an AWS sales representative to run each command" },
+      { id: "c", text: "The AWS Pricing Calculator" },
+      { id: "d", text: "The AWS Well-Architected Framework" },
+      { id: "e", text: "Signing in to the physical hosts that run your instances" },
     ],
     correct: ["a", "b"],
     explanation:
-      "The AWS Management Console and the AWS CLI are both documented ways to access and manage AWS services, alongside the SDKs and infrastructure as code. Visiting a data center, mailing forms, or having a representative run commands are not how customers operate AWS resources, since the model is self-service through these interfaces.",
+      "The AWS Management Console and the AWS CLI are both documented ways to access and manage AWS services, alongside the SDKs and infrastructure as code. The AWS Pricing Calculator is a planning tool that only creates cost estimates, the Well-Architected Framework is a set of architectural best practices, and customers do not sign in to the physical hosts, because AWS operates and controls the host operating system, virtualization layer, and facilities under the shared responsibility model.",
     reference: {
       label: "What is the AWS Management Console?",
       url: "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d3-aiml-32",
@@ -792,17 +792,17 @@ export const domain3AimlAnalytics: Question[] = [
       { id: "a", text: "Templates can be authored in JSON or YAML." },
       { id: "b", text: "It manages a collection of related resources together as a stack." },
       { id: "c", text: "It only works with Amazon EC2 and cannot provision other services." },
-      { id: "d", text: "Templates must be written in Python source code." },
-      { id: "e", text: "It is a real-time data streaming service." },
+      { id: "d", text: "Templates must be written in XML." },
+      { id: "e", text: "It is a monitoring service that tracks metrics and alarms." },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudFormation templates can be authored in JSON or YAML, and CloudFormation provisions and manages the related resources together as a stack. It provisions many AWS resource types, not only EC2, templates are declarative JSON or YAML rather than Python source, and it is an infrastructure as code service, not a streaming service.",
+      "CloudFormation templates can be authored in JSON or YAML, and CloudFormation provisions and manages the related resources together as a stack. It provisions many AWS resource types, not only EC2, templates are written in JSON or YAML rather than XML, and monitoring resources with metrics and alarms is Amazon CloudWatch rather than CloudFormation.",
     reference: {
       label: "CloudFormation template format",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFormation"],
   },
   {
@@ -814,18 +814,18 @@ export const domain3AimlAnalytics: Question[] = [
     stem: "A team building a generative AI application on Amazon Bedrock wants to apply safeguards that block harmful content and help reduce undesirable model responses. Which Amazon Bedrock capability is intended for this?",
     options: [
       { id: "a", text: "Amazon Bedrock Guardrails" },
-      { id: "b", text: "Amazon Bedrock Spot Instances" },
-      { id: "c", text: "Amazon Bedrock Multi-AZ" },
-      { id: "d", text: "Amazon Bedrock Reserved Capacity discount tiers" },
+      { id: "b", text: "Amazon Bedrock Knowledge Bases" },
+      { id: "c", text: "Amazon Bedrock Flows" },
+      { id: "d", text: "Amazon Bedrock Provisioned Throughput" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon Bedrock Guardrails let you apply safeguards that block harmful content and help reduce undesirable responses in generative AI applications. Spot Instances and Reserved capacity are EC2 purchasing concepts, and Multi-AZ is a database and availability concept, so none are the Bedrock safety control.",
+      "Amazon Bedrock Guardrails provides configurable safeguards that detect and filter harmful content and undesirable model responses in generative AI applications. Knowledge Bases connect a model to your own data for retrieval augmented generation, Flows link prompts, models, and other services into workflows, and Provisioned Throughput buys a higher level of model throughput at a fixed cost, so none is the Bedrock safety control.",
     reference: {
       label: "Amazon Bedrock",
       url: "https://aws.amazon.com/bedrock/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Bedrock"],
   },
   {
@@ -859,19 +859,19 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "easy",
     stem: "Which statement best describes infrastructure as code on AWS?",
     options: [
-      { id: "a", text: "Defining and provisioning AWS resources from declarative template or code files rather than configuring each resource by hand." },
+      { id: "a", text: "Defining and provisioning AWS resources from template or code files." },
       { id: "b", text: "Writing application business logic that runs inside AWS Lambda functions." },
-      { id: "c", text: "Manually clicking through the AWS Management Console to create each resource one at a time." },
+      { id: "c", text: "Running containerized application code on AWS-managed servers." },
       { id: "d", text: "Storing source code in a Git repository hosted on AWS." },
     ],
     correct: ["a"],
     explanation:
-      "Infrastructure as code means defining and provisioning AWS resources from declarative template or code files, as services like CloudFormation and the CDK do, rather than configuring resources by hand. Application logic in Lambda, clicking through the console, and storing source code are different activities and not what infrastructure as code refers to.",
+      "Infrastructure as code means defining and provisioning AWS resources from declarative template or code files, as services like CloudFormation and the CDK do, rather than configuring resources by hand. Application logic in Lambda, running containerized code, and storing source code are different activities and not what infrastructure as code refers to.",
     reference: {
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFormation", "CDK"],
   },
 ];

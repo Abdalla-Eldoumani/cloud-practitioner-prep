@@ -49,18 +49,18 @@ export const domain4SupportMigration: Question[] = [
     stem: "A startup on the Basic Support plan hits an error in its application running on AWS and wants to open a technical support case with an AWS engineer. What must it do first?",
     options: [
       { id: "a", text: "Nothing; Basic Support already includes technical support cases." },
-      { id: "b", text: "Upgrade to a paid support plan such as Developer, Business, or Enterprise." },
+      { id: "b", text: "Upgrade to a paid plan such as Developer or Business." },
       { id: "c", text: "Buy a separate Trusted Advisor subscription." },
-      { id: "d", text: "Open the case through AWS Marketplace." },
+      { id: "d", text: "Open it as an account and billing case instead." },
     ],
     correct: ["b"],
     explanation:
-      "With Basic Support you cannot create a technical support case. Account, billing, and service quota increase cases are available to all customers, but technical cases require a paid plan such as Developer, Business, or Enterprise. Trusted Advisor is not a separate purchase, and Marketplace does not open support cases.",
+      "With Basic Support you cannot create a technical support case. Account, billing, and service quota increase cases are available to all customers, but an account and billing case covers billing and account questions rather than technical issues, so a technical case requires a paid plan such as Developer, Business, or Enterprise. Trusted Advisor is not a separate purchase.",
     reference: {
       label: "AWS Support case management",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-03",
@@ -136,7 +136,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "On a plan that supports it, a customer opens a case at the highest severity, business-critical system down, with Enterprise Support. What is the first-response time AWS targets for this severity on Enterprise Support?",
     options: [
-      { id: "a", text: "Less than 15 minutes" },
+      { id: "a", text: "15 minutes" },
       { id: "b", text: "1 hour" },
       { id: "c", text: "4 hours" },
       { id: "d", text: "24 hours" },
@@ -148,7 +148,7 @@ export const domain4SupportMigration: Question[] = [
       label: "Choosing a support case severity level",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/case-management.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-07",
@@ -203,19 +203,19 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "hard",
     stem: "AWS has announced changes to its support plan lineup. Which statement reflects the announced consolidation?",
     options: [
-      { id: "a", text: "Developer Support and Business Support reach end of support, and those customers move to Business Support+." },
+      { id: "a", text: "Developer and Business Support end; customers move to Business Support+." },
       { id: "b", text: "Basic Support is being discontinued and replaced by a paid entry plan." },
       { id: "c", text: "Enterprise Support is being discontinued with no successor." },
-      { id: "d", text: "All support plans are being merged into a single Trusted Advisor subscription." },
+      { id: "d", text: "Enterprise On-Ramp replaces Developer and Business Support for all customers." },
     ],
     correct: ["a"],
     explanation:
-      "AWS announced that Developer Support, Business Support, and Enterprise On-Ramp reach end of support on January 1, 2027. Developer and Business customers can move to Business Support+, and Enterprise On-Ramp customers are upgraded to Enterprise Support. Basic Support continues, Enterprise Support continues, and the plans are not merged into a Trusted Advisor subscription.",
+      "AWS announced that Developer Support, Business Support, and Enterprise On-Ramp reach end of support on January 1, 2027. Developer and Business customers can move to Business Support+, and Enterprise On-Ramp customers are upgraded to Enterprise Support. Basic Support continues, Enterprise Support continues, and Enterprise On-Ramp is itself being discontinued rather than replacing Developer and Business Support.",
     reference: {
       label: "Developer, Business, and Enterprise On-Ramp end of support",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-10",
@@ -251,16 +251,16 @@ export const domain4SupportMigration: Question[] = [
       { id: "b", text: "Fault tolerance" },
       { id: "c", text: "Carbon footprint" },
       { id: "d", text: "Data residency" },
-      { id: "e", text: "Marketplace billing" },
+      { id: "e", text: "Reliability" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Trusted Advisor checks fall into six categories: cost optimization, performance, security, fault tolerance, service limits, and operational excellence. Service limits and fault tolerance are two of them. Carbon footprint, data residency, and Marketplace billing are not Trusted Advisor categories.",
+      "Trusted Advisor checks fall into six categories: cost optimization, performance, security, fault tolerance, service limits, and operational excellence. Service limits and fault tolerance are two of them. Carbon footprint, data residency, and reliability are not among the six Trusted Advisor category names.",
     reference: {
       label: "AWS Trusted Advisor check reference",
       url: "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-12",
@@ -317,11 +317,11 @@ export const domain4SupportMigration: Question[] = [
       { id: "a", text: "AWS re:Post" },
       { id: "b", text: "AWS Marketplace" },
       { id: "c", text: "AWS Trusted Advisor" },
-      { id: "d", text: "AWS Cost Explorer" },
+      { id: "d", text: "AWS Whitepapers and Guides" },
     ],
     correct: ["a"],
     explanation:
-      "AWS re:Post is a community-driven question-and-answer service that replaced the original AWS Forums. It offers crowd-sourced, expert-reviewed answers and is integrated with AWS Support. Marketplace is a software catalog, Trusted Advisor gives account recommendations, and Cost Explorer analyzes spend.",
+      "AWS re:Post is a community-driven question-and-answer service that replaced the original AWS Forums. It offers crowd-sourced, expert-reviewed answers and is integrated with AWS Support. Marketplace is a software catalog, Trusted Advisor gives account recommendations, and Whitepapers and Guides are AWS-authored technical content rather than a place to ask a question and get community answers.",
     reference: {
       label: "AWS re:Post",
       url: "https://aws.amazon.com/blogs/aws/aws-repost-a-reimagined-qa-experience-for-the-aws-community/",
@@ -338,12 +338,12 @@ export const domain4SupportMigration: Question[] = [
     options: [
       { id: "a", text: "AWS Marketplace" },
       { id: "b", text: "AWS re:Post" },
-      { id: "c", text: "AWS Config" },
+      { id: "c", text: "AWS Activate" },
       { id: "d", text: "AWS Artifact" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Marketplace is a curated digital catalog where customers find, buy, deploy, and manage third-party software and services, with charges consolidated on the AWS bill. re:Post is a community Q&A service, Config records resource configurations, and Artifact provides on-demand access to AWS compliance reports.",
+      "AWS Marketplace is a curated digital catalog where customers find, buy, deploy, and manage third-party software and services, with charges consolidated on the AWS bill. re:Post is a community Q&A service, Activate is a program that offers credits to startups rather than a software catalog, and Artifact provides on-demand access to AWS compliance reports.",
     reference: {
       label: "AWS Marketplace",
       url: "https://aws.amazon.com/marketplace/",
@@ -358,7 +358,7 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "A business wants to engage an outside firm that has proven AWS expertise to help design and build its cloud solution. Which AWS program is the global community of such partners?",
     options: [
-      { id: "a", text: "AWS Partner Network (APN)" },
+      { id: "a", text: "AWS Partner Network" },
       { id: "b", text: "AWS Trusted Advisor" },
       { id: "c", text: "AWS Activate" },
       { id: "d", text: "AWS re:Post" },
@@ -382,12 +382,12 @@ export const domain4SupportMigration: Question[] = [
     options: [
       { id: "a", text: "AWS Whitepapers and Guides" },
       { id: "b", text: "AWS Marketplace listings" },
-      { id: "c", text: "AWS Cost and Usage Report" },
+      { id: "c", text: "AWS Trusted Advisor" },
       { id: "d", text: "AWS Health Dashboard" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Whitepapers and Guides are technical content authored by AWS and the AWS community, including whitepapers, technical guides, reference material, and reference architecture diagrams, available at no cost. Marketplace lists third-party software, the Cost and Usage Report details spend, and the Health Dashboard reports on service events affecting your resources.",
+      "AWS Whitepapers and Guides are technical content authored by AWS and the AWS community, including whitepapers, technical guides, reference material, and reference architecture diagrams, available at no cost. Marketplace lists third-party software, Trusted Advisor checks your account against best practices rather than publishing guides, and the Health Dashboard reports on service events affecting your resources.",
     reference: {
       label: "AWS Whitepapers & Guides",
       url: "https://aws.amazon.com/whitepapers/",
@@ -448,19 +448,19 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "medium",
     stem: "A customer wants a personalized view of AWS events that affect their own resources and accounts, including scheduled changes and ongoing issues, with alerts and guidance. Which AWS service provides this?",
     options: [
-      { id: "a", text: "The AWS Health Dashboard" },
+      { id: "a", text: "AWS Health Dashboard" },
       { id: "b", text: "Amazon CloudWatch Logs" },
       { id: "c", text: "AWS CloudTrail" },
-      { id: "d", text: "Amazon Inspector" },
+      { id: "d", text: "AWS Trusted Advisor" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Health Dashboard, powered by AWS Health, gives ongoing visibility into the health of AWS services and your accounts, with personalized alerts and guidance about events and scheduled changes that affect your resources, and it requires no setup. CloudWatch Logs stores log data, CloudTrail records API activity, and Inspector assesses workloads for vulnerabilities.",
+      "The AWS Health Dashboard, powered by AWS Health, gives ongoing visibility into the health of AWS services and your accounts, with personalized alerts and guidance about events and scheduled changes that affect your resources, and it requires no setup. CloudWatch Logs stores log data, CloudTrail records API activity, and Trusted Advisor recommends best-practice improvements rather than reporting AWS events that affect you.",
     reference: {
       label: "What is AWS Health?",
       url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Health"],
   },
   {
@@ -471,19 +471,19 @@ export const domain4SupportMigration: Question[] = [
     difficulty: "hard",
     stem: "An AWS service is reporting elevated error rates, and an operations engineer needs to know whether the disruption affects their specific account and resources, not just the general service status. Which view answers that?",
     options: [
-      { id: "a", text: "The account-specific (\"Your account health\") view of the AWS Health Dashboard, which shows events affecting your resources." },
+      { id: "a", text: "The \"Your account health\" view of the AWS Health Dashboard" },
       { id: "b", text: "A CloudWatch dashboard of the application's request latency." },
       { id: "c", text: "The CloudTrail Event history of recent API calls." },
-      { id: "d", text: "The AWS Pricing Calculator estimate for the service." },
+      { id: "d", text: "The \"Service health\" view of the AWS Health Dashboard." },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Health Dashboard provides personalized, account-specific event information so you can see whether an issue affects your own resources, in addition to general service status. A CloudWatch latency dashboard shows performance but not AWS-side event impact, CloudTrail shows API activity, and the Pricing Calculator estimates cost.",
+      "The \"Your account health\" view of the AWS Health Dashboard shows events specific to your account, so you can see whether an issue affects your own resources. The Service health view shows only public events that are not specific to any account, a CloudWatch latency dashboard shows performance but not AWS-side event impact, and CloudTrail shows API activity.",
     reference: {
-      label: "What is AWS Health?",
-      url: "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html",
+      label: "AWS Health Dashboard: Service health and Your account health",
+      url: "https://docs.aws.amazon.com/health/latest/ug/aws-health-dashboard-status.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Health"],
   },
 ];

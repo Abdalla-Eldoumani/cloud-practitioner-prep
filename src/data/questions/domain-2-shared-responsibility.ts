@@ -16,22 +16,22 @@ export const domain2SharedResponsibility: Question[] = [
     options: [
       { id: "a", text: "Security of the cloud" },
       { id: "b", text: "Security in the cloud" },
-      { id: "c", text: "Security around the cloud" },
-      { id: "d", text: "Security beside the cloud" },
+      { id: "c", text: "Security of the data in the cloud" },
+      { id: "d", text: "Security of the workloads in the cloud" },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "Security in the cloud is the customer's half, covering their data and configuration, not the AWS half.",
-      c: "Security around the cloud is an invented phrase; it is not part of the Shared Responsibility Model.",
-      d: "Security beside the cloud is an invented phrase; it is not part of the Shared Responsibility Model.",
+      c: "Customer data is part of security in the cloud, so protecting the data in the cloud is the customer's half, not the AWS half.",
+      d: "The platform and applications a customer runs are part of security in the cloud, so the workloads in the cloud are the customer's to secure.",
     },
     explanation:
-      "AWS frames its half as security of the cloud: protecting the infrastructure that runs AWS services, including hardware, software, networking, and facilities. The customer's half is security in the cloud. Security around the cloud and security beside the cloud are invented phrases that are not part of the model.",
+      "AWS frames its half as security of the cloud: protecting the infrastructure that runs AWS services, including hardware, software, networking, and facilities. The customer's half is security in the cloud, which covers customer data and the platform and applications the customer runs, so securing the data or the workloads in the cloud is customer work rather than the AWS half.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-02",
@@ -41,7 +41,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "easy",
     stem: "Under the Shared Responsibility Model, which group of items is AWS responsible for protecting?",
     options: [
-      { id: "a", text: "The hardware, software, networking, and facilities that run AWS Cloud services" },
+      { id: "a", text: "The infrastructure that runs AWS Cloud services" },
       { id: "b", text: "The customer's data and how it is classified" },
       { id: "c", text: "The configuration of each instance's security group" },
       { id: "d", text: "The identities and permissions the customer creates in IAM" },
@@ -53,7 +53,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-03",
@@ -75,7 +75,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-04",
@@ -85,19 +85,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A company runs a web application on Amazon EC2 instances. A new critical vulnerability is announced in the Linux kernel the instances use. Under the Shared Responsibility Model, who is responsible for applying the operating system patch to the running instances?",
     options: [
-      { id: "a", text: "The customer, because managing the guest operating system, including updates and security patches, is their responsibility" },
+      { id: "a", text: "The customer, because the guest operating system is theirs to manage" },
       { id: "b", text: "AWS, because AWS patches every operating system on every instance automatically" },
-      { id: "c", text: "Neither party, because EC2 instances never need OS patches" },
-      { id: "d", text: "The hardware vendor that supplied the physical server" },
+      { id: "c", text: "AWS, because the Linux kernel belongs to the host that AWS secures" },
+      { id: "d", text: "AWS Support, once the customer opens a case asking for the patch" },
     ],
     correct: ["a"],
     explanation:
-      "For Amazon EC2, the customer manages the guest operating system and software deployed to it, including updates and security patches. AWS patches the underlying host and virtualization layer, not the guest OS the customer chose. EC2 instances do need patches, and the patch duty is not the hardware vendor's.",
+      "For Amazon EC2, the customer manages the guest operating system and software deployed to it, including updates and security patches. AWS patches the underlying host and virtualization layer, not the guest OS the customer chose. The kernel in this scenario is part of the instance's guest operating system rather than the AWS host, and opening a case with AWS Support does not hand the guest OS patch to AWS.",
     reference: {
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -108,19 +108,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "An administrator wants to control which IP addresses and ports can reach an Amazon EC2 instance. They configure the instance's security group to allow only the traffic the application needs. Under the Shared Responsibility Model, this network access control is whose responsibility?",
     options: [
-      { id: "a", text: "The customer, who controls network access to instances by configuring their VPC and security groups" },
+      { id: "a", text: "The customer, who configures their VPC and security groups" },
       { id: "b", text: "AWS, which sets every security group rule on the customer's behalf" },
       { id: "c", text: "AWS, because security groups are part of the physical network AWS manages" },
-      { id: "d", text: "A third-party auditor that signs off on the rules" },
+      { id: "d", text: "Both, as the customer requests rules that AWS applies" },
     ],
     correct: ["a"],
     explanation:
-      "Controlling network access to instances by configuring the VPC and security groups is listed as a customer responsibility for Amazon EC2. AWS provides the security group mechanism, but the customer decides the rules. Security groups are a software control the customer configures, not part of the physical network AWS manages. The auditor verifies compliance; it does not set the rules.",
+      "Controlling network access to instances by configuring the VPC and security groups is listed as a customer responsibility for Amazon EC2. AWS provides the security group mechanism, but the customer decides the rules. Security groups are a software control the customer configures, not part of the physical network AWS manages. The customer adds the rules directly; AWS does not take requests and apply rules on the customer's behalf.",
     reference: {
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -132,18 +132,18 @@ export const domain2SharedResponsibility: Question[] = [
     stem: "A customer asks who replaces a hard drive when it fails inside an AWS data center and who destroys the old media so data cannot be recovered. Under the Shared Responsibility Model, who handles this?",
     options: [
       { id: "a", text: "AWS, because it owns and operates the physical hardware and facilities" },
-      { id: "b", text: "The customer, who must ship a replacement drive to the data center" },
+      { id: "b", text: "The customer, who requests the drive swap through AWS Support" },
       { id: "c", text: "The customer, because hardware is part of security in the cloud" },
       { id: "d", text: "Whichever party owns the data stored on the drive at the time" },
     ],
     correct: ["a"],
     explanation:
-      "AWS is responsible for the hardware and facilities that run AWS Cloud services, which includes maintaining and decommissioning physical media. Customers never touch the physical hardware, so it does not matter whichever party owns the data stored on the drive at the time; the drive itself is always AWS's to replace and destroy. Hardware is part of security of the cloud, not the customer's security in the cloud.",
+      "AWS is responsible for the hardware and facilities that run AWS Cloud services, which includes maintaining and decommissioning physical media. Customers never touch the physical hardware and do not need to request a drive swap through AWS Support, and it does not matter whichever party owns the data stored on the drive at the time; the drive itself is always AWS's to replace and destroy. Hardware is part of security of the cloud, not the customer's security in the cloud.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-07",
@@ -165,7 +165,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -176,19 +176,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A company moves a self-managed database off EC2 and onto Amazon RDS. After the move, who installs and patches the database engine software and the underlying operating system?",
     options: [
-      { id: "a", text: "AWS, because Amazon RDS manages the underlying operating system and database engine patching" },
+      { id: "a", text: "AWS; RDS manages OS and database engine patching" },
       { id: "b", text: "The customer, who must still log in to the host and patch the OS" },
       { id: "c", text: "The customer, because RDS only stores data and patches nothing" },
-      { id: "d", text: "No one, because managed databases never receive patches" },
+      { id: "d", text: "AWS patches the OS; the customer patches the database engine" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon RDS takes over operating system installation and patching and database software installation and patching, which stay with the customer on EC2 or on premises. The customer still manages access, database settings, and data. Managed databases do receive patches; AWS applies them.",
+      "Amazon RDS takes over operating system installation and patching and database software installation and patching, which stay with the customer on EC2 or on premises, so on RDS the customer does not patch the OS or the database engine. The customer still manages access, database settings, and data.",
     reference: {
       label: "Amazon RDS responsibilities compared with Amazon EC2",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -199,7 +199,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A team runs Amazon RDS and wants only the right people and applications to reach the database. Which TWO security tasks remain the customer's responsibility on RDS? (Choose two.)",
     options: [
-      { id: "a", text: "Configuring IAM policies that control who can manage the database" },
+      { id: "a", text: "Setting IAM policies on who manages the database" },
       { id: "b", text: "Configuring the security group that controls which sources can connect" },
       { id: "c", text: "Patching the host operating system that RDS runs on" },
       { id: "d", text: "Replacing the physical disks that store the database" },
@@ -212,7 +212,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Security in Amazon RDS",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["RDS"],
   },
   {
@@ -223,7 +223,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "An architect notes that the customer's share of security work is smaller on Amazon RDS than on a database the team runs itself on Amazon EC2. What best explains the difference?",
     options: [
-      { id: "a", text: "RDS is a managed service where AWS takes on the OS and database engine patching, so the customer's responsibility shrinks compared with self-managing on EC2" },
+      { id: "a", text: "On RDS, AWS takes on the OS and engine patching that EC2 leaves to the customer" },
       { id: "b", text: "RDS removes all customer security responsibility, including access control and data" },
       { id: "c", text: "EC2 has no customer security responsibility, so RDS must have more" },
       { id: "d", text: "The two services place identical responsibility on the customer" },
@@ -235,7 +235,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "RDS"],
   },
   {
@@ -269,7 +269,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "On AWS Lambda, AWS runs the servers and the operating system for you. Which security duty still belongs to the customer?",
     options: [
-      { id: "a", text: "Writing secure function code and assigning the function an execution role with least-privilege permissions" },
+      { id: "a", text: "Securing the function code and the IAM role it uses" },
       { id: "b", text: "Patching the operating system that hosts the function" },
       { id: "c", text: "Scaling and provisioning the underlying compute fleet" },
       { id: "d", text: "Securing the physical building where the function runs" },
@@ -281,7 +281,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Lambda"],
   },
   {
@@ -319,11 +319,11 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "a", text: "The customer, who manages access permissions for their S3 data" },
       { id: "b", text: "AWS, which sets every bucket's access policy by default to match the customer's intent" },
       { id: "c", text: "AWS, because access control is part of the infrastructure AWS operates" },
-      { id: "d", text: "The end users, who configure their own read access" },
+      { id: "d", text: "AWS, because S3 is an abstracted service it fully manages" },
     ],
     correct: ["a"],
     explanation:
-      "Managing access to data is a customer responsibility on S3; the customer configures bucket policies, IAM permissions, and Block Public Access. AWS operates the storage infrastructure but does not decide who may read the customer's objects. End users do not configure the bucket's permissions.",
+      "Managing access to data is a customer responsibility on S3; the customer configures bucket policies, IAM permissions, and Block Public Access. AWS operates the storage infrastructure but does not decide who may read the customer's objects. S3 being an abstracted service moves the infrastructure, operating system, and platform to AWS, not the access decisions for the customer's data.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
@@ -342,21 +342,21 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "a", text: "The customer" },
       { id: "b", text: "AWS" },
       { id: "c", text: "The third-party compliance auditor" },
-      { id: "d", text: "The AWS account's billing contact only" },
+      { id: "d", text: "AWS and the customer, as a shared control" },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "AWS secures the infrastructure but never decides what customer data to store or how to classify it.",
       c: "A third-party auditor verifies controls; it does not own or classify the customer's data.",
-      d: "A billing contact handles payment matters and has no role in data classification or access.",
+      d: "Data decisions are not a shared control split with AWS; the customer alone decides what to store, how to classify it, and who may access it.",
     },
     explanation:
-      "The customer is always responsible for their data: what to store, how to classify it, and how to manage access to it. This duty does not transfer to AWS regardless of service. The auditor verifies controls, and a billing contact role has nothing to do with data classification.",
+      "The customer is always responsible for their data: what to store, how to classify it, and how to manage access to it. This duty does not transfer to AWS regardless of service, and it is not a shared control split between AWS and the customer. The auditor verifies controls; it does not own or classify the customer's data.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-16",
@@ -389,24 +389,24 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "Patch management is described as a shared control in the model. How is it split between AWS and the customer?",
     options: [
-      { id: "a", text: "AWS patches and fixes flaws within the infrastructure, and the customer patches their guest OS and applications" },
+      { id: "a", text: "AWS patches the infrastructure, the customer their guest OS and applications" },
       { id: "b", text: "The customer patches the infrastructure, and AWS patches the customer's guest OS" },
       { id: "c", text: "AWS patches everything, including the customer's applications" },
-      { id: "d", text: "The customer patches everything, including the AWS infrastructure" },
+      { id: "d", text: "AWS patches the infrastructure and guest OS; the customer, applications only" },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This swaps the split; AWS patches the infrastructure and the customer patches their own guest OS, not the reverse.",
       c: "AWS does not patch the customer's applications; patching above the guest OS stays with the customer.",
-      d: "The customer never patches the AWS infrastructure; that side of the shared control belongs to AWS.",
+      d: "AWS does not patch the customer's guest OS; the customer patches both the guest OS and the applications, not applications only.",
     },
     explanation:
-      "Patch management is a shared control: AWS is responsible for patching and fixing flaws within the infrastructure, while the customer is responsible for patching their guest operating system and applications. It is wrong to say AWS patches everything including the customer's applications, or that the customer patches everything including the AWS infrastructure; each wrong answer collapses the split onto one party.",
+      "Patch management is a shared control: AWS is responsible for patching and fixing flaws within the infrastructure, while the customer is responsible for patching their guest operating system and applications. It is wrong to say AWS patches everything including the customer's applications, or that AWS also takes the guest OS and leaves the customer applications only; the guest OS stays with the customer.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-18",
@@ -416,19 +416,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "Configuration management appears as a shared control. Which split matches how AWS describes it?",
     options: [
-      { id: "a", text: "AWS maintains the configuration of its infrastructure devices, and the customer configures their own guest operating systems, databases, and applications" },
-      { id: "b", text: "AWS configures the customer's databases, and the customer configures the AWS network devices" },
+      { id: "a", text: "AWS configures its infrastructure devices; the customer, their guest OS and applications" },
+      { id: "b", text: "AWS configures its infrastructure and the customer's guest OS; the customer, only applications" },
       { id: "c", text: "Only AWS performs any configuration management" },
       { id: "d", text: "Only the customer performs any configuration management" },
     ],
     correct: ["a"],
     explanation:
-      "Configuration management is shared: AWS maintains the configuration of its infrastructure devices, while the customer configures their own guest operating systems, databases, and applications. Each party configures its own layer; the customer does not configure AWS network devices, and AWS does not configure the customer's databases, so the responsibility is not collapsed to a single party.",
+      "Configuration management is shared: AWS maintains the configuration of its infrastructure devices, while the customer configures their own guest operating systems, databases, and applications. AWS does not configure the customer's guest OS, so the customer's share is more than applications alone, and the responsibility is not collapsed to a single party.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-19",
@@ -438,19 +438,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "Awareness and training is listed as a shared control. What does the customer's part of it involve?",
     options: [
-      { id: "a", text: "Training their own employees on security responsibilities and practices" },
-      { id: "b", text: "Training the AWS data center staff" },
-      { id: "c", text: "Writing the curriculum AWS uses for its engineers" },
+      { id: "a", text: "Training their own employees on security practices" },
+      { id: "b", text: "Training only the staff who hold root user credentials" },
+      { id: "c", text: "Attending the training AWS gives its own staff" },
       { id: "d", text: "Nothing, because AWS trains everyone who touches the cloud" },
     ],
     correct: ["a"],
     explanation:
-      "Awareness and training is shared: AWS trains its own employees, and the customer must train their own employees. The customer has no role in training AWS staff or writing AWS curriculum, and the duty is not entirely AWS's.",
+      "Awareness and training is shared: AWS trains its own employees, and the customer must train their own employees. The customer's part covers its employees in general, not only the staff who hold root user credentials, and attending the training AWS gives its own staff is not the customer's part. The duty is not entirely AWS's either.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-20",
@@ -483,7 +483,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "Since January 5, 2023, what happens to a new object the moment it is uploaded to Amazon S3, with no action required by the customer?",
     options: [
-      { id: "a", text: "It is automatically encrypted at rest with server-side encryption using S3 managed keys (SSE-S3) at no additional cost" },
+      { id: "a", text: "It is encrypted at rest with SSE-S3 automatically, at no additional cost" },
       { id: "b", text: "It is left unencrypted until the customer enables encryption on the bucket" },
       { id: "c", text: "It is encrypted only if the customer first uploads a customer managed key" },
       { id: "d", text: "It is encrypted only for buckets in specific Regions" },
@@ -495,7 +495,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "Amazon S3 default encryption FAQ",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-encryption-faq.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -509,16 +509,16 @@ export const domain2SharedResponsibility: Question[] = [
       { id: "a", text: "All user data stored in DynamoDB is encrypted at rest by default, and AWS performs this server-side encryption automatically" },
       { id: "b", text: "DynamoDB stores data in plaintext unless the customer installs encryption software on the database servers" },
       { id: "c", text: "The customer must patch the DynamoDB servers to keep encryption working" },
-      { id: "d", text: "Encryption at rest is available only by running DynamoDB on the customer's own hardware" },
+      { id: "d", text: "Data is encrypted at rest only after the customer creates a customer managed key in AWS KMS" },
     ],
     correct: ["a"],
     explanation:
-      "AWS states all user data stored in Amazon DynamoDB is fully encrypted at rest by default, using an AWS owned key through its integration with AWS KMS, and DynamoDB is fully managed, so AWS performs the encryption server side. The customer never installs software on or patches DynamoDB servers, and there is no customer-hardware option.",
+      "AWS states all user data stored in Amazon DynamoDB is fully encrypted at rest, and the default AWS owned key needs no setup, so the customer does not have to create a customer managed key in AWS KMS first. DynamoDB is fully managed, so AWS performs the encryption server side, and the customer never installs software on or patches DynamoDB servers.",
     reference: {
       label: "DynamoDB encryption at rest",
       url: "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DynamoDB"],
   },
   {
@@ -529,7 +529,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "An architect compares two ways to run the same workload: on Amazon EC2 versus on a fully abstracted service such as Amazon S3 or DynamoDB. What is the general pattern as you move from EC2 toward the abstracted services?",
     options: [
-      { id: "a", text: "AWS takes on more of the security work, and the customer's responsibility narrows toward data and access management" },
+      { id: "a", text: "AWS takes on more of the work, and the customer's share narrows toward data and access" },
       { id: "b", text: "The customer takes on more of the security work, including patching the storage servers" },
       { id: "c", text: "Responsibility is identical regardless of which service is chosen" },
       { id: "d", text: "AWS becomes responsible for the customer's data classification" },
@@ -541,7 +541,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "S3", "DynamoDB"],
   },
   {
@@ -552,19 +552,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "easy",
     stem: "Who creates the IAM users, roles, and policies that decide what people and applications can do inside an AWS account?",
     options: [
-      { id: "a", text: "The customer, as part of identity and access management under security in the cloud" },
+      { id: "a", text: "The customer, as part of identity and access management" },
       { id: "b", text: "AWS, which provisions every account's users and roles automatically" },
       { id: "c", text: "AWS, because identity is part of the infrastructure it secures" },
-      { id: "d", text: "The data center operations team" },
+      { id: "d", text: "AWS Support, in response to an access request case" },
     ],
     correct: ["a"],
     explanation:
-      "Identity and access management is a customer responsibility; the customer creates and manages IAM users, roles, and policies to control access. Identity is not part of the infrastructure AWS secures: AWS provides IAM as a service but does not decide the account's identities or permissions, and data center staff have no role in it.",
+      "Identity and access management is a customer responsibility; the customer creates and manages IAM users, roles, and policies to control access. Identity is not part of the infrastructure AWS secures: AWS provides IAM as a service but does not decide the account's identities or permissions, and AWS Support does not create them in response to a request case.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -575,8 +575,8 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "Which TWO of the following are part of AWS security of the cloud rather than the customer's security in the cloud? (Choose two.)",
     options: [
-      { id: "a", text: "Protecting the global infrastructure of Regions, Availability Zones, and edge locations" },
-      { id: "b", text: "Maintaining the host operating system and virtualization layer" },
+      { id: "a", text: "Protecting the Regions, Availability Zones, and edge locations" },
+      { id: "b", text: "Maintaining the host OS and virtualization layer" },
       { id: "c", text: "Setting the password policy for IAM users" },
       { id: "d", text: "Choosing which data to encrypt before uploading it" },
       { id: "e", text: "Configuring a security group to allow only HTTPS traffic" },
@@ -588,7 +588,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-26",
@@ -598,19 +598,19 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "On Amazon EC2, where does AWS responsibility end and customer responsibility begin?",
     options: [
-      { id: "a", text: "AWS is responsible up through the host operating system and virtualization layer, and the customer is responsible for the guest operating system and everything above it" },
+      { id: "a", text: "AWS covers the host OS and virtualization layer; the customer, the guest OS and above" },
       { id: "b", text: "AWS is responsible for the guest operating system, and the customer is responsible for the hypervisor" },
-      { id: "c", text: "AWS is responsible for the customer's application code, and the customer is responsible for the data center" },
-      { id: "d", text: "The customer is responsible for the physical host, and AWS is responsible for the application" },
+      { id: "c", text: "AWS covers the host OS, hypervisor, and guest OS; the customer begins at the applications" },
+      { id: "d", text: "AWS covers only the physical facilities and hardware; the customer, the host OS and above" },
     ],
     correct: ["a"],
     explanation:
-      "For EC2, AWS secures the facilities, hardware, host operating system, and virtualization layer, and the customer takes over at the guest operating system, including its patches, the applications, network and firewall configuration, and the data. The customer never owns the hypervisor; the other options swap the host and guest layers or the data center and application.",
+      "For EC2, AWS secures the facilities, hardware, host operating system, and virtualization layer, and the customer takes over at the guest operating system, including its patches, the applications, network and firewall configuration, and the data. The customer never owns the hypervisor or the host OS, and AWS does not manage the guest OS, so the line sits between the host and guest layers rather than at the physical facilities or the applications.",
     reference: {
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -621,7 +621,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "The model names a category of controls that are solely the customer's, based on the specific application they deploy on AWS. Which example fits this category?",
     options: [
-      { id: "a", text: "Zone security that routes regulated data only through specific environments the customer's compliance requires" },
+      { id: "a", text: "Zoning data in specific security environments" },
       { id: "b", text: "The physical environmental controls of the data center" },
       { id: "c", text: "Patching flaws in the AWS infrastructure devices" },
       { id: "d", text: "Maintaining the configuration of AWS network hardware" },
@@ -633,7 +633,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-28",
@@ -643,7 +643,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A statement reads: the customer's exact responsibilities depend on which AWS service they choose. Is this accurate under the Shared Responsibility Model?",
     options: [
-      { id: "a", text: "Yes, the customer's responsibility is determined by the AWS service used, so it varies by service" },
+      { id: "a", text: "Yes, the customer's responsibility depends on the AWS service used" },
       { id: "b", text: "No, the customer always has exactly the same responsibilities for every service" },
       { id: "c", text: "No, AWS responsibility is what varies while the customer's never changes" },
       { id: "d", text: "Yes, but only the billing changes, not the security responsibilities" },
@@ -655,7 +655,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d2-srm-29",
@@ -713,7 +713,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "Across AWS services, which TWO responsibilities always stay with the customer regardless of the service chosen? (Choose two.)",
     options: [
-      { id: "a", text: "Managing their data, including classification" },
+      { id: "a", text: "Managing their data and its classification" },
       { id: "b", text: "Managing identity and access for their account" },
       { id: "c", text: "Securing the physical data center facilities" },
       { id: "d", text: "Patching the AWS infrastructure devices" },
@@ -726,7 +726,7 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
   {
@@ -843,6 +843,6 @@ export const domain2SharedResponsibility: Question[] = [
       label: "AWS Shared Responsibility Model",
       url: "https://aws.amazon.com/compliance/shared-responsibility-model/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
 ];

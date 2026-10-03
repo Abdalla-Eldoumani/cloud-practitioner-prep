@@ -182,12 +182,12 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Migration Hub provides a single place to discover existing servers, plan migrations, and track the status of each application migration, with visibility across multiple AWS and partner migration tools. Config records resource configurations, Systems Manager operates and manages resources, and CloudWatch monitors metrics and logs.",
+      "AWS Migration Hub provides a single place to discover existing servers, plan migrations, and track the status of each application migration, with visibility across multiple AWS and partner migration tools. Config records resource configurations, Systems Manager operates and manages resources, and CloudWatch monitors metrics and logs. Migration Hub is no longer open to new customers as of November 7, 2025, and AWS points new customers to AWS Transform for similar capabilities, but the exam guide still lists it.",
     reference: {
       label: "What Is AWS Migration Hub?",
       url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-28",
@@ -204,12 +204,12 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "AWS Application Migration Service is the primary service AWS recommends for lift-and-shift (rehost) migrations. It replicates source servers and converts them to run natively as Amazon EC2 instances with an automated cutover. DMS migrates databases, DataSync moves file and object data over the network, and Snowball is a physical device for offline data transfer.",
+      "AWS Application Migration Service, which AWS now documents as AWS Transform MGN, is AWS's dedicated rehosting capability for lift-and-shift migrations. It converts physical, virtual, or cloud source servers into native Amazon EC2 instances. DMS migrates databases, DataSync moves file and object data over the network, and Snowball is a physical device for offline data transfer.",
     reference: {
-      label: "What Is AWS Migration Hub? (Application Migration Service)",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
+      label: "AWS Transform MGN (formerly AWS Application Migration Service)",
+      url: "https://aws.amazon.com/application-migration-service/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Application Migration Service", "EC2"],
   },
   {
@@ -227,12 +227,12 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and AWS Migration Hub tracks migration status rather than performing the database move.",
+      "AWS Database Migration Service migrates databases to AWS and keeps the source database operational during the migration to minimize downtime. It supports both homogeneous migrations (such as Oracle to Oracle) and heterogeneous migrations between different engines. Application Migration Service, now documented as AWS Transform MGN, rehosts servers, S3 Transfer Acceleration speeds uploads to a bucket, and AWS Migration Hub tracks migration status rather than performing the database move.",
     reference: {
       label: "AWS Database Migration Service",
       url: "https://aws.amazon.com/dms/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DMS"],
   },
   {
@@ -250,12 +250,12 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["b"],
     explanation:
-      "The AWS Snow Family provides physical devices you order, load with data, and ship back so AWS imports the data, which suits large transfers where the network is too slow or costly. DataSync moves data over the network, Direct Connect is a dedicated network connection rather than a shipped device, and S3 Multipart Upload still relies on the existing internet connection.",
+      "The AWS Snow Family provides physical devices, such as Snowball Edge, that carry data by being shipped rather than sent over the network, which suits large transfers where the network is too slow or costly. DataSync moves data over the network, Direct Connect is a dedicated network connection rather than a shipped device, and S3 Multipart Upload still relies on the existing internet connection. Snowball Edge is no longer available to new customers, and AWS directs them to AWS DataSync for online transfers or AWS Data Transfer Terminal for physical transfers, but the exam guide still lists the Snow Family.",
     reference: {
-      label: "AWS Snow Family",
-      url: "https://aws.amazon.com/snowball/",
+      label: "What is Snowball Edge?",
+      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-31",
@@ -288,7 +288,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "hard",
     stem: "A migration team is selecting tools. Which TWO statements correctly match an AWS service to its primary migration purpose? (Choose two.)",
     options: [
-      { id: "a", text: "AWS Application Migration Service is the primary service for rehosting (lift and shift) servers to Amazon EC2." },
+      { id: "a", text: "AWS Application Migration Service rehosts servers to Amazon EC2." },
       { id: "b", text: "AWS Database Migration Service migrates databases while keeping the source operational." },
       { id: "c", text: "AWS Migration Hub physically ships disks to transfer petabytes of data." },
       { id: "d", text: "AWS DataSync replaces an application with a SaaS product." },
@@ -296,12 +296,12 @@ export const domain1MigrationCaf: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Application Migration Service is the primary rehosting service, and Database Migration Service migrates databases while the source stays operational. Migration Hub tracks migrations rather than shipping disks (that is the Snow Family), DataSync moves data over the network rather than buying a SaaS product (that is the repurchase strategy), and the Snow Family transfers data rather than evaluating configurations (that is AWS Config).",
+      "Application Migration Service, now documented as AWS Transform MGN, is AWS's dedicated rehosting capability, and Database Migration Service migrates databases while the source stays operational. Migration Hub tracks migrations rather than shipping disks (that is the Snow Family), DataSync moves data over the network rather than buying a SaaS product (that is the repurchase strategy), and the Snow Family transfers data rather than evaluating configurations (that is AWS Config).",
     reference: {
-      label: "What Is AWS Migration Hub?",
-      url: "https://docs.aws.amazon.com/migrationhub/latest/ug/whatishub.html",
+      label: "AWS Transform MGN (formerly AWS Application Migration Service)",
+      url: "https://aws.amazon.com/application-migration-service/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-supportmig-34",
@@ -356,7 +356,7 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "medium",
     stem: "A team is classifying applications by migration strategy. Which TWO descriptions correctly match a strategy in the 7 Rs? (Choose two.)",
     options: [
-      { id: "a", text: "Rehost moves an application to AWS with little or no code change (lift and shift)." },
+      { id: "a", text: "Rehost is lift and shift with little or no code change." },
       { id: "b", text: "Replatform makes a few cloud optimizations without changing the core architecture." },
       { id: "c", text: "Retire keeps an application in its current environment for now." },
       { id: "d", text: "Refactor replaces an application with a third-party SaaS product." },
@@ -381,17 +381,17 @@ export const domain1MigrationCaf: Question[] = [
     options: [
       { id: "a", text: "The AWS Snow Family, using a Snowball Edge device" },
       { id: "b", text: "AWS Storage Gateway File Gateway" },
-      { id: "c", text: "Amazon S3 Transfer Acceleration over the public internet" },
+      { id: "c", text: "AWS DataSync, using an agent deployed in the on-premises environment" },
       { id: "d", text: "Amazon EFS" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Snow Family uses physical devices such as Snowball Edge that AWS ships to you; you load the data and ship the device back, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway and Transfer Acceleration still move data over the network, and Amazon EFS is a file system, not a data-transfer device.",
+      "The AWS Snow Family uses physical devices such as Snowball Edge that carry data by being shipped through a carrier rather than sent over the network, which suits large transfers when network bandwidth is limited or online transfer is too slow or costly. Storage Gateway still moves data over the network, AWS DataSync uses an agent that is a virtual machine deployed in your storage environment and still transfers the data online rather than shipping a device, and Amazon EFS is a file system, not a data-transfer device. Snowball Edge is no longer available to new customers, and AWS directs them to AWS DataSync for online transfers or AWS Data Transfer Terminal for physical transfers, but the exam guide still lists the Snow Family.",
     reference: {
-      label: "AWS Snow Family",
-      url: "https://aws.amazon.com/snowball/",
+      label: "What is Snowball Edge?",
+      url: "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatisedge.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Snow Family"],
   },
   {
@@ -402,19 +402,19 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "hard",
     stem: "A remote site with little or no network connectivity needs to collect sensor data and run some local processing on it before shipping the data to AWS. Which capability of an AWS Snowball Edge device supports running compute at the edge?",
     options: [
-      { id: "a", text: "Snowball Edge can run local compute, including Amazon EC2 instances and AWS Lambda functions, on the device before the data reaches AWS." },
-      { id: "b", text: "Snowball Edge can only store data and cannot run any processing." },
-      { id: "c", text: "Snowball Edge requires a constant high-speed internet connection to function." },
-      { id: "d", text: "Snowball Edge is a managed relational database that runs in the cloud." },
+      { id: "a", text: "Snowball Edge runs EC2 instances and Lambda code on the device." },
+      { id: "b", text: "Snowball Edge runs managed Amazon RDS database instances on the device." },
+      { id: "c", text: "Snowball Edge forwards the data to an AWS Outposts rack that runs the compute." },
+      { id: "d", text: "Snowball Edge runs serverless AWS Fargate tasks on the device for processing." },
     ],
     correct: ["a"],
     explanation:
-      "Snowball Edge devices support local compute so you can run EC2 instances and Lambda functions on the device to process data at the edge, which is useful in disconnected or remote locations. It is not limited to store-only use and it can run processing, so the claim that it cannot is wrong; it is built for places with limited connectivity, and it is a physical edge and transfer device rather than a cloud database.",
+      "Snowball Edge devices can run Amazon EC2 instances from AMIs and AWS Lambda code on the device to process data at the edge, which is useful in disconnected or remote locations. AWS will discontinue support for Snowball devices in all commercial Regions on December 31, 2026, so learn this as exam knowledge rather than as a service to adopt today. The compute AWS lists for the device is EC2-compatible instances, Amazon EKS Anywhere, and Lambda powered by AWS IoT Greengrass, so managed Amazon RDS database instances and serverless AWS Fargate tasks are not among them, and the device runs its own compute rather than forwarding data to an AWS Outposts rack, which AWS points to as a separate edge computing option.",
     reference: {
       label: "AWS Snow Family",
       url: "https://aws.amazon.com/snowball/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Snow Family"],
   },
   {
@@ -534,24 +534,24 @@ export const domain1MigrationCaf: Question[] = [
     difficulty: "medium",
     stem: "A team must move an on-premises Oracle database to Amazon Aurora PostgreSQL, a different database engine. Which statement describes what AWS Database Migration Service offers for this migration?",
     options: [
-      { id: "a", text: "It supports moving between different engines: schema conversion assesses and converts the source schema for the target engine, and AWS DMS then moves the data and can replicate ongoing changes to keep source and target in sync." },
+      { id: "a", text: "It converts the schema to the new engine, then DMS moves the data." },
       { id: "b", text: "It supports migrations only where the source and target run an identical database engine." },
       { id: "c", text: "It ships the stored data to AWS on a physical device that AWS loads on arrival." },
-      { id: "d", text: "It replaces the database with a software-as-a-service product bought from a vendor." },
+      { id: "d", text: "It requires taking the source database offline for the entire migration." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "AWS states that DMS supports fully heterogeneous migrations between the supported engines, so an identical engine is not required.",
       c: "Shipping a physical device is the AWS Snow Family, not a database migration service.",
-      d: "Buying a replacement product is the repurchase migration strategy, not something a migration service performs.",
+      d: "AWS DMS can replicate ongoing changes to keep source and target in sync, so the source does not have to go offline for the whole migration.",
     },
     explanation:
-      "AWS DMS supports fully heterogeneous data migrations between supported engines. DMS Schema Conversion, or the downloadable AWS Schema Conversion Tool, automatically assesses and converts the source schema to the new target engine, and AWS DMS then migrates the data, either as a one-time migration or by replicating ongoing changes to keep source and target in sync. It is therefore not limited to an identical engine on both sides, it does not ship data on a physical device, and buying a software-as-a-service replacement is the repurchase migration strategy rather than anything AWS DMS does.",
+      "AWS DMS supports fully heterogeneous data migrations between supported engines. DMS Schema Conversion, or the downloadable AWS Schema Conversion Tool, automatically assesses and converts the source schema to the new target engine, and AWS DMS then migrates the data, either as a one-time migration or by replicating ongoing changes to keep source and target in sync. It is therefore not limited to an identical engine on both sides, it does not ship data on a physical device, and because it can replicate ongoing changes it does not require taking the source database offline for the entire migration.",
     reference: {
       label: "What is AWS Database Migration Service?",
       url: "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["DMS"],
   },
 ];

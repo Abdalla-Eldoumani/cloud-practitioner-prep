@@ -44,19 +44,19 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "Which statement best describes an AWS Availability Zone?",
     options: [
-      { id: "a", text: "One or more discrete data centers with redundant power, networking, and connectivity, housed in separate facilities" },
+      { id: "a", text: "One or more discrete data centers with redundant power and networking" },
       { id: "b", text: "A worldwide network of caching servers that store copies of content close to users" },
-      { id: "c", text: "A billing construct that groups together all of a customer's resources" },
+      { id: "c", text: "A virtual network that a customer creates to isolate its own resources" },
       { id: "d", text: "A single rack of servers shared by every customer in a Region" },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes an Availability Zone as one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities. The other options describe an edge network, a billing grouping, and a single shared rack, none of which is an Availability Zone.",
+      "AWS describes an Availability Zone as one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities. The other options describe an edge network, a customer's own virtual network (a VPC, which is something you create rather than physical infrastructure), and a single shared rack, none of which is an Availability Zone.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-03",
@@ -93,19 +93,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A company is told it should spread its instances across several Availability Zones rather than concentrate them in one. What is the main benefit AWS attributes to running across multiple Availability Zones?",
     options: [
-      { id: "a", text: "Higher availability and fault tolerance than is possible from a single data center" },
+      { id: "a", text: "Higher availability and fault tolerance than one data center" },
       { id: "b", text: "A lower price per instance hour for every workload" },
-      { id: "c", text: "Automatic encryption of all data stored in Amazon S3" },
+      { id: "c", text: "Lower latency for users on other continents" },
       { id: "d", text: "Removal of the need to pay for data transfer between Regions" },
     ],
     correct: ["a"],
     explanation:
-      "AWS says Availability Zones let you operate applications and databases that are more highly available, fault tolerant, and scalable than would be possible from a single data center. Spreading across Availability Zones is about resilience, not a guaranteed price cut, automatic S3 encryption, or free cross-Region transfer.",
+      "AWS says Availability Zones let you operate applications and databases that are more highly available, fault tolerant, and scalable than would be possible from a single data center. Spreading across Availability Zones is about resilience, not a guaranteed price cut, lower latency for users on other continents (the zones in a Region sit in one geographic area), or free cross-Region transfer.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-05",
@@ -138,19 +138,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A compliance officer asks whether a failure or change in one AWS Region can directly affect resources running in another Region. Based on how AWS designs Regions, what is the best answer?",
     options: [
-      { id: "a", text: "Each AWS Region is physically isolated and independent of the other Regions" },
+      { id: "a", text: "Each Region is physically isolated and independent of the other Regions" },
       { id: "b", text: "All Regions share the same data centers, so a failure in one affects all" },
       { id: "c", text: "Regions are linked so that resources automatically replicate to every other Region" },
-      { id: "d", text: "A Region is just a label, and all resources actually run in one central location" },
+      { id: "d", text: "Neighboring Regions share Availability Zones, so a zone failure affects both" },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that each Region is physically isolated and independent of the other Regions, which provides fault tolerance and stability. Regions do not share data centers, do not auto-replicate resources everywhere, and are real separate locations rather than a label over one central site.",
+      "AWS states that each Region is physically isolated and independent of the other Regions, which provides fault tolerance and stability. Regions do not share data centers, do not auto-replicate resources everywhere, and do not share Availability Zones with neighboring Regions; each Region has its own zones.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-07",
@@ -163,16 +163,16 @@ export const domain3Global: Question[] = [
       { id: "a", text: "Amazon CloudFront" },
       { id: "b", text: "Amazon EC2" },
       { id: "c", text: "Amazon VPC" },
-      { id: "d", text: "AWS Identity and Access Management (IAM)" },
+      { id: "d", text: "AWS Global Accelerator" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon CloudFront is the content delivery network that speeds up distribution of web content by serving it from edge locations close to users. Amazon EC2 provides compute, Amazon VPC provides networking isolation, and IAM manages access, none of which is a content delivery network.",
+      "Amazon CloudFront is the content delivery network that speeds up distribution of web content by caching it at edge locations close to users. Amazon EC2 provides compute, Amazon VPC provides networking isolation, and AWS Global Accelerator proxies TCP and UDP traffic over the AWS global network to application endpoints in Regions rather than caching copies of images and videos.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -206,20 +206,20 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team is learning how Amazon CloudFront serves a user's request. Which TWO statements describe how CloudFront handles a request? (Choose two.)",
     options: [
-      { id: "a", text: "The request is routed to the edge location that provides the lowest latency for that user" },
+      { id: "a", text: "The request is routed to the lowest-latency edge location for that user" },
       { id: "b", text: "If the content is not cached at that edge location, CloudFront retrieves it from the origin you defined" },
       { id: "c", text: "The request always goes to the us-east-1 Region regardless of the user's location" },
       { id: "d", text: "The request is sent to whichever Availability Zone the origin bucket lives in" },
-      { id: "e", text: "The request is answered by the user's own internet service provider, not by AWS" },
+      { id: "e", text: "Every edge location already holds a full copy of all content, so the origin is never contacted" },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudFront routes each request to the lowest-latency edge location, and if the content is not already cached there it retrieves the content from the origin you defined, such as an S3 bucket or HTTP server. It does not pin every request to one Region, route by the origin's Availability Zone, or leave the request answered by the user's own internet service provider instead of AWS.",
+      "CloudFront routes each request to the lowest-latency edge location, and if the content is not already cached there it retrieves the content from the origin you defined, such as an S3 bucket or HTTP server. It does not pin every request to one Region or route by the origin's Availability Zone, and edge locations do not each hold a full copy of all content: CloudFront sends a distribution's configuration, not its content, to the edge locations, so an uncached request still reaches the origin.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -230,19 +230,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A user requests a file through CloudFront and it is not yet cached at the nearest edge location. What does CloudFront do?",
     options: [
-      { id: "a", text: "It retrieves the file from the origin you defined, such as an Amazon S3 bucket or an HTTP server, then serves it" },
+      { id: "a", text: "It fetches the file from the origin you defined, then serves it" },
       { id: "b", text: "It returns an error because content must be uploaded to every edge location in advance" },
       { id: "c", text: "It permanently redirects the user to the origin's URL and stops using CloudFront" },
-      { id: "d", text: "It creates a new Availability Zone to hold the file" },
+      { id: "d", text: "It serves a placeholder until the next scheduled cache refresh" },
     ],
     correct: ["a"],
     explanation:
-      "If the content is not already in the lowest-latency edge location, CloudFront retrieves it from the origin you defined, such as an S3 bucket or an HTTP server. It does not require pre-loading every edge, abandon CloudFront, or create infrastructure like an Availability Zone.",
+      "If the content is not already in the lowest-latency edge location, CloudFront retrieves it from the origin you defined, such as an S3 bucket or an HTTP server. It does not require pre-loading every edge, abandon CloudFront with a permanent redirect, or serve a placeholder while waiting for a scheduled cache refresh.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront", "S3"],
   },
   {
@@ -256,16 +256,16 @@ export const domain3Global: Question[] = [
       { id: "a", text: "AWS Local Zones" },
       { id: "b", text: "A second Availability Zone in the same Region" },
       { id: "c", text: "Amazon S3 Glacier" },
-      { id: "d", text: "AWS Identity and Access Management (IAM)" },
+      { id: "d", text: "Amazon CloudFront edge locations" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Local Zones place compute, storage, database, and other select services close to large population and industry centers to give users low-latency access. Adding an Availability Zone does not move capacity closer to a distant city, Glacier is archival storage, and IAM manages access.",
+      "AWS Local Zones place compute, storage, database, and other select services close to large population and industry centers to give users low-latency access. Adding an Availability Zone does not move capacity closer to a distant city, Glacier is archival storage, and CloudFront edge locations cache content for delivery rather than running the studio's interactive compute workload.",
     reference: {
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-13",
@@ -276,18 +276,18 @@ export const domain3Global: Question[] = [
     stem: "A European retailer's customers are concentrated in Germany, and the company wants to reduce the time it takes for its application to respond to those users. Which factor should most influence which AWS Region it selects?",
     options: [
       { id: "a", text: "Proximity of the Region to the customers, to reduce latency" },
-      { id: "b", text: "The total number of Regions AWS operates worldwide" },
-      { id: "c", text: "The color scheme of the AWS Management Console in that Region" },
+      { id: "b", text: "The number of Availability Zones the Region contains" },
+      { id: "c", text: "The price of compute and storage in that Region versus other Regions" },
       { id: "d", text: "The number of other AWS customers already in that Region" },
     ],
     correct: ["a"],
     explanation:
-      "Running a workload in a Region closer to end users improves performance and lowers latency, so proximity to the customers is the key factor here. The total number of Regions worldwide, the console color scheme, and the number of other customers already in a Region do not determine response time for these users.",
+      "Running a workload in a Region closer to end users improves performance and lowers latency, so proximity to the customers is the key factor here. The number of Availability Zones affects resilience rather than distance, the price of compute and storage affects cost rather than response time, and the number of other customers already in a Region does not determine response time for these users.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-14",
@@ -297,19 +297,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A healthcare company is legally required to keep its patient data stored within its own country's borders. Which consideration should drive its choice of AWS Region?",
     options: [
-      { id: "a", text: "Compliance and data residency requirements that dictate where data may be stored" },
+      { id: "a", text: "Data residency and compliance requirements" },
       { id: "b", text: "Choosing whichever Region has the most Availability Zones" },
-      { id: "c", text: "Selecting the Region that was launched most recently" },
-      { id: "d", text: "Picking the Region with the shortest name" },
+      { id: "c", text: "Choosing the Region with the lowest latency to its users" },
+      { id: "d", text: "Picking the Region with the lowest service prices" },
     ],
     correct: ["a"],
     explanation:
-      "When the law requires data to stay in a particular country, compliance and data residency requirements determine the Region, because each Region is a distinct geographic location where the data physically resides. The count of Availability Zones, a Region's launch date, and its name do not satisfy a legal data-location requirement.",
+      "When the law requires data to stay in a particular country, compliance and data residency requirements determine the Region, because each Region is a distinct geographic location where the data physically resides. The count of Availability Zones, the lowest latency to users, and the lowest service prices are real considerations elsewhere, but none of them satisfies a legal data-location requirement.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-15",
@@ -321,18 +321,18 @@ export const domain3Global: Question[] = [
     options: [
       { id: "a", text: "Whether the specific AWS services and features the workload needs are available in that Region" },
       { id: "b", text: "Pricing, since costs for the same service can differ between Regions" },
-      { id: "c", text: "The number of letters in the Region's code" },
-      { id: "d", text: "Which Region the architect's coworker happens to prefer" },
+      { id: "c", text: "Whether the Region's Availability Zones are all housed in one data center" },
+      { id: "d", text: "Whether IAM users must be created again separately in that Region" },
       { id: "e", text: "Whether the Region shares Availability Zones with a neighboring Region" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Service and feature availability and pricing differences between Regions are real selection factors, because not every service is in every Region and prices vary by location. The length of a Region code and personal preference are not technical factors, and Regions do not share Availability Zones, so that option is also invalid.",
+      "Service and feature availability and pricing differences between Regions are real selection factors, because not every service is in every Region and prices vary by location. Every Region's Availability Zones are separate facilities rather than one data center, IAM data and credentials work across Regions so users are never created again per Region, and Regions do not share Availability Zones, so those options are invalid.",
     reference: {
       label: "AWS Architecture Blog: What to consider when selecting a Region for your workloads",
       url: "https://aws.amazon.com/blogs/architecture/what-to-consider-when-selecting-a-region-for-your-workloads/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-16",
@@ -342,19 +342,19 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A team wants to use a newly announced AWS service for its project, but discovers the service has not yet launched in the Region it normally uses. Which Region selection factor does this situation illustrate?",
     options: [
-      { id: "a", text: "Service and feature availability, which can vary from one Region to another" },
+      { id: "a", text: "Service and feature availability, which varies by Region" },
       { id: "b", text: "Data residency, which forces data to stay in one country" },
       { id: "c", text: "Latency, which depends on distance to users" },
-      { id: "d", text: "The all-or-nothing scoring of multiple-response questions" },
+      { id: "d", text: "Pricing, which can differ from one Region to another" },
     ],
     correct: ["a"],
     explanation:
-      "AWS rolls services and features out to Regions over time, so service and feature availability is a genuine factor when a needed service is missing from a Region. This scenario is not about data residency or latency, and scoring rules are unrelated to infrastructure choices.",
+      "AWS rolls services and features out to Regions over time, so service and feature availability is a genuine factor when a needed service is missing from a Region. This scenario is not about data residency, latency, or pricing, even though AWS does price services differently from one Region to another.",
     reference: {
       label: "AWS Global Infrastructure Guide: AWS Regions",
       url: "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-17",
@@ -365,18 +365,18 @@ export const domain3Global: Question[] = [
     stem: "A cost-conscious startup notices that the price for the same EC2 instance type is not identical in every AWS Region. Which Region selection factor does this reflect?",
     options: [
       { id: "a", text: "Pricing, which can differ between Regions for the same service" },
-      { id: "b", text: "The requirement that every Region charge an identical rate" },
-      { id: "c", text: "The fact that Availability Zones are always free" },
+      { id: "b", text: "Latency, which depends on how far users are from the Region" },
+      { id: "c", text: "Data residency, which keeps data inside one country" },
       { id: "d", text: "The rule that newer Regions are always cheaper than older ones" },
     ],
     correct: ["a"],
     explanation:
-      "Pricing varies by Region, so cost is a legitimate factor when selecting where to run a workload. AWS does not charge an identical rate in every Region, Availability Zones are not a separately free thing, and a Region's age does not determine that it is cheaper.",
+      "Pricing varies by Region, so cost is a legitimate factor when selecting where to run a workload. Latency and data residency are real selection factors too, but neither one explains a price difference for the same instance type, and a Region's age does not decide that newer Regions are cheaper.",
     reference: {
       label: "AWS Architecture Blog: What to consider when selecting a Region for your workloads",
       url: "https://aws.amazon.com/blogs/architecture/what-to-consider-when-selecting-a-region-for-your-workloads/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-18",
@@ -387,18 +387,18 @@ export const domain3Global: Question[] = [
     stem: "An application running in one Region needs to also serve users on another continent with lower latency. What is a typical first step within AWS global infrastructure to achieve this?",
     options: [
       { id: "a", text: "Deploy the application in an additional AWS Region closer to those users" },
-      { id: "b", text: "Move all of the company's data into a single Availability Zone" },
-      { id: "c", text: "Delete the original Region to free up capacity" },
-      { id: "d", text: "Rename the existing Region to match the new continent" },
+      { id: "b", text: "Spread the instances across more Availability Zones in the same Region" },
+      { id: "c", text: "Move the application to a larger instance type in the same Region" },
+      { id: "d", text: "Create a second VPC for those users in the existing Region" },
     ],
     correct: ["a"],
     explanation:
-      "Because Regions are spread around the world, deploying in an additional Region closer to the new users is how you reduce their latency. Concentrating data in one Availability Zone, deleting the original Region, or renaming the existing Region to match the new continent does none of that.",
+      "Because Regions are spread around the world, deploying in an additional Region closer to the new users is how you reduce their latency. More Availability Zones, a larger instance type, or a second VPC all stay in the existing Region, so the traffic still travels the same long distance to another continent.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-19",
@@ -410,18 +410,18 @@ export const domain3Global: Question[] = [
     options: [
       { id: "a", text: "AWS Regions" },
       { id: "b", text: "Availability Zones" },
-      { id: "c", text: "Security groups" },
-      { id: "d", text: "IAM policies" },
+      { id: "c", text: "Virtual private clouds (VPCs)" },
+      { id: "d", text: "Amazon EC2 instances" },
       { id: "e", text: "Amazon Machine Images" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS says the AWS Cloud infrastructure is built around Regions and Availability Zones, so those are the global infrastructure building blocks. Security groups, IAM policies, and Amazon Machine Images are account-level resources you configure, not parts of the physical global infrastructure.",
+      "AWS says the AWS Cloud infrastructure is built around Regions and Availability Zones, so those are the global infrastructure building blocks. VPCs, EC2 instances, and Amazon Machine Images are resources you create and configure in your account, not parts of the physical global infrastructure.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-20",
@@ -431,7 +431,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "How do edge locations differ from Availability Zones in their primary purpose?",
     options: [
-      { id: "a", text: "Edge locations cache content close to users to reduce latency, while Availability Zones host the data centers where you run and store workloads" },
+      { id: "a", text: "Edge locations cache content near users, while Availability Zones host your workloads" },
       { id: "b", text: "Edge locations run your databases, while Availability Zones only cache static files" },
       { id: "c", text: "Edge locations and Availability Zones are two names for the same thing" },
       { id: "d", text: "Edge locations are larger than Regions, while Availability Zones are smaller than data centers" },
@@ -443,7 +443,7 @@ export const domain3Global: Question[] = [
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -476,20 +476,20 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A financial services firm is evaluating AWS Local Zones for a nearby user base. Which TWO benefits does AWS list for Local Zones? (Choose two.)",
     options: [
-      { id: "a", text: "Running low-latency applications close to end users at the edge" },
-      { id: "b", text: "Meeting stringent state and local data residency requirements in sectors such as healthcare, financial services, and government" },
+      { id: "a", text: "Running low-latency applications at the edge" },
+      { id: "b", text: "Meeting stringent state and local data residency requirements" },
       { id: "c", text: "Eliminating the need for any AWS Region" },
-      { id: "d", text: "Providing free unlimited data transfer to the internet" },
-      { id: "e", text: "Guaranteeing that no AWS service ever changes price" },
+      { id: "d", text: "Running every AWS service offered in the parent Region" },
+      { id: "e", text: "Serving cached content as part of the CloudFront edge network" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS lists running low-latency applications at the edge and meeting stringent state and local data residency requirements, in sectors such as healthcare, financial services, and government, as reasons to use Local Zones. Local Zones do not eliminate the need for any Region, do not provide free unlimited data transfer to the internet, and do not guarantee that no AWS service ever changes price.",
+      "AWS lists running low-latency applications at the edge and meeting stringent state and local data residency requirements, in sectors such as healthcare, financial services, and government, as reasons to use Local Zones. Local Zones do not eliminate the need for any Region, offer select services rather than every service in the parent Region, and are not part of the CloudFront edge network that caches content.",
     reference: {
       label: "AWS Local Zones User Guide: What is AWS Local Zones?",
       url: "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-23",
@@ -499,19 +499,19 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "An engineer claims that the Availability Zones in a Region are spread across different countries to maximize separation. Why is this claim incorrect?",
     options: [
-      { id: "a", text: "Availability Zones in a Region are physically separated within a single geographic area, close enough for high-bandwidth, low-latency networking between them" },
+      { id: "a", text: "Availability Zones in a Region sit in one geographic area, linked by low-latency networking" },
       { id: "b", text: "Availability Zones are always in the same building, so they cannot be in different countries" },
-      { id: "c", text: "Availability Zones do not exist; only Regions are real" },
+      { id: "c", text: "Availability Zones sit on one campus, less than a kilometer apart" },
       { id: "d", text: "Availability Zones are virtual and have no physical location at all" },
     ],
     correct: ["a"],
     explanation:
-      "Availability Zones are physically separated by a meaningful distance but remain within one geographic area, close enough to be interconnected with high-bandwidth, low-latency networking, so they are not spread across countries. They are not all in one building, they are real, and they are physical facilities rather than purely virtual.",
+      "Availability Zones are physically separated by a meaningful distance but remain within one geographic area, close enough to be interconnected with high-bandwidth, low-latency networking, so they are not spread across countries. They are not all in one building, they are many kilometers apart rather than on one campus (though within 100 km of each other), and they are physical facilities rather than purely virtual.",
     reference: {
       label: "AWS Global Infrastructure: Regions and Availability Zones",
       url: "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-24",
@@ -521,19 +521,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A company already stores its website assets in an Amazon S3 bucket in one Region and now wants global users to load those assets faster. How does putting Amazon CloudFront in front of the bucket help?",
     options: [
-      { id: "a", text: "CloudFront caches copies of the assets at edge locations worldwide so users are served from a nearby location instead of the single origin Region" },
+      { id: "a", text: "CloudFront caches the assets at edge locations so users are served from nearby" },
       { id: "b", text: "CloudFront moves the S3 bucket into every Region automatically" },
-      { id: "c", text: "CloudFront deletes the origin bucket and stores the only copy at one edge location" },
-      { id: "d", text: "CloudFront converts the S3 bucket into an Availability Zone" },
+      { id: "c", text: "CloudFront turns on S3 Cross-Region Replication so the bucket is copied to a second Region" },
+      { id: "d", text: "CloudFront switches the bucket to a faster S3 storage class" },
     ],
     correct: ["a"],
     explanation:
-      "CloudFront caches copies of the content at edge locations around the world, so global users get the assets from a nearby edge rather than the single origin Region, improving performance. It does not replicate the bucket into every Region, delete the origin, or turn a bucket into infrastructure.",
+      "CloudFront caches copies of the content at edge locations around the world, so global users get the assets from a nearby edge rather than the single origin Region, improving performance. It does not move the bucket into every Region, turn on Cross-Region Replication, or change the bucket's storage class; the bucket stays the single origin.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront", "S3"],
   },
   {
@@ -571,19 +571,19 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A gaming company is choosing an AWS Region for a new title. Its players are mostly in Brazil, a new AWS feature it depends on must be available, the company has a budget target, and there are no special data-location laws. Which approach to Region selection best fits?",
     options: [
-      { id: "a", text: "Weigh proximity to the players, availability of the required feature, and pricing together, then pick the Region that best satisfies all three" },
+      { id: "a", text: "Weigh proximity, feature availability, and pricing together, then choose" },
       { id: "b", text: "Pick the Region with the most Availability Zones regardless of the other factors" },
-      { id: "c", text: "Pick the Region alphabetically first by its code" },
-      { id: "d", text: "Pick the Region farthest from the players to spread load" },
+      { id: "c", text: "Pick the Region with the lowest prices, regardless of where players are" },
+      { id: "d", text: "Pick the Region closest to the players, regardless of features or cost" },
     ],
     correct: ["a"],
     explanation:
-      "Region selection balances several factors at once: latency or proximity to users, whether needed services and features are available, pricing, and compliance. Choosing by Availability Zone count, picking the Region alphabetically first by its code, or picking the Region farthest from the players to spread load all ignore the actual requirements.",
+      "Region selection balances several factors at once: latency or proximity to users, whether needed services and features are available, pricing, and compliance. Choosing by Availability Zone count ignores every requirement, while picking only the lowest prices or only the closest Region satisfies one requirement and ignores the others this company has.",
     reference: {
       label: "AWS Architecture Blog: What to consider when selecting a Region for your workloads",
       url: "https://aws.amazon.com/blogs/architecture/what-to-consider-when-selecting-a-region-for-your-workloads/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-28",
@@ -593,20 +593,20 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A new cloud practitioner is sorting AWS concepts. Which TWO statements correctly match an AWS concept to its role? (Choose two.)",
     options: [
-      { id: "a", text: "An edge location is where Amazon CloudFront caches content close to users" },
+      { id: "a", text: "An edge location is where CloudFront caches content near users" },
       { id: "b", text: "An Availability Zone is one or more discrete data centers within a Region" },
-      { id: "c", text: "A Region is a single physical server shared across customers" },
+      { id: "c", text: "A Region is a single data center that serves one country" },
       { id: "d", text: "An edge location is the largest unit of AWS global infrastructure" },
       { id: "e", text: "An Availability Zone always spans multiple Regions" },
     ],
     correct: ["a", "b"],
     explanation:
-      "An edge location caches CloudFront content close to users, and an Availability Zone is one or more discrete data centers within a Region. A Region is a geographic area of multiple Availability Zones rather than a single shared server, an edge location is not the largest infrastructure unit, and an Availability Zone belongs to one Region rather than spanning several.",
+      "An edge location caches CloudFront content close to users, and an Availability Zone is one or more discrete data centers within a Region. A Region is a geographic area of multiple Availability Zones rather than a single data center, an edge location is not the largest infrastructure unit, and an Availability Zone belongs to one Region rather than spanning several.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -617,20 +617,20 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "Why does AWS operate many separate Regions around the world rather than a single global location? Choose the TWO reasons AWS gives. (Choose two.)",
     options: [
-      { id: "a", text: "So customers can place workloads near their users to lower latency" },
-      { id: "b", text: "So customers can keep resources within a specific geography to meet legal and compliance needs" },
-      { id: "c", text: "Because each Region can only run one AWS service at a time" },
-      { id: "d", text: "Because a Region can hold no more than ten customers" },
-      { id: "e", text: "Because Regions must be rebuilt from scratch every year" },
+      { id: "a", text: "To place workloads near users for lower latency" },
+      { id: "b", text: "To keep resources in a specific geography for legal and compliance needs" },
+      { id: "c", text: "Because every Region charges the same price for each service" },
+      { id: "d", text: "Because data in one Region is copied to all the others automatically" },
+      { id: "e", text: "Because IAM users must be created separately in each Region" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Multiple Regions let customers launch resources close to their users for lower latency and within particular countries to satisfy legal and compliance requirements, which is why AWS offers a worldwide spread of Regions. A Region is not limited to one service, a fixed small number of customers, or annual rebuilds.",
+      "Multiple Regions let customers launch resources close to their users for lower latency and within particular countries to satisfy legal and compliance requirements, which is why AWS offers a worldwide spread of Regions. Prices are not the same in every Region, AWS does not automatically copy resources or data between Regions, and IAM data and credentials work across Regions rather than being created separately in each.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-30",
@@ -640,19 +640,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A government agency must keep all of its workloads and data inside its own nation's borders for sovereignty reasons. When selecting an AWS Region, which requirement takes priority?",
     options: [
-      { id: "a", text: "Data residency and compliance, ensuring the chosen Region is located within the required country" },
+      { id: "a", text: "Data residency, so the Region sits inside the required country" },
       { id: "b", text: "Choosing the Region with the cheapest storage anywhere in the world" },
       { id: "c", text: "Choosing the Region with the most edge locations nearby" },
-      { id: "d", text: "Choosing any Region, since data location does not matter to AWS" },
+      { id: "d", text: "Choosing the Region with the most Availability Zones for resilience" },
     ],
     correct: ["a"],
     explanation:
-      "Data sovereignty makes data residency and compliance the deciding factor, so the Region must sit within the required country even if another Region is cheaper. The lowest storage price elsewhere, edge-location count, and the idea that data location does not matter all fail the sovereignty requirement.",
+      "Data sovereignty makes data residency and compliance the deciding factor, so the Region must sit within the required country even if another Region is cheaper. The lowest storage price elsewhere, edge-location count, and the most Availability Zones all fail the sovereignty requirement if the Region sits outside the country.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-31",
@@ -662,19 +662,19 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "Within a single AWS Region, what does running across multiple Availability Zones let you do that you could not do with just one data center?",
     options: [
-      { id: "a", text: "Run applications and databases that stay available even if one Availability Zone has a problem" },
-      { id: "b", text: "Avoid paying for any compute resources at all" },
-      { id: "c", text: "Store data without any networking between facilities" },
-      { id: "d", text: "Guarantee that the application can never be reached from the internet" },
+      { id: "a", text: "Keep applications and databases available if one zone has a problem" },
+      { id: "b", text: "Lower latency for users on other continents" },
+      { id: "c", text: "Pay a lower hourly rate for each instance" },
+      { id: "d", text: "Automatically copy the application and its data into a second AWS Region" },
     ],
     correct: ["a"],
     explanation:
-      "Because a Region has multiple isolated Availability Zones, you can architect applications and databases to remain available even if one Availability Zone is affected, which a single data center cannot offer. Availability Zones do not make compute free, they are interconnected by networking, and they do not block internet access by design.",
+      "Because a Region has multiple isolated Availability Zones, you can architect applications and databases to remain available even if one Availability Zone is affected, which a single data center cannot offer. Zones in one Region do not lower latency for users on other continents, do not lower the hourly rate for each instance, and do not copy the application into a second Region on their own.",
     reference: {
       label: "AWS Overview: Global infrastructure",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-32",
@@ -685,18 +685,18 @@ export const domain3Global: Question[] = [
     stem: "A streaming service wants to serve video to viewers with low delay before the first byte arrives. Which part of the AWS global infrastructure is specifically designed to bring that content closer to the viewers?",
     options: [
       { id: "a", text: "Edge locations in the CloudFront network" },
-      { id: "b", text: "The control plane of AWS IAM" },
-      { id: "c", text: "A single Availability Zone in a distant Region" },
+      { id: "b", text: "More Availability Zones in one Region" },
+      { id: "c", text: "A larger EC2 instance in the origin Region" },
       { id: "d", text: "An Amazon EBS volume attached to one instance" },
     ],
     correct: ["a"],
     explanation:
-      "Edge locations are the data centers in the CloudFront network that cache content close to viewers so requests are served from a nearby location with low latency. The control plane of AWS IAM manages access, a distant Availability Zone increases delay, and an EBS volume is block storage for a single instance.",
+      "Edge locations are the data centers in the CloudFront network that cache content close to viewers so requests are served from a nearby location with low latency. More Availability Zones in one Region add resilience but stay in the same area, a larger EC2 instance in the origin Region is no closer to viewers, and an EBS volume is block storage for a single instance.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -709,18 +709,18 @@ export const domain3Global: Question[] = [
     options: [
       { id: "a", text: "Keeping data inside a specific country to meet compliance and data residency rules" },
       { id: "b", text: "Reducing latency by deploying near where most users are located" },
-      { id: "c", text: "Selecting the Region that uses the lowest amount of disk space globally" },
-      { id: "d", text: "Selecting the Region whose name sounds most appealing" },
-      { id: "e", text: "Selecting the Region that has no Availability Zones" },
+      { id: "c", text: "Selecting the Region with the most edge locations, since workloads run on them" },
+      { id: "d", text: "Selecting the Region where IAM users were first created, since IAM is Regional" },
+      { id: "e", text: "Selecting the Region whose Availability Zones all share one data center" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Compliance and data residency and reducing latency by deploying near users are both real reasons to choose a particular Region. Global disk usage and a Region's name are not selection factors, and every Region has at least three Availability Zones, so a Region with none does not exist.",
+      "Compliance and data residency and reducing latency by deploying near users are both real reasons to choose a particular Region. Edge locations cache CloudFront content rather than running workloads, IAM data and credentials work across Regions rather than belonging to the one where users were first created, and Availability Zones are separate facilities, so no Region has its zones share one data center.",
     reference: {
       label: "AWS Documentation: Enable or disable AWS Regions in your account",
       url: "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-global-34",
@@ -730,19 +730,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A practitioner needs to choose the right tool for two separate goals: running highly available compute, and caching content near users. Which pairing is correct?",
     options: [
-      { id: "a", text: "Use multiple Availability Zones for highly available compute, and CloudFront edge locations to cache content near users" },
-      { id: "b", text: "Use CloudFront edge locations for highly available compute, and Availability Zones to cache content near users" },
+      { id: "a", text: "Multiple Availability Zones for compute, CloudFront edge locations for caching" },
+      { id: "b", text: "CloudFront edge locations for compute, multiple Availability Zones for caching" },
       { id: "c", text: "Use a single Availability Zone for both goals" },
-      { id: "d", text: "Use IAM for both goals" },
+      { id: "d", text: "Use CloudFront edge locations for both goals" },
     ],
     correct: ["a"],
     explanation:
-      "Multiple Availability Zones give compute high availability and fault tolerance, while CloudFront edge locations cache content close to users to reduce latency, so each tool fits one goal. The option that says to use CloudFront edge locations for compute and Availability Zones for caching reverses the roles, one Availability Zone does not provide the spread needed for high availability, and using IAM for both goals addresses access rather than either goal.",
+      "Multiple Availability Zones give compute high availability and fault tolerance, while CloudFront edge locations cache content close to users to reduce latency, so each tool fits one goal. The option that puts compute on CloudFront edge locations and caching in Availability Zones reverses the roles, one Availability Zone does not provide the spread needed for high availability, and using edge locations for both goals fails because they cache content rather than host your compute.",
     reference: {
       label: "Amazon CloudFront Developer Guide: What is Amazon CloudFront?",
       url: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFront"],
   },
   {
@@ -753,20 +753,20 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team is documenting the questions to ask before picking an AWS Region for a workload. Which TWO questions directly map to AWS Region selection factors? (Choose two.)",
     options: [
-      { id: "a", text: "Are the AWS services and features this workload needs available in the Region?" },
+      { id: "a", text: "Are the services this workload needs available in the Region?" },
       { id: "b", text: "Does running in this Region keep us close enough to our users to meet our latency goals?" },
-      { id: "c", text: "Does this Region have a shorter name than the others?" },
-      { id: "d", text: "Was this Region featured most recently in a press release?" },
+      { id: "c", text: "Does this Region have more Availability Zones than any other?" },
+      { id: "d", text: "Must our IAM users be created again separately in this Region?" },
       { id: "e", text: "Does this Region share its data centers with a neighboring Region?" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Service and feature availability and proximity to users for latency are both genuine Region selection factors, alongside compliance and pricing. A Region's name length, press coverage, and shared data centers are not factors, and Regions do not share data centers.",
+      "Service and feature availability and proximity to users for latency are both genuine Region selection factors, alongside compliance and pricing. Having more Availability Zones than any other Region is not one of those factors, IAM users are not created again per Region because IAM data and credentials work across Regions, and Regions do not share data centers.",
     reference: {
       label: "AWS Global Infrastructure Guide: AWS Regions",
       url: "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-01",
@@ -776,19 +776,19 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "A team wants its web application to keep serving users even if one data center has a problem, so that downtime stays as low as possible. Which approach reflects how AWS recommends achieving high availability within a Region?",
     options: [
-      { id: "a", text: "Run the application across multiple Availability Zones in the Region." },
+      { id: "a", text: "Run it across multiple Availability Zones in the Region." },
       { id: "b", text: "Run the application on one large instance in a single Availability Zone." },
-      { id: "c", text: "Store everything on a single server and back it up once a year." },
-      { id: "d", text: "Disable health checks so the application is never marked unhealthy." },
+      { id: "c", text: "Run it in one Availability Zone and rely on AWS to move it if that zone fails." },
+      { id: "d", text: "Take regular snapshots of a single instance in one Availability Zone." },
     ],
     correct: ["a"],
     explanation:
-      "Launching resources in multiple Availability Zones protects an application from the failure of a single location in the Region, which is how you raise availability and reduce downtime. A single instance in one zone is a single point of failure, an annual backup does nothing for uptime, and turning off health checks hides failures rather than recovering from them.",
+      "Launching resources in multiple Availability Zones protects an application from the failure of a single location in the Region, which is how you raise availability and reduce downtime. A single instance in one zone is a single point of failure, AWS does not move your instances to another zone for you (you design the application so an instance in another zone takes over), and regular snapshots help restore data later but do not keep the application serving users during an outage.",
     reference: {
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-02",
@@ -798,19 +798,19 @@ export const domain3Global: Question[] = [
     difficulty: "easy",
     stem: "An Availability Zone in an AWS Region is best described as which of the following?",
     options: [
-      { id: "a", text: "One or more discrete data centers with redundant power, networking, and connectivity, housed in separate facilities." },
+      { id: "a", text: "One or more data centers with redundant power and networking." },
       { id: "b", text: "A single physical server inside one building." },
-      { id: "c", text: "A billing account used to group resources." },
+      { id: "c", text: "A group of CloudFront edge locations that cache content near users." },
       { id: "d", text: "A copy of an entire AWS Region kept in another country." },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines an Availability Zone as one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities. It is not a single server, an account construct, or a duplicate Region; those descriptions miss the redundancy and physical separation that make zones useful for resilience.",
+      "AWS defines an Availability Zone as one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities. It is not a single server, a group of CloudFront edge locations that cache content, or a duplicate Region; those descriptions miss the redundancy and physical separation that make zones useful for resilience.",
     reference: {
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-04",
@@ -821,18 +821,18 @@ export const domain3Global: Question[] = [
     stem: "Why does AWS say that operating across multiple Availability Zones lets you run applications that are more highly available and fault tolerant than you could from a single data center?",
     options: [
       { id: "a", text: "Because the zones are physically separate facilities, so a problem in one is unlikely to take down the others." },
-      { id: "b", text: "Because all the zones share the same power and network, so they fail together predictably." },
-      { id: "c", text: "Because using more zones lowers the price of every service to zero." },
+      { id: "b", text: "Because AWS automatically moves your running instances to a healthy zone whenever one fails." },
+      { id: "c", text: "Because each zone is really a separate Region with its own copy of every service." },
       { id: "d", text: "Because a single zone automatically replicates to every AWS Region." },
     ],
     correct: ["a"],
     explanation:
-      "Availability Zones are discrete facilities with their own redundant power, networking, and connectivity, so a fault in one zone is isolated and the others can keep serving traffic. Shared power and networking would defeat the purpose, multi-zone design is about resilience rather than zero cost, and a zone does not replicate itself across Regions on its own.",
+      "Availability Zones are discrete facilities with their own redundant power, networking, and connectivity, so a fault in one zone is isolated and the others can keep serving traffic. AWS does not move your running instances between zones; you design the application so an instance in another zone handles requests. A zone is a location inside a Region rather than a separate Region, and a zone does not replicate itself across Regions on its own.",
     reference: {
       label: "AWS global infrastructure overview",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-18",
@@ -842,19 +842,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A regulated workload runs in a single AWS Region. AWS notes that a disaster recovery strategy across multiple Availability Zones within one Region can mitigate which kinds of events?",
     options: [
-      { id: "a", text: "Localized disasters such as fires, floods, and major power outages." },
-      { id: "b", text: "A change in the company's billing currency." },
-      { id: "c", text: "A user forgetting their console password." },
-      { id: "d", text: "An increase in the price of a service." },
+      { id: "a", text: "Localized disasters like fires, floods, and major power outages." },
+      { id: "b", text: "Data corruption that replication copies to every zone." },
+      { id: "c", text: "An event that prevents the workload running anywhere in the Region." },
+      { id: "d", text: "An outage affecting several AWS Regions at once." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a DR strategy across multiple Availability Zones in a single Region can mitigate disaster events like fires, floods, and major power outages, because the zones are physically separate. Billing currency, a forgotten password, and price changes are not infrastructure disasters that multi-AZ design addresses.",
+      "AWS states that a DR strategy across multiple Availability Zones in a single Region can mitigate disaster events like fires, floods, and major power outages, because the zones are physically separate. Replication copies data corruption to every zone, so that needs point-in-time backups, and an event that prevents the workload from running anywhere in the Region, let alone an outage affecting several Regions, calls for a multi-Region DR strategy rather than a multi-AZ one.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-19",
@@ -865,18 +865,18 @@ export const domain3Global: Question[] = [
     stem: "Why does AWS design each Region to be isolated from the other Regions?",
     options: [
       { id: "a", text: "To achieve the greatest possible fault tolerance and stability." },
-      { id: "b", text: "To force all customers to use only one Region." },
+      { id: "b", text: "To lower the network latency between Regions." },
       { id: "c", text: "To make every service the same price in every Region." },
       { id: "d", text: "To automatically copy all data between Regions for you." },
     ],
     correct: ["a"],
     explanation:
-      "AWS designs each Region to be isolated from the others to achieve the greatest possible fault tolerance and stability, so a problem in one Region does not spread to another. Region isolation does not limit you to one Region, equalize pricing, or replicate your data across Regions automatically.",
+      "AWS designs each Region to be isolated from the others to achieve the greatest possible fault tolerance and stability, so a problem in one Region does not spread to another. Region isolation does not lower network latency between Regions, equalize pricing, or replicate your data across Regions automatically.",
     reference: {
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-20",
@@ -888,17 +888,17 @@ export const domain3Global: Question[] = [
     options: [
       { id: "a", text: "If that one location is affected by a failure, none of the instances would be available." },
       { id: "b", text: "The instances would automatically move to another Region with no design effort." },
-      { id: "c", text: "The application would become more fault tolerant by concentrating in one place." },
+      { id: "c", text: "The instances would automatically restart in another Availability Zone." },
       { id: "d", text: "AWS would refund the cost of the outage as account credit by default." },
     ],
     correct: ["a"],
     explanation:
-      "AWS warns that if you host all of your instances in a single location affected by a failure, none of your instances would be available, which is why spreading across zones matters. Instances do not relocate across Regions on their own, concentration reduces rather than improves fault tolerance, and outages are not refunded by default.",
+      "AWS warns that if you host all of your instances in a single location affected by a failure, none of your instances would be available, which is why spreading across zones matters. Instances do not restart in another Availability Zone or move to another Region on their own; you design for that by running in several zones. Outages are not refunded by default either.",
     reference: {
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-21",
@@ -952,20 +952,20 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A team is reasoning about RTO and RPO for a workload. Which TWO statements are correct? (Choose two.)",
     options: [
-      { id: "a", text: "RTO describes acceptable downtime, while RPO describes acceptable data loss." },
-      { id: "b", text: "Choosing a DR strategy is a trade-off between reducing downtime and data loss and the cost and complexity of the strategy." },
-      { id: "c", text: "A smaller RTO and RPO are always free to achieve." },
+      { id: "a", text: "RTO is acceptable downtime; RPO is acceptable data loss." },
+      { id: "b", text: "Choosing a DR strategy trades lower downtime and data loss against cost and complexity." },
+      { id: "c", text: "Backup and restore gives the lowest RTO and RPO of the strategies." },
       { id: "d", text: "RTO and RPO mean the same thing and can be used interchangeably." },
       { id: "e", text: "RPO measures how fast the application responds to each request." },
     ],
     correct: ["a", "b"],
     explanation:
-      "RTO is about acceptable downtime and RPO is about acceptable data loss, and AWS frames the choice of DR strategy as a trade-off between tighter RTO and RPO and higher cost and complexity. More stringent objectives are not always free, RTO and RPO do not mean the same thing and cannot be used interchangeably, and RPO is not a per-request latency measure.",
+      "RTO is about acceptable downtime and RPO is about acceptable data loss, and AWS frames the choice of DR strategy as a trade-off between tighter RTO and RPO and higher cost and complexity. Backup and restore has the highest RTO and RPO of the strategies rather than the lowest, RTO and RPO do not mean the same thing and cannot be used interchangeably, and RPO is not a per-request latency measure.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-24",
@@ -1024,19 +1024,19 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A workload must keep recovery time close to zero by running in more than one AWS Region and serving users from all of them at once. Which DR strategy does AWS describe for this, and what is the trade-off?",
     options: [
-      { id: "a", text: "Multi-site active-active, which can reduce recovery time to near zero but is the most complex and costly approach." },
+      { id: "a", text: "Multi-site active-active: near-zero RTO, highest cost and complexity." },
       { id: "b", text: "Backup and restore, which is the cheapest way to get near-zero recovery time." },
       { id: "c", text: "Pilot light, in which all Regions actively serve production traffic at full scale." },
-      { id: "d", text: "A single-instance deployment, which gives the best recovery time of all." },
+      { id: "d", text: "Warm standby, which keeps no resources running in the recovery Region at all." },
     ],
     correct: ["a"],
     explanation:
-      "Multi-site active-active runs the workload in multiple Regions serving traffic from all of them, which can bring recovery time near zero, and AWS notes it is the most complex and costly DR approach. Backup and restore has the longest recovery time, pilot light keeps non-core resources switched off rather than serving traffic, and a single instance is a single point of failure.",
+      "Multi-site active-active runs the workload in multiple Regions serving traffic from all of them, which can bring recovery time near zero, and AWS notes it is the most complex and costly DR approach. Backup and restore has the longest recovery time, pilot light keeps non-core resources switched off rather than serving traffic, and warm standby keeps a scaled-down but fully functional copy always running in the recovery Region rather than nothing.",
     reference: {
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-27",
@@ -1046,19 +1046,19 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "AWS distinguishes pilot light from warm standby. Which statement describes the difference correctly?",
     options: [
-      { id: "a", text: "Pilot light cannot process requests until additional action is taken, while warm standby can handle traffic at reduced capacity immediately." },
+      { id: "a", text: "Pilot light needs extra action before serving requests; warm standby takes traffic at once." },
       { id: "b", text: "Pilot light serves full production traffic, while warm standby keeps everything switched off." },
       { id: "c", text: "Warm standby requires no resources in the recovery Region, while pilot light runs a full copy." },
-      { id: "d", text: "There is no difference; the two terms are identical." },
+      { id: "d", text: "Pilot light protects one Availability Zone; warm standby protects a Region." },
     ],
     correct: ["a"],
     explanation:
-      "AWS explains that both keep copies of primary assets in the recovery Region, but pilot light cannot process requests without first turning on and scaling resources, whereas warm standby is already running at reduced capacity and can take traffic immediately. The claim that pilot light serves full production traffic while warm standby keeps everything switched off inverts the two, the claim that warm standby needs no resources in the recovery Region is wrong, and the claim that there is no difference and the terms are identical denies the distinction.",
+      "AWS explains that both keep copies of primary assets in the recovery Region, but pilot light cannot process requests without first turning on and scaling resources, whereas warm standby is already running at reduced capacity and can take traffic immediately. The claim that pilot light serves full production traffic while warm standby keeps everything switched off inverts the two, the claim that warm standby needs no resources in the recovery Region is wrong, and since both strategies keep an environment in a recovery Region, neither is limited to protecting one Availability Zone.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-28",
@@ -1068,19 +1068,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "AWS recommends defining infrastructure as code for a backup and restore strategy. How does that help meet recovery objectives?",
     options: [
-      { id: "a", text: "It lets you redeploy infrastructure quickly and consistently, reducing recovery time and the risk of errors." },
+      { id: "a", text: "It lets you redeploy infrastructure fast, reducing recovery time." },
       { id: "b", text: "It removes the need to back up any data at all." },
-      { id: "c", text: "It guarantees zero data loss without any backups." },
+      { id: "c", text: "It continuously replicates the database to another Region." },
       { id: "d", text: "It makes the recovery Region serve production traffic at all times." },
     ],
     correct: ["a"],
     explanation:
-      "AWS notes that infrastructure as code, using services such as AWS CloudFormation, lets you redeploy infrastructure quickly and without errors, which lowers recovery time; without it, restoring a workload can be slow and exceed your RTO. It does not remove the need to back up data, guarantee zero data loss without backups, or make the recovery Region serve production traffic at all times.",
+      "AWS notes that infrastructure as code, using services such as AWS CloudFormation, lets you redeploy infrastructure quickly and without errors, which lowers recovery time; without it, restoring a workload can be slow and exceed your RTO. It does not remove the need to back up data, it defines infrastructure rather than continuously replicating the database to another Region, and it does not make the recovery Region serve production traffic at all times.",
     reference: {
       label: "Disaster recovery options in the cloud",
       url: "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudFormation"],
   },
   {
@@ -1091,7 +1091,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team worries that spreading a workload across multiple Availability Zones will add too much network delay between components. What does AWS say about connectivity between Availability Zones in a Region?",
     options: [
-      { id: "a", text: "Availability Zones are connected with low-latency network connectivity, so multi-AZ designs remain practical." },
+      { id: "a", text: "Availability Zones are linked by low-latency networking." },
       { id: "b", text: "Availability Zones have no network connection to each other at all." },
       { id: "c", text: "Traffic between Availability Zones must travel over the public internet." },
       { id: "d", text: "Availability Zones are thousands of kilometers apart, making communication impractical." },
@@ -1113,20 +1113,20 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "An architect is explaining how the AWS global infrastructure supports resilient designs. Which TWO statements are accurate? (Choose two.)",
     options: [
-      { id: "a", text: "Each AWS Region is designed to be isolated from other Regions for the greatest possible fault tolerance and stability." },
+      { id: "a", text: "Each Region is isolated from the others for fault tolerance and stability." },
       { id: "b", text: "Launching instances in multiple Availability Zones protects applications from the failure of a single location in the Region." },
       { id: "c", text: "All Availability Zones in a Region share a single set of power and network feeds." },
       { id: "d", text: "A single Availability Zone automatically replicates your resources to every other Region." },
-      { id: "e", text: "Hosting everything in one Availability Zone is the AWS-recommended way to maximize availability." },
+      { id: "e", text: "A cluster placement group spreads instances across Availability Zones for resilience." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS designs each Region to be isolated for fault tolerance and stability, and it recommends launching across multiple Availability Zones to survive the failure of a single location. Zones have their own redundant power and networking rather than sharing one set, resources are not auto-replicated across Regions, and concentrating in one zone lowers availability.",
+      "AWS designs each Region to be isolated for fault tolerance and stability, and it recommends launching across multiple Availability Zones to survive the failure of a single location. Zones have their own redundant power and networking rather than sharing one set, resources are not auto-replicated across Regions, and a cluster placement group is a grouping of instances within a single Availability Zone, built for low latency rather than spread across zones.",
     reference: {
       label: "Amazon EC2 Regions and Availability Zones",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-37",
@@ -1140,16 +1140,16 @@ export const domain3Global: Question[] = [
       { id: "b", text: "Multi-site active-active can achieve near-zero recovery time but is the most complex and costly." },
       { id: "c", text: "Warm standby keeps no resources running in the recovery Region until a disaster occurs." },
       { id: "d", text: "Pilot light serves full production traffic from every Region at all times." },
-      { id: "e", text: "All four strategies cost the same and differ only in name." },
+      { id: "e", text: "Pilot light generally recovers faster than warm standby." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Backup and restore is the least complex with the longest recovery time, while multi-site active-active reaches near-zero recovery time at the highest cost and complexity. Warm standby keeps a scaled-down copy always running, pilot light keeps non-core resources switched off rather than serving traffic, and the strategies differ markedly in cost.",
+      "Backup and restore is the least complex with the longest recovery time, while multi-site active-active reaches near-zero recovery time at the highest cost and complexity. Warm standby keeps a scaled-down copy always running, pilot light keeps non-core resources switched off rather than serving traffic, and that is why warm standby, not pilot light, generally recovers faster.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-resil-38",
@@ -1162,17 +1162,17 @@ export const domain3Global: Question[] = [
       { id: "a", text: "Copy backups to another AWS Region as an additional layer of protection." },
       { id: "b", text: "Define the infrastructure as code so it can be redeployed quickly during recovery." },
       { id: "c", text: "Skip backing up configuration and application code, since only data matters." },
-      { id: "d", text: "Avoid ever testing the backups to save time." },
-      { id: "e", text: "Keep the only copy of every backup in the same Availability Zone as the source." },
+      { id: "d", text: "Treat database replicas as the backup, since they already hold a copy of the data." },
+      { id: "e", text: "Keep every backup in the source Region so that restores stay fast." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS advises copying backups to another Region for protection and using infrastructure as code so recovery is fast and consistent. You must also back up configuration and application code, not just data; you should not avoid ever testing the backups to save time, since untested backups may fail when needed; and keeping the only copy in the same Availability Zone as the source offers no protection if that location is lost.",
+      "AWS advises copying backups to another Region for protection and using infrastructure as code so recovery is fast and consistent. You must also back up configuration and application code, not just data; replicas are not a substitute for backups, because replication may copy data corruption or deletion, so AWS says to take point-in-time backups as well; and keeping every backup in the source Region leaves nothing to restore from if that Region is lost.",
     reference: {
       label: "Reliability Pillar: use defined recovery strategies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_planning_for_recovery_disaster_recovery.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-10",
@@ -1182,19 +1182,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A team wants an application to keep serving requests even if one data center location inside a Region has a problem. Which design approach most directly supports this goal?",
     options: [
-      { id: "a", text: "Run the application across multiple Availability Zones so a failure in one zone does not take the application down." },
+      { id: "a", text: "Run it across multiple Availability Zones." },
       { id: "b", text: "Run a single large server in one Availability Zone." },
-      { id: "c", text: "Store one copy of everything on one disk in one location." },
-      { id: "d", text: "Turn the application off during maintenance windows." },
+      { id: "c", text: "Take nightly backups of a single server in one Availability Zone." },
+      { id: "d", text: "Deploy the application to a single Local Zone near the users." },
     ],
     correct: ["a"],
     explanation:
-      "Availability Zones are isolated locations within a Region, so spreading an application across multiple zones means a failure in one zone does not bring the application down, which raises availability. A single server in one zone, a single copy on one disk, and turning the application off during maintenance windows all reduce availability rather than improve it.",
+      "Availability Zones are isolated locations within a Region, so spreading an application across multiple zones means a failure in one zone does not bring the application down, which raises availability. A single large server in one zone, nightly backups of one server, and a deployment in a single Local Zone each leave the application in one location, so a failure there still takes it down.",
     reference: {
       label: "Auto Scaling benefits: distribute instances across Availability Zones",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-32",
@@ -1204,19 +1204,19 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "A managed database service keeps synchronized copies of data across multiple Availability Zones in a Region. At a concepts level, what does this redundancy primarily provide?",
     options: [
-      { id: "a", text: "Higher availability and data durability, since the loss of one Availability Zone does not take the data down." },
+      { id: "a", text: "Higher availability and durability if one zone is lost." },
       { id: "b", text: "Lower availability, because more copies create more ways to fail." },
-      { id: "c", text: "A guarantee that performance is identical everywhere on earth." },
-      { id: "d", text: "A way to avoid paying for any storage." },
+      { id: "c", text: "Lower latency for users in other AWS Regions." },
+      { id: "d", text: "Automatic copies of the data in every AWS Region." },
     ],
     correct: ["a"],
     explanation:
-      "Storing synchronized copies across multiple Availability Zones provides data redundancy so a single zone failure does not cause data loss or an outage, which raises availability and durability. Redundancy across isolated zones increases availability rather than lowering it, does not guarantee identical performance everywhere on earth, and does not make storage free.",
+      "Storing synchronized copies across multiple Availability Zones provides data redundancy so a single zone failure does not cause data loss or an outage, which raises availability and durability. Redundancy across isolated zones increases availability rather than lowering it, and because these copies stay within one Region they neither lower latency for users in other Regions nor place data in every Region; cross-Region copies need a separate feature such as Aurora global databases.",
     reference: {
       label: "High availability for Amazon Aurora",
       url: "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Aurora", "RDS"],
   },
   {
@@ -1229,18 +1229,18 @@ export const domain3Global: Question[] = [
     options: [
       { id: "a", text: "Distributing the application across multiple Availability Zones" },
       { id: "b", text: "Automatically replacing instances that fail their health checks" },
-      { id: "c", text: "Running a single instance in one Availability Zone with no replacement" },
-      { id: "d", text: "Keeping only one copy of the data in one location" },
-      { id: "e", text: "Disabling health checks to reduce overhead" },
+      { id: "c", text: "Moving the application to a larger instance type in one Availability Zone" },
+      { id: "d", text: "Taking a nightly snapshot of a single instance" },
+      { id: "e", text: "Placing all instances in one cluster placement group" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Spreading across multiple Availability Zones and automatically replacing unhealthy instances both raise availability, as AWS describes for EC2 Auto Scaling. A single instance in one zone, a single copy of data, and disabling health checks to reduce overhead each create a single point of failure or hide failures, lowering availability.",
+      "Spreading across multiple Availability Zones and automatically replacing unhealthy instances both raise availability, as AWS describes for EC2 Auto Scaling. A larger instance type in one zone, a nightly snapshot of a single instance, and a cluster placement group, which keeps its instances within a single Availability Zone, each leave the application dependent on one location.",
     reference: {
       label: "Auto Scaling benefits for application architecture",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -1251,7 +1251,7 @@ export const domain3Global: Question[] = [
     difficulty: "medium",
     stem: "An application runs on instances spread across three Availability Zones in one AWS Region. Why does AWS say a problem confined to one of those Availability Zones need not take the whole application down?",
     options: [
-      { id: "a", text: "Each Availability Zone is one or more discrete data centers with its own redundant power, networking, and connectivity, sited a meaningful distance from the others" },
+      { id: "a", text: "Each Availability Zone has its own redundant power and networking, apart from the others" },
       { id: "b", text: "Every Availability Zone in a Region draws on one shared power feed, so capacity moves between them instantly" },
       { id: "c", text: "The Availability Zones in a Region are copies of a single virtual machine kept in lockstep" },
       { id: "d", text: "AWS holds a spare Availability Zone offline in every Region and switches it on when another one fails" },
@@ -1278,7 +1278,7 @@ export const domain3Global: Question[] = [
     difficulty: "hard",
     stem: "A compliance officer asks whether AWS will relocate the company's stored content to a different Region when capacity in the chosen Region gets tight. What does AWS commit to?",
     options: [
-      { id: "a", text: "The customer chooses the AWS Region or Regions where its content is stored, and AWS does not move or replicate that content outside them without the customer's agreement" },
+      { id: "a", text: "The customer picks the Regions, and AWS will not move content out of them without agreement" },
       { id: "b", text: "AWS rebalances stored customer content across Regions each night to even out capacity" },
       { id: "c", text: "AWS copies content into every Region automatically so that nothing can be lost" },
       { id: "d", text: "The Region a customer picks affects billing rates only, not where the content physically sits" },

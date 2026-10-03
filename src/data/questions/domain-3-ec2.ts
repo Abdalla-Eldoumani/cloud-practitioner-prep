@@ -18,18 +18,18 @@ export const domain3Ec2: Question[] = [
     stem: "A team wants compute capacity in the AWS Cloud that behaves like a server they can launch in minutes, scale up for a heavy month-end job, and scale down afterward, paying for what they run. Which service provides this resizable virtual server capacity?",
     options: [
       { id: "a", text: "Amazon Elastic Compute Cloud (Amazon EC2)" },
-      { id: "b", text: "Amazon Simple Storage Service (Amazon S3)" },
+      { id: "b", text: "Amazon Elastic Container Service (Amazon ECS)" },
       { id: "c", text: "Amazon Route 53" },
-      { id: "d", text: "AWS Identity and Access Management (IAM)" },
+      { id: "d", text: "AWS Lambda" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon EC2 provides on-demand, scalable computing capacity as virtual servers, letting you launch as many or as few as you need and scale up or down with demand. S3 is object storage, Route 53 is DNS, and IAM controls access; none of them provides virtual server compute.",
+      "Amazon EC2 provides on-demand, scalable computing capacity as virtual servers, letting you launch as many or as few as you need and scale up or down with demand. Amazon ECS orchestrates containerized applications, AWS Lambda runs code without you provisioning or managing servers, and Route 53 is DNS; none of them provides resizable virtual server capacity.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -41,18 +41,18 @@ export const domain3Ec2: Question[] = [
     stem: "When you launch an EC2 instance, what determines the CPU, memory, storage, and networking capacity the virtual server gets?",
     options: [
       { id: "a", text: "The instance type you specify" },
-      { id: "b", text: "The name you give the instance" },
-      { id: "c", text: "The IAM user who launches it" },
-      { id: "d", text: "The number of tags applied to the instance" },
+      { id: "b", text: "The AMI you launch it from" },
+      { id: "c", text: "The Availability Zone you launch in" },
+      { id: "d", text: "The purchasing option you choose" },
     ],
     correct: ["a"],
     explanation:
-      "The instance type specified at launch determines the hardware of the host, so each type offers a different balance of compute, memory, network, and storage. The instance name, the launching user, and tags are metadata and do not change the hardware the instance receives.",
+      "The instance type specified at launch determines the hardware of the host, so each type offers a different balance of compute, memory, network, and storage. The AMI supplies the operating system and software rather than the hardware, the Availability Zone only sets where the instance runs, and the purchasing option, such as On-Demand or Spot, changes how you pay rather than the capacity the instance gets.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -86,7 +86,7 @@ export const domain3Ec2: Question[] = [
     difficulty: "medium",
     stem: "Which statement about an Amazon Machine Image is accurate?",
     options: [
-      { id: "a", text: "You must specify an AMI when you launch an instance, and you can launch many instances from a single AMI." },
+      { id: "a", text: "Every launch needs an AMI, and one AMI can launch many instances." },
       { id: "b", text: "An AMI can launch exactly one instance and is then consumed." },
       { id: "c", text: "An AMI stores the live memory of a running instance for failover." },
       { id: "d", text: "An AMI is required only for Windows instances, not Linux." },
@@ -98,7 +98,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon Machine Images in Amazon EC2",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -132,7 +132,7 @@ export const domain3Ec2: Question[] = [
     difficulty: "hard",
     stem: "A user data shell script is attached to an instance with no extra configuration. By default, when does that script run?",
     options: [
-      { id: "a", text: "Only during the boot cycle when the instance is first launched." },
+      { id: "a", text: "Only during the boot cycle when it is first launched." },
       { id: "b", text: "Every time the instance reboots or starts, automatically." },
       { id: "c", text: "Once per hour while the instance is running." },
       { id: "d", text: "Only when an administrator connects over SSH and runs it." },
@@ -144,7 +144,7 @@ export const domain3Ec2: Question[] = [
       label: "Run commands when you launch an EC2 instance with user data input",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -155,19 +155,19 @@ export const domain3Ec2: Question[] = [
     difficulty: "medium",
     stem: "A developer stops an EBS-backed EC2 instance overnight to save money. According to AWS, what happens to instance usage charges while the instance is in the stopped state?",
     options: [
-      { id: "a", text: "You are not charged for instance usage while it is stopped, but you still pay for the attached EBS storage." },
+      { id: "a", text: "No instance usage charges, but attached EBS storage is still billed." },
       { id: "b", text: "You are charged the full instance rate the entire time it is stopped." },
       { id: "c", text: "All charges, including EBS storage, stop completely." },
-      { id: "d", text: "You are charged a higher rate while stopped than while running." },
+      { id: "d", text: "A reduced standby rate is billed until the instance starts again." },
     ],
     correct: ["a"],
     explanation:
-      "When an instance is stopped you are not charged for instance usage or data transfer, but charges continue for the storage of any attached EBS volumes. Charges do not continue at the running rate, EBS storage is not free while stopped, and the stopped rate is never higher than the running rate.",
+      "When an instance is stopped you are not charged for instance usage or data transfer, but charges continue for the storage of any attached EBS volumes. Charges do not continue at the running rate, EBS storage is not free while stopped, and there is no reduced standby rate for instance usage in the stopped state.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -178,7 +178,7 @@ export const domain3Ec2: Question[] = [
     difficulty: "hard",
     stem: "An instance has data written to its instance store volumes. The operator stops the instance, then starts it again later. What happens to the data on those instance store volumes?",
     options: [
-      { id: "a", text: "The data is erased; instance store data does not survive a stop and start." },
+      { id: "a", text: "The data is erased; instance store does not survive a stop." },
       { id: "b", text: "The data is preserved exactly as it was before the stop." },
       { id: "c", text: "The data is automatically copied to an EBS snapshot." },
       { id: "d", text: "The data is preserved only if termination protection is enabled." },
@@ -190,7 +190,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -224,19 +224,19 @@ export const domain3Ec2: Question[] = [
     difficulty: "easy",
     stem: "Once an EC2 instance reaches the running state, how does AWS bill the compute for an On-Demand instance, even if it sits idle?",
     options: [
-      { id: "a", text: "Per second, with a one-minute minimum, for as long as it keeps running." },
+      { id: "a", text: "Per second, with a one-minute minimum, while running." },
       { id: "b", text: "Only for the seconds the CPU is actually busy." },
       { id: "c", text: "A flat monthly fee regardless of runtime." },
-      { id: "d", text: "Nothing, because idle instances are free." },
+      { id: "d", text: "Only for the time someone is connected to the instance" },
     ],
     correct: ["a"],
     explanation:
-      "As soon as an instance transitions to running you are billed for each second it runs, with a one-minute minimum, even if it remains idle and you never connect to it. Billing is based on runtime rather than CPU busy time, is not a flat monthly fee, and idle running instances are not free.",
+      "As soon as an instance transitions to running you are billed for each second it runs, with a one-minute minimum, even if it remains idle and you never connect to it. Billing is based on runtime rather than CPU busy time or whether anyone is connected to the instance, and it is not a flat monthly fee.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -362,20 +362,20 @@ export const domain3Ec2: Question[] = [
     difficulty: "hard",
     stem: "Which TWO of the following correctly match an EC2 instance category to the workload it is designed for? (Choose two.)",
     options: [
-      { id: "a", text: "Compute optimized for compute-bound applications that benefit from high-performance processors, such as media transcoding" },
-      { id: "b", text: "Storage optimized for workloads needing high sequential read and write access to very large local data sets" },
+      { id: "a", text: "Compute optimized for compute-intensive apps such as media transcoding" },
+      { id: "b", text: "Storage optimized for high sequential read and write access to very large local data sets" },
       { id: "c", text: "Memory optimized for graphics rendering that relies on GPUs" },
       { id: "d", text: "General purpose for workloads that need tens of thousands of low-latency local-disk IOPS above all else" },
       { id: "e", text: "Accelerated computing for applications that use compute, memory, and networking in equal proportions" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Compute optimized fits compute-bound work such as media transcoding, and storage optimized fits high sequential local-disk access to large data sets. GPU rendering is accelerated computing rather than memory optimized, heavy local-disk IOPS is storage optimized rather than general purpose, and balanced proportional usage is general purpose rather than accelerated computing.",
+      "Compute optimized fits compute-intensive work such as media transcoding, and storage optimized fits high sequential local-disk access to large data sets. GPU rendering is accelerated computing rather than memory optimized, heavy local-disk IOPS is storage optimized rather than general purpose, and balanced proportional usage is general purpose rather than accelerated computing.",
     reference: {
       label: "Specifications for Amazon EC2 compute optimized instances",
       url: "https://docs.aws.amazon.com/ec2/latest/instancetypes/co.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -386,8 +386,8 @@ export const domain3Ec2: Question[] = [
     difficulty: "medium",
     stem: "Which TWO of the following are high-level features of Amazon EC2 as AWS describes them? (Choose two.)",
     options: [
-      { id: "a", text: "Amazon Machine Images (AMIs), preconfigured templates that package the operating system and additional software for an instance" },
-      { id: "b", text: "Security groups, a virtual firewall that controls the traffic allowed to reach and leave an instance" },
+      { id: "a", text: "AMIs, preconfigured templates packaging the OS and extra software" },
+      { id: "b", text: "Security groups, a virtual firewall for instance traffic" },
       { id: "c", text: "A managed relational database engine that runs queries for you" },
       { id: "d", text: "An object storage service for storing and retrieving any amount of data" },
       { id: "e", text: "A content delivery network that caches content at edge locations" },
@@ -399,7 +399,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -410,7 +410,7 @@ export const domain3Ec2: Question[] = [
     difficulty: "medium",
     stem: "After an operator terminates an EC2 instance, what is true about that instance?",
     options: [
-      { id: "a", text: "It is permanently deleted and cannot be started again, and instance usage charges stop." },
+      { id: "a", text: "It is permanently deleted and its instance usage charges stop." },
       { id: "b", text: "It can be started again later from the terminated state." },
       { id: "c", text: "It keeps incurring instance usage charges until manually deleted." },
       { id: "d", text: "Its instance store data is preserved for recovery." },
@@ -422,7 +422,7 @@ export const domain3Ec2: Question[] = [
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -436,17 +436,17 @@ export const domain3Ec2: Question[] = [
       { id: "a", text: "An instance in the running state is billed for instance usage." },
       { id: "b", text: "An instance in the stopped state is not billed for instance usage, though attached EBS storage is still charged." },
       { id: "c", text: "An instance in the stopped state is billed at the full running rate." },
-      { id: "d", text: "An instance in the pending state is billed at double the running rate." },
+      { id: "d", text: "An instance in the pending state is billed at the running rate." },
       { id: "e", text: "A terminated instance keeps incurring instance usage charges until it is deleted from the console." },
     ],
     correct: ["a", "b"],
     explanation:
-      "A running instance is billed for usage, and a stopped instance is not billed for usage although its EBS storage is still charged. A stopped instance is not billed at the running rate, the pending state is not billed, and a terminated instance stops incurring usage charges as soon as it begins shutting down.",
+      "A running instance is billed for usage, and a stopped instance is not billed for usage although its EBS storage is still charged. A stopped instance is not billed at the running rate, the pending state is not billed for instance usage at all, and a terminated instance stops incurring usage charges as soon as it begins shutting down.",
     reference: {
       label: "Amazon EC2 instance state changes",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -457,8 +457,8 @@ export const domain3Ec2: Question[] = [
     difficulty: "hard",
     stem: "A team needs to decide which EC2 storage to use for data that must survive stopping and starting an instance. Which TWO statements are correct? (Choose two.)",
     options: [
-      { id: "a", text: "Amazon EBS volumes provide persistent storage that is retained when you stop and start an instance." },
-      { id: "b", text: "Instance store volumes hold temporary data that is erased when you stop, hibernate, or terminate the instance." },
+      { id: "a", text: "EBS volumes keep their data when you stop and start an instance." },
+      { id: "b", text: "Instance store data is erased on stop, hibernate, or terminate." },
       { id: "c", text: "Instance store volumes keep their data through a stop and start." },
       { id: "d", text: "Amazon EBS volumes lose all data whenever the instance is stopped." },
       { id: "e", text: "Neither EBS nor instance store can retain data across an instance stop." },
@@ -470,7 +470,7 @@ export const domain3Ec2: Question[] = [
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "EBS"],
   },
 ];
