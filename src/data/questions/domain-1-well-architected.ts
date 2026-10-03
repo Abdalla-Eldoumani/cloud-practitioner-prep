@@ -496,7 +496,7 @@ export const domain1WellArchitected: Question[] = [
       "The AWS Well-Architected Tool gives a consistent process to measure your architecture against best practices, document your decisions, and get recommendations to make workloads more reliable, secure, efficient, and cost-effective. It does not rearchitect or run your workloads for you, and it does not issue a compliance certificate.",
     reference: {
       label: "What is AWS Well-Architected Tool?",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html",
     },
     lastVerified: "2026-10-03",
   },
