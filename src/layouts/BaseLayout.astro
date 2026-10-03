@@ -226,7 +226,7 @@ function isActive(href: string): boolean {
 
         {/* Desktop navigation: the active item carries an ink weight and a
             blueprint underline at the bar's base, never a filled pill. */}
-        <nav aria-label="Primary" class="hidden md:block">
+        <nav aria-label="Primary" class="hidden lg:block">
           <ul class="flex h-16 items-center gap-1">
             {
               nav.map((item) => (
@@ -278,14 +278,14 @@ function isActive(href: string): boolean {
           </ul>
         </nav>
 
-        {/* Below md the navigation is a full-screen index sheet, not wrapped
+        {/* Below lg the navigation is a full-screen index sheet, not wrapped
             links. */}
         <button
           type="button"
           id="index-open"
           aria-controls="index-sheet"
           aria-expanded="false"
-          class="t-mono-label flex items-center gap-1.5 rounded-sm border border-line-1 px-2.5 py-1.5 text-ink-2 transition-colors hover:border-line-2 hover:text-ink-1 md:hidden"
+          class="t-mono-label flex items-center gap-1.5 rounded-sm border border-line-1 px-2.5 py-1.5 text-ink-2 transition-colors hover:border-line-2 hover:text-ink-1 lg:hidden"
         >
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
             <path
@@ -307,7 +307,7 @@ function isActive(href: string): boolean {
       aria-modal="true"
       aria-label="Site index"
       hidden
-      class="fixed inset-0 z-50 flex flex-col bg-ground-0 md:hidden"
+      class="fixed inset-0 z-50 flex flex-col bg-ground-0 lg:hidden"
     >
       <div class="flex h-14 items-center justify-between border-b border-line-1 px-[18px]">
         <span class="t-mono-label text-ink-3">Index</span>
