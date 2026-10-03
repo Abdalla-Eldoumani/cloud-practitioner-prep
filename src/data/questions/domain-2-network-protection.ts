@@ -562,7 +562,7 @@ export const domain2NetworkProtection: Question[] = [
     difficulty: "medium",
     stem: "A team needs to stop a flood of traffic intended to overwhelm their application and make it unavailable to real users. Which service category addresses this, as opposed to filtering individual malicious web requests?",
     options: [
-      { id: "a", text: "AWS Shield, which protects against DDoS attacks" },
+      { id: "a", text: "AWS Shield, which protects against DDoS" },
       { id: "b", text: "AWS WAF, which inspects individual web requests for exploits" },
       { id: "c", text: "AWS Config, which records resource configuration history" },
       { id: "d", text: "Amazon Macie, which discovers sensitive data" },
