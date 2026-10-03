@@ -60,7 +60,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A developer creates an IAM role and wants applications on an EC2 instance to use it. What is the purpose of an instance profile in this setup?",
     options: [
-      { id: "a", text: "It is a container that passes an IAM role to the EC2 instance." },
+      { id: "a", text: "It is a container that passes an IAM role to the instance." },
       { id: "b", text: "It is a long-term access key pair generated for the instance." },
       { id: "c", text: "It is a billing construct that tracks the cost of the instance." },
       { id: "d", text: "It is a firewall that controls inbound traffic to the instance." },
@@ -106,7 +106,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A company maintains separate AWS accounts for development and production. An administrator wants developers in the development account to access specific resources in the production account without creating new users there. What is the primary mechanism AWS recommends?",
     options: [
-      { id: "a", text: "Create a production account role that development principals can assume." },
+      { id: "a", text: "Create a production role that development principals can assume." },
       { id: "b", text: "Create duplicate IAM users with the same passwords in both accounts." },
       { id: "c", text: "Share the production account root user credentials with the developers." },
       { id: "d", text: "Email long-term access keys from the production account to each developer." },
@@ -152,7 +152,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "An auditor asks how temporary security credentials from AWS STS differ from long-term access keys in terms of lifetime. Which statement is accurate?",
     options: [
-      { id: "a", text: "They last from minutes to hours and cannot be reused after they expire." },
+      { id: "a", text: "They last minutes to hours and cannot be reused once expired." },
       { id: "b", text: "Temporary credentials last indefinitely until an administrator deletes them." },
       { id: "c", text: "Temporary credentials expire only when the AWS account is closed." },
       { id: "d", text: "Temporary credentials have no expiration and behave exactly like access keys." },
@@ -314,7 +314,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "medium",
     stem: "A developer is building a mobile app and wants users to sign in with a well-known web identity provider such as Login with Amazon, Google, or Facebook, then receive temporary AWS credentials. Which type of federation supports this?",
     options: [
-      { id: "a", text: "Web identity federation using OpenID Connect (OIDC)" },
+      { id: "a", text: "Web identity federation via OpenID Connect" },
       { id: "b", text: "A long-term access key embedded in the mobile app" },
       { id: "c", text: "A shared root user password distributed with the app" },
       { id: "d", text: "A static IAM user created for every app install" },
@@ -360,7 +360,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "When an external user is authenticated through a SAML or OIDC identity provider and granted access to AWS resources, what does AWS assign to that federated user to determine their permissions?",
     options: [
-      { id: "a", text: "An IAM role that provides temporary credentials" },
+      { id: "a", text: "An IAM role, which provides the user with temporary credentials" },
       { id: "b", text: "A permanent IAM user with a console password" },
       { id: "c", text: "A long-term access key pair stored in the identity provider" },
       { id: "d", text: "The permissions of the account root user" },
@@ -643,7 +643,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "An administrator sets a custom IAM password policy. To which credential does this policy NOT apply?",
     options: [
-      { id: "a", text: "The AWS account root user password." },
+      { id: "a", text: "The account root user's password." },
       { id: "b", text: "A new IAM user's console password." },
       { id: "c", text: "An existing IAM user's console password when it is next changed." },
       { id: "d", text: "Passwords for IAM users created after the policy is set." },
@@ -736,7 +736,7 @@ export const domain2IamAdvanced: Question[] = [
     difficulty: "hard",
     stem: "Why are temporary security credentials generally considered more secure than embedding long-term access keys in an application?",
     options: [
-      { id: "a", text: "They expire on their own, so they need no manual rotation or revocation." },
+      { id: "a", text: "They expire on their own, so no manual rotation or revocation." },
       { id: "b", text: "They give the application unlimited permissions, which simplifies access." },
       { id: "c", text: "They are stored permanently on disk so they are always available." },
       { id: "d", text: "They can never be intercepted because AWS hides all network traffic." },
