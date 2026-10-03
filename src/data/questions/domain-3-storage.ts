@@ -766,7 +766,7 @@ export const domain3Storage: Question[] = [
     stem: "Objects in a bucket are read often for the first 30 days, infrequently for the next 60 days, and almost never after that, when slow retrieval is fine. Which single S3 Lifecycle approach manages this most cost-effectively?",
     options: [
       { id: "a", text: "Keep every object in S3 Standard forever to avoid any retrieval delay." },
-      { id: "b", text: "Move to S3 Standard-IA after 30 days, then to an S3 Glacier class." },
+      { id: "b", text: "Move to S3 Standard-IA at 30 days, then to a Glacier class." },
       { id: "c", text: "Immediately store all objects in S3 Glacier Deep Archive on upload." },
       { id: "d", text: "Delete objects after 30 days and re-upload them when needed." },
     ],
