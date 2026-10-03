@@ -504,13 +504,13 @@ export const domain3AimlAnalytics: Question[] = [
     stem: "A developer prefers to define cloud infrastructure using a general-purpose programming language such as TypeScript or Python, with loops and reusable components, and then have it provisioned through AWS CloudFormation. Which AWS tool enables this approach?",
     options: [
       { id: "a", text: "AWS Cloud Development Kit (AWS CDK)" },
-      { id: "b", text: "CloudFormation template studio" },
+      { id: "b", text: "AWS Infrastructure Composer" },
       { id: "c", text: "AWS CodeDeploy" },
       { id: "d", text: "AWS Serverless Application Model (AWS SAM)" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. CloudFormation template studio is a console editor for JSON or YAML templates, CodeDeploy automates deployments, and AWS SAM declares resources in templates that extend CloudFormation, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
+      "The AWS Cloud Development Kit lets you define cloud infrastructure in general-purpose programming languages such as TypeScript and Python and provisions it through AWS CloudFormation. Infrastructure Composer is a visual designer that drags and connects resources to generate CloudFormation templates, CodeDeploy automates deployments, and AWS SAM declares resources in templates that extend CloudFormation, so none let you define infrastructure in a programming language that compiles to CloudFormation.",
     reference: {
       label: "What is the AWS CDK?",
       url: "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
