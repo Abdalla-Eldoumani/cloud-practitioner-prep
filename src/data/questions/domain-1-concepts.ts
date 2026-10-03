@@ -196,8 +196,8 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "A developer interacts with AWS by submitting requests over HTTP or HTTPS, for example through the AWS SDKs or the Query API, and AWS returns a response. Which TWO statements correctly describe this interaction? (Choose two.)",
     options: [
-      { id: "a", text: "It is the client-server model, where a client sends a request and a server returns a response." },
-      { id: "b", text: "The developer's tool acts as the client, and AWS acts as the server that responds." },
+      { id: "a", text: "It is the client-server model: a client requests, a server responds." },
+      { id: "b", text: "The developer's tool is the client, and AWS is the server." },
       { id: "c", text: "It is a peer-to-peer model with no central server." },
       { id: "d", text: "Requests are mailed on physical media rather than sent over a network." },
       { id: "e", text: "It is a broadcast model where every machine receives every message." },
@@ -220,18 +220,18 @@ export const domain1Concepts: Question[] = [
     stem: "Which advantage of cloud computing describes paying only when you consume resources instead of investing heavily in data centers and servers before you know how you will use them?",
     options: [
       { id: "a", text: "Trade fixed expense for variable expense" },
-      { id: "b", text: "Go global in minutes" },
+      { id: "b", text: "Stop spending money running and maintaining data centers" },
       { id: "c", text: "Stop guessing capacity" },
       { id: "d", text: "Increase speed and agility" },
     ],
     correct: ["a"],
     explanation:
-      "AWS frames trading fixed expense for variable expense as paying only when you consume resources rather than investing in data centers and servers up front. Going global, stopping capacity guessing, and increasing agility are separate advantages that describe reach, capacity planning, and provisioning speed.",
+      "AWS frames trading fixed expense for variable expense as paying only when you consume resources rather than investing in data centers and servers up front. Stopping spending money running and maintaining data centers is about freeing teams from racking, stacking, and powering servers, while stopping capacity guessing and increasing agility describe capacity planning and provisioning speed.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-19",
@@ -241,7 +241,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "medium",
     stem: "A company used to over-buy servers to handle a yearly traffic peak, leaving them idle the rest of the year. Which cloud advantage directly addresses that waste?",
     options: [
-      { id: "a", text: "Stop guessing capacity, because you can scale up and down as required with a few minutes' notice." },
+      { id: "a", text: "Stop guessing capacity, because you can scale up and down as required." },
       { id: "b", text: "Go global in minutes, because you can deploy to many Regions." },
       { id: "c", text: "Benefit from massive economies of scale, because providers aggregate usage." },
       { id: "d", text: "Trade fixed expense for variable expense, because you pay as you consume." },
@@ -253,7 +253,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-20",
@@ -374,7 +374,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "easy",
     stem: "A finance lead asks how moving to the cloud changes the shape of IT spending compared with running an on-premises data center. Which statement matches AWS guidance?",
     options: [
-      { id: "a", text: "It replaces upfront capital infrastructure expenses with low variable costs that scale with the business." },
+      { id: "a", text: "It replaces upfront capital expenses with low variable costs." },
       { id: "b", text: "It converts variable usage into one large fixed purchase made years in advance." },
       { id: "c", text: "It removes all IT spending because the cloud is free." },
       { id: "d", text: "It locks spending to a flat fee that ignores how much you use." },
@@ -419,19 +419,19 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "A team runs development servers that sit idle every night and weekend. AWS notes a cost advantage of cloud resources that on-premises servers do not share. Which statement reflects it?",
     options: [
-      { id: "a", text: "You do not pay for cloud-based resources when they are not running, so turning off unused instances reduces cost." },
+      { id: "a", text: "You are not billed for instance usage while it is stopped." },
       { id: "b", text: "You pay the same whether cloud instances run or are stopped." },
       { id: "c", text: "Cloud instances cannot be stopped once launched." },
       { id: "d", text: "Stopping an instance increases its hourly rate." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that a key advantage of cloud-based resources is that you do not pay for them when they are not running, so turning off unused instances can reduce cost substantially. You are not billed the same when stopped, instances can be stopped, and stopping does not raise the rate.",
+      "AWS bills instance usage only while an instance is running: a stopped instance incurs no usage charges, though its EBS volumes are still billed, so turning off idle instances reduces cost. You are not billed the same when stopped, instances can be stopped, and stopping does not raise the rate.",
     reference: {
       label: "Amazon EC2 instance state changes: billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -442,8 +442,8 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "A company compares running its own data center with moving to AWS. Which TWO statements correctly describe a tradeoff in favor of the cloud, as AWS frames it? (Choose two.)",
     options: [
-      { id: "a", text: "The cloud lets you trade fixed expenses such as data centers and servers for variable expenses." },
-      { id: "b", text: "The cloud lets you scale capacity up and down rather than buying for a peak that sits idle." },
+      { id: "a", text: "The cloud lets you trade fixed expenses for variable expenses." },
+      { id: "b", text: "The cloud lets you scale up and down instead of buying for a peak." },
       { id: "c", text: "The cloud requires a larger upfront hardware purchase than an on-premises data center." },
       { id: "d", text: "The cloud removes the option to pay only for what you use." },
       { id: "e", text: "The cloud forces every workload to run in a single Region." },
@@ -465,7 +465,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "An auditor asks who owns and maintains the network-connected hardware behind AWS application services. According to AWS, who is responsible for that hardware?",
     options: [
-      { id: "a", text: "AWS owns and maintains it, while the customer provisions and uses what it needs through a web application." },
+      { id: "a", text: "AWS owns and maintains it, and the customer provisions what it needs." },
       { id: "b", text: "The customer must own and maintain the hardware in its own facility." },
       { id: "c", text: "No one maintains it, because cloud services run without physical hardware." },
       { id: "d", text: "A third-party reseller owns it on the customer's behalf for a fee." },
@@ -510,19 +510,19 @@ export const domain1Concepts: Question[] = [
     difficulty: "medium",
     stem: "A team launches EC2 instances to host an application that many users will connect to. In the client-server model, EC2 instances most directly provide which part?",
     options: [
-      { id: "a", text: "The servers, since each instance is a virtual server that handles requests." },
+      { id: "a", text: "The servers, since each instance is a virtual server." },
       { id: "b", text: "The clients, since instances originate the user requests." },
-      { id: "c", text: "The network cables connecting users to the building." },
+      { id: "c", text: "The virtual network that carries traffic to the servers." },
       { id: "d", text: "The billing system that totals monthly charges." },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines an EC2 instance as a virtual server, so instances hosting an application provide the server side that handles incoming requests. The users' devices are the clients, networking is a separate concern, and billing is unrelated to the request-response roles.",
+      "AWS defines an EC2 instance as a virtual server, so instances hosting an application provide the server side that handles incoming requests. The users' devices are the clients, the virtual network that carries traffic is what Amazon VPC provides, and billing is unrelated to the request-response roles.",
     reference: {
       label: "What is Amazon EC2?",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -545,7 +545,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-34",
@@ -572,7 +572,7 @@ export const domain1Concepts: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-35",
@@ -582,8 +582,8 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "A team is writing an internal note on why the company moved to AWS. Which TWO statements match how AWS describes the cloud benefits of agility and elasticity? (Choose two.)",
     options: [
-      { id: "a", text: "Agility: the cloud gives easy access to a broad range of technologies, so the team can deploy services in a matter of minutes and get from idea to implementation far faster than before." },
-      { id: "b", text: "Elasticity: rather than over-provisioning for a future peak, the team provisions only the resources it currently requires and scales them up or down as its business needs change." },
+      { id: "a", text: "Agility: the team can deploy services in minutes and get from idea to implementation faster." },
+      { id: "b", text: "Elasticity: the team provisions only what it needs now and scales up or down as needs change." },
       { id: "c", text: "Agility: AWS moves the workload to whichever Region is cheapest each month." },
       { id: "d", text: "Elasticity: AWS guarantees the workload will keep serving traffic through the loss of an Availability Zone." },
       { id: "e", text: "Agility: the team signs a multi-year capacity commitment so its prices are locked in." },
@@ -610,7 +610,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "medium",
     stem: "An operations lead asks why AWS recommends running the same application in more than one Availability Zone inside a Region. Which statement gives the reason AWS states?",
     options: [
-      { id: "a", text: "Each Region has multiple isolated Availability Zones, so instances spread across them are protected from the failure of a single location in the Region." },
+      { id: "a", text: "Zones are isolated locations, so spreading instances protects against one location failing." },
       { id: "b", text: "Availability Zones share one power supply, so spreading across them balances electricity use." },
       { id: "c", text: "Only one Availability Zone per Region can run instances, and the rest serve as archives." },
       { id: "d", text: "Spreading across Availability Zones removes the need to choose a Region for the workload." },
@@ -637,7 +637,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "easy",
     stem: "A caller sends a request to AWS through the console, the AWS CLI, or the API. What does AWS do with that request before the requested action is carried out?",
     options: [
-      { id: "a", text: "It authenticates the caller's identity, then authorizes the request against the policies that apply to it." },
+      { id: "a", text: "It authenticates the caller, then authorizes the request by policy." },
       { id: "b", text: "It performs the action first and checks permissions afterward." },
       { id: "c", text: "It forwards the request to the caller's internet provider for approval." },
       { id: "d", text: "It runs whatever it receives, without checking identity or permissions." },
@@ -664,7 +664,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "hard",
     stem: "A team turns on automatic scaling so capacity grows during traffic spikes and shrinks afterward. A colleague concludes that the workload is therefore highly available too. Which statement corrects that conclusion?",
     options: [
-      { id: "a", text: "Matching capacity to demand is elasticity; high availability also needs redundancy, such as running the workload in more than one Availability Zone so it survives an incident in one of them." },
+      { id: "a", text: "That is elasticity; high availability also needs redundancy across Availability Zones." },
       { id: "b", text: "Elasticity and high availability are two names for the same property." },
       { id: "c", text: "High availability is achieved as soon as a workload runs on more than one instance size." },
       { id: "d", text: "Elasticity guarantees the workload keeps serving traffic during an Availability Zone impairment." },
@@ -691,7 +691,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "medium",
     stem: "AWS advises customers to stop spending money on undifferentiated heavy lifting. Which work does AWS mean by that phrase?",
     options: [
-      { id: "a", text: "Data center operations such as racking, stacking, and powering servers, plus the operational burden of managing operating systems and applications." },
+      { id: "a", text: "Racking, stacking, and powering servers, plus managing operating systems and applications." },
       { id: "b", text: "Writing the application code that makes the company's product different from a competitor's." },
       { id: "c", text: "Deciding which AWS Region a workload should run in." },
       { id: "d", text: "Negotiating the company's annual software support contracts." },
