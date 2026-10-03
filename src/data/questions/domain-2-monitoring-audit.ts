@@ -40,19 +40,19 @@ export const domain2MonitoringAudit: Question[] = [
     difficulty: "medium",
     stem: "A CloudWatch alarm is configured on a metric. What does the alarm do when the metric stays above the configured threshold?",
     options: [
-      { id: "a", text: "It performs one or more actions, such as sending a notification to an Amazon SNS topic or triggering an Auto Scaling action." },
+      { id: "a", text: "It performs configured actions, such as an SNS notification or Auto Scaling." },
       { id: "b", text: "It deletes the resource that produced the metric." },
-      { id: "c", text: "It rewrites the application code to fix the problem automatically." },
+      { id: "c", text: "It changes state on the console but cannot notify anyone or take any action." },
       { id: "d", text: "It blocks all network traffic to the account until cleared." },
     ],
     correct: ["a"],
     explanation:
-      "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. It does not delete resources, edit code, or cut off account-wide traffic.",
+      "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. It does not delete resources or cut off account-wide traffic, and it is not limited to changing state on the console, because notifying and acting are exactly what alarm actions do.",
     reference: {
       label: "Using Amazon CloudWatch alarms",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch", "SNS"],
   },
   {
@@ -110,19 +110,19 @@ export const domain2MonitoringAudit: Question[] = [
     difficulty: "medium",
     stem: "Which statement best distinguishes Amazon CloudWatch from AWS CloudTrail?",
     options: [
-      { id: "a", text: "CloudWatch monitors performance and operational health through metrics, alarms, and logs, while CloudTrail records API activity for auditing who did what and when." },
+      { id: "a", text: "CloudWatch monitors performance and health; CloudTrail records API activity for audit." },
       { id: "b", text: "CloudWatch records who made each API call, while CloudTrail collects CPU and memory metrics." },
       { id: "c", text: "Both services do exactly the same thing and are interchangeable." },
-      { id: "d", text: "CloudWatch stores objects, while CloudTrail runs containers." },
+      { id: "d", text: "Both are parts of AWS Config for tracking how resources are configured." },
     ],
     correct: ["a"],
     explanation:
-      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither one stores objects nor runs containers.",
+      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither is part of AWS Config, the separate service that records how resources are configured over time.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch", "CloudTrail"],
   },
   {
@@ -133,7 +133,7 @@ export const domain2MonitoringAudit: Question[] = [
     difficulty: "hard",
     stem: "An auditor asks, \"Which IAM user terminated this EC2 instance last Tuesday, and from what source IP address?\" Which AWS service answers that question?",
     options: [
-      { id: "a", text: "AWS CloudTrail, because it records the API calls and the identity behind each action." },
+      { id: "a", text: "AWS CloudTrail, because it records API calls and who made them." },
       { id: "b", text: "Amazon CloudWatch, because it stores CPU metrics for the instance." },
       { id: "c", text: "AWS Budgets, because it tracks spending thresholds." },
       { id: "d", text: "Amazon SNS, because it sends notifications." },
@@ -156,19 +156,19 @@ export const domain2MonitoringAudit: Question[] = [
     difficulty: "hard",
     stem: "A team wants to be paged when average CPU utilization on a fleet of EC2 instances stays above 80 percent for ten minutes. Which AWS service should they use to detect the condition and trigger the alert?",
     options: [
-      { id: "a", text: "Amazon CloudWatch, using a metric alarm that notifies an Amazon SNS topic." },
+      { id: "a", text: "Amazon CloudWatch, using a metric alarm that notifies an SNS topic." },
       { id: "b", text: "AWS CloudTrail, using its API event history." },
-      { id: "c", text: "AWS Artifact, using its compliance reports." },
+      { id: "c", text: "AWS Config, using a rule that evaluates the instances' configuration." },
       { id: "d", text: "AWS CloudTrail, because it monitors CPU utilization." },
     ],
     correct: ["a"],
     explanation:
-      "CloudWatch collects the CPU metric and can raise a metric alarm when the threshold is breached over the specified period, notifying an SNS topic to page the team. CloudTrail records API activity, not resource performance metrics, and AWS Artifact provides compliance documents, so neither detects a CPU threshold.",
+      "CloudWatch collects the CPU metric and can raise a metric alarm when the threshold is breached over the specified period, notifying an SNS topic to page the team. CloudTrail records API activity, not resource performance metrics, and AWS Config rules evaluate resource configuration settings rather than live CPU metrics, so neither detects a CPU threshold.",
     reference: {
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch", "SNS"],
   },
   {
@@ -203,7 +203,7 @@ export const domain2MonitoringAudit: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements about AWS CloudTrail Event history are accurate for a new AWS account? (Choose two.)",
     options: [
-      { id: "a", text: "It is available automatically when you create the account, with no setup required." },
+      { id: "a", text: "It is available from account creation with no setup." },
       { id: "b", text: "It provides a viewable, searchable record of the past 90 days of management events." },
       { id: "c", text: "It must be purchased separately before any events are recorded." },
       { id: "d", text: "It stores real-time CPU and memory metrics for your instances." },
@@ -216,7 +216,7 @@ export const domain2MonitoringAudit: Question[] = [
       label: "What Is AWS CloudTrail? Event history",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudTrail"],
   },
   {
