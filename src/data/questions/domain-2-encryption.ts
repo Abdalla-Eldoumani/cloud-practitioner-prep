@@ -92,7 +92,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "medium",
     stem: "During a security review, an auditor asks whether the raw key material for a KMS key is ever exposed outside the service in plaintext. Which statement is accurate?",
     options: [
-      { id: "a", text: "KMS keys are created and used inside AWS KMS and never leave it unencrypted." },
+      { id: "a", text: "KMS keys are created, managed, and used within AWS KMS and never leave the service unencrypted." },
       { id: "b", text: "KMS keys are emailed to the account owner when created so they can be backed up." },
       { id: "c", text: "KMS keys are stored as plaintext files in the customer's S3 bucket." },
       { id: "d", text: "KMS keys are printed in CloudTrail logs each time they are used." },
@@ -209,7 +209,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "hard",
     stem: "An exam candidate is asked to describe envelope encryption at a high level. Which description matches how AWS defines it?",
     options: [
-      { id: "a", text: "Encrypt data with a data key, then encrypt the data key with a KMS key." },
+      { id: "a", text: "Encrypt the plaintext data with a data key, then encrypt that data key with a KMS key." },
       { id: "b", text: "Encrypt the data twice with the same key to double the key length." },
       { id: "c", text: "Store the data and its key together in plaintext inside the same file." },
       { id: "d", text: "Replace the data with a random token and discard the original entirely." },
@@ -395,7 +395,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "easy",
     stem: "A company wants to provision, manage, and renew the SSL/TLS certificates that secure its AWS websites and applications, without manually tracking expiration dates. Which AWS service is built for this?",
     options: [
-      { id: "a", text: "AWS Certificate Manager" },
+      { id: "a", text: "AWS Certificate Manager (ACM)" },
       { id: "b", text: "AWS Key Management Service" },
       { id: "c", text: "AWS Secrets Manager" },
       { id: "d", text: "Amazon GuardDuty" },
@@ -512,7 +512,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "medium",
     stem: "A security policy requires that database credentials be replaced on a regular schedule so long-lived passwords are not left in place. Which AWS Secrets Manager capability directly supports this?",
     options: [
-      { id: "a", text: "Automatic rotation of secrets on a schedule" },
+      { id: "a", text: "Automatic rotation of secrets on a configured schedule" },
       { id: "b", text: "Automatic deletion of the database after each login" },
       { id: "c", text: "Converting the secret into a TLS certificate" },
       { id: "d", text: "Disabling the database account permanently" },
@@ -535,7 +535,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "hard",
     stem: "A team needs to store database credentials that must be rotated automatically on a schedule. They are deciding between AWS Secrets Manager and Systems Manager Parameter Store. Which option best reflects AWS guidance?",
     options: [
-      { id: "a", text: "Use AWS Secrets Manager, which is built to store and automatically rotate credentials." },
+      { id: "a", text: "Use AWS Secrets Manager, which stores and automatically rotates credentials." },
       { id: "b", text: "Use Parameter Store standard parameters, because they rotate secrets automatically by default." },
       { id: "c", text: "Use either one; both natively rotate database credentials with no extra setup." },
       { id: "d", text: "Use neither; AWS recommends hard-coding rotating credentials in the application." },
@@ -558,7 +558,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "medium",
     stem: "A team wants to store non-sensitive configuration values, plus a few encrypted values that do not need rotation, at no additional charge for the storage tier. Which AWS feature fits this need?",
     options: [
-      { id: "a", text: "Parameter Store, using String and SecureString parameters" },
+      { id: "a", text: "Parameter Store, with String and SecureString parameters" },
       { id: "b", text: "AWS CloudHSM, provisioning a dedicated hardware cluster for each value" },
       { id: "c", text: "AWS Certificate Manager, importing each value as a certificate" },
       { id: "d", text: "Amazon Inspector, scanning each value for vulnerabilities" },
@@ -732,7 +732,7 @@ export const domain2Encryption: Question[] = [
     difficulty: "medium",
     stem: "Separately from encrypting the database at rest, a team wants to encrypt the connection between their application and an Amazon RDS DB instance so query traffic is protected on the network. Which approach addresses this?",
     options: [
-      { id: "a", text: "Connect over SSL/TLS, which encrypts the data in transit to the DB instance." },
+      { id: "a", text: "Use SSL/TLS to encrypt the connection to the RDS DB instance, which protects data in transit." },
       { id: "b", text: "Enable RDS storage encryption, which by itself encrypts the network connection." },
       { id: "c", text: "Rotate the database password, which encrypts the connection." },
       { id: "d", text: "Move the database to a public subnet to enable transit encryption." },
