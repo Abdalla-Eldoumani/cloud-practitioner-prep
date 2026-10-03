@@ -621,7 +621,7 @@ export const domain3AimlAnalytics: Question[] = [
     difficulty: "hard",
     stem: "A multilingual support center records calls in several languages. The team wants to transcribe each recorded call to text, then translate the transcripts into English. Which pair of AWS services accomplishes this, in order?",
     options: [
-      { id: "a", text: "Amazon Transcribe to create the transcript, then Amazon Translate to translate it" },
+      { id: "a", text: "Amazon Transcribe to transcribe, then Amazon Translate to translate" },
       { id: "b", text: "Amazon Polly to create the transcript, then Amazon Comprehend to translate it" },
       { id: "c", text: "Amazon Translate to create the transcript, then Amazon Transcribe to translate it" },
       { id: "d", text: "Amazon Textract to create the transcript, then Amazon Lex to translate it" },
