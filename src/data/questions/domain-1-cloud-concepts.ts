@@ -35,7 +35,7 @@ export const domain1: Question[] = [
     stem: "Which statement best describes a financial benefit of moving from an on-premises data center to the AWS Cloud?",
     options: [
       { id: "a", text: "It replaces variable operating expense with a large fixed capital expense." },
-      { id: "b", text: "It trades large upfront capital expense for variable operating expense based on usage." },
+      { id: "b", text: "It trades upfront capital expense for variable expense based on usage." },
       { id: "c", text: "It removes all costs because the AWS Free Tier never expires." },
       { id: "d", text: "It guarantees a flat monthly bill regardless of usage." },
     ],
@@ -46,7 +46,7 @@ export const domain1: Question[] = [
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-benefits-multi-01",
