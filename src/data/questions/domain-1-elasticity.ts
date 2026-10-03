@@ -61,7 +61,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "An exam candidate is told that a system can be designed to grow to a much larger size, yet still cannot shed capacity on its own when demand drops at night. Which single property does that system clearly have, and which does it lack?",
     options: [
-      { id: "a", text: "It has scalability but lacks elasticity, because elasticity adds the automatic release of resources as demand falls." },
+      { id: "a", text: "It has scalability but lacks elasticity, as it cannot shed capacity automatically." },
       { id: "b", text: "It has elasticity but lacks scalability, because scalability is only about shrinking." },
       { id: "c", text: "It has both, since the terms mean exactly the same thing." },
       { id: "d", text: "It has neither, because a system that can grow is by definition elastic." },
@@ -156,8 +156,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "A study group is sorting out elasticity and scalability. Which TWO statements correctly describe the difference? (Choose two.)",
     options: [
-      { id: "a", text: "Scalability is the ability of a system to adapt to a higher level of demand." },
-      { id: "b", text: "Elasticity is the ability to acquire resources as you need them and release them when you no longer need them, matching capacity to demand as it changes." },
+      { id: "a", text: "Scalability is a system's ability to adapt to greater demand." },
+      { id: "b", text: "Elasticity is acquiring resources when needed and releasing them when not." },
       { id: "c", text: "Elasticity and scalability are interchangeable terms with identical meaning." },
       { id: "d", text: "Scalability means automatically removing capacity the instant demand drops." },
       { id: "e", text: "Elasticity refers only to making a single server larger." },
@@ -179,7 +179,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A finance lead asks how letting capacity shrink at night actually saves money on EC2. What is the correct explanation?",
     options: [
-      { id: "a", text: "You pay for the EC2 instances you use, so terminating instances when they are not needed lowers cost." },
+      { id: "a", text: "You pay for the instances you use, so fewer instances cost less." },
       { id: "b", text: "AWS refunds the original purchase price of the physical servers." },
       { id: "c", text: "Shrinking capacity converts the bill into a fixed annual fee." },
       { id: "d", text: "Instances that are running but idle are always free." },
@@ -191,7 +191,7 @@ export const domain1Elasticity: Question[] = [
       label: "Auto Scaling benefits: better cost management",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2 Auto Scaling"],
   },
   {
@@ -202,7 +202,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "Which scenario best illustrates elasticity rather than only scalability?",
     options: [
-      { id: "a", text: "An Auto Scaling group automatically launches instances as a traffic surge builds and then terminates them once the surge passes." },
+      { id: "a", text: "An Auto Scaling group launches instances during a surge and terminates them after it." },
       { id: "b", text: "An engineer manually replaces a server with a much larger one to handle long-term growth." },
       { id: "c", text: "A team buys extra servers once a year to plan for future growth." },
       { id: "d", text: "A database is designed so it could, in principle, support far more users someday." },
@@ -247,7 +247,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A startup credits the cloud for letting it go from an idea to a running prototype far faster than buying hardware would allow, and for making failed experiments cheap to throw away. Which pair of cloud characteristics is most directly at work?",
     options: [
-      { id: "a", text: "Agility and the low cost of experimentation" },
+      { id: "a", text: "Agility and low-cost experimentation" },
       { id: "b", text: "Long lead times and high sunk costs" },
       { id: "c", text: "Fixed capital expense and slow procurement" },
       { id: "d", text: "Mandatory multi-year contracts" },
@@ -259,7 +259,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-18",
@@ -269,7 +269,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A team chooses Amazon S3 for object storage specifically so they never have to provision or manage storage capacity as their data grows. Which property of the service are they relying on?",
     options: [
-      { id: "a", text: "It scales elastically, so capacity grows with the data without the customer provisioning servers." },
+      { id: "a", text: "Capacity scales with the data, so the customer never provisions storage." },
       { id: "b", text: "The customer must pre-purchase a fixed number of disks before storing data." },
       { id: "c", text: "Storage capacity is capped and cannot grow once set." },
       { id: "d", text: "The customer must manually add storage nodes as data grows." },
@@ -281,7 +281,7 @@ export const domain1Elasticity: Question[] = [
       label: "What is Amazon S3?",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -315,7 +315,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "easy",
     stem: "Which phrase best completes the idea: with an elastic cloud architecture, capacity should follow ____.",
     options: [
-      { id: "a", text: "actual demand, growing when demand rises and shrinking when it falls" },
+      { id: "a", text: "actual demand, growing and shrinking as demand changes" },
       { id: "b", text: "a fixed schedule set once and never changed" },
       { id: "c", text: "the largest peak ever seen, held permanently" },
       { id: "d", text: "whatever hardware was bought up front, regardless of demand" },
@@ -327,7 +327,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-23",
@@ -337,7 +337,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "An architect notes that one approach to scaling concentrates the whole workload on a single, ever-larger machine, while another spreads it across many machines and so avoids a single point of failure. Which statement correctly contrasts them?",
     options: [
-      { id: "a", text: "Vertical scaling grows one resource and keeps a single point of failure, while horizontal scaling adds more resources and reduces the impact of any single failure." },
+      { id: "a", text: "Vertical scaling keeps a single point of failure; horizontal scaling avoids it." },
       { id: "b", text: "Horizontal scaling grows one resource, while vertical scaling adds more resources." },
       { id: "c", text: "Both approaches are identical and neither affects single points of failure." },
       { id: "d", text: "Vertical scaling always provides higher availability than horizontal scaling." },
@@ -354,7 +354,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-24",
@@ -364,7 +364,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "At a concepts level, which statement best captures what reliability means for a workload in the AWS Cloud?",
     options: [
-      { id: "a", text: "The workload can recover from failures, such as by automatically replacing failed resources, and continue to meet demand." },
+      { id: "a", text: "The workload can recover from failures and continue to meet demand." },
       { id: "b", text: "The workload is guaranteed never to experience any component failure at all." },
       { id: "c", text: "The workload runs on the single most powerful server available." },
       { id: "d", text: "The workload is only reliable if every change is made manually." },
@@ -376,7 +376,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-27",
@@ -386,7 +386,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A colleague says, since our system is scalable, it must also be elastic. Why is that reasoning not necessarily correct?",
     options: [
-      { id: "a", text: "Scalability only means the system can adapt to greater demand; elasticity additionally requires acquiring and releasing resources automatically as demand changes." },
+      { id: "a", text: "Elasticity also requires releasing resources automatically as demand falls." },
       { id: "b", text: "Elasticity is a weaker property that every scalable system already has by default." },
       { id: "c", text: "Scalability and elasticity are unrelated and never appear together." },
       { id: "d", text: "A scalable system can never be elastic." },
@@ -430,19 +430,19 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "AWS guidance says that in the cloud you can monitor demand and workload utilization and automate the addition or removal of resources to keep capacity at the right level. What outcome does following this advice avoid?",
     options: [
-      { id: "a", text: "Both over-provisioning, which wastes money, and under-provisioning, which causes resource saturation." },
+      { id: "a", text: "Both over-provisioning and under-provisioning" },
       { id: "b", text: "Any need to ever release resources." },
-      { id: "c", text: "The ability to scale at all." },
+      { id: "c", text: "Any charges for the instances that are running" },
       { id: "d", text: "The use of more than one Availability Zone." },
     ],
     correct: ["a"],
     explanation:
-      "Monitoring demand and automating the addition or removal of resources keeps capacity at the optimal level, avoiding both over-provisioning and under-provisioning that leads to resource saturation. It does not remove the need to release resources, prevent scaling, or restrict the use of multiple Availability Zones.",
+      "Monitoring demand and automating the addition or removal of resources keeps capacity at the optimal level, avoiding both over-provisioning and under-provisioning that leads to resource saturation. You still pay for the instances that are running, and the advice neither removes the need to release resources nor restricts the use of multiple Availability Zones.",
     reference: {
       label: "Reliability Pillar: stop guessing capacity",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-31",
@@ -452,7 +452,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "A workload sees brief, unpredictable bursts several times a day and is otherwise quiet. The team wants capacity that expands during each burst and contracts immediately afterward without anyone intervening. Which property is essential for this, beyond mere scalability?",
     options: [
-      { id: "a", text: "Elasticity, because the automatic, two-way response to changing demand is what the bursts require." },
+      { id: "a", text: "Elasticity, because the bursts need an automatic, two-way response to demand." },
       { id: "b", text: "Scalability alone, since being able to grow is sufficient even if shrinking is manual." },
       { id: "c", text: "A permanently fixed large capacity sized for the biggest burst." },
       { id: "d", text: "Vertical scaling of a single instance done by hand for each burst." },
@@ -497,8 +497,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A team explains why moving to the cloud increased their agility. Which TWO statements match how AWS describes the speed and agility advantage? (Choose two.)",
     options: [
-      { id: "a", text: "New IT resources are only a click away, reducing the time to make them available from weeks to minutes." },
-      { id: "b", text: "The lower cost and time to experiment lets the organization try ideas it could not justify before." },
+      { id: "a", text: "New IT resources are a click away, so they are ready in minutes, not weeks." },
+      { id: "b", text: "Experiments cost less and take less time, so teams can try more ideas." },
       { id: "c", text: "Provisioning a new environment still takes several weeks of hardware procurement." },
       { id: "d", text: "Agility requires signing a multi-year contract before any resource can be used." },
       { id: "e", text: "Agility means the bill becomes a fixed amount each month." },
@@ -510,7 +510,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-38",
@@ -520,8 +520,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "A team is classifying scaling actions. Which TWO of the following are examples of horizontal scaling (scaling out)? (Choose two.)",
     options: [
-      { id: "a", text: "Adding more EC2 instances behind a load balancer to share the load" },
-      { id: "b", text: "Increasing the number of instances in an Auto Scaling group when demand rises" },
+      { id: "a", text: "Adding more EC2 instances behind a load balancer" },
+      { id: "b", text: "Raising an Auto Scaling group's instance count as demand rises" },
       { id: "c", text: "Changing one instance to a larger instance type with more vCPUs" },
       { id: "d", text: "Adding more memory to a single existing server" },
       { id: "e", text: "Upgrading one database instance to a more powerful class" },
@@ -533,7 +533,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2", "EC2 Auto Scaling"],
   },
   {
@@ -544,8 +544,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "On-premises capacity planning tends to fail in two opposite ways that the cloud helps avoid. Which TWO problems does the stop guessing capacity advantage address? (Choose two.)",
     options: [
-      { id: "a", text: "Sitting on expensive idle resources after over-provisioning" },
-      { id: "b", text: "Running into limited capacity when demand exceeds what was provisioned" },
+      { id: "a", text: "Expensive idle resources from over-provisioning" },
+      { id: "b", text: "Limited capacity when demand exceeds what was provisioned" },
       { id: "c", text: "Paying nothing at all for any compute, ever" },
       { id: "d", text: "Being forced to use exactly one Availability Zone" },
       { id: "e", text: "Losing the ability to scale once an application is deployed" },
@@ -557,7 +557,7 @@ export const domain1Elasticity: Question[] = [
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-40",
@@ -567,8 +567,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "Which TWO statements accurately reflect AWS Well-Architected reliability design principles? (Choose two.)",
     options: [
-      { id: "a", text: "You can test how your workload fails and validate your recovery procedures, exposing failure paths before a real failure occurs." },
-      { id: "b", text: "Changes to infrastructure should be made using automation so they can be tracked and reviewed." },
+      { id: "a", text: "You can test how your workload fails and validate recovery procedures." },
+      { id: "b", text: "Infrastructure changes should be made using automation." },
       { id: "c", text: "Recovery procedures should never be tested because testing risks production." },
       { id: "d", text: "Reliability is best achieved by concentrating the workload on a single large resource." },
       { id: "e", text: "Capacity should always be guessed and fixed in advance." },
@@ -580,7 +580,7 @@ export const domain1Elasticity: Question[] = [
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-41",
@@ -590,8 +590,8 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "An instructor wants two clear contrasts between elasticity and scalability. Which TWO statements are correct? (Choose two.)",
     options: [
-      { id: "a", text: "A system can be scalable, able to adapt to greater demand, without being fully elastic if it does not automatically release resources when demand falls." },
-      { id: "b", text: "Elasticity emphasizes matching capacity to demand in real time by both acquiring and releasing resources automatically." },
+      { id: "a", text: "A scalable system is not fully elastic unless it releases resources automatically." },
+      { id: "b", text: "Elasticity matches capacity to demand by acquiring and releasing resources automatically." },
       { id: "c", text: "Scalability and elasticity are identical, so any scalable system is automatically elastic." },
       { id: "d", text: "Elasticity is only about scaling a single server vertically." },
       { id: "e", text: "Scalability means the system automatically gives back capacity the moment load drops." },
