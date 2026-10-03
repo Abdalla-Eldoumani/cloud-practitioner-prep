@@ -154,13 +154,13 @@ export const domain3: Question[] = [
     stem: "A company is migrating to AWS over two years. During the transition it must keep some applications running in its existing data center while moving others to the cloud, with the two environments connected. Which deployment model best supports this migration period?",
     options: [
       { id: "a", text: "Hybrid, which extends existing infrastructure into the cloud." },
-      { id: "b", text: "On-premises only, keeping everything in the data center until the very end." },
-      { id: "c", text: "Cloud only, requiring every workload to move on day one." },
-      { id: "d", text: "Spot, which schedules workloads on spare capacity." },
+      { id: "b", text: "On-premises (private cloud), virtualizing the existing data center." },
+      { id: "c", text: "Cloud-based, with every application running fully in the cloud." },
+      { id: "d", text: "Multi-Region, which spreads workloads across AWS Regions." },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. Staying fully on-premises until the end, or a cloud-only model requiring every workload to move on day one, does not match a gradual transition, and Spot is an EC2 pricing model, not a deployment model.",
+      "AWS describes hybrid as the way to extend and grow an organization's infrastructure into the cloud while connecting cloud resources to internal systems, which fits a phased migration. An on-premises private cloud keeps everything in the data center and a cloud-based model runs every application fully in the cloud, so neither connects both environments during the transition, and multi-Region describes spreading workloads across AWS Regions rather than one of the cloud, hybrid, or on-premises deployment models.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
@@ -176,13 +176,13 @@ export const domain3: Question[] = [
     stem: "According to AWS, which statement about the on-premises (private cloud) deployment model is accurate?",
     options: [
       { id: "a", text: "It lacks many cloud benefits but is sometimes chosen for dedicated resources." },
-      { id: "b", text: "It delivers every benefit of cloud computing automatically with no tradeoffs." },
+      { id: "b", text: "It is the same as a hybrid deployment, connecting on-premises systems to the cloud." },
       { id: "c", text: "It runs entirely on AWS-managed hardware with no equipment in your data center." },
-      { id: "d", text: "It is the only model AWS supports for new applications." },
+      { id: "d", text: "It removes upfront hardware spending because capacity is paid for as used." },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that on-premises deployment does not provide many of the benefits of cloud computing but is sometimes sought for its ability to provide dedicated resources. It does not automatically deliver all cloud benefits, it runs on your own infrastructure rather than AWS-managed hardware, and it is not the only model AWS supports.",
+      "AWS states that on-premises deployment does not provide many of the benefits of cloud computing but is sometimes sought for its ability to provide dedicated resources. Hybrid is a separate model that connects cloud resources to existing non-cloud resources, on-premises runs on your own infrastructure rather than AWS-managed hardware, and paying only for what you consume instead of investing in data centers and servers up front is a benefit of cloud computing, not of on-premises deployment.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
@@ -199,23 +199,23 @@ export const domain3: Question[] = [
     options: [
       { id: "a", text: "Cloud" },
       { id: "b", text: "Hybrid" },
-      { id: "c", text: "Pay-as-you-go" },
+      { id: "c", text: "Serverless" },
       { id: "d", text: "Reserved" },
       { id: "e", text: "Elastic" },
     ],
     correct: ["a", "b"],
     distractorRationales: {
-      c: "Pay-as-you-go is how AWS bills for consumption, not one of the cloud, hybrid, or on-premises deployment models.",
+      c: "Serverless describes running workloads without managing servers, not one of the cloud, hybrid, or on-premises deployment models.",
       d: "Reserved is an EC2 purchase option for committed capacity, not a deployment model.",
       e: "Elastic describes scaling capacity with demand, not where an application is deployed.",
     },
     explanation:
-      "AWS names cloud, hybrid, and on-premises (private cloud) as deployment models, so cloud and hybrid are both correct. Pay-as-you-go is a pricing approach, reserved is a purchase option, and elastic describes scaling, none of which is a deployment model.",
+      "AWS names cloud, hybrid, and on-premises (private cloud) as deployment models, so cloud and hybrid are both correct. Serverless describes running workloads without managing servers, reserved is a purchase option, and elastic describes scaling, none of which is a deployment model.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-12",
@@ -251,16 +251,16 @@ export const domain3: Question[] = [
       { id: "a", text: "Cloud (fully deployed in the cloud)" },
       { id: "b", text: "On-premises (private cloud)" },
       { id: "c", text: "Hybrid" },
-      { id: "d", text: "A mix of on-premises tape backup and mainframe" },
+      { id: "d", text: "Colocation in a third-party data center" },
     ],
     correct: ["a"],
     explanation:
-      "A cloud-based deployment runs all parts of the application in the cloud and suits a new project with no existing infrastructure that wants to use managed services. On-premises and the mainframe option require owning hardware, and hybrid is for connecting the cloud to existing non-cloud resources, which this team does not have.",
+      "A cloud-based deployment runs all parts of the application in the cloud and suits a new project with no existing infrastructure that wants to use managed services. On-premises and colocation in a third-party data center both mean buying and running physical servers, and hybrid is for connecting the cloud to existing non-cloud resources, which this team does not have.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-concepts-30",
@@ -274,11 +274,11 @@ export const domain3: Question[] = [
       { id: "b", text: "It can provide dedicated resources but does not deliver many of the benefits of cloud computing." },
       { id: "c", text: "It runs every part of the application on AWS-managed services in the cloud." },
       { id: "d", text: "It is the same as a hybrid deployment connecting the cloud with non-cloud resources." },
-      { id: "e", text: "It is a per-second compute billing model rather than a deployment location." },
+      { id: "e", text: "It removes upfront hardware costs because you pay only for what you use." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS describes the on-premises (private cloud) model as deploying resources on-premises with virtualization and resource management tools, providing dedicated resources but not many of the benefits of cloud computing, so both of those are correct. A cloud deployment runs in the cloud, hybrid spans both environments, and per-second billing is a pricing model rather than a deployment model.",
+      "AWS describes the on-premises (private cloud) model as deploying resources on-premises with virtualization and resource management tools, providing dedicated resources but not many of the benefits of cloud computing, so both of those are correct. A cloud deployment runs in the cloud, hybrid spans both environments, and paying only for what you use with no upfront hardware investment is a benefit of cloud computing rather than of on-premises deployment.",
     reference: {
       label: "Types of cloud computing: deployment models",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html",
