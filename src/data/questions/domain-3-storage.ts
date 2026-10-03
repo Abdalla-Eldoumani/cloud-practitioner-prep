@@ -184,11 +184,11 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "A full copy of every block on the volume each time, with no deduplication." },
       { id: "b", text: "Only the blocks that changed since the most recent snapshot." },
       { id: "c", text: "Only the volume's metadata, not any block data." },
-      { id: "d", text: "Nothing, because a volume can have only one snapshot." },
+      { id: "d", text: "Only the blocks that changed since the first full snapshot." },
     ],
     correct: ["b"],
     explanation:
-      "An EBS snapshot is an incremental backup, so after the first snapshot only the blocks that changed since the most recent snapshot are saved, which reduces time and storage cost. AWS does not duplicate unchanged data on every snapshot, snapshots include block data rather than metadata only, and a volume can have many snapshots.",
+      "An EBS snapshot is an incremental backup, so after the first snapshot only the blocks that changed since the most recent snapshot are saved, which reduces time and storage cost. AWS does not duplicate unchanged data on every snapshot, each later snapshot is compared with the most recent one rather than with the first full snapshot, and snapshots include block data rather than metadata only.",
     reference: {
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
@@ -207,16 +207,16 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "Detach the volume and attach the same volume to an instance in the other Availability Zone." },
       { id: "b", text: "Enable cross-zone replication on the volume so it spans both zones at once." },
       { id: "c", text: "Create a snapshot of the volume, then create a new volume from that snapshot in the target Availability Zone." },
-      { id: "d", text: "Convert the volume to instance store and move the host." },
+      { id: "d", text: "Use S3 Cross-Region Replication to copy the volume into the other Availability Zone." },
     ],
     correct: ["c"],
     explanation:
-      "Snapshot data is replicated across Availability Zones in the Region, and you can create a new volume from a snapshot in any Availability Zone in that Region, which is how you move volume contents between zones. A volume is tied to one Availability Zone and cannot simply be attached in another, EBS does not offer a multi-zone spanning volume, and instance store is temporary local disk.",
+      "Snapshot data is replicated across Availability Zones in the Region, and you can create a new volume from a snapshot in any Availability Zone in that Region, which is how you move volume contents between zones. A volume is tied to one Availability Zone and cannot simply be attached in another, EBS does not offer a multi-zone spanning volume, and S3 Cross-Region Replication copies S3 objects between buckets in different Regions, not EBS volumes between zones.",
     reference: {
       label: "Amazon EBS snapshots",
       url: "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EBS"],
   },
   {
@@ -465,11 +465,11 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "S3 automatically spreads every object across all AWS Regions for durability." },
       { id: "b", text: "Objects always move to whichever Region is closest to each requester." },
       { id: "c", text: "Objects stay in the Region you choose unless you transfer or replicate them." },
-      { id: "d", text: "Bucket location is random and cannot be controlled." },
+      { id: "d", text: "Objects are cached at CloudFront edge locations worldwide by default." },
     ],
     correct: ["c"],
     explanation:
-      "You choose the Region when you create a bucket, and AWS states objects stored in a Region never leave it unless you explicitly transfer or replicate them, which supports data residency requirements. S3 does not spread objects across all Regions, does not relocate objects to the nearest requester, and the Region is your choice rather than random.",
+      "You choose the Region when you create a bucket, and AWS states objects stored in a Region never leave it unless you explicitly transfer or replicate them, which supports data residency requirements. S3 does not spread objects across all Regions, does not relocate objects to the nearest requester, and does not cache objects at CloudFront edge locations on its own.",
     reference: {
       label: "What is Amazon S3? Regions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
@@ -722,16 +722,16 @@ export const domain3Storage: Question[] = [
       { id: "b", text: "Expiration actions, which define when objects expire so Amazon S3 deletes them on your behalf." },
       { id: "c", text: "Encryption actions, which rotate the bucket's encryption key on a schedule." },
       { id: "d", text: "Replication actions, which copy objects to a bucket in another Region." },
-      { id: "e", text: "Public access actions, which open the bucket to the internet after a set time." },
+      { id: "e", text: "Object Lock actions, which apply a retention period to objects after a set time." },
     ],
     correct: ["a", "b"],
     explanation:
-      "An S3 Lifecycle configuration supports two action types: transition actions that move objects to another storage class, and expiration actions that delete objects when they expire. Encryption key rotation, cross-Region replication, and changing public access are configured through other S3 features, not Lifecycle actions.",
+      "An S3 Lifecycle configuration supports two action types: transition actions that move objects to another storage class, and expiration actions that delete objects when they expire. Encryption key rotation, cross-Region replication, and Object Lock retention periods are configured through other S3 features, not Lifecycle actions.",
     reference: {
       label: "Managing the lifecycle of objects: Transition and Expiration actions",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["S3"],
   },
   {
@@ -768,11 +768,11 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "Keep every object in S3 Standard forever to avoid any retrieval delay." },
       { id: "b", text: "Move to S3 Standard-IA at 30 days, then to a Glacier class." },
       { id: "c", text: "Immediately store all objects in S3 Glacier Deep Archive on upload." },
-      { id: "d", text: "Delete objects after 30 days and re-upload them when needed." },
+      { id: "d", text: "Move to S3 One Zone-IA at 30 days, then to S3 Standard-IA at 90 days." },
     ],
     correct: ["b"],
     explanation:
-      "A single Lifecycle rule can chain transitions, moving objects to an infrequent-access class after 30 days and then to an S3 Glacier class for archiving, matching cost to the changing access pattern. Keeping everything in Standard wastes money on cold data, starting in Deep Archive blocks the early frequent reads, and deleting then re-uploading loses the data.",
+      "A single Lifecycle rule can chain transitions, moving objects to an infrequent-access class after 30 days and then to an S3 Glacier class for archiving, matching cost to the changing access pattern. Keeping everything in Standard wastes money on cold data, starting in Deep Archive blocks the early frequent reads, and Lifecycle cannot transition objects from One Zone-IA to Standard-IA, which in any case is not an archive class for data that is almost never read.",
     reference: {
       label: "Managing the lifecycle of objects: complete lifecycle",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
@@ -791,11 +791,11 @@ export const domain3Storage: Question[] = [
       { id: "a", text: "Not losing stored objects, even if a whole Availability Zone is lost." },
       { id: "b", text: "A promise that every request to retrieve an object will always succeed instantly." },
       { id: "c", text: "The percentage of the year the service can accept new uploads." },
-      { id: "d", text: "The discount applied to storage as you store more data." },
+      { id: "d", text: "How reliably S3 can restore objects that you delete by mistake." },
     ],
     correct: ["a"],
     explanation:
-      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about every retrieval request succeeding instantly; it is not the percentage of the year the service can accept new uploads, and it has nothing to do with volume discounts.",
+      "Durability is about not losing data: S3 Standard redundantly stores objects across a minimum of three Availability Zones and is designed to sustain the loss of an entire Availability Zone. That is distinct from availability, which is about every retrieval request succeeding instantly; it is not the percentage of the year the service can accept new uploads, and it does not cover objects you delete by mistake, which S3 Versioning helps you recover.",
     reference: {
       label: "Data protection in Amazon S3",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html",

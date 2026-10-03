@@ -155,17 +155,17 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Replacing capital expenditure with operational expenditure" },
       { id: "b", text: "Replacing operational expenditure with capital expenditure" },
-      { id: "c", text: "Eliminating all expenditure because cloud is free" },
+      { id: "c", text: "Replacing capital expenditure with prepaid commitments" },
       { id: "d", text: "Converting variable costs into a single fixed upfront purchase" },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This reverses the shift; AWS replaces upfront capital expense with low variable cost, not the other way around.",
-      c: "Cloud is not free; AWS bills low variable costs that scale with usage rather than eliminating expense.",
+      c: "A prepaid commitment still fixes spending before usage is known; AWS describes low variable costs that scale with the business.",
       d: "Pay-as-you-go costs rise and fall with usage; they do not become one fixed upfront purchase.",
     },
     explanation:
-      "AWS states that a key benefit of cloud computing is the opportunity to replace upfront capital infrastructure expenses with low variable costs that scale with your business, which is the shift from capital expenditure to operational expenditure. The reverse direction is wrong, cloud is not free, and pay-as-you-go costs vary with usage rather than becoming one fixed upfront purchase.",
+      "AWS states that a key benefit of cloud computing is the opportunity to replace upfront capital infrastructure expenses with low variable costs that scale with your business, which is the shift from capital expenditure to operational expenditure. The reverse direction is wrong, a prepaid commitment still fixes spending before usage is known instead of letting costs rise and fall, and pay-as-you-go costs vary with usage rather than becoming one fixed upfront purchase.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
@@ -204,18 +204,18 @@ export const domain1Economics: Question[] = [
     stem: "AWS defines cloud computing in one sentence that captures both how resources are delivered and how they are billed. Which statement matches that definition?",
     options: [
       { id: "a", text: "The on-demand delivery of IT resources over the internet with pay-as-you-go pricing" },
-      { id: "b", text: "The bulk purchase of servers installed in your own building, billed annually" },
+      { id: "b", text: "Hosting servers you buy in a provider's facility under an annual contract" },
       { id: "c", text: "A fixed monthly subscription that includes unlimited use of every service" },
       { id: "d", text: "A leasing model that requires a three-year contract for any resource" },
     ],
     correct: ["a"],
     explanation:
-      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. The bulk purchase of servers installed in your own building and billed annually describes on-premises hardware, a flat unlimited monthly subscription is not consumption-based, and a leasing model that requires a three-year contract is the opposite of on-demand, so none match the AWS definition.",
+      "AWS defines cloud computing as the on-demand delivery of IT resources over the internet with pay-as-you-go pricing. Hosting servers you buy in a provider's facility under an annual contract still means purchasing the hardware and paying on a fixed term, a flat unlimited monthly subscription is not consumption-based, and a leasing model that requires a three-year contract is the opposite of on-demand, so none match the AWS definition.",
     reference: {
       label: "What is cloud computing?",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-10",
@@ -226,13 +226,13 @@ export const domain1Economics: Question[] = [
     stem: "A development and test environment is only needed about eight hours a day on weekdays. Following the AWS cost optimization design principle of adopting a consumption model, what should the team do to save money?",
     options: [
       { id: "a", text: "Stop the resources when not in use and pay only for what they consume" },
-      { id: "b", text: "Leave the environment running continuously so it is always available" },
-      { id: "c", text: "Buy three-year reservations to cover the idle nights and weekends" },
+      { id: "b", text: "Leave it running but keep CPU load low outside working hours" },
+      { id: "c", text: "Buy three-year Reserved Instances for the environment's instances" },
       { id: "d", text: "Move the environment to dedicated physical hardware to lower the rate" },
     ],
     correct: ["a"],
     explanation:
-      "The adopt-a-consumption-model principle says to pay only for the computing resources you consume and increase or decrease usage with business need, and AWS cites stopping dev and test resources outside of working hours for a potential 75 percent saving. Running continuously, reserving idle time, or moving to dedicated hardware all increase cost rather than reduce it for this pattern.",
+      "The adopt-a-consumption-model principle says to pay only for the computing resources you consume and increase or decrease usage with business need, and AWS cites stopping dev and test resources outside of working hours for a potential 75 percent saving. A running instance is billed for every second it runs even when idle, so a low CPU load saves nothing; Reserved Instances are billed for every hour of the term whether or not the instances run, so they pay for the idle nights and weekends; and moving to dedicated hardware raises cost rather than reducing it.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -270,13 +270,13 @@ export const domain1Economics: Question[] = [
     stem: "Why can AWS generally offer lower per-unit prices than an individual company could achieve by building and running the same infrastructure itself?",
     options: [
       { id: "a", text: "Aggregated usage across many customers gives AWS economies of scale" },
-      { id: "b", text: "AWS charges a higher per-unit rate the more capacity you use" },
-      { id: "c", text: "AWS provides every service at no cost to all customers" },
+      { id: "b", text: "Customers pay only for what they use instead of buying upfront" },
+      { id: "c", text: "Customers can deploy to Regions worldwide in a few clicks" },
       { id: "d", text: "Each customer must commit to a fixed multi-year contract to get any price" },
     ],
     correct: ["a"],
     explanation:
-      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. AWS volume pricing lowers, not raises, the per-unit rate as you use more; AWS does not provide every service at no cost; and no multi-year contract is required to use AWS.",
+      "AWS attributes its lower prices to massive economies of scale: because usage from hundreds of thousands of customers is aggregated, AWS achieves higher economies of scale that translate into lower pay-as-you-go prices. Paying only for what you use instead of buying upfront is the separate fixed-to-variable expense advantage, which changes when you pay rather than the unit price; deploying to Regions worldwide in a few clicks is the go global in minutes advantage; and no multi-year contract is required to use AWS.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -293,12 +293,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Buying, powering, cooling, and maintaining your own servers" },
       { id: "b", text: "The cost of the application code your developers write" },
-      { id: "c", text: "The cost of training users on the business process the application supports" },
-      { id: "d", text: "The cost of the data your business generates" },
+      { id: "c", text: "The cost of controlling who can access the application's data" },
+      { id: "d", text: "The cost of internet bandwidth for traffic the application sends out" },
     ],
     correct: ["a"],
     explanation:
-      "Moving to AWS removes much of the cost of buying, powering, cooling, and maintaining your own servers, because AWS does the heavy lifting of data center operations, which lowers total cost of ownership. Application code, user training on a business process, and the business data itself are not data center costs that the cloud eliminates.",
+      "Moving to AWS removes much of the cost of buying, powering, cooling, and maintaining your own servers, because AWS does the heavy lifting of data center operations, which lowers total cost of ownership. Application code stays the customer's to write, controlling who can access data remains a customer responsibility under the shared responsibility model, and AWS still bills for data transferred out to the internet, so internet bandwidth does not stop being a cost.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -315,18 +315,18 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Trade fixed expense for variable expense" },
       { id: "b", text: "Go global in minutes" },
-      { id: "c", text: "Guarantee that costs never change month to month" },
-      { id: "d", text: "Eliminate the need to write any application code" },
-      { id: "e", text: "Own the physical servers in every Region" },
+      { id: "c", text: "Lock in fixed prices with long-term contracts" },
+      { id: "d", text: "Transfer all security responsibility to AWS" },
+      { id: "e", text: "Trade variable expense for fixed expense" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Guaranteeing flat costs, eliminating the need to write any application code, and owning the physical servers are not advantages AWS claims; the cloud does not write your code for you, and you do not own the underlying hardware.",
+      "Trading fixed expense for variable expense and going global in minutes are two of the six advantages AWS lists, alongside economies of scale, stop guessing capacity, increase speed and agility, and stop spending money running and maintaining data centers. Locking in fixed prices with long-term contracts is not on the list, trading variable expense for fixed expense reverses the real advantage, and AWS does not take on all security responsibility: under the shared responsibility model the customer stays responsible for security in the cloud.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-15",
@@ -339,17 +339,17 @@ export const domain1Economics: Question[] = [
       { id: "a", text: "Scaling capacity up and down with a few minutes' notice maps to stop guessing capacity" },
       { id: "b", text: "Cutting the time to provision resources from weeks to minutes maps to increase speed and agility" },
       { id: "c", text: "Deploying in multiple Regions with a few clicks maps to go global in minutes" },
-      { id: "d", text: "Paying a higher unit price as usage grows maps to benefit from massive economies of scale" },
-      { id: "e", text: "Signing a mandatory three-year contract maps to trade fixed expense for variable expense" },
+      { id: "d", text: "Getting lower latency for users on other continents maps to stop guessing capacity" },
+      { id: "e", text: "Getting a lower variable cost from aggregated usage maps to increase speed and agility" },
     ],
     correct: ["a", "b", "c"],
     explanation:
-      "AWS ties scaling with a few minutes' notice to stop guessing capacity, provisioning in minutes instead of weeks to increase speed and agility, and multi-Region deployment with a few clicks to go global in minutes. Economies of scale lowers the unit price rather than raising it, and trading fixed expense for variable expense means paying for consumption with no required long-term contract, so those two pairings are wrong.",
+      "AWS ties scaling with a few minutes' notice to stop guessing capacity, provisioning in minutes instead of weeks to increase speed and agility, and multi-Region deployment with a few clicks to go global in minutes. Lower latency for users on other continents belongs to go global in minutes, not stop guessing capacity, and a lower variable cost from aggregated usage is benefit from massive economies of scale, not increase speed and agility, so those two pairings are wrong.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-16",
@@ -360,13 +360,13 @@ export const domain1Economics: Question[] = [
     stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. Why is this claim incorrect?",
     options: [
       { id: "a", text: "You are not billed for instance usage while it is stopped" },
-      { id: "b", text: "Stopped instances are billed at a higher rate than running ones" },
+      { id: "b", text: "Stopped instances are billed at a reduced standby rate instead" },
       { id: "c", text: "Compute is billed as a flat monthly fee regardless of whether instances run" },
-      { id: "d", text: "You are charged the full on-demand rate for every instance you ever launched" },
+      { id: "d", text: "Stopping an instance also ends the charges for its attached EBS volumes" },
     ],
     correct: ["a"],
     explanation:
-      "AWS does not bill instance usage while an EC2 instance is in the stopped state, so stopping it overnight ends its compute charges (storage for any attached EBS volumes still accrues). Stopped instances are not billed at a higher rate than running ones, compute is not a flat monthly fee, and you are not charged for instances that are no longer running.",
+      "AWS does not bill instance usage while an EC2 instance is in the stopped state, so stopping it overnight ends its compute charges. There is no reduced standby rate for a stopped instance, compute is not a flat monthly fee, and stopping does not end the charges for attached EBS volumes, which AWS bills regardless of the instance's state.",
     reference: {
       label: "Amazon EC2 instance state changes: billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
@@ -384,12 +384,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Upfront capital expenses become low variable costs that track usage" },
       { id: "b", text: "Variable costs are replaced by a single large capital purchase made once" },
-      { id: "c", text: "All infrastructure costs are removed and never appear on a bill" },
+      { id: "c", text: "Hardware costs become a monthly lease on dedicated servers" },
       { id: "d", text: "Costs become fixed and unrelated to how much the business uses" },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes the benefit as replacing upfront capital infrastructure expenses with low variable costs that scale with your business, so you spin up resources without procuring hardware in advance. The cloud does not turn variable costs into one capital purchase, does not make infrastructure free, and bills vary with usage rather than becoming fixed.",
+      "AWS describes the benefit as replacing upfront capital infrastructure expenses with low variable costs that scale with your business, so you spin up resources without procuring hardware in advance. The cloud does not turn variable costs into one capital purchase, it is not a monthly lease on dedicated servers held for you, and bills vary with usage rather than becoming fixed.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
@@ -406,12 +406,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Pay only for what you use and scale with need" },
       { id: "b", text: "Pay a fixed annual fee that does not change with usage" },
-      { id: "c", text: "Pay for peak capacity at all times to avoid ever scaling" },
+      { id: "c", text: "Commit to a set hourly spend for one or three years" },
       { id: "d", text: "Pay an upfront lump sum that covers all future usage" },
     ],
     correct: ["a"],
     explanation:
-      "The AWS adopt-a-consumption-model design principle is to pay only for the computing resources you consume and to scale usage up or down with business requirements. A fixed annual fee, paying for peak capacity continuously, and an upfront lump sum all contradict paying only for what you consume.",
+      "The AWS adopt-a-consumption-model design principle is to pay only for the computing resources you consume and to scale usage up or down with business requirements. A fixed annual fee, a commitment to a set hourly spend for one or three years (the Savings Plans model), and an upfront lump sum all fix spending in advance rather than paying only for what you consume.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -428,13 +428,13 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Adopt a consumption model: pay only for the resources you consume" },
       { id: "b", text: "Analyze and attribute expenditure so IT costs can be assigned to workload owners" },
-      { id: "c", text: "Always buy three-year reservations for every workload regardless of how predictable it is" },
-      { id: "d", text: "Provision for peak load at all times to remove the need to scale" },
+      { id: "c", text: "Scale horizontally to increase aggregate workload availability" },
+      { id: "d", text: "Automatically recover from failure by monitoring workload KPIs" },
       { id: "e", text: "Take on the undifferentiated heavy lifting of running your own data centers to cut cost" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Adopting a consumption model and analyzing and attributing expenditure are two of the AWS cost optimization design principles. Buying long reservations for everything ignores workload patterns, provisioning for peak at all times wastes resources, and the principle is to stop spending on undifferentiated heavy lifting by letting AWS run the data centers, not to take that work on yourself.",
+      "Adopting a consumption model and analyzing and attributing expenditure are two of the AWS cost optimization design principles. Scaling horizontally to increase aggregate workload availability and automatically recovering from failure are reliability design principles, not cost optimization ones, and the cost principle is to stop spending on undifferentiated heavy lifting by letting AWS run the data centers, not to take that work on yourself.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -473,13 +473,13 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Racking, stacking, and powering data center servers" },
       { id: "b", text: "Operating the underlying infrastructure that managed services run on" },
-      { id: "c", text: "Designing the company's product features" },
-      { id: "d", text: "Deciding the company's pricing strategy" },
+      { id: "c", text: "Patching the guest operating system on the company's EC2 instances" },
+      { id: "d", text: "Managing IAM permissions for the company's own users" },
       { id: "e", text: "Writing the business logic of the company's application" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS describes the undifferentiated heavy lifting it removes as data center operations like racking, stacking, and powering servers, and operating the underlying infrastructure so managed services lift the burden of running operating systems and applications. Designing product features, setting pricing strategy, and writing business logic are the differentiating work that AWS frees customers to focus on, not heavy lifting AWS performs.",
+      "AWS describes the undifferentiated heavy lifting it removes as data center operations like racking, stacking, and powering servers, and operating the underlying infrastructure so managed services lift the burden of running operating systems and applications. Patching the guest operating system on EC2 instances and using IAM to manage permissions stay with the customer under the shared responsibility model, and writing business logic is the differentiating work AWS frees customers to focus on, not heavy lifting AWS performs.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -496,12 +496,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Lower pay-as-you-go prices than a customer could achieve on its own" },
       { id: "b", text: "A requirement to pay upfront for all future usage" },
-      { id: "c", text: "Higher prices that rise as more customers join" },
+      { id: "c", text: "Dedicated hardware for every customer at no extra cost" },
       { id: "d", text: "A flat fee that is the same for every customer regardless of usage" },
     ],
     correct: ["a"],
     explanation:
-      "AWS states that aggregating usage from hundreds of thousands of customers produces higher economies of scale, which translates into lower pay-as-you-go prices than a customer could get on its own. Economies of scale do not require paying upfront for all usage, do not raise prices as customers join, and do not impose a single flat fee on everyone.",
+      "AWS states that aggregating usage from hundreds of thousands of customers produces higher economies of scale, which translates into lower pay-as-you-go prices than a customer could get on its own. Economies of scale do not require paying upfront for all usage, do not give every customer dedicated hardware for free (Dedicated Instances carry their own fees), and do not impose a single flat fee on everyone.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -538,20 +538,20 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "Which TWO statements correctly describe the pay-as-you-go pricing model that AWS uses? (Choose two.)",
     options: [
-      { id: "a", text: "You pay only for the individual resources you use, for as long as you use them" },
+      { id: "a", text: "You pay only for the IT resources you actually use" },
       { id: "b", text: "No large upfront purchase of hardware is required to start" },
-      { id: "c", text: "You pay one fixed price for unlimited use of all AWS services" },
-      { id: "d", text: "You must buy and install hardware before any workload runs" },
-      { id: "e", text: "Every service requires a mandatory multi-year commitment" },
+      { id: "c", text: "You pay one fixed monthly price for unlimited use of every service" },
+      { id: "d", text: "You are billed for the peak capacity you reserved, even when idle" },
+      { id: "e", text: "Every service requires a one- or three-year commitment to start" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Pay-as-you-go means paying only for the individual services you use, for as long as you use them, with no large upfront purchase required to start. A single fixed price for unlimited use, having to buy and install hardware before any workload runs, and a mandatory multi-year commitment for every service all contradict the pay-as-you-go model.",
+      "With cloud computing you pay only for what you use, and you do not need to make large upfront investments in hardware before you start. A fixed monthly price for unlimited use of every service, being billed for reserved peak capacity while it sits idle, and a mandatory one- or three-year commitment for every service all contradict that pay-as-you-go model.",
     reference: {
-      label: "What is cloud computing?",
-      url: "https://aws.amazon.com/what-is-cloud-computing/",
+      label: "Overview of Amazon Web Services: What is cloud computing?",
+      url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-27",
@@ -585,13 +585,13 @@ export const domain1Economics: Question[] = [
     stem: "A company is building a total cost of ownership comparison between an on-premises data center and AWS. Which on-premises cost categories does moving to AWS most directly reduce?",
     options: [
       { id: "a", text: "Buying servers and powering, cooling, and maintaining them" },
-      { id: "b", text: "The salaries of the company's sales staff" },
-      { id: "c", text: "The marketing budget for the company's products" },
-      { id: "d", text: "The cost of office furniture for non-technical departments" },
+      { id: "b", text: "Developing and testing the company's application code" },
+      { id: "c", text: "Managing which users can access the company's data" },
+      { id: "d", text: "Charges for data the company's applications send to the internet" },
     ],
     correct: ["a"],
     explanation:
-      "AWS performs the heavy lifting of data center operations, so moving to the cloud most directly reduces the costs of buying servers and the power, cooling, and physical maintenance to keep them running, which lowers total cost of ownership. Sales salaries, marketing budgets, and office furniture are unrelated to data center infrastructure and are not reduced by the move.",
+      "AWS performs the heavy lifting of data center operations, so moving to the cloud most directly reduces the costs of buying servers and the power, cooling, and physical maintenance to keep them running, which lowers total cost of ownership. Developing and testing application code and managing which users can access data remain the customer's work under the shared responsibility model, and AWS still bills for data sent out to the internet, so those costs are not removed by the move.",
     reference: {
       label: "Cost Optimization Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/design-principles.html",
@@ -652,17 +652,17 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "Operational expenditure" },
       { id: "b", text: "Capital expenditure" },
-      { id: "c", text: "A one-time upfront hardware purchase" },
-      { id: "d", text: "A non-recoverable construction cost" },
+      { id: "c", text: "Fixed overhead expense" },
+      { id: "d", text: "Depreciation of owned hardware" },
     ],
     correct: ["a"],
     explanation:
-      "Paying a recurring, usage-based bill for the compute and storage consumed is operational expenditure, the variable cost model AWS substitutes for buying hardware upfront. Capital expenditure, a one-time hardware purchase, and a construction cost all describe large upfront investments rather than a usage-based monthly charge.",
+      "Paying a recurring, usage-based bill for the compute and storage consumed is operational expenditure, the variable cost model AWS substitutes for buying hardware upfront. Capital expenditure is the upfront purchase the manager avoids, the bill varies with usage so it is not a fixed overhead expense, and depreciation applies to hardware a company owns, which it no longer buys here.",
     reference: {
       label: "Overview of Amazon Web Services: introduction",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-econ-33",
@@ -674,12 +674,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "The company scales with demand and pays for what it uses, not idle peaks" },
       { id: "b", text: "The company must still pay for peak capacity continuously, just billed by AWS" },
-      { id: "c", text: "The cloud forces the company to under-provision and accept outages" },
+      { id: "c", text: "AWS stops charging for running instances whenever they sit idle" },
       { id: "d", text: "The company pays a fixed fee that ignores how much capacity it actually uses" },
     ],
     correct: ["a"],
     explanation:
-      "With the cloud consumption model you access as much or as little capacity as you need and scale up and down with demand, so you pay for what you use instead of for idle peak capacity provisioned in advance. The cloud does not require paying for peak continuously, does not force under-provisioning, and does not bill a fixed fee independent of usage.",
+      "With the cloud consumption model you access as much or as little capacity as you need and scale up and down with demand, so you pay for what you use instead of for idle peak capacity provisioned in advance. The cloud does not require paying for peak continuously, AWS bills a running instance for every second it runs even when it sits idle, so the saving comes from scaling in, and it does not bill a fixed fee independent of usage.",
     reference: {
       label: "Six advantages of cloud computing",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -695,13 +695,13 @@ export const domain1Economics: Question[] = [
     stem: "A monitoring review shows an EC2 instance that runs at five percent CPU and uses a fraction of its memory all month, yet it was provisioned as a very large instance. Following AWS cost guidance, what is the recommended action?",
     options: [
       { id: "a", text: "Right-size it by moving to a smaller instance type that matches actual usage." },
-      { id: "b", text: "Leave it as is, because a larger instance is always safer." },
-      { id: "c", text: "Buy a three-year Reserved Instance for the oversized type to lock in the price." },
+      { id: "b", text: "Keep the size and turn on detailed CloudWatch monitoring." },
+      { id: "c", text: "Buy a three-year Reserved Instance for its current type to lower the hourly rate." },
       { id: "d", text: "Switch it to a Dedicated Host to lower the per-hour rate." },
     ],
     correct: ["a"],
     explanation:
-      "Right-sizing means selecting the instance type that matches the workload's actual compute, memory, and storage needs, so an underused large instance should move to a smaller, fitting type to cut cost. Choosing to leave it because a larger instance is always safer just keeps paying for idle capacity, committing to a long term locks in the waste, and a Dedicated Host raises cost rather than addressing the size mismatch.",
+      "Right-sizing means selecting the instance type that matches the workload's actual compute, memory, and storage needs, so an underused large instance should move to a smaller, fitting type to cut cost. Turning on detailed CloudWatch monitoring only adds per-metric charges for data the review already has, a three-year Reserved Instance for the current type lowers the rate but keeps paying for capacity the workload does not use, and a Dedicated Host raises cost rather than addressing the size mismatch.",
     reference: {
       label: "Select the correct resource type, size, and number",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/select-the-correct-resource-type-size-and-number.html",
@@ -719,12 +719,12 @@ export const domain1Economics: Question[] = [
     options: [
       { id: "a", text: "It trades fixed expenses for variable expenses tied to consumption." },
       { id: "b", text: "It converts all variable expenses into a single large fixed expense." },
-      { id: "c", text: "It eliminates every cost because cloud computing is free." },
+      { id: "c", text: "It moves hardware spending into a prepaid multi-year lease." },
       { id: "d", text: "It locks in a flat monthly fee that never changes with usage." },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes the cloud as letting you trade fixed expenses such as data centers and servers for variable expenses, paying only for IT as you consume it. The cloud is not free, the shift moves away from fixed expense rather than toward it, and pay-as-you-go bills vary with usage.",
+      "AWS describes the cloud as letting you trade fixed expenses such as data centers and servers for variable expenses, paying only for IT as you consume it. A prepaid multi-year lease is still a fixed expense, the shift moves away from fixed expense rather than toward it, and pay-as-you-go bills vary with usage.",
     reference: {
       label: "What is cloud computing: fixed to variable expense",
       url: "https://aws.amazon.com/what-is-cloud-computing/",
@@ -740,13 +740,13 @@ export const domain1Economics: Question[] = [
     stem: "A team runs development EC2 instances that sit idle overnight and on weekends. What is the most direct way to reduce their cost?",
     options: [
       { id: "a", text: "Stop the instances on nights and weekends." },
-      { id: "b", text: "Leave them running continuously to avoid any startup delay." },
+      { id: "b", text: "Lower their CPU load overnight so they bill less while running." },
       { id: "c", text: "Convert them to Dedicated Hosts to lower the hourly rate." },
-      { id: "d", text: "Buy three-year Reserved Instances for the idle time." },
+      { id: "d", text: "Turn on detailed monitoring to track their idle hours." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon EC2 does not bill instance usage while an instance is stopped, so shutting development instances down outside working hours removes their compute charge; attached EBS volumes still bill for storage. Choosing to leave them running continuously to avoid a startup delay keeps paying for idle compute, converting them to Dedicated Hosts raises cost for this case, and a long reservation for idle time is the opposite of saving.",
+      "Amazon EC2 does not bill instance usage while an instance is stopped, so shutting development instances down outside working hours removes their compute charge; attached EBS volumes still bill for storage. A running instance is billed for every second it runs even when idle, so a lower CPU load saves nothing, converting them to Dedicated Hosts raises cost for this case, and detailed monitoring adds per-metric charges without stopping the idle compute.",
     reference: {
       label: "Amazon EC2 billing by instance state",
       url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html",
@@ -820,18 +820,18 @@ export const domain1Economics: Question[] = [
     stem: "A cost review recommends right sizing the company's compute. What does right sizing mean, as AWS defines it?",
     options: [
       { id: "a", text: "Matching instance types and sizes to workload needs at the lowest cost." },
-      { id: "b", text: "Buying the largest instance type available so the workload never runs short." },
+      { id: "b", text: "Choosing instance types based only on the lowest hourly price." },
       { id: "c", text: "Committing to a three-year Reserved Instance for every instance in the fleet." },
       { id: "d", text: "Spreading the same instances across more Availability Zones." },
     ],
     correct: ["a"],
     distractorRationales: {
-      b: "Over-provisioning is the habit right sizing corrects; it leaves capacity paid for and unused.",
+      b: "The cheapest type can miss the workload's performance needs; right sizing fits the resource to the workload at the lowest cost.",
       c: "A commitment changes the price of capacity, not whether the capacity fits the work.",
       d: "Spreading across zones changes where the workload runs, not how well the resource fits the workload.",
     },
     explanation:
-      "AWS defines right sizing as the process of matching instance types and sizes to your workload performance and capacity requirements at the lowest possible cost, and describes it as an ongoing process of analyzing deployed instances to find opportunities to eliminate or downsize them without compromising performance. Buying the largest instance type available is over-provisioning, a three-year Reserved Instance commitment is a pricing decision that leaves the size of what you run unchanged, and spreading instances across more Availability Zones improves availability rather than fitting the resource to the work.",
+      "AWS defines right sizing as the process of matching instance types and sizes to your workload performance and capacity requirements at the lowest possible cost, and describes it as an ongoing process of analyzing deployed instances to find opportunities to eliminate or downsize them without compromising performance. Choosing instance types on the lowest hourly price alone ignores the workload's performance and capacity requirements, a three-year Reserved Instance commitment is a pricing decision that leaves the size of what you run unchanged, and spreading instances across more Availability Zones improves availability rather than fitting the resource to the work.",
     reference: {
       label: "AWS Cost Optimization: right sizing",
       url: "https://aws.amazon.com/aws-cost-management/aws-cost-optimization/right-sizing/",
@@ -876,18 +876,18 @@ export const domain1Economics: Question[] = [
     stem: "A team describes its whole test environment, the Auto Scaling group, the load balancer, and the database, in one AWS CloudFormation template. What does that give the team, as AWS describes CloudFormation?",
     options: [
       { id: "a", text: "CloudFormation provisions them as one stack the team can manage and delete as a unit." },
-      { id: "b", text: "CloudFormation removes the charges for the resources the template creates." },
-      { id: "c", text: "CloudFormation converts the company's capital expenditure into a fixed annual license fee." },
+      { id: "b", text: "CloudFormation monitors the resources and alarms when CPU usage runs high." },
+      { id: "c", text: "CloudFormation records every action users take on the resources for auditing." },
       { id: "d", text: "CloudFormation takes over the customer's responsibility for the data held in those resources." },
     ],
     correct: ["a"],
     distractorRationales: {
-      b: "The resources a template creates are billed exactly as they would be if you created them by hand.",
-      c: "CloudFormation is a provisioning service, not a licensing arrangement, and AWS does not charge an annual fee for it.",
+      b: "Watching metrics such as CPU usage and alarming when a threshold is breached is what Amazon CloudWatch alarms do.",
+      c: "Recording actions taken by users, roles, and services as auditable events is what AWS CloudTrail does.",
       d: "Automating provisioning does not move any customer responsibility to AWS.",
     },
     explanation:
-      "With CloudFormation you write a template describing the resources you want, CloudFormation provisions and configures them and figures out what depends on what, and the resulting stack lets you manage that collection of resources as a single unit, so deleting the stack deletes everything in it. Automating provisioning does not take away the charges for the resources that get created, it is not a licensing arrangement that turns capital expenditure into an annual fee, and it does not shift responsibility for your data, which stays with the customer.",
+      "With CloudFormation you write a template describing the resources you want, CloudFormation provisions and configures them and figures out what depends on what, and the resulting stack lets you manage that collection of resources as a single unit, so deleting the stack deletes everything in it. Watching CPU usage and alarming on a threshold is what Amazon CloudWatch alarms do, recording the actions users take as auditable events is what AWS CloudTrail does, and automating provisioning does not shift responsibility for your data, which stays with the customer.",
     reference: {
       label: "What is CloudFormation?",
       url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
@@ -906,17 +906,17 @@ export const domain1Economics: Question[] = [
       { id: "a", text: "You can create and replicate workloads at low cost and avoid manual effort." },
       { id: "b", text: "You can track automation changes, audit the impact, and revert to earlier parameters." },
       { id: "c", text: "Automated workloads are billed at a lower hourly rate than manually created ones." },
-      { id: "d", text: "Automation removes the need to test a workload before release." },
+      { id: "d", text: "AWS picks the instance sizes for every resource the automation creates." },
       { id: "e", text: "Automation transfers responsibility for patching guest operating systems to AWS." },
     ],
     correct: ["a", "b"],
     distractorRationales: {
       c: "AWS prices a resource the same however it was created. The saving comes from less manual effort and cheaper replication.",
-      d: "A separate design principle tells you to test systems at production scale, which automation makes cheaper rather than unnecessary.",
+      d: "Automation provisions what you define. A template describes your resources and their properties, including the instance types you choose.",
       e: "Guest operating system patching stays with the customer regardless of how the resource was provisioned.",
     },
     explanation:
-      "AWS states that automation permits you to create and replicate your workloads at low cost and avoid the expense of manual effort, and that you can track changes to your automation, audit the impact, and revert to previous parameters when necessary. AWS does not bill an automated workload at a lower hourly rate than a manually created one, automation does not remove the need to test a workload before release, and it does not transfer patching of guest operating systems to AWS.",
+      "AWS states that automation permits you to create and replicate your workloads at low cost and avoid the expense of manual effort, and that you can track changes to your automation, audit the impact, and revert to previous parameters when necessary. AWS does not bill an automated workload at a lower hourly rate than a manually created one, AWS does not pick instance sizes for you because automation provisions the resources and properties you define, and automation does not transfer patching of guest operating systems to AWS.",
     reference: {
       label: "AWS Well-Architected Framework: general design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/general-design-principles.html",

@@ -48,16 +48,16 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "a", text: "The consumer polls the queue and retrieves messages when it is ready to process them." },
       { id: "b", text: "Amazon SQS pushes each message to the consumer's endpoint as soon as it arrives." },
       { id: "c", text: "Messages are broadcast to every consumer subscribed to the queue at once." },
-      { id: "d", text: "The producer connects directly to the consumer with no queue in between." },
+      { id: "d", text: "Amazon SQS uses rules that match each message's content to route it to the consumer." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SQS is pull-based: a consumer retrieves messages from the queue when it is ready, processes them, then deletes them. SNS, not SQS, pushes messages to subscribers, and SQS does not broadcast a single message to many consumers or connect producer and consumer directly.",
+      "Amazon SQS is pull-based: a consumer retrieves messages from the queue when it is ready, processes them, then deletes them. SNS, not SQS, pushes messages to subscribers, SQS does not broadcast a single message to many consumers, and routing by rules that match event content describes Amazon EventBridge rather than SQS.",
     reference: {
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SQS"],
   },
   {
@@ -70,17 +70,17 @@ export const domain3IntegrationMonitoring: Question[] = [
     options: [
       { id: "a", text: "Amazon Simple Notification Service (Amazon SNS)" },
       { id: "b", text: "Amazon Simple Queue Service (Amazon SQS)" },
-      { id: "c", text: "Amazon Elastic File System (Amazon EFS)" },
-      { id: "d", text: "AWS Secrets Manager" },
+      { id: "c", text: "Amazon Kinesis Data Streams" },
+      { id: "d", text: "AWS Step Functions" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SNS is a managed publish/subscribe service: a publisher sends a message to a topic and SNS delivers it to all of the topic's subscribers, such as email, SMS, SQS queues, and Lambda functions. SQS is a single-consumer queue rather than a fan-out broadcaster, and Amazon EFS and Secrets Manager are unrelated to messaging.",
+      "Amazon SNS is a managed publish/subscribe service: a publisher sends a message to a topic and SNS delivers it to all of the topic's subscribers, such as email, SMS, SQS queues, and Lambda functions. SQS is a single-consumer queue rather than a fan-out broadcaster, Kinesis Data Streams collects and processes streams of data records in real time for applications to read rather than delivering email or SMS, and Step Functions orchestrates workflow steps rather than broadcasting one message to many subscribers.",
     reference: {
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SNS"],
   },
   {
@@ -93,18 +93,18 @@ export const domain3IntegrationMonitoring: Question[] = [
     options: [
       { id: "a", text: "An Amazon SQS queue" },
       { id: "b", text: "An AWS Lambda function" },
-      { id: "c", text: "An Amazon EBS volume" },
-      { id: "d", text: "An Amazon VPC subnet" },
-      { id: "e", text: "An IAM policy document" },
+      { id: "c", text: "An Amazon DynamoDB table" },
+      { id: "d", text: "An Amazon Kinesis data stream" },
+      { id: "e", text: "An AWS Step Functions state machine" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon SNS can deliver messages to endpoints such as Amazon SQS queues, Lambda functions, HTTP/S endpoints, email, SMS, and mobile push. An EBS volume, a VPC subnet, and an IAM policy are storage, networking, and access-control constructs, not SNS subscription endpoints.",
+      "Amazon SNS can deliver messages to endpoints such as Amazon SQS queues, Lambda functions, Firehose delivery streams, HTTP/S endpoints, email, SMS, and mobile push. A DynamoDB table, a Kinesis data stream, and a Step Functions state machine are not among the SNS subscription endpoint types.",
     reference: {
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SNS"],
   },
   {
@@ -117,12 +117,12 @@ export const domain3IntegrationMonitoring: Question[] = [
     options: [
       { id: "a", text: "Amazon SQS is a queue that consumers pull from, while Amazon SNS pushes each message to many subscribers." },
       { id: "b", text: "Amazon SQS broadcasts each message to all subscribers, while Amazon SNS holds messages for one consumer to pull." },
-      { id: "c", text: "Both are object storage services, and the only difference is the maximum object size." },
+      { id: "c", text: "Both are pull-based queues, and Amazon SNS is simply the FIFO version of Amazon SQS." },
       { id: "d", text: "Amazon SQS runs workflow steps in order, while Amazon SNS routes events to targets using rules." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SQS is a queue: consumers poll and pull messages, typically with one consumer processing each message. Amazon SNS is publish/subscribe: a published message is pushed to every subscriber of the topic in a fan-out pattern. Neither is object storage, and running workflow steps in order and routing events with rules describe AWS Step Functions and Amazon EventBridge rather than SQS or SNS.",
+      "Amazon SQS is a queue: consumers poll and pull messages, typically with one consumer processing each message. Amazon SNS is publish/subscribe: a published message is pushed to every subscriber of the topic in a fan-out pattern. SNS is not a pull-based FIFO variant of SQS, since SQS offers its own FIFO queues, and running workflow steps in order and routing events with rules describe AWS Step Functions and Amazon EventBridge rather than SQS or SNS.",
     reference: {
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
@@ -165,11 +165,11 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "b", text: "Use Amazon SNS when a single message must be pushed to multiple subscribers at the same time." },
       { id: "c", text: "Amazon SNS stores messages in a queue until a single consumer deletes them." },
       { id: "d", text: "Amazon SQS automatically broadcasts every message to all of an account's queues." },
-      { id: "e", text: "Both services are used to run virtual servers." },
+      { id: "e", text: "Amazon SNS runs each message through ordered workflow steps with retries." },
     ],
     correct: ["a", "b"],
     explanation:
-      "SQS suits pulling and processing messages from a buffered queue, typically one consumer per message, while SNS suits pushing one message to many subscribers through a topic. SNS does not hold messages in a queue for a single consumer, SQS does not broadcast across queues, and neither service runs virtual servers.",
+      "SQS suits pulling and processing messages from a buffered queue, typically one consumer per message, while SNS suits pushing one message to many subscribers through a topic. SNS does not hold messages in a queue for a single consumer, SQS does not broadcast across queues, and running ordered workflow steps with retries is what AWS Step Functions does, not SNS.",
     reference: {
       label: "Differences between Amazon SQS, Amazon MQ, and Amazon SNS",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
@@ -278,13 +278,13 @@ export const domain3IntegrationMonitoring: Question[] = [
     stem: "On an Amazon EventBridge Custom Event Bus - Classic, what determines where an incoming event is delivered?",
     options: [
       { id: "a", text: "A rule that matches the event and routes it to targets." },
-      { id: "b", text: "A security group attached to the event." },
-      { id: "c", text: "A subnet route table in the VPC." },
+      { id: "b", text: "The event source, which names the target when it sends the event." },
+      { id: "c", text: "The resource-based policy attached to the event bus." },
       { id: "d", text: "The schema in the registry that defines the event's structure." },
     ],
     correct: ["a"],
     explanation:
-      "On a Custom Event Bus - Classic, rules that the bus owner writes match incoming events and route them to the targets you specify, which is how that bus connects sources to consumers. The newer Custom Event Bus, which AWS recommends for new applications, routes events to subscribers that consumers create instead, so rules are not the only routing model. Security groups and subnet route tables govern network traffic, and a schema only defines the structure of an event, so none of them decide event routing on the bus.",
+      "On a Custom Event Bus - Classic, rules that the bus owner writes match incoming events and route them to the targets you specify, which is how that bus connects sources to consumers. The newer Custom Event Bus, which AWS recommends for new applications, routes events to subscribers that consumers create instead, so rules are not the only routing model. The event source does not name a target, a resource-based policy on the bus grants other accounts permission to send events or manage rules and targets rather than routing events, and a schema only defines the structure of an event, so none of them decide event routing on the bus.",
     reference: {
       label: "What Is Amazon EventBridge?",
       url: "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
@@ -326,12 +326,12 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "a", text: "It models a workflow as a state machine made up of a series of steps, where each step is a state." },
       { id: "b", text: "It orchestrates microservices and distributed applications into workflows." },
       { id: "c", text: "It is a relational database that stores workflow records in tables." },
-      { id: "d", text: "It is a content delivery network that caches workflow output at edge locations." },
-      { id: "e", text: "It is a virtual private cloud feature for isolating workflow traffic in subnets." },
+      { id: "d", text: "It routes events from SaaS partners to targets through an event bus." },
+      { id: "e", text: "It is a message queue that holds each message until a consumer polls and deletes it." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Step Functions models workflows as state machines built from a series of steps, where each step is a state, and it orchestrates the components of distributed applications and microservices. It is not a database or a content delivery network, and it is not a virtual private cloud feature for isolating traffic in subnets.",
+      "Step Functions models workflows as state machines built from a series of steps, where each step is a state, and it orchestrates the components of distributed applications and microservices. It is not a database, routing SaaS partner events through an event bus is Amazon EventBridge, and a message queue that consumers poll is Amazon SQS.",
     reference: {
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
@@ -419,18 +419,18 @@ export const domain3IntegrationMonitoring: Question[] = [
     options: [
       { id: "a", text: "Trace requests as they travel across a distributed application." },
       { id: "b", text: "Generate a trace map of the components a request flows through to find bottlenecks and latency." },
-      { id: "c", text: "Store object data in buckets for static website hosting." },
-      { id: "d", text: "Manage IAM users, groups, and their permissions." },
-      { id: "e", text: "Provide a dedicated private network connection from on-premises to AWS." },
+      { id: "c", text: "Record API calls made in the account as an audit trail of user activity." },
+      { id: "d", text: "Record resource configuration changes and evaluate them against rules." },
+      { id: "e", text: "Scan EC2 instances and container images for software vulnerabilities." },
     ],
     correct: ["a", "b"],
     explanation:
-      "X-Ray traces requests across the services of a distributed application and builds a trace map of the components a request passes through, so you can pinpoint bottlenecks and latency. Object storage and static hosting are Amazon S3, managing users, groups, and permissions is AWS IAM, and a dedicated private link is AWS Direct Connect.",
+      "X-Ray traces requests across the services of a distributed application and builds a trace map of the components a request passes through, so you can pinpoint bottlenecks and latency. Recording API calls as an audit trail of user activity is AWS CloudTrail, recording configuration changes and evaluating them against rules is AWS Config, and scanning EC2 instances and container images for software vulnerabilities is Amazon Inspector.",
     reference: {
       label: "What is AWS X-Ray?",
       url: "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["X-Ray"],
   },
   {
@@ -490,11 +490,11 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "a", text: "Application-to-application (A2A) and application-to-person (A2P)" },
       { id: "b", text: "Email notifications and SMS text messages" },
       { id: "c", text: "Point-to-point message queuing and real-time data streaming" },
-      { id: "d", text: "Read replicas and Multi-AZ." },
+      { id: "d", text: "Push delivery and pull-based polling" },
     ],
     correct: ["a"],
     explanation:
-      "Amazon SNS supports application-to-application (A2A) messaging to endpoints such as SQS, Lambda, and HTTP/S, and application-to-person (A2P) messaging such as SMS, email, and mobile push notifications. Email notifications and SMS text messages both fall inside the A2P category rather than being the two categories, point-to-point message queuing and real-time data streaming describe patterns such as an Amazon SQS queue rather than SNS categories, and read replicas versus Multi-AZ are database concepts.",
+      "Amazon SNS supports application-to-application (A2A) messaging to endpoints such as SQS, Lambda, and HTTP/S, and application-to-person (A2P) messaging such as SMS, email, and mobile push notifications. Email notifications and SMS text messages both fall inside the A2P category rather than being the two categories, point-to-point message queuing and real-time data streaming describe patterns such as an Amazon SQS queue rather than SNS categories, and SNS pushes every message to subscribers, so push delivery versus pull-based polling is not how its categories are split.",
     reference: {
       label: "What is Amazon SNS?",
       url: "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
@@ -514,16 +514,16 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "b", text: "Amazon API Gateway: create, publish, and secure APIs that front backend services." },
       { id: "c", text: "Amazon SQS: deliver a single published message to many subscribers at once." },
       { id: "d", text: "Amazon SNS: store messages in a queue for one consumer to pull and delete." },
-      { id: "e", text: "Amazon EventBridge: run relational database queries." },
+      { id: "e", text: "Amazon EventBridge: trace requests across services to find latency." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Step Functions orchestrates workflows as state machines, and API Gateway creates, publishes, and secures APIs that front backends. The other pairings swap roles or are wrong: fan-out to many subscribers is SNS not SQS, a pull-based queue is SQS not SNS, and EventBridge is an event bus, not a database query engine.",
+      "Step Functions orchestrates workflows as state machines, and API Gateway creates, publishes, and secures APIs that front backends. The other pairings swap roles or are wrong: fan-out to many subscribers is SNS not SQS, a pull-based queue is SQS not SNS, and tracing requests to find latency is AWS X-Ray, while EventBridge is an event bus.",
     reference: {
       label: "What is Step Functions?",
       url: "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Step Functions", "API Gateway", "SQS", "SNS", "EventBridge"],
   },
   {
@@ -537,17 +537,17 @@ export const domain3IntegrationMonitoring: Question[] = [
       { id: "a", text: "Amazon SQS" },
       { id: "b", text: "Amazon SNS" },
       { id: "c", text: "Amazon EBS" },
-      { id: "d", text: "Amazon VPC" },
-      { id: "e", text: "AWS IAM" },
+      { id: "d", text: "AWS X-Ray" },
+      { id: "e", text: "AWS Config" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Amazon SQS (a managed queue) and Amazon SNS (publish/subscribe topics) decouple components by placing a queue or topic between them so they communicate through messages instead of direct calls. Amazon EBS is block storage, Amazon VPC is networking, and AWS IAM manages identity and access, none of which is a messaging or decoupling service.",
+      "Amazon SQS (a managed queue) and Amazon SNS (publish/subscribe topics) decouple components by placing a queue or topic between them so they communicate through messages instead of direct calls. Amazon EBS is block storage, AWS X-Ray traces requests through an application, and AWS Config records resource configurations, none of which is a messaging or decoupling service.",
     reference: {
       label: "What is Amazon Simple Queue Service?",
       url: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SQS", "SNS"],
   },
   {
@@ -560,17 +560,17 @@ export const domain3IntegrationMonitoring: Question[] = [
     options: [
       { id: "a", text: "Amazon Simple Queue Service (Amazon SQS)" },
       { id: "b", text: "Amazon EC2 Auto Scaling" },
-      { id: "c", text: "AWS Identity and Access Management (IAM)" },
+      { id: "c", text: "Elastic Load Balancing (Application Load Balancer)" },
       { id: "d", text: "Amazon CloudFront" },
     ],
     correct: ["a"],
     explanation:
-      "AWS recommends Amazon SQS to integrate and decouple distributed systems: the queue sits between producer and consumer so a slowdown or failure in one does not directly break the other. Auto Scaling manages instance capacity, IAM manages access, and CloudFront is a content delivery network, none of which is a decoupling queue.",
+      "AWS recommends Amazon SQS to integrate and decouple distributed systems: the queue sits between producer and consumer so a slowdown or failure in one does not directly break the other. Auto Scaling manages instance capacity, Elastic Load Balancing distributes incoming traffic across targets rather than holding messages in a queue, and CloudFront is a content delivery network, none of which is a decoupling queue.",
     reference: {
       label: "Reliability Pillar: implement loosely coupled dependencies",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_prevent_interaction_failure_loosely_coupled_system.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["SQS"],
   },
 ];

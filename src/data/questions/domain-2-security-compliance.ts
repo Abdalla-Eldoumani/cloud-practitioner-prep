@@ -59,17 +59,17 @@ export const domain2: Question[] = [
       { id: "a", text: "Enable multi-factor authentication on the root user." },
       { id: "b", text: "Use the root user for all daily administrative work." },
       { id: "c", text: "Grant IAM identities only the permissions they need for their tasks." },
-      { id: "d", text: "Embed long-term access keys in application source code." },
-      { id: "e", text: "Share one IAM user across the whole team." },
+      { id: "d", text: "Create access keys for the root user and rotate them regularly." },
+      { id: "e", text: "Give every developer an IAM user with permanent access keys." },
     ],
     correct: ["a", "c"],
     explanation:
-      "Protecting the root user with MFA and applying least privilege are core best practices. The root user should not be used for daily work, access keys should never be hard-coded (use roles), and credentials should not be shared across people.",
+      "Protecting the root user with MFA and applying least privilege are core best practices. The root user should not be used for daily work, AWS recommends not creating access keys for the root user at all rather than creating them and planning to rotate them, and human users should use federation with temporary credentials instead of IAM users with permanent access keys.",
     reference: {
       label: "Security best practices in IAM",
       url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["IAM"],
   },
 ];

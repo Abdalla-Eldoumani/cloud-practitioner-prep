@@ -65,12 +65,12 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "Consolidated billing applies a fixed enterprise discount to all usage" },
       { id: "b", text: "Combined usage across accounts reaches volume pricing tiers sooner" },
-      { id: "c", text: "Member accounts stop being billed once they join an organization" },
+      { id: "c", text: "Each member account receives its own separate volume discount" },
       { id: "d", text: "AWS waives data transfer charges inside an organization" },
     ],
     correct: ["b"],
     explanation:
-      "Consolidated billing combines usage across all accounts in the organization, which shares volume pricing discounts. Aggregated usage reaches tiered pricing thresholds that individual standalone accounts would not, lowering the blended rate. There is no fixed enterprise discount, member accounts are still billed (their usage rolls up), and data transfer is not waived.",
+      "Consolidated billing combines usage across all accounts in the organization, which shares volume pricing discounts. Aggregated usage reaches tiered pricing thresholds that individual standalone accounts would not, lowering the blended rate. There is no fixed enterprise discount, each member account does not get its own separate volume discount because the usage is combined, and data transfer is not waived.",
     reference: {
       label: "Consolidating billing for AWS Organizations (Combined usage)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
@@ -204,17 +204,17 @@ export const domain4CostTools: Question[] = [
       { id: "a", text: "Notifications can fire on actual spend after it accrues" },
       { id: "b", text: "Notifications can fire on forecasted spend before it accrues" },
       { id: "c", text: "Notifications guarantee the threshold can never be exceeded" },
-      { id: "d", text: "Notifications are limited to once per calendar year" },
-      { id: "e", text: "Notifications can only be sent by physical mail" },
+      { id: "d", text: "Notifications go only to the root user's email address" },
+      { id: "e", text: "Notifications are delivered only as CloudWatch alarms" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Budgets can notify you on both actual spend (after accruing) and forecasted spend (before accruing). Notifications warn you; they do not prevent a threshold from being exceeded, are not capped to once a year, and are delivered by email or Amazon SNS, not physical mail.",
+      "AWS Budgets can notify you on both actual spend (after accruing) and forecasted spend (before accruing). Notifications warn you; they do not prevent a threshold from being exceeded. They can be sent to an email address, an Amazon SNS topic, or both, so they are not limited to the root user's email and are not delivered as CloudWatch alarms.",
     reference: {
       label: "Managing your costs with AWS Budgets",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-10",
@@ -456,12 +456,12 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "Amazon Athena, Amazon Redshift, and Amazon Quick" },
       { id: "b", text: "Amazon SQS, Amazon SNS, and AWS Lambda" },
-      { id: "c", text: "Amazon EC2, Amazon EBS, and Elastic Load Balancing" },
-      { id: "d", text: "AWS IAM, AWS Organizations, and AWS Control Tower" },
+      { id: "c", text: "Amazon DynamoDB, Amazon Neptune, and Amazon CloudWatch" },
+      { id: "d", text: "Amazon RDS, Amazon ElastiCache, and Amazon OpenSearch Service" },
     ],
     correct: ["a"],
     explanation:
-      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon Quick (to visualize). Amazon SQS, Amazon SNS, and AWS Lambda are messaging and compute, Amazon EC2, Amazon EBS, and Elastic Load Balancing are compute, storage, and networking, and AWS IAM, AWS Organizations, and AWS Control Tower are account governance, none of which are the CUR analytics integrations.",
+      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon Quick (to visualize). Amazon SQS, Amazon SNS, and AWS Lambda are messaging and compute, Amazon DynamoDB, Amazon Neptune, and Amazon CloudWatch are databases and monitoring, and Amazon RDS, Amazon ElastiCache, and Amazon OpenSearch Service are a database, a cache, and a search service, none of which are the CUR integrations AWS lists.",
     reference: {
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
@@ -533,12 +533,12 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "Cost Explorer is an interactive visual tool; the Cost and Usage Report delivers detailed line items to Amazon S3" },
       { id: "b", text: "Cost Explorer delivers raw line items to Amazon S3, while the Cost and Usage Report is an interactive console chart" },
-      { id: "c", text: "Both tools only estimate the cost of future workloads before deployment" },
-      { id: "d", text: "Both tools exist solely to send threshold alerts by email" },
+      { id: "c", text: "Cost Explorer sends threshold alerts; the Cost and Usage Report estimates future workload costs" },
+      { id: "d", text: "Cost Explorer combines accounts onto one bill; the Cost and Usage Report applies volume discounts" },
     ],
     correct: ["a"],
     explanation:
-      "Cost Explorer is the interactive, visual tool for exploring and forecasting spend; the Cost and Usage Report is the most comprehensive line-item dataset, delivered to an S3 bucket. The roles are not reversed: Cost Explorer is not the one delivering raw line items to S3 while the Cost and Usage Report is the console chart. Neither tool exists solely to send threshold alerts by email (that is Budgets), and neither only estimates future workloads (that is the Pricing Calculator).",
+      "Cost Explorer is the interactive, visual tool for exploring and forecasting spend; the Cost and Usage Report is the most comprehensive line-item dataset, delivered to an S3 bucket. The roles are not reversed: Cost Explorer is not the one delivering raw line items to S3 while the Cost and Usage Report is the console chart. Sending threshold alerts is AWS Budgets and estimating future workload costs is the Pricing Calculator, while combining accounts onto one bill and sharing volume discounts is consolidated billing, not either tool.",
     reference: {
       label: "Analyzing your costs and usage with AWS Cost Explorer",
       url: "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
@@ -554,18 +554,18 @@ export const domain4CostTools: Question[] = [
     stem: "An administrator needs to download a past invoice, review the current month's charges, and update the account's payment method. Which AWS console is the home for these tasks?",
     options: [
       { id: "a", text: "The AWS Billing and Cost Management console" },
-      { id: "b", text: "The Amazon EC2 console" },
+      { id: "b", text: "The AWS Organizations console" },
       { id: "c", text: "The AWS IAM console" },
       { id: "d", text: "The Amazon CloudWatch console" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Billing and Cost Management provides a suite of features to set up billing, retrieve and pay invoices, and analyze and organize costs, including the Bills page and payment settings. The Amazon EC2 console manages compute, the AWS IAM console manages identity, and the Amazon CloudWatch console handles monitoring, none of which is the home for billing and invoices.",
+      "AWS Billing and Cost Management provides a suite of features to set up billing, retrieve and pay invoices, and analyze and organize costs, including the Bills page and payment settings. The AWS Organizations console manages accounts and organizational units, the AWS IAM console manages identity, and the Amazon CloudWatch console handles monitoring, none of which is the home for billing and invoices.",
     reference: {
       label: "What is AWS Billing and Cost Management?",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-31",
@@ -577,18 +577,18 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "View and pay invoices and review monthly charges on the Bills page" },
       { id: "b", text: "Set up budgets to track and control costs" },
-      { id: "c", text: "Launch and configure Amazon EC2 instances" },
+      { id: "c", text: "Turn off Cost Explorer for the account" },
       { id: "d", text: "Create and manage IAM users and groups" },
-      { id: "e", text: "Define security group rules for a VPC" },
+      { id: "e", text: "Request a service quota increase" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Billing and Cost Management lets you retrieve and pay invoices (the Bills page) and set custom budgets to track and control costs, among other cost features. Launching EC2 instances, managing IAM identities, and configuring security groups are done in their own service consoles, not in Billing and Cost Management.",
+      "AWS Billing and Cost Management lets you retrieve and pay invoices (the Bills page) and set custom budgets to track and control costs, among other cost features. Cost Explorer cannot be turned off once it is enabled, a quota increase is requested through Service Quotas, and IAM users and groups are managed in the IAM console, not in Billing and Cost Management.",
     reference: {
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-25",
@@ -600,18 +600,18 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "AWS Cost Explorer" },
       { id: "b", text: "AWS Budgets" },
-      { id: "c", text: "Amazon Route 53 hosted zones" },
-      { id: "d", text: "Amazon VPC subnets" },
-      { id: "e", text: "AWS Lambda functions" },
+      { id: "c", text: "AWS Trusted Advisor" },
+      { id: "d", text: "AWS Service Quotas" },
+      { id: "e", text: "AWS Health Dashboard" },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS Billing and Cost Management groups cost tools such as Cost Explorer (cost analysis) and Budgets (budgeting and planning) alongside the Bills page, cost allocation tags, and the Pricing Calculator. Route 53 hosted zones, VPC subnets, and Lambda functions are networking and compute resources managed in their own services, not billing features.",
+      "AWS Billing and Cost Management groups cost tools such as Cost Explorer (cost analysis) and Budgets (budgeting and planning) alongside the Bills page, cost allocation tags, and the Pricing Calculator. AWS Trusted Advisor is part of AWS Support, Service Quotas manages service limits, and the AWS Health Dashboard reports service events, so none of them is a Billing and Cost Management feature.",
     reference: {
       label: "What is AWS Billing and Cost Management? (Features)",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d4-costtools-26",
@@ -760,16 +760,16 @@ export const domain4CostTools: Question[] = [
       { id: "b", text: "Consolidated billing is offered at no additional cost." },
       { id: "c", text: "Consolidated billing charges a percentage fee on every member account's bill." },
       { id: "d", text: "Each account must still pay its own bill with a separate payment method." },
-      { id: "e", text: "Combining accounts removes all per-service charges." },
+      { id: "e", text: "Volume discounts apply only to the single largest account." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Consolidated billing combines usage across accounts so the organization can share volume, Reserved Instance, and Savings Plans discounts, and it is offered at no additional cost. It does not add a percentage fee, the management account pays a single combined bill rather than each account paying separately, and per-service charges still apply.",
+      "Consolidated billing combines usage across accounts so the organization can share volume, Reserved Instance, and Savings Plans discounts, and it is offered at no additional cost. It does not add a percentage fee, the management account pays a single combined bill rather than each account paying separately, and volume discounts come from the combined usage of all accounts rather than applying only to the largest one.",
     reference: {
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
   {
@@ -782,17 +782,17 @@ export const domain4CostTools: Question[] = [
     options: [
       { id: "a", text: "The management account" },
       { id: "b", text: "Each member account pays its own charges" },
-      { id: "c", text: "A randomly selected member account each month" },
-      { id: "d", text: "AWS Support on the customer's behalf" },
+      { id: "c", text: "A delegated administrator member account" },
+      { id: "d", text: "Each organizational unit pays for its accounts" },
     ],
     correct: ["a"],
     explanation:
-      "Every organization has a management account that pays the charges of all the member accounts under consolidated billing. Member accounts do not each pay separately under this model, the payer is not chosen at random, and AWS Support does not pay customer charges.",
+      "Every organization has a management account that pays the charges of all the member accounts under consolidated billing. Member accounts do not each pay separately under this model, a delegated administrator is a member account given administrative permissions for a specific AWS service rather than the payer, and organizational units group accounts for management but do not pay charges.",
     reference: {
       label: "Consolidating billing for AWS Organizations",
       url: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["AWS Organizations"],
   },
 ];

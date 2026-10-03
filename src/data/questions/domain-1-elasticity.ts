@@ -18,13 +18,13 @@ export const domain1Elasticity: Question[] = [
     stem: "A retailer's website handles light traffic most of the month but sees a large spike during a one-day sale, then quiets down again. Which cloud property lets the infrastructure add capacity as the spike arrives and give it back automatically when traffic falls?",
     options: [
       { id: "a", text: "Elasticity" },
-      { id: "b", text: "A fixed reservation of peak capacity for the whole year" },
-      { id: "c", text: "Manual hardware procurement" },
-      { id: "d", text: "A flat, unchanging server count" },
+      { id: "b", text: "High availability" },
+      { id: "c", text: "Fault tolerance" },
+      { id: "d", text: "Economies of scale" },
     ],
     correct: ["a"],
     explanation:
-      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so capacity grows for the spike and shrinks afterward. Reserving peak capacity year-round wastes money on idle resources, manual procurement is slow, and a flat server count cannot follow demand.",
+      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so capacity grows for the spike and shrinks afterward. High availability and fault tolerance keep a workload running through failures rather than matching capacity to demand, and economies of scale is the advantage that lowers pay-as-you-go prices because AWS aggregates usage from many customers.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -40,18 +40,18 @@ export const domain1Elasticity: Question[] = [
     stem: "A development team wants to try a new idea without waiting weeks to buy and rack servers. They provision the resources they need in minutes, test, and tear them down if the idea does not work. Which benefit of cloud computing does this describe?",
     options: [
       { id: "a", text: "Agility" },
-      { id: "b", text: "A long capital procurement cycle" },
-      { id: "c", text: "Vendor lock-in" },
-      { id: "d", text: "Mandatory three-year commitments" },
+      { id: "b", text: "Go global in minutes" },
+      { id: "c", text: "Benefit from massive economies of scale" },
+      { id: "d", text: "High availability" },
     ],
     correct: ["a"],
     explanation:
-      "Agility is the increase in speed that comes from making new IT resources available in minutes rather than weeks, which lowers the cost and time to experiment. A long procurement cycle is the on-premises problem the cloud removes, and lock-in and forced long commitments are not what agility means.",
+      "Agility is the increase in speed that comes from making new IT resources available in minutes rather than weeks, which lowers the cost and time to experiment. Going global in minutes is about deploying in multiple Regions for lower latency, massive economies of scale is about lower pay-as-you-go prices, and high availability is about staying up through failures, so none of them is the speed to experiment described here.",
     reference: {
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-03",
@@ -59,16 +59,16 @@ export const domain1Elasticity: Question[] = [
     type: "single",
     topic: "Elasticity vs scalability",
     difficulty: "hard",
-    stem: "An exam candidate is told that a system can be designed to grow to a much larger size, yet still cannot shed capacity on its own when demand drops at night. Which single property does that system clearly have, and which does it lack?",
+    stem: "A team can add servers by hand when traffic grows, but the extra capacity stays running after demand drops at night. Based on how the AWS Well-Architected Framework describes elasticity, what is the system missing?",
     options: [
-      { id: "a", text: "It has scalability but lacks elasticity, as it cannot shed capacity automatically." },
-      { id: "b", text: "It has elasticity but lacks scalability, because scalability is only about shrinking." },
-      { id: "c", text: "It has both, since the terms mean exactly the same thing." },
-      { id: "d", text: "It has neither, because a system that can grow is by definition elastic." },
+      { id: "a", text: "Adding and removing resources automatically to match current demand" },
+      { id: "b", text: "A larger instance type that can absorb any spike in traffic" },
+      { id: "c", text: "A load balancer that spreads requests across the servers it already has" },
+      { id: "d", text: "A Multi-AZ deployment of the existing servers" },
     ],
     correct: ["a"],
     explanation:
-      "In the AWS Well-Architected Framework, a scalable workload adapts to changes in demand, and elasticity is adding or removing resources automatically so they closely match the current demand. A system that can grow but not automatically shrink is scalable yet not fully elastic; the inverted claim that scalability is only about shrinking misstates scalability, so the terms are not synonyms.",
+      "The Well-Architected Framework describes a scalable workload as providing elasticity to add or remove resources automatically so they closely match the current demand, and this system adds capacity by hand and never removes it. A larger instance type is still a fixed size chosen by hand, a load balancer spreads requests across the servers it already has without changing how many there are, and a Multi-AZ deployment improves availability rather than matching capacity to demand.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -85,17 +85,17 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Horizontal scaling, or scaling out" },
       { id: "b", text: "Vertical scaling, or scaling up" },
-      { id: "c", text: "Reserved scaling" },
-      { id: "d", text: "Manual failover" },
+      { id: "c", text: "Load balancing" },
+      { id: "d", text: "Scaling in" },
     ],
     correct: ["a"],
     explanation:
-      "Adding more instances to spread the load is horizontal scaling, also called scaling out. Vertical scaling means changing one instance to a larger type, reserved scaling is not a term, and manual failover is a recovery action rather than a way to add capacity.",
+      "Adding more instances to spread the load is horizontal scaling, also called scaling out. Vertical scaling means changing one instance to a larger type, load balancing only distributes traffic across the instances that already exist rather than adding capacity, and scaling in is the opposite direction, removing instances as demand falls.",
     reference: {
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["EC2"],
   },
   {
@@ -136,17 +136,17 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Stop guessing capacity" },
       { id: "b", text: "Trade variable expense for fixed expense" },
-      { id: "c", text: "Spend more time maintaining data centers" },
-      { id: "d", text: "Commit to fixed capacity for several years" },
+      { id: "c", text: "Stop spending money running and maintaining data centers" },
+      { id: "d", text: "Benefit from massive economies of scale" },
     ],
     correct: ["a"],
     explanation:
-      "Stop guessing capacity means you can access as much or as little capacity as you need and scale up and down with only a few minutes notice, ending the cycle of idle or insufficient resources. Trading variable expense for fixed expense reverses the actual cost shift, spending more time maintaining data centers is the on-premises burden the cloud removes, and committing to fixed capacity for several years is the rigid up-front sizing the cloud lets you avoid.",
+      "Stop guessing capacity means you can access as much or as little capacity as you need and scale up and down with only a few minutes notice, ending the cycle of idle or insufficient resources. Trading variable expense for fixed expense reverses the actual cost shift, stop spending money running and maintaining data centers is about leaving the racking and powering of servers to AWS, and massive economies of scale is about lower pay-as-you-go prices; neither of those two addresses capacity guesswork.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-09",
@@ -154,17 +154,17 @@ export const domain1Elasticity: Question[] = [
     type: "multi",
     topic: "Elasticity vs scalability",
     difficulty: "hard",
-    stem: "A study group is sorting out elasticity and scalability. Which TWO statements correctly describe the difference? (Choose two.)",
+    stem: "A study group is summarizing how the AWS Well-Architected Framework describes elasticity for a scalable workload. Which TWO statements are accurate? (Choose two.)",
     options: [
-      { id: "a", text: "Scalability is a system's ability to adapt to greater demand." },
-      { id: "b", text: "Elasticity is acquiring resources when needed and releasing them when not." },
-      { id: "c", text: "Elasticity and scalability are interchangeable terms with identical meaning." },
-      { id: "d", text: "Scalability means automatically removing capacity the instant demand drops." },
-      { id: "e", text: "Elasticity refers only to making a single server larger." },
+      { id: "a", text: "Resources are added automatically as demand rises." },
+      { id: "b", text: "Resources are removed automatically as demand falls." },
+      { id: "c", text: "Elasticity means moving to a larger instance type by hand." },
+      { id: "d", text: "Elasticity means keeping a standby copy in a second Region." },
+      { id: "e", text: "Elasticity means spreading requests evenly across a fixed fleet." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Scalability is a workload's ability to adapt to changes in demand, and elasticity is adding or removing resources automatically so they closely match the current demand, so capacity tracks demand in both directions. The terms are not interchangeable; the claim that scalability means automatically removing capacity the instant demand drops attributes the elastic behavior to scalability, and elasticity is not limited to resizing one server.",
+      "AWS describes a scalable workload as providing elasticity to add or remove resources automatically so that they closely match the current demand, so resources are both added as demand rises and removed as it falls. Moving to a larger instance type by hand is a manual resize, keeping a standby copy in a second Region is a disaster recovery approach, and spreading requests across a fixed fleet is load balancing, none of which changes capacity with demand.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -180,13 +180,13 @@ export const domain1Elasticity: Question[] = [
     stem: "A finance lead asks how letting capacity shrink at night actually saves money on EC2. What is the correct explanation?",
     options: [
       { id: "a", text: "You pay for the instances you use, so fewer instances cost less." },
-      { id: "b", text: "AWS refunds the original purchase price of the physical servers." },
-      { id: "c", text: "Shrinking capacity converts the bill into a fixed annual fee." },
+      { id: "b", text: "Removing instances lowers the hourly rate of the instances still running." },
+      { id: "c", text: "AWS applies an automatic overnight discount to running instances." },
       { id: "d", text: "Instances that are running but idle are always free." },
     ],
     correct: ["a"],
     explanation:
-      "Because you pay for the EC2 instances you use, Auto Scaling saves money by launching instances when they are needed and terminating them when they are not. AWS does not refund the original purchase price of physical servers you never bought, shrinking capacity does not convert the bill into a fixed annual fee, and running instances are billed whether or not they are idle.",
+      "Because you pay for the EC2 instances you use, Auto Scaling saves money by launching instances when they are needed and terminating them when they are not. On-Demand pricing is per instance-hour consumed for each instance, so removing some instances does not lower the hourly rate of the ones still running, there is no automatic overnight discount, and running instances are billed whether or not they are idle.",
     reference: {
       label: "Auto Scaling benefits: better cost management",
       url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html",
@@ -226,18 +226,18 @@ export const domain1Elasticity: Question[] = [
     stem: "The AWS Well-Architected reliability guidance advises replacing one large resource with multiple smaller resources so that a single failure affects less of the workload. Which design principle is this?",
     options: [
       { id: "a", text: "Scale horizontally to increase aggregate workload availability" },
-      { id: "b", text: "Buy the largest possible single server" },
-      { id: "c", text: "Avoid automation to keep changes manual" },
-      { id: "d", text: "Guess capacity in advance and over-provision" },
+      { id: "b", text: "Automatically recover from failure" },
+      { id: "c", text: "Manage change through automation" },
+      { id: "d", text: "Test recovery procedures by simulating failure scenarios" },
     ],
     correct: ["a"],
     explanation:
-      "Scaling horizontally to increase aggregate workload availability means replacing one large resource with multiple small resources to reduce the impact of a single failure and to avoid a common point of failure. A single large server concentrates risk, avoiding automation contradicts the framework, and guessing capacity is the problem the cloud removes.",
+      "Scaling horizontally to increase aggregate workload availability means replacing one large resource with multiple small resources to reduce the impact of a single failure and to avoid a common point of failure. Automatically recover from failure is about running automation when a KPI threshold is breached, manage change through automation is about making infrastructure changes with automation, and test recovery procedures is about simulating failures to validate recovery; none of them describes swapping one large resource for many small ones.",
     reference: {
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-17",
@@ -248,13 +248,13 @@ export const domain1Elasticity: Question[] = [
     stem: "A startup credits the cloud for letting it go from an idea to a running prototype far faster than buying hardware would allow, and for making failed experiments cheap to throw away. Which pair of cloud characteristics is most directly at work?",
     options: [
       { id: "a", text: "Agility and the low cost of experimentation" },
-      { id: "b", text: "Long lead times and high sunk costs" },
-      { id: "c", text: "Fixed capital expense and slow procurement" },
-      { id: "d", text: "Mandatory multi-year contracts" },
+      { id: "b", text: "Global reach and lower latency" },
+      { id: "c", text: "High availability and fault tolerance" },
+      { id: "d", text: "Reliability and automatic recovery" },
     ],
     correct: ["a"],
     explanation:
-      "Agility comes from making resources available in minutes, which dramatically lowers the cost and time to experiment and develop, so failed tries are cheap to discard. Long lead times, high sunk costs, slow procurement, and forced long contracts are the on-premises frictions the cloud removes.",
+      "Agility comes from making resources available in minutes, which dramatically lowers the cost and time to experiment and develop, so failed tries are cheap to discard. Global reach and lower latency come from deploying in multiple Regions, while high availability, fault tolerance, reliability, and automatic recovery keep a workload running through failures; none of them is about the speed and low cost of trying new ideas.",
     reference: {
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -270,13 +270,13 @@ export const domain1Elasticity: Question[] = [
     stem: "A team chooses Amazon S3 for object storage specifically so they never have to provision or manage storage capacity as their data grows. Which property of the service are they relying on?",
     options: [
       { id: "a", text: "Capacity scales with the data, so the customer never provisions storage." },
-      { id: "b", text: "The customer must pre-purchase a fixed number of disks before storing data." },
-      { id: "c", text: "Storage capacity is capped and cannot grow once set." },
-      { id: "d", text: "The customer must manually add storage nodes as data grows." },
+      { id: "b", text: "Each bucket is pre-sized to a storage quota the customer sets at creation." },
+      { id: "c", text: "S3 Intelligent-Tiering moves objects between tiers to free up bucket space." },
+      { id: "d", text: "The customer's EBS volumes grow automatically to hold the objects." },
     ],
     correct: ["a"],
     explanation:
-      "Amazon S3 is an elastic, fully managed object store, so capacity scales with the data and the customer does not provision or manage storage servers. Pre-purchasing a fixed number of disks before storing data, a capped capacity that cannot grow, and manually adding storage nodes all describe the manual, capacity-planned model that elastic managed services are designed to remove.",
+      "Amazon S3 is an elastic, fully managed object store, so capacity scales with the data and the customer does not provision or manage storage servers. S3 has no maximum bucket size, so there is no storage quota to set at creation; S3 Intelligent-Tiering moves objects between access tiers to lower storage cost, not to free up space; and S3 objects are not held on the customer's EBS volumes.",
     reference: {
       label: "What is Amazon S3?",
       url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
@@ -294,18 +294,18 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Automatically recover from failure" },
       { id: "b", text: "Stop guessing capacity" },
-      { id: "c", text: "Always provision for the maximum imaginable load and leave it running" },
-      { id: "d", text: "Make all infrastructure changes manually" },
-      { id: "e", text: "Avoid testing recovery so production is never disturbed" },
+      { id: "c", text: "Implement a strong identity foundation" },
+      { id: "d", text: "Adopt a consumption model" },
+      { id: "e", text: "Use serverless architectures" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Automatically recover from failure and stop guessing capacity are two of the reliability design principles, alongside testing recovery procedures, scaling horizontally, and managing change through automation. Permanently over-provisioning, making changes by hand, and never testing recovery all run counter to the framework.",
+      "Automatically recover from failure and stop guessing capacity are two of the reliability design principles, alongside testing recovery procedures, scaling horizontally, and managing change through automation. Implement a strong identity foundation is a security design principle, adopt a consumption model is a cost optimization design principle, and use serverless architectures is a performance efficiency design principle.",
     reference: {
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-21",
@@ -316,13 +316,13 @@ export const domain1Elasticity: Question[] = [
     stem: "Which phrase best completes the idea: with an elastic cloud architecture, capacity should follow ____.",
     options: [
       { id: "a", text: "actual demand, growing and shrinking as demand changes" },
-      { id: "b", text: "a fixed schedule set once and never changed" },
-      { id: "c", text: "the largest peak ever seen, held permanently" },
-      { id: "d", text: "whatever hardware was bought up front, regardless of demand" },
+      { id: "b", text: "the monthly amount set in AWS Budgets" },
+      { id: "c", text: "the largest instance type available in the Region" },
+      { id: "d", text: "the number of Reserved Instances the account bought in advance" },
     ],
     correct: ["a"],
     explanation:
-      "Elasticity means capacity follows actual demand, expanding as demand rises and contracting as it falls, which avoids both idle resources and shortfalls. A fixed schedule, a permanently held peak, or a fixed up-front purchase all ignore real demand and defeat the purpose of elasticity.",
+      "Elasticity means capacity follows actual demand, expanding as demand rises and contracting as it falls, which avoids both idle resources and shortfalls. AWS Budgets tracks costs and usage against an amount you set rather than following demand, the largest instance type is a fixed size chosen by hand, and Reserved Instances are a pricing commitment bought in advance, so none of them makes capacity follow real demand.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -339,17 +339,17 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Vertical scaling keeps a single point of failure; horizontal scaling avoids it." },
       { id: "b", text: "Horizontal scaling grows one resource, while vertical scaling adds more resources." },
-      { id: "c", text: "Both approaches are identical and neither affects single points of failure." },
-      { id: "d", text: "Vertical scaling always provides higher availability than horizontal scaling." },
+      { id: "c", text: "Horizontal scaling avoids that failure point but cannot be automated." },
+      { id: "d", text: "Both keep a single point of failure unless the workload spans two Regions." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This swaps the definitions; horizontal scaling adds more resources and vertical scaling enlarges one resource, not the reverse.",
-      c: "The two approaches are not identical, and resource count does affect single points of failure, so this is wrong.",
-      d: "A single large resource concentrates risk; vertical scaling does not always provide higher availability than horizontal.",
+      c: "Horizontal scaling can be automated; an Auto Scaling group adds and removes instances for you, so the claim that it cannot be automated is wrong.",
+      d: "Spreading requests across multiple smaller resources already avoids a common point of failure without a second Region; only vertical scaling keeps one.",
     },
     explanation:
-      "Vertical scaling enlarges one resource and leaves it as a single point of failure, while horizontal scaling adds multiple smaller resources, which AWS recommends to reduce the impact of a single failure on the workload. Swapping the two definitions is wrong, claiming both approaches are identical and that neither affects single points of failure ignores that distinction, and claiming vertical scaling always provides higher availability wrongly treats a single large machine as more available.",
+      "Vertical scaling enlarges one resource and leaves it as a single point of failure, while horizontal scaling adds multiple smaller resources, which AWS recommends to reduce the impact of a single failure on the workload. Swapping the two definitions is wrong, horizontal scaling can be automated rather than being a manual-only approach, and spreading requests across multiple resources avoids a common point of failure without the workload needing to span two Regions.",
     reference: {
       label: "Reliability Pillar: scale horizontally to increase aggregate workload availability",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
@@ -365,13 +365,13 @@ export const domain1Elasticity: Question[] = [
     stem: "At a concepts level, which statement best captures what reliability means for a workload in the AWS Cloud?",
     options: [
       { id: "a", text: "The workload can recover from failures and continue to meet demand." },
-      { id: "b", text: "The workload is guaranteed never to experience any component failure at all." },
+      { id: "b", text: "The workload responds to every request faster than a set latency target." },
       { id: "c", text: "The workload runs on the single most powerful server available." },
-      { id: "d", text: "The workload is only reliable if every change is made manually." },
+      { id: "d", text: "The workload is deployed in more than one AWS Region." },
     ],
     correct: ["a"],
     explanation:
-      "Reliability is about a workload recovering from failure and continuing to meet demand, which AWS supports through principles like automatically recovering from failure and scaling horizontally. No system can promise zero component failures, a single powerful server is a single point of failure, and AWS favors automation over manual change.",
+      "Reliability is about a workload recovering from failure and continuing to meet demand, which AWS supports through principles like automatically recovering from failure and scaling horizontally. Meeting a latency target is a performance requirement, the concern of the performance efficiency pillar, a single powerful server is a single point of failure, and being deployed in more than one AWS Region is one possible design choice rather than what reliability means.",
     reference: {
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
@@ -384,16 +384,16 @@ export const domain1Elasticity: Question[] = [
     type: "single",
     topic: "Elasticity vs scalability",
     difficulty: "medium",
-    stem: "A colleague says, since our system is scalable, it must also be elastic. Why is that reasoning not necessarily correct?",
+    stem: "A colleague says the workload is elastic because an engineer can add servers through the console whenever traffic grows. Why does that not match how AWS describes elasticity?",
     options: [
-      { id: "a", text: "Elasticity also requires releasing resources automatically as demand falls." },
-      { id: "b", text: "Elasticity is a weaker property that every scalable system already has by default." },
-      { id: "c", text: "Scalability and elasticity are unrelated and never appear together." },
-      { id: "d", text: "A scalable system can never be elastic." },
+      { id: "a", text: "Elasticity adds and removes resources automatically to match current demand." },
+      { id: "b", text: "Elasticity applies only to storage services, not to compute capacity." },
+      { id: "c", text: "Elasticity requires running the workload in at least two AWS Regions." },
+      { id: "d", text: "Elasticity requires buying Reserved Instances to cover the expected peak demand." },
     ],
     correct: ["a"],
     explanation:
-      "Scalability is the ability to adapt to changes in demand, while elasticity means adding or removing resources automatically so they closely match the current demand, so being able to grow does not by itself make a system elastic. Elasticity is not a default freebie every scalable system already has, the two are not unrelated terms that never appear together, and a scalable system certainly can also be elastic.",
+      "The Well-Architected Framework describes elasticity as adding or removing resources automatically so they closely match the current demand, so adding servers by hand through the console is not elastic, and nothing removes them when demand falls. Elasticity is not limited to storage, it does not require running in two AWS Regions, and buying Reserved Instances for the expected peak is a pricing commitment rather than a way to match capacity to demand.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -409,18 +409,18 @@ export const domain1Elasticity: Question[] = [
     stem: "A company wants to deploy its application closer to customers in several parts of the world to lower latency, doing so quickly and at minimal cost. Which cloud advantage describes this?",
     options: [
       { id: "a", text: "Go global in minutes" },
-      { id: "b", text: "Build a new physical data center on each continent first" },
-      { id: "c", text: "Restrict the application to a single location permanently" },
+      { id: "b", text: "Increase speed and agility" },
+      { id: "c", text: "Benefit from massive economies of scale" },
       { id: "d", text: "Trade variable expense for fixed expense" },
     ],
     correct: ["a"],
     explanation:
-      "Go global in minutes means you can deploy an application in multiple Regions around the world with a few clicks, providing lower latency and a better experience at minimal cost. Building a new physical data center on each continent first, staying in one location permanently, and trading variable expense for fixed expense are not what this advantage describes.",
+      "Go global in minutes means you can deploy an application in multiple Regions around the world with a few clicks, providing lower latency and a better experience at minimal cost. Increase speed and agility is about making new resources available in minutes rather than weeks, massive economies of scale is about lower pay-as-you-go prices, and trading variable expense for fixed expense reverses the real cost advantage; none of them is about deploying closer to customers.",
     reference: {
       label: "Six advantages of cloud computing: go global in minutes",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
   },
   {
     id: "d1-elast-29",
@@ -431,13 +431,13 @@ export const domain1Elasticity: Question[] = [
     stem: "AWS guidance says that in the cloud you can monitor demand and workload utilization and automate the addition or removal of resources to keep capacity at the right level. What outcome does following this advice avoid?",
     options: [
       { id: "a", text: "Both over-provisioning and under-provisioning" },
-      { id: "b", text: "Any need to ever release resources." },
-      { id: "c", text: "Any charges for the instances that are running" },
-      { id: "d", text: "The use of more than one Availability Zone." },
+      { id: "b", text: "Only over-provisioning, while saturation remains a risk" },
+      { id: "c", text: "Single points of failure in the workload" },
+      { id: "d", text: "Only under-provisioning, while idle capacity remains" },
     ],
     correct: ["a"],
     explanation:
-      "Monitoring demand and automating the addition or removal of resources keeps capacity at the optimal level, avoiding both over-provisioning and under-provisioning that leads to resource saturation. You still pay for the instances that are running, and the advice neither removes the need to release resources nor restricts the use of multiple Availability Zones.",
+      "Monitoring demand and automating the addition or removal of resources keeps capacity at the optimal level, avoiding both over-provisioning and under-provisioning that leads to resource saturation, so neither idle capacity nor saturation remains as a risk. Single points of failure are addressed by a different principle, scaling horizontally, rather than by matching capacity to demand.",
     reference: {
       label: "Reliability Pillar: stop guessing capacity",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
@@ -454,12 +454,12 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Elasticity, because the automatic, two-way response to changing demand is what the bursts require." },
       { id: "b", text: "Scalability alone, since being able to grow is sufficient even if shrinking is manual." },
-      { id: "c", text: "A permanently fixed large capacity sized for the biggest burst." },
-      { id: "d", text: "Vertical scaling of a single instance done by hand for each burst." },
+      { id: "c", text: "High availability, because spreading across Availability Zones absorbs each burst." },
+      { id: "d", text: "Agility, because new resources can be provisioned within minutes of a request." },
     ],
     correct: ["a"],
     explanation:
-      "Frequent, unpredictable bursts need elasticity: adding resources automatically for each burst and removing them afterward so capacity closely matches the current demand, with no manual step. Scalability alone allows growth but not automatic contraction, a fixed large capacity wastes money during the quiet periods, and hand-resizing one instance per burst cannot keep up.",
+      "Frequent, unpredictable bursts need elasticity: adding resources automatically for each burst and removing them afterward so capacity closely matches the current demand, with no manual step. Scalability alone allows growth but not automatic contraction, spreading across Availability Zones improves availability without changing capacity to match each burst, and agility makes resources quick to provision on request but does not add and remove them automatically.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -476,13 +476,13 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "It acquires more resources automatically as demand increases." },
       { id: "b", text: "It releases resources automatically when they are no longer needed." },
-      { id: "c", text: "It is sized once for peak demand and left unchanged." },
-      { id: "d", text: "It requires an administrator to add capacity by hand for every spike." },
-      { id: "e", text: "It can never reduce the resources it holds." },
+      { id: "c", text: "It spreads incoming requests evenly across its existing instances." },
+      { id: "d", text: "It replaces an unhealthy instance with a new one automatically." },
+      { id: "e", text: "It keeps a standby copy of the workload in a second Region." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so both automatic expansion on rising demand and automatic release on falling demand are required. Sizing once for peak and leaving it unchanged, requiring an administrator to add capacity by hand for every spike, and never being able to reduce resources all contradict elasticity.",
+      "AWS describes elasticity as adding or removing resources automatically so they closely match the current demand, so both automatic expansion on rising demand and automatic release on falling demand are required. Spreading requests across existing instances is load balancing, replacing an unhealthy instance is a fault tolerance behavior that keeps the same capacity, and a standby copy in a second Region is a disaster recovery approach; none of them changes capacity with demand.",
     reference: {
       label: "Well-Architected Framework: REL 7, adapt to changes in demand",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
@@ -499,13 +499,13 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "New IT resources are a click away, so they are ready in minutes, not weeks." },
       { id: "b", text: "Experiments cost less and take less time, so teams can try more ideas." },
-      { id: "c", text: "Provisioning a new environment still takes several weeks of hardware procurement." },
-      { id: "d", text: "Agility requires signing a multi-year contract before any resource can be used." },
-      { id: "e", text: "Agility means the bill becomes a fixed amount each month." },
+      { id: "c", text: "Agility means running in multiple Regions around the world with a few clicks." },
+      { id: "d", text: "Agility means paying lower prices because of AWS's aggregate usage." },
+      { id: "e", text: "Agility means AWS sizes capacity for you, so you never guess." },
     ],
     correct: ["a", "b"],
     explanation:
-      "AWS frames agility as new resources being a click away, cutting provisioning time from weeks to minutes, and as a sharp drop in the cost and time to experiment and develop. Weeks of procurement, mandatory long contracts, and a fixed monthly bill are not part of the agility advantage.",
+      "AWS frames agility as new resources being a click away, cutting provisioning time from weeks to minutes, and as a sharp drop in the cost and time to experiment and develop. Running in multiple Regions with a few clicks describes going global in minutes, lower prices from aggregate usage describe economies of scale, and never having to guess capacity is the stop guessing capacity advantage, which still leaves sizing to you, so none of them defines agility.",
     reference: {
       label: "Six advantages of cloud computing: increase speed and agility",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -546,13 +546,13 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "Expensive idle resources from over-provisioning" },
       { id: "b", text: "Limited capacity when demand exceeds what was provisioned" },
-      { id: "c", text: "Paying nothing at all for any compute, ever" },
-      { id: "d", text: "Being forced to use exactly one Availability Zone" },
-      { id: "e", text: "Losing the ability to scale once an application is deployed" },
+      { id: "c", text: "High latency for users far from a single data center" },
+      { id: "d", text: "Staff time spent racking and powering servers" },
+      { id: "e", text: "Weeks of waiting to get resources for a new experiment" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Stop guessing capacity addresses both ends of bad capacity decisions: expensive idle resources from over-provisioning and limited capacity when demand outstrips supply. You do not pay nothing at all for compute, you are not forced into exactly one Availability Zone, and you do not lose the ability to scale once an application is deployed.",
+      "Stop guessing capacity addresses both ends of bad capacity decisions: expensive idle resources from over-provisioning and limited capacity when demand outstrips supply. High latency for distant users is what going global in minutes addresses, staff time spent racking and powering servers is what stop spending money running and maintaining data centers addresses, and weeks of waiting for resources to experiment is what increasing speed and agility addresses.",
     reference: {
       label: "Six advantages of cloud computing: stop guessing capacity",
       url: "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
@@ -569,13 +569,13 @@ export const domain1Elasticity: Question[] = [
     options: [
       { id: "a", text: "You can test how your workload fails and validate recovery procedures." },
       { id: "b", text: "Infrastructure changes should be made using automation." },
-      { id: "c", text: "Recovery procedures should never be tested because testing risks production." },
-      { id: "d", text: "Reliability is best achieved by concentrating the workload on a single large resource." },
-      { id: "e", text: "Capacity should always be guessed and fixed in advance." },
+      { id: "c", text: "Workloads should apply security at all layers of the architecture." },
+      { id: "d", text: "Teams should analyze and attribute expenditure to workload owners." },
+      { id: "e", text: "Serverless architectures should replace servers you run and maintain." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Testing recovery procedures by simulating failures and managing change through automation are both reliability design principles. Skipping recovery testing, concentrating on one large resource, and guessing fixed capacity each contradict the framework.",
+      "Testing recovery procedures by simulating failures and managing change through automation are both reliability design principles. Applying security at all layers is a security design principle, analyzing and attributing expenditure is a cost optimization design principle, and using serverless architectures is a performance efficiency design principle, so none of them is a reliability principle.",
     reference: {
       label: "Reliability Pillar: design principles",
       url: "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html",
@@ -588,20 +588,20 @@ export const domain1Elasticity: Question[] = [
     type: "multi",
     topic: "Elasticity vs scalability",
     difficulty: "hard",
-    stem: "An instructor wants two clear contrasts between elasticity and scalability. Which TWO statements are correct? (Choose two.)",
+    stem: "Which TWO setups give a workload elasticity, adding and removing capacity automatically as demand changes? (Choose two.)",
     options: [
-      { id: "a", text: "A scalable system is not fully elastic unless it releases resources automatically." },
-      { id: "b", text: "Elasticity matches capacity to demand by acquiring and releasing resources automatically." },
-      { id: "c", text: "Scalability and elasticity are identical, so any scalable system is automatically elastic." },
-      { id: "d", text: "Elasticity is only about scaling a single server vertically." },
-      { id: "e", text: "Scalability means the system automatically gives back capacity the moment load drops." },
+      { id: "a", text: "An EC2 Auto Scaling group with scaling policies that add and remove instances" },
+      { id: "b", text: "Amazon ECS service auto scaling that adds and removes tasks with demand" },
+      { id: "c", text: "A single larger EC2 instance chosen to cover the expected peak" },
+      { id: "d", text: "A fixed fleet of instances behind a load balancer with no scaling policy" },
+      { id: "e", text: "Reserved Instances purchased for next year's projected peak" },
     ],
     correct: ["a", "b"],
     explanation:
-      "Scalability is the ability to adapt to changes in demand and can exist without automatic release, while elasticity adds or removes resources automatically so capacity closely matches the current demand. The terms are not identical, elasticity is not limited to vertical scaling, and automatic give-back on a drop is the elastic behavior rather than the definition of scalability.",
+      "AWS recommends configuring Auto Scaling for resources such as Amazon EC2 instances and Amazon ECS tasks so they scale out and in automatically as needed, which is elasticity. A single larger EC2 instance is a fixed size chosen for the peak, a fixed fleet behind a load balancer with no scaling policy never changes its instance count, and Reserved Instances are a pricing commitment rather than a scaling mechanism.",
     reference: {
-      label: "Well-Architected Framework: REL 7, adapt to changes in demand",
-      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-07.html",
+      label: "REL07-BP01 Use automation when obtaining or scaling resources",
+      url: "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel_adapt_to_changes_autoscale_adapt.html",
     },
     lastVerified: "2026-10-03",
   },

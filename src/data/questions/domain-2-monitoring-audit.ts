@@ -41,13 +41,13 @@ export const domain2MonitoringAudit: Question[] = [
     stem: "A CloudWatch alarm is configured on a metric. What does the alarm do when the metric stays above the configured threshold?",
     options: [
       { id: "a", text: "It performs configured actions, such as an SNS notification or Auto Scaling." },
-      { id: "b", text: "It deletes the resource that produced the metric." },
+      { id: "b", text: "It opens an AWS Support case for the affected resource." },
       { id: "c", text: "It changes state on the console but cannot notify anyone or take any action." },
-      { id: "d", text: "It blocks all network traffic to the account until cleared." },
+      { id: "d", text: "It waits for an operator to approve the alarm before it acts." },
     ],
     correct: ["a"],
     explanation:
-      "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. It does not delete resources or cut off account-wide traffic, and it is not limited to changing state on the console, because notifying and acting are exactly what alarm actions do.",
+      "A CloudWatch metric alarm watches a metric over a number of time periods and, when the value breaches the threshold, performs one or more specified actions such as notifying an SNS topic or invoking an EC2 or Auto Scaling action. Opening an AWS Support case is not an alarm action, the alarm does not wait for an operator to approve it before acting, and it is not limited to changing state on the console, because notifying and acting are exactly what alarm actions do.",
     reference: {
       label: "Using Amazon CloudWatch alarms",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html",
@@ -66,17 +66,17 @@ export const domain2MonitoringAudit: Question[] = [
       { id: "a", text: "It can ingest and store logs from AWS services and from applications and servers." },
       { id: "b", text: "It organizes log data into log groups and log streams that you can search." },
       { id: "c", text: "It is the service that records which IAM user made each API call for audit." },
-      { id: "d", text: "It provisions the EC2 instances that generate the logs." },
+      { id: "d", text: "It keeps log data forever with no way to set retention." },
       { id: "e", text: "It replaces the need for any metrics or alarms in CloudWatch." },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudWatch Logs ingests and stores logs from AWS services and from applications and servers, and it organizes them into searchable log groups and streams. Recording who made each API call is AWS CloudTrail, provisioning instances is Amazon EC2, and CloudWatch Logs works alongside metrics and alarms rather than replacing them.",
+      "CloudWatch Logs ingests and stores logs from AWS services and from applications and servers, and it organizes them into searchable log groups and streams. Recording who made each API call is AWS CloudTrail, log data is kept indefinitely only by default because you can set a retention period for each log group, and CloudWatch Logs works alongside metrics and alarms rather than replacing them.",
     reference: {
       label: "What is Amazon CloudWatch? Collect, store, and query logs",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch"],
   },
   {
@@ -112,12 +112,12 @@ export const domain2MonitoringAudit: Question[] = [
     options: [
       { id: "a", text: "CloudWatch monitors performance and health; CloudTrail records API activity for audit." },
       { id: "b", text: "CloudWatch records who made each API call, while CloudTrail collects CPU and memory metrics." },
-      { id: "c", text: "Both services do exactly the same thing and are interchangeable." },
+      { id: "c", text: "CloudWatch scans instances for vulnerabilities; CloudTrail records API calls." },
       { id: "d", text: "Both are parts of AWS Config for tracking how resources are configured." },
     ],
     correct: ["a"],
     explanation:
-      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, the services are not interchangeable, and neither is part of AWS Config, the separate service that records how resources are configured over time.",
+      "CloudWatch is for monitoring: metrics, alarms, dashboards, and logs that show how resources and applications are performing. CloudTrail is for auditing: it records API calls and account activity so you can see who took which action and when. The roles are not reversed, CloudWatch does not scan instances for vulnerabilities, which is Amazon Inspector, and neither is part of AWS Config, the separate service that records how resources are configured over time.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
@@ -135,17 +135,17 @@ export const domain2MonitoringAudit: Question[] = [
     options: [
       { id: "a", text: "AWS CloudTrail, because it records API calls and who made them." },
       { id: "b", text: "Amazon CloudWatch, because it stores CPU metrics for the instance." },
-      { id: "c", text: "AWS Budgets, because it tracks spending thresholds." },
-      { id: "d", text: "Amazon SNS, because it sends notifications." },
+      { id: "c", text: "Amazon Inspector, because it scans instances for vulnerabilities." },
+      { id: "d", text: "IAM Access Analyzer, because it reviews external access." },
     ],
     correct: ["a"],
     explanation:
-      "CloudTrail records the TerminateInstances API call along with the identity, time, and source IP, so it can identify who took the action and from where. CloudWatch tracks performance metrics rather than who issued an API call, Budgets is for cost thresholds, and SNS only sends notifications.",
+      "CloudTrail records the TerminateInstances API call along with the identity, time, and source IP, so it can identify who took the action and from where. CloudWatch tracks performance metrics rather than who issued an API call, Inspector scans workloads for software vulnerabilities rather than recording actions, and IAM Access Analyzer identifies resources shared with an external entity rather than who used them.",
     reference: {
       label: "CloudTrail record contents for management, data, and network activity events",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudTrail"],
   },
   {
@@ -183,16 +183,16 @@ export const domain2MonitoringAudit: Question[] = [
       { id: "b", text: "Use AWS CloudTrail to audit which user or role made a given API call and when." },
       { id: "c", text: "Use AWS CloudTrail to set CPU-utilization alarms that trigger Auto Scaling." },
       { id: "d", text: "Use Amazon CloudWatch as the primary record of who deleted an S3 bucket for a compliance audit." },
-      { id: "e", text: "Both services exist only to send marketing emails." },
+      { id: "e", text: "Use AWS CloudTrail to graph request latency on an operations dashboard." },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudWatch graphs metrics and alarms on performance, while CloudTrail audits API activity and the identity behind it. CloudTrail does not set performance alarms or drive Auto Scaling, CloudWatch is not the audit record of who deleted a resource, and neither service sends marketing email.",
+      "CloudWatch graphs metrics and alarms on performance, while CloudTrail audits API activity and the identity behind it. CloudTrail does not set performance alarms, drive Auto Scaling, or graph latency on a dashboard, and CloudWatch is not the audit record of who deleted a resource.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch", "CloudTrail"],
   },
   {
@@ -230,21 +230,21 @@ export const domain2MonitoringAudit: Question[] = [
       { id: "a", text: "AWS CloudTrail for the account-activity audit, and Amazon CloudWatch for the metrics and alarms." },
       { id: "b", text: "Amazon CloudWatch for the account-activity audit, and AWS CloudTrail for the metrics and alarms." },
       { id: "c", text: "AWS Config for both the metrics graphs and the API alarms." },
-      { id: "d", text: "Amazon SNS for the audit trail, and Amazon SQS for the metrics." },
+      { id: "d", text: "AWS CloudTrail for both the activity audit and the CPU and latency graphs." },
     ],
     correct: ["a"],
     distractorRationales: {
       b: "This reverses the roles; CloudTrail records account activity and CloudWatch provides metrics and alarms, not the other way around.",
       c: "AWS Config tracks configuration state; it does not serve performance metric graphs or CPU and latency alarms.",
-      d: "Amazon SNS and SQS are messaging services, not the audit-trail and metrics tools this needs.",
+      d: "CloudTrail answers the activity audit, but it records API calls rather than CPU and latency metrics, so it cannot serve the graphs and alarms.",
     },
     explanation:
-      "CloudTrail answers who changed what and when through its record of API activity, while CloudWatch provides the metrics, graphs, and alarms for operational health. The roles are not reversed, AWS Config tracks configuration state rather than serving performance graphs and API alarms, and SNS and SQS are messaging services, not monitoring or audit tools.",
+      "CloudTrail answers who changed what and when through its record of API activity, while CloudWatch provides the metrics, graphs, and alarms for operational health. The roles are not reversed, AWS Config tracks configuration state rather than serving performance graphs and API alarms, and CloudTrail alone cannot cover both reviews because it records API calls rather than CPU and latency metrics.",
     reference: {
       label: "What Is AWS CloudTrail?",
       url: "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudTrail", "CloudWatch"],
   },
   {
@@ -258,17 +258,17 @@ export const domain2MonitoringAudit: Question[] = [
       { id: "a", text: "Collecting and tracking metrics from AWS resources and applications." },
       { id: "b", text: "Setting alarms that trigger actions when a metric crosses a threshold." },
       { id: "c", text: "Recording every API call with the identity of the caller for audit." },
-      { id: "d", text: "Encrypting data at rest with customer managed keys as its primary function." },
-      { id: "e", text: "Provisioning and running virtual servers." },
+      { id: "d", text: "Evaluating resource configuration settings against your compliance rules." },
+      { id: "e", text: "Scanning EC2 instances for software vulnerabilities." },
     ],
     correct: ["a", "b"],
     explanation:
-      "CloudWatch collects and tracks metrics and lets you set alarms that act when a threshold is breached. Recording API calls with caller identity is CloudTrail's job, encrypting data at rest with customer managed keys as a primary function is AWS KMS, and provisioning virtual servers is Amazon EC2, so those are not CloudWatch capabilities.",
+      "CloudWatch collects and tracks metrics and lets you set alarms that act when a threshold is breached. Recording API calls with caller identity is CloudTrail's job, evaluating configuration settings against rules is AWS Config, and scanning EC2 instances for software vulnerabilities is Amazon Inspector, so those are not CloudWatch capabilities.",
     reference: {
       label: "What is Amazon CloudWatch?",
       url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["CloudWatch"],
   },
 ];
