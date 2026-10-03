@@ -478,7 +478,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "Beyond the new-account credits, the AWS Free Tier includes a set of offers that do not expire as long as you have an account. What are these called?",
     options: [
-      { id: "a", text: "Always Free offers, available within monthly usage limits" },
+      { id: "a", text: "Always Free offers, within monthly usage limits" },
       { id: "b", text: "Reserved Free offers, requiring a one-year commitment" },
       { id: "c", text: "Spot Free offers, available only when capacity is idle" },
       { id: "d", text: "Enterprise Free offers, available only to Enterprise Support customers" },
@@ -591,7 +591,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "medium",
     stem: "How does a customer make the commitment for a Savings Plan?",
     options: [
-      { id: "a", text: "By committing to dollars per hour of usage for one or three years." },
+      { id: "a", text: "By committing to dollars per hour for one or three years." },
       { id: "b", text: "By committing to a fixed number of gigabytes of storage per month." },
       { id: "c", text: "By committing to a maximum monthly bill that AWS will never exceed." },
       { id: "d", text: "By paying a one-time fee that covers all compute for five years." },
@@ -614,7 +614,7 @@ export const domain4Pricing: Question[] = [
     difficulty: "easy",
     stem: "By default, on what kind of hardware do EC2 instances run with respect to other AWS customers?",
     options: [
-      { id: "a", text: "Shared tenancy hardware that other accounts may use." },
+      { id: "a", text: "Shared tenancy hardware other accounts may use." },
       { id: "b", text: "Hardware physically dedicated to your account only." },
       { id: "c", text: "Hardware you must purchase outright before launching." },
       { id: "d", text: "A single host shared with no other instances at all." },

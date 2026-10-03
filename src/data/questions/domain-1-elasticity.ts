@@ -247,7 +247,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "medium",
     stem: "A startup credits the cloud for letting it go from an idea to a running prototype far faster than buying hardware would allow, and for making failed experiments cheap to throw away. Which pair of cloud characteristics is most directly at work?",
     options: [
-      { id: "a", text: "Agility and low-cost experimentation" },
+      { id: "a", text: "Agility and the low cost of experimentation" },
       { id: "b", text: "Long lead times and high sunk costs" },
       { id: "c", text: "Fixed capital expense and slow procurement" },
       { id: "d", text: "Mandatory multi-year contracts" },
@@ -452,7 +452,7 @@ export const domain1Elasticity: Question[] = [
     difficulty: "hard",
     stem: "A workload sees brief, unpredictable bursts several times a day and is otherwise quiet. The team wants capacity that expands during each burst and contracts immediately afterward without anyone intervening. Which property is essential for this, beyond mere scalability?",
     options: [
-      { id: "a", text: "Elasticity, because the bursts need an automatic, two-way response to demand." },
+      { id: "a", text: "Elasticity, because the automatic, two-way response to changing demand is what the bursts require." },
       { id: "b", text: "Scalability alone, since being able to grow is sufficient even if shrinking is manual." },
       { id: "c", text: "A permanently fixed large capacity sized for the biggest burst." },
       { id: "d", text: "Vertical scaling of a single instance done by hand for each burst." },

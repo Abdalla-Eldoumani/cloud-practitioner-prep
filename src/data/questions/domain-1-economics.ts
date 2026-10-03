@@ -359,7 +359,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A manager claims that on AWS the company keeps paying full price for an EC2 instance even after it stops the instance overnight. Why is this claim incorrect?",
     options: [
-      { id: "a", text: "You are not billed for instance usage while an instance is stopped" },
+      { id: "a", text: "You are not billed for instance usage while it is stopped" },
       { id: "b", text: "Stopped instances are billed at a higher rate than running ones" },
       { id: "c", text: "Compute is billed as a flat monthly fee regardless of whether instances run" },
       { id: "d", text: "You are charged the full on-demand rate for every instance you ever launched" },
@@ -404,7 +404,7 @@ export const domain1Economics: Question[] = [
     difficulty: "easy",
     stem: "A team is comparing pricing models. Which characteristic is central to the consumption model that AWS recommends for cost optimization?",
     options: [
-      { id: "a", text: "Pay only for what you consume and scale usage with need" },
+      { id: "a", text: "Pay only for what you use and scale with need" },
       { id: "b", text: "Pay a fixed annual fee that does not change with usage" },
       { id: "c", text: "Pay for peak capacity at all times to avoid ever scaling" },
       { id: "d", text: "Pay an upfront lump sum that covers all future usage" },
@@ -494,7 +494,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A practitioner reads that AWS achieves \"higher economies of scale.\" What is the direct result of these economies of scale for AWS customers?",
     options: [
-      { id: "a", text: "Lower pay-as-you-go prices than a customer could get alone" },
+      { id: "a", text: "Lower pay-as-you-go prices than a customer could achieve on its own" },
       { id: "b", text: "A requirement to pay upfront for all future usage" },
       { id: "c", text: "Higher prices that rise as more customers join" },
       { id: "d", text: "A flat fee that is the same for every customer regardless of usage" },
@@ -739,7 +739,7 @@ export const domain1Economics: Question[] = [
     difficulty: "medium",
     stem: "A team runs development EC2 instances that sit idle overnight and on weekends. What is the most direct way to reduce their cost?",
     options: [
-      { id: "a", text: "Stop the instances on nights and weekends when idle." },
+      { id: "a", text: "Stop the instances on nights and weekends." },
       { id: "b", text: "Leave them running continuously to avoid any startup delay." },
       { id: "c", text: "Convert them to Dedicated Hosts to lower the hourly rate." },
       { id: "d", text: "Buy three-year Reserved Instances for the idle time." },

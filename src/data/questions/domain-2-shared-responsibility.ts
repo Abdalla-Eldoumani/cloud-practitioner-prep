@@ -63,7 +63,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "easy",
     stem: "A new cloud team is told that some duties are always theirs, no matter which AWS service they use. Which item is always the customer's responsibility?",
     options: [
-      { id: "a", text: "Their own data, including how it is classified" },
+      { id: "a", text: "Their own data, including how it is classified and protected" },
       { id: "b", text: "The physical security of the data centers" },
       { id: "c", text: "Decommissioning failed storage media" },
       { id: "d", text: "Maintaining the global network backbone between Regions" },
@@ -131,7 +131,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A customer asks who replaces a hard drive when it fails inside an AWS data center and who destroys the old media so data cannot be recovered. Under the Shared Responsibility Model, who handles this?",
     options: [
-      { id: "a", text: "AWS, because it owns and operates the hardware and facilities" },
+      { id: "a", text: "AWS, because it owns and operates the physical hardware and facilities" },
       { id: "b", text: "The customer, who must ship a replacement drive to the data center" },
       { id: "c", text: "The customer, because hardware is part of security in the cloud" },
       { id: "d", text: "Whichever party owns the data stored on the drive at the time" },
@@ -153,7 +153,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A team installs a third-party application server and several command-line utilities onto their Amazon EC2 instances. Who is responsible for keeping that installed application software up to date and free of known vulnerabilities?",
     options: [
-      { id: "a", text: "The customer, who manages software on the guest operating system" },
+      { id: "a", text: "The customer, who manages the software deployed to the guest operating system" },
       { id: "b", text: "AWS, which scans and updates all software running inside customer instances" },
       { id: "c", text: "AWS, because anything running on EC2 is AWS managed" },
       { id: "d", text: "The application vendor, who pushes updates directly into the AWS account" },
@@ -176,7 +176,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A company moves a self-managed database off EC2 and onto Amazon RDS. After the move, who installs and patches the database engine software and the underlying operating system?",
     options: [
-      { id: "a", text: "AWS, because RDS manages OS and database engine patching" },
+      { id: "a", text: "AWS; RDS manages OS and database engine patching" },
       { id: "b", text: "The customer, who must still log in to the host and patch the OS" },
       { id: "c", text: "The customer, because RDS only stores data and patches nothing" },
       { id: "d", text: "No one, because managed databases never receive patches" },
@@ -506,7 +506,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A compliance lead asks how Amazon DynamoDB protects table data at rest. Which statement is accurate?",
     options: [
-      { id: "a", text: "AWS encrypts all user data stored in DynamoDB at rest by default, on the server side" },
+      { id: "a", text: "All user data stored in DynamoDB is encrypted at rest by default, and AWS performs this server-side encryption automatically" },
       { id: "b", text: "DynamoDB stores data in plaintext unless the customer installs encryption software on the database servers" },
       { id: "c", text: "The customer must patch the DynamoDB servers to keep encryption working" },
       { id: "d", text: "Encryption at rest is available only by running DynamoDB on the customer's own hardware" },
@@ -598,7 +598,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "On Amazon EC2, where does AWS responsibility end and customer responsibility begin?",
     options: [
-      { id: "a", text: "AWS covers up through the host OS and virtualization layer; the customer, the guest OS and above" },
+      { id: "a", text: "AWS covers the host OS and virtualization layer; the customer, the guest OS and above" },
       { id: "b", text: "AWS is responsible for the guest operating system, and the customer is responsible for the hypervisor" },
       { id: "c", text: "AWS is responsible for the customer's application code, and the customer is responsible for the data center" },
       { id: "d", text: "The customer is responsible for the physical host, and AWS is responsible for the application" },
@@ -621,7 +621,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "hard",
     stem: "The model names a category of controls that are solely the customer's, based on the specific application they deploy on AWS. Which example fits this category?",
     options: [
-      { id: "a", text: "Zoning data within specific security environments" },
+      { id: "a", text: "Zoning data in specific security environments" },
       { id: "b", text: "The physical environmental controls of the data center" },
       { id: "c", text: "Patching flaws in the AWS infrastructure devices" },
       { id: "d", text: "Maintaining the configuration of AWS network hardware" },
@@ -643,7 +643,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "A statement reads: the customer's exact responsibilities depend on which AWS service they choose. Is this accurate under the Shared Responsibility Model?",
     options: [
-      { id: "a", text: "Yes, the customer's responsibility is determined by the AWS service used" },
+      { id: "a", text: "Yes, the customer's responsibility depends on the AWS service used" },
       { id: "b", text: "No, the customer always has exactly the same responsibilities for every service" },
       { id: "c", text: "No, AWS responsibility is what varies while the customer's never changes" },
       { id: "d", text: "Yes, but only the billing changes, not the security responsibilities" },
@@ -831,7 +831,7 @@ export const domain2SharedResponsibility: Question[] = [
     difficulty: "medium",
     stem: "Under security in the cloud, protecting network traffic, for example by encrypting data in transit and configuring firewall rules, is whose responsibility?",
     options: [
-      { id: "a", text: "The customer, who protects the traffic of their own workloads" },
+      { id: "a", text: "The customer, who is responsible for network traffic protection for their workloads" },
       { id: "b", text: "AWS, which encrypts all customer traffic end to end by default" },
       { id: "c", text: "AWS, because traffic protection is part of the physical network it owns" },
       { id: "d", text: "The internet service provider carrying the traffic" },

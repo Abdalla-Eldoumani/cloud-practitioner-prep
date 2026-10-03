@@ -173,7 +173,7 @@ export const domain1Concepts: Question[] = [
     difficulty: "medium",
     stem: "A mobile app sends an HTTPS request to an application running on an EC2 instance, which processes it and returns data. Which side of the client-server model is the mobile app?",
     options: [
-      { id: "a", text: "The client, which initiates the request to the server." },
+      { id: "a", text: "The client, which initiates the request." },
       { id: "b", text: "The server, which holds the application and responds." },
       { id: "c", text: "Neither, because mobile apps are outside the client-server model." },
       { id: "d", text: "Both client and server at the same time for every request." },

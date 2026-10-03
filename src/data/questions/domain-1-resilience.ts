@@ -42,7 +42,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "In the AWS Well-Architected Framework, resiliency is described as the ability of a workload to do which of the following?",
     options: [
-      { id: "a", text: "Recover from disruptions and dynamically acquire resources to meet demand." },
+      { id: "a", text: "Recover from infrastructure or service disruptions and dynamically acquire resources to meet demand." },
       { id: "b", text: "Run forever without ever needing any recovery, because failures are impossible." },
       { id: "c", text: "Guarantee the lowest possible cost regardless of design." },
       { id: "d", text: "Encrypt all data so that no outage can ever occur." },
@@ -64,7 +64,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "The Reliability pillar of the AWS Well-Architected Framework is centered on which capability of a workload?",
     options: [
-      { id: "a", text: "Performing its intended function correctly and consistently." },
+      { id: "a", text: "Performing its intended function correctly and consistently when it is expected to." },
       { id: "b", text: "Producing the most visually appealing user interface." },
       { id: "c", text: "Using the fewest possible AWS services regardless of the requirement." },
       { id: "d", text: "Storing data in as many file formats as possible." },
@@ -108,7 +108,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "A team has a disaster recovery plan written down but has never tried it. Which Reliability pillar design principle tells them what to do, and why the cloud makes it practical?",
     options: [
-      { id: "a", text: "Test recovery procedures by simulating failures in the cloud." },
+      { id: "a", text: "Test recovery by simulating failures in the cloud." },
       { id: "b", text: "Never test recovery, because testing always causes outages." },
       { id: "c", text: "Assume the written plan is correct because it was reviewed once." },
       { id: "d", text: "Test only the parts that are cheapest to test and skip the rest." },
@@ -175,7 +175,7 @@ export const domain1Resilience: Question[] = [
     difficulty: "medium",
     stem: "AWS recommends loosely coupling the components of an application. From a resilience standpoint, what is the main benefit of loose coupling?",
     options: [
-      { id: "a", text: "A failure in one component does not cascade to its dependents." },
+      { id: "a", text: "A failure in one component does not cascade to others." },
       { id: "b", text: "Every component must run on the same server to stay in sync." },
       { id: "c", text: "Components share one database directly so they always fail together." },
       { id: "d", text: "All components must respond synchronously to every request." },

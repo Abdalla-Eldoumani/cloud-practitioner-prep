@@ -37,7 +37,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "easy",
     stem: "AWS strongly recommends a particular way to use the account root user. Which statement matches that guidance?",
     options: [
-      { id: "a", text: "Avoid it for everyday tasks; use it only for tasks that require it." },
+      { id: "a", text: "Avoid using the root user for everyday tasks and reserve it for the few tasks that require it." },
       { id: "b", text: "Use the root user for all daily administration so permissions stay simple." },
       { id: "c", text: "Share the root user credentials with the whole operations team for convenience." },
       { id: "d", text: "Delete the root user after creating the first IAM user." },
@@ -83,7 +83,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A developer wants to run AWS CLI commands and asks whether they should create an access key for the account root user to do so. What is AWS guidance?",
     options: [
-      { id: "a", text: "Do not create root access keys; use a less privileged identity instead." },
+      { id: "a", text: "Do not create root access keys; use a less privileged identity." },
       { id: "b", text: "Create a root user access key, since only the root user can use the CLI." },
       { id: "c", text: "Create a root user access key and email it to the developer for reuse." },
       { id: "d", text: "Root users cannot use the CLI at all, so the question does not apply." },
@@ -222,7 +222,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "A reviewer points out that an IAM user with the AdministratorAccess policy is sometimes confused with the account root user. Which statement correctly distinguishes them?",
     options: [
-      { id: "a", text: "They differ: the root user is a separate identity created with the account." },
+      { id: "a", text: "They differ: the root user is a separate identity made with the account." },
       { id: "b", text: "An IAM user with administrator permissions is exactly the root user under a different name." },
       { id: "c", text: "The root user is just an IAM user that happens to be in the Admins group." },
       { id: "d", text: "An administrator IAM user can perform every root-only task, so the distinction does not matter." },
@@ -361,7 +361,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "An architect proposes nesting one IAM user group inside another to build a permission hierarchy. Is that possible in IAM?",
     options: [
-      { id: "a", text: "No. User groups cannot be nested; they contain only users." },
+      { id: "a", text: "No. User groups cannot be nested; they can contain only users, not other groups." },
       { id: "b", text: "Yes. Groups can be nested up to five levels deep." },
       { id: "c", text: "Yes, but only if every nested group has the same policy." },
       { id: "d", text: "Yes, and a nested group automatically becomes the parent group's administrator." },
@@ -384,7 +384,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "medium",
     stem: "A person changes roles within a company and now needs a different set of AWS permissions. Using IAM groups, what is the cleaner way to handle this than editing the user's permissions directly?",
     options: [
-      { id: "a", text: "Move the user from their old groups into the appropriate new ones." },
+      { id: "a", text: "Remove the user from their old groups and add them to the appropriate new groups." },
       { id: "b", text: "Delete the user and recreate them from scratch with new policies." },
       { id: "c", text: "Convert the user into the account root user for the new role." },
       { id: "d", text: "Attach the new permissions to an availability zone the user works in." },
@@ -524,7 +524,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "easy",
     stem: "By default, before any policies are evaluated, how does AWS treat a request from an IAM user or role?",
     options: [
-      { id: "a", text: "The request is implicitly denied unless a policy allows it." },
+      { id: "a", text: "The request is implicitly denied unless a policy explicitly allows it." },
       { id: "b", text: "The request is allowed unless a policy explicitly denies it." },
       { id: "c", text: "The request is queued until an administrator approves it." },
       { id: "d", text: "The request is allowed only during business hours." },
@@ -839,7 +839,7 @@ export const domain2IamBasics: Question[] = [
     difficulty: "hard",
     stem: "AWS best practices recommend that human users access AWS with temporary credentials rather than long-term ones. Which approach reflects that recommendation?",
     options: [
-      { id: "a", text: "Have them assume IAM roles to get temporary credentials." },
+      { id: "a", text: "Have them assume IAM roles for temporary credentials." },
       { id: "b", text: "Create an IAM user with permanent access keys for every employee." },
       { id: "c", text: "Share one set of long-term access keys across the team." },
       { id: "d", text: "Use the account root user's access keys for daily work." },
