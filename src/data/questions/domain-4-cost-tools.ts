@@ -454,19 +454,19 @@ export const domain4CostTools: Question[] = [
     difficulty: "hard",
     stem: "An analyst wants to run SQL queries directly against detailed AWS billing line items and also load them into a data warehouse and a BI dashboard. Which combination is the Cost and Usage Report designed to integrate with?",
     options: [
-      { id: "a", text: "Amazon Athena, Amazon Redshift, and Amazon QuickSight" },
+      { id: "a", text: "Amazon Athena, Amazon Redshift, and Amazon Quick" },
       { id: "b", text: "Amazon SQS, Amazon SNS, and AWS Lambda" },
       { id: "c", text: "Amazon EC2, Amazon EBS, and Elastic Load Balancing" },
       { id: "d", text: "AWS IAM, AWS Organizations, and AWS Control Tower" },
     ],
     correct: ["a"],
     explanation:
-      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon QuickSight (to visualize). Amazon SQS, Amazon SNS, and AWS Lambda are messaging and compute, Amazon EC2, Amazon EBS, and Elastic Load Balancing are compute, storage, and networking, and AWS IAM, AWS Organizations, and AWS Control Tower are account governance, none of which are the CUR analytics integrations.",
+      "You can configure the Cost and Usage Report for integration with Amazon Athena (to query in place), Amazon Redshift (to load into a warehouse), and Amazon Quick (to visualize). Amazon SQS, Amazon SNS, and AWS Lambda are messaging and compute, Amazon EC2, Amazon EBS, and Elastic Load Balancing are compute, storage, and networking, and AWS IAM, AWS Organizations, and AWS Control Tower are account governance, none of which are the CUR analytics integrations.",
     reference: {
       label: "What are AWS Cost and Usage Reports?",
       url: "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Amazon Athena", "Amazon Redshift", "Amazon QuickSight", "Amazon S3"],
   },
   {
