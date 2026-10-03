@@ -132,19 +132,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "easy",
     stem: "A security team uses GuardDuty, Inspector, and Macie and is tired of logging into each console separately. They want a single place that collects and prioritizes findings from all of them and checks the account against security best practices. Which service provides this?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon Detective" },
       { id: "c", text: "Amazon CloudWatch" },
       { id: "d", text: "AWS Config" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub gives a comprehensive view of security state and aggregates, organizes, and prioritizes findings from services such as GuardDuty, Inspector, and Macie, while running automated checks against security standards and best practices. Detective investigates the root cause of findings, CloudWatch handles metrics and logs broadly, and AWS Config tracks resource configuration, not finding aggregation.",
+      "AWS Security Hub CSPM gives a comprehensive view of security state and aggregates, organizes, and prioritizes findings from services such as GuardDuty, Inspector, and Macie, while running automated checks against security standards and best practices. Detective investigates the root cause of findings, CloudWatch handles metrics and logs broadly, and AWS Config tracks resource configuration, not finding aggregation. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: introduction",
+      label: "AWS Security Hub CSPM User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -270,19 +270,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A security lead wants one dashboard that pulls together findings from GuardDuty, Inspector, and Macie and also runs continuous checks against the AWS Foundational Security Best Practices standard. Which service meets both needs?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon Detective" },
       { id: "c", text: "Amazon GuardDuty" },
       { id: "d", text: "Amazon Inspector" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub both aggregates findings from services such as GuardDuty, Inspector, and Macie and runs automated security checks against standards like the AWS Foundational Security Best Practices. Detective investigates findings, while GuardDuty and Inspector each produce one kind of finding rather than aggregating across services or running standard checks.",
+      "AWS Security Hub CSPM both aggregates findings from services such as GuardDuty, Inspector, and Macie and runs automated security checks against standards like the AWS Foundational Security Best Practices. Detective investigates findings, while GuardDuty and Inspector each produce one kind of finding rather than aggregating across services or running standard checks. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: security standards",
+      label: "AWS Security Hub CSPM User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -408,7 +408,7 @@ export const domain2ThreatDetection: Question[] = [
     type: "single",
     topic: "AWS Security Hub",
     difficulty: "medium",
-    stem: "What does AWS Security Hub do to make findings from many different sources easier to work with?",
+    stem: "What does AWS Security Hub CSPM do to make findings from many different sources easier to work with?",
     options: [
       { id: "a", text: "It normalizes findings into the AWS Security Finding Format and prioritizes them." },
       { id: "b", text: "It deletes all duplicate findings and keeps only one finding per account." },
@@ -417,9 +417,9 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Security Hub processes finding data using the AWS Security Finding Format (ASFF), a standard format, and correlates and prioritizes findings across providers so you do not have to manage many formats. It does not reduce coverage to one finding per account, turn findings into chat messages, or convert them into billing line items.",
+      "Security Hub CSPM processes finding data using the AWS Security Finding Format (ASFF), a standard format, and correlates and prioritizes findings across providers so you do not have to manage many formats. It does not reduce coverage to one finding per account, turn findings into chat messages, or convert them into billing line items.",
     reference: {
-      label: "AWS Security Hub User Guide: reduced effort to collect and prioritize findings",
+      label: "AWS Security Hub CSPM User Guide: reduced effort to collect and prioritize findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
     lastVerified: "2026-10-03",
@@ -433,19 +433,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A company already runs GuardDuty, Inspector, and Macie. Leadership asks for a single prioritized view of all the security issues these services find, across multiple accounts. Adding which service satisfies that request?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "A second GuardDuty detector" },
       { id: "c", text: "Amazon Inspector in another Region" },
       { id: "d", text: "Amazon Macie with more discovery jobs" },
     ],
     correct: ["a"],
     explanation:
-      "AWS Security Hub consolidates and prioritizes findings across accounts and providers, including GuardDuty, Inspector, and Macie, giving the single view leadership wants. Adding more GuardDuty, Inspector, or Macie coverage produces more findings of the same kinds but does not aggregate them into one prioritized view.",
+      "AWS Security Hub CSPM consolidates and prioritizes findings across accounts and providers, including GuardDuty, Inspector, and Macie, giving the single view leadership wants. Adding more GuardDuty, Inspector, or Macie coverage produces more findings of the same kinds but does not aggregate them into one prioritized view. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: consolidated view of findings",
+      label: "AWS Security Hub CSPM User Guide: consolidated view of findings",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie"],
   },
   {
@@ -573,7 +573,7 @@ export const domain2ThreatDetection: Question[] = [
     type: "multi",
     topic: "AWS Security Hub",
     difficulty: "medium",
-    stem: "AWS Security Hub runs automated checks against recognized security standards. Which TWO of the following are standards it supports? (Choose two.)",
+    stem: "AWS Security Hub CSPM runs automated checks against recognized security standards. Which TWO of the following are standards it supports? (Choose two.)",
     options: [
       { id: "a", text: "AWS Foundational Security Best Practices (FSBP)" },
       { id: "b", text: "Center for Internet Security (CIS) AWS Foundations Benchmark" },
@@ -583,12 +583,12 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a", "b"],
     explanation:
-      "Security Hub supports security standards including the AWS Foundational Security Best Practices and the CIS AWS Foundations Benchmark, running checks against their controls and reporting control findings. The certification scoring scale, Free Tier limits, and S3 lifecycle format are not security standards Security Hub evaluates.",
+      "Security Hub CSPM supports security standards including the AWS Foundational Security Best Practices and the CIS AWS Foundations Benchmark, running checks against their controls and reporting control findings. The certification scoring scale, Free Tier limits, and S3 lifecycle format are not security standards Security Hub CSPM evaluates.",
     reference: {
-      label: "AWS Security Hub User Guide: security standards",
+      label: "AWS Security Hub CSPM User Guide: security standards",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -669,19 +669,19 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "medium",
     stem: "Which service would a team use to get a prioritized, single-pane-of-glass summary of its overall security posture across many AWS accounts, rather than to detect, scan, or investigate a specific issue?",
     options: [
-      { id: "a", text: "AWS Security Hub" },
+      { id: "a", text: "AWS Security Hub CSPM" },
       { id: "b", text: "Amazon GuardDuty" },
       { id: "c", text: "Amazon Inspector" },
       { id: "d", text: "Amazon Detective" },
     ],
     correct: ["a"],
     explanation:
-      "Security Hub provides a comprehensive, prioritized view of security state across accounts and providers, which is the single-pane-of-glass summary described. GuardDuty detects threats, Inspector scans for vulnerabilities, and Detective investigates individual findings, so none of those is the cross-account posture summary.",
+      "Security Hub CSPM provides a comprehensive, prioritized view of security state across accounts and providers, which is the single-pane-of-glass summary described. GuardDuty detects threats, Inspector scans for vulnerabilities, and Detective investigates individual findings, so none of those is the cross-account posture summary. The exam guide lists this service as AWS Security Hub.",
     reference: {
-      label: "AWS Security Hub User Guide: introduction",
+      label: "AWS Security Hub CSPM User Guide: introduction",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub"],
   },
   {
@@ -715,20 +715,20 @@ export const domain2ThreatDetection: Question[] = [
     difficulty: "hard",
     stem: "A team is wiring its AWS security services together. Which TWO of the following integrations are described by AWS? (Choose two.)",
     options: [
-      { id: "a", text: "GuardDuty, Inspector, and Macie can send their findings to AWS Security Hub." },
+      { id: "a", text: "GuardDuty, Inspector, and Macie can send their findings to AWS Security Hub CSPM." },
       { id: "b", text: "Amazon Detective can ingest GuardDuty findings to help investigate them." },
       { id: "c", text: "Amazon Macie sends its findings to Amazon Inspector for vulnerability scoring." },
-      { id: "d", text: "AWS Security Hub scans EC2 instances directly for software vulnerabilities." },
+      { id: "d", text: "AWS Security Hub CSPM scans EC2 instances directly for software vulnerabilities." },
       { id: "e", text: "Amazon Inspector investigates the root cause of GuardDuty findings." },
     ],
     correct: ["a", "b"],
     explanation:
-      "Security Hub receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not send its findings to Inspector for vulnerability scoring, Security Hub aggregates findings rather than scanning EC2 instances directly for software vulnerabilities itself, and investigating root cause is Detective's role, not Inspector's.",
+      "Security Hub CSPM receives findings from GuardDuty, Inspector, and Macie, and Detective ingests GuardDuty findings to support investigation. Macie does not send its findings to Inspector for vulnerability scoring, Security Hub CSPM aggregates findings rather than scanning EC2 instances directly for software vulnerabilities itself, and investigating root cause is Detective's role, not Inspector's.",
     reference: {
-      label: "AWS Security Hub User Guide: receives findings from other services",
+      label: "AWS Security Hub CSPM User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
-    lastVerified: "2026-07-29",
+    lastVerified: "2026-10-03",
     services: ["Security Hub", "GuardDuty", "Inspector", "Macie", "Detective"],
   },
   {
@@ -769,7 +769,7 @@ export const domain2ThreatDetection: Question[] = [
     ],
     correct: ["a"],
     explanation:
-      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services, claim both find sensitive data in S3, or claim both aggregate findings from other services while GuardDuty also runs standard checks, which instead describes Security Hub.",
+      "Inspector is a vulnerability management service that finds weaknesses such as unpatched CVEs and unintended network exposure, while GuardDuty is a threat detection service that analyzes logs for active malicious or unauthorized activity. The other options reverse the two services, claim both find sensitive data in S3, or claim both aggregate findings from other services while GuardDuty also runs standard checks, which instead describes Security Hub CSPM.",
     reference: {
       label: "What is Amazon Inspector?",
       url: "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
@@ -783,18 +783,18 @@ export const domain2ThreatDetection: Question[] = [
     type: "single",
     topic: "Services working together",
     difficulty: "medium",
-    stem: "Which statement correctly describes how AWS Security Hub relates to GuardDuty, Inspector, and Macie?",
+    stem: "Which statement correctly describes how AWS Security Hub CSPM relates to GuardDuty, Inspector, and Macie?",
     options: [
-      { id: "a", text: "Security Hub consumes the findings those services generate; it does not replace their detection or scanning." },
-      { id: "b", text: "Security Hub replaces GuardDuty, Inspector, and Macie, so you no longer need to enable them." },
-      { id: "c", text: "GuardDuty, Inspector, and Macie consume findings from Security Hub rather than the other way around." },
-      { id: "d", text: "Security Hub and those three services all perform identical detection and produce duplicate findings." },
+      { id: "a", text: "Security Hub CSPM consumes the findings those services generate; it does not replace their detection or scanning." },
+      { id: "b", text: "Security Hub CSPM replaces GuardDuty, Inspector, and Macie, so you no longer need to enable them." },
+      { id: "c", text: "GuardDuty, Inspector, and Macie consume findings from Security Hub CSPM rather than the other way around." },
+      { id: "d", text: "Security Hub CSPM and those three services all perform identical detection and produce duplicate findings." },
     ],
     correct: ["a"],
     explanation:
-      "Security Hub consumes and prioritizes the findings that GuardDuty, Inspector, and Macie generate, complementing them rather than replacing their distinct detection, scanning, and discovery jobs. The direction of integration is those services into Security Hub, and the four services do not perform identical work.",
+      "Security Hub CSPM consumes and prioritizes the findings that GuardDuty, Inspector, and Macie generate, complementing them rather than replacing their distinct detection, scanning, and discovery jobs. The direction of integration is those services into Security Hub CSPM, and the four services do not perform identical work.",
     reference: {
-      label: "AWS Security Hub User Guide: receives findings from other services",
+      label: "AWS Security Hub CSPM User Guide: receives findings from other services",
       url: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
     },
     lastVerified: "2026-10-03",
